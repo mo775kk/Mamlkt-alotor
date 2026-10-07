@@ -1,0 +1,1142 @@
+[
+  {
+    "name": "لاكوست روز",
+    "sku": "LAC-ROSE-001",
+    "brand": "لاكوست",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "لاكوست بلاك",
+    "sku": "LAC-BLK-002",
+    "brand": "لاكوست",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "لاكوست وايت",
+    "sku": "LAC-WHT-003",
+    "brand": "لاكوست",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "يارا كاندي",
+    "sku": "LAT-YARA-004",
+    "brand": "لطافة",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "كيالى مارشملو",
+    "sku": "KIAL-MAR-005",
+    "brand": "كيالى",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "مانسيرا روز فانيليا",
+    "sku": "MAN-RV-006",
+    "brand": "مانسيرا",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "بلاك أوبيوم",
+    "sku": "YSL-BO-007",
+    "brand": "إيف سان لوران",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "سوفاج",
+    "sku": "DIO-SAV-008",
+    "brand": "ديور",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "باكارا روج 540",
+    "sku": "MFK-540-009",
+    "brand": "ميزون فرانسيس كركجيان",
+    "category": "شرقي",
+    "gender": "unisex",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "كريد أفنتوس",
+    "sku": "CRE-AV-010",
+    "brand": "كريد",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "توم فورد بلاك أوركيد",
+    "sku": "TF-BO-011",
+    "brand": "توم فورد",
+    "category": "شرقي",
+    "gender": "unisex",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "روبرتو كافالي",
+    "sku": "RC-012",
+    "brand": "روبرتو كافالي",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "سجنشر",
+    "sku": "SIG-013",
+    "brand": "سجنشر",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "اولمبيا",
+    "sku": "PR-OLY-014",
+    "brand": "باكو رابان",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "بيانكو لاتيه",
+    "sku": "LAT-BL-015",
+    "brand": "لطافة",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "فانتازيا بريتني سبيرز",
+    "sku": "BS-FAN-016",
+    "brand": "بريتني سبيرز",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "فانتازيا ميد نايت",
+    "sku": "BS-FMN-017",
+    "brand": "بريتني سبيرز",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "اسكلبشر",
+    "sku": "JP-ESC-018",
+    "brand": "جاك بوجارت",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "سكاندال",
+    "sku": "JPG-SCN-019",
+    "brand": "جان بول غولتييه",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "سكاندال باي نايت",
+    "sku": "JPG-SCN-N-020",
+    "brand": "جان بول غولتييه",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "دنهل دزاير بلو",
+    "sku": "DH-DB-021",
+    "brand": "دنهل",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "دنهل لندن",
+    "sku": "DH-LDN-022",
+    "brand": "دنهل",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "دنهل برسويد",
+    "sku": "DH-PRS-023",
+    "brand": "دنهل",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "جيمي تشو",
+    "sku": "JC-024",
+    "brand": "جيمي تشو",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "عود شيخة",
+    "sku": "SHK-OD-025",
+    "brand": "شيخة",
+    "category": "شرقي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "أميرة العرب",
+    "sku": "AMEER-A-026",
+    "brand": "نعيم",
+    "category": "شرقي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "أمير العرب",
+    "sku": "AMEER-M-027",
+    "brand": "نعيم",
+    "category": "شرقي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "جود جيرل",
+    "sku": "CH-GG-028",
+    "brand": "كارولينا هيريرا",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "212 سكسي",
+    "sku": "CH-212SX-029",
+    "brand": "كارولينا هيريرا",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "212 في آي بي",
+    "sku": "CH-212VIP-030",
+    "brand": "كارولينا هيريرا",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "212 رجالي",
+    "sku": "CH-212M-031",
+    "brand": "كارولينا هيريرا",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "دراكار نوار",
+    "sku": "JLR-DKN-032",
+    "brand": "جاي لاروش",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "جوتشي راش",
+    "sku": "GG-RSH-033",
+    "brand": "غوتشي",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "فيكتوريا سيكريت",
+    "sku": "VS-034",
+    "brand": "فيكتوريا سيكريت",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "أكوا دي جيو",
+    "sku": "GA-ADG-035",
+    "brand": "جورجيو أرماني",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "وان مليون",
+    "sku": "PR-1ML-036",
+    "brand": "باكو رابان",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "فيرساتشي إيروس",
+    "sku": "VER-ERS-037",
+    "brand": "فيرساتشي",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "ليبرا",
+    "sku": "YSL-LBR-038",
+    "brand": "إيف سان لوران",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "تراب الذهب",
+    "sku": "LAT-TG-039",
+    "brand": "لطافة",
+    "category": "شرقي",
+    "gender": "unisex",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "ماء الذهب",
+    "sku": "LAT-MG-040",
+    "brand": "لطافة",
+    "category": "شرقي",
+    "gender": "unisex",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "خمرة",
+    "sku": "LAT-KH-041",
+    "brand": "لطافة",
+    "category": "شرقي",
+    "gender": "unisex",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "خمرة قهوة",
+    "sku": "LAT-KH-C-042",
+    "brand": "لطافة",
+    "category": "شرقي",
+    "gender": "unisex",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "عود إماراتي",
+    "sku": "OD-EM-043",
+    "brand": "عطور محلية",
+    "category": "شرقي",
+    "gender": "unisex",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "مسك أبيض",
+    "sku": "MSK-W-044",
+    "brand": "عطور محلية",
+    "category": "يونيسكس",
+    "gender": "unisex",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "باد بوي",
+    "sku": "CH-BB-045",
+    "brand": "كارولينا هيريرا",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "فهرنهايت",
+    "sku": "DIO-FR-046",
+    "brand": "ديور",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "ألف ليلة وليلة",
+    "sku": "OD-ALF-047",
+    "brand": "عود العربية",
+    "category": "شرقي",
+    "gender": "unisex",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "توباكو فانيليا",
+    "sku": "TF-TV-048",
+    "brand": "توم فورد",
+    "category": "شرقي",
+    "gender": "unisex",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "كوكو شانيل",
+    "sku": "CHN-CO-049",
+    "brand": "شانيل",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "شانيل بلو",
+    "sku": "CHN-BL-050",
+    "brand": "شانيل",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "إنفكتوس",
+    "sku": "PR-INV-051",
+    "brand": "باكو رابان",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "سترونجر ويز يو",
+    "sku": "GA-SWU-052",
+    "brand": "إيمبوريو أرماني",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "هوجو بوس",
+    "sku": "HB-053",
+    "brand": "هوجو بوس",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "كوكو شانيل",
+    "sku": "CHN-CO-054",
+    "brand": "شانيل",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "أزارو كروم ليجند",
+    "sku": "AZ-CL-055",
+    "brand": "أزارو",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "أزارو ونتد",
+    "sku": "AZ-WN-056",
+    "brand": "أزارو",
+    "category": "رجالي",
+    "gender": "male",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "فالنتينو دونا",
+    "sku": "VAL-DN-057",
+    "brand": "فالنتينو",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "جادور",
+    "sku": "DIO-JD-058",
+    "brand": "ديور",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "كلوي نرسيس",
+    "sku": "CL-NR-059",
+    "brand": "كلوي",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  },
+  {
+    "name": "بيربري هير",
+    "sku": "BB-HR-060",
+    "brand": "بيربري",
+    "category": "حريمي",
+    "gender": "female",
+    "manufacturing_date": "2026-01-01",
+    "stock": 100,
+    "status": "active",
+    "sizes": [
+      {"size": "3ml", "price": 50},
+      {"size": "5ml", "price": 75},
+      {"size": "10ml", "price": 100},
+      {"size": "22ml", "price": 130},
+      {"size": "30ml", "price": 150},
+      {"size": "50ml", "price": 200},
+      {"size": "100ml", "price": 450}
+    ]
+  }
+]
