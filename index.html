@@ -1,34 +1,371 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>مملكة العطور | CROWN · MAISON DE PARFUM</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مملكة العطور | CROWN · MAISON DE PARFUM</title>
+    <meta name="description" content="مملكة العطور - عطور تُخلّد لحظاتك. أفخم العطور العالمية والشرقية.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="gate"><div class="crown">👑</div><h1>دخول المملكة</h1><p>مملكة العطور</p><button id="enter" class="btn gold">دخول المملكة</button></div>
-<header>
-<b class="logo">👑 مملكة العطور</b>
-<nav id="nav"></nav>
-<div class="tools">
-<button data-a="go" data-id="cart" aria-label="السلة">🛒<i id="cc">0</i><em>السلة</em></button>
-<button data-a="top" aria-label="الأكثر طلبًا">🔥<em>الأكثر طلبًا</em></button>
-<button data-a="go" data-id="favs" aria-label="المفضلة">❤️<em>المفضلة</em></button>
-<button id="burger" data-a="burger" aria-label="القائمة">☰<em>القائمة</em></button>
-</div>
-</header>
-<main id="main"></main>
-<footer>
-<h3 data-a="tap">مملكة العطور</h3><small>CROWN · MAISON DE PARFUM</small>
-<p><a data-a="go" data-id="shop">المتجر</a><a data-a="go" data-id="build">التركيب</a><a data-a="go" data-id="story">الحكاية</a><a data-a="go" data-id="contact">تواصل</a><a href="https://wa.me/201272776928" target="_blank" rel="noopener">WhatsApp</a></p>
-<p>© مملكة العطور — سياسة الخصوصية · الشروط والأحكام</p>
-</footer>
-<div id="fx"></div>
-<div class="fab"><a href="https://wa.me/201272776928" target="_blank" rel="noopener" aria-label="WhatsApp" data-say="تواصل معنا عبر واتساب||Chat with us on WhatsApp">💬 واتساب</a><button data-a="call" aria-label="اتصال">📞 اتصال</button><button data-a="share" aria-label="مشاركة">🔗 مشاركة</button><button data-a="vo" aria-label="المتحدث الصوتي"><span id="vol">🔇</span> صوت</button></div>
-<div id="modal"></div>
-<div id="toast"></div>
-<script src="app.js"></script>
+
+    <!-- شاشة دخول المملكة -->
+    <div id="entry-screen" class="entry-screen">
+        <div class="entry-content">
+            <i class="fas fa-crown entry-crown"></i>
+            <h1 class="entry-title">مملكة العطور</h1>
+            <p class="entry-subtitle">CROWN · MAISON DE PARFUM</p>
+            <p class="entry-desc">حيث تلتقي الفخامة بالأصالة</p>
+            <button id="enter-kingdom-btn" class="btn-gold">دخول المملكة <i class="fas fa-arrow-left"></i></button>
+            <label class="skip-entry">
+                <input type="checkbox" id="skip-entry-check"> لا تظهر هذه الشاشة مجدداً
+            </label>
+        </div>
+        <div class="entry-bg-effects"></div>
+    </div>
+
+    <!-- التطبيق الرئيسي -->
+    <div id="app" class="app-container hidden">
+        
+        <!-- الهيدر -->
+        <header class="main-header">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    <div>
+                        <h2>مملكة العطور</h2>
+                        <span>CROWN · MAISON DE PARFUM</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button id="lang-toggle" class="icon-btn" title="تغيير اللغة">EN</button>
+                    <button id="voice-search-btn" class="icon-btn" title="بحث صوتي"><i class="fas fa-microphone"></i></button>
+                    <button id="wishlist-btn" class="icon-btn">
+                        <i class="fas fa-heart"></i>
+                        <span id="wishlist-count" class="badge">0</span>
+                    </button>
+                    <button id="cart-btn" class="icon-btn">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span id="cart-count" class="badge">0</span>
+                    </button>
+                    <button id="admin-toggle-btn" class="icon-btn" title="لوحة الإدارة"><i class="fas fa-cog"></i></button>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <a href="#home" class="nav-link active" data-i18n="nav_home">الرئيسية</a>
+                <a href="#store" class="nav-link" data-i18n="nav_store">المتجر</a>
+                <a href="#consultant" class="nav-link" data-i18n="nav_consultant">مستشار العطور</a>
+                <a href="#contact" class="nav-link" data-i18n="nav_contact">تواصل معنا</a>
+            </nav>
+        </header>
+
+        <main>
+            <!-- القسم الرئيسي -->
+            <section id="home" class="hero-section">
+                <div class="hero-content">
+                    <h1 data-i18n="hero_title">عطور تُخلّد لحظاتك</h1>
+                    <p data-i18n="hero_desc">اكتشف تشكيلة ملكية من أفخم العطور العالمية والشرقية، مختارة بعناية لتناسب شخصيتك.</p>
+                    <div class="hero-buttons">
+                        <a href="#store" class="btn-gold" data-i18n="btn_discover">اكتشف العطور</a>
+                        <a href="#consultant" class="btn-outline" data-i18n="btn_consultant">مستشار العطور</a>
+                    </div>
+                </div>
+                <div class="hero-stats" id="dynamic-stats">
+                    <!-- يتم ملؤها ديناميكياً -->
+                </div>
+            </section>
+
+            <!-- قسم المتجر -->
+            <section id="store" class="store-section">
+                <div class="section-header">
+                    <h2 data-i18n="store_title">كتالوج العطور</h2>
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="ابحث عن اسم العطر، الشركة، أو العائلة العطرية..." data-i18n-ph="search_placeholder">
+                    </div>
+                </div>
+
+                <div class="store-layout">
+                    <!-- الفلاتر -->
+                    <aside class="filters-sidebar">
+                        <h3 data-i18n="filters_title">تصفية النتائج</h3>
+                        
+                        <div class="filter-group">
+                            <h4 data-i18n="filter_gender">التصنيف</h4>
+                            <div id="gender-filters" class="checkbox-group"></div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4 data-i18n="filter_family">العائلة العطرية</h4>
+                            <div id="family-filters" class="checkbox-group"></div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4 data-i18n="filter_company">الشركة / المصدر</h4>
+                            <select id="company-filter" class="form-select">
+                                <option value="all">الكل</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4 data-i18n="filter_size">المقاس</h4>
+                            <select id="size-filter" class="form-select">
+                                <option value="all">الكل</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="in-stock-only">
+                                <span data-i18n="filter_in_stock">المتوفر فقط</span>
+                            </label>
+                        </div>
+
+                        <button id="reset-filters" class="btn-outline small" data-i18n="btn_reset">إعادة ضبط</button>
+                    </aside>
+
+                    <!-- شبكة المنتجات -->
+                    <div class="products-grid-container">
+                        <div id="products-grid" class="products-grid">
+                            <!-- يتم ملؤها ديناميكياً -->
+                        </div>
+                        <div id="pagination" class="pagination"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم مستشار العطور -->
+            <section id="consultant" class="consultant-section">
+                <h2 data-i18n="consultant_title">مستشار العطور الملكي</h2>
+                <div id="consultant-wizard" class="consultant-wizard">
+                    <div class="wizard-step active" data-step="1">
+                        <h3 data-i18n="q1_gender">لمن العطر؟</h3>
+                        <div class="options-grid">
+                            <button class="option-btn" data-value="men" data-i18n="opt_men">رجالي</button>
+                            <button class="option-btn" data-value="women" data-i18n="opt_women">حريمي</button>
+                            <button class="option-btn" data-value="unisex" data-i18n="opt_unisex">مشترك</button>
+                        </div>
+                    </div>
+                    <div class="wizard-step" data-step="2">
+                        <h3 data-i18n="q2_vibe">ما الطابع الذي تفضله؟</h3>
+                        <div class="options-grid">
+                            <button class="option-btn" data-value="fresh" data-i18n="opt_fresh">منعش</button>
+                            <button class="option-btn" data-value="floral" data-i18n="opt_floral">زهري</button>
+                            <button class="option-btn" data-value="woody" data-i18n="opt_woody">خشبي</button>
+                            <button class="option-btn" data-value="oriental" data-i18n="opt_oriental">شرقي</button>
+                            <button class="option-btn" data-value="sweet" data-i18n="opt_sweet">حلو</button>
+                            <button class="option-btn" data-value="musky" data-i18n="opt_musky">مسكي</button>
+                        </div>
+                    </div>
+                    <div class="wizard-step" data-step="3">
+                        <h3 data-i18n="q3_occasion">ما المناسبة؟</h3>
+                        <div class="options-grid">
+                            <button class="option-btn" data-value="daily" data-i18n="opt_daily">يومي</button>
+                            <button class="option-btn" data-value="work" data-i18n="opt_work">عمل</button>
+                            <button class="option-btn" data-value="evening" data-i18n="opt_evening">سهرة</button>
+                            <button class="option-btn" data-value="summer" data-i18n="opt_summer">صيف</button>
+                            <button class="option-btn" data-value="winter" data-i18n="opt_winter">شتاء</button>
+                        </div>
+                    </div>
+                    <div class="wizard-step" data-step="4">
+                        <h3 data-i18n="consultant_result">اقتراحاتنا لك</h3>
+                        <div id="consultant-results" class="products-grid"></div>
+                        <button id="restart-consultant" class="btn-outline" data-i18n="btn_restart">بدء من جديد</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- الفوتر -->
+        <footer id="contact" class="main-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-crown"></i>
+                    <h3>مملكة العطور</h3>
+                    <p>الإسكندرية — شارع خالد بن الوليد</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://wa.me/201272776928" target="_blank"><i class="fab fa-whatsapp"></i> 01272776928</a>
+                    <a href="https://whatsapp.com/channel/0029Vb8l5QRBPzjhHbvbzn2W" target="_blank"><i class="fas fa-broadcast-tower"></i> قناتنا على واتساب</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CROWN · MAISON DE PARFUM. جميع الحقوق محفوظة.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- النوافذ المنبثقة (Modals) -->
+    
+    <!-- نافذة تفاصيل المنتج -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content product-modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="product-details-container"></div>
+        </div>
+    </div>
+
+    <!-- نافذة السلة -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content cart-modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 data-i18n="cart_title">سلة المشتريات</h2>
+            <div id="cart-items"></div>
+            <div class="cart-summary">
+                <h3 data-i18n="cart_total">الإجمالي: <span id="cart-total">0</span> جنيه</h3>
+                <button id="clear-cart" class="btn-outline small" data-i18n="btn_clear_cart">تفريغ السلة</button>
+                <button id="checkout-whatsapp" class="btn-gold" data-i18n="btn_checkout_wa">إرسال الطلب عبر واتساب</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة المفضلة -->
+    <div id="wishlist-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 data-i18n="wishlist_title">المفضلة</h2>
+            <div id="wishlist-items" class="products-grid"></div>
+        </div>
+    </div>
+
+    <!-- نافذة لوحة الإدارة -->
+    <div id="admin-modal" class="modal admin-modal">
+        <div class="modal-content admin-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-crown"></i> لوحة إدارة المملكة</h2>
+            
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="admin-products">المنتجات</button>
+                <button class="tab-btn" data-tab="admin-companies">الشركات</button>
+                <button class="tab-btn" data-tab="admin-settings">الإعدادات والأسعار</button>
+                <button class="tab-btn" data-tab="admin-backup">النسخ الاحتياطي</button>
+            </div>
+
+            <div class="admin-tab-content">
+                <!-- تبويب المنتجات -->
+                <div id="admin-products" class="tab-pane active">
+                    <button id="add-product-btn" class="btn-gold small"><i class="fas fa-plus"></i> إضافة عطر جديد</button>
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>الاسم</th>
+                                    <th>الشركة</th>
+                                    <th>المخزون</th>
+                                    <th>الحالة</th>
+                                    <th>إجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-products-list"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- تبويب الشركات -->
+                <div id="admin-companies" class="tab-pane">
+                    <div class="form-group">
+                        <input type="text" id="new-company-name" placeholder="اسم الشركة الجديدة">
+                        <button id="add-company-btn" class="btn-gold small">إضافة</button>
+                    </div>
+                    <ul id="admin-companies-list" class="admin-list"></ul>
+                </div>
+
+                <!-- تبويب الإعدادات -->
+                <div id="admin-settings" class="tab-pane">
+                    <h3>أسعار المقاسات الافتراضية (جنيه)</h3>
+                    <div id="price-settings-container" class="settings-grid"></div>
+                    
+                    <h3>وضع عرض السعر</h3>
+                    <select id="pricing-mode-setting" class="form-select">
+                        <option value="simple">الوضع الأول: السعر النهائي فقط</option>
+                        <option value="detailed">الوضع الثاني: تفاصيل التكلفة (زيت + عبوة + إلخ)</option>
+                    </select>
+                    <button id="save-settings-btn" class="btn-gold">حفظ الإعدادات</button>
+                </div>
+
+                <!-- تبويب النسخ الاحتياطي -->
+                <div id="admin-backup" class="tab-pane">
+                    <div class="backup-actions">
+                        <button id="export-json-btn" class="btn-gold"><i class="fas fa-download"></i> تصدير قاعدة البيانات (JSON)</button>
+                        <div class="import-area">
+                            <label for="import-json-file" class="btn-outline">استيراد قاعدة بيانات (JSON)</label>
+                            <input type="file" id="import-json-file" accept=".json" hidden>
+                            <p class="small-text">سيتم التحقق من الملف ومنع تكرار العطور تلقائياً.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة إضافة/تعديل منتج -->
+    <div id="product-form-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="product-form-title">إضافة عطر جديد</h2>
+            <form id="product-form" class="admin-form">
+                <input type="hidden" id="edit-product-id">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>الاسم العربي *</label>
+                        <input type="text" id="p-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>الاسم الإنجليزي</label>
+                        <input type="text" id="p-name-en">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>الشركة / المصدر *</label>
+                        <select id="p-company" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label>الجنس *</label>
+                        <select id="p-gender" required>
+                            <option value="men">رجالي</option>
+                            <option value="women">حريمي</option>
+                            <option value="unisex">مشترك</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>العائلة العطرية *</label>
+                        <select id="p-family" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label>المخزون</label>
+                        <input type="number" id="p-stock" value="10">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>الوصف</label>
+                    <textarea id="p-desc" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>رابط الصورة (اتركه فارغاً للصورة الافتراضية)</label>
+                    <input type="url" id="p-image" placeholder="https://...">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-outline close-form">إلغاء</button>
+                    <button type="submit" class="btn-gold">حفظ العطر</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
