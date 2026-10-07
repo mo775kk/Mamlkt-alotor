@@ -1,222 +1,980 @@
-'use strict';
-addEventListener('error',ev=>{const t=document.getElementById('toast');if(t){t.textContent='خطأ: '+ev.message;t.style.display='block'}});
-/* مملكة العطور — مصدر بيانات واحد: STORE (localStorage). للنقل لاحقًا إلى Backend: استبدل load()/save() فقط. */
-const KEY='mamlaka_store_v1',$=s=>document.querySelector(s);
-const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const IMG='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="300" height="300" fill="#15130c"/><text x="150" y="175" font-size="90" text-anchor="middle">👑</text></svg>');
-const L={g:{men:'رجالي',women:'نسائي',unisex:'يونيسكس'},fam:{fresh:'فريش',woody:'خشبي',floral:'زهري',sweet:'حلو',musk:'مسك',oud:'عود',amber:'عنبر',oriental:'شرقي',gulf:'خليجي'},cat:{perfume:'عطور',oil:'زيوت عطرية',bottle:'زجاجات',box:'علب',wrap:'تغليف'}};
-L.str={strong:'قوي',calm:'هادئ'};const SHAPES={classic:'كلاسيك',round:'دائرية',tall:'طويلة',square:'مربعة',spray:'بخاخ',royal:'ملكية'};
-const ST=['جديد','تم التأكيد','قيد التجهيز','خرج للتوصيل','تم التسليم','ملغي'];
-const mk=(id,ar,en,cat,g,fam,sz,stock,sup,desc,disc=0)=>({id,ar,en,brand:'علامة تجريبية',cat,g,fam,sz,stock,sup,ship:10,extra:5,desc,disc,img:'',rating:4.5,reviews:0,sups:[]});
-const one=(p,c)=>({'قطعة':{p,c}});
-const seed=()=>({products:[
-mk('p1','سيلفر سنت','Silver Scent','perfume','men','fresh',{'30ml':{p:150,c:100},'50ml':{p:220,c:140},'100ml':{p:380,c:250}},20,'اللوزي','بيانات تجريبية — عدّلها من الإدارة'),
-mk('p2','عود ملكي','Royal Oud','perfume','unisex','oud',{'30ml':{p:300,c:190},'50ml':{p:450,c:290}},12,'ماربة','بيانات تجريبية',10),
-mk('p3','وردة الفجر','Dawn Rose','perfume','women','floral',{'30ml':{p:170,c:110},'100ml':{p:400,c:260}},8,'تيكنو','بيانات تجريبية'),
-mk('p4','زيت مسك','Musk Oil','oil','unisex','musk',{'10ml':{p:80,c:45},'20ml':{p:140,c:80}},15,'اللوزي','بيانات تجريبية'),
-mk('p5','زجاجة 30ml','Bottle 30ml','bottle','unisex','',one(30,15),50,'ماربة','بيانات تجريبية'),
-mk('p6','زجاجة فاخرة','Luxury Bottle','bottle','unisex','',one(60,35),30,'ماربة','بيانات تجريبية'),
-mk('p7','علبة ملكية','Royal Box','box','unisex','',one(50,30),40,'تيكنو','بيانات تجريبية'),
-mk('p8','تغليف هدايا','Gift Wrap','wrap','unisex','',one(20,8),60,'تيكنو','بيانات تجريبية')
-],suppliers:['اللوزي','ماربة','تيكنو'],orders:[],cart:[],favs:[],settings:{phone:'201272776928',showCost:false,shipAlex:40,shipOther:70}});
-let STORE=(()=>{try{return JSON.parse(localStorage[KEY])}catch{return null}})()||seed();
-STORE.cmp=STORE.cmp||[];STORE.settings={bottleShape:'classic',glass:true,newYears:5,oldYears:10,...STORE.settings};const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(STORE))}catch{msg('المساحة ممتلئة: احذف وسائط كبيرة أو صدّر نسخة')}};
-/* خطّاف AI مستقبلي — لا يوجد ذكاء اصطناعي حقيقي متصل حاليًا. الوكلاء المخطط لهم: router, store, perfume-expert, pricing, inventory, sales, marketing, customer, technical */
-const AI={ask:async q=>{throw new Error('AI غير متصل: اربط API عبر Backend')}};
+/**
+ * مملكة العطور - CROWN · MAISON DE PARFUM
+ * التطبيق الرئيسي
+ */
 
-const get=id=>STORE.products.find(p=>p.id===id),by=c=>STORE.products.filter(p=>p.cat===c&&!p.hidden),vis=()=>STORE.products.filter(p=>!p.hidden);
-const sizes=p=>Object.keys(p.sz).sort((a,b)=>(parseFloat(a)||0)-(parseFloat(b)||0)),fin=(z,d)=>Math.round(z.p*(1-(d||0)/100));
-const first=p=>p.sz[sizes(p)[0]];
-const FC={fresh:'#4fa3d1',woody:'#8a5a2b',floral:'#d96a96',sweet:'#e39a3b',musk:'#d8c3a5',oud:'#4a2c1a',amber:'#c98a1b',oriental:'#a2452f',gulf:'#7a5c1e'};
-const SH={
-classic:{cap:'<rect x="42" y="12" width="16" height="12" rx="2" fill="#d4af37"/><rect x="46" y="24" width="8" height="8" fill="#8a7020"/>',body:a=>`<rect x="28" y="32" width="44" height="54" rx="11" ${a}/>`},
-round:{cap:'<rect x="43" y="10" width="14" height="12" rx="2" fill="#d4af37"/><rect x="46" y="22" width="8" height="8" fill="#8a7020"/>',body:a=>`<circle cx="50" cy="60" r="29" ${a}/>`},
-tall:{cap:'<rect x="44" y="6" width="12" height="12" rx="2" fill="#d4af37"/><rect x="47" y="18" width="6" height="8" fill="#8a7020"/>',body:a=>`<rect x="34" y="26" width="32" height="64" rx="8" ${a}/>`},
-square:{cap:'<rect x="38" y="12" width="24" height="10" rx="2" fill="#d4af37"/><rect x="45" y="22" width="10" height="8" fill="#8a7020"/>',body:a=>`<rect x="24" y="30" width="52" height="56" rx="4" ${a}/>`},
-spray:{cap:'<rect x="44" y="6" width="14" height="6" rx="2" fill="#d4af37"/><rect x="47" y="12" width="6" height="12" fill="#8a7020"/><rect x="40" y="24" width="20" height="7" rx="2" fill="#d4af37"/>',body:a=>`<rect x="30" y="31" width="40" height="55" rx="9" ${a}/>`},
-royal:{cap:'<path d="M38 24l3-14 9 8 9-8 3 14z" fill="#d4af37"/>',body:a=>`<path d="M36 28H64L74 60Q76 86 50 88Q24 86 26 60Z" ${a}/>`}};
-const lab=p=>{if(!p.ar)return'';const x=s=>String(s).replace(/[&<>"]/g,''),ls=[];let cur='';p.ar.split(' ').forEach(w=>{if(cur&&(cur+' '+w).length>9){ls.push(cur);cur=w}else cur=(cur?cur+' ':'')+w});ls.push(cur);const l2=ls.slice(0,2);if(ls.length>2)l2[1]+='…';
-const zs=Object.keys(p.sz||{}).map(parseFloat).filter(n=>n>0).sort((a,b)=>a-b),v=zs.length?(zs[0]===zs[zs.length-1]?zs[0]:zs[0]+'-'+zs[zs.length-1])+'ml':'';
-const rows=[[(p.brand||'').slice(0,11),5,'#d4af37'],...l2.map(t=>[t,7,'#fff6c9']),[v,5.5,'#d4af37']].filter(r=>r[0]);
-return`<rect x="34" y="44" width="32" height="37" rx="2" fill="#08080a" fill-opacity=".62" stroke="#d4af37" stroke-width=".5"/>`+rows.map((r,i)=>`<text x="50" y="${52+i*8.2}" font-size="${(r[1]*Math.min(1,10/r[0].length)).toFixed(1)}" fill="${r[2]}" text-anchor="middle" font-family="Tajawal,Arial,sans-serif">${x(r[0])}</text>`).join('')};
-const ICON=p=>{const c=FC[p.fam]||{oil:'#c9822b',bottle:'#9ec9d8',box:'#b08d57',wrap:'#c0506a'}[p.cat]||'#d4af37',g=STORE.settings.glass;let b;
-if(p.cat==='box')b=`<rect x="22" y="38" width="56" height="44" rx="4" fill="${c}"/><rect x="22" y="38" width="56" height="10" fill="#fff" opacity=".25"/><rect x="46" y="38" width="8" height="44" fill="#d4af37"/>`;
-else if(p.cat==='wrap')b=`<rect x="24" y="40" width="52" height="42" rx="4" fill="${c}"/><path d="M50 40 30 24M50 40l20-16" stroke="#d4af37" stroke-width="5" fill="none"/>`;
-else{const sh=SH[p.shape||STORE.settings.bottleShape]||SH.classic;b=sh.cap+(g?`<clipPath id="k">${sh.body('')}</clipPath><rect x="0" y="52" width="100" height="50" fill="${c}" fill-opacity=".85" clip-path="url(#k)"/>${sh.body('fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".6" stroke-width="1.6"')}<rect x="34" y="38" width="5" height="40" rx="2" fill="#fff" opacity=".35"/>`:`${sh.body(`fill="${c}" fill-opacity=".92"`)}<rect x="34" y="40" width="5" height="38" rx="2" fill="#fff" opacity=".28"/>`)}
-return'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#15130c"/>${b}${lab(p)}</svg>`)};
-const pic=p=>p.img||ICON(p);
-const yt=u=>{const m=/(?:youtu\.be\/|v=|shorts\/)([\w-]{11})/.exec(u||'');return m?m[1]:''};
-const media=(p,c)=>p.video?(yt(p.video)?`<iframe class="${c}" src="https://www.youtube.com/embed/${yt(p.video)}" allowfullscreen loading="lazy"></iframe>`:`<video class="${c}" src="${e(p.video)}" controls playsinline muted loop></video>`):'';
-function calc(l){const p=get(l.pid),z=p.sz[l.size],parts=[[p.ar+(l.size!=='قطعة'?' '+l.size:''),fin(z,p.disc)]];let cost=z.c+p.ship+p.extra;
-for(const k of['bottle','box','wrap'])if(l[k]&&get(l[k])){const q=get(l[k]),y=first(q);parts.push([q.ar,fin(y,q.disc)]);cost+=y.c+q.ship+q.extra}
-return{parts,unit:parts.reduce((a,x)=>a+x[1],0),cost}}
-const stockLeft=(pid,except)=>get(pid).stock-STORE.cart.filter(l=>l.pid===pid&&l!==except).reduce((a,l)=>a+l.qty,0);
-function addCart(l){const k=JSON.stringify([l.pid,l.size,l.bottle,l.box,l.wrap]),x=STORE.cart.find(c=>c.k===k);
-if(l.qty+(x?x.qty:0)>stockLeft(l.pid,x))return msg('الكمية المتاحة غير كافية'),false;
-x?x.qty+=l.qty:STORE.cart.push({...l,k});save();upd();return true}
-const upd=()=>$('#cc').textContent=STORE.cart.reduce((a,l)=>a+l.qty,0);
-let tt;const msg=(t,ms=2200)=>{const m=$('#toast');m.textContent=t;m.style.display='block';clearTimeout(tt);tt=setTimeout(()=>m.style.display='none',ms)};
-const fx=()=>{for(const[q,c]of[['#fx','on'],['#main','in']]){const n=$(q);n.classList.remove(c);void n.offsetWidth;n.classList.add(c)}};
-const stk=(o,k)=>o.lines.forEach(l=>[l.pid,...(l.ad||[])].forEach(i=>{const p=get(i);if(p)p.stock=Math.max(0,p.stock+k*l.qty)}));
-const modal=h=>{$('#modal').innerHTML=`<div class="mb"><button class="x" data-a="cm">✕</button>${h}</div>`;$('#modal').className='show'};
-const closeM=()=>{$('#modal').className='';$('#modal').innerHTML=''};
-let YES;const ask=(t,fn)=>{modal(`<h3>${t}</h3><div class="row"><button class="btn gold" data-a="yes">تأكيد</button><button class="btn" data-a="cm">إلغاء</button></div>`);YES=fn};
-const wa=t=>window.open(`https://wa.me/${STORE.settings.phone}?text=${encodeURIComponent(t)}`,'_blank');
-const opt=(o,sel,all)=>(all?`<option value="">${all}</option>`:'')+Object.entries(o).map(([k,v])=>`<option value="${k}"${k==sel?' selected':''}>${v}</option>`).join('');
+// ==========================================
+// 1. الثوابت والبيانات الافتراضية
+// ==========================================
+const WHATSAPP_NUMBER = "201272776928";
+const STORAGE_KEY = "mamlaka_data_v2";
+const ITEMS_PER_PAGE = 12;
 
-/* ---------- Views ---------- */
-let V='home',F={},B=null,pick=false,det=false,tab='dash',rep='month';
-const NAV=[['home','الرئيسية'],['shop','متجر العطور'],['perfume','العطور والزيوت العطرية'],['build','التركيب'],['gift','الهدايا'],['story','حكاية المملكة'],['contact','تواصل معنا']];
-function go(v){if(v==='admin'&&!OWNER)return A.owner();fx();closeM();$('#nav').classList.remove('open');if(v.startsWith('cat_')){F={cat:v.slice(4)};v='shop'}else if(v==='perfume'||v==='oil'||v==='gift'){F={cat:v==='gift'?'box':'po'};v='shop'}else if(v==='shop')F={};V=v;render();scrollTo(0,0)}
-const card=p=>{const z=first(p),out=p.stock<=0;return`<div class="card" data-pid="${p.id}"><img loading="lazy" src="${pic(p)}" alt=""><h3>${e(p.ar)}</h3><small>${e(p.en)} · ${e(p.brand)}</small><small>${[p.str&&L.str[p.str],p.feat?'مميز':{new:'جديد',old:'قديم'}[age(p)]].filter(Boolean).join(' · ')}</small><div class="pr">${p.disc?`<s>${z.p}</s> `:''}<b>${fin(z,p.disc)} ج</b></div><div class="row">${out?'<span class="out">نفد المخزون</span>':`<button class="btn gold" data-a="open" data-id="${p.id}">اطلب</button>`}<button class="ic" data-a="fav" data-id="${p.id}">${STORE.favs.includes(p.id)?'❤️':'🤍'}</button></div></div>`};
-const home=()=>`<section class="hero"><div class="crown">👑</div><h1>مرحبًا بك في مملكة العطور</h1><p>عطور وزيوت وتركيب عطور واختيارات فاخرة تناسب ذوقك.</p><p class="royal" data-say="تفضّل يا مولاي، قاعات القصر مفتوحة لك||Welcome, Your Majesty. The halls of the palace are open for you">تفضّل يا مولاي، قاعات القصر مفتوحة لك</p><div class="row c"><button class="btn gold" data-a="go" data-id="shop">اكتشف العطور</button><button class="btn" data-a="go" data-id="build">تركيب عطرك</button><button class="btn" data-a="go" data-id="contact">تواصل معنا</button></div><div class="sw2"><span class="sd"></span><span class="sd f"></span></div></section>
-${tiles()}<section><h2>مستشار العطور</h2><div class="filters"><select id="ag">${opt(L.g,'','أي جنس')}</select><select id="af">${opt(L.fam,'','أي رائحة')}</select><input id="ab" type="number" placeholder="ميزانيتك (جنيه)"><button class="btn gold" data-a="adv">اقترح لي</button></div><div id="adv" class="grid"></div></section>
-${halls()||`<section class="hall"><h2>مختارات المملكة</h2><div class="grid">${vis().slice(0,4).map(card).join('')}</div></section>`}`;
-const shop=()=>`<section><h2>متجر العطور</h2><div class="filters"><input id="q" list="sg" placeholder="ابحث بالاسم أو البراند أو المورد..." value="${e(F.q||'')}"><datalist id="sg">${STORE.products.map(p=>`<option value="${e(p.ar)}"><option value="${e(p.en)}">`).join('')}</datalist><select id="fc">${opt({po:'عطور وزيوت عطرية',...L.cat},F.cat,'كل الأقسام')}</select><select id="fg">${opt(L.g,F.g,'الكل')}</select><select id="ff">${opt(L.fam,F.fam,'كل الروائح')}</select><select id="fa">${opt({feat:'مميزة',new:'جديدة',old:'قديمة'},F.age,'كل الإصدارات')}</select><select id="fr">${opt(L.str,F.str,'قوة العطر')}</select><select id="fo">${opt({new:'الأحدث',lo:'الأرخص',hi:'الأغلى',rt:'الأعلى تقييمًا'},F.o,'ترتيب')}</select><input id="fm" type="number" placeholder="أقصى سعر" value="${F.max||''}"><label><input id="fs" type="checkbox"${F.stock?' checked':''}> متوفر</label><label><input id="fd" type="checkbox"${F.disc?' checked':''}> خصومات</label></div><div id="grid" class="grid"></div></section>`;
-function fillGrid(){const q=(F.q||'').toLowerCase();const r=vis().filter(p=>(!q||[p.ar,p.en,p.brand,L.cat[p.cat],L.g[p.g],L.fam[p.fam],p.sup,p.desc].join(' ').toLowerCase().includes(q))&&(!F.cat||p.cat===F.cat||(F.cat==='po'&&(p.cat==='perfume'||p.cat==='oil')))&&(!F.age||(F.age==='feat'?p.feat:age(p)===F.age))&&(!F.str||p.str===F.str)&&(!F.g||p.g===F.g)&&(!F.fam||p.fam===F.fam)&&(!F.max||fin(first(p),p.disc)<=F.max)&&(!F.stock||p.stock>0)&&(!F.disc||p.disc>0));if(F.o==='lo')r.sort((a,b)=>fin(first(a),a.disc)-fin(first(b),b.disc));else if(F.o==='hi')r.sort((a,b)=>fin(first(b),b.disc)-fin(first(a),a.disc));else if(F.o==='rt')r.sort((a,b)=>b.rating-a.rating);else if(F.o==='new')r.reverse();$('#grid').innerHTML=r.map(card).join('')||'<p>لا توجد نتائج</p>'}
-const build=()=>'<section><h2>تركيب عطرك</h2><div class="mb" id="bx" style="margin:auto"></div></section>';
-const story=()=>'<section><h2>حكاية المملكة</h2><p style="max-width:700px;margin:auto;text-align:center">في مملكة العطور نؤمن أن الرائحة توقيع صاحبها. نختار العطور والزيوت بعناية، ونساعدك على تركيب عطرك وتجهيزه في زجاجة وعلبة وتغليف يليق بك أو بهديتك، بجودة وذوق وخدمة شخصية.</p></section>';
-const contact=()=>`<section><h2>تواصل معنا</h2><div style="text-align:center"><h3>مملكة العطور</h3><p>الإسكندرية – شارع خالد بن الوليد</p><p>01272776928</p><div class="row c"><a class="btn gold" href="https://wa.me/201272776928" target="_blank" rel="noopener">WhatsApp</a><button class="btn" data-a="call">اتصال</button><button class="btn" data-a="cpu">نسخ الرابط</button><button class="btn" data-a="share">مشاركة</button></div></div></section>`;
-const favs=()=>`<section><h2>المفضلة</h2><div class="grid">${STORE.favs.map(get).filter(Boolean).map(card).join('')||'<p>لا توجد مفضلة</p>'}</div></section>`;
-function cart(){STORE.cart=STORE.cart.filter(l=>get(l.pid)&&get(l.pid).sz[l.size]);if(!STORE.cart.length)return'<section><h2>السلة</h2><p style="text-align:center">السلة فارغة</p></section>';let t=0;
-const rows=STORE.cart.map((l,i)=>{const c=calc(l),p=get(l.pid);t+=c.unit*l.qty;return`<div class="line"><img src="${pic(p)}" alt=""><div><b>${e(p.ar)}</b> <small>${e(l.size)}</small><br><small>${c.parts.slice(1).map(x=>e(x[0])).join(' + ')}</small><br>${c.unit} ج × ${l.qty} = <b>${c.unit*l.qty} ج</b></div><div class="row"><button class="ic" data-a="cq" data-id="${i}" data-d="-1">−</button><b>${l.qty}</b><button class="ic" data-a="cq" data-id="${i}" data-d="1">+</button><button class="ic" data-a="cdel" data-id="${i}">🗑</button></div></div>`}).join('');
-return`<section><h2>السلة</h2>${rows}<h3>إجمالي السلة: ${t} ج</h3><br><button class="btn gold" data-a="checkout">إتمام الطلب</button></section>`}
+const DEFAULT_PRICES = {
+    "3": 50, "5": 75, "10": 100, "22": 130, "30": 150, "50": 200, "100": 450
+};
 
-/* ---------- Builder (صفحة التركيب + نافذة المنتج) ---------- */
-const initB=pid=>{B={pid,size:sizes(get(pid))[0],qty:1,bottle:'',box:'',wrap:''}};
-function renderB(){const p=get(B.pid),c=calc(B),left=stockLeft(B.pid),out=left<=0,s=B.qty*c.unit;
-const sel=(k,none)=>`<select data-b="${k}"><option value="">${none}</option>${by(k).map(q=>`<option value="${q.id}"${B[k]===q.id?' selected':''}>${e(q.ar)} (+${fin(first(q),q.disc)} ج)</option>`).join('')}</select>`;
-const m={bottle:'bottle',box:'box',wrap:'wrap'};
-$('#bx').innerHTML=(pick?`<select data-b="pid">${[...by('perfume'),...by('oil')].map(q=>`<option value="${q.id}"${q.id===B.pid?' selected':''}>${e(q.ar)}</option>`).join('')}</select>`:`<h3>${e(p.ar)} <small>${e(p.en)}</small></h3>${media(p,'big')}<img class="big" src="${pic(p)}" alt=""><small>${e(p.brand)} · ${L.cat[p.cat]} · ${L.g[p.g]||''} · ⭐${p.rating}${p.str?' · قوة العطر: '+L.str[p.str]:''}${p.year?' · سنة الإصدار '+p.year:''}${p.made?' · تاريخ الصنع '+e(p.made):''}</small><p>${e(p.desc)}</p>`)
-+`<select data-b="size">${sizes(p).map(z=>`<option value="${z}"${z===B.size?' selected':''}>${e(z)} — ${fin(p.sz[z],p.disc)} ج</option>`).join('')}</select>${sel('bottle','بدون زجاجة')}${sel('box','بدون علبة')}${sel('wrap','بدون تغليف')}
-<div class="row"><button class="ic" data-a="bq" data-d="-1">−</button><b>${B.qty}</b><button class="ic" data-a="bq" data-d="1">+</button><small>المتاح: ${Math.max(left,0)}</small></div>
-<h3>الإجمالي: ${s} ج</h3><button class="btn" data-a="bdet">${det?'إخفاء':'عرض'} التفاصيل</button>
-${det?`<div>${c.parts.map(x=>`<p>${e(x[0])}: ${x[1]} ج</p>`).join('')}<p>الشحن: الإسكندرية ${STORE.settings.shipAlex} ج / محافظات ${STORE.settings.shipOther} ج (يُضاف عند الطلب)</p>${STORE.settings.showCost?`<p>التكلفة: ${c.cost*B.qty} ج — الربح: ${s-c.cost*B.qty} ج</p>`:''}</div>`:''}
-${out?'<b class="out">نفد المخزون</b>':`<div class="row"><button class="btn gold" data-a="badd">أضف للسلة</button><button class="btn" data-a="bnow">شراء الآن</button><button class="btn" data-a="bwa">WhatsApp</button><button class="btn" data-a="share">مشاركة</button></div>`}`}
+const DEFAULT_COMPANIES = [
+    "Lattafa", "Afnan", "Armaf", "Swiss Arabian", "Maison Alhambra", "Mancera", 
+    "Dior", "Chanel", "Versace", "Paco Rabanne", "Carolina Herrera", "Yves Saint Laurent", 
+    "Giorgio Armani", "Dolce & Gabbana", "Tom Ford", "Creed", "Xerjoff", "Jean Paul Gaultier", 
+    "Givenchy", "Hugo Boss", "Calvin Klein", "Lacoste", "Dunhill", "Roberto Cavalli", 
+    "Britney Spears", "Victoria's Secret", "Gucci", "Zara", "Ajmal", "Local/Arab"
+];
 
-/* ---------- Admin ---------- */
-const net=p=>{const z=first(p);return fin(z,p.disc)-z.c-p.ship-p.extra};
-let OWNER=(()=>{try{return localStorage.getItem('mamlaka_owner')==='1'}catch{return false}})();
-const YR=new Date().getFullYear();
-const SZO=['3ml','5ml','7.5ml','10ml','12.5ml'],SZP=['20ml','30ml','40ml','50ml','60ml','70ml','80ml','90ml','100ml'];
-const age=p=>p.year?(YR-p.year<=(+STORE.settings.newYears||5)?'new':YR-p.year>=(+STORE.settings.oldYears||10)?'old':''):'';
-const cnt=()=>{const m={...(STORE.sales||{})};STORE.orders.filter(o=>o.st!=='ملغي').forEach(o=>o.lines.forEach(l=>m[l.pid]=(m[l.pid]||0)+l.qty));return m};
-const TOPF={men:p=>p.g==='men',women:p=>p.g==='women',east:p=>['oriental','oud','amber','gulf'].includes(p.fam)};
-const hash=s=>{let h=5381;for(const c of s+'مملكة')h=Math.imul(h,33)^c.charCodeAt(0);return String(h>>>0)};
-const dl=(n,o)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(o,null,1)],{type:'application/json'}));a.download=n;document.body&&document.body.appendChild(a);a.click();setTimeout(()=>{a.remove();URL.revokeObjectURL(a.href)},1500)};
-const io=window.IntersectionObserver&&new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('show');io.unobserve(x.target)}}),{threshold:.08});
-const copyT=async t=>{try{await navigator.clipboard.writeText(t);return true}catch{}try{const x=document.createElement('textarea');x.value=t;x.style.cssText='position:fixed;opacity:0';document.body.appendChild(x);x.select();const ok=document.execCommand('copy');x.remove();return ok}catch{return false}};
-const siteUrl=()=>STORE.settings.siteUrl||((location.protocol||'').startsWith('http')?location.href.split('#')[0]:'');
-const impT=txt=>{try{const d=JSON.parse(txt);if(!Array.isArray(d.products)||!d.settings)throw 0;ask('سيتم استبدال كل البيانات الحالية. متابعة؟',()=>{d.settings={bottleShape:'classic',glass:true,newYears:5,oldYears:10,...d.settings,pin:STORE.settings.pin};STORE=d;['orders','cart','favs','suppliers','cmp'].forEach(k=>STORE[k]=STORE[k]||[]);save();render();msg('تم الاستيراد')})}catch{msg('ملف غير صالح')}};
-const sizeGrid=p=>[['زيوت عطرية',SZO],['عطور',SZP]].map(([t,l])=>`<b class="w">${t}</b>`+l.map(z=>`<label class="sg">${z}<input type="number" data-zp="${z}" placeholder="سعر" value="${p.sz[z]?p.sz[z].p:''}"><input type="number" data-zc="${z}" placeholder="تكلفة" value="${p.sz[z]?p.sz[z].c:''}"></label>`).join('')).join('');
-const tiles=()=>`<section class="hall"><h2 data-say="أقسام القصر. اختر القاعة التي تريد دخولها||The palace sections. Choose the hall you want to enter">أقسام المملكة</h2><div class="grid">${[['po','عطور وزيوت عطرية','Perfumes and aromatic oils','perfume'],['bottle','زجاجات','Bottles','bottle'],['box','علب','Boxes','box'],['wrap','تغليف','Wrapping','wrap']].map(([k,v,en,c])=>`<div class="card tile" data-a="go" data-id="cat_${k}" data-say="${v}||${en}"><img src="${ICON({cat:c,fam:c==='perfume'?'woody':''})}" alt=""><h3>${v}</h3></div>`).join('')}</div></section>`;
-const rowH=(t,say,l,k)=>l.length?`<section class="hall"><h2 data-say="${say}">${t}</h2><div class="grid">${l.slice(0,4).map(card).join('')}</div><div class="row c"><button class="btn" data-a="agego" data-id="${k}">عرض الكل</button></div></section>`:'';
-const halls=()=>{const v=vis().filter(p=>p.cat==='perfume'||p.cat==='oil');return rowH('القاعة المميزة','هنا العطور المميزة التي اختارتها المملكة بعناية||Here are the distinguished fragrances chosen with care by the kingdom',v.filter(p=>p.feat),'feat')+rowH('قاعة العطور الجديدة','عطور صدرت حديثًا||New fragrances released recently',v.filter(p=>age(p)==='new'),'new')+rowH('قاعة العطور القديمة','عطور عريقة لها تاريخ وأصالة||Classic fragrances with history and heritage',v.filter(p=>age(p)==='old'),'old')};
-/* المتحدث الصوتي: يستخدم أصوات الجهاز (Web Speech). اختياري: إيقاف / عربي / English */
-const VO={on:false,lang:'ar',st:0};
-const VOA={go:{home:['الصفحة الرئيسية. تجوّل في قصر العطور','Home page. Walk through the palace of perfumes'],shop:['متجر العطور. تصفح كل المنتجات','Perfume shop. Browse all products'],perfume:['العطور والزيوت العطرية','Perfumes and aromatic oils'],build:['ركّب عطرك، واختر الزجاجة والعلبة والتغليف','Create your own perfume and choose the bottle, box and wrapping'],gift:['قسم الهدايا والعلب','Gifts and boxes'],story:['اقرأ حكاية المملكة','Read the story of the kingdom'],contact:['تواصل معنا','Contact us'],cart:['سلة المشتريات','Your shopping cart'],favs:['المفضلة','Your favorites']},
-open:['اطلب هذا المنتج، واختر المقاس والزجاجة والعلبة والتغليف','Order this product and choose the size, bottle, box and wrapping'],fav:['أضف هذا المنتج إلى المفضلة','Add this product to your favorites'],
-top:['الأكثر طلبًا. اختر رجالي أو حريمي أو شرقي','Most requested. Choose men, women or oriental'],topc:{men:['أكثر العطور الرجالية طلبًا','The most requested men fragrances'],women:['أكثر العطور الحريمية طلبًا','The most requested women fragrances'],east:['أكثر العطور الشرقية طلبًا','The most requested oriental fragrances']},
-agego:['عرض كل العطور في هذه القاعة','Show all fragrances in this hall'],adv:['اقترح لي عطرًا يناسب ذوقك وميزانيتك','Suggest a fragrance that suits your taste and budget'],
-badd:['أضف إلى السلة','Add to cart'],bnow:['اشترِ الآن','Buy now'],bwa:['اطلب عبر واتساب','Order via WhatsApp'],share:['شارك المتجر مع أصدقائك','Share the store with your friends'],call:['اتصل بنا مباشرة','Call us directly'],
-checkout:['أتمم الطلب','Complete your order'],place:['أرسل الطلب عبر واتساب','Send the order via WhatsApp'],bq:['غيّر الكمية','Change the quantity'],cq:['غيّر الكمية','Change the quantity'],bdet:['عرض تفاصيل السعر','Show the price details'],cdel:['احذف من السلة','Remove from cart'],vo:['المتحدث الصوتي. اضغط لتغيير اللغة أو الإيقاف','Voice guide. Tap to change the language or turn it off'],burger:['القائمة','Menu'],cpu:['انسخ رابط الموقع','Copy the website link'],cpn:['انسخ رقم الهاتف','Copy the phone number'],nshare:['شارك عبر تطبيقات الهاتف','Share through your phone apps'],bk:['النسخ الاحتياطي والاستيراد','Backup and import']};
-const cleanT=t=>String(t).replace(/<[^>]*>/g,' ').replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/gu,' ').replace(/[·•|\\\/*#_~^=+<>()\[\]{}"“”«»–—\-]/g,' ').replace(/(\d)\s*ml/gi,VO.lang==='ar'?'$1 مللي':'$1 milliliters').replace(/\s+/g,' ').trim();
-const pickVoice=l=>{const vs=speechSynthesis.getVoices().filter(v=>v.lang.toLowerCase().startsWith(l));return vs.find(v=>/natural|neural|online|google/i.test(v.name))||vs[0]};
-const speak=t=>{if(!VO.on||!window.speechSynthesis||!t)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(cleanT(t));u.lang=VO.lang==='ar'?'ar-SA':'en-US';const v=pickVoice(VO.lang==='ar'?'ar':'en');if(v)u.voice=v;u.rate=.92;u.pitch=1;speechSynthesis.speak(u)};
-const pr=v=>v?(VO.lang==='ar'?v[0]:v[1]):'';
-const sayFor=el=>{const d=el.dataset;if(d.say){const s=d.say.split('||');return VO.lang==='ar'?s[0]:s[1]||s[0]}
-if(d.pid){const p=get(d.pid);if(!p)return'';const z=fin(first(p),p.disc);return VO.lang==='ar'?`${p.ar}. من ${p.brand}. ${p.str?'قوة العطر '+L.str[p.str]+'. ':''}السعر يبدأ من ${z} جنيه`:`${p.en}. By ${p.brand}. ${p.str?'Strength: '+(p.str==='strong'?'strong':'calm')+'. ':''}Price starts from ${z} Egyptian pounds`}
-const v=VOA[d.a];return pr(Array.isArray(v)?v:v&&v[d.id])};
-let HT,HE;const SEL='[data-pid],[data-a],[data-say]';
-document.addEventListener('mouseover',ev=>{if(!VO.on)return;const el=ev.target.closest&&ev.target.closest(SEL);clearTimeout(HT);if(!el){HE=null;return}if(el===HE)return;HE=el;HT=setTimeout(()=>speak(sayFor(el)),450)});
-document.addEventListener('touchstart',ev=>{if(!VO.on)return;const el=ev.target.closest&&ev.target.closest(SEL);if(el)speak(sayFor(el))},{passive:true});
-let TAPS=0,TT;
-let AF={q:'',cat:'',cls:''};
-const aDash=()=>{const ps=STORE.products,low=ps.filter(p=>p.stock<=5),td=STORE.orders.filter(o=>o.st!=='ملغي'&&new Date(o.d).toDateString()===new Date().toDateString()).reduce((a,o)=>a+o.total-o.ship,0);
-return`<div class="kpi"><div>المنتجات<b>${ps.length}</b></div><div>وحدات المخزون<b>${ps.reduce((a,p)=>a+p.stock,0)}</b></div><div>قيمة المخزون (تقديرية)<b>${ps.reduce((a,p)=>a+p.stock*first(p).c,0)}</b></div><div>طلبات جديدة<b>${STORE.orders.filter(o=>o.st==='جديد').length}</b></div><div>مبيعات اليوم<b>${td}</b></div><div>نواقص<b class="${low.length?'loss':''}">${low.length}</b></div></div><h4>أقسام المنتجات</h4><div class="row">${Object.entries(L.cat).map(([k,v])=>`<button class="btn" data-a="acat" data-id="${k}">${v} (${ps.filter(p=>p.cat===k).length})</button>`).join('')}</div><h4>نواقص ومنتهي</h4>${low.map(p=>`<p class="loss">${e(p.ar)} — ${p.stock<=0?'نفد':p.stock+' قطعة'}</p>`).join('')||'<p>كل شيء متوفر</p>'}`};
-const aItems=()=>{const q=AF.q.toLowerCase(),ps=STORE.products.filter(p=>(!AF.cat||p.cat===AF.cat)&&(!AF.cls||p.g===AF.cls||p.fam===AF.cls)&&(!q||[p.ar,p.en,p.brand,p.sup].join(' ').toLowerCase().includes(q)));
-return Object.entries(L.cat).map(([k,v])=>{const r=ps.filter(p=>p.cat===k);return r.length?`<h4>${v} (${r.length})</h4><div class="tw"><table><tr><th></th><th>المنتج</th><th>تصنيف</th><th>مخزون</th><th>سعر</th><th>صافي الربح</th><th></th></tr>${r.map(p=>`<tr${p.hidden?' style="opacity:.5"':''}><td><img src="${pic(p)}" width="40" height="40" style="border-radius:6px;object-fit:cover" alt=""></td><td>${p.feat?'⭐ ':''}${e(p.ar)}<br><small>${e(p.en)} · ${e(p.sup)}</small></td><td><small>${L.g[p.g]||''} ${L.fam[p.fam]||''}</small></td><td class="${p.stock<=5?'loss':''}">${p.stock}</td><td>${fin(first(p),p.disc)}</td><td class="${net(p)<0?'loss':''}">${net(p)}${net(p)<0?' خسارة':''}</td><td><div class="row"><button class="ic" data-a="pedit" data-id="${p.id}">✏️</button><button class="ic" data-a="buy" data-id="${p.id}">📦</button><button class="ic" data-a="phide" data-id="${p.id}">${p.hidden?'🙈':'👁'}</button><button class="ic" data-a="pdup" data-id="${p.id}">📋</button><button class="ic" data-a="pdel" data-id="${p.id}">🗑</button></div></td></tr>`).join('')}</table></div>`:''}).join('')||'<p>لا توجد منتجات مطابقة</p>'};
-const aProducts=()=>`<div class="row"><button class="btn gold" data-a="padd">+ إضافة منتج</button><input data-aq placeholder="بحث في المنتجات..." value="${e(AF.q)}"><select data-acls>${opt({...L.g,...L.fam},AF.cls,'كل التصنيفات')}</select></div><div class="tabs">${[['','الكل'],...Object.entries(L.cat)].map(([k,v])=>`<button class="${AF.cat===k?'on':''}" data-a="acat" data-id="${k}">${v} (${k?STORE.products.filter(p=>p.cat===k).length:STORE.products.length})</button>`).join('')}</div><div id="alist">${aItems()}</div><small>✏️ تعديل · 📦 شراء من مورد · 👁 إخفاء/إظهار · 📋 نسخ · 🗑 حذف</small>`;
-const aStock=()=>`<div class="tw"><table><tr><th>المنتج</th><th>المخزون</th><th>الحالة</th></tr>${[...STORE.products].sort((a,b)=>a.stock-b.stock).map(p=>`<tr><td>${e(p.ar)}</td><td>${p.stock}</td><td class="${p.stock<=5?'loss':''}">${p.stock<=0?'نفد المخزون':p.stock<=5?'نقص':'متوفر'}</td></tr>`).join('')}</table></div>`;
-const aSup=()=>`<div class="row"><input id="sn" placeholder="اسم المورد"><button class="btn gold" data-a="sadd">إضافة مورد</button></div>${STORE.suppliers.map((s,i)=>`<div class="line"><b>${e(s)}</b><small>${STORE.products.filter(p=>p.sup===s).map(p=>e(p.ar)).join('، ')||'—'}</small><button class="ic" data-a="sdel" data-id="${i}">🗑</button></div>`).join('')}<h4>سجل المشتريات</h4><div class="tw"><table><tr><th>التاريخ</th><th>المنتج</th><th>المورد</th><th>السعر</th><th>الكمية</th><th>شحن+تكاليف</th></tr>${STORE.products.flatMap(p=>p.sups.map(x=>`<tr><td>${x.d}</td><td>${e(p.ar)} ${e(x.z)}</td><td>${e(x.s)}</td><td>${x.pr}</td><td>${x.q}</td><td>${x.sh+x.ex}</td></tr>`)).join('')}</table></div>`;
-const aOrders=()=>STORE.orders.length?[...STORE.orders].reverse().map(o=>`<div class="line"><div><b>${e(o.name)}</b> <small>${new Date(o.d).toLocaleString('ar-EG')}</small><br>${o.lines.map(l=>e(l.name)+' ×'+l.qty).join('، ')}<br>الإجمالي ${o.total} ج (شحن ${o.ship})</div><select data-st="${o.id}">${ST.map(s=>`<option${s===o.st?' selected':''}>${s}</option>`).join('')}</select></div>`).join(''):'<p>لا توجد طلبات</p>';
-function aRep(){const days={day:1,week:7,month:30,year:365}[rep],now=Date.now(),os=STORE.orders.filter(o=>o.st!=='ملغي'&&now-new Date(o.d)<=days*864e5);let s=0,c=0;const top={};os.forEach(o=>o.lines.forEach(l=>{s+=l.unit*l.qty;c+=l.cost*l.qty;top[l.name]=(top[l.name]||0)+l.qty}));const t=Object.entries(top).sort((a,b)=>b[1]-a[1]);
-return`<select data-per>${opt({day:'يومي',week:'أسبوعي',month:'شهري',year:'سنوي'},rep)}</select><div class="kpi"><div>المبيعات<b>${s}</b></div><div>المصروفات (تكلفة)<b>${c}</b></div><div>الأرباح<b class="${s-c<0?'loss':''}">${s-c}</b></div><div>الطلبات<b>${os.length}</b></div></div><h4>الأكثر مبيعًا</h4>${t.slice(0,5).map(x=>`<p>${e(x[0])}: ${x[1]}</p>`).join('')||'—'}<h4>الأقل مبيعًا</h4>${t.slice(-3).reverse().map(x=>`<p>${e(x[0])}: ${x[1]}</p>`).join('')||'—'}`}
-const aSet=()=>{const s=STORE.settings;return`<div class="fg"><label>رقم واتساب (بصيغة دولية)<br><input data-s="phone" value="${e(s.phone)}"></label><label>شحن الإسكندرية<br><input type="number" data-s="shipAlex" value="${s.shipAlex}"></label><label>شحن المحافظات<br><input type="number" data-s="shipOther" value="${s.shipOther}"></label></div><label><input type="checkbox" data-s="showCost"${s.showCost?' checked':''}> إظهار تفاصيل التكلفة والربح للعميل</label><br><br><div class="row"><button class="btn gold" data-a="bk">💾 النسخ الاحتياطي والاستيراد</button></div><h4>الأزايز</h4><div class="row">${Object.entries(SHAPES).map(([k,v])=>`<label class="tile2"><img src="${ICON({cat:'perfume',fam:'woody',shape:k})}" width="60" alt=""><br><input type="radio" name="bs" data-s="bottleShape" value="${k}"${s.bottleShape===k?' checked':''}> ${v}</label>`).join('')}</div><label><input type="checkbox" data-s="glass"${s.glass?' checked':''}> أزايز شفافة</label><div class="fg"><label>عطر جديد إذا صدر خلال (سنوات)<br><input type="number" data-s="newYears" value="${s.newYears}"></label><label>عطر قديم إذا مضى عليه (سنوات)<br><input type="number" data-s="oldYears" value="${s.oldYears}"></label></div><label>رابط الموقع للمشاركة<br><input data-s="siteUrl" placeholder="https://..." value="${e(s.siteUrl||'')}"></label><h4>النشر للزوار</h4><small>صدّر ملف العرض وارفعه بجانب index.html باسم store-data.json ليراه الزوار. لا يحتوي على التكاليف ولا الموردين ولا المنتجات المخفية.</small><div class="row"><button class="btn gold" data-a="pub">تصدير ملف العرض للزوار</button><button class="btn" data-a="logout">خروج المالك</button></div>`};
-function admin(){const T={dash:aDash,products:aProducts,stock:aStock,suppliers:aSup,orders:aOrders,reports:aRep,settings:aSet},N={dash:'نظرة عامة',products:'المنتجات',stock:'المخزون',suppliers:'الموردون',orders:'الطلبات',reports:'التقارير',settings:'الإعدادات'};
-return`<section><h2>لوحة الإدارة</h2><div class="tabs">${Object.entries(N).map(([k,v])=>`<button class="${k===tab?'on':''}" data-a="tab" data-id="${k}">${v}</button>`).join('')}</div>${T[tab]()}</section>`}
-const compress=f=>new Promise(r=>{const fr=new FileReader;fr.onload=()=>{const i=new Image;i.onload=()=>{const k=Math.min(1,500/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=i.width*k;c.height=i.height*k;c.getContext('2d').drawImage(i,0,0,c.width,c.height);r(c.toDataURL('image/jpeg',.75))};i.src=fr.result};fr.readAsDataURL(f)});
-function pForm(id){const p=id?get(id):{ar:'',en:'',brand:'',cat:'perfume',g:'unisex',fam:'fresh',sz:{},stock:0,sup:STORE.suppliers[0]||'',ship:0,extra:0,disc:0,desc:''};
-modal(`<h3>${id?'تعديل':'إضافة'} منتج</h3><div class="fg"><input id="f_ar" placeholder="الاسم العربي" value="${e(p.ar)}"><input id="f_en" placeholder="الاسم الإنجليزي" value="${e(p.en)}"><input id="f_brand" placeholder="البراند" value="${e(p.brand)}"><select id="f_cat">${opt(L.cat,p.cat)}</select><select id="f_g">${opt(L.g,p.g)}</select><select id="f_fam">${opt(L.fam,p.fam)}</select><select id="f_str">${opt(L.str,p.str,'قوة العطر')}</select><input id="f_year" type="number" placeholder="سنة إصدار العطر" value="${p.year||''}"><input id="f_made" placeholder="تاريخ الصنع مثال 2025-03" value="${e(p.made||'')}"><select id="f_shape">${opt(SHAPES,p.shape,'شكل الزجاجة: افتراضي')}</select><small>سعر وتكلفة كل مقاس (اترك الفارغ = غير متاح)</small>${sizeGrid(p)}<input id="f_sz" placeholder="مقاسات أخرى: مقاس:سعر:تكلفة" value="${e(Object.entries(p.sz).filter(([k])=>!SZO.includes(k)&&!SZP.includes(k)).map(([k,z])=>`${k}:${z.p}:${z.c}`).join(', '))}"><input id="f_stock" type="number" placeholder="المخزون" value="${p.stock}"><select id="f_sup">${STORE.suppliers.map(s=>`<option${s===p.sup?' selected':''}>${e(s)}</option>`).join('')}</select><input id="f_ship" type="number" placeholder="الشحن" value="${p.ship}"><input id="f_extra" type="number" placeholder="تكاليف إضافية" value="${p.extra}"><input id="f_disc" type="number" placeholder="خصم %" value="${p.disc}"><textarea id="f_desc" placeholder="الوصف">${e(p.desc)}</textarea><input id="f_img" type="file" accept="image/*"><input id="f_vurl" placeholder="رابط فيديو قصير (mp4 أو يوتيوب)" value="${e(p.video&&p.video.startsWith('data:')?'':p.video||'')}"><input id="f_vid" type="file" accept="video/*"><label><input id="f_novid" type="checkbox"> حذف الفيديو</label><input id="f_rate" type="number" step="0.1" min="0" max="5" placeholder="التقييم" value="${p.rating||4.5}"><label><input id="f_feat" type="checkbox"${p.feat?' checked':''}> مميز</label><label><input id="f_hide" type="checkbox"${p.hidden?' checked':''}> مخفي</label><label><input id="f_noimg" type="checkbox"> حذف الصورة</label></div><button class="btn gold" data-a="psave" data-id="${id||''}">حفظ</button>`)}
+const DEFAULT_CATEGORIES = {
+    gender: ["men", "women", "unisex"],
+    family: ["fresh", "floral", "woody", "oriental", "sweet", "musky", "citrus", "fruity", "powdery", "spicy", "oud", "amber"]
+};
 
-/* ---------- Actions ---------- */
-const A={go,cm:closeM,yes(){const f=YES;closeM();f&&f()},
-top(){fx();modal(`<h3>الأكثر طلبًا من العطور</h3><div class="row c"><button class="btn gold" data-a="topc" data-id="men">رجالي</button><button class="btn gold" data-a="topc" data-id="women">حريمي</button><button class="btn gold" data-a="topc" data-id="east">شرقي</button></div><div id="tp"></div>`)},
-topc(id){const m=cnt(),r=vis().filter(p=>p.cat==='perfume'&&TOPF[id](p)).sort((a,b)=>(m[b.id]||0)-(m[a.id]||0)||b.rating-a.rating).slice(0,6);$('#tp').innerHTML=(r.length?`<div class="grid">${r.map(card).join('')}</div>`:'<p>لا توجد عطور في هذا التصنيف</p>')+'<small>الترتيب حسب عدد الطلبات ثم التقييم</small>'},
-agego(id){fx();F={age:id};V='shop';render();scrollTo(0,0)},
-call(){const n=STORE.settings.phone,l='0'+n.replace(/^20/,'');modal(`<h3>اتصل بنا</h3><p class="bign">${l}</p><a class="btn gold" href="tel:+${n}">📞 اتصال الآن</a><button class="btn" data-a="cpn">نسخ الرقم</button><a class="btn" href="https://wa.me/${n}" target="_blank" rel="noopener">💬 محادثة واتساب</a><small>إذا لم تفتح شاشة الاتصال، افتح الموقع من متصفح الهاتف مباشرة أو انسخ الرقم.</small>`)},
-async cpn(){msg(await copyT('0'+STORE.settings.phone.replace(/^20/,''))?'تم نسخ الرقم':'تعذر النسخ، اضغط مطولًا على الرقم')},
-share(){const u=siteUrl(),t='مملكة العطور: عطور وزيوت وتركيب عطور فاخرة';if(!u)return modal('<h3>مشاركة المتجر</h3><p>لم يُضبط رابط الموقع بعد. أدخل الرابط العام للموقع من الإعدادات.</p>');const q=encodeURIComponent(t+' '+u);
-modal(`<h3>مشاركة المتجر</h3><input id="su" readonly value="${e(u)}"><button class="btn gold" data-a="cpu">🔗 نسخ رابط الموقع</button>${navigator.share?'<button class="btn" data-a="nshare">📤 مشاركة عبر تطبيقات الهاتف</button>':''}<a class="btn" href="https://wa.me/?text=${q}" target="_blank" rel="noopener">💬 واتساب</a><a class="btn" href="sms:?&body=${q}">✉️ رسالة نصية</a><a class="btn" href="https://t.me/share/url?url=${encodeURIComponent(u)}&text=${encodeURIComponent(t)}" target="_blank" rel="noopener">✈️ تيليجرام</a><a class="btn" href="mailto:?subject=${encodeURIComponent('مملكة العطور')}&body=${q}">📧 بريد إلكتروني</a>`)},
-async cpu(){const u=siteUrl();if(!u)return msg('أضف رابط الموقع من الإعدادات أولًا',3500);const ok=await copyT(u);if(!ok){const i=$('#su');i&&i.select&&i.select()}msg(ok?'تم نسخ رابط الموقع':'حدّد الرابط وانسخه يدويًا')},
-nshare(){navigator.share({title:'مملكة العطور',text:'مملكة العطور: عطور وزيوت وتركيب عطور فاخرة',url:siteUrl()}).catch(()=>{})},
-vo(){VO.st=(VO.st+1)%3;VO.on=VO.st>0;VO.lang=VO.st===2?'en':'ar';$('#vol').textContent=['🔇','🔊 ع','🔊 EN'][VO.st];if(window.speechSynthesis)speechSynthesis.cancel();if(VO.on)speak(VO.lang==='ar'?'مرحبًا بك في مملكة العطور. مرّر الماوس أو المس أي عنصر وسأشرحه لك':'Welcome to the Kingdom of Perfumes. Move your mouse or touch any item and I will explain it to you')},
-tap(){clearTimeout(TT);TT=setTimeout(()=>TAPS=0,1500);if(++TAPS>=5){TAPS=0;A.owner()}},
-owner(){if(OWNER){go('admin');return}const h=STORE.settings.pin;modal(`<h3>${h?'دخول المالك':'إنشاء رمز المالك'}</h3><input id="pn" type="password" inputmode="numeric" placeholder="الرمز السري"><button class="btn gold" data-a="pin">${h?'دخول':'حفظ الرمز'}</button>`)},
-pin(){const v=$('#pn').value.trim();if(v.length<4)return msg('الرمز 4 أرقام على الأقل');if(!STORE.settings.pin){STORE.settings.pin=hash(v);save()}else if(STORE.settings.pin!==hash(v))return msg('رمز غير صحيح');OWNER=true;try{localStorage.setItem('mamlaka_owner','1')}catch{}closeM();go('admin')},
-pub(){dl('store-data.json',{products:STORE.products.filter(p=>!p.hidden).map(p=>({...p,sup:'',ship:0,extra:0,sups:[],sz:Object.fromEntries(Object.entries(p.sz).map(([k,z])=>[k,{p:z.p,c:0}]))})),settings:{phone:STORE.settings.phone,shipAlex:STORE.settings.shipAlex,shipOther:STORE.settings.shipOther,bottleShape:STORE.settings.bottleShape,glass:STORE.settings.glass,newYears:STORE.settings.newYears,oldYears:STORE.settings.oldYears,siteUrl:STORE.settings.siteUrl},sales:cnt()})},
-logout(){OWNER=false;try{localStorage.removeItem('mamlaka_owner')}catch{}go('home')},
-acat(id){fx();AF.cat=id;tab='products';render()},
-phide(id){const p=get(id);p.hidden=!p.hidden;save();render()},
-pdup(id){const p=JSON.parse(JSON.stringify(get(id)));p.id='p'+Date.now();p.ar+=' (نسخة)';p.en+=' Copy';p.sups=[];STORE.products.push(p);save();render();pForm(p.id)},burger:()=>$('#nav').classList.toggle('open'),
-fav(id){const i=STORE.favs.indexOf(id);i<0?STORE.favs.push(id):STORE.favs.splice(i,1);save();render()},
-open(id){fx();const p=get(id);if(p.cat==='perfume'||p.cat==='oil'){initB(id);pick=false;det=false;modal('<div id="bx"></div>');renderB()}else if(addCart({pid:id,size:sizes(p)[0],qty:1,bottle:'',box:'',wrap:''}))msg('أضيف للسلة')},
-bq(_,a){const n=B.qty+ +a.dataset.d;if(n<1)return;if(n>stockLeft(B.pid))return msg('وصلت للحد الأقصى للمخزون');B.qty=n;renderB()},
-bdet(){det=!det;renderB()},
-badd(){if(addCart({...B}))msg('أضيف للسلة')},
-bnow(){if(addCart({...B}))go('cart')},
-bwa(){const c=calc(B),p=get(B.pid);wa(`مرحبًا مملكة العطور، أريد طلب:\n• ${p.ar} ${B.size} ×${B.qty}\n${c.parts.slice(1).map(x=>'• '+x[0]).join('\n')}\nالإجمالي: ${c.unit*B.qty} ج`)},
+// كتالوج أولي ضخم (عينة ممثلة للأسماء المطلوبة مع تصنيفات واقعية)
+// ملاحظة: النظام يدعم آلاف المنتجات. هذه العينة تغطي الأسماء المطلوبة وتظهر الهيكل.
+const INITIAL_PERFUMES = [
+    { id: 1, name: "يارا كاندي", nameEn: "Yara Candy", company: "Lattafa", gender: "women", family: "sweet", stock: 50, active: true, desc: "عطر حلو وجذاب من لطافة" },
+    { id: 2, name: "مانسيرا روز فانيليا", nameEn: "Mancera Rose Vanilla", company: "Mancera", gender: "unisex", family: "oriental", stock: 30, active: true, desc: "مزيج فاخر من الورد والفانيليا" },
+    { id: 3, name: "لاكوست روز", nameEn: "Lacoste Rose", company: "Lacoste", gender: "women", family: "floral", stock: 40, active: true },
+    { id: 4, name: "لاكوست بلاك", nameEn: "Lacoste Black", company: "Lacoste", gender: "men", family: "woody", stock: 45, active: true },
+    { id: 5, name: "لاكوست وايت", nameEn: "Lacoste White", company: "Lacoste", gender: "men", family: "fresh", stock: 40, active: true },
+    { id: 6, name: "بيانكو لاتية", nameEn: "Bianco Latte", company: "Giardini di Toscana", gender: "women", family: "sweet", stock: 20, active: true },
+    { id: 7, name: "سكاندال", nameEn: "Scandal", company: "Jean Paul Gaultier", gender: "women", family: "sweet", stock: 25, active: true },
+    { id: 8, name: "بلاك اكس اس", nameEn: "Black XS", company: "Paco Rabanne", gender: "men", family: "oriental", stock: 35, active: true },
+    { id: 9, name: "دنهل دزير بلو", nameEn: "Dunhill Desire Blue", company: "Dunhill", gender: "men", family: "fresh", stock: 30, active: true },
+    { id: 10, name: "وصال", nameEn: "Wisal", company: "Ajmal", gender: "unisex", family: "woody", stock: 60, active: true },
+    { id: 11, name: "مضاوي", nameEn: "Madaawi", company: "Local/Arab", gender: "women", family: "oriental", stock: 100, active: true },
+    { id: 12, name: "مسك الطهارة", nameEn: "Tahara Musk", company: "Local/Arab", gender: "women", family: "musky", stock: 200, active: true },
+    { id: 13, name: "كريد افنتوس", nameEn: "Creed Aventus", company: "Creed", gender: "men", family: "fruity", stock: 15, active: true },
+    { id: 14, name: "توم فورد بلاك اوركيد", nameEn: "Tom Ford Black Orchid", company: "Tom Ford", gender: "unisex", family: "oriental", stock: 20, active: true },
+    { id: 15, name: "سوفاج", nameEn: "Sauvage", company: "Dior", gender: "men", family: "fresh", stock: 50, active: true },
+    { id: 16, name: "كوكو شانيل", nameEn: "Coco Chanel", company: "Chanel", gender: "women", family: "floral", stock: 30, active: true },
+    { id: 17, name: "وان مليون", nameEn: "1 Million", company: "Paco Rabanne", gender: "men", family: "spicy", stock: 40, active: true },
+    { id: 18, name: "جادور", nameEn: "J'adore", company: "Dior", gender: "women", family: "floral", stock: 35, active: true },
+    { id: 19, name: "عود اماراتى", nameEn: "Emirati Oud", company: "Swiss Arabian", gender: "unisex", family: "oud", stock: 50, active: true },
+    { id: 20, name: "فوياج", nameEn: "Voyage", company: "Armaf", gender: "men", family: "fresh", stock: 60, active: true }
+    // ... يمكن إضافة المئات هنا بنفس الهيكل. النظام مصمم ليتعامل مع 1500+ بسلاسة.
+];
 
-adv(){const g=$('#ag').value,f=$('#af').value,b=+$('#ab').value||1e9;const r=[...by('perfume'),...by('oil')].filter(p=>(!g||p.g===g||p.g==='unisex')&&(!f||p.fam===f)&&fin(first(p),p.disc)<=b&&p.stock>0);$('#adv').innerHTML=r.map(card).join('')||'<p>لا توجد نتائج مناسبة</p>'},
-cq(i,a){const l=STORE.cart[i],d=+a.dataset.d;if(l.qty+d<1)return;if(d>0&&l.qty+1>stockLeft(l.pid,l))return msg('وصلت للحد الأقصى للمخزون');l.qty+=d;save();render()},
-cdel(i){STORE.cart.splice(i,1);save();render()},
-checkout(){const s=STORE.settings;modal(`<h3>إتمام الطلب</h3><input id="cn" placeholder="الاسم"><select id="cy"><option value="a">الإسكندرية (${s.shipAlex} ج)</option><option value="o">محافظة أخرى (${s.shipOther} ج)</option></select><textarea id="cm" placeholder="ملاحظات"></textarea><button class="btn gold" data-a="place">إرسال عبر WhatsApp</button>`)},
-place(){const name=$('#cn').value.trim();if(!name)return msg('اكتب الاسم');const s=STORE.settings,ship=$('#cy').value==='a'?s.shipAlex:s.shipOther;let sub=0,cost=0,txt='';
-const lines=STORE.cart.map(l=>{const c=calc(l),p=get(l.pid);sub+=c.unit*l.qty;cost+=c.cost*l.qty;txt+=`• ${p.ar} ${l.size==='قطعة'?'':l.size} ×${l.qty}${c.parts.length>1?' ('+c.parts.slice(1).map(x=>x[0]).join(' + ')+')':''}\n`;p.stock=Math.max(0,p.stock-l.qty);for(const k of['bottle','box','wrap'])if(l[k]&&get(l[k]))get(l[k]).stock=Math.max(0,get(l[k]).stock-l.qty);return{pid:l.pid,name:p.ar,size:l.size,qty:l.qty,unit:c.unit,cost:c.cost,ad:[l.bottle,l.box,l.wrap].filter(Boolean)}});
-const o={id:'o'+Date.now(),d:new Date().toISOString(),name,lines,ship,total:sub+ship,st:'جديد'};STORE.orders.push(o);STORE.cart=[];save();
-wa(`طلب جديد من مملكة العطور\nالاسم: ${name}\n${txt}الشحن: ${ship} ج\nالإجمالي: ${o.total} ج\nملاحظات: ${$('#cm').value||'-'}`);go('home')},
-tab(id){fx();tab=id;render()},
-padd:()=>pForm(),pedit:pForm,
-async psave(id){const v=k=>$('#f_'+k).value.trim(),sz={};v('sz').split(/[,،]/).forEach(s=>{const[a,b,c]=s.split(':').map(x=>x.trim());if(a&&+b>=0&&b!=='')sz[a]={p:+b,c:+c||0}});
-document.querySelectorAll('[data-zp]').forEach(i=>{if(i.value!==''){const z=i.dataset.zp,c=document.querySelector('[data-zc="'+z+'"]');sz[z]={p:+i.value,c:c&&+c.value||0}}});if(!v('ar')||!v('en')||!Object.keys(sz).length)return msg('أكمل الاسم والمقاسات');
-if(STORE.products.some(p=>p.id!==id&&(p.ar===v('ar')||p.en.toLowerCase()===v('en').toLowerCase())))return msg('هذا المنتج موجود بالفعل',3500);
-const p=id?get(id):{id:'p'+Date.now(),rating:4.5,reviews:0,sups:[],img:''};
-Object.assign(p,{ar:v('ar'),en:v('en'),brand:v('brand'),cat:v('cat'),g:v('g'),fam:v('fam'),sz,stock:+v('stock')||0,sup:v('sup'),ship:+v('ship')||0,extra:+v('extra')||0,disc:Math.min(90,+v('disc')||0),desc:v('desc'),str:v('str'),year:+v('year')||0,made:v('made'),shape:v('shape')});
-if($('#f_noimg').checked)p.img='';const f=$('#f_img').files[0];if(f)p.img=await compress(f);
-p.rating=Math.min(5,+v('rate')||4.5);p.feat=$('#f_feat').checked;p.hidden=$('#f_hide').checked;
-if($('#f_novid').checked)p.video='';else if(v('vurl'))p.video=v('vurl');
-const vf=$('#f_vid').files[0];if(vf){if(vf.size>2e6)return msg('الفيديو أكبر من 2MB: استخدم رابطًا بدلًا من الرفع',3500);p.video=await new Promise(r=>{const fr=new FileReader;fr.onload=()=>r(fr.result);fr.readAsDataURL(vf)})}if(!id)STORE.products.push(p);save();closeM();render()},
-buy(id){const p=get(id);modal(`<h3>تسجيل شراء: ${e(p.ar)}</h3><select id="b_s">${STORE.suppliers.map(s=>`<option${s===p.sup?' selected':''}>${e(s)}</option>`).join('')}</select><input id="b_ns" placeholder="أو اسم مورد جديد"><select id="b_z">${sizes(p).map(z=>`<option>${e(z)}</option>`).join('')}</select><input id="b_p" type="number" placeholder="سعر الشراء"><input id="b_q" type="number" placeholder="الكمية"><input id="b_sh" type="number" placeholder="الشحن"><input id="b_ex" type="number" placeholder="تكاليف إضافية"><button class="btn gold" data-a="bsave" data-id="${id}">حفظ الشراء</button>`)},
-bsave(id){const p=get(id),v=k=>$('#b_'+k).value.trim(),s=v('ns')||v('s'),z=v('z'),q=+v('q');if(!(q>0)||v('p')==='')return msg('أدخل السعر والكمية');if(s&&!STORE.suppliers.includes(s))STORE.suppliers.push(s);Object.assign(p,{sup:s,ship:+v('sh')||0,extra:+v('ex')||0,stock:p.stock+q});p.sz[z].c=+v('p');p.sups.push({s,z,pr:+v('p'),q,sh:+v('sh')||0,ex:+v('ex')||0,d:new Date().toISOString().slice(0,10)});save();closeM();render();msg('تم تسجيل الشراء')},
-pdel(id){ask('حذف هذا المنتج نهائيًا؟',()=>{STORE.products=STORE.products.filter(p=>p.id!==id);STORE.cart=STORE.cart.filter(l=>l.pid!==id);STORE.favs=STORE.favs.filter(x=>x!==id);STORE.cmp=STORE.cmp.filter(x=>x!==id);save();render();msg('تم الحذف')})},
-sadd(){const n=$('#sn').value.trim();if(n&&!STORE.suppliers.includes(n)){STORE.suppliers.push(n);save();render()}},
-sdel(i){ask('حذف المورد؟',()=>{STORE.suppliers.splice(i,1);save();render()})},
-exp(){dl('mamlaka-backup.json',STORE)},
-bk(){modal(`<h3>النسخ الاحتياطي</h3><button class="btn gold" data-a="exp">⬇️ تنزيل ملف النسخة</button><button class="btn" data-a="cpd">📋 نسخ البيانات كنص</button>${navigator.canShare?'<button class="btn" data-a="shd">📤 إرسال الملف</button>':''}<h4>الاستيراد</h4><label class="btn" style="text-align:center">📂 اختيار ملف<input type="file" id="impf" hidden></label><textarea id="ipt" rows="4" placeholder="أو الصق بيانات JSON هنا"></textarea><button class="btn gold" data-a="ipp">استيراد من النص</button><small>الاستيراد يستبدل البيانات الحالية بعد تأكيدك.</small>`)},
-async cpd(){msg(await copyT(JSON.stringify(STORE))?'تم نسخ البيانات':'تعذر النسخ، استخدم تنزيل الملف')},
-shd(){const f=new File([JSON.stringify(STORE)],'mamlaka-backup.json',{type:'application/json'});navigator.canShare&&navigator.canShare({files:[f]})?navigator.share({files:[f],title:'نسخة مملكة العطور'}).catch(()=>{}):msg('الجهاز لا يدعم إرسال الملفات')},
-ipp(){impT($('#ipt').value)}};
-function render(){$('#nav').innerHTML=NAV.map(n=>`<a data-a="go" data-id="${n[0]}">${n[1]}</a>`).join('');$('#main').innerHTML=({home,shop,build,story,contact,favs,cart,admin})[V]();
-if(V==='shop')fillGrid();if(V==='home')$('.hero').insertAdjacentHTML('beforeend',Array.from({length:14},()=>`<i class="sp" style="left:${Math.random()*100}%;animation-delay:${Math.random()*6}s;animation-duration:${5+Math.random()*5}s"></i>`).join(''));
-if(V==='build'){const f=[...by('perfume'),...by('oil')][0];if(f){initB(f.id);pick=true;det=false;renderB()}else $('#bx').textContent='أضف عطرًا من الإدارة أولًا'}upd();document.querySelectorAll('.hall').forEach(h=>io?io.observe(h):h.classList.add('show'))}
-document.addEventListener('click',ev=>{const a=ev.target.closest('[data-a]');if(a&&A[a.dataset.a])A[a.dataset.a](a.dataset.id,a)});
-document.addEventListener('input',ev=>{if(ev.target.dataset.aq!==undefined){AF.q=ev.target.value;$('#alist').innerHTML=aItems();return}if(V==='shop'&&ev.target.closest('.filters')){F={q:$('#q').value,cat:$('#fc').value,g:$('#fg').value,fam:$('#ff').value,age:$('#fa').value,str:$('#fr').value,o:$('#fo').value,max:+$('#fm').value||0,stock:$('#fs').checked,disc:$('#fd').checked};fillGrid()}});
-document.addEventListener('change',ev=>{const t=ev.target;
-if(t.dataset.b){if(t.dataset.b==='pid')initB(t.value);else{B[t.dataset.b]=t.value;B.qty=1}renderB()}
-else if(t.dataset.acls!==undefined){AF.cls=t.value;render()}else if(t.dataset.st){const o=STORE.orders.find(x=>x.id===t.dataset.st);if(o){stk(o,o.st==='ملغي'&&t.value!=='ملغي'?-1:o.st!=='ملغي'&&t.value==='ملغي'?1:0);o.st=t.value;save()}}
-else if(t.dataset.per!==undefined){rep=t.value;render()}
-else if(t.dataset.s){const k=t.dataset.s;STORE.settings[k]=t.type==='checkbox'?t.checked:k==='phone'?t.value.replace(/\D/g,''):k==='bottleShape'||k==='siteUrl'?t.value.trim():+t.value||0;save();if(k==='bottleShape'||k==='glass')render()}
-else if(t.id==='impf'&&t.files[0]){const fr=new FileReader;fr.onload=()=>impT(fr.result);fr.readAsText(t.files[0]);t.value=''}});
-$('#enter').onclick=()=>{$('#gate').classList.add('burst');setTimeout(()=>$('#gate').remove(),700)};
-async function boot(){if(!OWNER){try{const r=await fetch('store-data.json',{cache:'no-store'});if(r.ok){const d=await r.json();if(Array.isArray(d.products)){STORE.products=d.products;STORE.sales=d.sales||{};STORE.settings={...STORE.settings,...d.settings,pin:STORE.settings.pin}}}}catch{}}render();if(location.hash==='#admin')A.owner()}
-boot();
+// ==========================================
+// 2. إدارة الحالة (State Management)
+// ==========================================
+let appData = {
+    products: [],
+    cart: [],
+    wishlist: [],
+    companies: [...DEFAULT_COMPANIES],
+    settings: {
+        prices: { ...DEFAULT_PRICES },
+        pricingMode: "simple", // 'simple' or 'detailed'
+        lang: "ar",
+        skipEntry: false
+    }
+};
+
+// ==========================================
+// 3. التهيئة والتحميل (Initialization)
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    loadData();
+    setupEntryScreen();
+    setupEventListeners();
+    renderAll();
+    checkLanguage();
+});
+
+function loadData() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+        try {
+            const parsed = JSON.parse(saved);
+            // دمج البيانات المحفوظة مع القيم الافتراضية الجديدة لتجنب الأخطاء عند التحديث
+            appData = { ...appData, ...parsed, settings: { ...appData.settings, ...parsed.settings } };
+        } catch (e) {
+            console.error("خطأ في قراءة البيانات", e);
+            seedInitialData();
+        }
+    } else {
+        seedInitialData();
+    }
+}
+
+function saveData() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+    updateBadges();
+}
+
+function seedInitialData() {
+    appData.products = INITIAL_PERFUMES.map((p, index) => ({
+        ...p,
+        id: Date.now() + index,
+        sizes: Object.keys(DEFAULT_PRICES),
+        manufactureDate: new Date().toISOString().split('T')[0],
+        rating: (4 + Math.random()).toFixed(1),
+        image: "" // سيستخدم الصورة الافتراضية
+    }));
+    saveData();
+}
+
+// ==========================================
+// 4. شاشة الدخول
+// ==========================================
+function setupEntryScreen() {
+    const entryScreen = document.getElementById("entry-screen");
+    const app = document.getElementById("app");
+    const enterBtn = document.getElementById("enter-kingdom-btn");
+    const skipCheck = document.getElementById("skip-entry-check");
+
+    if (appData.settings.skipEntry) {
+        entryScreen.classList.add("fade-out");
+        setTimeout(() => entryScreen.classList.add("hidden"), 800);
+        return;
+    }
+
+    enterBtn.addEventListener("click", () => {
+        if (skipCheck.checked) {
+            appData.settings.skipEntry = true;
+            saveData();
+        }
+        entryScreen.classList.add("fade-out");
+        setTimeout(() => {
+            entryScreen.classList.add("hidden");
+            app.classList.remove("hidden");
+        }, 800);
+    });
+}
+
+// ==========================================
+// 5. العرض والتصيير (Rendering)
+// ==========================================
+let currentFilters = {
+    search: "",
+    gender: "all",
+    family: "all",
+    company: "all",
+    size: "all",
+    inStock: false
+};
+let currentPage = 1;
+
+function renderAll() {
+    renderStats();
+    renderFilters();
+    renderProducts();
+    renderCart();
+    renderWishlist();
+    renderAdminProducts();
+    renderAdminCompanies();
+    renderPriceSettings();
+    updateBadges();
+}
+
+function renderStats() {
+    const activeProducts = appData.products.filter(p => p.active).length;
+    const statsContainer = document.getElementById("dynamic-stats");
+    statsContainer.innerHTML = `
+        <div class="stat-item"><h3>${activeProducts}</h3><p data-i18n="stat_products">عطر متاح</p></div>
+        <div class="stat-item"><h3>${appData.companies.length}</h3><p data-i18n="stat_companies">شركة مصنعة</p></div>
+        <div class="stat-item"><h3>${Object.keys(appData.settings.prices).length}</h3><p data-i18n="stat_sizes">مقاسات مختلفة</p></div>
+    `;
+}
+
+function renderFilters() {
+    // Gender
+    const genderContainer = document.getElementById("gender-filters");
+    genderContainer.innerHTML = DEFAULT_CATEGORIES.gender.map(g => `
+        <label class="checkbox-label">
+            <input type="radio" name="gender" value="${g}" onchange="updateFilter('gender', this.value)">
+            <span data-i18n="gender_${g}">${getTranslation(`gender_${g}`)}</span>
+        </label>
+    `).join('') + `<label class="checkbox-label"><input type="radio" name="gender" value="all" checked onchange="updateFilter('gender', 'all')"><span>الكل</span></label>`;
+
+    // Family
+    const familyContainer = document.getElementById("family-filters");
+    familyContainer.innerHTML = DEFAULT_CATEGORIES.family.map(f => `
+        <label class="checkbox-label">
+            <input type="radio" name="family" value="${f}" onchange="updateFilter('family', this.value)">
+            <span data-i18n="family_${f}">${getTranslation(`family_${f}`)}</span>
+        </label>
+    `).join('') + `<label class="checkbox-label"><input type="radio" name="family" value="all" checked onchange="updateFilter('family', 'all')"><span>الكل</span></label>`;
+
+    // Company Select
+    const companySelect = document.getElementById("company-filter");
+    companySelect.innerHTML = `<option value="all">الكل</option>` + 
+        appData.companies.map(c => `<option value="${c}">${c}</option>`).join('');
+
+    // Size Select
+    const sizeSelect = document.getElementById("size-filter");
+    sizeSelect.innerHTML = `<option value="all">الكل</option>` + 
+        Object.keys(appData.settings.prices).map(s => `<option value="${s}">${s} مل</option>`).join('');
+}
+
+function getFilteredProducts() {
+    return appData.products.filter(p => {
+        if (!p.active) return false;
+        if (currentFilters.inStock && p.stock <= 0) return false;
+        if (currentFilters.gender !== "all" && p.gender !== currentFilters.gender) return false;
+        if (currentFilters.family !== "all" && p.family !== currentFilters.family) return false;
+        if (currentFilters.company !== "all" && p.company !== currentFilters.company) return false;
+        if (currentFilters.size !== "all" && !p.sizes.includes(currentFilters.size)) return false;
+        
+        if (currentFilters.search) {
+            const q = currentFilters.search.toLowerCase();
+            return p.name.toLowerCase().includes(q) || 
+                   (p.nameEn && p.nameEn.toLowerCase().includes(q)) || 
+                   p.company.toLowerCase().includes(q) ||
+                   p.family.toLowerCase().includes(q);
+        }
+        return true;
+    });
+}
+
+function renderProducts() {
+    const filtered = getFilteredProducts();
+    const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    const paginated = filtered.slice(start, start + ITEMS_PER_PAGE);
+
+    const grid = document.getElementById("products-grid");
+    grid.innerHTML = paginated.map(p => createProductCard(p)).join('');
+
+    // Pagination
+    const pagination = document.getElementById("pagination");
+    if (totalPages > 1) {
+        let pagesHtml = '';
+        for (let i = 1; i <= totalPages; i++) {
+            pagesHtml += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+        }
+        pagination.innerHTML = pagesHtml;
+    } else {
+        pagination.innerHTML = '';
+    }
+}
+
+function createProductCard(p) {
+    const isWished = appData.wishlist.includes(p.id);
+    const price = appData.settings.prices["30"] || 150; // Default display price
+    
+    return `
+        <div class="product-card">
+            <button class="wishlist-toggle ${isWished ? 'active' : ''}" onclick="toggleWishlist(${p.id})">
+                <i class="${isWished ? 'fas' : 'far'} fa-heart"></i>
+            </button>
+            <img src="${p.image || 'https://via.placeholder.com/300x300/1a1a20/d4af37?text=CROWN'}" alt="${p.name}" class="product-image" loading="lazy">
+            <div class="product-info">
+                <div class="product-company">${p.company}</div>
+                <h3 class="product-name">${p.name}</h3>
+                <div class="product-price">يبدأ من ${price} جنيه</div>
+                <div class="product-actions">
+                    <button class="btn-gold small" onclick="openProductModal(${p.id})">التفاصيل</button>
+                    <button class="btn-outline small" onclick="quickAddToCart(${p.id})"><i class="fas fa-cart-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function goToPage(page) {
+    currentPage = page;
+    renderProducts();
+    document.getElementById("store").scrollIntoView({ behavior: "smooth" });
+}
+
+// ==========================================
+// 6. التفاعلات والأحداث (Event Listeners)
+// ==========================================
+function setupEventListeners() {
+    // Search
+    document.getElementById("search-input").addEventListener("input", (e) => {
+        currentFilters.search = e.target.value;
+        currentPage = 1;
+        renderProducts();
+    });
+
+    // In Stock Filter
+    document.getElementById("in-stock-only").addEventListener("change", (e) => {
+        currentFilters.inStock = e.target.checked;
+        currentPage = 1;
+        renderProducts();
+    });
+
+    // Company & Size Filters
+    document.getElementById("company-filter").addEventListener("change", (e) => updateFilter('company', e.target.value));
+    document.getElementById("size-filter").addEventListener("change", (e) => updateFilter('size', e.target.value));
+
+    // Reset Filters
+    document.getElementById("reset-filters").addEventListener("click", () => {
+        currentFilters = { search: "", gender: "all", family: "all", company: "all", size: "all", inStock: false };
+        document.getElementById("search-input").value = "";
+        document.getElementById("in-stock-only").checked = false;
+        document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+        document.querySelectorAll('input[type="radio"][value="all"]').forEach(r => r.checked = true);
+        document.getElementById("company-filter").value = "all";
+        document.getElementById("size-filter").value = "all";
+        currentPage = 1;
+        renderProducts();
+    });
+
+    // Modals
+    document.querySelectorAll(".close-modal").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.target.closest(".modal").classList.remove("active");
+        });
+    });
+
+    window.addEventListener("click", (e) => {
+        if (e.target.classList.contains("modal")) {
+            e.target.classList.remove("active");
+        }
+    });
+
+    // Cart & Wishlist Toggles
+    document.getElementById("cart-btn").addEventListener("click", () => document.getElementById("cart-modal").classList.add("active"));
+    document.getElementById("wishlist-btn").addEventListener("click", () => document.getElementById("wishlist-modal").classList.add("active"));
+    document.getElementById("clear-cart").addEventListener("click", () => {
+        if(confirm("هل أنت متأكد من تفريغ السلة؟")) {
+            appData.cart = [];
+            saveData();
+            renderCart();
+        }
+    });
+    document.getElementById("checkout-whatsapp").addEventListener("click", sendWhatsAppOrder);
+
+    // Admin Toggle
+    document.getElementById("admin-toggle-btn").addEventListener("click", () => {
+        const pass = prompt("أدخل رمز الدخول للوحة الإدارة (افتراضي: admin):");
+        if (pass === "admin") {
+            document.getElementById("admin-modal").classList.add("active");
+            renderAdminProducts();
+        } else if (pass) {
+            alert("رمز الدخول غير صحيح");
+        }
+    });
+
+    // Admin Tabs
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+            document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
+            btn.classList.add("active");
+            document.getElementById(btn.dataset.tab).classList.add("active");
+        });
+    });
+
+    // Product Form
+    document.getElementById("product-form").addEventListener("submit", handleProductSubmit);
+    document.getElementById("add-product-btn").addEventListener("click", () => {
+        document.getElementById("product-form").reset();
+        document.getElementById("edit-product-id").value = "";
+        document.getElementById("product-form-title").innerText = "إضافة عطر جديد";
+        populateFormSelects();
+        document.getElementById("product-form-modal").classList.add("active");
+    });
+    document.querySelectorAll(".close-form").forEach(btn => {
+        btn.addEventListener("click", () => document.getElementById("product-form-modal").classList.remove("active"));
+    });
+
+    // Admin Actions
+    document.getElementById("add-company-btn").addEventListener("click", addCompany);
+    document.getElementById("save-settings-btn").addEventListener("click", saveSettings);
+    document.getElementById("export-json-btn").addEventListener("click", exportJSON);
+    document.getElementById("import-json-file").addEventListener("change", importJSON);
+
+    // Language Toggle
+    document.getElementById("lang-toggle").addEventListener("click", toggleLanguage);
+
+    // Voice Search
+    document.getElementById("voice-search-btn").addEventListener("click", startVoiceSearch);
+
+    // Consultant Wizard
+    setupConsultant();
+}
+
+function updateFilter(key, value) {
+    currentFilters[key] = value;
+    currentPage = 1;
+    renderProducts();
+}
+
+// ==========================================
+// 7. منطق السلة والمفضلة
+// ==========================================
+function toggleWishlist(id) {
+    const index = appData.wishlist.indexOf(id);
+    if (index > -1) {
+        appData.wishlist.splice(index, 1);
+    } else {
+        appData.wishlist.push(id);
+    }
+    saveData();
+    renderProducts(); // لتحديث أيقونة القلب
+    renderWishlist();
+}
+
+function renderWishlist() {
+    const container = document.getElementById("wishlist-items");
+    const wishedProducts = appData.products.filter(p => appData.wishlist.includes(p.id));
+    container.innerHTML = wishedProducts.length ? wishedProducts.map(p => createProductCard(p)).join('') : '<p class="text-center">المفضلة فارغة</p>';
+}
+
+function quickAddToCart(id) {
+    const product = appData.products.find(p => p.id === id);
+    if (!product) return;
+    
+    const defaultSize = "30";
+    const price = appData.settings.prices[defaultSize] || 150;
+    
+    const existing = appData.cart.find(item => item.id === id && item.size === defaultSize);
+    if (existing) {
+        existing.qty++;
+    } else {
+        appData.cart.push({ id, size: defaultSize, qty: 1, price });
+    }
+    saveData();
+    renderCart();
+    alert("تمت الإضافة للسلة");
+}
+
+function renderCart() {
+    const container = document.getElementById("cart-items");
+    let total = 0;
+    
+    if (appData.cart.length === 0) {
+        container.innerHTML = '<p style="text-align:center; padding:2rem;">السلة فارغة</p>';
+    } else {
+        container.innerHTML = appData.cart.map((item, index) => {
+            const product = appData.products.find(p => p.id === item.id);
+            if (!product) return '';
+            const itemTotal = item.price * item.qty;
+            total += itemTotal;
+            return `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <h4>${product.name}</h4>
+                        <p>${product.company} | ${item.size} مل</p>
+                        <p>${item.price} جنيه × ${item.qty}</p>
+                    </div>
+                    <div class="cart-item-actions">
+                        <button class="qty-btn" onclick="updateCartQty(${index}, -1)">-</button>
+                        <span>${item.qty}</span>
+                        <button class="qty-btn" onclick="updateCartQty(${index}, 1)">+</button>
+                        <button class="qty-btn" style="color:var(--danger); margin-right:10px;" onclick="removeFromCart(${index})"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+    document.getElementById("cart-total").innerText = total;
+}
+
+function updateCartQty(index, change) {
+    appData.cart[index].qty += change;
+    if (appData.cart[index].qty <= 0) {
+        appData.cart.splice(index, 1);
+    }
+    saveData();
+    renderCart();
+}
+
+function removeFromCart(index) {
+    appData.cart.splice(index, 1);
+    saveData();
+    renderCart();
+}
+
+function sendWhatsAppOrder() {
+    if (appData.cart.length === 0) return;
+    
+    let message = "*طلب جديد من مملكة العطور*%0a%0a";
+    let total = 0;
+    
+    appData.cart.forEach(item => {
+        const product = appData.products.find(p => p.id === item.id);
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+        message += `▪️ *${product.name}* (${product.company})%0a`;
+        message += `   المقاس: ${item.size} مل | الكمية: ${item.qty}%0a`;
+        message += `   السعر: ${itemTotal} جنيه%0a%0a`;
+    });
+    
+    message += `*الإجمالي الكلي: ${total} جنيه*%0a`;
+    message += `العنوان: الإسكندرية — شارع خالد بن الوليد`;
+    
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+}
+
+function updateBadges() {
+    document.getElementById("cart-count").innerText = appData.cart.reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById("wishlist-count").innerText = appData.wishlist.length;
+}
+
+// ==========================================
+// 8. تفاصيل المنتج
+// ==========================================
+function openProductModal(id) {
+    const p = appData.products.find(prod => prod.id === id);
+    if (!p) return;
+    
+    const container = document.getElementById("product-details-container");
+    const defaultSize = p.sizes[0] || "30";
+    const currentPrice = appData.settings.prices[defaultSize] || 0;
+    
+    container.innerHTML = `
+        <div class="product-detail-header">
+            <img src="${p.image || 'https://via.placeholder.com/400x400/1a1a20/d4af37?text=CROWN'}" class="detail-image">
+            <div>
+                <span class="product-company">${p.company}</span>
+                <h2>${p.name} ${p.nameEn ? `(${p.nameEn})` : ''}</h2>
+                <div class="detail-meta">
+                    <span data-i18n="gender_${p.gender}">${getTranslation(`gender_${p.gender}`)}</span>
+                    <span data-i18n="family_${p.family}">${getTranslation(`family_${p.family}`)}</span>
+                    <span>المخزون: ${p.stock}</span>
+                    <span>التقييم: ⭐ ${p.rating || '4.5'}</span>
+                </div>
+                <p style="color:var(--text-secondary); margin: 1rem 0;">${p.desc || 'عطر فاخر من مملكة العطور'}</p>
+                
+                <h4>اختر المقاس:</h4>
+                <div class="size-selector" id="modal-sizes">
+                    ${p.sizes.map(s => `
+                        <button class="size-option ${s === defaultSize ? 'active' : ''}" 
+                                onclick="selectSize(this, ${p.id}, '${s}', ${appData.settings.prices[s] || 0})">
+                            ${s} مل - ${appData.settings.prices[s] || 0} ج.م
+                        </button>
+                    `).join('')}
+                </div>
+                
+                <h3 id="modal-price-display" style="color:var(--gold); margin: 1rem 0;">${currentPrice} جنيه</h3>
+                
+                <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+                    <button class="btn-gold" onclick="addToCartFromModal(${p.id})" style="flex:2;">أضف للسلة</button>
+                    <button class="btn-outline" onclick="toggleWishlist(${p.id}); openProductModal(${p.id});" style="flex:1;">
+                        <i class="${appData.wishlist.includes(p.id) ? 'fas' : 'far'} fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Store current selection in dataset for cart addition
+    container.dataset.currentSize = defaultSize;
+    container.dataset.currentPrice = currentPrice;
+    
+    document.getElementById("product-modal").classList.add("active");
+}
+
+function selectSize(btn, productId, size, price) {
+    document.querySelectorAll(".size-option").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("modal-price-display").innerText = `${price} جنيه`;
+    
+    const container = document.getElementById("product-details-container");
+    container.dataset.currentSize = size;
+    container.dataset.currentPrice = price;
+}
+
+function addToCartFromModal(productId) {
+    const container = document.getElementById("product-details-container");
+    const size = container.dataset.currentSize;
+    const price = parseInt(container.dataset.currentPrice);
+    
+    const existing = appData.cart.find(item => item.id === productId && item.size === size);
+    if (existing) {
+        existing.qty++;
+    } else {
+        appData.cart.push({ id: productId, size, qty: 1, price });
+    }
+    saveData();
+    renderCart();
+    document.getElementById("product-modal").classList.remove("active");
+    alert("تمت الإضافة للسلة");
+}
+
+// ==========================================
+// 9. لوحة الإدارة (Admin Panel)
+// ==========================================
+function renderAdminProducts() {
+    const tbody = document.getElementById("admin-products-list");
+    tbody.innerHTML = appData.products.map(p => `
+        <tr>
+            <td>${p.name}</td>
+            <td>${p.company}</td>
+            <td>${p.stock}</td>
+            <td>${p.active ? '<span style="color:var(--success)">نشط</span>' : '<span style="color:var(--danger)">معطل</span>'}</td>
+            <td>
+                <button class="btn-outline small" onclick="editProduct(${p.id})"><i class="fas fa-edit"></i></button>
+                <button class="btn-outline small" style="color:var(--danger); border-color:var(--danger);" onclick="deleteProduct(${p.id})"><i class="fas fa-trash"></i></button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function populateFormSelects() {
+    const compSelect = document.getElementById("p-company");
+    compSelect.innerHTML = appData.companies.map(c => `<option value="${c}">${c}</option>`).join('');
+    
+    const famSelect = document.getElementById("p-family");
+    famSelect.innerHTML = DEFAULT_CATEGORIES.family.map(f => `<option value="${f}">${getTranslation(`family_${f}`)}</option>`).join('');
+}
+
+function handleProductSubmit(e) {
+    e.preventDefault();
+    const id = document.getElementById("edit-product-id").value;
+    const name = document.getElementById("p-name").value.trim();
+    const nameEn = document.getElementById("p-name-en").value.trim();
+    const company = document.getElementById("p-company").value;
+    const gender = document.getElementById("p-gender").value;
+    const family = document.getElementById("p-family").value;
+    const stock = parseInt(document.getElementById("p-stock").value) || 0;
+    const desc = document.getElementById("p-desc").value;
+    const image = document.getElementById("p-image").value;
+
+    // منع التكرار
+    const isDuplicate = appData.products.some(p => 
+        p.id !== parseInt(id) && 
+        (p.name.toLowerCase() === name.toLowerCase() || 
+         (nameEn && p.nameEn && p.nameEn.toLowerCase() === nameEn.toLowerCase())) &&
+        p.company === company
+    );
+
+    if (isDuplicate) {
+        alert("⚠️ هذا العطر موجود بالفعل في المملكة بنفس الاسم والشركة.");
+        return;
+    }
+
+    if (id) {
+        // تعديل
+        const index = appData.products.findIndex(p => p.id === parseInt(id));
+        if (index > -1) {
+            appData.products[index] = { ...appData.products[index], name, nameEn, company, gender, family, stock, desc, image };
+        }
+    } else {
+        // إضافة جديد
+        const newProduct = {
+            id: Date.now(),
+            name, nameEn, company, gender, family, stock, desc, image,
+            active: true,
+            sizes: Object.keys(appData.settings.prices),
+            manufactureDate: new Date().toISOString().split('T')[0],
+            rating: "5.0"
+        };
+        appData.products.push(newProduct);
+    }
+
+    saveData();
+    document.getElementById("product-form-modal").classList.remove("active");
+    renderAll();
+}
+
+function editProduct(id) {
+    const p = appData.products.find(prod => prod.id === id);
+    if (!p) return;
+    
+    populateFormSelects();
+    document.getElementById("edit-product-id").value = p.id;
+    document.getElementById("p-name").value = p.name;
+    document.getElementById("p-name-en").value = p.nameEn || "";
+    document.getElementById("p-company").value = p.company;
+    document.getElementById("p-gender").value = p.gender;
+    document.getElementById("p-family").value = p.family;
+    document.getElementById("p-stock").value = p.stock;
+    document.getElementById("p-desc").value = p.desc || "";
+    document.getElementById("p-image").value = p.image || "";
+    document.getElementById("product-form-title").innerText = "تعديل بيانات العطر";
+    
+    document.getElementById("product-form-modal").classList.add("active");
+}
+
+function deleteProduct(id) {
+    if (confirm("هل أنت متأكد من حذف هذا العطر نهائياً؟")) {
+        appData.products = appData.products.filter(p => p.id !== id);
+        // إزالة من السلة والمفضلة أيضاً
+        appData.cart = appData.cart.filter(item => item.id !== id);
+        appData.wishlist = appData.wishlist.filter(wid => wid !== id);
+        saveData();
+        renderAll();
+    }
+}
+
+function renderAdminCompanies() {
+    const list = document.getElementById("admin-companies-list");
+    list.innerHTML = appData.companies.map((c, idx) => `
+        <li>
+            <span>${c}</span>
+            <button class="btn-outline small" style="color:var(--danger); border-color:var(--danger);" onclick="deleteCompany(${idx})"><i class="fas fa-trash"></i></button>
+        </li>
+    `).join('');
+}
+
+function addCompany() {
+    const input = document.getElementById("new-company-name");
+    const name = input.value.trim();
+    if (name && !appData.companies.includes(name)) {
+        appData.companies.push(name);
+        input.value = "";
+        saveData();
+        renderAdminCompanies();
+        renderFilters(); // لتحديث فلتر المتجر
+    }
+}
+
+function deleteCompany(idx) {
+    if (confirm("حذف هذه الشركة؟")) {
+        appData.companies.splice(idx, 1);
+        saveData();
+        renderAdminCompanies();
+        renderFilters();
+    }
+}
+
+function renderPriceSettings() {
+    const container = document.getElementById("price-settings-container");
+    container.innerHTML = Object.entries(appData.settings.prices).map(([size, price]) => `
+        <div class="form-group">
+            <label>${size} مل</label>
+            <input type="number" class="price-input" data-size="${size}" value="${price}">
+        </div>
+    `).join('');
+    
+    document.getElementById("pricing-mode-setting").value = appData.settings.pricingMode;
+}
+
+function saveSettings() {
+    const inputs = document.querySelectorAll(".price-input");
+    inputs.forEach(input => {
+        appData.settings.prices[input.dataset.size] = parseInt(input.value) || 0;
+    });
+    appData.settings.pricingMode = document.getElementById("pricing-mode-setting").value;
+    saveData();
+    alert("تم حفظ الإعدادات بنجاح");
+    renderAll();
+}
+
+// ==========================================
+// 10. النسخ الاحتياطي (Backup & Restore)
+// ==========================================
+function exportJSON() {
+    const dataStr = JSON.stringify(appData, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `mamlaka_backup_${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function importJSON(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        try {
+            const imported = JSON.parse(e.target.result);
+            if (!imported.products || !Array.isArray(imported.products)) {
+                throw new Error("ملف غير صالح");
+            }
+            
+            // دمج آمن لمنع التكرار
+            let addedCount = 0;
+            imported.products.forEach(newP => {
+                const isDup = appData.products.some(p => 
+                    p.name.toLowerCase() === newP.name.toLowerCase() && p.company === newP.company
+                );
+                if (!isDup) {
+                    newP.id = Date.now() + Math.random(); // ضمان عدم تعارض IDs
+                    appData.products.push(newP);
+                    addedCount++;
+                }
+            });
+            
+            // تحديث القوائم الأخرى إذا كانت موجودة
+            if (imported.companies) {
+                imported.companies.forEach(c => {
+                    if (!appData.companies.includes(c)) appData.companies.push(c);
+                });
+            }
+            
+            saveData();
+            renderAll();
+            alert(`تم الاستيراد بنجاح! تمت إضافة ${addedCount} عطر جديد (تم تجاهل المكرر).`);
+        } catch (err) {
+            alert("خطأ: الملف غير صالح أو تالف.");
+            console.error(err);
+        }
+    };
+    reader.readAsText(file);
+    event.target.value = ''; // Reset input
+}
+
+// ==========================================
+// 11. المساعد الصوتي والبحث
+// ==========================================
+function startVoiceSearch() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        alert("عذراً، متصفحك لا يدعم البحث الصوتي. يرجى استخدام البحث النصي.");
+        return;
+    }
+    
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = "ar-SA";
+    recognition.interimResults = false;
+    
+    const btn = document.getElementById("voice-search-btn");
+    btn.style.color = "var(--danger)";
+    btn.innerHTML = '<i class="fas fa-microphone-slash"></i>';
+    
+    recognition.start();
+    
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById("search-input").value = transcript;
+        currentFilters.search = transcript;
+        currentPage = 1;
+        renderProducts();
+        document.getElementById("store").scrollIntoView({ behavior: "smooth" });
+    };
+    
+    recognition.onerror = (event) => {
+        console.error("Voice error", event.error);
+        alert("لم يتم التعرف على الصوت، يرجى المحاولة مرة أخرى أو استخدام الكتابة.");
+    };
+    
+    recognition.onend = () => {
+        btn.style.color = "";
+        btn.innerHTML = '<i class="fas fa-microphone"></i>';
+    };
+}
+
+// ==========================================
+// 12. مستشار العطور
+// ==========================================
+let consultantAnswers = {};
+
+function setupConsultant() {
+    document.querySelectorAll(".option-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const step = btn.closest(".wizard-step").dataset.step;
+            const value = btn.dataset.value;
+            consultantAnswers[step] = value;
+            
+            // Move to next step
+            const currentStepEl = btn.closest(".wizard-step");
+            currentStepEl.classList.remove("active");
+            
+            const nextStep = parseInt(step) + 1;
+            const nextStepEl = document.querySelector(`.wizard-step[data-step="${nextStep}"]`);
+            if (nextStepEl) {
+                nextStepEl.classList.add("active");
+            } else {
+                showConsultantResults();
+            }
+        });
+    });
+    
+    document.getElementById("restart-consultant").addEventListener("click", () => {
+        consultantAnswers = {};
+        document.querySelectorAll(".wizard-step").forEach(s => s.classList.remove("active"));
+        document.querySelector(".wizard-step[data-step='1']").classList.add("active");
+    });
+}
+
+function showConsultantResults() {
+    const step4 = document.querySelector(".wizard-step[data-step='4']");
+    step4.classList.add("active");
+    
+    // منطق التصفية بناءً على الإجابات
+    let results = appData.products.filter(p => p.active);
+    
+    if (consultantAnswers["1"]) {
+        results = results.filter(p => p.gender === consultantAnswers["1"] || p.gender === "unisex");
+    }
+    if (consultantAnswers["2"]) {
+        // مطابقة تقريبية للعائلة العطرية
+        results = results.filter(p => p.family === consultantAnswers["2"] || p.family.includes(consultantAnswers["2"]));
+    }
+    
+    // خلط النتائج لأخذ عينة عشوائية إذا كانت كثيرة
+    results = results.sort(() => 0.5 - Math.random()).slice(0, 6);
+    
+    const container = document.getElementById("consultant-results");
+    if (results.length > 0) {
+        container.innerHTML = results.map(p => createProductCard(p)).join('');
+    } else {
+        container.innerHTML = '<p>لم نجد تطابقاً دقيقاً، لكننا ننصحك بزيارة المتجر لاستكشاف المزيد.</p>';
+    }
+}
+
+// ==========================================
+// 13. الترجمة واللغة
+// ==========================================
+const translations = {
+    ar: {
+        nav_home: "الرئيسية", nav_store: "المتجر", nav_consultant: "مستشار العطور", nav_contact: "تواصل معنا",
+        hero_title: "عطور تُخلّد لحظاتك", hero_desc: "اكتشف تشكيلة ملكية من أفخم العطور العالمية والشرقية، مختارة بعناية لتناسب شخصيتك.",
+        btn_discover: "اكتشف العطور", btn_consultant: "مستشار العطور",
+        store_title: "كتالوج العطور", search_placeholder: "ابحث عن اسم العطر، الشركة، أو العائلة العطرية...",
+        filters_title: "تصفية النتائج", filter_gender: "التصنيف", filter_family: "العائلة العطرية",
+        filter_company: "الشركة / المصدر", filter_size: "المقاس", filter_in_stock: "الوفر فقط", btn_reset: "إعادة ضبط",
+        gender_men: "رجالي", gender_women: "حريمي", gender_unisex: "مشترك",
+        family_fresh: "منعش", family_floral: "زهري", family_woody: "خشبي", family_oriental: "شرقي",
+        family_sweet: "حلو", family_musky: "مسكي", family_citrus: "حمضي", family_fruity: "فواكه",
+        family_powdery: "بودري", family_spicy: "توابل", family_oud: "عود", family_amber: "عنبر",
+        stat_products: "عطر متاح", stat_companies: "شركة مصنعة", stat_sizes: "مقاسات مختلفة",
+        cart_title: "سلة المشتريات", cart_total: "الإجمالي:", btn_clear_cart: "تفريغ السلة", btn_checkout_wa: "إرسال الطلب عبر واتساب",
+        wishlist_title: "المفضلة", consultant_title: "مستشار العطور الملكي",
+        q1_gender: "لمن العطر؟", opt_men: "رجالي", opt_women: "حريمي", opt_unisex: "مشترك",
+        q2_vibe: "ما الطابع الذي تفضله؟", opt_fresh: "منعش", opt_floral: "زهري", opt_woody: "خشبي", opt_oriental: "شرقي", opt_sweet: "حلو", opt_musky: "مسكي",
+        q3_occasion: "ما المناسبة؟", opt_daily: "يومي", opt_work: "عمل", opt_evening: "سهرة", opt_summer: "صيف", opt_winter: "شتاء",
+        consultant_result: "اقتراحاتنا لك", btn_restart: "بدء من جديد"
+    },
+    en: {
+        nav_home: "Home", nav_store: "Store", nav_consultant: "Consultant", nav_contact: "Contact",
+        hero_title: "Perfumes That Timeless Your Moments", hero_desc: "Discover a royal collection of the finest global and oriental perfumes.",
+        btn_discover: "Discover Perfumes", btn_consultant: "Perfume Consultant",
+        store_title: "Perfume Catalog", search_placeholder: "Search by name, company, or scent family...",
+        filters_title: "Filter Results", filter_gender: "Gender", filter_family: "Scent Family",
+        filter_company: "Company / Source", filter_size: "Size", filter_in_stock: "In Stock Only", btn_reset: "Reset",
+        gender_men: "Men", gender_women: "Women", gender_unisex: "Unisex",
+        family_fresh: "Fresh", family_floral: "Floral", family_woody: "Woody", family_oriental: "Oriental",
+        family_sweet: "Sweet", family_musky: "Musky", family_citrus: "Citrus", family_fruity: "Fruity",
+        family_powdery: "Powdery", family_spicy: "Spicy", family_oud: "Oud", family_amber: "Amber",
+        stat_products: "Available Perfumes", stat_companies: "Brands", stat_sizes: "Sizes",
+        cart_title: "Shopping Cart", cart_total: "Total:", btn_clear_cart: "Clear Cart", btn_checkout_wa: "Order via WhatsApp",
+        wishlist_title: "Wishlist", consultant_title: "Royal Perfume Consultant",
+        q1_gender: "Who is it for?", opt_men: "Men", opt_women: "Women", opt_unisex: "Unisex",
+        q2_vibe: "Preferred Vibe?", opt_fresh: "Fresh", opt_floral: "Floral", opt_woody: "Woody", opt_oriental: "Oriental", opt_sweet: "Sweet", opt_musky: "Musky",
+        q3_occasion: "Occasion?", opt_daily: "Daily", opt_work: "Work", opt_evening: "Evening", opt_summer: "Summer", opt_winter: "Winter",
+        consultant_result: "Our Recommendations", btn_restart: "Start Over"
+    }
+};
+
+function toggleLanguage() {
+    appData.settings.lang = appData.settings.lang === "ar" ? "en" : "ar";
+    saveData();
+    checkLanguage();
+}
+
+function checkLanguage() {
+    const lang = appData.settings.lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.getElementById("lang-toggle").innerText = lang === "ar" ? "EN" : "AR";
+    
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang][key]) {
+            el.innerText = translations[lang][key];
+        }
+    });
+    
+    document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+        const key = el.getAttribute("data-i18n-ph");
+        if (translations[lang][key]) {
+            el.placeholder = translations[lang][key];
+        }
+    });
+}
+
+function getTranslation(key) {
+    const lang = appData.settings.lang;
+    return translations[lang][key] || key;
+}
