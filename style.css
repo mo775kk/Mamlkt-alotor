@@ -680,3 +680,15 @@ body[dir="ltr"] .admin-table th, body[dir="ltr"] .admin-table td { text-align: l
     color: var(--bg-primary);
     border-color: var(--gold);
 }
+
+/* ===== الطابع الملكي: قصر السلطان والسيف ===== */
+.owner-only { display: none !important; }
+.hall-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+.hall-chip { background: transparent; color: var(--gold); border: 1px solid var(--gold-dark); padding: 8px 16px; border-radius: 999px; cursor: pointer; font-family: var(--font-ar); font-size: .9rem; transition: var(--transition); }
+.hall-chip:hover, .hall-chip.active { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--bg-primary); }
+.sword-divider { color: var(--gold); text-align: center; padding: 10px 0; opacity: .85; }
+.sword-divider svg { width: min(400px, 80%); height: 40px; }
+.product-card { border: 1px solid var(--gold-dark); border-radius: 160px 160px 12px 12px / 60px 60px 12px 12px; box-shadow: var(--shadow-gold); overflow: hidden; }
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(212,175,55,.3); }
+#narrator-btn.active { color: var(--gold-light); box-shadow: 0 0 10px var(--gold); }
+@media (max-width: 600px) { .hall-bar { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 6px; } .hall-chip { white-space: nowrap; } }
