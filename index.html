@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#0a0906">
+
+  <meta name="description"
+        content="مملكة العطور — عطور فاخرة وتركيب من أجود الزيوت الفرنسية والشرقية والخليجية">
+
+  <title>مملكة العطور | CROWN · MAISON DE PARFUM</title>
+
+  <!-- الخطوط -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+
+  <!-- ملف التصميم -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       شريط التاج العلوي
+       ===================================================== -->
+
+  <div class="crown-bar">
+    <div class="container crown-bar-inner">
+
+      <div class="crown-message">
+        <span class="crown-symbol">♛</span>
+        <span>مملكة العطور — فخامة تستحقها</span>
+      </div>
+
+      <div class="live-clock">
+        <span id="liveDate">جاري تحميل التاريخ...</span>
+        <span class="clock-separator">|</span>
+        <span id="liveTime">00:00:00</span>
+      </div>
+
+      <div class="work-hours">
+        يوميًا من 10 ص إلى 12 م
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       الهيدر الرئيسي
+       ===================================================== -->
+
+  <header class="site-header">
+
+    <div class="container header-inner">
+
+      <!-- زر القائمة للموبايل -->
+      <button
+        type="button"
+        id="mobileMenuBtn"
+        class="mobile-menu-btn"
+        aria-label="فتح القائمة">
+        ☰
+      </button>
+
+
+      <!-- الشعار -->
+      <a href="#home"
+         class="brand"
+         data-view-link="home">
+
+        <div class="brand-crown">♛</div>
+
+        <div class="brand-text">
+
+          <strong id="brandName">
+            مملكة العطور
+          </strong>
+
+          <span id="brandTagline">
+            CROWN · MAISON DE PARFUM
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- القائمة -->
+      <nav id="mainNav" class="main-nav">
+
+        <button
+          type="button"
+          class="active"
+          data-view="home">
+          الرئيسية
+        </button>
+
+        <button
+          type="button"
+          data-view="shop">
+          متجر العطور
+        </button>
+
+        <button
+          type="button"
+          data-view="story">
+          حكاية المملكة
+        </button>
+
+        <button
+          type="button"
+          data-view="contact">
+          تواصل معنا
+        </button>
+
+      </nav>
+
+
+      <!-- أدوات الهيدر -->
+      <div class="header-actions">
+
+        <button
+          type="button"
+          id="wishlistBtn"
+          class="header-icon-btn"
+          title="المفضلة">
+          ♡
+          <span id="wishlistCount">0</span>
+        </button>
+<button type="button" class="header-action admin-entry-hidden" id="openAdminBtn" aria-label="دخول المالك للإدارة" title="اضغط مطولاً للدخول كمالك">
+  ⚙️ الإدارة
+</button>
+        <button
+          type="button"
+          id="cartBtn"
+          class="header-icon-btn"
+          title="السلة">
+          🛒
+          <span id="cartCount">0</span>
+        </button>
+
+        <button
+          type="button"
+          id="headerWhatsApp"
+          class="header-whatsapp">
+          واتساب
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       القائمة المتحركة للموبايل
+       ===================================================== -->
+
+  <div id="mobileNav" class="mobile-nav hidden">
+
+    <button
+      type="button"
+      data-view="home">
+      الرئيسية
+    </button>
+
+    <button
+      type="button"
+      data-view="shop">
+      متجر العطور
+    </button>
+
+    <button
+      type="button"
+      data-view="story">
+      حكاية المملكة
+    </button>
+
+    <button
+      type="button"
+      data-view="contact">
+      تواصل معنا
+    </button>
+
+  </div>
+
+
+  <!-- =====================================================
+       المحتوى الرئيسي
+       ===================================================== -->
+
+  <main>
+
+
+    <!-- ===================================================
+         الصفحة الرئيسية
+         =================================================== -->
+
+    <section id="home" class="view">
+
+      <!-- Hero -->
+      <div class="hero">
+
+        <div class="hero-bg-glow glow-one"></div>
+        <div class="hero-bg-glow glow-two"></div>
+
+        <div class="container hero-inner">
+
+          <!-- النص -->
+          <div class="hero-content">
+
+            <div class="hero-kicker">
+              ♛ CROWN COLLECTION
+            </div>
+
+            <h1 id="heroTitle">
+              عطور تُخلّد لحظاتك
+            </h1>
+
+            <p id="heroDescription">
+              اكشف توقيعك العطري من بين أكثر من 540
+              عطراً عالمياً — عطور تركيب فاخرة من أجود
+              الزيوت الفرنسية والشرقية والخليجية.
+            </p>
+
+
+            <div class="hero-buttons">
+
+              <button
+                type="button"
+                class="btn-gold"
+                data-view-action="shop">
+                اكتشف العطور
+              </button>
+
+              <button
+                type="button"
+                class="btn-outline"
+                data-scroll="aiAdvisor">
+                مستشار العطور
+              </button>
+
+            </div>
+
+
+            <!-- إحصائيات -->
+            <div class="hero-stats">
+
+              <div class="hero-stat">
+                <strong id="statProducts">540+</strong>
+                <span>عطر</span>
+              </div>
+
+              <div class="hero-stat">
+                <strong>5</strong>
+                <span>عائلات عطرية</span>
+              </div>
+
+              <div class="hero-stat">
+                <strong>3</strong>
+                <span>مقاسات</span>
+              </div>
+
+              <div class="hero-stat">
+                <strong>24/7</strong>
+                <span>طلب واتساب</span>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- زجاجة العرض -->
+          <div class="hero-visual">
+
+            <div class="hero-orbit orbit-one"></div>
+            <div class="hero-orbit orbit-two"></div>
+
+            <div class="hero-bottle-wrap">
+
+              <div class="hero-bottle-crown">
+                ♛
+              </div>
+
+              <div class="hero-bottle">
+
+                <div class="bottle-cap"></div>
+
+                <div class="bottle-neck"></div>
+
+                <div class="bottle-body">
+
+                  <div class="bottle-label">
+
+                    <small>
+                      CROWN
+                    </small>
+
+                    <strong>
+                      مملكة
+                    </strong>
+
+                    <span>
+                      العطور
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           التصنيفات
+           ================================================= -->
+
+      <section class="section categories-section">
+
+        <div class="container">
+
+          <div class="section-head">
+
+            <div class="section-kicker">
+              THE KINGDOM
+            </div>
+
+            <h2 class="section-title">
+              اختار عالمك العطري
+            </h2>
+
+            <p class="section-desc">
+              ادخل المملكة من الباب الذي يناسب ذوقك.
+              رجالي، حريمي، مشترك، أو حسب الطابع العطري.
+            </p>
+
+          </div>
+
+
+          <div class="category-grid">
+
+            <button
+              type="button"
+              class="category-card"
+              data-shop-filter="M">
+
+              <span class="category-icon">♔</span>
+
+              <strong>رجالي</strong>
+
+              <span>
+                عطور رجالية فاخرة
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="category-card"
+              data-shop-filter="W">
+
+              <span class="category-icon">♕</span>
+
+              <strong>حريمي</strong>
+
+              <span>
+                عطور نسائية راقية
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="category-card"
+              data-shop-filter="U">
+
+              <span class="category-icon">♛</span>
+
+              <strong>مشترك</strong>
+
+              <span>
+                عطور تناسب الجميع
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="category-card"
+              data-shop-filter="fresh">
+
+              <span class="category-icon">💧</span>
+
+              <strong>منعش</strong>
+
+              <span>
+                انتعاش ونظافة
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="category-card"
+              data-shop-filter="floral">
+
+              <span class="category-icon">🌹</span>
+
+              <strong>زهري</strong>
+
+              <span>
+                ورد وياسمين وزهور
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="category-card"
+              data-shop-filter="wood">
+
+              <span class="category-icon">🪵</span>
+
+              <strong>خشبي</strong>
+
+              <span>
+                أخشاب ومسك ونفحات دافئة
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="category-card"
+              data-shop-filter="oriental">
+
+              <span class="category-icon">🔥</span>
+
+              <strong>شرقي</strong>
+
+              <span>
+                عنبر وتوابل وأخشاب
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="category-card"
+              data-shop-filter="sweet">
+
+              <span class="category-icon">🍯</span>
+
+              <strong>حلو</strong>
+
+              <span>
+                فانيلا وعنبر ونفحات حلوة
+              </span>
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           مستشار العطور
+           ================================================= -->
+
+      <section id="aiAdvisor" class="section advisor-section">
+
+        <div class="container">
+
+          <div class="advisor-box">
+
+            <div class="advisor-decoration">
+              ♛
+            </div>
+
+            <div class="advisor-content">
+
+              <div class="section-kicker">
+                CROWN PERFUME ADVISOR
+              </div>
+
+              <h2 class="section-title">
+                مش عارف تختار عطرك؟
+              </h2>
+
+              <p class="section-desc">
+                مستشار مملكة العطور هيسألك كام سؤال بسيط
+                ويختار لك أقرب العطور لذوقك وميزانيتك.
+              </p>
+
+
+              <!-- منطقة الأسئلة -->
+              <div id="aiQuestions" class="ai-questions">
+
+                <div class="ai-welcome">
+
+                  <div class="ai-crown">
+                    ♛
+                  </div>
+
+                  <h3>
+                    خلينا نختار عطرك سوا
+                  </h3>
+
+                  <p>
+                    اضغط على الزر ونبدأ.
+                  </p>
+
+                  <button
+                    type="button"
+                    id="startAI"
+                    class="btn-gold">
+                    ابدأ الاختيار
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <!-- نتيجة المستشار -->
+              <div
+                id="aiResults"
+                class="ai-results hidden">
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           لماذا مملكة العطور؟
+           ================================================= -->
+
+      <section class="section features-section">
+
+        <div class="container">
+
+          <div class="section-head">
+
+            <div class="section-kicker">
+              THE CROWN STANDARD
+            </div>
+
+            <h2 class="section-title">
+              ليه مملكة العطور؟
+            </h2>
+
+          </div>
+
+
+          <div class="features-grid">
+
+            <article class="feature-card">
+
+              <div class="feature-icon">
+                ✦
+              </div>
+
+              <h3>
+                زيوت مختارة
+              </h3>
+
+              <p>
+                اختيارات من العطور الفرنسية والشرقية
+                والخليجية بروح فاخرة.
+              </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+              <div class="feature-icon">
+                ♛
+              </div>
+
+              <h3>
+                تركيب حسب ذوقك
+              </h3>
+
+              <p>
+                إمكانية اختيار تركيب عطري بزجاجة شفافة
+                وبسعر مخفض عن العبوة العادية.
+              </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+              <div class="feature-icon">
+                ◈
+              </div>
+
+              <h3>
+                مقاسات متعددة
+              </h3>
+
+              <p>
+                30 مل و50 مل و100 مل مع إمكانية تعديل
+                الأسعار والمقاسات من الإعدادات.
+              </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+              <div class="feature-icon">
+                ◎
+              </div>
+
+              <h3>
+                طلب سهل
+              </h3>
+
+              <p>
+                اختار عطرك وأضفه للسلة وأرسل الطلب
+                مباشرة عبر واتساب.
+              </p>
+
+            </article>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           دعوة للمتجر
+           ================================================= -->
+
+      <section class="section royal-cta">
+
+        <div class="container">
+
+          <div class="royal-cta-box">
+
+            <div>
+
+              <div class="section-kicker">
+                ENTER THE KINGDOM
+              </div>
+
+              <h2>
+                عطرك... توقيعك
+              </h2>
+
+              <p>
+                اكتشف مجموعتنا الكبيرة واختار الرائحة
+                اللي شبهك.
+              </p>
+
+            </div>
+
+            <button
+              type="button"
+              class="btn-gold"
+              data-view-action="shop">
+              دخول المملكة ♛
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- ===================================================
+         المتجر
+         =================================================== -->
+
+    <section
+      id="shop"
+      class="view hidden">
+
+      <div class="container section">
+
+        <div class="section-head">
+
+          <div class="section-kicker">
+            CROWN COLLECTION
+          </div>
+
+          <h2 class="section-title">
+            متجر العطور
+          </h2>
+
+          <p class="section-desc">
+            اختار عطرك حسب الاسم أو النوع أو العائلة
+            العطرية، واستكشف المقاسات والأسعار.
+          </p>
+
+        </div>
+
+
+        <!-- أدوات البحث -->
+        <div class="shop-tools">
+
+          <div class="search-box">
+
+            <span class="search-icon">
+              🔎
+            </span>
+
+            <input
+              id="searchInput"
+              type="search"
+              autocomplete="off"
+              placeholder="ابحث باسم العطر بالعربي أو الإنجليزي...">
+
+            <button
+              type="button"
+              id="clearSearch"
+              class="search-clear"
+              aria-label="مسح البحث">
+              ×
+            </button>
+
+            <button type="button" id="voiceSearchBtn" class="search-clear" aria-label="بحث صوتي" title="بحث صوتي">🎙️</button>
+
+          </div>
+
+
+          <div class="shop-select">
+
+            <label for="sortSelect">
+              ترتيب
+            </label>
+
+            <select id="sortSelect">
+
+              <option value="default">
+                الافتراضي
+              </option>
+
+              <option value="priceAsc">
+                السعر من الأقل للأعلى
+              </option>
+
+              <option value="priceDesc">
+                السعر من الأعلى للأقل
+              </option>
+
+              <option value="rating">
+                الأعلى تقييمًا
+              </option>
+
+              <option value="name">
+                الاسم
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <!-- فلاتر المتجر -->
+        <div class="shop-tabs">
+
+          <button
+            type="button"
+            class="shop-tab active"
+            data-shop-filter="all">
+            الكل
+          </button>
+
+          <button
+            type="button"
+            class="shop-tab"
+            data-shop-filter="M">
+            👨 رجالي
+          </button>
+
+          <button
+            type="button"
+            class="shop-tab"
+            data-shop-filter="W">
+            👩 حريمي
+          </button>
+
+          <button
+            type="button"
+            class="shop-tab"
+            data-shop-filter="U">
+            👫 مشترك
+          </button>
+
+          <button
+            type="button"
+            class="shop-tab"
+            data-shop-filter="fresh">
+            💧 منعش
+          </button>
+
+          <button
+            type="button"
+            class="shop-tab"
+            data-shop-filter="floral">
+            🌹 زهري
+          </button>
+
+          <button
+            type="button"
+            class="shop-tab"
+            data-shop-filter="wood">
+            🪵 خشبي
+          </button>
+
+          <button
+            type="button"
+            class="shop-tab"
+            data-shop-filter="oriental">
+            🔥 شرقي
+          </button>
+
+          <button
+            type="button"
+            class="shop-tab"
+            data-shop-filter="sweet">
+            🍯 حلو
+          </button>
+
+          <button type="button" class="shop-tab" data-shop-filter="oil">💧 زيوت عطرية</button>
+          <button type="button" class="shop-tab" data-shop-filter="strong">🔥 قوي</button>
+          <button type="button" class="shop-tab" data-shop-filter="quiet">🌙 هادئ</button>
+          <button type="button" class="shop-tab" data-shop-filter="hall_featured">👑 المميز</button>
+          <button type="button" class="shop-tab" data-shop-filter="hall_new">✨ الجديد</button>
+          <button type="button" class="shop-tab" data-shop-filter="hall_old">🏛️ القديم</button>
+          <button type="button" class="shop-tab" data-shop-filter="bestMen">🏆 الأكثر طلباً رجالي</button>
+          <button type="button" class="shop-tab" data-shop-filter="bestWomen">🏆 الأكثر طلباً حريمي</button>
+          <button type="button" class="shop-tab" data-shop-filter="bestOriental">🏆 الأكثر طلباً شرقي</button>
+
+        </div>
+
+
+        <!-- معلومات النتائج -->
+        <div class="shop-info">
+
+          <span id="productCount">
+            جاري تحميل العطور...
+          </span>
+
+          <span id="activeFilterLabel">
+            كل العطور
+          </span>
+
+        </div>
+
+
+        <!-- المنتجات -->
+        <div
+          id="productGrid"
+          class="product-grid">
+        </div>
+
+
+        <!-- لا توجد نتائج -->
+        <div
+          id="emptyProducts"
+          class="empty-products hidden">
+
+          <div class="empty-icon">
+            👑
+          </div>
+
+          <h3>
+            مش لاقيين العطر المطلوب
+          </h3>
+
+          <p>
+            جرّب اسم تاني أو غيّر التصنيف.
+          </p>
+
+          <button
+            type="button"
+            class="btn-outline"
+            id="resetShop">
+            إعادة البحث
+          </button>
+
+        </div>
+
+
+        <!-- عرض المزيد -->
+        <div class="load-more-wrap">
+
+          <button
+            type="button"
+            class="btn-outline"
+            id="loadMore">
+            عرض المزيد
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         مُنشئ الباقات الملكية
+         =================================================== -->
+    <section id="packageBuilder" class="section package-builder-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">ROYAL PACKAGE BUILDER</div>
+          <h2 class="section-title">مُنشئ الباقة الملكية</h2>
+          <p class="section-desc">اختار العطر والقارورة والعلبة والتغليف، وسيظهر الإجمالي فوراً.</p>
+        </div>
+        <div class="package-builder-grid">
+          <label>العطر<select id="buildPerfume"></select></label>
+          <label>القارورة<select id="buildBottle"><option value="0">بدون إضافة</option></select></label>
+          <label>العلبة<select id="buildBox"><option value="0">بدون إضافة</option></select></label>
+          <label class="admin-check"><input type="checkbox" id="buildWrap"> تغليف ملكي</label>
+        </div>
+        <div class="package-total"><span>الإجمالي</span><strong id="buildTotal">0 ج.م</strong></div>
+        <div class="hero-buttons">
+          <button type="button" class="btn-gold" id="addPackage">إضافة الباقة للسلة</button>
+          <button type="button" class="btn-outline" id="packageWhatsApp">إرسال الباقة إلى واتساب</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         حكاية المملكة
+         =================================================== -->
+
+    <section
+      id="story"
+      class="view hidden">
+
+      <div class="container section">
+
+        <div class="story-layout">
+
+          <div class="story-content">
+
+            <div class="section-kicker">
+              OUR STORY
+            </div>
+
+            <h2 class="section-title">
+              حكاية مملكة العطور
+            </h2>
+
+            <p>
+              مملكة العطور ليست مجرد متجر عطور.
+              الفكرة إن كل عطر يبقى له مكان داخل
+              مملكة كاملة، والعميل يدخل يختار
+              العطر اللي يعبر عنه.
+            </p>
+
+            <p>
+              جمعنا بين روح العطور الفرنسية والشرقية
+              والخليجية، مع إمكانية اختيار العبوة
+              العادية أو تركيب العطر بزجاجة شفافة
+              بسعر مخفض.
+            </p>
+
+            <p>
+              هدفنا إن تجربة اختيار العطر تكون بسيطة،
+              راقية، وممتعة — من أول لحظة يدخل فيها
+              العميل للمملكة لحد استلام طلبه.
+            </p>
+
+          </div>
+
+
+          <div class="story-emblem">
+
+            <div class="story-crown">
+              ♛
+            </div>
+
+            <div class="story-circle">
+
+              <span>
+                CROWN
+              </span>
+
+              <strong>
+                مملكة
+              </strong>
+
+              <span>
+                العطور
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         التواصل
+         =================================================== -->
+
+    <section
+      id="contact"
+      class="view hidden">
+
+      <div class="container section">
+
+        <div class="section-head">
+
+          <div class="section-kicker">
+            CONTACT THE KINGDOM
+          </div>
+
+          <h2 class="section-title">
+            تواصل مع مملكة العطور
+          </h2>
+
+          <p class="section-desc">
+            للاستفسار عن الأسعار أو التركيب أو الطلبات
+            تقدر تتواصل معنا مباشرة.
+          </p>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+          <div class="contact-card">
+
+            <div class="contact-icon">
+              💬
+            </div>
+
+            <h3>
+              واتساب
+            </h3>
+
+            <p id="contactWhatsAppNumber">
+              01272776928
+            </p>
+
+            <button
+              type="button"
+              id="contactWhatsApp"
+              class="btn-gold">
+              تواصل الآن
+            </button>
+
+          </div>
+
+
+          <div class="contact-card">
+
+            <div class="contact-icon">
+              👑
+            </div>
+
+            <h3>
+              مملكة العطور
+            </h3>
+
+            <p>
+              عطور فاخرة وتركيب حسب ذوقك
+            </p>
+            <p id="contactAddress">الإسكندرية – شارع خالد بن الوليد</p>
+
+          </div>
+
+
+          <div class="contact-card">
+
+            <div class="contact-icon">
+              🚚
+            </div>
+
+            <h3>
+              التوصيل
+            </h3>
+
+            <p>
+              تجهيز الطلبات وخيارات توصيل داخل مصر،
+              مع إمكانية الاتفاق على الشحن خارج مصر.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       زر واتساب العائم
+       ===================================================== -->
+
+  <button
+    type="button"
+    id="floatingWhatsApp"
+    class="floating-whatsapp"
+    aria-label="التواصل عبر واتساب">
+
+    <span>💬</span>
+
+  </button>
+
+
+  <!-- =====================================================
+       السلة الجانبية
+       ===================================================== -->
+
+  <aside
+    id="cartDrawer"
+    class="cart-drawer">
+
+    <div class="cart-header">
+
+      <div>
+
+        <span class="section-kicker">
+          YOUR CROWN
+        </span>
+
+        <h2>
+          سلة المشتريات
+        </h2>
+
+      </div>
+
+      <button
+        type="button"
+        id="closeCart"
+        class="modal-close">
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      id="cartItems"
+      class="cart-items">
+    </div>
+
+
+    <div
+      id="cartEmpty"
+      class="cart-empty">
+
+      <div>
+        👑
+      </div>
+
+      <h3>
+        السلة فاضية
+      </h3>
+
+      <p>
+        اختار عطرك المفضل وابدأ رحلتك داخل المملكة.
+      </p>
+
+      <button
+        type="button"
+        class="btn-gold"
+        id="cartGoShop">
+        اذهب للمتجر
+      </button>
+
+    </div>
+
+
+    <div
+      id="cartSummary"
+      class="cart-summary hidden">
+
+      <div class="summary-line">
+
+        <span>
+          عدد المنتجات
+        </span>
+
+        <strong id="summaryItems">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="summary-line total-line">
+
+        <span>
+          الإجمالي
+        </span>
+
+        <strong id="summaryTotal">
+          0 ج.م
+        </strong>
+
+      </div>
+
+
+      <button
+        type="button"
+        id="checkoutBtn"
+        class="btn-gold btn-full">
+        إتمام الطلب
+      </button>
+
+
+      <button
+        type="button"
+        id="cartWhatsAppBtn"
+        class="btn-outline btn-full">
+        إرسال السلة على واتساب
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- طبقة خلفية للسلة -->
+  <div
+    id="drawerOverlay"
+    class="drawer-overlay">
+  </div>
+
+
+  <!-- =====================================================
+       نافذة تفاصيل المنتج
+       ===================================================== -->
+
+  <div
+    id="productModal"
+    class="modal hidden">
+
+    <div
+      class="modal-backdrop"
+      data-close-modal="product">
+    </div>
+
+    <div class="modal-box product-modal-box">
+
+      <button
+        type="button"
+        class="modal-close"
+        data-close-modal="product">
+        ×
+      </button>
+
+      <div id="productModalContent">
+        <!-- يتم ملؤها من JavaScript -->
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       نافذة إتمام الطلب
+       ===================================================== -->
+
+  <div
+    id="checkoutModal"
+    class="modal hidden">
+
+    <div
+      class="modal-backdrop"
+      data-close-modal="checkout">
+    </div>
+
+    <div class="modal-box checkout-box">
+
+      <button
+        type="button"
+        class="modal-close"
+        data-close-modal="checkout">
+        ×
+      </button>
+
+
+      <div class="modal-heading">
+
+        <div class="section-kicker">
+          CROWN CHECKOUT
+        </div>
+
+        <h2>
+          إتمام الطلب
+        </h2>
+
+        <p>
+          اكتب بياناتك، وبعد التأكيد يتم تجهيز رسالة
+          الطلب لإرسالها على واتساب.
+        </p>
+
+      </div>
+
+
+      <form id="checkoutForm">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="customerName">
+              الاسم بالكامل
+            </label>
+
+            <input
+              id="customerName"
+              name="customerName"
+              type="text"
+              required
+              placeholder="اكتب اسمك">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="customerPhone">
+              رقم الهاتف
+            </label>
+
+            <input
+              id="customerPhone"
+              name="customerPhone"
+              type="tel"
+              required
+              placeholder="01xxxxxxxxx">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="governorate">
+              المحافظة
+            </label>
+
+            <select
+              id="governorate"
+              name="governorate"
+              required>
+
+              <option value="">
+                اختر المحافظة
+              </option>
+
+              <option>الإسكندرية</option>
+              <option>القاهرة</option>
+              <option>الجيزة</option>
+              <option>القليوبية</option>
+              <option>البحيرة</option>
+              <option>كفر الشيخ</option>
+              <option>الدقهلية</option>
+              <option>دمياط</option>
+              <option>الغربية</option>
+              <option>المنوفية</option>
+              <option>الشرقية</option>
+              <option>بورسعيد</option>
+              <option>الإسماعيلية</option>
+              <option>السويس</option>
+              <option>شمال سيناء</option>
+              <option>جنوب سيناء</option>
+              <option>الفيوم</option>
+              <option>بني سويف</option>
+              <option>المنيا</option>
+              <option>أسيوط</option>
+              <option>سوهاج</option>
+              <option>قنا</option>
+              <option>الأقصر</option>
+              <option>أسوان</option>
+              <option>الوادي الجديد</option>
+              <option>مطروح</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="shippingMethod">
+              طريقة الاستلام
+            </label>
+
+            <select
+              id="shippingMethod"
+              name="shippingMethod"
+              required>
+
+              <option value="delivery">
+                شحن للعنوان
+              </option>
+
+              <option value="pickup">
+                استلام بالاتفاق
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="customerAddress">
+            العنوان بالتفصيل
+          </label>
+
+          <textarea
+            id="customerAddress"
+            name="customerAddress"
+            rows="3"
+            required
+            placeholder="المنطقة، الشارع، رقم العقار، الدور، الشقة..."></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="paymentMethod">
+            طريقة الدفع
+          </label>
+
+          <select
+            id="paymentMethod"
+            name="paymentMethod"
+            required>
+
+            <option value="cash">
+              دفع عند الاستلام
+            </option>
+
+            <option value="prepaid">
+              دفع مسبق — حسب الاتفاق
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="orderNotes">
+            ملاحظات إضافية
+          </label>
+
+          <textarea
+            id="orderNotes"
+            name="orderNotes"
+            rows="2"
+            placeholder="أي ملاحظات خاصة بالطلب..."></textarea>
+
+        </div>
+
+
+        <div
+          id="checkoutTotal"
+          class="checkout-total">
+          الإجمالي: 0 ج.م
+        </div>
+
+
+        <button
+          type="submit"
+          class="btn-gold btn-full">
+          تأكيد الطلب وإرسال واتساب
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       نافذة الإعدادات
+       ===================================================== -->
+
+  <div
+    id="settingsModal"
+    class="modal hidden">
+
+    <div
+      class="modal-backdrop"
+      data-close-modal="settings">
+    </div>
+
+    <div class="modal-box settings-box">
+
+      <button
+        type="button"
+        class="modal-close"
+        data-close-modal="settings">
+        ×
+      </button>
+
+
+      <div class="modal-heading">
+
+        <div class="section-kicker">
+          KINGDOM SETTINGS
+        </div>
+
+        <h2>
+          إعدادات المملكة
+        </h2>
+
+        <p>
+          البيانات هنا محفوظة على نفس الجهاز.
+        </p>
+
+      </div>
+
+
+      <form id="settingsForm">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="settingBrand">
+              اسم الشركة
+            </label>
+
+            <input
+              id="settingBrand"
+              type="text">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="settingTagline">
+              الشعار الإنجليزي
+            </label>
+
+            <input
+              id="settingTagline"
+              type="text">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="settingWhatsApp">
+              رقم واتساب
+            </label>
+
+            <input
+              id="settingWhatsApp"
+              type="text"
+              placeholder="201xxxxxxxxx">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="settingCurrency">
+              العملة
+            </label>
+
+            <input
+              id="settingCurrency"
+              type="text"
+              placeholder="ج.م">
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="settingHeroTitle">
+            عنوان الصفحة الرئيسية
+          </label>
+
+          <input
+            id="settingHeroTitle"
+            type="text">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="settingHeroDesc">
+            وصف الصفحة الرئيسية
+          </label>
+
+          <textarea
+            id="settingHeroDesc"
+            rows="3"></textarea>
+
+        </div>
+
+
+        <div class="settings-actions">
+
+          <button
+            type="submit"
+            class="btn-gold">
+            حفظ الإعدادات
+          </button>
+
+          <button
+            type="button"
+            id="resetSettings"
+            class="btn-outline">
+            إعادة الافتراضي
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       لوحة الإعدادات الصغيرة
+       ===================================================== -->
+
+  <button
+    type="button"
+    id="openSettings"
+    class="settings-floating"
+    title="الإعدادات">
+    ⚙
+  </button>
+
+
+  <!-- =====================================================
+       Toast
+       ===================================================== -->
+
+  <div
+    id="toast"
+    class="toast">
+
+    <span id="toastIcon">
+      ✓
+    </span>
+
+    <span id="toastMessage">
+      تم
+    </span>
+
+  </div>
+
+
+  <!-- =====================================================
+       JavaScript
+       ===================================================== -->
+
+  <script src="app.js"></script>
+<!-- ═══════════════════════════════════════════════
+     لوحة تحكم مملكة العطور
+     ═══════════════════════════════════════════════ -->
+
+<div id="adminModal" class="modal-overlay hidden">
+  <div class="admin-panel">
+
+    <div class="admin-header">
+      <div>
+        <span class="section-kicker">CROWN ADMIN</span>
+        <h2>لوحة تحكم مملكة العطور</h2>
+        <p>إدارة المنتجات والأسعار والمخزون.</p>
+      </div>
+
+      <button type="button" class="modal-close" id="closeAdminBtn">
+        ×
+      </button>
+    </div>
+
+    <div class="admin-tabs">
+
+      <button type="button" class="admin-tab active" data-admin-tab="products">
+        🧴 المنتجات
+      </button>
+
+      <button type="button" class="admin-tab" data-admin-tab="prices">
+        💰 الأسعار
+      </button>
+
+      <button type="button" class="admin-tab" data-admin-tab="stock">
+        📦 المخزون
+      </button>
+
+      <button type="button" class="admin-tab" data-admin-tab="settings">
+        ⚙️ الإعدادات
+      </button>
+
+      <button type="button" class="admin-tab" data-admin-tab="orders">📋 الطلبات</button>
+      <button type="button" class="admin-tab" data-admin-tab="suppliers">🏭 الموردون</button>
+      <button type="button" class="admin-tab" data-admin-tab="reports">📊 التقارير</button>
+
+    </div>
+
+    <!-- المنتجات -->
+    <section class="admin-section" id="adminProducts">
+
+      <div class="admin-toolbar">
+
+        <input
+          type="search"
+          id="adminSearch"
+          placeholder="ابحث عن عطر..."
+        >
+
+        <button type="button" class="btn-gold" id="addProductBtn">＋ إضافة عطر</button>
+        <button type="button" class="btn-outline" id="undoLastChangeBtn">↩️ تراجع</button>
+
+      </div>
+
+      <div id="adminProductList" class="admin-product-list"></div>
+
+    </section>
+
+    <!-- الأسعار -->
+    <section class="admin-section hidden" id="adminPrices">
+
+      <div class="admin-box">
+
+        <h3>إعداد أسعار التركيب</h3>
+
+        <label>
+          خصم التركيب %
+          <input
+            type="number"
+            id="mixDiscountInput"
+            min="0"
+            max="100"
+            step="1"
+            value="15"
+          >
+        </label>
+
+        <button type="button" class="btn-gold" id="saveMixDiscountBtn">
+          حفظ الخصم
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- المخزون -->
+    <section class="admin-section hidden" id="adminStock">
+
+      <div class="admin-stats">
+
+        <div class="admin-stat">
+          <span>إجمالي المنتجات</span>
+          <strong id="adminTotalProducts">0</strong>
+        </div>
+
+        <div class="admin-stat">
+          <span>إجمالي الأصناف</span>
+          <strong id="adminTotalStock">0</strong>
+        </div>
+
+        <div class="admin-stat">
+          <span>أصناف منخفضة</span>
+          <strong id="adminLowStock">0</strong>
+        </div>
+
+      </div>
+
+      <div id="adminStockList" class="admin-stock-list"></div>
+
+    </section>
+
+    <!-- الإعدادات -->
+    <section class="admin-section hidden" id="adminSettings">
+
+      <div class="admin-box">
+
+        <h3>بيانات مملكة العطور</h3>
+
+        <label>
+          اسم المتجر
+          <input type="text" id="adminBrandInput">
+        </label>
+
+        <label>
+          رقم واتساب
+          <input type="text" id="adminWhatsappInput">
+        </label>
+
+        <label>
+          العنوان
+          <input type="text" id="settingAddress" value="الإسكندرية – شارع خالد بن الوليد">
+        </label>
+
+        <label>
+          العملة
+          <input type="text" id="adminCurrencyInput">
+        </label>
+
+        <label>
+          عنوان الصفحة الرئيسية
+          <input type="text" id="adminHeroTitleInput">
+        </label>
+
+        <button type="button" class="btn-gold" id="saveAdminSettingsBtn">
+          حفظ الإعدادات
+        </button>
+
+        <label class="admin-check">
+          <input type="checkbox" data-voice-toggle> تشغيل الراوي الصوتي الاختياري
+        </label>
+
+        <p class="admin-note">الأمان هنا على مستوى المتصفح فقط. رمز المالك يُخزن كـ SHA-256 مع Salt داخل localStorage؛ حماية قاعدة بيانات حقيقية تحتاج Backend.</p>
+
+        <div class="hero-buttons">
+          <button type="button" class="btn-outline" id="exportCrownBtn">⬇️ تصدير نسخة JSON</button>
+          <label class="btn-outline" for="importCrownInput">⬆️ استيراد JSON</label>
+          <input id="importCrownInput" type="file" accept="application/json,.json" hidden>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="admin-section hidden" id="adminOrders">
+      <div class="admin-box">
+        <h3>الطلبات</h3>
+        <div id="adminOrdersList"></div>
+      </div>
+    </section>
+
+    <section class="admin-section hidden" id="adminSuppliers">
+      <div class="admin-box">
+        <h3>الموردون والشركات</h3>
+        <div class="admin-toolbar"><input id="supplierNameInput" placeholder="اسم المورد/الشركة"><button class="btn-gold" id="addSupplierBtn" type="button">إضافة</button></div>
+        <div id="adminSuppliersList"></div>
+      </div>
+    </section>
+
+    <section class="admin-section hidden" id="adminReports">
+      <div class="admin-stats">
+        <div class="admin-stat"><span>قيمة المخزون بالتكلفة</span><strong id="reportCost">0</strong></div>
+        <div class="admin-stat"><span>قيمة البيع المتاحة</span><strong id="reportSales">0</strong></div>
+        <div class="admin-stat"><span>ربح تقديري</span><strong id="reportProfit">0</strong></div>
+      </div>
+      <p class="admin-note">الربح يُحسب فقط عندما تُدخل تكلفة فعلية للمنتج؛ البيانات غير المؤكدة لا تُخمن.</p>
+    </section>
+
+  </div>
+</div>
+
+<!-- نموذج إضافة/تعديل عطر -->
+
+<div id="productEditorModal" class="modal-overlay hidden">
+
+  <div class="product-editor">
+
+    <div class="admin-header">
+
+      <div>
+        <span class="section-kicker">CROWN PRODUCT</span>
+        <h2 id="productEditorTitle">إضافة عطر</h2>
+      </div>
+
+      <button type="button" class="modal-close" id="closeProductEditor">
+        ×
+      </button>
+
+    </div>
+
+    <form id="productEditorForm">
+
+      <input type="hidden" id="editProductId">
+
+      <label>
+        اسم العطر بالعربي
+        <input type="text" id="editNameAr" required>
+      </label>
+
+      <label>
+        اسم العطر بالإنجليزي
+        <input type="text" id="editNameEn">
+      </label>
+
+      <label>
+        الشركة
+        <input type="text" id="editBrand">
+      </label>
+
+      <label>
+        الشركة المصنعة / المورد
+        <input type="text" id="editManufacturer" placeholder="اتركه فارغاً إذا غير مؤكد">
+      </label>
+
+      <label>
+        نوع الصنف
+        <select id="editKind"><option value="perfume">عطر</option><option value="oil">زيت عطري</option></select>
+      </label>
+
+      <label>
+        قوة العطر
+        <select id="editStrength"><option value="">غير محدد</option><option value="strong">قوي</option><option value="quiet">هادئ</option></select>
+      </label>
+
+      <label>
+        تاريخ التصنيع
+        <input type="date" id="editManufactureDate">
+      </label>
+
+      <label>
+        سنة الإصدار
+        <input type="number" id="editReleaseYear" min="1900" max="2100">
+      </label>
+
+      <label>
+        النوع
+        <select id="editGender">
+          <option value="M">رجالي</option>
+          <option value="W">حريمي</option>
+          <option value="U">مشترك</option>
+        </select>
+      </label>
+
+      <label>
+        العائلة العطرية
+        <select id="editFamily">
+          <option value="fresh">منعش</option>
+          <option value="floral">زهري</option>
+          <option value="wood">خشبي</option>
+          <option value="oriental">شرقي</option>
+          <option value="sweet">حلو</option>
+        </select>
+      </label>
+
+      <div class="editor-grid legacy-price-grid">
+        <label>30 مل<input type="number" id="editPrice30" min="0"></label>
+        <label>50 مل<input type="number" id="editPrice50" min="0"></label>
+        <label>100 مل<input type="number" id="editPrice100" min="0"></label>
+      </div>
+
+      <div class="admin-box">
+        <h3>جدول المقاسات والأسعار</h3>
+        <p class="admin-note">للعطر: 20–100 مل بخطوة 10. للزيت: 3–12.5 مل. اترك السعر فارغاً إذا لم يتم التحقق منه.</p>
+        <div class="editor-grid price-grid">
+          <label>20 مل<input data-size-price="20" type="number" min="0"></label>
+          <label>30 مل<input data-size-price="30" type="number" min="0"></label>
+          <label>40 مل<input data-size-price="40" type="number" min="0"></label>
+          <label>50 مل<input data-size-price="50" type="number" min="0"></label>
+          <label>60 مل<input data-size-price="60" type="number" min="0"></label>
+          <label>70 مل<input data-size-price="70" type="number" min="0"></label>
+          <label>80 مل<input data-size-price="80" type="number" min="0"></label>
+          <label>90 مل<input data-size-price="90" type="number" min="0"></label>
+          <label>100 مل<input data-size-price="100" type="number" min="0"></label>
+          <label>3 مل<input data-size-price="3" type="number" min="0"></label>
+          <label>5 مل<input data-size-price="5" type="number" min="0"></label>
+          <label>7.5 مل<input data-size-price="7.5" type="number" min="0" step="0.5"></label>
+          <label>10 مل<input data-size-price="10" type="number" min="0"></label>
+          <label>12.5 مل<input data-size-price="12.5" type="number" min="0" step="0.5"></label>
+        </div>
+      </div>
+
+      <label>
+        الكمية
+        <input type="number" id="editStock" min="0" value="0">
+      </label>
+
+      <label>
+        الوصف
+        <textarea id="editDescription" rows="4" placeholder="وصف موثوق أو اتركه للمراجعة"></textarea>
+      </label>
+
+      <label class="admin-check">
+        <input type="checkbox" id="editActive"> تفعيل المنتج للزوار
+      </label>
+
+      <div class="editor-actions">
+
+        <button type="submit" class="btn-gold">
+          💾 حفظ العطر
+        </button>
+
+        <button
+          type="button"
+          class="btn-outline"
+          id="cancelProductEditor"
+        >
+          إلغاء
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+</body>
+</html>
