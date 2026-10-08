@@ -74,6 +74,8 @@ let appData = {
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     loadData();
+    mergeCatalog();
+    setupRoyalExtras();
     setupEntryScreen();
     setupEventListeners();
     renderAll();
@@ -150,7 +152,9 @@ let currentFilters = {
     family: "all",
     company: "all",
     size: "all",
-    inStock: false
+    inStock: false,
+    hall: "all",
+    requested: "all"
 };
 let currentPage = 1;
 
@@ -214,6 +218,7 @@ function getFilteredProducts() {
         if (currentFilters.family !== "all" && p.family !== currentFilters.family) return false;
         if (currentFilters.company !== "all" && p.company !== currentFilters.company) return false;
         if (currentFilters.size !== "all" && !p.sizes.includes(currentFilters.size)) return false;
+        if (!matchesHall(p) || !matchesRequested(p)) return false;
         
         if (currentFilters.search) {
             const q = currentFilters.search.toLowerCase();
@@ -250,10 +255,10 @@ function renderProducts() {
 
 function createProductCard(p) {
     const isWished = appData.wishlist.includes(p.id);
-    const price = appData.settings.prices["30"] || 150; // Default display price
+    const price = startingPrice(p); // أقل سعر متاح للمنتج
     
     return `
-        <div class="product-card">
+        <div class="product-card" data-narrate="${p.name}|${p.nameEn || ''}|${p.company}">
             <button class="wishlist-toggle ${isWished ? 'active' : ''}" onclick="toggleWishlist(${p.id})">
                 <i class="${isWished ? 'fas' : 'far'} fa-heart"></i>
             </button>
@@ -977,4 +982,130 @@ function checkLanguage() {
 function getTranslation(key) {
     const lang = appData.settings.lang;
     return translations[lang][key] || key;
+}
+
+// ==========================================
+// 11. إضافات ملكية (تضاف فوق الموجود دون حذف أي وظيفة)
+// ==========================================
+const OLD_BEFORE_YEAR = 2015;   // قاعة القديم: إصدار قبل هذه السنة
+const NEW_FROM_YEAR = 2022;     // قاعة الجديد: إصدار من هذه السنة
+
+function normName(s) { return (s || "").toString().replace(/[\u064B-\u0652\u0640]/g, "").replace(/[أإآ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه").replace(/\s+/g, " ").trim().toLowerCase(); }
+function productYear(p) { return p.releaseYear || parseInt((p.manufactureDate || "").slice(0, 4)) || 0; }
+function isOil(p) { return /oil|زيت|زيوت/i.test((p.type || "") + " " + (p.name || "") + " " + (p.categories || []).join(" ")); }
+function startingPrice(p) {
+    const own = p.prices ? Object.values(p.prices).map(Number).filter(Boolean) : [];
+    if (own.length) return Math.min(...own);
+    const g = Object.values(appData.settings.prices).map(Number).filter(Boolean);
+    return g.length ? Math.min(...g) : 150;
+}
+function matchesHall(p) {
+    const h = currentFilters.hall, y = productYear(p);
+    if (h === "all") return true;
+    if (h === "featured") return !!p.featured;
+    if (h === "old") return y && y < OLD_BEFORE_YEAR;
+    if (h === "new") return y >= NEW_FROM_YEAR;
+    return true;
+}
+function matchesRequested(p) {
+    const r = currentFilters.requested;
+    if (r === "all") return true;
+    if (r === "oil") return isOil(p);
+    if (r === "men") return p.gender === "men" || p.gender === "unisex";
+    if (r === "women") return p.gender === "women" || p.gender === "unisex";
+    if (r === "oriental") return p.family === "oriental" || p.family === "oud" || /شرقي/.test(p.familyAr || "");
+    return true;
+}
+
+// دمج الكتالوج الخارجي بدون تكرار (العطور الجديدة تظهر للمالك للمراجعة)
+async function mergeCatalog() {
+    try {
+        const res = await fetch("catalog.merged.json", { cache: "no-cache" });
+        if (!res.ok) return;
+        const data = await res.json();
+        const list = Array.isArray(data) ? data : (data.products || []);
+        const seen = new Set(appData.products.map(p => normName(p.name)));
+        let added = 0;
+        list.forEach(item => {
+            const key = normName(item.name);
+            if (!key || seen.has(key)) return;
+            seen.add(key);
+            appData.products.push({ ...item, id: item.id || (Date.now() + added), sizes: (item.sizes || []).map(String), stock: item.stock || 0, active: item.active !== false });
+            if (item.company && !appData.companies.includes(item.company)) appData.companies.push(item.company);
+            added++;
+        });
+        if (added) { saveData(); renderAll(); }
+    } catch (e) { console.warn("تعذر تحميل الكتالوج", e); }
+}
+
+function setupRoyalExtras() {
+    // شريط القاعات والأكثر طلباً
+    const grid = document.getElementById("products-grid");
+    if (grid && !document.getElementById("hall-bar")) {
+        const bar = document.createElement("div");
+        bar.id = "hall-bar";
+        bar.className = "hall-bar";
+        const chips = [
+            ["hall", "all", "كل القاعات"], ["hall", "featured", "قاعة المميز"], ["hall", "new", "قاعة الجديد"], ["hall", "old", "قاعة القديم"],
+            ["requested", "men", "الأكثر طلباً: رجالي"], ["requested", "women", "الأكثر طلباً: حريمي"], ["requested", "oriental", "الأكثر طلباً: شرقي"], ["requested", "oil", "زيوت عطرية"]
+        ];
+        bar.innerHTML = chips.map(c => `<button class="hall-chip" data-k="${c[0]}" data-v="${c[1]}">${c[2]}</button>`).join("");
+        grid.parentNode.insertBefore(bar, grid);
+        bar.addEventListener("click", e => {
+            const b = e.target.closest(".hall-chip"); if (!b) return;
+            const k = b.dataset.k, v = b.dataset.v;
+            currentFilters[k] = (currentFilters[k] === v && v !== "all") ? "all" : v;
+            currentPage = 1;
+            bar.querySelectorAll(".hall-chip").forEach(x => x.classList.toggle("active", currentFilters[x.dataset.k] === x.dataset.v && x.dataset.v !== "all"));
+            renderProducts();
+        });
+    }
+    // الإدارة مخفية عن الزوار: ضغطة مطولة على الشعار أو ?admin
+    const gear = document.getElementById("admin-toggle-btn");
+    if (gear) {
+        gear.classList.add("owner-only");
+        const reveal = () => gear.classList.remove("owner-only");
+        if (location.search.includes("admin")) reveal();
+        const logo = document.querySelector(".logo");
+        let t;
+        if (logo) {
+            ["mousedown", "touchstart"].forEach(ev => logo.addEventListener(ev, () => { t = setTimeout(reveal, 1500); }, { passive: true }));
+            ["mouseup", "mouseleave", "touchend", "touchcancel"].forEach(ev => logo.addEventListener(ev, () => clearTimeout(t)));
+        }
+    }
+    // الراوي الصوتي (عربي/إنجليزي) عند اللمس أو المرور
+    const actions = document.querySelector(".header-actions");
+    if (actions && !document.getElementById("narrator-btn") && "speechSynthesis" in window) {
+        const nb = document.createElement("button");
+        nb.id = "narrator-btn"; nb.className = "icon-btn"; nb.title = "الراوي الصوتي";
+        nb.innerHTML = '<i class="fas fa-volume-xmark"></i>';
+        actions.insertBefore(nb, actions.firstChild);
+        let on = false, last = "";
+        nb.addEventListener("click", () => {
+            on = !on; speechSynthesis.cancel();
+            nb.classList.toggle("active", on);
+            nb.innerHTML = `<i class="fas ${on ? "fa-volume-high" : "fa-volume-xmark"}"></i>`;
+        });
+        const speak = e => {
+            if (!on) return;
+            const c = e.target.closest("[data-narrate]"); if (!c) return;
+            const [ar, en, co] = c.dataset.narrate.split("|");
+            const lang = appData.settings.lang === "en" && en ? "en-US" : "ar-SA";
+            const text = (lang === "en-US" ? en : ar + " من " + co).replace(/[^\p{L}\p{N}\s]/gu, " ");
+            if (text === last) return; last = text;
+            speechSynthesis.cancel();
+            const u = new SpeechSynthesisUtterance(text); u.lang = lang; u.rate = 0.95;
+            speechSynthesis.speak(u);
+        };
+        document.addEventListener("mouseover", speak);
+        document.addEventListener("touchstart", speak, { passive: true });
+    }
+    // فاصل السيف الملكي
+    const hero = document.querySelector(".hero-section");
+    if (hero && !document.getElementById("sword-divider")) {
+        const d = document.createElement("div");
+        d.id = "sword-divider"; d.className = "sword-divider";
+        d.innerHTML = '<svg viewBox="0 0 400 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20h160M230 20h160"/><path d="M175 6l50 28M225 6l-50 28"/><circle cx="200" cy="20" r="6" fill="currentColor"/></g></svg>';
+        hero.after(d);
+    }
 }
