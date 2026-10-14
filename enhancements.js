@@ -14,6 +14,7 @@
     close.addEventListener("click", () => hideToast(toast));
     toast.append(close);
     const observer = new MutationObserver(() => {
+      if (!toast.contains(close)) toast.append(close);
       const msg = [...toast.childNodes].filter(n => n !== close && !(n.nodeType === 1 && n.classList.contains("toast-dismiss"))).map(n => n.textContent || "").join("").trim();
       if (msg) {
         toast.classList.add("is-visible");
