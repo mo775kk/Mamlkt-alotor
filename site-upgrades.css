@@ -1,0 +1,37 @@
+
+/* Royal file manager, section background editor and scent taxonomy */
+.royal-manager{margin-top:28px;padding:18px;border:1px solid var(--line);background:rgba(10,8,6,.72)}
+.royal-file-toolbar,.royal-file-actions,.royal-json-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.royal-file-preview{margin:16px 0;padding:14px;border:1px solid var(--gold);background:#090807;color:var(--text);max-width:100%;overflow:hidden}
+.royal-file-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.royal-file-head strong,.royal-file-head small{display:block}.royal-file-head small,.royal-file-meta small{color:var(--muted);font-size:11px;margin-top:4px}
+.royal-json-preview{max-height:360px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;padding:14px;background:#050505;border:1px solid rgba(212,175,55,.18);color:#f1d77a;font:12px/1.65 ui-monospace,Consolas,monospace;direction:ltr;text-align:left}
+.royal-file-search input,.royal-bg-controls select{width:100%;padding:11px;background:#100d09;color:var(--text);border:1px solid var(--line);margin:8px 0}
+.royal-file-list{display:grid;gap:9px;margin-top:12px}
+.royal-file-card{display:grid;grid-template-columns:54px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);background:rgba(20,16,11,.88)}
+.royal-file-icon{width:48px;height:48px;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold2);font:700 11px "Cormorant Garamond",serif;letter-spacing:.4px}
+.royal-file-meta{min-width:0}.royal-file-meta strong{display:block;overflow-wrap:anywhere}
+.royal-file-actions{justify-content:flex-end;margin:0}.royal-file-actions .small-btn{flex:0 0 auto}
+.royal-bg-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:end}
+.royal-bg-controls label{display:flex;flex-direction:column;gap:6px;font-size:12px}
+.royal-bg-controls input[type=color]{width:100%;height:42px;border:1px solid var(--line);background:#100d09}
+.royal-bg-controls input[type=range]{width:100%;accent-color:var(--gold)}
+.royal-bg-controls .file-label{min-height:42px;justify-content:center}
+.royal-bg-preview{grid-column:1/-1;min-height:130px;display:grid;place-items:center;text-align:center;padding:20px;border:1px solid var(--gold);background:#0a0a0a;background-size:cover;background-position:center;color:#fff;text-shadow:0 2px 8px #000}
+.royal-scent-guide{padding-top:40px}
+.royal-scent-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.royal-scent-grid article{padding:16px;border:1px solid var(--line);background:linear-gradient(150deg,rgba(35,25,13,.94),rgba(9,8,7,.98));min-width:0}
+.royal-scent-grid h3{font:700 20px/1.45 "Amiri",serif;color:var(--gold2);margin:12px 0 7px}
+.royal-scent-grid p{font-size:12px;line-height:1.9;color:#e0d5c4;margin:0 0 10px}
+.royal-scent-grid small{display:block;color:var(--muted);font-size:11px;line-height:1.8;border-top:1px solid var(--line);padding-top:9px}
+.scent-visual{height:88px;display:grid;place-items:center;border:1px solid rgba(212,175,55,.35);background:radial-gradient(ellipse at center,rgba(212,175,55,.18),transparent 70%);font-size:34px;color:var(--gold2)}
+.scent-visual.floral{background-image:radial-gradient(ellipse at center,rgba(199,122,142,.23),transparent 70%)}
+.scent-visual.citrus{background-image:radial-gradient(ellipse at center,rgba(221,190,73,.24),transparent 70%)}
+.scent-visual.woody,.scent-visual.leather{background-image:radial-gradient(ellipse at center,rgba(132,81,43,.32),transparent 70%)}
+.scent-visual.amber,.scent-visual.spicy,.scent-visual.incense{background-image:radial-gradient(ellipse at center,rgba(174,99,27,.28),transparent 70%)}
+.scent-visual.musk,.scent-visual.powder{background-image:radial-gradient(ellipse at center,rgba(200,190,174,.2),transparent 70%)}
+.scent-visual.sweet,.scent-visual.fruity{background-image:radial-gradient(ellipse at center,rgba(166,85,99,.2),transparent 70%)}
+.scent-visual.marine{background-image:radial-gradient(ellipse at center,rgba(67,133,143,.22),transparent 70%)}
+.scent-visual.green,.scent-visual.chypre,.scent-visual.fougere{background-image:radial-gradient(ellipse at center,rgba(99,126,76,.22),transparent 70%)}
+@media(max-width:900px){.royal-scent-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.royal-file-card{grid-template-columns:45px minmax(0,1fr)}.royal-file-actions{grid-column:1/-1;justify-content:flex-start}.royal-file-icon{width:40px;height:40px}}
+@media(max-width:560px){.royal-scent-grid{grid-template-columns:1fr}.royal-bg-controls{grid-template-columns:1fr}.royal-file-toolbar>.btn,.royal-file-toolbar .file-label{width:100%;justify-content:center}.royal-file-card{padding:9px}.royal-file-actions .small-btn{font-size:10px;padding:6px}.royal-file-head{align-items:flex-start}.royal-manager{padding:10px}}
