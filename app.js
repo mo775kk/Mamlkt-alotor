@@ -9,7 +9,7 @@
       if (Array.isArray(cfg?.retailBlendPrices) && cfg.retailBlendPrices.length) {
         const editable = {};
         cfg.retailBlendPrices.forEach(item => {
-          const size = String(item.size || "").match(/\\d+/)?.[0];
+          const size = String(item.size || "").match(/[0-9]+/)?.[0];
           if (size && Number.isFinite(Number(item.price))) editable[size] = Number(item.price);
         });
         if (Object.keys(editable).length) return editable;
