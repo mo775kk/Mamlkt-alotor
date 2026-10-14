@@ -36,3 +36,29 @@
 .toast .toast-dismiss{position:absolute;inset-inline-end:7px;top:6px;width:30px;height:30px;border:0;background:transparent;color:var(--gold2);font-size:24px;line-height:1;cursor:pointer;border-radius:5px}
 .toast .toast-dismiss:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+
+/* MAMLKAT AL-OTOR — warm, luminous storefront refresh */
+:root{--bg:#f7f2e8;--panel:#fffdf8;--panel2:#f0e7d7;--gold:#b58a42;--gold2:#d8b96d;--text:#342d25;--muted:#766b5d;--line:rgba(181,138,66,.28);--shadow:0 18px 55px rgba(80,60,30,.10);--bg-overlay:.58}
+body{background-color:var(--bg);color:var(--text);background-image:radial-gradient(ellipse at 12% 10%,rgba(221,196,144,.19),transparent 34%),linear-gradient(145deg,#fbf8f1,#f2eadb 58%,#fbf8f1);background-attachment:fixed}
+.site-header{background:rgba(255,252,245,.94);border-bottom:1px solid rgba(181,138,66,.24);box-shadow:0 4px 22px rgba(76,54,25,.06);backdrop-filter:blur(16px)}
+.brand strong,.main-nav a,.icon-btn{color:#3c3226}.brand small{color:#9a7942}.brand-crown,.line-icon,.eyebrow{color:var(--gold)}
+.hero{background:#e5d8c1}.hero-shade{background:linear-gradient(270deg,rgba(38,31,24,.82),rgba(48,38,27,.48) 44%,rgba(48,38,27,.05) 100%)}
+.hero h1,.hero-copy>p:not(.eyebrow),.hero-note{color:#fffaf1;text-shadow:0 2px 16px rgba(0,0,0,.18)}
+.trust-strip{background:#fffaf1;border-block:1px solid rgba(181,138,66,.16)}.trust-strip b{color:#4b3b29}.trust-strip small{color:#887967}
+.section-heading h2,.feature-copy h2,.gift-copy h2,.contact-card h2{color:#3e3224}
+.category-card,.product-card,.blend-panel,.advisor-box,.contact-card{background:rgba(255,253,248,.88);border:1px solid rgba(181,138,66,.24);box-shadow:0 10px 32px rgba(88,65,31,.07)}
+.category-card{background:linear-gradient(140deg,#fffdf8,#f2e8d6)}.category-card h3,.product-info h3{color:#3f3224}.category-card p,.product-desc,.product-meta{color:#7d7060}.category-card>span{color:#ad8747}
+.toolbar input,.toolbar select,.blend-step select,.advisor-form input{background:#fffdf8;color:#3c3228;border-color:#dfd1b8}
+.product-visual{background:radial-gradient(ellipse at 50% 42%,#fffdf7 0,#f2e7d4 65%,#e9dcc5 100%)}
+.product-price{color:#9a7130}.small-btn{border-color:#d4c09d;color:#6d552f;background:#fffaf0}.small-btn.primary,.btn-gold{background:linear-gradient(135deg,#d8b96d,#b58a42);border-color:#b58a42;color:#fffdf7}
+.btn-outline{border-color:#b58a42;color:#795a2d;background:rgba(255,252,244,.72)}.btn-outline:hover,.small-btn:hover{background:#f3e7d0}
+.split-feature{background:#efe5d4}.feature-copy{color:#4d4031}.feature-copy h2 span{color:#ad8140}
+.feature-banner{background:linear-gradient(100deg,rgba(255,250,240,.95),rgba(255,250,240,.55)),url("assets/images/royal-hero.jpg") center/cover;color:#3e3224}.feature-banner h3,.feature-banner p{color:#3e3224}
+.gift-art{background:radial-gradient(circle at 50% 45%,#f5e8cc,#e5d0a6 55%,#d4b77c);border:1px solid rgba(181,138,66,.35);color:#947039}
+.advisor-box{background:linear-gradient(135deg,#fffdf8,#f0e4d0)}.assistant-message{background:#f1e6d3;color:#4d4030;border-color:#dfc99f}
+.contact-card{background:linear-gradient(140deg,#fffdf8,#f0e5d2)}.site-footer{background:#e9decb;color:#6d5b45;border-top:1px solid rgba(181,138,66,.22)}.site-footer .brand strong{color:#3f3224}
+.drawer,.product-modal{background:#fffaf1;color:#3d3227;border-color:#d7c49f}.drawer-head,.drawer-bottom,.cart-line{border-color:#e4d5bc}
+.admin-layer{background:rgba(50,39,24,.48);backdrop-filter:blur(5px)}.admin-panel{background:#fffaf1;color:#3d3227;border-color:#d2b477;box-shadow:0 20px 80px rgba(57,42,21,.22)}
+.admin-panel input,.admin-panel select,.admin-panel textarea{background:#fffdf8;color:#3d3227;border-color:#dfcfb1}.admin-tabs button{color:#5d4b35;border-color:#d8c6a4}.admin-tabs button.active{background:#c4a05c;color:#fff}
+.admin-note,.muted{color:#7f7160}.toast{background:#fffaf1;color:#3d3227;border-color:#d4b477;box-shadow:0 12px 36px rgba(57,42,21,.16)}
+@media(max-width:850px){.main-nav{background:#fffaf1}.main-nav a{color:#4a3a28;border-color:rgba(181,138,66,.14)}.hero-shade{background:linear-gradient(0deg,rgba(39,31,23,.80),rgba(39,31,23,.22) 60%,rgba(39,31,23,.02))}}
