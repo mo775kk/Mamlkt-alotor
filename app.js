@@ -114,7 +114,7 @@
   function renderCart(){
     const el=$("#cartItems");
     if(!cart.length){el.innerHTML='<div class="empty-state">السلة فارغة حاليًا.</div>';$("#cartTotal").textContent=formatMoney(0);return;}
-    el.innerHTML=cart.map(item=>`<div class="cart-line"><div><h4>${escapeHTML(item.nameAr)}</h4><small>${escapeHTML(item.nameEn||"")} · ${escapeHTML(item.size)} مل · ${formatMoney(item.price)} للقطعة</small><small>الكمية: ${item.qty} — الإجمالي: ${formatMoney(item.price*item.qty)}</small></div><div class="cart-line-actions"><button class="qty-btn" data-cart="minus" data-key="${escapeHTML(item.key)}" aria-label="تقليل الكمية">−</button><button class="qty-btn" data-cart="plus" data-key="${escapeHTML(item.key)}" aria-label="زيادة الكمية">+</button><button class="remove-btn" data-cart="remove" data-key="${escapeHTML(item.key)}">حذف</button></div></div>`).join("");
+    el.innerHTML=cart.map(item=>`<div class="cart-line"><div><h4>${escapeHTML(item.nameAr)}</h4><small>${escapeHTML(item.nameEn||"")} · ${escapeHTML(item.size)} مل · ${formatMoney(item.price)} للقطعة</small>${item.custom?.description?`<small>${escapeHTML(item.custom.description)}</small>`:""}<small>الكمية: ${item.qty} — الإجمالي: ${formatMoney(item.price*item.qty)}</small></div><div class="cart-line-actions"><button class="qty-btn" data-cart="minus" data-key="${escapeHTML(item.key)}" aria-label="تقليل الكمية">−</button><button class="qty-btn" data-cart="plus" data-key="${escapeHTML(item.key)}" aria-label="زيادة الكمية">+</button><button class="remove-btn" data-cart="remove" data-key="${escapeHTML(item.key)}">حذف</button></div></div>`).join("");
     $("#cartTotal").textContent=formatMoney(cart.reduce((n,x)=>n+x.price*x.qty,0));
   }
   function openDrawer(){ $("#drawerBackdrop").classList.remove("hidden");$("#cartDrawer").classList.add("open");$("#cartDrawer").setAttribute("aria-hidden","false");document.body.classList.add("locked");renderCart(); }
@@ -131,7 +131,7 @@
   function closeModal(){ $("#modalBackdrop").classList.add("hidden");if("speechSynthesis" in window)speechSynthesis.cancel(); }
   function checkout(){
     if(!cart.length){notify("أضف منتجًا إلى السلة أولًا.");return;}
-    const lines=cart.map((x,i)=>`${i+1}) ${x.nameAr}${x.nameEn?" ("+x.nameEn+")":""} - ${x.size} مل × ${x.qty} = ${formatMoney(x.price*x.qty)}`);
+    const lines=cart.map((x,i)=>`${i+1}) ${x.nameAr}${x.nameEn?" ("+x.nameEn+")":""}${x.custom?.description?" — "+x.custom.description:""} - ${x.size} مل × ${x.qty} = ${formatMoney(x.price*x.qty)}`);
     const total=cart.reduce((n,x)=>n+x.price*x.qty,0);
     const msg=`مرحبًا، أريد مراجعة طلب من مملكة العطور:\n${lines.join("\n")}\nالإجمالي المرجعي: ${formatMoney(total)}\nيرجى تأكيد التوفر والسعر النهائي.`;
     window.open(`https://wa.me/${getWaNumber()}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
