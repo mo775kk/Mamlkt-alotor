@@ -31,6 +31,35 @@
   const $$ = s => [...document.querySelectorAll(s)];
   const safeRead = (key, fallback) => { try { const v = JSON.parse(localStorage.getItem(key)); return v ?? fallback; } catch { return fallback; } };
   const readArray = key => { const value = safeRead(key, []); return Array.isArray(value) ? value : []; };
+  function displayFamily(raw, name) {
+    const v=String(raw||"").toLowerCase();
+    if(/citrus|fresh|حمض|منعش/.test(v))return "حمضي ومنعش";
+    if(/floral|rose|زهري|ورد/.test(v))return "زهري ووردي";
+    if(/musk|clean|مسك|نظيف/.test(v))return "مسكي ونظيف";
+    if(/sweet|vanilla|gourmand|حلو|فانيليا/.test(v))return "حلو وفانيليا";
+    if(/amber|oriental|عنبر|شرقي/.test(v))return "عنبر وشرقي";
+    if(/oud|woody|wood|خشب|عود/.test(v))return "عود وخشبي";
+    if(/leather|tobacco|جلد|تبغ/.test(v))return "جلدي وتبغي";
+    if(/aromatic|green|عطري|أخضر/.test(v))return "عطري وأخضر";
+    if(/fruity|fruit|فاكهي/.test(v))return "فاكهي";
+    if(/marine|aquatic|sea|بحري/.test(v))return "بحري";
+    if(/powder|بودري/.test(v))return "بودري";
+    const n=String(name||"").toLowerCase();
+    if(/lemon|bergamot|citrus|lime|grapefruit|ليمون|برغموت/.test(n))return "حمضي ومنعش";
+    if(/rose|jasmine|lily|floral|peony|tuberose|ورد|ياسمين/.test(n))return "زهري ووردي";
+    if(/musk|musc|white musk|مسك/.test(n))return "مسكي ونظيف";
+    if(/vanilla|candy|sugar|caramel|marshmallow|فانيليا|حلوى/.test(n))return "حلو وفانيليا";
+    if(/amber|oud|agarwood|incense|bakhoor|عود|عنبر|بخور/.test(n))return /oud|agarwood|عود/.test(n)?"عود وخشبي":"عنبر وشرقي";
+    if(/wood|sandal|cedar|vetiver|patchouli|خشب|صندل/.test(n))return "خشبي";
+    if(/aqua|marine|ocean|sea|megamare|بحري/.test(n))return "بحري";
+    if(/leather|tobacco|جلدي|تبغ/.test(n))return "جلدي وتبغي";
+    if(/fruit|berry|apple|pear|peach|فاكهة|تفاح/.test(n))return "فاكهي";
+    return "غير محدد — يحتاج تقييم";
+  }
+  function inferredNature(family,name){
+    const f=displayFamily(family,name);
+    return ({"حمضي ومنعش":"حمضي، منعش وحيوي","زهري ووردي":"زهري وناعم أو وردي","مسكي ونظيف":"مسكي ونظيف وقريب من رائحة الجلد","حلو وفانيليا":"حلو ودافئ مع طابع سكري","عنبر وشرقي":"دافئ، شرقي أو متبل","عود وخشبي":"خشبي وراتنجي","خشبي":"خشبي وأنيق","جلدي وتبغي":"جلدي ومدخن","عطري وأخضر":"أخضر وعشبي","فاكهي":"فاكهي ومشرق","بحري":"مائي وبحري","بودري":"ناعم وبودري"})[f]||"الطابع يحتاج إلى مراجعة العينة";
+  }
   const supplierProducts = () => {
     const catalog = safeRead("mamlaka_supplier_catalog_v1", null);
     if (!Array.isArray(catalog?.products)) return [];
@@ -43,9 +72,9 @@
       brand: (p.supplierName || "AQUA D’OR Parfums") + " · " + (p.line || p.supplierLine || ""),
       productType: "oil",
       gender: p.genderLabel || ({MEN:"رجالي",WOMEN:"نسائي",UNISEX:"للجنسين",ORIENTAL:"شرقي",KIDS:"أطفال",DIFFUSER:"فواحات"}[p.category] || "غير محدد"),
-      family: p.scentFamily || p.chemicalProfileId || "غير محدد",
-      scentNature: p.scentNature || "",
-      descriptionAr: "زيت عطري مركز للتركيب · كود المورد: " + (p.sku || "غير متوفر") + " · " + (p.scentNature || "طبيعة الرائحة تحتاج إلى مراجعة"),
+      family: displayFamily(p.scentFamily || p.family || p.chemicalProfileId || "", p.name_ar || p.name_en || ""),
+      scentNature: p.scentNature || inferredNature(p.scentFamily || p.family || "", p.name_ar || p.name_en || ""),
+      descriptionAr: "زيت عطري مركز مناسب للتجربة والتركيب. " + (p.scentNature || inferredNature(p.scentFamily || p.family || "", p.name_ar || p.name_en || "") || "الطابع العطري يحتاج إلى مراجعة عينة المورد."),
       price: null, prices: {}, available: false, needsReview: true, supplierCatalogItem: true
     }));
   };
@@ -62,10 +91,10 @@
   function notify(msg) { const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),3000); }
   function findProduct(id) { return products.find(p=>p.id===id); }
   function currentPrice(p,size) { if(p?.supplierCatalogItem || p?.supplierSku) return null; if(p.prices && p.prices[String(size)] != null) return Number(p.prices[String(size)]); if(p.price != null) return Number(p.price); return sizes[String(size)] ?? null; }
-  function imageMarkup(p) { if(p.image && /^(https?:|assets\/|data:image\/)/i.test(p.image)) return `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.nameAr||p.nameEn)}" loading="lazy" onerror="this.remove()">`; return `<div class="placeholder-bottle" role="img" aria-label="صورة افتراضية لعبوة عطر"></div>`; }
+  function imageMarkup(p){if(p.image&&/^(https?:|assets\/|data:image\/)/i.test(p.image))return `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.nameAr||p.nameEn)}" loading="lazy" onerror="this.remove()">`;const f=displayFamily(p.family||"",p.nameAr||p.nameEn||"");const palette=({"حمضي ومنعش":["#d9b75e","#fff0b8"],"زهري ووردي":["#b66b81","#f2c4cf"],"مسكي ونظيف":["#a9c9c0","#eaf4ef"],"حلو وفانيليا":["#c59b68","#f5e0b7"],"عنبر وشرقي":["#a86e3e","#e6b66f"],"عود وخشبي":["#76513d","#d0a16d"],"خشبي":["#617b69","#c2d3bd"],"بحري":["#5b91a6","#c0e2ed"],"فاكهي":["#bd7a52","#f2c7a5"]})[f]||["#91a69a","#e5eee7"];return `<div class="placeholder-bottle" data-family="${escapeHTML(f)}" role="img" aria-label="تصميم توضيحي لعبوة عطر بطابع ${escapeHTML(f)}"><svg viewBox="0 0 180 180" aria-hidden="true"><defs><linearGradient id="bottleGlass" x1="0" x2="1" y1="0" y2="1"><stop stop-color="${palette[1]}"/><stop offset=".52" stop-color="${palette[0]}"/><stop offset="1" stop-color="#fff" stop-opacity=".65"/></linearGradient><linearGradient id="bottleCap" x1="0" x2="1"><stop stop-color="#f4e2a4"/><stop offset="1" stop-color="#b78a36"/></linearGradient></defs><ellipse cx="90" cy="157" rx="52" ry="8" fill="#4b453b" opacity=".12"/><rect x="72" y="20" width="36" height="24" rx="4" fill="url(#bottleCap)"/><rect x="80" y="41" width="20" height="15" rx="3" fill="#c7a04c"/><path d="M59 55 Q59 49 68 49 H112 Q121 49 121 58 L129 80 V137 Q129 148 117 148 H63 Q51 148 51 137 V80Z" fill="url(#bottleGlass)" stroke="#fff" stroke-opacity=".85" stroke-width="2"/><path d="M62 64 H75 V136 H62 Q59 136 59 132 V83Z" fill="#fff" opacity=".28"/><rect x="63" y="91" width="54" height="31" rx="3" fill="#fff9ec" fill-opacity=".82" stroke="#d4af37" stroke-opacity=".65"/><text x="90" y="105" text-anchor="middle" font-size="6" fill="#66583f" letter-spacing=".5">CROWN</text><text x="90" y="114" text-anchor="middle" font-size="5" fill="#66583f">MAISON DE PARFUM</text><path d="M79 128 Q90 134 101 128" stroke="#fff" stroke-opacity=".6" fill="none"/></svg></div>`;}
   function productCard(p) {
     const price=priceFor(p), fav=favorites.includes(p.id);
-    return `<article class="product-card" data-id="${escapeHTML(p.id)}"><div class="product-visual">${imageMarkup(p)}<span class="product-badge">${p.needsReview?"يحتاج مراجعة":(p.productType==="oil"?"زيت عطري":"عطر جاهز")}</span><button class="favorite-btn ${fav?"is-fav":""}" data-action="favorite" data-id="${escapeHTML(p.id)}" aria-label="إضافة للمفضلة">${fav?"♥":"♡"}</button></div><div class="product-info"><h3>${escapeHTML(p.nameAr||p.nameEn||"منتج جديد")}</h3><div class="product-en" dir="ltr">${escapeHTML(p.nameEn||"")}</div><div class="product-meta">${escapeHTML(p.brand||"الشركة غير محددة")} · ${escapeHTML(p.gender||"")}</div><p class="product-desc">${escapeHTML(p.descriptionAr||"تفاصيل المنتج قيد الاستكمال.")}</p><div class="product-bottom"><span class="product-price">${formatMoney(price)}</span><span class="muted">${escapeHTML(p.family||"")}</span></div><div class="product-actions"><button class="small-btn" data-action="details" data-id="${escapeHTML(p.id)}">التفاصيل</button><button class="small-btn primary" data-action="add" data-id="${escapeHTML(p.id)}" ${price==null?"disabled title='السعر يحتاج إلى تأكيد'":""}>أضف للسلة</button></div></div></article>`;
+    return `<article class="product-card" data-id="${escapeHTML(p.id)}"><div class="product-visual">${imageMarkup(p)}<span class="product-badge">${p.needsReview?"يحتاج مراجعة":(p.productType==="oil"?"زيت عطري":"عطر جاهز")}</span><button class="favorite-btn ${fav?"is-fav":""}" data-action="favorite" data-id="${escapeHTML(p.id)}" aria-label="إضافة للمفضلة">${fav?"♥":"♡"}</button></div><div class="product-info"><h3>${escapeHTML(p.nameAr||p.nameEn||"منتج جديد")}</h3><div class="product-en" dir="ltr">${escapeHTML(p.nameEn||"")}</div><div class="product-meta">${escapeHTML(p.supplierCatalogItem?(p.gender||"زيت عطري مركز"):(p.brand||"الشركة غير محددة"))} · ${escapeHTML(p.gender||"")}</div><p class="product-desc">${escapeHTML(p.scentNature||p.descriptionAr||"الطابع العطري قيد المراجعة.")}</p><div class="product-bottom"><span class="product-price">${p.supplierCatalogItem?"للاختيار والتركيب":formatMoney(price)}</span><span class="muted">${escapeHTML(p.family||"غير محدد")}</span></div><div class="product-actions"><button class="small-btn" data-action="details" data-id="${escapeHTML(p.id)}">التفاصيل</button><button class="small-btn primary" data-action="add" data-id="${escapeHTML(p.id)}" ${price==null?"disabled title='السعر يحتاج إلى تأكيد'":""}>أضف للسلة</button></div></div></article>`;
   }
   function renderProducts() {
     const q=norm($("#productSearch").value), gender=$("#genderFilter").value, family=$("#familyFilter").value;
@@ -122,7 +151,7 @@
   function openDetails(id){
     const p=findProduct(id);if(!p)return;
     const price=priceFor(p);
-    $("#modalContent").innerHTML=`<div class="modal-product"><div class="modal-product-image">${imageMarkup(p)}</div><div><p class="eyebrow">MAMLKAT AL-OTOR</p><h2 id="modalTitle">${escapeHTML(p.nameAr||"منتج")}</h2><div class="product-en">${escapeHTML(p.nameEn||"")}</div><p>${escapeHTML(p.descriptionAr||"لا يوجد وصف موثق بعد.")}</p><p><b>الشركة:</b> ${escapeHTML(p.brand||"غير محددة")}</p><p><b>النوع:</b> ${escapeHTML(p.productType==="oil"?"زيت عطري":"عطر جاهز")} · <b>الجنس:</b> ${escapeHTML(p.gender||"غير محدد")}</p><p><b>العائلة:</b> ${escapeHTML(p.family||"غير محددة")}</p><p><b>النوتات:</b> ${escapeHTML([p.topNotes,p.heartNotes,p.baseNotes].filter(Boolean).join(" / ")||"غير متاحة حاليًا")}</p><div class="modal-price">${formatMoney(price)}</div>${p.needsReview?'<p class="muted">هذا الاسم يحتاج إلى مراجعة البيانات والسعر قبل اعتماد البيع.</p>':""}<label for="modalSize">الحجم</label><select id="modalSize">${Object.keys(sizes).map(s=>`<option value="${s}" ${s==="10"?"selected":""}>${s} مل — ${formatMoney(currentPrice(p,s))}</option>`).join("")}</select><div class="modal-actions"><button class="btn btn-gold" id="modalAdd" ${price==null?"disabled":""}>أضف للسلة</button><button class="btn btn-outline" id="speakDetails">استمع للوصف</button></div></div></div>`;
+    $("#modalContent").innerHTML=`<div class="modal-product"><div class="modal-product-image">${imageMarkup(p)}</div><div><p class="eyebrow">MAMLKAT AL-OTOR</p><h2 id="modalTitle">${escapeHTML(p.nameAr||"منتج")}</h2><div class="product-en">${escapeHTML(p.nameEn||"")}</div><p>${escapeHTML(p.descriptionAr||"لا يوجد وصف موثق بعد.")}</p><p><b>النوع:</b> ${escapeHTML(p.productType==="oil"?"زيت عطري للتركيب":p.productType==="bakhoor"?"عود أو بخور":"عطر جاهز")} · <b>الفئة:</b> ${escapeHTML(p.gender||"غير محدد")}</p><p><b>الطابع:</b> ${escapeHTML(p.scentNature||"يحتاج إلى تقييم العينة")}</p><p><b>العائلة العطرية:</b> ${escapeHTML(p.family||"غير محددة")}</p><p><b>النوتات:</b> ${escapeHTML([p.topNotes,p.heartNotes,p.baseNotes].filter(Boolean).join(" / ")||"غير متاحة من بيانات المورد حاليًا")}</p><div class="modal-price">${p.supplierCatalogItem?"متاح للاختيار ضمن طلب تركيب":formatMoney(price)}</div>${p.needsReview?'<p class="muted">التصنيف وصفي مبدئي، والنوتات والسعر يحتاجان إلى تأكيد قبل اعتماد المنتج.</p>':""}${p.supplierCatalogItem?'<p class="muted">هذا زيت مورد للتركيب؛ لا يظهر كمنتج للبيع المباشر قبل تحديد السعر والتوفر.</p>':'<label for="modalSize">الحجم</label><select id="modalSize">${Object.keys(sizes).map(s=>`<option value="${s}" ${s==="10"?"selected":""}>${s} مل — ${formatMoney(currentPrice(p,s))}</option>`).join("")}</select>'}<div class="modal-actions"><button class="btn btn-gold" id="modalAdd" ${price==null?"disabled":""}>${p.supplierCatalogItem?"السعر قيد التأكيد":"أضف للسلة"}</button><button class="btn btn-outline" id="speakDetails">استمع للوصف</button></div></div></div>`;
     $("#modalBackdrop").classList.remove("hidden");
     $("#modalAdd").addEventListener("click",()=>{const s=$("#modalSize").value;addToCart(id,s);});
     $("#modalSize").addEventListener("change",e=>{$(".modal-price").textContent=formatMoney(currentPrice(p,e.target.value));$("#modalAdd").disabled=currentPrice(p,e.target.value)==null;});
