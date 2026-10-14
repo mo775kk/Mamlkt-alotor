@@ -131,6 +131,7 @@
   $("#skipIntro").addEventListener("click",()=>{$("#intro").classList.add("dismissed");save("mamlaka_intro_seen_v1",true);});
   if(safeRead("mamlaka_intro_seen_v1",false)||window.matchMedia("(prefers-reduced-motion: reduce)").matches)$("#intro").classList.add("dismissed");
   $("#year").textContent=new Date().getFullYear();
+  document.addEventListener("mamlaka:products-updated",()=>{products=[...demoProducts,...safeRead(STORAGE.custom,[])];renderProducts();renderCart();updateCounts();});
   setLanguage(language);renderProducts();renderCart();updateCounts();blendPrice();
   // If search misses, offer a direct request without pretending the catalog contains the item.
   $("#productSearch").addEventListener("keydown",e=>{if(e.key==="Enter" && !products.some(p=>norm([p.nameAr,p.nameEn,p.brand].join(" ")).includes(norm(e.target.value)))){if(e.target.value.trim() && confirm(`لم نعثر على «${e.target.value.trim()}». هل تريد الاستفسار عنه عبر واتساب؟`))requestMissing(e.target.value.trim());}});
