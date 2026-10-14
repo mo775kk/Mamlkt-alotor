@@ -17,6 +17,7 @@
   const $$ = s => [...document.querySelectorAll(s)];
   const safeRead = (key, fallback) => { try { const v = JSON.parse(localStorage.getItem(key)); return v ?? fallback; } catch { return fallback; } };
   const readArray = key => { const value = safeRead(key, []); return Array.isArray(value) ? value : []; };
+  let language = safeRead(STORAGE.lang, "ar") === "en" ? "en" : "ar";
   let products = [...demoProducts, ...readArray(STORAGE.custom)];
   let cart = readArray(STORAGE.cart);
   let favorites = readArray(STORAGE.fav);
@@ -117,7 +118,7 @@
   $("#checkoutBtn").addEventListener("click",checkout);$("#clearCart").addEventListener("click",()=>{cart=[];save(STORAGE.cart,cart);renderCart();updateCounts();notify("تم إفراغ السلة.");});
   $("#blendSize").addEventListener("change",blendPrice);$("#addBlend").addEventListener("click",()=>{const size=$("#blendSize").value, family=$("#blendScent").value,bottle=$("#blendBottle").value;const label=`تركيبة-${family}-${size}-${bottle}`;addToCart("custom-"+Date.now(),size,sizes[size],{nameAr:`تركيبة عطر ${family}`,nameEn:"Custom Blend",label,description:`${family}، ${size} مل، ${bottle}`});const last=cart[cart.length-1];if(last&&last.custom)last.nameAr=`تركيبة ${family} (${bottle})`;save(STORAGE.cart,cart);updateCounts();});
   $("#advisorForm").addEventListener("submit",e=>{e.preventDefault();submitAdvisor($("#advisorInput").value);});
-  $("#contactWhatsapp").href=`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن منتجات مملكة العطور.")}`;
+  $("#contactWhatsapp").href=`https://wa.me/${getWaNumber()}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن منتجات مملكة العطور.")}`;
   $("#menuToggle").addEventListener("click",()=>{const open=$("#mainNav").classList.toggle("open");$("#menuToggle").setAttribute("aria-expanded",String(open));});
   $$("#mainNav a").forEach(a=>a.addEventListener("click",()=>{$("#mainNav").classList.remove("open");$("#menuToggle").setAttribute("aria-expanded","false");}));
   $("#languageToggle").addEventListener("click",()=>setLanguage(language==="ar"?"en":"ar"));
