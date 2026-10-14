@@ -74,6 +74,15 @@
       <div><span class="line-icon">◇</span><span><b>طلب سهل</b><small>تواصل مباشر عبر واتساب</small></span></div>
     </section>
 
+    <section class="section quick-start-section" aria-label="ابدأ في مملكة العطور">
+      <div class="section-heading"><div><p class="eyebrow">CHOOSE YOUR SCENT JOURNEY</p><h2>ابدأ رحلتك العطرية</h2></div><p>التركيب والأنواع والتصنيف في مكان واحد.</p></div>
+      <div class="category-grid quick-start-grid">
+        <a class="category-card category-oils" href="#blend"><span>01</span><div><small>BLENDING LAB</small><h3>ابدأ تركيب عطرك</h3><p>اختر الزيت والحجم والعائلة العطرية</p></div><b>↗</b></a>
+        <a class="category-card category-ready" href="#oil-catalog"><span>02</span><div><small>SUPPLIER OILS</small><h3>أنواع الزيوت المتاحة</h3><p>ابحث في كتالوج الموردين الكامل</p></div><b>↗</b></a>
+        <a class="category-card category-gift" href="#scent-classification"><span>03</span><div><small>SCENT FAMILIES</small><h3>التصنيف العطري</h3><p>استكشف العائلات وطبيعة الروائح</p></div><b>↗</b></a>
+      </div>
+    </section>
+
     <section class="section category-section">
       <div class="section-heading"><div><p class="eyebrow">EXPLORE THE COLLECTION</p><h2>أبواب المملكة</h2></div><p>اختر عالم الرائحة الذي يشبهك.</p></div>
       <div class="category-grid">
@@ -101,9 +110,35 @@
       <div class="feature-copy"><p class="eyebrow">YOUR OWN BLEND</p><h2>رائحتك… <span>على ذوقك</span></h2><p>اختر من الزيوت العطرية المتاحة وحدد الحجم والعبوة، ثم أرسل تفاصيل طلبك لمراجعتها مع المتجر.</p><a class="btn btn-gold" href="#blend">ابدأ التركيب</a></div>
     </section>
 
+    <section class="section products-section supplier-oil-section" id="oil-catalog">
+      <div class="section-heading"><div><p class="eyebrow">THE SUPPLIER OIL LIBRARY</p><h2>كتالوج الزيوت المركزة للتركيب</h2></div><p>أسماء الموردين مصنفة للبحث والاختيار. أسعار المورد تبقى داخل لوحة الإدارة ولا تُعرض للعميل.</p></div>
+      <div class="toolbar supplier-public-toolbar">
+        <label class="search-box"><span>⌕</span><input id="supplierOilSearch" type="search" placeholder="ابحث باسم العطر أو كود الزيت..." autocomplete="off"></label>
+        <select id="supplierOilCategory" aria-label="تصنيف الزيوت"><option value="">كل الأقسام</option><option value="MEN">رجالي</option><option value="WOMEN">نسائي</option><option value="UNISEX">للجنسين</option><option value="ORIENTAL">شرقي</option><option value="KIDS">أطفال</option><option value="DIFFUSER">فواحات</option></select>
+        <select id="supplierOilFamily" aria-label="العائلة العطرية"><option value="">كل العائلات العطرية</option><option>حمضي ومنعش</option><option>زهري ووردي</option><option>مسكي ونظيف</option><option>حلو وفانيليا</option><option>عنبر وشرقي</option><option>عود وخشبي</option><option>جلدي وتبغي</option><option>عطري وأخضر</option><option>غير محدد</option></select>
+      </div>
+      <p class="results-message" id="supplierOilSummary" aria-live="polite">استورد ملف كتالوج الموردين من لوحة الإدارة لعرض جميع الأنواع هنا.</p>
+      <div class="product-grid" id="supplierOilProducts"></div>
+      <div class="empty-state hidden" id="noSupplierOilProducts">لم يتم تحميل كتالوج الموردين بعد، أو لا توجد نتائج مطابقة.</div>
+      <div class="section-cta"><button class="btn btn-outline" id="supplierOilMore" type="button">عرض المزيد من الأنواع</button></div>
+    </section>
+    <section class="section taxonomy-public-section" id="scent-classification">
+      <div class="section-heading"><div><p class="eyebrow">SCENT CLASSIFICATION</p><h2>العائلات العطرية</h2></div><p>تصنيف إرشادي يساعدك على اكتشاف طابع الرائحة؛ بعض الأنواع تحتاج إلى تقييم العينة أو بيانات المورد.</p></div>
+      <div class="category-grid">
+        <a class="category-card category-ready" href="#oil-catalog" data-scent-family="حمضي ومنعش"><span>01</span><div><small>CITRUS / FRESH</small><h3>حمضي ومنعش</h3><p>خفيف وحيوي ومناسب للأجواء الدافئة</p></div><b>↗</b></a>
+        <a class="category-card category-gift" href="#oil-catalog" data-scent-family="زهري ووردي"><span>02</span><div><small>FLORAL / ROSE</small><h3>زهري ووردي</h3><p>ناعم أو وردي أو غني بالزهور</p></div><b>↗</b></a>
+        <a class="category-card category-oils" href="#oil-catalog" data-scent-family="مسكي ونظيف"><span>03</span><div><small>MUSK / CLEAN</small><h3>مسكي ونظيف</h3><p>ناعم ونظيف وقريب من رائحة الجلد</p></div><b>↗</b></a>
+        <a class="category-card category-bakhoor" href="#oil-catalog" data-scent-family="حلو وفانيليا"><span>04</span><div><small>GOURMAND / SWEET</small><h3>حلو وفانيليا</h3><p>فانيليا وحلوى ودفء عطري</p></div><b>↗</b></a>
+        <a class="category-card category-oils" href="#oil-catalog" data-scent-family="عنبر وشرقي"><span>05</span><div><small>AMBER / ORIENTAL</small><h3>عنبر وشرقي</h3><p>دافئ ومتبل أو بخوري</p></div><b>↗</b></a>
+        <a class="category-card category-bakhoor" href="#oil-catalog" data-scent-family="عود وخشبي"><span>06</span><div><small>OUD / WOODY</small><h3>عود وخشبي</h3><p>أخشاب دافئة وطابع راتنجي</p></div><b>↗</b></a>
+      </div>
+      <p class="admin-note">مهم: التصنيف لبعض الأسماء استدلالي من الاسم والقسم وليس تحليلًا حسيًا أو شهادة من المورد. التركيب الكيميائي الفعلي غير متاح في قوائم الأسعار؛ لا تُعرض أي مادة كيميائية على أنها مؤكدة دون SDS أو IFRA أو نشرة فنية.</p>
+    </section>
+
     <section class="section blend-section" id="blend">
       <div class="section-heading"><div><p class="eyebrow">THE BLENDING LAB</p><h2>مختبر تركيب عطرك</h2></div><p>أنشئ طلب تركيب مبدئيًا حسب الخيارات المتاحة.</p></div>
       <div class="blend-panel">
+        <div class="blend-step"><label for="blendOil">اختيار الزيت الأساسي (اختياري)</label><select id="blendOil"><option value="">اختر زيتًا من كتالوج الموردين</option></select></div>
         <div class="blend-step"><label for="blendScent">العائلة العطرية</label><select id="blendScent"><option value="شرقي">شرقي دافئ</option><option value="خشبي">خشبي أنيق</option><option value="زهري">زهري ناعم</option><option value="منعش">منعش وحيوي</option><option value="حلو">حلو ودافئ</option><option value="مسكي">مسكي نظيف</option><option value="حمضي ومنعش">حمضي ومنعش</option><option value="زهري ووردي">زهري ووردي</option><option value="مسكي ونظيف">مسكي ونظيف</option><option value="حلو وفانيليا">حلو وفانيليا</option><option value="عنبر وشرقي">عنبر وشرقي</option><option value="عود وخشبي">عود وخشبي</option><option value="جلدي وتبغي">جلدي وتبغي</option><option value="عطري وأخضر">عطري وأخضر</option></select></div>
         <div class="blend-step"><label for="blendSize">الحجم</label><select id="blendSize"><option value="3">3 مل</option><option value="5">5 مل</option><option value="10" selected>10 مل</option><option value="22">22 مل</option><option value="30">30 مل</option><option value="50">50 مل</option><option value="100">100 مل</option></select></div>
         <div class="blend-step"><label for="blendBottle">العبوة</label><select id="blendBottle"><option>عبوة كلاسيكية</option><option>عبوة فاخرة</option><option>أترك اختيار العبوة للمتجر</option></select></div>
