@@ -37,6 +37,7 @@
     return catalog.products.map(p => ({
       id: "supplier-" + String(p.sku || p.supplierSku || p.name_en || Math.random()).replace(/[^a-zA-Z0-9_-]/g,"-"),
       supplierSku: p.sku || p.supplierSku || "",
+      supplierCategory: p.category || "",
       nameAr: p.name_ar || p.name_en || "اسم يحتاج مراجعة",
       nameEn: p.name_en || "",
       brand: (p.supplierName || "AQUA D’OR Parfums") + " · " + (p.line || p.supplierLine || ""),
@@ -86,10 +87,7 @@
     const all=products.filter(p=>p.supplierCatalogItem);
     const q=norm($("#supplierOilSearch")?.value||""),cat=$("#supplierOilCategory")?.value||"",family=$("#supplierOilFamily")?.value||"";
     const categoryMap={MEN:"رجالي",WOMEN:"نسائي",UNISEX:"للجنسين",ORIENTAL:"شرقي",KIDS:"أطفال",DIFFUSER:"فواحات"};
-    const filtered=all.filter(p=>{
-      const raw=safeRead("mamlaka_supplier_catalog_v1",{products:[]}).products?.find(x=>String(x.sku||x.supplierSku)===String(p.supplierSku))||{};
-      return (!cat||raw.category===cat)&&(!family||p.family===family)&&(!q||norm([p.nameAr,p.nameEn,p.supplierSku,p.family,p.gender,p.brand].join(" ")).includes(q));
-    });
+    const filtered=all.filter(p=>(!cat||p.supplierCategory===cat)&&(!family||p.family===family)&&(!q||norm([p.nameAr,p.nameEn,p.supplierSku,p.family,p.gender,p.brand].join(" ")).includes(q)));
     const visible=filtered.slice(0,supplierVisibleLimit);
     grid.innerHTML=visible.map(productCard).join("");
     $("#supplierOilSummary").textContent=all.length?("إجمالي "+all.length+" نوع زيت من الموردين · المعروض "+visible.length+" من "+filtered.length+" · الأسعار الداخلية غير معروضة هنا."): "استورد ملف كتالوج الموردين من لوحة الإدارة لعرض الأنواع كاملة.";
