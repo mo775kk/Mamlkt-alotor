@@ -94,7 +94,7 @@
   function requestMissing(name){
     const req=safeRead(STORAGE.requests,[]);req.push({name,createdAt:new Date().toISOString()});save(STORAGE.requests,req);
     const msg=`مرحبًا، أريد الاستفسار عن عطر غير موجود في الكتالوج: ${name}`;
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
+    window.open(`https://wa.me/${getWaNumber()}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
   }
   const translations = {
     ar:{ready:"العطور الجاهزة",oils:"الزيوت والتركيب",bakhoor:"العود والبخور",gift:"الهدايا",advisor:"مستشار العطور",visit:"تواصل معنا",home:"الرئيسية"},
