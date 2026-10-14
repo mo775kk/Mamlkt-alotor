@@ -1,6 +1,6 @@
 (() => {
   "use strict";
-  const getWaNumber = () => (localStorage.getItem("mamlaka_admin_whatsapp_v1") || "201272776928").replace(/\\D/g, "");
+  const getWaNumber = () => (localStorage.getItem("mamlaka_admin_whatsapp_v1") || "201272776928").replace(/\D/g, "");
   const STORAGE = {cart:"mamlaka_cart_v1", fav:"mamlaka_favorites_v1", lang:"mamlaka_language_v1", custom:"mamlaka_custom_products_v1", requests:"mamlaka_requests_v1"};
   const sizes = {"3":50,"5":75,"10":100,"22":130,"30":150,"50":200,"100":450};
   const demoProducts = [
@@ -16,10 +16,10 @@
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const safeRead = (key, fallback) => { try { const v = JSON.parse(localStorage.getItem(key)); return v ?? fallback; } catch { return fallback; } };
-  let products = [...demoProducts, ...safeRead(STORAGE.custom, [])];
-  let cart = safeRead(STORAGE.cart, []);
-  let favorites = safeRead(STORAGE.fav, []);
-  let language = safeRead(STORAGE.lang, "ar");
+  const readArray = key => { const value = safeRead(key, []); return Array.isArray(value) ? value : []; };
+  let products = [...demoProducts, ...readArray(STORAGE.custom)];
+  let cart = readArray(STORAGE.cart);
+  let favorites = readArray(STORAGE.fav);
   let toastTimer;
   const formatMoney = n => n == null || !Number.isFinite(Number(n)) ? "السعر غير محدد" : `${Number(n).toLocaleString("ar-EG")} ج.م`;
   const priceFor = p => p.price != null ? Number(p.price) : (p.prices && p.prices["10"] != null ? Number(p.prices["10"]) : null);
