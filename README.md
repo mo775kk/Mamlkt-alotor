@@ -194,3 +194,25 @@
 - التخزين الحالي محلي للمتصفح، وليس قاعدة بيانات سحابية.
 - مكتبة الملفات تحفظ سجل ومحتوى JSON في المتصفح؛ لا تعتمد عليها وحدها كنسخة احتياطية.
 - تم ربط الملفات في المستودع، لكن يلزم اختبار فعلي في المتصفح بعد اكتمال النشر قبل اعتبار جميع التفاعلات مجتازة للاختبار.
+
+
+## تحديث 15 أكتوبر 2026 — الهرم العطري والمصادر
+
+- أضيفت نوتات المقدمة والقلب والقاعدة إلى سجلات العطور البحثية الموجودة في `data/products.json`.
+- تعرض نافذة تفاصيل المنتج النوتات في ثلاثة أقسام منفصلة، وتعرض درجة التحقق ورابط المصدر عندما يتوفران.
+- تم تحديث قائمة العرض الأولية في `app.js`، بما في ذلك Yara Candy وOne Man Show وMegamare وMoon Sparkle وMadawi وYum Boujee Marshmallow | 81 وSilver Scent Midnight.
+- تم الحفاظ على اسم `Midnight` العام دون اختراع نوتات له، كما لم تُعتمد نوتات `Lacoste White` قبل تحديد ما إذا كان المنتج EDT أو EDP أو Eau Fraîche.
+- عند استيراد كتالوج موردين بصيغة JSON، يحتفظ الموقع بحقول النوتات إذا احتوى الملف على `topNotes` و`heartNotes` و`baseNotes` أو الحقول البديلة `notes_top` و`notes_heart` و`notes_base`. ويمكن حفظ رابط المصدر ودرجة التحقق في `sourceUrl` و`notesConfidence`.
+
+### سياسة التحقق
+تعتمد الأولوية للموقع الرسمي للشركة، ثم الموزع المعتمد، ثم قواعد بيانات العطور المتخصصة عند غياب التفاصيل الرسمية. لا تُستنتج نوتات منتج من اسم الزيت أو كود المورد وحده. بعض النوتات المنشورة تصف الهرم التسويقي للعطر ولا تكشف تركيبته الكيميائية الكاملة.
+
+### مصادر أمثلة تم التحقق منها
+- Lattafa — Yara Candy: https://lattafa.com/product/yara-candy/
+- Lacoste Egypt — L.12.12 Blanc EDP: https://www.lacoste.com.eg/en/fragrance/mens-l.12.12-blanc-eau-de-parfum-100ml/99350066867.html
+- KAYALI — Yum Boujee Marshmallow | 81: https://kayali.com/products/yum-boujee-marshmallow-81
+- Arabian Oud — Madawi: https://eg.arabianoud.com/en/p204046007-madawi-90-ml
+- Orto Parisi — Megamare: https://ortoparisi.com/products/megamare
+- Basenotes — Escada Moon Sparkle: https://basenotes.com/fragrances/escada-moon-sparkle-by-escada.26128653
+- Fragrantica — One Man Show: https://www.fragrantica.com/perfume/Jacques-Bogart/One-Man-Show-7795.html
+- Fragrantica — Silver Scent Midnight: https://www.fragrantica.com/perfume/Jacques-Bogart/Silver-Scent-Midnight-46938.html
