@@ -2,7 +2,21 @@
   "use strict";
   const getWaNumber = () => (localStorage.getItem("mamlaka_admin_whatsapp_v1") || "201272776928").replace(/\D/g, "");
   const STORAGE = {cart:"mamlaka_cart_v1", fav:"mamlaka_favorites_v1", lang:"mamlaka_language_v1", custom:"mamlaka_custom_products_v1", requests:"mamlaka_requests_v1"};
-  const sizes = {"3":50,"5":75,"10":100,"22":130,"30":150,"50":200,"100":450};
+  const sizes = (() => {
+    const fallback = {"3":50,"5":75,"10":100,"22":130,"30":150,"50":200,"100":450};
+    try {
+      const cfg = JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1") || "null");
+      if (Array.isArray(cfg?.retailBlendPrices) && cfg.retailBlendPrices.length) {
+        const editable = {};
+        cfg.retailBlendPrices.forEach(item => {
+          const size = String(item.size || "").match(/\\d+/)?.[0];
+          if (size && Number.isFinite(Number(item.price))) editable[size] = Number(item.price);
+        });
+        if (Object.keys(editable).length) return editable;
+      }
+    } catch {}
+    return fallback;
+  })();
   const demoProducts = [
     {id:"demo-yara-candy",nameAr:"يارا كاندي",nameEn:"Yara Candy",brand:"غير محدد",productType:"ready",gender:"نسائي",family:"حلو",descriptionAr:"اسم مقترح في الكتالوج الأولي. التفاصيل والسعر يحتاجان إلى تأكيد المتجر.",price:null,available:true,needsReview:true},
     {id:"demo-one-man-show",nameAr:"ون مان شو",nameEn:"One Man Show",brand:"غير محدد",productType:"ready",gender:"رجالي",family:"خشبي",descriptionAr:"عطر مدرج كاسم للبحث؛ بيانات الشركة والنوتات غير مؤكدة.",price:null,available:true,needsReview:true},
