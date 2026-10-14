@@ -95,7 +95,7 @@
     $("#royalFileSearch")?.addEventListener("input",renderFileList);
   }
   function importData(data,name,raw,id){
-    let records=Array.isArray(data)?data:Array.isArray(data.products)?data.products:Array.isArray(data.items)?data.items:Array.isArray(data.records)?data.records:null;
+    let records=Array.isArray(data)?data:Array.isArray(data.products)?data.products:Array.isArray(data.oils)?data.oils:Array.isArray(data.items)?data.items:Array.isArray(data.records)?data.records:null;
     if(data && data.localStorage && typeof data.localStorage==="object"){
       const keys=Object.keys(data.localStorage).filter(k=>catalogKeys.includes(k));
       if(!keys.length){toast("لم توجد مفاتيح بيانات معروفة في النسخة الاحتياطية.");return;}
@@ -111,7 +111,7 @@
       });
       updateFileStatus(id,"تم الاستيراد");toast("تم استيراد البيانات المعروفة. راجع الموقع قبل المتابعة.");return;
     }
-    if(!records){toast("لم أتعرف على قائمة سجلات. يجب أن يحتوي JSON على مصفوفة أو products أو items أو records.");return;}
+    if(!records){toast("لم أتعرف على قائمة سجلات. يجب أن يحتوي JSON على مصفوفة أو products أو oils أو items أو records.");return;} const supplierLike=(Array.isArray(data.products)&&data.products.some(p=>p&&("sku" in p||"price_1kg" in p||"price_500g" in p)))||Array.isArray(data.oils); if(supplierLike){if(!confirm("يبدو أن هذا ملف كتالوج موردين. سيتم حفظه في كتالوج الموردين المحلي دون استبدال منتجات المتجر. هل تريد المتابعة؟"))return;write("mamlaka_supplier_catalog_v1",{...data,products:records});updateFileStatus(id,"تم الاستيراد إلى كتالوج الموردين");toast("تم استيراد كتالوج الموردين إلى التخزين المحلي. راجع النتائج قبل الاستخدام.");return;}
     if(records.some(x=>!x || typeof x!=="object" || Array.isArray(x))){toast("توجد سجلات غير صالحة؛ لم يتم الاستيراد.");return;}
     if(!confirm("تم العثور على "+records.length+" سجل. سيُدمج مع المنتجات المحلية دون حذفها تلقائيًا. هل تريد المتابعة؟"))return;
     const existing=read("mamlaka_custom_products_v1",[]), map=new Map();
