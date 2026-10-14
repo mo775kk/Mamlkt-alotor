@@ -55,4 +55,6 @@
   });
   document.addEventListener("DOMContentLoaded", enhanceToast);
   enhanceToast();
+
+  document.addEventListener("DOMContentLoaded",()=>{if(document.getElementById("royalVoiceGuide"))return;const b=document.createElement("button");b.id="royalVoiceGuide";b.type="button";b.textContent="♛ اشرح لي صوتيًا";b.setAttribute("aria-label","شرح صوتي للخطوة الحالية");b.style.cssText="position:fixed;bottom:18px;left:16px;z-index:999;border:1px solid #b58a42;border-radius:999px;padding:11px 16px;background:#fffaf1;color:#493923;box-shadow:0 8px 26px #0002;font-weight:700;cursor:pointer";b.addEventListener("click",()=>{if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){alert("التحدث الصوتي غير مدعوم في هذا المتصفح.");return}const id=(location.hash||"#home").slice(1),s=document.getElementById(id)||document.querySelector("main section"),h=s?.querySelector("h1,h2,h3")?.textContent||"مرحبًا بك في مملكة العطور",p=s?.querySelector("p")?.textContent||"اختر القسم الذي تريد زيارته.";speechSynthesis.cancel();const u=new SpeechSynthesisUtterance("أهلًا بك في مملكة العطور. "+h+". "+p+" يمكنك التواصل معنا عبر واتساب للمساعدة.");u.lang="ar-EG";u.rate=.92;speechSynthesis.speak(u)});document.body.appendChild(b)});
 })();
