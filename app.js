@@ -1,6 +1,6 @@
 (() => {
   "use strict";
-  const WA_NUMBER = "201272776928";
+  const getWaNumber = () => (localStorage.getItem("mamlaka_admin_whatsapp_v1") || "201272776928").replace(/\\D/g, "");
   const STORAGE = {cart:"mamlaka_cart_v1", fav:"mamlaka_favorites_v1", lang:"mamlaka_language_v1", custom:"mamlaka_custom_products_v1", requests:"mamlaka_requests_v1"};
   const sizes = {"3":50,"5":75,"10":100,"22":130,"30":150,"50":200,"100":450};
   const demoProducts = [
@@ -77,7 +77,7 @@
     const lines=cart.map((x,i)=>`${i+1}) ${x.nameAr}${x.nameEn?" ("+x.nameEn+")":""} - ${x.size} مل × ${x.qty} = ${formatMoney(x.price*x.qty)}`);
     const total=cart.reduce((n,x)=>n+x.price*x.qty,0);
     const msg=`مرحبًا، أريد مراجعة طلب من مملكة العطور:\n${lines.join("\n")}\nالإجمالي المرجعي: ${formatMoney(total)}\nيرجى تأكيد التوفر والسعر النهائي.`;
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
+    window.open(`https://wa.me/${getWaNumber()}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
   }
   function blendPrice(){const s=$("#blendSize").value;$("#blendPrice").textContent=formatMoney(sizes[s]);}
   function submitAdvisor(query){
