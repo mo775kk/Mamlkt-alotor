@@ -1,23 +1,140 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "currency": "EGP",
-  "notes": "أسماء أولية غير معتمدة للبيع حتى مراجعة البيانات والأسعار. لا تمثل مخزونًا مؤكدًا.",
+  "updatedAt": "2026-10-15",
+  "notes": "نوتات العطور موثقة بمصادر عامة؛ راجع sourceUrl. المنتجات التي تحمل needsReview=true لا تُعتمد قبل تحديد الإصدار. بيانات العطور لا تكشف الصيغة الكيميائية الكاملة.",
   "products": [
     {
       "id": "demo-yara-candy",
       "nameAr": "يارا كاندي",
       "nameEn": "Yara Candy",
-      "brand": "",
+      "brand": "Lattafa",
       "supplier": "",
       "productType": "ready",
       "gender": "نسائي",
-      "origin": "",
-      "family": "حلو",
+      "origin": "الإمارات",
+      "family": "فاكهي حلو / غورماند",
+      "scentNature": "حلو وفاكهي بطابع حلوى الفراولة، مع لمسة حمضية وزهرية وقاعدة كريمية دافئة.",
+      "topNotes": [
+        "اليوسفي الأخضر",
+        "الكشمش الأسود"
+      ],
+      "heartNotes": [
+        "حلوى الفراولة الفوارة",
+        "الغاردينيا"
+      ],
+      "baseNotes": [
+        "خشب الصندل",
+        "شراب الفانيليا",
+        "المسك",
+        "العنبر"
+      ],
+      "descriptionAr": "يفتتح باليوسفي الأخضر والكشمش الأسود، ثم حلوى الفراولة والغاردينيا، ويستقر على الفانيليا وخشب الصندل والمسك والعنبر.",
+      "sourceUrl": "https://lattafa.com/product/yara-candy/",
+      "notesStatus": "verified-brand-source",
+      "notesConfidence": "مرتفع — مصدر الشركة الرسمي",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "3",
+        "5",
+        "10",
+        "22",
+        "30",
+        "50",
+        "100"
+      ],
+      "prices": {},
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": true,
+      "featured": false,
+      "tags": [],
+      "source": "web-research"
+    },
+    {
+      "id": "demo-one-man-show",
+      "nameAr": "ون مان شو",
+      "nameEn": "One Man Show",
+      "brand": "Jacques Bogart",
+      "productType": "ready",
+      "gender": "رجالي",
+      "family": "شيبر خشبي عطري",
+      "scentNature": "كلاسيكي أخضر وعطري وتوابلي، يتطور إلى أخشاب وجلد وطحلب ودفء عنبري.",
+      "topNotes": [
+        "الريحان",
+        "البرغموت",
+        "الأرتميسيا",
+        "الكراوية",
+        "الغالبانوم",
+        "خشب الورد البرازيلي"
+      ],
+      "heartNotes": [
+        "إبر الصنوبر",
+        "القرنفل",
+        "الباتشولي",
+        "جوزة الطيب",
+        "التوابل",
+        "الفيتيفر",
+        "إبرة الراعي",
+        "اللادن",
+        "الورد",
+        "الياسمين"
+      ],
+      "baseNotes": [
+        "طحلب السنديان",
+        "الجلد",
+        "خشب الأرز",
+        "الستيراکس",
+        "خشب الصندل",
+        "الكاستوريوم",
+        "العنبر",
+        "حبوب التونكا",
+        "جوز الهند",
+        "الفانيليا"
+      ],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Jacques-Bogart/One-Man-Show-7795.html",
+      "notesStatus": "verified-fragrance-directory",
+      "notesConfidence": "جيد — دليل عطري متخصص؛ طابق الإصدار",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "3",
+        "5",
+        "10",
+        "22",
+        "30",
+        "50",
+        "100"
+      ],
+      "prices": {},
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": true,
+      "featured": false,
+      "tags": [],
+      "source": "web-research"
+    },
+    {
+      "id": "demo-midnight",
+      "nameAr": "ميدنايت",
+      "nameEn": "Midnight",
+      "brand": "غير محدد",
+      "productType": "ready",
+      "gender": "غير محدد",
+      "family": "غير محدد",
+      "scentNature": "اسم عام يطابق عطورًا متعددة؛ يلزم تحديد الشركة والإصدار.",
       "topNotes": [],
       "heartNotes": [],
       "baseNotes": [],
-      "descriptionAr": "اسم أولي يحتاج إلى مراجعة",
-      "descriptionEn": "",
+      "notesStatus": "needs-identification",
+      "notesConfidence": "غير متاح — يلزم اسم الشركة أو صورة العبوة",
+      "verified": false,
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -37,25 +154,166 @@
       "tags": [
         "needsReview"
       ],
-      "source": "user-provided-name-list",
-      "verified": false,
-      "needsReview": true
+      "source": "web-research"
     },
     {
       "id": "demo-megamare",
       "nameAr": "ميجاماري",
       "nameEn": "Megamare",
-      "brand": "",
-      "supplier": "",
+      "brand": "Orto Parisi",
       "productType": "ready",
       "gender": "للجنسين",
-      "origin": "",
-      "family": "",
+      "family": "مائي بحري / خشبي",
+      "scentNature": "بحري كثيف ومالح ومعدني مع قاعدة مسكية خشبية قوية.",
+      "topNotes": [
+        "البرغموت",
+        "الليمون"
+      ],
+      "heartNotes": [
+        "الأعشاب البحرية",
+        "كالون (أكورد مائي)",
+        "هيديون"
+      ],
+      "baseNotes": [
+        "المسك",
+        "أمبروكسان",
+        "خشب الأرز"
+      ],
+      "sourceUrl": "https://ortoparisi.com/products/megamare",
+      "notesStatus": "cross-checked-fragrance-sources",
+      "notesConfidence": "جيد — النوتات من أدلة متخصصة؛ صفحة الشركة تؤكد المنتج",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "3",
+        "5",
+        "10",
+        "22",
+        "30",
+        "50",
+        "100"
+      ],
+      "prices": {},
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": true,
+      "featured": false,
+      "tags": [],
+      "source": "web-research"
+    },
+    {
+      "id": "demo-moon-sparkle",
+      "nameAr": "مون سباركل",
+      "nameEn": "Moon Sparkle",
+      "brand": "Escada",
+      "productType": "ready",
+      "gender": "نسائي",
+      "family": "فاكهي زهري",
+      "scentNature": "فاكهي مرح يبدأ بالفراولة والكشمش والحمضيات ثم زهور ناعمة وقاعدة فاكهية مسكية خشبية.",
+      "topNotes": [
+        "الفراولة",
+        "الكشمش الأسود",
+        "نوتات حمضية",
+        "فواكه حمراء"
+      ],
+      "heartNotes": [
+        "البازلاء العطرية",
+        "الفريزيا",
+        "الياسمين",
+        "الورد"
+      ],
+      "baseNotes": [
+        "التوت",
+        "المسك",
+        "خشب الصندل",
+        "العنبر"
+      ],
+      "sourceUrl": "https://basenotes.com/fragrances/escada-moon-sparkle-by-escada.26128653",
+      "notesStatus": "verified-fragrance-directory",
+      "notesConfidence": "جيد — دليل عطري متخصص؛ إصدار 2007 محدود/متوقف",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "3",
+        "5",
+        "10",
+        "22",
+        "30",
+        "50",
+        "100"
+      ],
+      "prices": {},
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": true,
+      "featured": false,
+      "tags": [],
+      "source": "web-research"
+    },
+    {
+      "id": "demo-maddawi",
+      "nameAr": "مضاوي",
+      "nameEn": "Madawi",
+      "brand": "Arabian Oud",
+      "productType": "ready",
+      "gender": "نسائي",
+      "family": "فاكهي زهري خشبي",
+      "scentNature": "فاكهي استوائي وزهري أبيض مع قاعدة ترابية مسكية دافئة.",
+      "topNotes": [
+        "الأناناس"
+      ],
+      "heartNotes": [
+        "زهر البرتقال"
+      ],
+      "baseNotes": [
+        "الباتشولي",
+        "المسك"
+      ],
+      "sourceUrl": "https://eg.arabianoud.com/en/p204046007-madawi-90-ml",
+      "notesStatus": "verified-brand-source",
+      "notesConfidence": "مرتفع — صفحة Arabian Oud الرسمية",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "3",
+        "5",
+        "10",
+        "22",
+        "30",
+        "50",
+        "100"
+      ],
+      "prices": {},
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": true,
+      "featured": false,
+      "tags": [],
+      "source": "web-research"
+    },
+    {
+      "id": "demo-lacoste-white",
+      "nameAr": "لاكوست وايت",
+      "nameEn": "Lacoste White",
+      "brand": "Lacoste",
+      "productType": "ready",
+      "gender": "رجالي",
+      "family": "غير محدد حتى تأكيد الإصدار",
+      "scentNature": "اسم مختصر قد يشير إلى L.12.12 Blanc EDT أو EDP أو Eau Fraîche، ولكل إصدار نوتات مختلفة.",
       "topNotes": [],
       "heartNotes": [],
       "baseNotes": [],
-      "descriptionAr": "اسم أولي يحتاج إلى مراجعة",
-      "descriptionEn": "",
+      "sourceUrl": "https://www.lacoste.com.eg/en/fragrance/mens-l.12.12-blanc-eau-de-parfum-100ml/99350066867.html",
+      "notesStatus": "needs-variant-confirmation",
+      "notesConfidence": "غير محسوم — توجد إصدارات متعددة",
+      "verified": false,
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -75,9 +333,107 @@
       "tags": [
         "needsReview"
       ],
-      "source": "user-provided-name-list",
-      "verified": false,
-      "needsReview": true
+      "source": "web-research"
+    },
+    {
+      "id": "demo-kayali-marshmallow",
+      "nameAr": "كيالي يوم بوجي مارشميلو 81",
+      "nameEn": "Yum Boujee Marshmallow | 81",
+      "brand": "KAYALI",
+      "productType": "ready",
+      "gender": "نسائي",
+      "family": "غورماند زهري فاكهي",
+      "scentNature": "حلو بطابع مارشميلو وردي وفراولة وجوز هند، مع قاعدة فانيليا مخفوقة وسكر التوت ومسك وردي.",
+      "topNotes": [
+        "تفاح بينك ليدي",
+        "زهر النكتارين",
+        "الفريزيا",
+        "الليمون الإيطالي"
+      ],
+      "heartNotes": [
+        "مارشميلو وردي",
+        "الفراولة",
+        "رقائق جوز الهند",
+        "زهر البرتقال"
+      ],
+      "baseNotes": [
+        "فانيليا مخفوقة",
+        "سكر التوت",
+        "المسك الوردي",
+        "أمبروكس",
+        "أكورد KAYALI المميز"
+      ],
+      "sourceUrl": "https://kayali.com/products/yum-boujee-marshmallow-81",
+      "notesStatus": "verified-brand-source",
+      "notesConfidence": "مرتفع — مصدر الشركة الرسمي؛ تأكد من مطابقة إصدار 81",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "3",
+        "5",
+        "10",
+        "22",
+        "30",
+        "50",
+        "100"
+      ],
+      "prices": {},
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": true,
+      "featured": false,
+      "tags": [],
+      "source": "web-research"
+    },
+    {
+      "id": "researched-silver-scent-midnight",
+      "nameAr": "سيلفر سنت ميدنايت",
+      "nameEn": "Silver Scent Midnight",
+      "brand": "Jacques Bogart",
+      "productType": "ready",
+      "gender": "رجالي",
+      "family": "فوجير عطري خشبي",
+      "scentNature": "حمضي عشبي مع هيل وتوابل وزهر البرتقال، ثم قاعدة خشبية حلوة.",
+      "topNotes": [
+        "الجريب فروت",
+        "المريمية",
+        "الهيل"
+      ],
+      "heartNotes": [
+        "الشيح (أرتميسيا)",
+        "جوزة الطيب",
+        "زهر البرتقال"
+      ],
+      "baseNotes": [
+        "حبوب التونكا",
+        "خشب الغاياك",
+        "خشب الأرز"
+      ],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Jacques-Bogart/Silver-Scent-Midnight-46938.html",
+      "notesStatus": "verified-fragrance-directory",
+      "notesConfidence": "جيد — دليل عطري متخصص؛ لا تخلطه مع أسماء Midnight الأخرى",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "3",
+        "5",
+        "10",
+        "22",
+        "30",
+        "50",
+        "100"
+      ],
+      "prices": {},
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": true,
+      "featured": false,
+      "tags": [],
+      "source": "web-research"
     }
   ]
 }
