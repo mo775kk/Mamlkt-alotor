@@ -31,8 +31,25 @@
   const $$ = s => [...document.querySelectorAll(s)];
   const safeRead = (key, fallback) => { try { const v = JSON.parse(localStorage.getItem(key)); return v ?? fallback; } catch { return fallback; } };
   const readArray = key => { const value = safeRead(key, []); return Array.isArray(value) ? value : []; };
+  const supplierProducts = () => {
+    const catalog = safeRead("mamlaka_supplier_catalog_v1", null);
+    if (!Array.isArray(catalog?.products)) return [];
+    return catalog.products.map(p => ({
+      id: "supplier-" + String(p.sku || p.supplierSku || p.name_en || Math.random()).replace(/[^a-zA-Z0-9_-]/g,"-"),
+      supplierSku: p.sku || p.supplierSku || "",
+      nameAr: p.name_ar || p.name_en || "اسم يحتاج مراجعة",
+      nameEn: p.name_en || "",
+      brand: (p.supplierName || "AQUA D’OR Parfums") + " · " + (p.line || p.supplierLine || ""),
+      productType: "oil",
+      gender: p.genderLabel || ({MEN:"رجالي",WOMEN:"نسائي",UNISEX:"للجنسين",ORIENTAL:"شرقي",KIDS:"أطفال",DIFFUSER:"فواحات"}[p.category] || "غير محدد"),
+      family: p.scentFamily || p.chemicalProfileId || "غير محدد",
+      scentNature: p.scentNature || "",
+      descriptionAr: "زيت عطري مركز للتركيب · كود المورد: " + (p.sku || "غير متوفر") + " · " + (p.scentNature || "طبيعة الرائحة تحتاج إلى مراجعة"),
+      price: null, prices: {}, available: false, needsReview: true, supplierCatalogItem: true
+    }));
+  };
   let language = safeRead(STORAGE.lang, "ar") === "en" ? "en" : "ar";
-  let products = [...demoProducts, ...readArray(STORAGE.custom)];
+  let products = [...demoProducts, ...readArray(STORAGE.custom), ...supplierProducts()];
   let cart = readArray(STORAGE.cart);
   let favorites = readArray(STORAGE.fav);
   let toastTimer;
@@ -43,7 +60,7 @@
   function save(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { notify("تعذر الحفظ في هذا المتصفح. صدّر نسخة احتياطية إن أمكن."); return false; } }
   function notify(msg) { const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),3000); }
   function findProduct(id) { return products.find(p=>p.id===id); }
-  function currentPrice(p,size) { if(p.prices && p.prices[String(size)] != null) return Number(p.prices[String(size)]); if(p.price != null) return Number(p.price); return sizes[String(size)] ?? null; }
+  function currentPrice(p,size) { if(p?.supplierCatalogItem || p?.supplierSku) return null; if(p.prices && p.prices[String(size)] != null) return Number(p.prices[String(size)]); if(p.price != null) return Number(p.price); return sizes[String(size)] ?? null; }
   function imageMarkup(p) { if(p.image && /^(https?:|assets\/|data:image\/)/i.test(p.image)) return `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.nameAr||p.nameEn)}" loading="lazy" onerror="this.remove()">`; return `<div class="placeholder-bottle" role="img" aria-label="صورة افتراضية لعبوة عطر"></div>`; }
   function productCard(p) {
     const price=priceFor(p), fav=favorites.includes(p.id);
@@ -57,6 +74,33 @@
     $("#resultsMessage").textContent=`${list.length} منتج في الكتالوج المعروض · الأسماء التي تحمل «يحتاج مراجعة» غير معتمدة للبيع حتى مراجعتها.`;
     updateCounts();
   }
+  let supplierVisibleLimit=24;
+  function populateBlendOils(){
+    const sel=$("#blendOil");if(!sel)return;const current=sel.value;
+    const oils=products.filter(p=>p.supplierCatalogItem);
+    sel.innerHTML='<option value="">اختر زيتًا من كتالوج الموردين</option>'+oils.map(p=>'<option value="'+escapeHTML(p.id)+'">'+escapeHTML(p.nameAr)+' — '+escapeHTML(p.nameEn)+' ['+escapeHTML(p.supplierSku)+']</option>').join('');
+    if(oils.some(p=>p.id===current))sel.value=current;
+  }
+  function renderSupplierOils(){
+    const grid=$("#supplierOilProducts");if(!grid)return;
+    const all=products.filter(p=>p.supplierCatalogItem);
+    const q=norm($("#supplierOilSearch")?.value||""),cat=$("#supplierOilCategory")?.value||"",family=$("#supplierOilFamily")?.value||"";
+    const categoryMap={MEN:"رجالي",WOMEN:"نسائي",UNISEX:"للجنسين",ORIENTAL:"شرقي",KIDS:"أطفال",DIFFUSER:"فواحات"};
+    const filtered=all.filter(p=>{
+      const raw=safeRead("mamlaka_supplier_catalog_v1",{products:[]}).products?.find(x=>String(x.sku||x.supplierSku)===String(p.supplierSku))||{};
+      return (!cat||raw.category===cat)&&(!family||p.family===family)&&(!q||norm([p.nameAr,p.nameEn,p.supplierSku,p.family,p.gender,p.brand].join(" ")).includes(q));
+    });
+    const visible=filtered.slice(0,supplierVisibleLimit);
+    grid.innerHTML=visible.map(productCard).join("");
+    $("#supplierOilSummary").textContent=all.length?("إجمالي "+all.length+" نوع زيت من الموردين · المعروض "+visible.length+" من "+filtered.length+" · الأسعار الداخلية غير معروضة هنا."): "استورد ملف كتالوج الموردين من لوحة الإدارة لعرض الأنواع كاملة.";
+    $("#noSupplierOilProducts").classList.toggle("hidden",filtered.length>0);
+    $("#supplierOilMore").classList.toggle("hidden",visible.length>=filtered.length);
+  }
+  $("#supplierOilSearch")?.addEventListener("input",()=>{supplierVisibleLimit=24;renderSupplierOils()});
+  $("#supplierOilCategory")?.addEventListener("change",()=>{supplierVisibleLimit=24;renderSupplierOils()});
+  $("#supplierOilFamily")?.addEventListener("change",()=>{supplierVisibleLimit=24;renderSupplierOils()});
+  $("#supplierOilMore")?.addEventListener("click",()=>{supplierVisibleLimit+=24;renderSupplierOils()});
+  document.querySelectorAll("[data-scent-family]").forEach(card=>card.addEventListener("click",()=>{const fam=card.dataset.scentFamily;$("#supplierOilFamily").value=fam;supplierVisibleLimit=24;renderSupplierOils()}));
   function updateCounts(){ $("#cartCount").textContent=cart.reduce((n,x)=>n+x.qty,0); $("#favCount").textContent=favorites.length; }
   function toggleFavorite(id){ favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];save(STORAGE.fav,favorites);renderProducts();notify(favorites.includes(id)?"أُضيف إلى المفضلة":"أُزيل من المفضلة"); }
   function addToCart(id,size="10",priceOverride=null,custom=null){
@@ -130,7 +174,15 @@
   $("#cartShortcut").addEventListener("click",openDrawer);$("#closeDrawer").addEventListener("click",closeDrawer);$("#drawerBackdrop").addEventListener("click",closeDrawer);
   $("#closeModal").addEventListener("click",closeModal);$("#modalBackdrop").addEventListener("click",e=>{if(e.target===$("#modalBackdrop"))closeModal();});
   $("#checkoutBtn").addEventListener("click",checkout);$("#clearCart").addEventListener("click",()=>{cart=[];save(STORAGE.cart,cart);renderCart();updateCounts();notify("تم إفراغ السلة.");});
-  $("#blendSize").addEventListener("change",blendPrice);$("#addBlend").addEventListener("click",()=>{const size=$("#blendSize").value, family=$("#blendScent").value,bottle=$("#blendBottle").value;const label=`تركيبة-${family}-${size}-${bottle}`;addToCart("custom-"+Date.now(),size,sizes[size],{nameAr:`تركيبة عطر ${family}`,nameEn:"Custom Blend",label,description:`${family}، ${size} مل، ${bottle}`});const last=cart[cart.length-1];if(last&&last.custom)last.nameAr=`تركيبة ${family} (${bottle})`;save(STORAGE.cart,cart);updateCounts();});
+  $("#blendSize").addEventListener("change",blendPrice);
+  $("#addBlend").addEventListener("click",()=>{
+    const size=$("#blendSize").value,family=$("#blendScent").value,bottle=$("#blendBottle").value;
+    const oilId=$("#blendOil")?.value||"",oil=findProduct(oilId),oilName=oil?(oil.nameAr||oil.nameEn):"زيت يختاره المتجر";
+    const label=`تركيبة-${family}-${size}-${bottle}-${oil?.supplierSku||"اختيار-المتجر"}`;
+    addToCart("custom-"+Date.now(),size,sizes[size],{nameAr:`تركيبة ${family}`,nameEn:"Custom Blend",label,description:`الزيت الأساسي: ${oilName}، العائلة: ${family}، ${size} مل، ${bottle}`});
+    const last=cart[cart.length-1];if(last&&last.custom)last.nameAr=`تركيبة ${family} — ${oilName} (${bottle})`;
+    save(STORAGE.cart,cart);updateCounts();
+  });
   $("#advisorForm").addEventListener("submit",e=>{e.preventDefault();submitAdvisor($("#advisorInput").value);});
   $("#contactWhatsapp").href=`https://wa.me/${getWaNumber()}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن منتجات مملكة العطور.")}`;
   $("#menuToggle").addEventListener("click",()=>{const open=$("#mainNav").classList.toggle("open");$("#menuToggle").setAttribute("aria-expanded",String(open));});
@@ -147,8 +199,10 @@
   // Always show the royal entrance on a fresh page load; the visitor can enter or skip explicitly.
   // This avoids silently bypassing the entrance because an old localStorage flag remained set.
   $("#year").textContent=new Date().getFullYear();
-  document.addEventListener("mamlaka:products-updated",()=>{products=[...demoProducts,...safeRead(STORAGE.custom,[])];renderProducts();renderCart();updateCounts();});
-  setLanguage(language);renderProducts();renderCart();updateCounts();blendPrice();
+  function syncAllProducts(){products=[...demoProducts,...safeRead(STORAGE.custom,[]),...supplierProducts()];renderProducts();renderSupplierOils();renderCart();updateCounts();populateBlendOils();}
+  document.addEventListener("mamlaka:products-updated",syncAllProducts);
+  document.addEventListener("mamlaka:supplier-catalog-updated",syncAllProducts);
+  setLanguage(language);renderProducts();renderSupplierOils();populateBlendOils();renderCart();updateCounts();blendPrice();
   // If search misses, offer a direct request without pretending the catalog contains the item.
   $("#productSearch").addEventListener("keydown",e=>{if(e.key==="Enter" && !products.some(p=>norm([p.nameAr,p.nameEn,p.brand].join(" ")).includes(norm(e.target.value)))){if(e.target.value.trim() && confirm(`لم نعثر على «${e.target.value.trim()}». هل تريد الاستفسار عنه عبر واتساب؟`))requestMissing(e.target.value.trim());}});
 })();
