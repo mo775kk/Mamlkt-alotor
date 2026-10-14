@@ -113,11 +113,11 @@ function mount(){
  if($('#ceListItem').value!==''&&arr[i])arr[i]=item;else arr.push(item);
  c[type]=arr;saveConfig(c);
  const d=catalog();if(d){d.taxonomyConfig=c;saveCatalog(d)}
- fillSelects();$('#ceListType').value=type;refreshListItems();alert('تم حفظ عنصر التصنيف محليًا. صدّر ملف التصنيف والكتالوج للاحتفاظ بالتغييرات.');
+ fillSelects();$('#ceListType').value=type;refreshListItems();alert('تم حفظ عنصر التصنيف محليًا. سيتم تحديث قوائم الكتالوج.');location.reload();
  });
  $('#ceDeleteList').addEventListener('click',()=>{
  const c=config(),type=$('#ceListType').value,arr=c[type]||[],i=Number($('#ceListItem').value);if(!arr[i]){alert('اختر عنصرًا للحذف');return}
- if(!confirm('حذف عنصر التصنيف المحدد؟'))return;arr.splice(i,1);c[type]=arr;saveConfig(c);const d=catalog();if(d){d.taxonomyConfig=c;saveCatalog(d)}fillSelects();
+ if(!confirm('حذف عنصر التصنيف المحدد؟'))return;arr.splice(i,1);c[type]=arr;saveConfig(c);const d=catalog();if(d){d.taxonomyConfig=c;saveCatalog(d)}fillSelects();location.reload();
  });
  function download(name,data){const a=document.createElement('a'),u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}));a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1200)}
  $('#ceExport').addEventListener('click',()=>{const d=catalog();if(!d){alert('استورد الكتالوج أولًا');return}d.taxonomyConfig=config();download('mamlakat-al-otor-catalog-updated.json',d)});
