@@ -129,7 +129,8 @@
   });
   $("#enterBtn").addEventListener("click",()=>{save("mamlaka_intro_seen_v1",true);$("#intro").classList.add("dismissed");});
   $("#skipIntro").addEventListener("click",()=>{$("#intro").classList.add("dismissed");save("mamlaka_intro_seen_v1",true);});
-  if(safeRead("mamlaka_intro_seen_v1",false)||window.matchMedia("(prefers-reduced-motion: reduce)").matches)$("#intro").classList.add("dismissed");
+  // Always show the royal entrance on a fresh page load; the visitor can enter or skip explicitly.
+  // This avoids silently bypassing the entrance because an old localStorage flag remained set.
   $("#year").textContent=new Date().getFullYear();
   document.addEventListener("mamlaka:products-updated",()=>{products=[...demoProducts,...safeRead(STORAGE.custom,[])];renderProducts();renderCart();updateCounts();});
   setLanguage(language);renderProducts();renderCart();updateCounts();blendPrice();
