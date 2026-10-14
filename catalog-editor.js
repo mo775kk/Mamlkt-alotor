@@ -5,6 +5,7 @@ const KEY='mamlaka_supplier_catalog_v1', TAXKEY='mamlaka_catalog_taxonomy_config
 const $=(s,r=document)=>r.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const defaultConfig={
+ retailBlendPrices:[{size:'3 مل',price:50},{size:'5 مل',price:75},{size:'10 مل',price:100},{size:'22 مل',price:130},{size:'30 مل',price:150},{size:'50 مل',price:200},{size:'100 مل',price:450}],
  productTypes:[{id:'ready',labelAr:'عطر جاهز'},{id:'oil',labelAr:'زيت عطري مركز / تركيب'},{id:'bakhoor',labelAr:'عود وبخور'},{id:'gift',labelAr:'هدايا وتغليف'},{id:'diffuser',labelAr:'زيت فواحة'}],
  categories:[{id:'MEN',labelAr:'رجالي'},{id:'WOMEN',labelAr:'نسائي'},{id:'UNISEX',labelAr:'للجنسين'},{id:'ORIENTAL',labelAr:'شرقي'},{id:'KIDS',labelAr:'أطفال'},{id:'DIFFUSER',labelAr:'فواحات'}],
  families:[
@@ -47,13 +48,14 @@ function mount(){
  <label>العنصر الحالي للتعديل<select id="ceListItem"></select></label><label>الاسم العربي / المعروض<input id="ceListLabel"></label><label>الاسم الإنجليزي أو المعرّف<input id="ceListEn"></label>
  <label>طبيعة الرائحة / الوصف<input id="ceListNature"></label><label>النوتات / التفاصيل<input id="ceListNotes"></label>
  </div><div class="admin-actions"><button class="btn btn-gold" id="ceSaveList" type="button">حفظ عنصر التصنيف</button><button class="btn btn-outline" id="ceAddList" type="button">عنصر تصنيف جديد</button><button class="btn btn-outline" id="ceDeleteList" type="button">حذف العنصر المحدد</button><button class="btn btn-outline" id="ceExportTax" type="button">تصدير ملف التصنيف JSON</button></div>
- <p class="admin-note">ملاحظة: تعديل أسماء الأقسام أو العائلات في هذه الشاشة يحدّث إعدادات الكتالوج. قد تحتاج قوائم المتجر الرئيسية إلى ربط إضافي إذا أردت إظهار كل تصنيف جديد للزبائن على الواجهة العامة.</p>`;
+ <h3>أسعار بيع التركيب حسب الحجم</h3><p class="admin-note">هذه أسعار بيع التجزئة المرجعية للتركيب، منفصلة عن تكلفة زيت المورد. عدّلها واحفظها ثم صدّر ملف التصنيف والكتالوج.</p><div id="ceRetailPrices" class="admin-grid"></div><div class="admin-actions"><button class="btn btn-gold" id="ceSaveRetailPrices" type="button">حفظ أسعار بيع التركيب</button></div><p class="admin-note">تعديل أسماء الأقسام أو العائلات يحدّث إعدادات الكتالوج المحلي. لإظهار أي تصنيف أو سعر جديد في واجهة المتجر العامة، يلزم ربط إعداداته بواجهة البيع؛ الحفظ الحالي يحدّث ملف الكتالوج وإعداداته القابلة للتصدير.</p>`;
  content.append(page);
  const style=document.createElement('style');style.textContent='#catalogEditorPage .admin-form{margin-top:16px;border:1px solid #d4af3744;border-radius:12px;padding:14px}#catalogEditorPage h4{margin:14px 0 8px;color:#f1d77a}#catalogEditorPage .admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:12px 0}#catalogEditorPage label{display:flex;flex-direction:column;gap:5px;font-size:13px}#catalogEditorPage input,#catalogEditorPage select{width:100%;min-width:0;padding:10px;border:1px solid #d4af3755;border-radius:8px;background:#14120e;color:#f8f0d4}#catalogEditorPage .admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}#catalogEditorPage hr{border:0;border-top:1px solid #d4af3744;margin:24px 0}';document.head.append(style);
  let selectedIndex=-1;
  const config=()=>loadConfig();
  function fillSelects(){
  const c=config();
+ const rp=$('#ceRetailPrices'); if(rp) rp.innerHTML=(c.retailBlendPrices||[]).map((x,i)=>\`<label>سعر \${esc(x.size)}<input type="number" min="0" step="0.01" data-retail-index="\${i}" value="\${Number(x.price)||0}"></label>\`).join('');
  $('#ceCategory').innerHTML=c.categories.map(x=>`<option value="${esc(x.id)}">${esc(x.labelAr)} (${esc(x.id)})</option>`).join('');
  $('#ceFamily').innerHTML=c.families.map(x=>`<option value="${esc(x.id)}">${esc(x.id)}</option>`).join('');
  $('#ceType').innerHTML=c.productTypes.map(x=>`<option value="${esc(x.id)}">${esc(x.labelAr)}</option>`).join('');
@@ -119,6 +121,7 @@ function mount(){
  });
  function download(name,data){const a=document.createElement('a'),u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}));a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1200)}
  $('#ceExport').addEventListener('click',()=>{const d=catalog();if(!d){alert('استورد الكتالوج أولًا');return}d.taxonomyConfig=config();download('mamlakat-al-otor-catalog-updated.json',d)});
+ $('#ceSaveRetailPrices').addEventListener('click',()=>{const c=config();c.retailBlendPrices=(c.retailBlendPrices||[]).map((x,i)=>({...x,price:num($(`[data-retail-index="${i}"]`)?.value)??0}));saveConfig(c);const d=catalog();if(d){d.taxonomyConfig=c;saveCatalog(d)}alert('تم حفظ أسعار بيع التركيب في إعدادات الكتالوج المحلي. صدّر ملف JSON للاحتفاظ بها.');});
  $('#ceExportTax').addEventListener('click',()=>download('mamlakat-al-otor-taxonomy-updated.json',{schemaVersion:1,language:'ar',...config(),importantNotice:'التصنيف وصفي وليس تحليلًا مخبريًا. لا تعتبر أمثلة المواد الكيميائية مكونات مؤكدة لأي منتج.'}));
  $('#ceImportBtn').addEventListener('click',()=>$('#ceImportFile').click());
  $('#ceImportFile').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{const d=JSON.parse(await f.text());if(!Array.isArray(d.products)||!d.metadata)throw Error('ملف الكتالوج غير صحيح');if(!confirm('استبدال الكتالوج المحلي بـ '+d.products.length+' منتجًا؟'))return;localStorage.setItem(KEY,JSON.stringify(d));if(d.taxonomyConfig){saveConfig({...defaultConfig,...d.taxonomyConfig})}refreshProducts();alert('تم استيراد الكتالوج.')}catch(err){alert(err.message||'تعذر الاستيراد')}finally{e.target.value=''}});
