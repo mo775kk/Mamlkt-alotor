@@ -5,7 +5,7 @@ const KEY='mamlaka_supplier_catalog_v1', $=(s,r=document)=>r.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const read=()=>{try{const v=JSON.parse(localStorage.getItem(KEY)||'null');return Array.isArray(v?.products)?v:null}catch{return null}};
 const fmt=n=>n==null?'—':Number(n).toLocaleString('ar-EG',{maximumFractionDigits:2});
-const families=[
+let families=[
 {id:'حمضي ومنعش',en:'Citrus / Fresh',nature:'منعش وخفيف أو مائي أو حمضي',notes:'حمضيات أو فواكه منعشة؛ نوتات مائية/خضراء محتملة؛ مسك أو أخشاب في القاعدة.',chem:'Limonene وCitral جزيئات رائحة حمضية شائعة في الصناعة؛ لا يثبت وجودها في أي زيت بعينه.'},
 {id:'زهري ووردي',en:'Floral / Rose',nature:'زهري من ناعم وبودري إلى غني ووردي',notes:'ورد أو زهور بيضاء بحسب الإصدار؛ بتلات زهرية؛ مسك أو أخشاب محتملة في القاعدة.',chem:'Phenethyl Alcohol وLinalool أمثلة لمواد ذات طابع زهري شائعة؛ ليست مكونات مؤكدة لهذا المنتج.'},
 {id:'مسكي ونظيف',en:'Musk / Clean',nature:'ناعم ونظيف وقريب من رائحة الجلد',notes:'مسك؛ قطن نظيف؛ أخشاب ناعمة محتملة.',chem:'Galaxolide أو Habanolide أمثلة لمركبات مسكية تستخدم في بعض العطور؛ لا يعني ذلك وجودها في هذا الزيت.'},
@@ -16,14 +16,22 @@ const families=[
 {id:'عطري وأخضر',en:'Aromatic / Green',nature:'أخضر أو عشبي أو عطري ونظيف',notes:'أعشاب أو أوراق خضراء؛ لافندر/توابل محتملة؛ أخشاب أو مسك.',chem:'Linalool مثال لمادة عطرية مستخدمة على نطاق واسع؛ لا يثبت وجودها أو تركيزها في الزيت.'},
 {id:'غير محدد',en:'Unclassified',nature:'يلزم تقييم العينة أو الرجوع إلى بيانات المورد',notes:'التصنيف غير مؤكد من الاسم وحده.',chem:'اطلب SDS وIFRA Certificate أو النشرة الفنية من المورد؛ لا يمكن استنتاج الصيغة من الاسم.'}
 ];
+const baseFamilies=families.slice();
 function mount(){
 const content=$('#adminContent'),nav=$('.admin-tabs');
 if(!content||!nav||!$('[data-page="data"]')||$('#supplierCatalogPage'))return;
+let savedConfig={};
+try{savedConfig=JSON.parse(localStorage.getItem('mamlaka_catalog_taxonomy_config_v1')||'{}')}catch{}
+if(Array.isArray(savedConfig.families)&&savedConfig.families.length){
+families=savedConfig.families.map(f=>{const old=baseFamilies.find(x=>x.id===f.id)||{};return {...old,id:f.id,en:f.labelEn||old.en||f.id,nature:f.nature||old.nature||'تحتاج إلى وصف',notes:f.notes||old.notes||'التفاصيل تحتاج إلى مراجعة',chem:old.chem||'لا توجد بيانات كيميائية خاصة بهذا المنتج؛ اطلب مستندات المورد.'}});
+}
 const tab=document.createElement('button');tab.type='button';tab.dataset.tab='supplier';tab.textContent='كتالوج الموردين';nav.append(tab);
 const taxTab=document.createElement('button');taxTab.type='button';taxTab.dataset.tab='taxonomy';taxTab.textContent='تصنيف وتركيب';nav.append(taxTab);
 const page=document.createElement('section');page.className='admin-page hidden';page.dataset.page='supplier';page.id='supplierCatalogPage';
 page.innerHTML='<h3>كتالوج الموردين — Golden Line وNiche Line</h3><p class="admin-note">تكاليف المورد للزيوت المركزة وليست أسعار بيع التجزئة. استيراد الملف يحفظ البيانات في هذا المتصفح ولا يستبدل منتجات المتجر.</p><div class="admin-actions"><label class="btn btn-gold file-label">استيراد كتالوج JSON<input id="supplierJsonFile" type="file" accept=".json,application/json"></label><button class="btn btn-outline" id="supplierExport">تصدير نسخة الكتالوج</button><button class="btn btn-outline" id="supplierClear">حذف الكتالوج المحلي</button></div><div class="admin-grid"><label>بحث بالاسم أو الكود<input id="supplierSearch" type="search" placeholder="Sauvage أو R1010159"></label><label>قسم المورد<select id="supplierCategory"><option value="">كل الأقسام</option><option value="MEN">رجالي</option><option value="WOMEN">نسائي</option><option value="UNISEX">للجنسين</option><option value="ORIENTAL">شرقي</option><option value="KIDS">أطفال</option><option value="DIFFUSER">فواحات</option></select></label><label>خط المورد<select id="supplierLine"><option value="">الكل</option><option>Golden</option><option>Niche</option></select></label><label>العائلة العطرية<select id="supplierFamily"><option value="">كل العائلات</option>'+families.map(x=>'<option>'+esc(x.id)+'</option>').join('')+'</select></label><label>عرض الأسعار<select id="supplierVat"><option value="false">بدون ضريبة</option><option value="true">شامل ضريبة 14%</option></select></label></div><p id="supplierSummary" class="admin-note" aria-live="polite">لم يتم استيراد الكتالوج بعد.</p><div id="supplierResults" class="supplier-results"></div>';
 content.append(page);
+const categorySelect=$('#supplierCategory');
+if(Array.isArray(savedConfig.categories))savedConfig.categories.forEach(x=>{if(![...categorySelect.options].some(o=>o.value===x.id)){const op=document.createElement('option');op.value=x.id;op.textContent=x.labelAr||x.id;categorySelect.append(op)}});
 const taxPage=document.createElement('section');taxPage.className='admin-page hidden';taxPage.dataset.page='taxonomy';taxPage.id='fragranceTaxonomyPage';
 taxPage.innerHTML='<h3>دليل تصنيف العطور والزيوت والتركيب</h3><p class="admin-note">التصنيف المقترح يساعد على تنظيم الكتالوج، لكنه لا يُعد تحليلًا مخبريًا أو تأكيدًا لنوتات كل إصدار. راجع العينة ومعلومات الشركة قبل اعتماد المنتج.</p><div class="taxonomy-grid">'+families.map(f=>'<article class="taxonomy-card"><strong>'+esc(f.id)+'</strong><small dir="ltr">'+esc(f.en)+'</small><p><b>طبيعة الرائحة:</b> '+esc(f.nature)+'</p><p><b>ملف النوتات العام:</b> '+esc(f.notes)+'</p><p><b>المعلومات الكيميائية:</b> '+esc(f.chem)+'</p></article>').join('')+'</div><h3>حقول التركيب التي ينبغي تسجيلها</h3><ul><li>اسم الزيت وكود المورد وخط المورد.</li><li>العائلة العطرية وطبيعة الرائحة والنوتات العليا والوسطى والقاعدية بعد التحقق.</li><li>حجم العبوة ووزن الزيت وكثافته إن وفرها المورد، وتكلفة الجرعة وهامش الربح.</li><li>نسبة التخفيف الموصى بها من المورد، واسم المذيب/القاعدة المعتمدة.</li><li>مستند SDS وIFRA، ومسببات الحساسية المعلنة، ورقم التشغيلة وتاريخها.</li></ul><p class="admin-note"><b>تنبيه كيميائي:</b> قائمة الأسعار لا تحتوي الصيغة الكيميائية الفعلية ولا نسب مكوناتها. الأمثلة الجزيئية في هذا الدليل معلومات عامة عن عائلات الرائحة فقط وليست قائمة مكونات للمنتج. لا نخترع تركيبة ولا نوصي بنسبة تخفيف ثابتة دون وثائق المورد.</p>';
 content.append(taxPage);
