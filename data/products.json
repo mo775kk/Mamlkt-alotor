@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "currency": "EGP",
+  "notes": "أسماء أولية غير معتمدة للبيع حتى مراجعة البيانات والأسعار. لا تمثل مخزونًا مؤكدًا.",
+  "products": [
+    {
+      "id": "demo-yara-candy",
+      "nameAr": "يارا كاندي",
+      "nameEn": "Yara Candy",
+      "brand": "",
+      "supplier": "",
+      "productType": "ready",
+      "gender": "نسائي",
+      "origin": "",
+      "family": "حلو",
+      "topNotes": [],
+      "heartNotes": [],
+      "baseNotes": [],
+      "descriptionAr": "اسم أولي يحتاج إلى مراجعة",
+      "descriptionEn": "",
+      "image": "",
+      "sizes": [
+        "3",
+        "5",
+        "10",
+        "22",
+        "30",
+        "50",
+        "100"
+      ],
+      "prices": {},
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": true,
+      "featured": false,
+      "tags": [
+        "needsReview"
+      ],
+      "source": "user-provided-name-list",
+      "verified": false,
+      "needsReview": true
+    },
+    {
+      "id": "demo-megamare",
+      "nameAr": "ميجاماري",
+      "nameEn": "Megamare",
+      "brand": "",
+      "supplier": "",
+      "productType": "ready",
+      "gender": "للجنسين",
+      "origin": "",
+      "family": "",
+      "topNotes": [],
+      "heartNotes": [],
+      "baseNotes": [],
+      "descriptionAr": "اسم أولي يحتاج إلى مراجعة",
+      "descriptionEn": "",
+      "image": "",
+      "sizes": [
+        "3",
+        "5",
+        "10",
+        "22",
+        "30",
+        "50",
+        "100"
+      ],
+      "prices": {},
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": true,
+      "featured": false,
+      "tags": [
+        "needsReview"
+      ],
+      "source": "user-provided-name-list",
+      "verified": false,
+      "needsReview": true
+    }
+  ]
+}

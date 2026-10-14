@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090807">
+  <meta name="description" content="مملكة العطور — عطور جاهزة، زيوت عطرية، تركيب عطرك الخاص، عود وبخور وهدايا بطابع ملكي.">
+  <meta property="og:title" content="مملكة العطور | CROWN · MAISON DE PARFUM">
+  <meta property="og:description" content="اكتشف عطرك في مملكة العطور.">
+  <meta property="og:image" content="assets/images/royal-hero.jpg">
+  <title>مملكة العطور | CROWN · MAISON DE PARFUM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="intro" id="intro" aria-label="دخول المملكة">
+    <div class="intro-glow"></div>
+    <div class="intro-content">
+      <div class="crown-mark" aria-hidden="true">♛</div>
+      <p class="eyebrow">CROWN · MAISON DE PARFUM</p>
+      <h1>مملكة العطور</h1>
+      <p class="intro-subtitle">حكاية فخامة تبدأ بقطرة</p>
+      <button class="btn btn-gold" id="enterBtn">دخول المملكة</button>
+      <button class="intro-skip" id="skipIntro">تخطي المقدمة</button>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="مملكة العطور - الرئيسية">
+      <span class="brand-crown">♛</span>
+      <span><strong>مملكة العطور</strong><small>CROWN · MAISON DE PARFUM</small></span>
+    </a>
+    <button class="icon-btn menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#home" data-nav="home">الرئيسية</a>
+      <a href="#ready" data-nav="ready">العطور الجاهزة</a>
+      <a href="#oils" data-nav="oils">الزيوت والتركيب</a>
+      <a href="#bakhoor" data-nav="bakhoor">العود والبخور</a>
+      <a href="#gift" data-nav="gift">الهدايا</a>
+      <a href="#advisor" data-nav="advisor">مستشار العطور</a>
+      <a href="#visit" data-nav="visit">تواصل معنا</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="searchFocus" aria-label="بحث" title="بحث">⌕</button>
+      <button class="icon-btn" id="favoritesShortcut" aria-label="المفضلة" title="المفضلة">♡<span class="counter" id="favCount">0</span></button>
+      <button class="icon-btn" id="cartShortcut" aria-label="السلة" title="السلة">♧<span class="counter" id="cartCount">0</span></button>
+      <button class="icon-btn language-btn" id="languageToggle" aria-label="Change language">EN</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <img class="hero-image" src="assets/images/royal-hero.jpg" alt="زجاجة عطر ملكية بتفاصيل ذهبية في أجواء شرقية فاخرة">
+      <div class="hero-shade"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">MAMLKAT AL-OTOR · THE ROYAL SCENT</p>
+        <h1>العطر… <span>توقيع لا يُنسى</span></h1>
+        <p>اكتشف روائح تعبّر عنك، من العطور الجاهزة إلى الزيوت والتركيبات الخاصة، في تجربة تليق بمملكتك.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#ready">اكتشف العطور <span>←</span></a>
+          <a class="btn btn-outline" href="#blend">ركّب عطرك الخاص</a>
+        </div>
+        <div class="hero-note"><span></span> اختيارات عطرية بطابع ملكي</div>
+      </div>
+      <div class="hero-pagination"><i class="active"></i><i></i><i></i></div>
+      <a class="hero-next" href="#ready" aria-label="اكتشف المنتجات">›</a>
+    </section>
+
+    <section class="trust-strip">
+      <div><span class="line-icon">♛</span><span><b>ذوق ملكي</b><small>اختيارات لكل شخصية</small></span></div>
+      <div><span class="line-icon">✧</span><span><b>خيارات متنوعة</b><small>جاهز، زيت وتركيب</small></span></div>
+      <div><span class="line-icon">◇</span><span><b>طلب سهل</b><small>تواصل مباشر عبر واتساب</small></span></div>
+    </section>
+
+    <section class="section category-section">
+      <div class="section-heading"><div><p class="eyebrow">EXPLORE THE COLLECTION</p><h2>أبواب المملكة</h2></div><p>اختر عالم الرائحة الذي يشبهك.</p></div>
+      <div class="category-grid">
+        <a class="category-card category-ready" href="#ready"><span>01</span><div><small>THE SIGNATURE</small><h3>العطور الجاهزة</h3><p>رائحة تترك أثرًا</p></div><b>↗</b></a>
+        <a class="category-card category-oils" href="#oils"><span>02</span><div><small>THE ESSENCE</small><h3>الزيوت والتركيب</h3><p>اصنع توقيعك الخاص</p></div><b>↗</b></a>
+        <a class="category-card category-bakhoor" href="#bakhoor"><span>03</span><div><small>THE HERITAGE</small><h3>العود والبخور</h3><p>عبق أصيل ودفء شرقي</p></div><b>↗</b></a>
+        <a class="category-card category-gift" href="#gift"><span>04</span><div><small>THE GIFT</small><h3>الهدايا والتغليف</h3><p>تفاصيل تستحق أن تُهدى</p></div><b>↗</b></a>
+      </div>
+    </section>
+
+    <section class="section products-section" id="ready">
+      <div class="section-heading"><div><p class="eyebrow">THE PERFUME COLLECTION</p><h2>العطور الجاهزة</h2></div><p>تصفّح المجموعة واختر ما يناسب ذوقك.</p></div>
+      <div class="toolbar">
+        <label class="search-box"><span>⌕</span><input id="productSearch" type="search" placeholder="ابحث باسم العطر أو الشركة..." autocomplete="off"><button id="voiceSearch" class="voice-btn" type="button" aria-label="البحث الصوتي" title="البحث الصوتي">🎙</button></label>
+        <select id="genderFilter" aria-label="تصفية حسب الجنس"><option value="">كل الاختيارات</option><option value="رجالي">رجالي</option><option value="نسائي">نسائي</option><option value="للجنسين">للجنسين</option></select>
+        <select id="familyFilter" aria-label="تصفية حسب العائلة"><option value="">كل العائلات العطرية</option><option>خشبي</option><option>زهري</option><option>شرقي</option><option>حلو</option><option>منعش</option><option>مسكي</option></select>
+      </div>
+      <p class="results-message" id="resultsMessage" aria-live="polite"></p>
+      <div class="product-grid" id="readyProducts"></div>
+      <div class="empty-state hidden" id="noProducts">لا توجد نتائج مطابقة. جرّب تغيير كلمات البحث أو اطلب العطر من المتجر.</div>
+    </section>
+
+    <section class="split-feature" id="oils">
+      <div class="feature-image"><img src="assets/images/royal-hero.jpg" alt="أجواء شرقية وزجاجة عطر" loading="lazy"></div>
+      <div class="feature-copy"><p class="eyebrow">YOUR OWN BLEND</p><h2>رائحتك… <span>على ذوقك</span></h2><p>اختر من الزيوت العطرية المتاحة وحدد الحجم والعبوة، ثم أرسل تفاصيل طلبك لمراجعتها مع المتجر.</p><a class="btn btn-gold" href="#blend">ابدأ التركيب</a></div>
+    </section>
+
+    <section class="section blend-section" id="blend">
+      <div class="section-heading"><div><p class="eyebrow">THE BLENDING LAB</p><h2>مختبر تركيب عطرك</h2></div><p>أنشئ طلب تركيب مبدئيًا حسب الخيارات المتاحة.</p></div>
+      <div class="blend-panel">
+        <div class="blend-step"><label for="blendScent">العائلة العطرية</label><select id="blendScent"><option value="شرقي">شرقي دافئ</option><option value="خشبي">خشبي أنيق</option><option value="زهري">زهري ناعم</option><option value="منعش">منعش وحيوي</option><option value="حلو">حلو ودافئ</option><option value="مسكي">مسكي نظيف</option></select></div>
+        <div class="blend-step"><label for="blendSize">الحجم</label><select id="blendSize"><option value="3">3 مل</option><option value="5">5 مل</option><option value="10" selected>10 مل</option><option value="22">22 مل</option><option value="30">30 مل</option><option value="50">50 مل</option><option value="100">100 مل</option></select></div>
+        <div class="blend-step"><label for="blendBottle">العبوة</label><select id="blendBottle"><option>عبوة كلاسيكية</option><option>عبوة فاخرة</option><option>أترك اختيار العبوة للمتجر</option></select></div>
+        <div class="blend-summary"><span>السعر المرجعي للحجم المختار</span><strong id="blendPrice">100 ج.م</strong><small>السعر النهائي والتوفر يحتاجان إلى تأكيد المتجر قبل الطلب.</small></div>
+        <button class="btn btn-gold" id="addBlend">إضافة طلب التركيب</button>
+      </div>
+    </section>
+
+    <section class="section products-section" id="bakhoor">
+      <div class="section-heading"><div><p class="eyebrow">OUD · BAKHOOR · MUSK</p><h2>العود والبخور والمسك</h2></div><p>قسم مخصص للروائح الشرقية والمنتجات المرتبطة بها.</p></div>
+      <div class="feature-banner"><div><p class="eyebrow">A WARMER KIND OF LUXURY</p><h3>للبيت حضور… وللرائحة حكاية</h3><p>اسألنا عن المنتجات المتاحة والأنواع المناسبة لك.</p><a class="btn btn-outline" href="#visit">تواصل للاستفسار</a></div></div>
+    </section>
+
+    <section class="section gift-section" id="gift">
+      <div class="gift-copy"><p class="eyebrow">GIFT WITH MEANING</p><h2>هدية تحمل أثرًا</h2><p>اطلب اقتراحًا لهدية عطرية، مع اختيار التغليف وفق الخيارات المتاحة لدى المتجر.</p><a class="btn btn-gold" href="#advisor">اختر هدية بمساعدة المستشار</a></div>
+      <div class="gift-art"><span class="gift-frame">♛</span><span class="gift-caption">A ROYAL GESTURE</span></div>
+    </section>
+
+    <section class="section advisor-section" id="advisor">
+      <div class="section-heading"><div><p class="eyebrow">SCENT CONCIERGE</p><h2>مستشار مملكة العطور</h2></div><p>أخبرنا عن ذوقك وسنقترح لك من المنتجات المسجلة في الكتالوج.</p></div>
+      <div class="advisor-box">
+        <div class="advisor-symbol">♛</div>
+        <div class="advisor-chat"><div class="assistant-message">مرحبًا بك في مملكة العطور. ما الطابع الذي تبحث عنه؟ جرّب: خشبي، زهري، شرقي، حلو، منعش أو مسكي.</div><div id="advisorReplies" class="advisor-replies" aria-live="polite"></div>
+          <form id="advisorForm" class="advisor-form"><input id="advisorInput" placeholder="مثال: أريد عطرًا خشبيًا رجاليًا..." required><button class="btn btn-gold" type="submit">اقترح لي</button></form>
+          <small class="muted">المستشار الحالي يعتمد على مطابقة الكلمات مع بيانات الكتالوج، وليس خدمة ذكاء اصطناعي خارجية.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="visit">
+      <div class="contact-card"><p class="eyebrow">VISIT THE KINGDOM</p><h2>يسعدنا تواصلك</h2><p>مملكة العطور · الإسكندرية، شارع خالد بن الوليد</p><p class="contact-phone" dir="ltr">01272776928</p><div class="contact-actions"><a class="btn btn-gold" id="contactWhatsapp" href="#" target="_blank" rel="noopener">تواصل عبر واتساب</a><a class="btn btn-outline" href="https://whatsapp.com/channel/0029Vb8l5QRBPzjhHbvbzn2W" target="_blank" rel="noopener">قناة واتساب</a></div><small>تأكد من توافر المنتج والسعر النهائي مع المتجر قبل إتمام الطلب.</small></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-crown">♛</span><span><strong>مملكة العطور</strong><small>CROWN · MAISON DE PARFUM</small></span></a><p>العطر توقيع… والمملكة اختيارك.</p><small>© <span id="year"></span> MAMLKAT AL-OTOR</small></footer>
+
+  <div class="drawer-backdrop hidden" id="drawerBackdrop"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="سلة التسوق" aria-hidden="true"><div class="drawer-head"><h2 id="drawerTitle">سلة التسوق</h2><button class="icon-btn" id="closeDrawer" aria-label="إغلاق">×</button></div><div id="cartItems" class="drawer-items"></div><div class="drawer-bottom"><div class="total-row"><span>الإجمالي المرجعي</span><strong id="cartTotal">0 ج.م</strong></div><small>الأسعار مرجعية وقد تحتاج إلى تأكيد المتجر.</small><button class="btn btn-gold full-width" id="checkoutBtn">متابعة الطلب عبر واتساب</button><button class="text-btn" id="clearCart">إفراغ السلة</button></div></aside>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close icon-btn" id="closeModal" aria-label="إغلاق">×</button><div id="modalContent"></div></section></div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
