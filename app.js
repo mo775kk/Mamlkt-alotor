@@ -108,7 +108,7 @@
   function populateBlendOils(){
     const sel=$("#blendOil");if(!sel)return;const current=sel.value;
     const oils=products.filter(p=>p.supplierCatalogItem);
-    sel.innerHTML='<option value="">اختر زيتًا من كتالوج الموردين</option>'+oils.map(p=>'<option value="'+escapeHTML(p.id)+'">'+escapeHTML(p.nameAr)+' — '+escapeHTML(p.nameEn)+' ['+escapeHTML(p.supplierSku)+']</option>').join('');
+    sel.innerHTML='<option value="">اختر زيتًا من كتالوج الموردين</option>'+oils.map(p=>'<option value="'+escapeHTML(p.id)+'">'+escapeHTML(p.nameAr)+' — '+escapeHTML(p.nameEn)+'</option>').join('');
     if(oils.some(p=>p.id===current))sel.value=current;
   }
   function renderSupplierOils(){
