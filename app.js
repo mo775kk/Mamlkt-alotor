@@ -75,6 +75,12 @@
       gender: p.genderLabel || ({MEN:"رجالي",WOMEN:"نسائي",UNISEX:"للجنسين",ORIENTAL:"شرقي",KIDS:"أطفال",DIFFUSER:"فواحات"}[p.category] || "غير محدد"),
       family: displayFamily(p.scentFamily || p.family || p.chemicalProfileId || "", p.name_ar || p.name_en || ""),
       scentNature: p.scentNature || inferredNature(p.scentFamily || p.family || "", p.name_ar || p.name_en || ""),
+      topNotes: Array.isArray(p.topNotes) ? p.topNotes : (Array.isArray(p.notes_top) ? p.notes_top : []),
+      heartNotes: Array.isArray(p.heartNotes) ? p.heartNotes : (Array.isArray(p.notes_heart) ? p.notes_heart : []),
+      baseNotes: Array.isArray(p.baseNotes) ? p.baseNotes : (Array.isArray(p.notes_base) ? p.notes_base : []),
+      sourceUrl: /^https:\/\//i.test(String(p.sourceUrl || p.source_url || "")) ? (p.sourceUrl || p.source_url) : "",
+      notesStatus: p.notesStatus || p.notes_status || "needs-research",
+      notesConfidence: p.notesConfidence || p.notes_confidence || "",
       descriptionAr: "زيت عطري مركز مناسب للتجربة والتركيب. " + (p.scentNature || inferredNature(p.scentFamily || p.family || "", p.name_ar || p.name_en || "") || "الطابع العطري يحتاج إلى مراجعة عينة المورد."),
       price: null, prices: {}, available: false, needsReview: true, supplierCatalogItem: true
     }));
