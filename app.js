@@ -3,16 +3,22 @@
   const getWaNumber = () => (localStorage.getItem("mamlaka_admin_whatsapp_v1") || "201272776928").replace(/\D/g, "");
   const STORAGE = {cart:"mamlaka_cart_v1", fav:"mamlaka_favorites_v1", lang:"mamlaka_language_v1", custom:"mamlaka_custom_products_v1", requests:"mamlaka_requests_v1"};
   const sizes = (() => {
-    const fallback = {"3":50,"5":75,"10":100,"30":100,"50":150,"100":300};
+    const fallback = {"3":50,"5":75,"10":100,"22":130,"30":150,"50":200,"100":450};
     try {
       const cfg = JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1") || "null");
       if (Array.isArray(cfg?.retailBlendPrices) && cfg.retailBlendPrices.length) {
         const editable = {};
         cfg.retailBlendPrices.forEach(item => {
           const size = String(item.size || "").match(/[0-9]+/)?.[0];
-          if (size && size !== "22" && Number.isFinite(Number(item.price))) { const old=Number(item.price); const legacy={"30":150,"50":200,"100":450}; editable[size]=(legacy[size]===old?({"30":100,"50":150,"100":300}[size]):Math.max(50,old)); }
+          if (size && Number.isFinite(Number(item.price)) && Number(item.price) >= 50) editable[size] = Number(item.price);
         });
-        if (Object.keys(editable).length) return editable;
+        if (editable["30"] === 100 && editable["50"] === 150 && editable["100"] === 300) {
+          editable["30"] = 150; editable["50"] = 200; editable["100"] = 450;
+        }
+        if (editable["22"] == null) editable["22"] = 130;
+        const normalized = Object.fromEntries(Object.entries(fallback).map(([size, price]) => [size, editable[size] ?? price]));
+        try { localStorage.setItem("mamlaka_catalog_taxonomy_config_v1", JSON.stringify({...cfg, retailBlendPrices:Object.entries(normalized).map(([size,price])=>({size:size+" مل",price}))})); } catch {}
+        return normalized;
       }
     } catch {}
     return fallback;
@@ -166,7 +172,7 @@
   function save(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { notify("تعذر الحفظ في هذا المتصفح. صدّر نسخة احتياطية إن أمكن."); return false; } }
   function notify(msg) { const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),3000); }
   function findProduct(id) { return products.find(p=>p.id===id); }
-  function retailSizePrice(size){const key=String(size);if(key==="22")return null;try{const cfg=JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")||"null");const item=Array.isArray(cfg?.retailBlendPrices)?cfg.retailBlendPrices.find(x=>String(x.size||"").match(/[0-9]+/)?.[0]===key):null;if(item&&Number.isFinite(Number(item.price))){const old=Number(item.price);if(key==="30"&&old===150)return 100;if(key==="50"&&old===200)return 150;if(key==="100"&&old===450)return 300;return Math.max(50,old);}}catch{}return sizes[key]??null;}
+  function retailSizePrice(size){const key=String(size);try{const cfg=JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")||"null");const item=Array.isArray(cfg?.retailBlendPrices)?cfg.retailBlendPrices.find(x=>String(x.size||"").match(/[0-9]+/)?.[0]===key):null;if(item&&Number.isFinite(Number(item.price))&&Number(item.price)>=50)return Number(item.price);}catch{}return sizes[key]??null;}
   function currentPrice(p,size) { if(!p || p.supplierCatalogItem || p.supplierSku) return null; if(p.productType === "blend" || p.productType === "oil" || p.customBlend === true) return retailSizePrice(size); const specific=p.prices && p.prices[String(size)] != null ? Number(p.prices[String(size)]) : null; if(Number.isFinite(specific) && specific>0) return Math.max(50,specific); const base=p.price != null ? Number(p.price) : null; if(Number.isFinite(base) && base>0) return Math.max(50,base); return null; }
   function imageMarkup(p){
     if(p.image&&/^(https?:|assets\/|data:image\/)/i.test(p.image))return '<img class="product-photo" src="'+escapeHTML(p.image)+'" alt="صورة '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'" loading="lazy" onerror="this.remove()">';
