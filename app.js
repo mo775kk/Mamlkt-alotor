@@ -85,8 +85,59 @@
       price: null, prices: {}, available: false, needsReview: true, supplierCatalogItem: true
     }));
   };
+  let publicCatalogProducts = [];
   let language = safeRead(STORAGE.lang, "ar") === "en" ? "en" : "ar";
-  let products = [...demoProducts, ...readArray(STORAGE.custom), ...supplierProducts()];
+  const combineProducts = () => {
+    const merged = new Map();
+    [...demoProducts, ...publicCatalogProducts, ...readArray(STORAGE.custom), ...supplierProducts()].forEach(product => {
+      const id = String(product?.id || "").trim();
+      if (!id) return;
+      merged.set(id, { ...(merged.get(id) || {}), ...product });
+    });
+    return [...merged.values()];
+  };
+  let products = combineProducts();
+  async function loadPublicCatalog() {
+    if (typeof fetch !== "function") return;
+    try {
+      const response = await fetch("data/products.json", { cache: "no-cache" });
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      const payload = await response.json();
+      const records = Array.isArray(payload) ? payload : payload?.products;
+      if (!Array.isArray(records)) throw new Error("ملف الكتالوج لا يحتوي قائمة منتجات");
+      publicCatalogProducts = records.filter(p => p && typeof p === "object").map((p, index) => ({
+        ...p,
+        id: String(p.id || p.sku || ("catalog-product-" + index)),
+        nameAr: p.nameAr || p.name_ar || p.arName || p.name || "",
+        nameEn: p.nameEn || p.name_en || p.enName || "",
+        brand: p.brand || p.company || p.manufacturer || "",
+        supplier: p.supplier || p.supplierName || "",
+        productType: p.productType || p.product_type || "ready",
+        gender: p.gender || p.categoryLabel || "",
+        family: p.family || p.scentFamily || p.scent_family || "",
+        topNotes: Array.isArray(p.topNotes) ? p.topNotes : Array.isArray(p.notes_top) ? p.notes_top : [],
+        heartNotes: Array.isArray(p.heartNotes) ? p.heartNotes : Array.isArray(p.notes_heart) ? p.notes_heart : [],
+        baseNotes: Array.isArray(p.baseNotes) ? p.baseNotes : Array.isArray(p.notes_base) ? p.notes_base : [],
+        sourceUrl: p.sourceUrl || p.source_url || "",
+        notesStatus: p.notesStatus || p.notes_status || "needs-review",
+        notesConfidence: p.notesConfidence || p.notes_confidence || "",
+        needsReview: p.needsReview !== false,
+        price: p.price ?? null,
+        prices: p.prices && typeof p.prices === "object" ? p.prices : {},
+        available: p.available === true && (p.needsReview === false),
+        publicCatalogItem: true
+      }));
+      products = combineProducts();
+      renderProducts();
+      renderSupplierOils();
+      renderCart();
+      updateCounts();
+      populateBlendOils();
+      document.dispatchEvent(new CustomEvent("mamlaka:public-catalog-loaded", { detail: { count: publicCatalogProducts.length } }));
+    } catch (error) {
+      console.warn("تعذر تحميل كتالوج data/products.json؛ يستمر المتجر بالكتالوج المحلي.", error);
+    }
+  }
   let cart = readArray(STORAGE.cart);
   let favorites = readArray(STORAGE.fav);
   let toastTimer;
@@ -233,10 +284,10 @@
   // Always show the royal entrance on a fresh page load; the visitor can enter or skip explicitly.
   // This avoids silently bypassing the entrance because an old localStorage flag remained set.
   $("#year").textContent=new Date().getFullYear();
-  function syncAllProducts(){products=[...demoProducts,...safeRead(STORAGE.custom,[]),...supplierProducts()];renderProducts();renderSupplierOils();renderCart();updateCounts();populateBlendOils();}
+  function syncAllProducts(){products=combineProducts();renderProducts();renderSupplierOils();renderCart();updateCounts();populateBlendOils();}
   document.addEventListener("mamlaka:products-updated",syncAllProducts);
   document.addEventListener("mamlaka:supplier-catalog-updated",syncAllProducts);
-  setLanguage(language);renderProducts();renderSupplierOils();populateBlendOils();renderCart();updateCounts();blendPrice();
+  setLanguage(language);renderProducts();renderSupplierOils();populateBlendOils();renderCart();updateCounts();blendPrice();loadPublicCatalog();
   // If search misses, offer a direct request without pretending the catalog contains the item.
   $("#productSearch").addEventListener("keydown",e=>{if(e.key==="Enter" && !products.some(p=>norm([p.nameAr,p.nameEn,p.brand].join(" ")).includes(norm(e.target.value)))){if(e.target.value.trim() && confirm(`لم نعثر على «${e.target.value.trim()}». هل تريد الاستفسار عنه عبر واتساب؟`))requestMissing(e.target.value.trim());}});
 })();
