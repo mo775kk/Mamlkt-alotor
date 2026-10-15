@@ -1,0 +1,21 @@
+{
+  "id": "/Mamlkt-alotor/",
+  "name": "مملكة العطور | MAMLKAT AL-OTOR",
+  "short_name": "مملكة العطور",
+  "description": "تجربة عطرية ملكية للعطور الجاهزة والزيوت والتركيب والعود والهدايا.",
+  "lang": "ar-EG",
+  "dir": "rtl",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "icons": [
+    {
+      "src": "assets/images/royal-crown-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
