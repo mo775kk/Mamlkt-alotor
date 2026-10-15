@@ -269,20 +269,30 @@
     ];
     const matched=terms.find(t=>t.words.some(w=>q.includes(norm(w))));
     const gender=q.includes("رجالي")||q.includes("للرجال")||q.includes("men")?"رجالي":q.includes("نسائي")||q.includes("للنساء")||q.includes("women")?"نسائي":null;
+    const digitText=q.replace(/[٠-٩]/g,d=>String("٠١٢٣٤٥٦٧٨٩".indexOf(d)));
+    const budgetMatch=digitText.match(/(?:ميزاني(?:ة|تي)|تحت|أقل من|اقل من|حد أقصى|بحدود|جنيه|ج\.م|budget)\s*(\d{2,5})/i);
+    const budget=budgetMatch?Number(budgetMatch[1]):null;
+    const daily=/دوام|شغل|عمل|يومي|جامعة|مكتب|نهار|day|office|daily/.test(q);
+    const occasion=/سهرة|فرح|زفاف|مناسبة|مساء|حفلة|evening|wedding|event/.test(q);
     const candidates=products.filter(p=>p.productType!=="oil"&&p.productType!=="bakhoor");
     const scored=candidates.map(p=>{
       const hay=norm([p.family,p.scentNature,p.descriptionAr,p.nameAr,p.nameEn,p.gender].join(" "));
       let score=0;
-      if(matched){const hits=matched.words.filter(w=>hay.includes(norm(w)));score+=hits.length?Math.min(6,hits.length*2):0;if(hay.includes(norm(matched.label)))score+=2;}
-      if(gender){if(p.gender===gender)score+=3;else if(p.gender==="للجنسين")score+=1;else score-=4;}
-      const requestedWords=q.split(" ").filter(w=>w.length>2);
+      if(matched){const hits=matched.words.filter(w=>hay.includes(norm(w)));score+=hits.length?Math.min(8,hits.length*2):0;if(hay.includes(norm(matched.label)))score+=2;}
+      if(gender){if(p.gender===gender)score+=4;else if(p.gender==="للجنسين")score+=2;else score-=5;}
+      const requestedWords=q.split(/\s+/).filter(w=>w.length>2&&!/^\d+$/.test(w));
       score+=requestedWords.filter(w=>hay.includes(w)).length;
-      return {p,score};
-    }).filter(x=>!matched||x.score>0).sort((a,b)=>b.score-a.score);
-    const list=scored.slice(0,3).map(x=>x.p);
+      if(daily&&/منعش|حمضي|مسكي|نظيف|fresh|citrus|clean|musk/i.test(hay))score+=2;
+      if(occasion&&/شرقي|خشبي|عنبر|حلو|زهري|woody|amber|oriental|sweet|floral/i.test(hay))score+=2;
+      const price=priceFor(p);
+      if(budget!==null&&Number.isFinite(price)){if(price<=budget)score+=3;else score-=2;}
+      return {p,score,price};
+    }).filter(x=>(!matched||x.score>0)&&(!gender||x.score>0)).sort((a,b)=>b.score-a.score);
+    const list=scored.slice(0,3);
     const replies=$("#advisorReplies");
-    if(!list.length){replies.innerHTML='<div class="assistant-message">لم أجد تطابقًا موثوقًا في الكتالوج الحالي. جرّب طابعًا آخر أو اطلب من المتجر البحث عن عطر محدد.</div>';return;}
-    replies.innerHTML=`<div class="assistant-message">هذه أقرب اقتراحات حسب الكلمات التي أدخلتها. الترتيب إرشادي اعتمادًا على وصف الكتالوج، وليس اختبارًا فعليًا للعطر. السعر غير المعتمد يظهر بوضوح.</div>`+list.map(p=>`<div class="suggestion"><div><h4>${escapeHTML(p.nameAr)} <span class="product-en">${escapeHTML(p.nameEn||"")}</span></h4><p>${escapeHTML(p.family||"عائلة غير محددة")} · ${formatMoney(priceFor(p))}${p.needsReview?" · يحتاج مراجعة":""}</p></div><button class="small-btn" data-action="details" data-id="${escapeHTML(p.id)}">التفاصيل</button></div>`).join("");
+    if(!list.length){replies.innerHTML='<div class="assistant-message">لم أجد تطابقًا موثوقًا في الكتالوج الحالي. جرّب اختيار طابع آخر، أو اكتب اسم عطر محدد لنبحث عنه معك.</div><button type="button" class="small-btn" data-advisor-request>اطلب البحث عن عطر</button>';return;}
+    const context=[matched?("الطابع: "+matched.label):"",gender?("الفئة: "+gender):"",budget!==null?("الميزانية المذكورة: "+budget+" ج.م"):"",daily?"الاستخدام: يومي":occasion?"الاستخدام: مناسبة":""] .filter(Boolean).join(" · ");
+    replies.innerHTML=`<div class="assistant-message"><strong>ترشيحات مبدئية من الكتالوج</strong><br>${escapeHTML(context||"رتّبت النتائج حسب قربها من وصفك.")}<br>التوصيات إرشادية وتعتمد على بيانات المنتج المسجلة؛ جرّب العطر وتأكد من السعر والتوفر مع المتجر قبل الشراء.</div>`+list.map(({p,price})=>`<div class="suggestion"><div><h4>${escapeHTML(p.nameAr||p.nameEn||"عطر مسجل")} <span class="product-en">${escapeHTML(p.nameEn||"")}</span></h4><p>${escapeHTML(p.family||"عائلة غير محددة")} · ${price==null?"السعر يحتاج إلى تأكيد":formatMoney(price)}${p.needsReview?" · بيانات تحتاج مراجعة":""}</p><small>${escapeHTML((p.scentNature||p.descriptionAr||"الطابع العطري يحتاج إلى مراجعة").slice(0,150))}</small></div><button class="small-btn" data-action="details" data-id="${escapeHTML(p.id)}">التفاصيل</button></div>`).join("");
   }
   function requestMissing(name){
     const req=safeRead(STORAGE.requests,[]);req.push({name,createdAt:new Date().toISOString()});save(STORAGE.requests,req);
