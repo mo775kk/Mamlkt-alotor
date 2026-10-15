@@ -711,3 +711,15 @@ button:disabled{cursor:not-allowed;opacity:.58;filter:saturate(.5)}
  .product-card .product-actions{display:grid!important;grid-template-columns:1fr 1fr!important}
  .product-card .product-actions button{width:100%!important;padding:9px 7px!important}
 }
+
+
+/* Customer details in WhatsApp checkout — 2026-10-15 */
+.checkout-customer{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin:14px 0;padding:14px;border:1px solid rgba(212,175,55,.34);border-radius:12px;background:rgba(212,175,55,.055)}
+.checkout-customer h3{margin:0 0 3px;color:#f1d77a;font-size:1.08rem;line-height:1.6}
+.checkout-customer label{font-weight:750;color:#f2e8d4;font-size:.95rem;margin-top:3px}
+.checkout-customer label span{color:#ffe38b}
+.checkout-customer input,.checkout-customer textarea{display:block;width:100%;min-width:0;box-sizing:border-box;min-height:46px;padding:10px 12px;border:1px solid rgba(212,175,55,.48);border-radius:9px;background:#17140f;color:#fff8e8;font:600 1rem/1.6 "Tajawal",sans-serif}
+.checkout-customer textarea{resize:vertical;min-height:70px}
+.checkout-customer input::placeholder,.checkout-customer textarea::placeholder{color:#b9ad98;opacity:1}
+.checkout-customer small{color:#cfc3ad;line-height:1.75}
+.checkout-customer input:focus-visible,.checkout-customer textarea:focus-visible{outline:3px solid #ffe38b;outline-offset:2px}
