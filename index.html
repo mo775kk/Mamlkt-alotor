@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="styles.css?v=20261015-low-stock1">
   <link rel="stylesheet" href="site-upgrades.css?v=20261015-roadmap1">
   <link rel="stylesheet" href="royal-polish.css?v=20261015-order-selection3">
-  <link rel="stylesheet" href="royal-pink-theme.css?v=20261015-royal-family-boxes1">
+  <link rel="stylesheet" href="royal-pink-theme.css?v=20261015-oil-guide-retail1">
 </head>
 <body>
   <div class="intro" id="intro" aria-label="دخول المملكة">
@@ -136,8 +136,11 @@
       <div class="product-grid" id="supplierOilProducts"></div>
       <div class="empty-state hidden" id="noSupplierOilProducts">لم يتم تحميل كتالوج الموردين بعد، أو لا توجد نتائج مطابقة.</div>
       <div class="section-cta"><button class="btn btn-outline" id="supplierOilMore" type="button">عرض المزيد من الأنواع</button></div>
-    </section>
-    <section class="section taxonomy-public-section" id="scent-classification">
+    
+      <div class="oil-retail-guide-wrap">
+<div class="blend-price-guide" aria-label="قائمة أسعار الزيوت والتركيب"><h3>أسعار الزيوت والتركيب للعميل</h3><p>سعر الجرام حسب الفئة، بالإضافة إلى أسعار أحجام التركيب. الأسعار قابلة للتعديل من الإدارة؛ أقل طلب للتركيب يبدأ من 50 ج.م.</p><div class="gram-price-grid" id="customerGramPriceGuide"><div><span>الزيوت الفرنسية</span><strong>10 ج.م / جرام</strong></div><div><span>الزيوت الشرقية</span><strong>15 ج.م / جرام</strong></div><div><span>الشرقي الممتاز</span><strong>20 ج.م / جرام</strong></div></div><div class="blend-price-grid" id="blendPriceGuide"><div><span>3 مل</span><strong>50 ج.م</strong></div><div><span>5 مل</span><strong>75 ج.م</strong></div><div><span>10 مل</span><strong>100 ج.م</strong></div><div><span>22 مل</span><strong>130 ج.م</strong></div><div><span>30 مل</span><strong>150 ج.م</strong></div><div><span>50 مل</span><strong>200 ج.م</strong></div><div><span>100 مل</span><strong>450 ج.م</strong></div></div></div>
+      </div>
+<div class="section taxonomy-public-section" id="scent-classification">
       <div class="section-heading">
         <div><p class="eyebrow">THE ROYAL SCENT LIBRARY</p><h2>دليل العائلات والأنواع العطرية</h2></div>
         <p>كل صندوق يفتح لك حكاية العائلة: رائحتها، مكوّناتها الشائعة، إحساسها، وأفضل أوقات استخدامها.</p>
@@ -186,7 +189,9 @@
         </details>
       </div>
       <p class="family-disclaimer">معلومة مهمة: العطر الواحد قد ينتمي إلى أكثر من عائلة. العائلة تصف طابع الرائحة ولا تضمن وحدها الثبات أو الفوحان؛ فذلك يتأثر بالتركيبة والتركيز والجلد والطقس.</p>
+    </div>
     </section>
+    
 
     <section class="section blend-section" id="blend">
       <div class="section-heading"><div><p class="eyebrow">THE BLENDING LAB</p><h2>مختبر تركيب عطرك</h2></div><p>أنشئ طلب تركيب مبدئيًا حسب الخيارات المتاحة.</p></div>
@@ -196,8 +201,7 @@
         <div class="blend-step"><label for="blendSize">الحجم</label><select id="blendSize"><option value="3">3 مل</option><option value="5">5 مل</option><option value="10" selected>10 مل</option><option value="22">22 مل</option><option value="30">30 مل</option><option value="50">50 مل</option><option value="100">100 مل</option></select></div>
         <div class="blend-step"><label for="blendBottle">العبوة</label><select id="blendBottle"><option>عبوة كلاسيكية</option><option>عبوة فاخرة</option><option>أترك اختيار العبوة للمتجر</option></select></div>
         <div class="blend-summary"><span>السعر المرجعي للحجم المختار</span><strong id="blendPrice">100 ج.م</strong><small>السعر النهائي والتوفر يحتاجان إلى تأكيد المتجر قبل الطلب.</small></div>
-        <div class="blend-price-guide" aria-label="قائمة أسعار الزيوت والتركيب"><h3>أسعار الزيوت والتركيب للعميل</h3><p>سعر الجرام حسب الفئة، بالإضافة إلى أسعار أحجام التركيب. الأسعار قابلة للتعديل من الإدارة؛ أقل طلب للتركيب يبدأ من 50 ج.م.</p><div class="gram-price-grid" id="customerGramPriceGuide"><div><span>الزيوت الفرنسية</span><strong>10 ج.م / جرام</strong></div><div><span>الزيوت الشرقية</span><strong>15 ج.م / جرام</strong></div><div><span>الشرقي الممتاز</span><strong>20 ج.م / جرام</strong></div></div><div class="blend-price-grid" id="blendPriceGuide"><div><span>3 مل</span><strong>50 ج.م</strong></div><div><span>5 مل</span><strong>75 ج.م</strong></div><div><span>10 مل</span><strong>100 ج.م</strong></div><div><span>22 مل</span><strong>130 ج.م</strong></div><div><span>30 مل</span><strong>150 ج.م</strong></div><div><span>50 مل</span><strong>200 ج.م</strong></div><div><span>100 مل</span><strong>450 ج.م</strong></div></div></div>
-        <button type="button" class="btn btn-gold" id="addBlend">إضافة طلب التركيب</button>
+       <button type="button" class="btn btn-gold" id="addBlend">إضافة طلب التركيب</button>
       </div>
     </section>
 
