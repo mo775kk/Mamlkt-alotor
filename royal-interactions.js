@@ -62,7 +62,7 @@
   }
   function setupButtonFeedback(){
     document.addEventListener("click",e=>{
-      const target=e.target.closest(".btn,.icon-btn,.small-btn,.category-card,#royalBackTop");
+      const target=e.target.closest(".btn,.small-btn,.category-card,#royalBackTop");
       if(!target||reduced||target.disabled||target.tagName==="A"&&target.getAttribute("href")?.startsWith("#"))return;
       const rect=target.getBoundingClientRect(),diameter=Math.min(Math.max(rect.width,rect.height)*1.2,100);
       const ripple=document.createElement("span");ripple.className="royal-ripple";ripple.style.width=diameter+"px";ripple.style.height=diameter+"px";
