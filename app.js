@@ -32,6 +32,24 @@
   const $$ = s => [...document.querySelectorAll(s)];
   const safeRead = (key, fallback) => { try { const v = JSON.parse(localStorage.getItem(key)); return v ?? fallback; } catch { return fallback; } };
   const readArray = key => { const value = safeRead(key, []); return Array.isArray(value) ? value : []; };
+  // Normalize persisted cart data before it reaches totals or HTML.
+  const normalizeCart = value => (Array.isArray(value) ? value : []).filter(item =>
+    item && typeof item === "object" && typeof item.key === "string" &&
+    Number.isFinite(Number(item.price)) && Number(item.price) >= 0 &&
+    Number.isFinite(Number(item.qty)) && Number(item.qty) >= 1
+  ).map(item => ({
+    key: String(item.key).slice(0, 300),
+    id: String(item.id ?? "").slice(0, 200),
+    size: String(item.size ?? "10").slice(0, 20),
+    qty: Math.min(99, Math.max(1, Math.floor(Number(item.qty)))),
+    price: Number(item.price),
+    nameAr: String(item.nameAr ?? "منتج").slice(0, 250),
+    nameEn: String(item.nameEn ?? "").slice(0, 250),
+    custom: item.custom && typeof item.custom === "object" ? {
+      label: String(item.custom.label ?? "").slice(0, 100),
+      description: String(item.custom.description ?? "").slice(0, 500)
+    } : null
+  }));
   function displayFamily(raw, name) {
     const v=String(raw||"").toLowerCase();
     if(/citrus|fresh|حمض|منعش/.test(v))return "حمضي ومنعش";
@@ -138,7 +156,7 @@
       console.warn("تعذر تحميل كتالوج data/products.json؛ يستمر المتجر بالكتالوج المحلي.", error);
     }
   }
-  let cart = readArray(STORAGE.cart);
+  let cart = normalizeCart(readArray(STORAGE.cart));
   let favorites = readArray(STORAGE.fav);
   let toastTimer;
   const formatMoney = n => n == null || !Number.isFinite(Number(n)) ? "السعر غير محدد" : `${Number(n).toLocaleString("ar-EG")} ج.م`;
@@ -201,7 +219,7 @@
   function renderCart(){
     const el=$("#cartItems");
     if(!cart.length){el.innerHTML='<div class="empty-state">السلة فارغة حاليًا.</div>';$("#cartTotal").textContent=formatMoney(0);return;}
-    el.innerHTML=cart.map(item=>`<div class="cart-line"><div><h4>${escapeHTML(item.nameAr)}</h4><small>${escapeHTML(item.nameEn||"")} · ${escapeHTML(item.size)} مل · ${formatMoney(item.price)} للقطعة</small>${item.custom?.description?`<small>${escapeHTML(item.custom.description)}</small>`:""}<small>الكمية: ${item.qty} — الإجمالي: ${formatMoney(item.price*item.qty)}</small></div><div class="cart-line-actions"><button class="qty-btn" data-cart="minus" data-key="${escapeHTML(item.key)}" aria-label="تقليل الكمية">−</button><button class="qty-btn" data-cart="plus" data-key="${escapeHTML(item.key)}" aria-label="زيادة الكمية">+</button><button class="remove-btn" data-cart="remove" data-key="${escapeHTML(item.key)}">حذف</button></div></div>`).join("");
+    el.innerHTML=cart.map(item=>`<div class="cart-line"><div><h4>${escapeHTML(item.nameAr)}</h4><small>${escapeHTML(item.nameEn||"")} · ${escapeHTML(item.size)} مل · ${formatMoney(item.price)} للقطعة</small>${item.custom?.description?`<small>${escapeHTML(item.custom.description)}</small>`:""}<small>الكمية: ${escapeHTML(item.qty)} — الإجمالي: ${formatMoney(item.price*item.qty)}</small></div><div class="cart-line-actions"><button class="qty-btn" data-cart="minus" data-key="${escapeHTML(item.key)}" aria-label="تقليل الكمية">−</button><button class="qty-btn" data-cart="plus" data-key="${escapeHTML(item.key)}" aria-label="زيادة الكمية">+</button><button class="remove-btn" data-cart="remove" data-key="${escapeHTML(item.key)}">حذف</button></div></div>`).join("");
     $("#cartTotal").textContent=formatMoney(cart.reduce((n,x)=>n+x.price*x.qty,0));
   }
   function openDrawer(){ $("#drawerBackdrop").classList.remove("hidden");$("#cartDrawer").classList.add("open");$("#cartDrawer").setAttribute("aria-hidden","false");document.body.classList.add("locked");renderCart(); }
@@ -297,7 +315,7 @@
   }
   document.addEventListener("click",e=>{
     const action=e.target.closest("[data-action]");if(action){const {action:act,id}=action.dataset;if(act==="favorite")toggleFavorite(id);if(act==="add")addToCart(id);if(act==="details")openDetails(id);}
-    const ca=e.target.closest("[data-cart]");if(ca){const item=cart.find(x=>x.key===ca.dataset.key);if(!item)return;if(ca.dataset.cart==="plus")item.qty++;if(ca.dataset.cart==="minus")item.qty--;if(ca.dataset.cart==="remove"||item.qty<=0)cart=cart.filter(x=>x.key!==item.key);save(STORAGE.cart,cart);renderCart();updateCounts();}
+    const ca=e.target.closest("[data-cart]");if(ca){const item=cart.find(x=>x.key===ca.dataset.key);if(!item)return;if(ca.dataset.cart==="plus")item.qty=Math.min(99,Number(item.qty)+1);if(ca.dataset.cart==="minus")item.qty=Number(item.qty)-1;if(ca.dataset.cart==="remove"||item.qty<=0)cart=cart.filter(x=>x.key!==item.key);save(STORAGE.cart,cart);renderCart();updateCounts();}
   });
   $("#productSearch").addEventListener("input",renderProducts);$("#genderFilter").addEventListener("change",renderProducts);$("#familyFilter").addEventListener("change",renderProducts);
   $("#requestMissingBtn").addEventListener("click",()=>{const name=$("#productSearch").value.trim();if(!name){notify("اكتب اسم العطر الذي تبحث عنه أولًا.");$("#productSearch").focus();return;}requestMissing(name);notify("تم تسجيل طلب البحث وفتح واتساب لإرساله.");});
