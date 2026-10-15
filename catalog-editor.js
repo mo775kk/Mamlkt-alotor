@@ -5,7 +5,7 @@ const KEY='mamlaka_supplier_catalog_v1', TAXKEY='mamlaka_catalog_taxonomy_config
 const $=(s,r=document)=>r.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const defaultConfig={
- retailBlendPrices:[{size:'3 مل',price:50},{size:'5 مل',price:75},{size:'10 مل',price:100},{size:'22 مل',price:130},{size:'30 مل',price:150},{size:'50 مل',price:200},{size:'100 مل',price:450}],\n gramPricing:{french:10,oriental:15,orientalPremium:20},
+ retailBlendPrices:[{size:'3 مل',price:50},{size:'5 مل',price:75},{size:'10 مل',price:100},{size:'30 مل',price:100},{size:'50 مل',price:150},{size:'100 مل',price:300}],\n gramPricing:{french:10,oriental:15,orientalPremium:20},
  productTypes:[{id:'ready',labelAr:'عطر جاهز'},{id:'oil',labelAr:'زيت عطري مركز / تركيب'},{id:'bakhoor',labelAr:'عود وبخور'},{id:'gift',labelAr:'هدايا وتغليف'},{id:'diffuser',labelAr:'زيت فواحة'}],
  categories:[{id:'MEN',labelAr:'رجالي'},{id:'WOMEN',labelAr:'نسائي'},{id:'UNISEX',labelAr:'للجنسين'},{id:'ORIENTAL',labelAr:'شرقي'},{id:'KIDS',labelAr:'أطفال'},{id:'DIFFUSER',labelAr:'فواحات'}],
  families:[
