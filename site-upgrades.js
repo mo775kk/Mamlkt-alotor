@@ -77,11 +77,13 @@
         const raw=await file.text(), data=JSON.parse(raw), sum=summarize(data);
         const id="file-"+Date.now()+"-"+Math.random().toString(36).slice(2,7);
         $("#royalFilePreview").classList.remove("hidden");
-        $("#royalFilePreview").innerHTML=`<div class="royal-file-head"><div><strong>${esc(file.name)}</strong><small>${esc(fileBytes(file))} · ${esc(sum.kind)} · ${sum.count} سجل</small></div><button type="button" class="small-btn" id="royalClosePreview">إغلاق المعاينة</button></div><div class="royal-json-tools"><button type="button" class="small-btn primary" id="royalImportNew">استيراد / دمج البيانات</button><button type="button" class="small-btn" id="royalDownloadOriginal">تنزيل الملف</button></div><pre class="royal-json-preview" dir="ltr"></pre><p class="admin-note">سيتم فحص الملف قبل الحفظ. الاستيراد لا يحذف السجلات الحالية تلقائيًا.</p>`;
+        $("#royalFilePreview").innerHTML=`<div class="royal-file-head"><div><strong>${esc(file.name)}</strong><small>${esc(fileBytes(file))} · ${esc(sum.kind)} · ${sum.count} سجل</small></div><button type="button" class="small-btn" id="royalClosePreview">إغلاق المعاينة</button></div><div class="royal-json-tools"><button type="button" class="small-btn primary" id="royalImportMerge">استيراد ودمج</button><button type="button" class="small-btn danger" id="royalImportReplace">استبدال البيانات المحددة</button><button type="button" class="small-btn" id="royalDownloadOriginal">تنزيل الملف</button></div><pre class="royal-json-preview" dir="ltr"></pre><p class="admin-note">الدمج يحافظ على السجلات الحالية ويحدّث المطابق. الاستبدال يمسح مجموعة المنتجات المحلية المحددة فقط، وينزّل نسخة احتياطية قبل التنفيذ. النسخة الاحتياطية تُحفظ على جهازك ولا تُرفع إلى GitHub.</p>`;
         $(".royal-json-preview").textContent=JSON.stringify(data,null,2).slice(0,60000)+(JSON.stringify(data,null,2).length>60000?"\n… تم اختصار المعاينة للملفات الكبيرة":"");
         $("#royalClosePreview").onclick=()=>$("#royalFilePreview").classList.add("hidden");
         $("#royalDownloadOriginal").onclick=()=>download(file.name,raw);
-        $("#royalImportNew").onclick=()=>{try{importData(data,file.name,raw,id);e.target.value="";}catch(err){toast("تعذر الاستيراد: "+err.message)}};
+        const runImport=mode=>{try{importData(data,file.name,raw,id,mode);e.target.value="";}catch(err){toast("تعذر الاستيراد: "+err.message)}};
+         $("#royalImportMerge").onclick=()=>runImport("merge");
+         $("#royalImportReplace").onclick=()=>{if(confirm("تنبيه: الاستبدال قد يحذف منتجات محلية حالية من المجموعة المستهدفة. سيتم تنزيل نسخة احتياطية أولًا. هل تريد المتابعة؟"))runImport("replace")};
         const items=library();items.unshift({id,name:file.name,size:file.size,importedAt:new Date().toISOString(),kind:sum.kind,count:sum.count,status:"جاهز للمعاينة",content:raw});
         saveLibrary(items.slice(0,100));renderFileList();
       }catch(err){$("#royalFilePreview").classList.remove("hidden");$("#royalFilePreview").innerHTML=`<strong>ملف JSON غير صالح</strong><p>${esc(err.message)}</p><p class="admin-note">لم يتم تغيير أي بيانات.</p>`;toast("الملف غير صالح ولم يتم استيراده.");}
@@ -131,34 +133,41 @@
     });
     $("#royalFileSearch")?.addEventListener("input",renderFileList);
   }
-  function importData(data,name,raw,id){
+  function importData(data,name,raw,id,mode="merge"){
     let records=Array.isArray(data)?data:Array.isArray(data.products)?data.products:Array.isArray(data.oils)?data.oils:Array.isArray(data.items)?data.items:Array.isArray(data.records)?data.records:null;
     if(data && data.localStorage && typeof data.localStorage==="object"){
       const keys=Object.keys(data.localStorage).filter(k=>catalogKeys.includes(k));
       if(!keys.length){toast("لم توجد مفاتيح بيانات معروفة في النسخة الاحتياطية.");return;}
       const summary=keys.map(k=>k+": "+(Array.isArray(data.localStorage[k])?data.localStorage[k].length+" سجل":"إعدادات")).join("\n");
-      if(!confirm("سيتم استيراد المفاتيح التالية إلى هذا المتصفح مع دمج المنتجات عند الإمكان:\n"+summary+"\nهل تريد المتابعة؟"))return;
+      if(mode==="replace") saveLocalBackup("قبل استبدال النسخة الاحتياطية");
+      if(!confirm("وضع العملية: "+(mode==="replace"?"استبدال المفاتيح الموجودة في الملف بعد تنزيل نسخة احتياطية":"دمج المنتجات واستيراد الإعدادات")+".\nالمفاتيح:\n"+summary+"\nهل تريد المتابعة؟"))return;
       keys.forEach(k=>{
         const incoming=data.localStorage[k];
-        if(k==="mamlaka_custom_products_v1" && Array.isArray(incoming)){
-          const existing=read(k,[]), map=new Map(existing.map(x=>[String(x.id||x.nameEn||x.nameAr).toLowerCase(),x]));
-          incoming.forEach(x=>{const key=String(x.id||x.nameEn||x.nameAr).toLowerCase();if(key)map.set(key,{...(map.get(key)||{}),...x})});
+        if(k==="mamlaka_custom_products_v1" && Array.isArray(incoming) && mode==="merge"){
+          const existing=read(k,[]), map=new Map(existing.map(x=>[String(x.id||x.nameEn||x.nameAr).trim().toLowerCase(),x]));
+          incoming.forEach((x,i)=>{const key=String(x.id||x.nameEn||x.nameAr||("record-"+i)).trim().toLowerCase();if(key)map.set(key,{...(map.get(key)||{}),...x})});
           write(k,[...map.values()]);
         }else localStorage.setItem(k,JSON.stringify(incoming));
       });
-      updateFileStatus(id,"تم الاستيراد");toast("تم استيراد البيانات المعروفة. راجع الموقع قبل المتابعة.");return;
+      updateFileStatus(id,mode==="replace"?"تم الاستيراد بالاستبدال":"تم الاستيراد بالدمج");document.dispatchEvent(new Event("mamlaka:products-updated"));toast("تم استيراد البيانات المعروفة. راجع الموقع قبل المتابعة.");return;
     }
     if(!records){toast("لم أتعرف على قائمة سجلات. يجب أن يحتوي JSON على مصفوفة أو products أو oils أو items أو records.");return;} const supplierLike=(Array.isArray(data.products)&&data.products.some(p=>p&&("sku" in p||"price_1kg" in p||"price_500g" in p)))||Array.isArray(data.oils); if(supplierLike){if(!confirm("يبدو أن هذا ملف كتالوج موردين. سيتم حفظه في كتالوج الموردين المحلي دون استبدال منتجات المتجر. هل تريد المتابعة؟"))return;write("mamlaka_supplier_catalog_v1",{...data,products:records});updateFileStatus(id,"تم الاستيراد إلى كتالوج الموردين");toast("تم استيراد كتالوج الموردين إلى التخزين المحلي. راجع النتائج قبل الاستخدام.");return;}
     if(records.some(x=>!x || typeof x!=="object" || Array.isArray(x))){toast("توجد سجلات غير صالحة؛ لم يتم الاستيراد.");return;}
-    if(!confirm("تم العثور على "+records.length+" سجل. سيُدمج مع المنتجات المحلية دون حذفها تلقائيًا. هل تريد المتابعة؟"))return;
-    const existing=read("mamlaka_custom_products_v1",[]), map=new Map();
+    if(mode==="replace") saveLocalBackup("قبل استبدال المنتجات");
+    if(!confirm("تم العثور على "+records.length+" سجل. "+(mode==="replace"?"سيتم استبدال قائمة المنتجات المحلية بالكامل بعد تنزيل نسخة احتياطية.":"سيتم دمج السجلات وتحديث المطابق منها.")+" هل تريد المتابعة؟"))return;
+    const existing=mode==="replace"?[]:read("mamlaka_custom_products_v1",[]), map=new Map();
     [...existing,...records].forEach((p,i)=>{
       const key=String(p.id||p.nameEn||p.nameAr||p.name||("record-"+i)).trim().toLowerCase();
-      map.set(key,{...(map.get(key)||{}),...p});
+      if(key)map.set(key,{...(map.get(key)||{}),...p});
     });
     write("mamlaka_custom_products_v1",[...map.values()]);
-    updateFileStatus(id,"تم الاستيراد");document.dispatchEvent(new Event("mamlaka:products-updated"));
-    toast("تم دمج "+records.length+" سجلًا. تحقق من الأسعار والبيانات قبل البيع.");
+    updateFileStatus(id,mode==="replace"?"تم الاستبدال":"تم الدمج");document.dispatchEvent(new Event("mamlaka:products-updated"));
+    toast((mode==="replace"?"تم استبدال المنتجات بـ ":"تم دمج ")+records.length+" سجلًا. تحقق من الأسعار والبيانات قبل البيع.");
+  }
+  function saveLocalBackup(label){
+    const snapshot={schemaVersion:2,exportedAt:new Date().toISOString(),store:"MAMLKAT AL-OTOR",backupReason:label,storageType:"browser-local-backup",localStorage:{}};
+    catalogKeys.forEach(k=>{const value=localStorage.getItem(k);if(value!==null){try{snapshot.localStorage[k]=JSON.parse(value)}catch{snapshot.localStorage[k]=value}}});
+    download("mamlaka-auto-backup-"+new Date().toISOString().replace(/[:.]/g,"-")+".json",JSON.stringify(snapshot,null,2));
   }
   function updateFileStatus(id,status){const a=library().map(x=>x.id===id?{...x,status}:x);saveLibrary(a);renderFileList();}
   function renderFileList(){
