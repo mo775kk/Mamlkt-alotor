@@ -1,6 +1,7 @@
 (() => {
   "use strict";
-  // Royal finishing pass: legibility, navigation cleanup, accessible controls.
+  // Royal finishing pass: legibility, safe navigation handling, accessible controls.
+  if (document.getElementById("mamlakat-royal-finish")) return;
   const style = document.createElement("style");
   style.id = "mamlakat-royal-finish";
   style.textContent = `
@@ -24,25 +25,30 @@
   `;
   document.head.appendChild(style);
 
-  // Remove repeated category links by normalized visible label while preserving first occurrence.
-  function cleanDuplicateNavigation() {
+  // Only flag exact duplicate navigation links; never remove links automatically.
+  function checkNavigation() {
     const nav = document.querySelector("nav, .main-nav, .nav-links");
     if (!nav) return;
+    const links = [...nav.querySelectorAll("a")];
     const seen = new Set();
-    [...nav.querySelectorAll("a")].forEach(a => {
-      const label = (a.textContent || "").replace(/[♛⌂★♡☆]/g, "").replace(/\s+/g, " ").trim().toLocaleLowerCase("ar");
-      if (!label) return;
+    links.forEach(a => {
+      const label = (a.textContent || "").replace(/\s+/g, " ").trim().toLocaleLowerCase("ar");
       const href = (a.getAttribute("href") || "").trim();
-      const key = href.startsWith("#") ? href : label;
-      if (seen.has(key)) a.remove(); else seen.add(key);
+      const key = href + "|" + label;
+      if (seen.has(key)) a.dataset.possibleDuplicate = "true";
+      else seen.add(key);
     });
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", cleanDuplicateNavigation, {once:true});
-  else cleanDuplicateNavigation();
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", checkNavigation, {once:true});
+  else checkNavigation();
 
-  // Explain the minimum reference price without implying every fragrance costs the same.
   document.querySelectorAll("[data-price-note]").forEach(el => {
     el.textContent = "السعر المرجعي يبدأ من 50 ج.م لكل 3 مل، وقد يختلف حسب نوع العطر وتركيزه وتكلفته.";
   });
+
+  // Give the browser and assistive technology a consistent language direction.
+  if (document.documentElement.lang === "ar" && !document.documentElement.dir) {
+    document.documentElement.dir = "rtl";
+  }
   console.info("Mamlakat Al-Otor royal finishing pass loaded.");
 })();
