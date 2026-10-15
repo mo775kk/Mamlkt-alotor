@@ -605,3 +605,44 @@ button:disabled{cursor:not-allowed;opacity:.58;filter:saturate(.5)}
 .product-card .product-info{min-width:0}
 .product-card .product-info h3,.product-card .product-en,.product-card .product-desc{overflow-wrap:anywhere}
 @media(max-width:480px){.card-buy-panel{padding:10px;margin:10px 0}.card-size-select{font-size:15px;min-height:46px}.card-price-line strong{font-size:18px}}
+
+
+/* Bespoke category artwork: self-hosted royal vector illustrations */
+.category-card .category-icon-wrap{
+  width:76px;height:76px;flex:0 0 76px;border-radius:18px;
+  border:1px solid rgba(212,175,55,.48);
+  background-color:#17120a;background-repeat:no-repeat;background-position:center;background-size:cover;
+  box-shadow:0 8px 24px rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,240,166,.06);
+  overflow:hidden;
+}
+.category-card .category-icon-wrap .royal-category-icon{opacity:0;width:100%;height:100%}
+.category-ready .category-icon-wrap{background-image:url("assets/images/category-ready.svg")}
+.category-oils .category-icon-wrap{background-image:url("assets/images/category-oils.svg")}
+.category-bakhoor .category-icon-wrap{background-image:url("assets/images/category-bakhoor.svg")}
+.category-gift .category-icon-wrap{background-image:url("assets/images/category-gift.svg")}
+.category-card:hover .category-icon-wrap{border-color:#f1d77a;box-shadow:0 10px 30px rgba(212,175,55,.16),inset 0 0 0 1px rgba(255,240,166,.12)}
+.advisor-quick-prompts{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0 18px}
+.advisor-quick-prompts button{min-height:40px;border:1px solid rgba(212,175,55,.48);border-radius:999px;padding:8px 14px;background:linear-gradient(135deg,rgba(212,175,55,.12),rgba(18,14,8,.8));color:#f5e5b2;font:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:background .18s,border-color .18s,transform .18s}
+.advisor-quick-prompts button:hover,.advisor-quick-prompts button:focus-visible{background:rgba(212,175,55,.2);border-color:#f1d77a;transform:translateY(-1px);outline:none}
+.advisor-replies{display:grid;gap:10px}
+.advisor-replies .assistant-message{padding:14px 16px;border:1px solid rgba(212,175,55,.22);border-radius:12px;background:rgba(212,175,55,.045)}
+.advisor-replies .suggestion{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px;border:1px solid rgba(212,175,55,.23);border-radius:12px;background:linear-gradient(125deg,rgba(212,175,55,.07),rgba(0,0,0,.18))}
+.advisor-replies .suggestion>div{min-width:0}
+.advisor-replies .suggestion h4{overflow-wrap:anywhere;line-height:1.65}
+.advisor-replies .suggestion small{display:block;color:#cfc2a7;line-height:1.7;margin-top:5px}
+.advisor-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;margin-top:16px}
+.advisor-form input{width:100%;min-width:0}
+@media(max-width:620px){
+ .category-card .category-icon-wrap{width:58px;height:58px;flex-basis:58px;border-radius:14px}
+ .advisor-quick-prompts{gap:7px}
+ .advisor-quick-prompts button{font-size:13px;min-height:42px;padding:8px 11px}
+ .advisor-form{grid-template-columns:1fr}
+ .advisor-form .btn{width:100%}
+ .advisor-replies .suggestion{align-items:flex-start;padding:11px;gap:8px}
+ .advisor-replies .suggestion .small-btn{flex:0 0 auto}
+}
+@media(max-width:360px){
+ .category-card .category-icon-wrap{width:48px;height:48px;flex-basis:48px}
+ .advisor-replies .suggestion{flex-direction:column}
+ .advisor-replies .suggestion .small-btn{width:100%}
+}
