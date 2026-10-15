@@ -266,7 +266,7 @@
     ];
     const matched=terms.find(t=>t.words.some(w=>q.includes(norm(w))));
     const gender=q.includes("رجالي")||q.includes("للرجال")||q.includes("men")?"رجالي":q.includes("نسائي")||q.includes("للنساء")||q.includes("women")?"نسائي":null;
-    const candidates=products.filter(p=>p.productType!=="oil"&&p.productType!=="bakhoor"&&p.available!==false);
+    const candidates=products.filter(p=>p.productType!=="oil"&&p.productType!=="bakhoor");
     const scored=candidates.map(p=>{
       const hay=norm([p.family,p.scentNature,p.descriptionAr,p.nameAr,p.nameEn,p.gender].join(" "));
       let score=0;
