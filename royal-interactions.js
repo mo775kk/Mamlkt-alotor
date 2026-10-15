@@ -42,7 +42,7 @@
     const nav=$("#mainNav"),toggle=$("#menuToggle");
     if(!nav||!toggle)return;
     const close=()=>{nav.classList.remove("open");toggle.setAttribute("aria-expanded","false");toggle.setAttribute("aria-label","فتح القائمة");};
-    toggle.addEventListener("click",()=>{const open=nav.classList.contains("open");toggle.setAttribute("aria-label",open?"فتح القائمة":"إغلاق القائمة");});
+    toggle.addEventListener("click",()=>{const open=nav.classList.contains("open");toggle.setAttribute("aria-label",open?"إغلاق القائمة":"فتح القائمة");});
     nav.addEventListener("click",e=>{if(e.target.closest("a"))close();});
     document.addEventListener("keydown",e=>{
       if(e.key==="Escape")close();
