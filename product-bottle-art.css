@@ -1,0 +1,14 @@
+/* Original, copyright-safe perfume bottle artwork for products without uploaded photos. */
+.product-visual{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 52%,rgba(244,215,124,.16),transparent 48%),linear-gradient(145deg,rgba(255,245,250,.04),rgba(232,140,184,.045),rgba(212,175,55,.04));}
+.product-visual:after{content:"";position:absolute;inset:10% 12%;pointer-events:none;border:1px solid rgba(244,215,124,.13);border-radius:48% 48% 12% 12%;opacity:.55;mask-image:linear-gradient(to bottom,black,transparent 88%);}
+.product-visual .product-photo{display:block;width:100%;height:100%;object-fit:contain;padding:12px;position:relative;z-index:1;filter:drop-shadow(0 12px 14px rgba(0,0,0,.24));}
+.placeholder-bottle{position:relative;display:grid;place-items:center;width:100%;height:100%;min-height:175px;padding:6px 8px 15px;isolation:isolate;background:radial-gradient(ellipse at 50% 64%,rgba(244,215,124,.12),transparent 56%);}
+.placeholder-bottle svg{position:relative;z-index:1;display:block;width:100%;height:100%;max-width:225px;max-height:225px;overflow:visible;filter:drop-shadow(0 10px 11px rgba(0,0,0,.26));transition:transform .35s ease,filter .35s ease;}
+.product-card:hover .placeholder-bottle svg{transform:translateY(-2px);filter:drop-shadow(0 14px 14px rgba(0,0,0,.3));}
+.bottle-art-note{position:absolute;bottom:5px;inset-inline-end:8px;z-index:2;font-size:9px;line-height:1.3;letter-spacing:.1px;color:rgba(255,240,206,.75);background:rgba(20,10,17,.42);border:1px solid rgba(212,175,55,.18);border-radius:20px;padding:3px 7px;}
+.product-badge,.favorite-btn{z-index:4;}
+.product-visual .placeholder-bottle[data-family="زهري ووردي"]{background:radial-gradient(ellipse at 50% 55%,rgba(232,140,184,.20),transparent 58%);}
+.product-visual .placeholder-bottle[data-family="بحري"]{background:radial-gradient(ellipse at 50% 55%,rgba(105,183,211,.19),transparent 58%);}
+.product-visual .placeholder-bottle[data-family="عنبر وشرقي"],.product-visual .placeholder-bottle[data-family="عود وخشبي"]{background:radial-gradient(ellipse at 50% 55%,rgba(212,153,76,.19),transparent 58%);}
+@media(max-width:560px){.placeholder-bottle{min-height:160px}.placeholder-bottle svg{max-height:195px}.bottle-art-note{font-size:8px;}}
+@media(prefers-reduced-motion:reduce){.placeholder-bottle svg{transition:none!important}.product-card:hover .placeholder-bottle svg{transform:none;}}
