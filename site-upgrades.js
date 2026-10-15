@@ -134,6 +134,18 @@
     $("#royalFileSearch")?.addEventListener("input",renderFileList);
   }
   function importData(data,name,raw,id,mode="merge"){
+    if(data && Array.isArray(data.items) && Array.isArray(data.sales) && Array.isArray(data.expenses) && String(data.store||"").toUpperCase()==="MAMLKAT AL-OTOR"){
+      if(mode==="replace") saveLocalBackup("قبل استبدال دفتر المخزون والحسابات");
+      const current=read("mamlaka_inventory_accounting_v1",{items:[],sales:[],expenses:[],movements:[]});
+      if(!confirm("تم التعرف على تقرير المخزون والحسابات. "+(mode==="replace"?"سيتم استبدال دفتر الحسابات بعد تنزيل نسخة احتياطية.":"سيتم دمج الأصناف والعمليات دون تكرار المعرفات.")+" هل تريد المتابعة؟"))return;
+      let ledger;
+      if(mode==="replace") ledger={items:data.items,sales:data.sales,expenses:data.expenses,movements:Array.isArray(data.movements)?data.movements:[]};
+      else {
+        const mergeById=(a,b)=>{const map=new Map((Array.isArray(a)?a:[]).map((x,i)=>[String(x.id||x.itemId||x.name||("old-"+i)),x]));(Array.isArray(b)?b:[]).forEach((x,i)=>{const key=String(x.id||x.itemId||x.name||("new-"+i));if(!map.has(key))map.set(key,x)});return [...map.values()]};
+        ledger={items:mergeById(current.items,data.items),sales:mergeById(current.sales,data.sales),expenses:mergeById(current.expenses,data.expenses),movements:mergeById(current.movements,data.movements)};
+      }
+      write("mamlaka_inventory_accounting_v1",ledger);updateFileStatus(id,mode==="replace"?"تم استبدال دفتر الحسابات":"تم دمج دفتر الحسابات");toast("تم استيراد دفتر المخزون والحسابات. راجع الأرصدة والتقارير.");return;
+    }
     let records=Array.isArray(data)?data:Array.isArray(data.products)?data.products:Array.isArray(data.oils)?data.oils:Array.isArray(data.items)?data.items:Array.isArray(data.records)?data.records:null;
     if(data && data.localStorage && typeof data.localStorage==="object"){
       const keys=Object.keys(data.localStorage).filter(k=>catalogKeys.includes(k));
