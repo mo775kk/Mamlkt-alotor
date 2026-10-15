@@ -226,35 +226,16 @@
   function closeDrawer(){ $("#drawerBackdrop").classList.add("hidden");$("#cartDrawer").classList.remove("open");$("#cartDrawer").setAttribute("aria-hidden","true");document.body.classList.remove("locked"); }
   function openDetails(id){
     const p=findProduct(id);if(!p)return;
-    const price=priceFor(p);
-    $("#modalContent").innerHTML=`<div class="modal-product"><div class="modal-product-image">${imageMarkup(p)}</div><div><p class="eyebrow">MAMLKAT AL-OTOR</p><h2 id="modalTitle">${escapeHTML(p.nameAr||"منتج")}</h2><div class="product-en">${escapeHTML(p.nameEn||"")}</div><p>${escapeHTML(p.descriptionAr||"لا يوجد وصف موثق بعد.")}</p><p><b>النوع:</b> ${escapeHTML(p.productType==="oil"?"زيت عطري للتركيب":p.productType==="bakhoor"?"عود أو بخور":"عطر جاهز")} · <b>الفئة:</b> ${escapeHTML(p.gender||"غير محدد")}</p><p><b>الطابع:</b> ${escapeHTML(p.scentNature||"يحتاج إلى تقييم العينة")}</p><p><b>العائلة العطرية:</b> ${escapeHTML(p.family||"غير محددة")}</p><div class="fragrance-note-pyramid"><h3>الهرم العطري</h3><p><b>نوتات المقدمة:</b> ${escapeHTML(Array.isArray(p.topNotes)?(p.topNotes.length?p.topNotes.join("، "):"غير موثقة"):(p.topNotes||"غير موثقة"))}</p><p><b>نوتات القلب:</b> ${escapeHTML(Array.isArray(p.heartNotes)?(p.heartNotes.length?p.heartNotes.join("، "):"غير موثقة"):(p.heartNotes||"غير موثقة"))}</p><p><b>نوتات القاعدة:</b> ${escapeHTML(Array.isArray(p.baseNotes)?(p.baseNotes.length?p.baseNotes.join("، "):"غير موثقة"):(p.baseNotes||"غير موثقة"))}</p>${p.notesConfidence?`<p><b>درجة التحقق:</b> ${escapeHTML(p.notesConfidence)}</p>`:""}${p.notesStatus==="needs-identification"||p.notesStatus==="needs-variant-confirmation"?`<p class="muted">لم تُعتمد النوتات لأن اسم المنتج لا يحدد الإصدار بدقة.</p>`:""}</div>${p.sourceUrl&&/^https:\/\//i.test(p.sourceUrl)?`<p><b>مصدر التفاصيل:</b> <a href="${escapeHTML(p.sourceUrl)}" target="_blank" rel="noopener noreferrer">فتح المصدر والتحقق</a></p>`:""}<div class="modal-price">${p.supplierCatalogItem?"متاح للاختيار ضمن طلب تركيب":formatMoney(price)}</div>${p.needsReview?`<p class="muted">${p.notesStatus==="verified-brand-source"||p.notesStatus==="verified-fragrance-directory"||p.notesStatus==="cross-checked-fragrance-sources"?"النوتات موثقة بالمصدر المذكور؛ السعر والتوفر ومطابقة العبوة تحتاج إلى تأكيد المتجر.":"البيانات تحتاج إلى مراجعة؛ لا تعتمد النوتات قبل تحديد الإصدار والتحقق من المصدر."}</p>`:""}${p.supplierCatalogItem?'<p class="muted">هذا زيت مورد للتركيب؛ لا يظهر كمنتج للبيع المباشر قبل تحديد السعر والتوفر.</p>':'<label for="modalSize">الحجم</label><select id="modalSize">${Object.keys(sizes).map(s=>`<option value="${s}" ${s==="10"?"selected":""}>${s} مل — ${formatMoney(currentPrice(p,s))}</option>`).join("")}</select>'}<div class="modal-actions"><button class="btn btn-gold" id="modalAdd" ${p.supplierCatalogItem||!p.available||currentPrice(p,"10")==null?"disabled":""}>${p.supplierCatalogItem?"زيت للتركيب فقط":!p.available?"التوفر قيد التأكيد":currentPrice(p,"10")==null?"السعر قيد التأكيد":"أضف للسلة"}</button><button class="btn btn-outline" id="speakDetails">استمع للوصف</button></div></div></div>`;
-    const modal=$("#modalBackdrop");
-    modal.classList.remove("hidden");
-    modal.setAttribute("aria-hidden","false");
-    const addButton=$("#modalAdd");
-    const sizeSelect=$("#modalSize");
-    // Bind to the current product only; replacing handlers prevents repeated clicks
-    // from adding the same item multiple times after opening several product details.
-    addButton.onclick=()=>{
-      if(!sizeSelect){notify("هذا زيت مخصص للتركيب؛ اختره من قسم الزيوت لتكوين طلب.");return;}
-      const selectedSize=sizeSelect.value;
-      if(!p.available){notify("التوفر أو بيانات المنتج لم تُعتمد للبيع بعد. تواصل مع المتجر للتأكيد.");return;}if(currentPrice(p,selectedSize)==null){notify("سعر هذا الحجم غير محدد حاليًا.");return;}
-      addToCart(id,selectedSize);
-    };
-    if(sizeSelect){
-      sizeSelect.onchange=()=>{
-        const nextPrice=currentPrice(p,sizeSelect.value);
-        $(".modal-price").textContent=formatMoney(nextPrice);
-        addButton.disabled=!p.available||nextPrice==null;
-      };
-    }
-    $("#speakDetails").onclick=()=>{
-      if(!("speechSynthesis" in window)){notify("الشرح الصوتي غير مدعوم في هذا المتصفح.");return;}
-      speechSynthesis.cancel();
-      const u=new SpeechSynthesisUtterance(`${p.nameAr||""}. ${p.descriptionAr||""}`);
-      u.lang="ar-EG";
-      speechSynthesis.speak(u);
-    };
+    const sizeKeys=Object.keys(sizes),priced=sizeKeys.filter(s=>currentPrice(p,s)!=null);
+    const defaultSize=priced.includes("10")?"10":(priced[0]||"10");
+    const money=v=>v==null?"السعر يحتاج تأكيد":formatMoney(v);
+    const notes=v=>Array.isArray(v)?(v.length?v.join("، "):"غير موثقة"):(v||"غير موثقة");
+    $("#modalContent").innerHTML=`<div class="modal-product"><div class="modal-product-image">${imageMarkup(p)}</div><div class="modal-product-copy" dir="rtl"><p class="eyebrow">MAMLKAT AL-OTOR · تفاصيل العطر</p><h2 id="modalTitle">${escapeHTML(p.nameAr||"منتج")}</h2><div class="product-en" dir="ltr">${escapeHTML(p.nameEn||"")}</div><p class="modal-description">${escapeHTML(p.descriptionAr||"لا يوجد وصف موثق بعد.")}</p><div class="modal-facts"><p><b>النوع</b><span>${escapeHTML(p.productType==="oil"?"زيت عطري للتركيب":p.productType==="bakhoor"?"عود أو بخور":"عطر جاهز")}</span></p><p><b>الفئة</b><span>${escapeHTML(p.gender||"غير محدد")}</span></p><p><b>الطابع</b><span>${escapeHTML(p.scentNature||"يحتاج إلى تقييم العينة")}</span></p><p><b>العائلة العطرية</b><span>${escapeHTML(p.family||"غير محددة")}</span></p></div><details class="fragrance-note-pyramid"><summary>تفاصيل النوتات العطرية</summary><p><b>المقدمة:</b> ${escapeHTML(notes(p.topNotes))}</p><p><b>القلب:</b> ${escapeHTML(notes(p.heartNotes))}</p><p><b>القاعدة:</b> ${escapeHTML(notes(p.baseNotes))}</p></details>${p.sourceUrl&&/^https:\/\//i.test(p.sourceUrl)?`<p class="modal-source"><b>مصدر التفاصيل:</b> <a href="${escapeHTML(p.sourceUrl)}" target="_blank" rel="noopener noreferrer">فتح المصدر والتحقق</a></p>`:""}${p.needsReview?'<p class="modal-review-note">بعض البيانات تحتاج إلى مراجعة؛ يجب تأكيد الإصدار والسعر والتوفر قبل الشراء.</p>':""}${p.supplierCatalogItem?'<div class="purchase-panel"><strong>زيت مخصص للتركيب</strong><p>اختره من قسم الزيوت لتكوين طلب تركيب؛ لا يُباع مباشرة من هذه النافذة.</p></div>':`<div class="purchase-panel"><label for="modalSize">اختر حجم العبوة</label><select id="modalSize" aria-label="اختر حجم العطر">${sizeKeys.map(s=>`<option value="${escapeHTML(s)}" ${s===defaultSize?"selected":""}>${escapeHTML(s)} مل · ${escapeHTML(money(currentPrice(p,s)))}</option>`).join("")}</select><div class="modal-price-row"><span>سعر الحجم المختار</span><strong class="modal-price" aria-live="polite">${money(currentPrice(p,defaultSize))}</strong></div><p class="purchase-hint" id="purchaseHint">${p.available?"اختر الحجم المناسب ثم أضف المنتج إلى السلة.":"الطلب ينتظر تأكيد السعر والتوفر من المتجر."}</p></div>`}<div class="modal-actions"><button class="btn btn-gold" id="modalAdd" ${p.supplierCatalogItem||!p.available||currentPrice(p,defaultSize)==null?"disabled":""}>${p.supplierCatalogItem?"زيت للتركيب فقط":!p.available?"التوفر قيد التأكيد":currentPrice(p,defaultSize)==null?"السعر قيد التأكيد":"أضف للسلة"}</button><button class="btn btn-outline" id="speakDetails">استمع للوصف</button></div></div></div>`;
+    const modal=$("#modalBackdrop");modal.classList.remove("hidden");modal.setAttribute("aria-hidden","false");
+    const add=$("#modalAdd"),select=$("#modalSize");
+    add.onclick=()=>{if(!select){notify("هذا زيت مخصص للتركيب؛ اختره من قسم الزيوت.");return;}if(!p.available){notify("التوفر غير معتمد بعد؛ تواصل مع المتجر للتأكيد.");return;}if(currentPrice(p,select.value)==null){notify("سعر هذا الحجم غير محدد حاليًا.");return;}addToCart(id,select.value);};
+    if(select)select.onchange=()=>{const price=currentPrice(p,select.value);const el=$("#modalContent .modal-price");if(el)el.textContent=money(price);add.disabled=!p.available||price==null;add.textContent=!p.available?"التوفر قيد التأكيد":price==null?"السعر قيد التأكيد":"أضف للسلة";const hint=$("#purchaseHint");if(hint)hint.textContent=price==null?"لا يوجد سعر معتمد لهذا الحجم؛ اختر حجمًا آخر أو تواصل مع المتجر.":p.available?"السعر المعروض للحجم المحدد.":"السعر ظاهر لكن التوفر يحتاج إلى تأكيد.";};
+    $("#speakDetails").onclick=()=>{if(!("speechSynthesis"in window)){notify("الشرح الصوتي غير مدعوم في هذا المتصفح.");return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(`${p.nameAr||""}. ${p.descriptionAr||""}`);u.lang="ar-EG";speechSynthesis.speak(u);};
     $("#closeModal").focus({preventScroll:true});
   }
   function closeModal(){
