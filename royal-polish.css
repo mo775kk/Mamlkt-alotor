@@ -1045,3 +1045,7 @@ button,select,.btn,.category-card,.product-card{transition-duration:.22s}
 .gram-price-grid strong{font-size:clamp(16px,2vw,21px);line-height:1.55;color:#f1d77a;overflow-wrap:anywhere}
 #catalogEditorPage #ceGramReport{border-inline-start:3px solid #d4af37;padding:10px 12px;background:rgba(212,175,55,.08);border-radius:7px}
 @media(max-width:700px){.gram-price-grid{grid-template-columns:1fr}.gram-price-grid>div{grid-template-columns:1fr 1fr;align-items:center;text-align:start;padding:12px}.gram-price-grid strong{text-align:end;font-size:16px}}
+
+
+/* Customer order confirmation state */
+.product-actions .small-btn.is-selected{background:linear-gradient(135deg,#d8b64d,#f5e5a0);color:#17120a;border-color:#f1d77a;box-shadow:0 0 0 1px rgba(241,215,122,.45),0 0 16px rgba(212,175,55,.24);font-weight:800}
