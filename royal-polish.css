@@ -309,3 +309,13 @@ body{font-size:16px;line-height:1.78;background-attachment:scroll}
 }
 @media(min-width:390px) and (max-width:600px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.hero{padding-inline:21px}}
 @media(prefers-reduced-motion:reduce){.category-card,.product-card{transition:none!important}}
+
+/* Mobile contrast correction: keep text readable over the dark royal cards */
+@media(max-width:600px){
+ .category-card h3,.category-card p,.category-card small,.product-card h3,.product-card p,.product-card small,.product-info h3,.product-meta,.product-desc{color:#fff4df}
+ .category-card small,.product-en,.product-price,.product-info .product-price{color:#d4af37}
+ .category-card p,.product-card p,.product-meta,.product-desc{color:#d9cfbc}
+ .product-card .product-info{background:transparent}
+ .product-card .small-btn,.product-card .btn-outline{color:#f1d77a;border-color:rgba(212,175,55,.6)}
+ .category-card:focus-visible,.product-card:focus-within{outline:2px solid #f1d77a;outline-offset:3px}
+}
