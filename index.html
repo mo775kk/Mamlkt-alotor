@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="royal-polish.css?v=20261015-order-selection3">
   <link rel="stylesheet" href="royal-pink-theme.css?v=20261015-oil-guide-retail2">
   <link rel="stylesheet" href="section-folds.css?v=20261015-location-fold1">
+  <link rel="stylesheet" href="royal-entrance-cinema.css?v=20261016-cinema1">
 </head>
 <body>
   <div class="intro" id="intro" aria-label="دخول المملكة">
@@ -31,13 +32,37 @@
       <p class="eyebrow">CROWN · MAISON DE PARFUM</p>
       <h1>مملكة العطور</h1>
       <p class="intro-subtitle">حكاية فخامة تبدأ بقطرة</p>
-      <button type="button" class="btn btn-gold" id="enterBtn" onclick="var gate=document.getElementById('intro');if(gate){gate.remove();document.body.classList.remove('intro-open')}">دخول المملكة</button>
-      <button type="button" class="intro-skip" id="skipIntro" onclick="var gate=document.getElementById('intro');if(gate){gate.remove();document.body.classList.remove('intro-open')}">تخطي المقدمة</button>
+      <button type="button" class="btn btn-gold" id="enterBtn" onclick="window.mamlakaLeaveIntro&&window.mamlakaLeaveIntro()">دخول المملكة</button>
+      <button type="button" class="intro-skip" id="skipIntro" onclick="window.mamlakaLeaveIntro&&window.mamlakaLeaveIntro()">تخطي المقدمة</button>
     </div>
   </div>
   <script>
-    // Critical entrance fallback: this runs before external app scripts and removes the overlay directly.
-    (function(){var gate=document.getElementById("intro");if(!gate)return;function leave(){var current=document.getElementById("intro");if(current)current.remove();document.body.classList.remove("intro-open");}["enterBtn","skipIntro"].forEach(function(id){var button=document.getElementById(id);if(button){button.addEventListener("click",leave,true);button.addEventListener("touchend",function(){leave();},{passive:true,once:true});}});})();
+    // Self-contained entrance transition: available before storefront scripts load.
+    (function(){
+      var gate=document.getElementById("intro");
+      if(!gate)return;
+      document.body.classList.add("intro-open");
+      var busy=false;
+      window.mamlakaLeaveIntro=function(){
+        if(busy)return;
+        busy=true;
+        gate.classList.add("intro-leaving");
+        document.body.classList.add("intro-transitioning");
+        window.setTimeout(function(){
+          var current=document.getElementById("intro");
+          if(current)current.remove();
+          document.body.classList.remove("intro-open","intro-transitioning");
+        },850);
+      };
+      ["enterBtn","skipIntro"].forEach(function(id){
+        var button=document.getElementById(id);
+        if(button)button.addEventListener("click",function(event){
+          event.preventDefault();
+          event.stopPropagation();
+          window.mamlakaLeaveIntro();
+        });
+      });
+    })();
   </script>
 
   <header class="site-header">
