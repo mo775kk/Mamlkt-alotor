@@ -330,6 +330,8 @@
     save(STORAGE.cart,cart);updateCounts();
   });
   $("#advisorForm").addEventListener("submit",e=>{e.preventDefault();submitAdvisor($("#advisorInput").value);});
+  document.querySelectorAll("[data-advisor-prompt]").forEach(button=>button.addEventListener("click",()=>{const prompt=button.dataset.advisorPrompt||"";$("#advisorInput").value=prompt;submitAdvisor(prompt);}));
+  $("#advisorReplies")?.addEventListener("click",e=>{if(e.target.closest("[data-advisor-request]"))requestMissing($("#advisorInput").value.trim()||"اقتراح عطر مناسب");});
   $("#contactWhatsapp").href=`https://wa.me/${getWaNumber()}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن منتجات مملكة العطور.")}`;
   $("#menuToggle").addEventListener("click",()=>{const open=$("#mainNav").classList.toggle("open");$("#menuToggle").setAttribute("aria-expanded",String(open));});
   $("#mainNav").querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{$("#mainNav").classList.remove("open");$("#menuToggle").setAttribute("aria-expanded","false");}));
