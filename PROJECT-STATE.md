@@ -157,3 +157,17 @@
   - المستشار: https://github.com/mo775kk/Mamlkt-alotor/commit/1059749e2a554471aae8789e62684131edf0b616 ، https://github.com/mo775kk/Mamlkt-alotor/commit/47e9c56bcce77ff2c226cba6489b9eb1302eb141
   - ربط الواجهة: https://github.com/mo775kk/Mamlkt-alotor/commit/fbafc8555ba4d0093187e2d04aa72a2fb9ef1e31
   - تنسيق الرسوم والمستشار: https://github.com/mo775kk/Mamlkt-alotor/commit/931800317573ec865647f52190eed439d05b803b
+
+
+## استكمال مرونة الموقع وتجربة الهاتف — 2026-10-15
+- إضافة `manifest.webmanifest` مع اسم عربي واتجاه RTL وألوان الهوية السوداء والذهبية وأيقونة تاج SVG محلية، وربطها بصفحة `index.html` لدعم خيار التثبيت كتطبيق ويب في المتصفحات المتوافقة.
+- إضافة أيقونة تاج مستقلة للموقع وربط favicon وأيقونة شاشة البداية.
+- مراجعة نطاق صور الأقسام: قُصرت الرسومات المصورة على بطاقات أبواب الأقسام والتنقل السريع، مع إعادة إظهار رموز العائلات العطرية في قسم التصنيف بدل أن ترث صورًا غير مناسبة من فئات عامة.
+- تحديث cache-buster لملف CSS بعد تعديل النطاق.
+- التحقق الساكن: صياغة ملفات JavaScript العشرة ناجحة، توازن أقواس CSS سليم، لا توجد معرّفات HTML مكررة، وأهداف روابط التنقل الثابتة موجودة. لم يُجر اختبار متصفح حي ولا اختبار تثبيت فعلي على Android/iOS.
+- Commits:
+  - أيقونة التاج: https://github.com/mo775kk/Mamlkt-alotor/commit/9f02c57e85d2d9956d99681f77ee8012abcdc048
+  - ملف manifest: https://github.com/mo775kk/Mamlkt-alotor/commit/e2aadfe324153420f27438e20866e9bf6377d101
+  - ربط بيانات التثبيت: https://github.com/mo775kk/Mamlkt-alotor/commit/cfa72fd2c2c7b4ef36373e26df1f2f87a211efba
+  - إصلاح نطاق الرسومات: https://github.com/mo775kk/Mamlkt-alotor/commit/21e6f8699595c15210d9d1d8ea1fd756d2f42718
+  - تحديث مرجع CSS: https://github.com/mo775kk/Mamlkt-alotor/commit/83633877872ef83dbb7f9c808463b5115aaecfd4
