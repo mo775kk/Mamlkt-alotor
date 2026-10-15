@@ -105,3 +105,36 @@ hr,.divider{border-color:rgba(232,140,184,.28)}
 @media(prefers-reduced-motion:no-preference){
   .btn,.product-card,.category-card,.icon-btn{transition:background-color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease}
 }
+
+
+/* FINAL OVERRIDE: make all major surfaces visibly blend black, rose and gold.
+   This block intentionally overrides legacy dark-only backgrounds in royal-polish.css. */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+ radial-gradient(ellipse at 12% 12%,rgba(232,140,184,.22),transparent 32%),
+ radial-gradient(ellipse at 86% 22%,rgba(212,175,55,.18),transparent 29%),
+ radial-gradient(ellipse at 68% 78%,rgba(185,79,128,.20),transparent 35%),
+ linear-gradient(120deg,#100A10 0%,#35172A 26%,#633047 48%,#392535 66%,#6A4B20 84%,#171016 100%);}
+.intro{background:radial-gradient(ellipse at 50% 32%,rgba(232,140,184,.28),transparent 35%),linear-gradient(125deg,#120B12,#492139 48%,#6A4B20 82%,#160D15)!important}
+.intro::before,.intro::after{background:linear-gradient(135deg,rgba(232,140,184,.16),rgba(212,175,55,.13),rgba(16,10,16,.12))!important}
+.intro-content{background:linear-gradient(145deg,rgba(24,12,22,.72),rgba(93,39,65,.48),rgba(100,70,26,.32));border:1px solid rgba(244,215,124,.28);border-radius:24px;padding:clamp(24px,5vw,52px);backdrop-filter:blur(12px)}
+.hero{background:linear-gradient(115deg,rgba(16,10,16,.58),rgba(107,43,76,.22),rgba(146,102,35,.20))!important}
+.hero-shade{background:linear-gradient(90deg,rgba(16,10,16,.76) 0%,rgba(70,28,50,.45) 52%,rgba(140,96,31,.18) 100%)!important}
+.trust-strip{background:linear-gradient(100deg,#21131D 0%,#5A2943 32%,#8B5E29 68%,#2B1725 100%)!important;border-block:1px solid rgba(244,215,124,.30)}
+.section{position:relative}
+.section:nth-of-type(odd){background:linear-gradient(120deg,rgba(24,13,23,.93),rgba(91,37,64,.87) 48%,rgba(99,69,29,.78))!important}
+.section:nth-of-type(even){background:linear-gradient(120deg,rgba(83,34,60,.88),rgba(31,17,29,.92) 52%,rgba(114,78,29,.72))!important}
+.section-heading h2,.contact-card h2,.gift-copy h2,.feature-copy h2{color:#F4D77C!important}
+.category-card,.product-card,.feature-banner,.gift-art,.advisor-box,.contact-card,.drawer,.product-modal,.admin-panel{
+ background:linear-gradient(140deg,rgba(35,19,32,.97) 0%,rgba(102,43,73,.96) 48%,rgba(104,76,32,.93) 100%)!important;
+ border-color:rgba(232,140,184,.45)!important;
+}
+.category-card:nth-child(3n+1),.product-card:nth-child(3n+1){background:linear-gradient(140deg,rgba(21,14,23,.98),rgba(75,34,57,.96) 58%,rgba(112,78,29,.90))!important}
+.category-card:nth-child(3n+2),.product-card:nth-child(3n+2){background:linear-gradient(140deg,rgba(76,29,55,.97),rgba(145,62,98,.90) 55%,rgba(75,48,31,.94))!important}
+.category-card:nth-child(3n),.product-card:nth-child(3n){background:linear-gradient(140deg,rgba(38,25,32,.97),rgba(91,58,39,.94) 55%,rgba(117,80,27,.91))!important}
+.product-visual{background:radial-gradient(ellipse at 50% 48%,rgba(244,215,124,.23),transparent 54%),linear-gradient(145deg,rgba(232,140,184,.12),rgba(212,175,55,.09),rgba(16,10,16,.30))!important}
+.site-header.is-scrolled{background:linear-gradient(100deg,rgba(16,10,16,.96),rgba(65,27,48,.95) 55%,rgba(76,55,20,.94))!important}
+.main-nav{background:linear-gradient(110deg,#1B101A,#54233D 60%,#64451E)!important}
+.main-nav a.active{color:#F4D77C!important;background:linear-gradient(90deg,rgba(232,140,184,.12),rgba(212,175,55,.14))!important}
+.modal-backdrop,.drawer-backdrop{background:rgba(15,7,14,.74)!important}
+.site-footer{background:linear-gradient(110deg,#130B13 0%,#4A2038 38%,#765222 72%,#1B1019 100%)!important}
+@media(max-width:850px){.main-nav{background:linear-gradient(150deg,#1B101A,#54233D 58%,#64451E)!important}}
