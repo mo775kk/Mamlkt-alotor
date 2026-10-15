@@ -55,7 +55,7 @@ function mount(){
  const config=()=>loadConfig();
  function fillSelects(){
  const c=config();
- const rp=$('#ceRetailPrices'); if(rp) rp.innerHTML=(c.retailBlendPrices||[]).map((x,i)=>`<label>سعر ${esc(x.size)}<input type="number" min="0" step="0.01" data-retail-index="${i}" value="${Number(x.price)||0}"></label>`).join('');
+ const rp=$('#ceRetailPrices'); if(rp) rp.innerHTML=(c.retailBlendPrices||[]).map((x,i)=>`<label>سعر ${esc(x.size)}<input type="number" min="50" step="1" data-retail-index="${i}" value="${Math.max(50,Number(x.price)||50)}"></label>`).join('');
  $('#ceCategory').innerHTML=c.categories.map(x=>`<option value="${esc(x.id)}">${esc(x.labelAr)} (${esc(x.id)})</option>`).join('');
  $('#ceFamily').innerHTML=c.families.map(x=>`<option value="${esc(x.id)}">${esc(x.id)}</option>`).join('');
  $('#ceType').innerHTML=c.productTypes.map(x=>`<option value="${esc(x.id)}">${esc(x.labelAr)}</option>`).join('');
