@@ -19,7 +19,7 @@ const defaultConfig={
  {id:'عطري وأخضر',labelEn:'Aromatic / Green',nature:'أخضر أو عشبي أو عطري ونظيف',notes:'أعشاب أو أوراق خضراء؛ لافندر/توابل محتملة؛ أخشاب أو مسك.'},
  {id:'غير محدد',labelEn:'Unclassified',nature:'يلزم تقييم العينة أو الرجوع إلى بيانات المورد',notes:'التصنيف غير مؤكد من الاسم وحده.'}
  ]};
-const loadConfig=()=>{try{return {...defaultConfig,...JSON.parse(localStorage.getItem(TAXKEY)||'{}')}}catch{return structuredClone(defaultConfig)}};
+const loadConfig=()=>{try{const saved=JSON.parse(localStorage.getItem(TAXKEY)||'{}')||{};const c={...defaultConfig,...saved};const p=Array.isArray(saved.retailBlendPrices)&&saved.retailBlendPrices.length?saved.retailBlendPrices:defaultConfig.retailBlendPrices;c.retailBlendPrices=p.map((x,i)=>({size:String(x.size||defaultConfig.retailBlendPrices[i]?.size||'حجم جديد'),price:Math.max(50,Number(x.price)||Number(defaultConfig.retailBlendPrices[i]?.price)||50)}));return c}catch{return structuredClone(defaultConfig)}};
 const saveConfig=c=>localStorage.setItem(TAXKEY,JSON.stringify(c));
 const readCatalog=()=>{try{const d=JSON.parse(localStorage.getItem(KEY)||'null');return d&&Array.isArray(d.products)?d:null}catch{return null}};
 const saveCatalog=d=>{d.taxonomyConfig=loadConfig();d.metadata=d.metadata||{};d.metadata.lastEditedAt=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(d))};
