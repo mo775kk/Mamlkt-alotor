@@ -943,3 +943,15 @@ button,select,.btn,.category-card,.product-card{transition-duration:.22s}
 @media(min-width:1000px){.site-header{padding-inline:clamp(24px,5vw,84px)}.main-nav{padding-block:10px}.hero-copy{padding-block:55px}.product-grid{gap:15px}.product-visual{height:clamp(180px,19vw,270px)}}
 @media(max-width:700px){.site-header{background:rgba(4,3,2,.98);min-height:68px}.hero{min-height:420px}.hero h1{font-size:clamp(35px,9vw,49px)}.hero-copy>p:not(.eyebrow){font-size:15px}.product-card{border-radius:10px}.product-visual{height:clamp(135px,43vw,190px)}.category-card{border-radius:10px}.toolbar{gap:8px}}
 @media(prefers-reduced-motion:reduce){.category-card,.product-card,button,.btn{transition:none!important}}
+
+
+/* Editable blend-price guide */
+.blend-price-guide{margin:16px 0 4px;padding:16px;border:1px solid rgba(231,185,63,.65);border-radius:12px;background:linear-gradient(145deg,rgba(22,16,7,.97),rgba(2,2,2,.98));box-shadow:inset 0 0 20px rgba(231,185,63,.06)}
+.blend-price-guide h3{margin:0 0 6px;color:#ffe08a;text-shadow:0 0 8px rgba(255,190,44,.28);font-size:clamp(18px,2vw,24px)}
+.blend-price-guide p{margin:0 0 12px;color:#fff0d0;font-size:14px}
+.blend-price-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.blend-price-grid>div{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border:1px solid rgba(231,185,63,.58);border-radius:8px;background:rgba(0,0,0,.7)}
+.blend-price-grid span{color:#fff1cc}.blend-price-grid strong{color:#ffdc72;text-shadow:0 0 7px rgba(255,190,44,.25);white-space:nowrap}
+#catalogEditorPage #cePriceReport{margin:12px 0;padding:12px;border:1px solid rgba(212,175,55,.55);border-radius:9px;background:rgba(212,175,55,.07);line-height:2;color:var(--text,#f7f1e6)}
+#catalogEditorPage [data-retail-index]{min-height:42px}
+@media(max-width:700px){.blend-price-guide{padding:12px}.blend-price-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.blend-price-grid>div{padding:9px;font-size:14px}.blend-price-guide p{font-size:13px}}
