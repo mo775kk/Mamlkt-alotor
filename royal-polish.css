@@ -659,3 +659,55 @@ button:disabled{cursor:not-allowed;opacity:.58;filter:saturate(.5)}
   background-image:none!important;background-color:rgba(212,175,55,.07);
 }
 .taxonomy-public-section .category-card .royal-category-icon{opacity:1;width:48px;height:48px}
+
+
+/* 2026-10-15 — highly legible size + price controls */
+.card-buy-panel{
+  display:grid!important;grid-template-columns:minmax(0,1fr);gap:9px!important;
+  margin:14px 0 12px!important;padding:13px!important;
+  border:1px solid rgba(212,175,55,.42)!important;border-radius:12px!important;
+  background:linear-gradient(145deg,rgba(212,175,55,.095),rgba(10,10,10,.88))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+.card-buy-panel>label,.purchase-panel>label{
+  display:block!important;color:var(--royal-champagne,#f1d77a)!important;
+  font-size:1rem!important;font-weight:800!important;line-height:1.5!important;
+  margin:0!important;
+}
+.card-size-select,#modalSize,#blendSize{
+  display:block!important;width:100%!important;min-height:48px!important;
+  padding:10px 13px!important;border:1px solid rgba(212,175,55,.65)!important;
+  border-radius:9px!important;background:#17140f!important;color:#fff8e8!important;
+  font:700 1rem/1.5 "Tajawal",sans-serif!important;letter-spacing:0!important;
+  white-space:normal!important;opacity:1!important;
+}
+.card-size-select option,#modalSize option,#blendSize option{background:#17140f!important;color:#fff8e8!important}
+.card-price-line,.modal-price-row{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  flex-wrap:wrap!important;gap:8px!important;padding:10px 11px!important;
+  border-radius:8px!important;background:rgba(0,0,0,.38)!important;
+  border:1px solid rgba(212,175,55,.2)!important;
+}
+.card-price-line span,.modal-price-row span{color:#e4d8c1!important;font-size:.94rem!important;font-weight:600!important}
+.card-price-line strong,.modal-price-row strong,.modal-price{
+  display:inline-block!important;color:#ffe38b!important;font-size:1.25rem!important;
+  font-weight:900!important;line-height:1.4!important;direction:rtl!important;
+  unicode-bidi:plaintext!important;overflow-wrap:anywhere;
+}
+.product-card .product-info{min-width:0}
+.product-card .product-info h3{font-size:clamp(1.05rem,2.7vw,1.28rem)!important;line-height:1.65!important;overflow-wrap:anywhere}
+.product-card .product-en{font-size:.96rem!important;line-height:1.6!important;overflow-wrap:anywhere}
+.product-card .product-meta,.product-card .product-desc{font-size:.95rem!important;line-height:1.8!important}
+.product-card .product-actions{gap:9px!important}
+.product-card .product-actions button{min-height:44px!important;font-size:1rem!important}
+.purchase-panel{padding:14px!important;border:1px solid rgba(212,175,55,.35)!important;border-radius:12px!important;background:rgba(212,175,55,.055)!important}
+.modal-description,.modal-facts,.fragrance-note-pyramid,.purchase-hint{font-size:1rem!important;line-height:1.9!important}
+.modal-price-row{margin-top:10px!important}
+.card-size-select:focus-visible,#modalSize:focus-visible,#blendSize:focus-visible{outline:3px solid #ffe38b!important;outline-offset:2px!important}
+@media(max-width:420px){
+ .card-buy-panel{padding:11px!important;gap:8px!important}
+ .card-size-select,#modalSize,#blendSize{min-height:50px!important;font-size:1rem!important}
+ .card-price-line strong,.modal-price-row strong,.modal-price{font-size:1.18rem!important}
+ .product-card .product-actions{display:grid!important;grid-template-columns:1fr 1fr!important}
+ .product-card .product-actions button{width:100%!important;padding:9px 7px!important}
+}
