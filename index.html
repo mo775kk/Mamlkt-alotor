@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261015-low-stock1">
   <link rel="stylesheet" href="site-upgrades.css?v=20261015-roadmap1">
-  <link rel="stylesheet" href="royal-polish.css?v=20261015-size-price-legibility2">
+  <link rel="stylesheet" href="royal-polish.css?v=20261015-checkout-customer1">
 </head>
 <body>
   <div class="intro" id="intro" aria-label="دخول المملكة">
@@ -187,12 +187,12 @@
   <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-crown">♛</span><span><strong>مملكة العطور</strong><small>CROWN · MAISON DE PARFUM</small></span></a><p>العطر توقيع… والمملكة اختيارك.</p><small>© <span id="year"></span> MAMLKAT AL-OTOR</small></footer>
 
   <div class="drawer-backdrop hidden" id="drawerBackdrop"></div>
-  <aside class="drawer" id="cartDrawer" aria-label="سلة التسوق" aria-hidden="true"><div class="drawer-head"><h2 id="drawerTitle">سلة التسوق</h2><button type="button" class="icon-btn" id="closeDrawer" aria-label="إغلاق">×</button></div><div id="cartItems" class="drawer-items"></div><div class="drawer-bottom"><div class="total-row"><span>الإجمالي المرجعي</span><strong id="cartTotal">0 ج.م</strong></div><small>الأسعار مرجعية وقد تحتاج إلى تأكيد المتجر.</small><button type="button" class="btn btn-gold full-width" id="checkoutBtn">متابعة الطلب عبر واتساب</button><button type="button" class="text-btn" id="clearCart">إفراغ السلة</button></div></aside>
+  <aside class="drawer" id="cartDrawer" aria-label="سلة التسوق" aria-hidden="true"><div class="drawer-head"><h2 id="drawerTitle">سلة التسوق</h2><button type="button" class="icon-btn" id="closeDrawer" aria-label="إغلاق">×</button></div><div id="cartItems" class="drawer-items"></div><div class="drawer-bottom"><div class="total-row"><span>الإجمالي المرجعي</span><strong id="cartTotal">0 ج.م</strong></div><small>الأسعار مرجعية وقد تحتاج إلى تأكيد المتجر.</small><div class="checkout-customer" aria-label="بيانات العميل للطلب"><h3>بيانات استلام الطلب</h3><label for="checkoutName">الاسم <span aria-hidden="true">*</span></label><input id="checkoutName" name="checkoutName" autocomplete="name" maxlength="100" required placeholder="اسم العميل"><label for="checkoutPhone">رقم الهاتف <span aria-hidden="true">*</span></label><input id="checkoutPhone" name="checkoutPhone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" required placeholder="رقم للتواصل"><label for="checkoutArea">المنطقة / العنوان</label><input id="checkoutArea" name="checkoutArea" autocomplete="street-address" maxlength="220" placeholder="المنطقة والشارع أو عنوان الاستلام"><label for="checkoutNotes">ملاحظات الطلب</label><textarea id="checkoutNotes" name="checkoutNotes" rows="2" maxlength="500" placeholder="اللون أو التغليف أو أي تفاصيل إضافية"></textarea><small>تُرسل هذه البيانات إلى واتساب عند الضغط على متابعة الطلب، ولا تُحفظ تلقائيًا في المتصفح.</small></div><button type="button" class="btn btn-gold full-width" id="checkoutBtn">متابعة الطلب عبر واتساب</button><button type="button" class="text-btn" id="clearCart">إفراغ السلة</button></div></aside>
 
   <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button type="button" class="modal-close icon-btn" id="closeModal" aria-label="إغلاق">×</button><div id="modalContent"></div></section></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20261015-size-price-legibility3"></script>
+  <script src="app.js?v=20261015-checkout-customer1"></script>
   <script src="settings.js?v=20261015-json-backup-compat1"></script>
   <script src="enhancements.js?v=20261015-voice-guide1"></script>
   <script src="supplier-catalog.js?v=20261014-public-oils1"></script>
