@@ -240,11 +240,11 @@
   <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button type="button" class="modal-close icon-btn" id="closeModal" aria-label="إغلاق">×</button><div id="modalContent"></div></section></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20261015-retail-prices-final1"></script>
-  <script src="settings.js?v=20261015-retail-prices-final1"></script>
+  <script src="app.js?v=20261015-retail-prices-final2"></script>
+  <script src="settings.js?v=20261015-retail-prices-final2"></script>
   <script src="enhancements.js?v=20261015-voice-guide1"></script>
   <script src="supplier-catalog.js?v=20261014-public-oils1"></script>
-  <script src="catalog-editor.js?v=20261015-retail-prices-final1"></script>
+  <script src="catalog-editor.js?v=20261015-retail-prices-final2"></script>
   <script src="site-upgrades.js?v=20261015-import-safe3"></script>
   <script src="royal-gift-planner.js?v=20261015-gift1"></script>
   <script src="inventory-accounting.js?v=20261015-json-restore1"></script>
@@ -255,7 +255,7 @@
     function updateBlendPriceGuide(){
       var root=document.getElementById('blendPriceGuide'); if(!root)return;
       var defaults=[{size:'3',label:'3 مل · زيت فقط',price:50},{size:'5',label:'5 مل · زيت فقط',price:75},{size:'10',label:'10 مل · زيت فقط',price:100},{size:'30',label:'30 مل · بخاخ',price:100},{size:'50',label:'50 مل · بخاخ',price:150},{size:'100',label:'100 مل · بخاخ',price:300}],items=defaults,gramRoot=document.getElementById('customerGramPriceGuide');
-      try{var cfg=JSON.parse(localStorage.getItem('mamlaka_catalog_taxonomy_config_v1')||'null');if(cfg&&Array.isArray(cfg.retailBlendPrices)&&cfg.retailBlendPrices.length){items=cfg.retailBlendPrices.map(function(x){var n=String(x.size||'').match(/[0-9]+/);return {size:n?n[0]:'',label:String(x.size||''),price:Math.max(50,Number(x.price)||50)}}).filter(function(x){return x.size})}}
+      try{var cfg=JSON.parse(localStorage.getItem('mamlaka_catalog_taxonomy_config_v1')||'null');if(cfg&&Array.isArray(cfg.retailBlendPrices)&&cfg.retailBlendPrices.length){items=cfg.retailBlendPrices.map(function(x){var n=String(x.size||'').match(/[0-9]+/),size=n?n[0]:'',old=Number(x.price),legacy={30:150,50:200,100:450},price=legacy[Number(size)]===old?({30:100,50:150,100:300})[Number(size)]:Math.max(50,old||50);return {size:size,label:String(x.size||''),price:price}}).filter(function(x){return x.size&&x.size!=='22'})}}
       catch(e){}
       root.innerHTML=items.map(function(x){return '<div><span>'+x.label.replace(/[<>]/g,'')+'</span><strong>'+x.price.toLocaleString('ar-EG')+' ج.م</strong></div>'}).join(''); if(gramRoot){var gp={french:10,oriental:15,orientalPremium:20};try{var cfg2=JSON.parse(localStorage.getItem('mamlaka_catalog_taxonomy_config_v1')||'null');if(cfg2&&cfg2.gramPricing)gp=Object.assign(gp,cfg2.gramPricing)}catch(e){}gramRoot.innerHTML=[['الزيوت الفرنسية',gp.french],['الزيوت الشرقية',gp.oriental],['الشرقي الممتاز',gp.orientalPremium]].map(function(x){return '<div><span>'+x[0]+'</span><strong>'+Number(x[1]).toLocaleString('ar-EG')+' ج.م / جرام</strong></div>'}).join('')}
     }
