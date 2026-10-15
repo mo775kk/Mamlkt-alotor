@@ -1036,3 +1036,12 @@ button,select,.btn,.category-card,.product-card{transition-duration:.22s}
  .scent-family-grid .category-card{min-height:150px;padding:16px}
  .blend-price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+
+/* Per-gram customer pricing table */
+.gram-price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 18px}
+.gram-price-grid>div{display:grid;gap:5px;align-content:center;min-width:0;padding:14px;border:1px solid rgba(212,175,55,.42);border-radius:12px;background:linear-gradient(145deg,rgba(212,175,55,.13),rgba(12,10,8,.94));text-align:center}
+.gram-price-grid span{font-size:13px;line-height:1.7;color:#f5eddf;overflow-wrap:anywhere}
+.gram-price-grid strong{font-size:clamp(16px,2vw,21px);line-height:1.55;color:#f1d77a;overflow-wrap:anywhere}
+#catalogEditorPage #ceGramReport{border-inline-start:3px solid #d4af37;padding:10px 12px;background:rgba(212,175,55,.08);border-radius:7px}
+@media(max-width:700px){.gram-price-grid{grid-template-columns:1fr}.gram-price-grid>div{grid-template-columns:1fr 1fr;align-items:center;text-align:start;padding:12px}.gram-price-grid strong{text-align:end;font-size:16px}}
