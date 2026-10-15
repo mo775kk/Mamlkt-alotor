@@ -5,7 +5,7 @@ const KEY='mamlaka_supplier_catalog_v1', TAXKEY='mamlaka_catalog_taxonomy_config
 const $=(s,r=document)=>r.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const defaultConfig={
- retailBlendPrices:[{size:'3 مل',price:50},{size:'5 مل',price:75},{size:'10 مل',price:100},{size:'30 مل',price:100},{size:'50 مل',price:150},{size:'100 مل',price:300}],
+ retailBlendPrices:[{size:'3 مل',price:50},{size:'5 مل',price:75},{size:'10 مل',price:100},{size:'22 مل',price:130},{size:'30 مل',price:150},{size:'50 مل',price:200},{size:'100 مل',price:450}],
  gramPricing:{french:10,oriental:15,orientalPremium:20},
  productTypes:[{id:'ready',labelAr:'عطر جاهز'},{id:'oil',labelAr:'زيت عطري مركز / تركيب'},{id:'bakhoor',labelAr:'عود وبخور'},{id:'gift',labelAr:'هدايا وتغليف'},{id:'diffuser',labelAr:'زيت فواحة'}],
  categories:[{id:'MEN',labelAr:'رجالي'},{id:'WOMEN',labelAr:'نسائي'},{id:'UNISEX',labelAr:'للجنسين'},{id:'ORIENTAL',labelAr:'شرقي'},{id:'KIDS',labelAr:'أطفال'},{id:'DIFFUSER',labelAr:'فواحات'}],
@@ -22,7 +22,7 @@ const defaultConfig={
  {id:'بودري',labelEn:'Powdery / Soft',nature:'ناعم ونظيف وقد يشبه البودرة أو المكياج الكلاسيكي',notes:'السوسن أو البنفسج أو المسك الناعم؛ لمسات زهرية أو خشبية محتملة.'},
  {id:'غير محدد',labelEn:'Unclassified',nature:'يلزم تقييم العينة أو الرجوع إلى بيانات المورد',notes:'التصنيف غير مؤكد من الاسم وحده.'}
  ]};
-const loadConfig=()=>{try{const saved=JSON.parse(localStorage.getItem(TAXKEY)||'{}')||{};const c={...defaultConfig,...saved};const p=Array.isArray(saved.retailBlendPrices)&&saved.retailBlendPrices.length?saved.retailBlendPrices:defaultConfig.retailBlendPrices;c.retailBlendPrices=p.filter(x=>String(x.size||'').match(/[0-9]+/)?.[0]!=='22').map((x,i)=>{const size=String(x.size||defaultConfig.retailBlendPrices[i]?.size||'حجم جديد'),n=size.match(/[0-9]+/)?.[0],old=Number(x.price),legacy={"30":150,"50":200,"100":450};return {size,price:legacy[n]===old?({"30":100,"50":150,"100":300}[n]):Math.max(50,old||Number(defaultConfig.retailBlendPrices[i]?.price)||50)}});return c}catch{return structuredClone(defaultConfig)}};
+const loadConfig=()=>{try{const saved=JSON.parse(localStorage.getItem(TAXKEY)||'{}')||{};const c={...defaultConfig,...saved};const source=Array.isArray(saved.retailBlendPrices)&&saved.retailBlendPrices.length?saved.retailBlendPrices:defaultConfig.retailBlendPrices;const bySize={};source.forEach(x=>{const n=String(x.size||'').match(/[0-9]+/)?.[0];if(n&&Number.isFinite(Number(x.price))&&Number(x.price)>=50)bySize[n]=Number(x.price)});if(bySize['30']===100&&bySize['50']===150&&bySize['100']===300){bySize['30']=150;bySize['50']=200;bySize['100']=450}const reference={'3':50,'5':75,'10':100,'22':130,'30':150,'50':200,'100':450};c.retailBlendPrices=Object.entries(reference).map(([n,price])=>({size:n+' مل',price:bySize[n]??price}));return c}catch{return structuredClone(defaultConfig)}};
 const saveConfig=c=>localStorage.setItem(TAXKEY,JSON.stringify(c));
 const readCatalog=()=>{try{const d=JSON.parse(localStorage.getItem(KEY)||'null');return d&&Array.isArray(d.products)?d:null}catch{return null}};
 const saveCatalog=d=>{d.taxonomyConfig=loadConfig();d.metadata=d.metadata||{};d.metadata.lastEditedAt=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(d))};
