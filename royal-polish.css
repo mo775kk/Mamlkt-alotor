@@ -212,3 +212,8 @@ select option{background:#14110d;color:#fff8e8}
 .hero.hero-image-missing{background:radial-gradient(ellipse at 76% 45%,rgba(212,175,55,.18),transparent 36%),linear-gradient(120deg,#080706,#1b1308 55%,#080706)}
 .hero-image-missing .hero-shade{background:linear-gradient(90deg,rgba(7,6,5,.95),rgba(7,6,5,.7) 58%,rgba(7,6,5,.35))}
 .royal-image-missing{visibility:hidden}
+
+.header-line-icon{width:21px;height:21px;display:block;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.header-actions .icon-btn:hover .header-line-icon{filter:drop-shadow(0 0 4px rgba(241,215,122,.35))}
+.voice-btn{min-width:40px;min-height:40px;border:1px solid rgba(241,215,122,.3);border-radius:8px;background:rgba(212,175,55,.07);transition:background .2s,border-color .2s}
+.voice-btn:hover{background:rgba(212,175,55,.16);border-color:var(--royal-gold)}
