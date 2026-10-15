@@ -171,3 +171,14 @@
   - ربط بيانات التثبيت: https://github.com/mo775kk/Mamlkt-alotor/commit/cfa72fd2c2c7b4ef36373e26df1f2f87a211efba
   - إصلاح نطاق الرسومات: https://github.com/mo775kk/Mamlkt-alotor/commit/21e6f8699595c15210d9d1d8ea1fd756d2f42718
   - تحديث مرجع CSS: https://github.com/mo775kk/Mamlkt-alotor/commit/83633877872ef83dbb7f9c808463b5115aaecfd4
+
+
+## متابعة تنفيذ 2026-10-15 — وضوح اختيار الحجم والسعر
+- تحسين لوحة اختيار الحجم والسعر داخل بطاقة المنتج: تباين أعلى، مساحة داخلية أوضح، خط أكبر، وقائمة اختيار بارتفاع مناسب للمس على الهاتف.
+- إبراز السعر الحالي في سطر مستقل ذهبي واضح، وتحسين حقل الحجم والسعر داخل نافذة التفاصيل والتركيب.
+- ضبط بطاقات المنتجات على الشاشات الصغيرة لمنع تزاحم النص والأزرار، مع الحفاظ على اتجاه العربية ووضوح أسماء العطور الإنجليزية.
+- تحديث مراجع cache-busting في `index.html` لملف `royal-polish.css` وملف `app.js`.
+- الملفات المعدلة: `royal-polish.css` و`index.html`.
+- Commit التنسيق: https://github.com/mo775kk/Mamlkt-alotor/commit/f5890abb3da00ce1fe126bc499b0f6b43ff81078
+- Commit ربط الواجهة: https://github.com/mo775kk/Mamlkt-alotor/commit/642b3c0beddf2c36f4191bebbddef4bc8149b538
+- لم يتم إجراء اختبار متصفح حي في هذه الجولة؛ يلزم فتح الموقع بعد تحديث GitHub Pages وتجربة تغيير الحجم، تحديث السعر، والإضافة للسلة على الهاتف.
