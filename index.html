@@ -24,8 +24,8 @@
       <p class="eyebrow">CROWN · MAISON DE PARFUM</p>
       <h1>مملكة العطور</h1>
       <p class="intro-subtitle">حكاية فخامة تبدأ بقطرة</p>
-      <button class="btn btn-gold" id="enterBtn">دخول المملكة</button>
-      <button class="intro-skip" id="skipIntro">تخطي المقدمة</button>
+      <button type="button" class="btn btn-gold" id="enterBtn">دخول المملكة</button>
+      <button type="button" class="intro-skip" id="skipIntro">تخطي المقدمة</button>
     </div>
   </div>
 
@@ -34,7 +34,7 @@
       <span class="brand-crown">♛</span>
       <span><strong>مملكة العطور</strong><small>CROWN · MAISON DE PARFUM</small></span>
     </a>
-    <button class="icon-btn menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+    <button type="button" class="icon-btn menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
     <nav class="main-nav" id="mainNav">
       <a href="#home" data-nav="home">الرئيسية</a>
       <a href="#ready" data-nav="ready">العطور الجاهزة</a>
@@ -45,10 +45,10 @@
       <a href="#visit" data-nav="visit">تواصل معنا</a>
     </nav>
     <div class="header-actions">
-      <button class="icon-btn" id="searchFocus" aria-label="بحث" title="بحث"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4.2 4.2"/></svg></button>
-      <button class="icon-btn" id="favoritesShortcut" aria-label="المفضلة" title="المفضلة"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 8.7c0 5.1-8.8 10-8.8 10s-8.8-4.9-8.8-10A4.7 4.7 0 0 1 12 6.1a4.7 4.7 0 0 1 8.8 2.6Z"/></svg><span class="counter" id="favCount">0</span></button>
-      <button class="icon-btn" id="cartShortcut" aria-label="السلة" title="السلة"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 12H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg><span class="counter" id="cartCount">0</span></button>
-      <button class="icon-btn language-btn" id="languageToggle" aria-label="Change language">EN</button>
+      <button type="button" class="icon-btn" id="searchFocus" aria-label="بحث" title="بحث"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4.2 4.2"/></svg></button>
+      <button type="button" class="icon-btn" id="favoritesShortcut" aria-label="المفضلة" title="المفضلة"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 8.7c0 5.1-8.8 10-8.8 10s-8.8-4.9-8.8-10A4.7 4.7 0 0 1 12 6.1a4.7 4.7 0 0 1 8.8 2.6Z"/></svg><span class="counter" id="favCount">0</span></button>
+      <button type="button" class="icon-btn" id="cartShortcut" aria-label="السلة" title="السلة"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 12H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg><span class="counter" id="cartCount">0</span></button>
+      <button type="button" class="icon-btn language-btn" id="languageToggle" aria-label="Change language">EN</button>
     </div>
   </header>
 
@@ -145,7 +145,7 @@
         <div class="blend-step"><label for="blendSize">الحجم</label><select id="blendSize"><option value="3">3 مل</option><option value="5">5 مل</option><option value="10" selected>10 مل</option><option value="22">22 مل</option><option value="30">30 مل</option><option value="50">50 مل</option><option value="100">100 مل</option></select></div>
         <div class="blend-step"><label for="blendBottle">العبوة</label><select id="blendBottle"><option>عبوة كلاسيكية</option><option>عبوة فاخرة</option><option>أترك اختيار العبوة للمتجر</option></select></div>
         <div class="blend-summary"><span>السعر المرجعي للحجم المختار</span><strong id="blendPrice">100 ج.م</strong><small>السعر النهائي والتوفر يحتاجان إلى تأكيد المتجر قبل الطلب.</small></div>
-        <button class="btn btn-gold" id="addBlend">إضافة طلب التركيب</button>
+        <button type="button" class="btn btn-gold" id="addBlend">إضافة طلب التركيب</button>
       </div>
     </section>
 
@@ -178,9 +178,9 @@
   <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-crown">♛</span><span><strong>مملكة العطور</strong><small>CROWN · MAISON DE PARFUM</small></span></a><p>العطر توقيع… والمملكة اختيارك.</p><small>© <span id="year"></span> MAMLKAT AL-OTOR</small></footer>
 
   <div class="drawer-backdrop hidden" id="drawerBackdrop"></div>
-  <aside class="drawer" id="cartDrawer" aria-label="سلة التسوق" aria-hidden="true"><div class="drawer-head"><h2 id="drawerTitle">سلة التسوق</h2><button class="icon-btn" id="closeDrawer" aria-label="إغلاق">×</button></div><div id="cartItems" class="drawer-items"></div><div class="drawer-bottom"><div class="total-row"><span>الإجمالي المرجعي</span><strong id="cartTotal">0 ج.م</strong></div><small>الأسعار مرجعية وقد تحتاج إلى تأكيد المتجر.</small><button class="btn btn-gold full-width" id="checkoutBtn">متابعة الطلب عبر واتساب</button><button class="text-btn" id="clearCart">إفراغ السلة</button></div></aside>
+  <aside class="drawer" id="cartDrawer" aria-label="سلة التسوق" aria-hidden="true"><div class="drawer-head"><h2 id="drawerTitle">سلة التسوق</h2><button type="button" class="icon-btn" id="closeDrawer" aria-label="إغلاق">×</button></div><div id="cartItems" class="drawer-items"></div><div class="drawer-bottom"><div class="total-row"><span>الإجمالي المرجعي</span><strong id="cartTotal">0 ج.م</strong></div><small>الأسعار مرجعية وقد تحتاج إلى تأكيد المتجر.</small><button type="button" class="btn btn-gold full-width" id="checkoutBtn">متابعة الطلب عبر واتساب</button><button type="button" class="text-btn" id="clearCart">إفراغ السلة</button></div></aside>
 
-  <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close icon-btn" id="closeModal" aria-label="إغلاق">×</button><div id="modalContent"></div></section></div>
+  <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button type="button" class="modal-close icon-btn" id="closeModal" aria-label="إغلاق">×</button><div id="modalContent"></div></section></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="app.js?v=20261015-catalog-load2"></script>
