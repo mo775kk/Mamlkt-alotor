@@ -254,14 +254,32 @@
   function blendPrice(){const s=$("#blendSize").value;$("#blendPrice").textContent=formatMoney(sizes[s]);}
   function submitAdvisor(query){
     const q=norm(query);if(!q)return;
-    const terms=[["خشبي",["خشبي","عود","خشب"]],["زهري",["زهري","ورد","زهور","فل"]],["شرقي",["شرقي","عنبر","بهارات"]],["حلو",["حلو","فانيلا","سكر","كراميل"]],["منعش",["منعش","صيف","حمضي","ليمون"]],["مسكي",["مسكي","مسك","نظيف"]]];
-    const matched=terms.find(([family,words])=>words.some(w=>q.includes(norm(w))));
-    let list=products.filter(p=>p.productType!=="oil"&&(!matched||p.family===matched[0]));
-    const gender=q.includes("رجالي")?"رجالي":q.includes("نسائي")?"نسائي":null;
-    if(gender)list=list.filter(p=>p.gender===gender||p.gender==="للجنسين");
+    const terms=[
+      {label:"خشبي",words:["خشبي","عود","خشب","woody","oud"]},
+      {label:"زهري",words:["زهري","ورد","زهور","فل","rose","floral"]},
+      {label:"شرقي",words:["شرقي","عنبر","بهارات","بخور","oriental","amber"]},
+      {label:"حلو",words:["حلو","فانيلا","فانيليا","سكر","كراميل","gourmand","sweet","vanilla"]},
+      {label:"منعش",words:["منعش","صيف","حمضي","ليمون","بحري","fresh","citrus","marine"]},
+      {label:"مسكي",words:["مسكي","مسك","نظيف","musk","clean"]},
+      {label:"فاكهي",words:["فاكهي","فاكهة","فواكه","فراولة","أناناس","fruit","fruity"]},
+      {label:"جلدي",words:["جلدي","جلد","تبغ","دخاني","leather","tobacco"]}
+    ];
+    const matched=terms.find(t=>t.words.some(w=>q.includes(norm(w))));
+    const gender=q.includes("رجالي")||q.includes("للرجال")||q.includes("men")?"رجالي":q.includes("نسائي")||q.includes("للنساء")||q.includes("women")?"نسائي":null;
+    const candidates=products.filter(p=>p.productType!=="oil"&&p.productType!=="bakhoor"&&p.available!==false);
+    const scored=candidates.map(p=>{
+      const hay=norm([p.family,p.scentNature,p.descriptionAr,p.nameAr,p.nameEn,p.gender].join(" "));
+      let score=0;
+      if(matched){const hits=matched.words.filter(w=>hay.includes(norm(w)));score+=hits.length?Math.min(6,hits.length*2):0;if(hay.includes(norm(matched.label)))score+=2;}
+      if(gender){if(p.gender===gender)score+=3;else if(p.gender==="للجنسين")score+=1;else score-=4;}
+      const requestedWords=q.split(" ").filter(w=>w.length>2);
+      score+=requestedWords.filter(w=>hay.includes(w)).length;
+      return {p,score};
+    }).filter(x=>!matched||x.score>0).sort((a,b)=>b.score-a.score);
+    const list=scored.slice(0,3).map(x=>x.p);
     const replies=$("#advisorReplies");
-    if(!list.length){replies.innerHTML='<div class="assistant-message">لم أجد تطابقًا مناسبًا في الكتالوج الحالي. جرّب عائلة أخرى أو تواصل مع المتجر.</div>';return;}
-    replies.innerHTML=`<div class="assistant-message">بناءً على الكلمات التي أدخلتها، هذه أسماء قريبة من تفضيلك في الكتالوج. بعض البيانات والأسعار ما زالت تحتاج إلى مراجعة:</div>`+list.slice(0,3).map(p=>`<div class="suggestion"><div><h4>${escapeHTML(p.nameAr)} <span class="product-en">${escapeHTML(p.nameEn||"")}</span></h4><p>${escapeHTML(p.family||"عائلة غير محددة")} · ${formatMoney(priceFor(p))}</p></div><button class="small-btn" data-action="details" data-id="${escapeHTML(p.id)}">التفاصيل</button></div>`).join("");
+    if(!list.length){replies.innerHTML='<div class="assistant-message">لم أجد تطابقًا موثوقًا في الكتالوج الحالي. جرّب طابعًا آخر أو اطلب من المتجر البحث عن عطر محدد.</div>';return;}
+    replies.innerHTML=`<div class="assistant-message">هذه أقرب اقتراحات حسب الكلمات التي أدخلتها. الترتيب إرشادي اعتمادًا على وصف الكتالوج، وليس اختبارًا فعليًا للعطر. السعر غير المعتمد يظهر بوضوح.</div>`+list.map(p=>`<div class="suggestion"><div><h4>${escapeHTML(p.nameAr)} <span class="product-en">${escapeHTML(p.nameEn||"")}</span></h4><p>${escapeHTML(p.family||"عائلة غير محددة")} · ${formatMoney(priceFor(p))}${p.needsReview?" · يحتاج مراجعة":""}</p></div><button class="small-btn" data-action="details" data-id="${escapeHTML(p.id)}">التفاصيل</button></div>`).join("");
   }
   function requestMissing(name){
     const req=safeRead(STORAGE.requests,[]);req.push({name,createdAt:new Date().toISOString()});save(STORAGE.requests,req);
@@ -282,6 +300,7 @@
     const ca=e.target.closest("[data-cart]");if(ca){const item=cart.find(x=>x.key===ca.dataset.key);if(!item)return;if(ca.dataset.cart==="plus")item.qty++;if(ca.dataset.cart==="minus")item.qty--;if(ca.dataset.cart==="remove"||item.qty<=0)cart=cart.filter(x=>x.key!==item.key);save(STORAGE.cart,cart);renderCart();updateCounts();}
   });
   $("#productSearch").addEventListener("input",renderProducts);$("#genderFilter").addEventListener("change",renderProducts);$("#familyFilter").addEventListener("change",renderProducts);
+  $("#requestMissingBtn").addEventListener("click",()=>{const name=$("#productSearch").value.trim();if(!name){notify("اكتب اسم العطر الذي تبحث عنه أولًا.");$("#productSearch").focus();return;}requestMissing(name);notify("تم تسجيل طلب البحث وفتح واتساب لإرساله.");});
   $("#searchFocus").addEventListener("click",()=>{$("#productSearch").focus();document.querySelector("#ready").scrollIntoView({behavior:"smooth"});});
   $("#favoritesShortcut").addEventListener("click",()=>{const fav=products.filter(p=>favorites.includes(p.id));if(!fav.length){notify("قائمة المفضلة فارغة.");return;}$("#productSearch").value="";$("#genderFilter").value="";$("#familyFilter").value="";$("#readyProducts").innerHTML=fav.map(productCard).join("");$("#resultsMessage").textContent=`${fav.length} منتج في المفضلة`;$("#noProducts").classList.add("hidden");document.querySelector("#ready").scrollIntoView({behavior:"smooth"});});
   $("#cartShortcut").addEventListener("click",openDrawer);$("#closeDrawer").addEventListener("click",closeDrawer);$("#drawerBackdrop").addEventListener("click",closeDrawer);
