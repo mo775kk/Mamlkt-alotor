@@ -646,3 +646,16 @@ button:disabled{cursor:not-allowed;opacity:.58;filter:saturate(.5)}
  .advisor-replies .suggestion{flex-direction:column}
  .advisor-replies .suggestion .small-btn{width:100%}
 }
+
+
+/* Scope category photographs to the actual navigation doors; keep scent-family pictograms intact. */
+.quick-start-section .category-card .category-icon-wrap,
+.category-section .category-card .category-icon-wrap{
+  background-repeat:no-repeat;background-position:center;background-size:cover;
+}
+.quick-start-section .category-card .royal-category-icon,
+.category-section .category-card .royal-category-icon{opacity:0}
+.taxonomy-public-section .category-card .category-icon-wrap{
+  background-image:none!important;background-color:rgba(212,175,55,.07);
+}
+.taxonomy-public-section .category-card .royal-category-icon{opacity:1;width:48px;height:48px}
