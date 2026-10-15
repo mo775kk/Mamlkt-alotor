@@ -210,12 +210,40 @@
     const p=findProduct(id);if(!p)return;
     const price=priceFor(p);
     $("#modalContent").innerHTML=`<div class="modal-product"><div class="modal-product-image">${imageMarkup(p)}</div><div><p class="eyebrow">MAMLKAT AL-OTOR</p><h2 id="modalTitle">${escapeHTML(p.nameAr||"منتج")}</h2><div class="product-en">${escapeHTML(p.nameEn||"")}</div><p>${escapeHTML(p.descriptionAr||"لا يوجد وصف موثق بعد.")}</p><p><b>النوع:</b> ${escapeHTML(p.productType==="oil"?"زيت عطري للتركيب":p.productType==="bakhoor"?"عود أو بخور":"عطر جاهز")} · <b>الفئة:</b> ${escapeHTML(p.gender||"غير محدد")}</p><p><b>الطابع:</b> ${escapeHTML(p.scentNature||"يحتاج إلى تقييم العينة")}</p><p><b>العائلة العطرية:</b> ${escapeHTML(p.family||"غير محددة")}</p><div class="fragrance-note-pyramid"><h3>الهرم العطري</h3><p><b>نوتات المقدمة:</b> ${escapeHTML(Array.isArray(p.topNotes)?(p.topNotes.length?p.topNotes.join("، "):"غير موثقة"):(p.topNotes||"غير موثقة"))}</p><p><b>نوتات القلب:</b> ${escapeHTML(Array.isArray(p.heartNotes)?(p.heartNotes.length?p.heartNotes.join("، "):"غير موثقة"):(p.heartNotes||"غير موثقة"))}</p><p><b>نوتات القاعدة:</b> ${escapeHTML(Array.isArray(p.baseNotes)?(p.baseNotes.length?p.baseNotes.join("، "):"غير موثقة"):(p.baseNotes||"غير موثقة"))}</p>${p.notesConfidence?`<p><b>درجة التحقق:</b> ${escapeHTML(p.notesConfidence)}</p>`:""}${p.notesStatus==="needs-identification"||p.notesStatus==="needs-variant-confirmation"?`<p class="muted">لم تُعتمد النوتات لأن اسم المنتج لا يحدد الإصدار بدقة.</p>`:""}</div>${p.sourceUrl&&/^https:\/\//i.test(p.sourceUrl)?`<p><b>مصدر التفاصيل:</b> <a href="${escapeHTML(p.sourceUrl)}" target="_blank" rel="noopener noreferrer">فتح المصدر والتحقق</a></p>`:""}<div class="modal-price">${p.supplierCatalogItem?"متاح للاختيار ضمن طلب تركيب":formatMoney(price)}</div>${p.needsReview?`<p class="muted">${p.notesStatus==="verified-brand-source"||p.notesStatus==="verified-fragrance-directory"||p.notesStatus==="cross-checked-fragrance-sources"?"النوتات موثقة بالمصدر المذكور؛ السعر والتوفر ومطابقة العبوة تحتاج إلى تأكيد المتجر.":"البيانات تحتاج إلى مراجعة؛ لا تعتمد النوتات قبل تحديد الإصدار والتحقق من المصدر."}</p>`:""}${p.supplierCatalogItem?'<p class="muted">هذا زيت مورد للتركيب؛ لا يظهر كمنتج للبيع المباشر قبل تحديد السعر والتوفر.</p>':'<label for="modalSize">الحجم</label><select id="modalSize">${Object.keys(sizes).map(s=>`<option value="${s}" ${s==="10"?"selected":""}>${s} مل — ${formatMoney(currentPrice(p,s))}</option>`).join("")}</select>'}<div class="modal-actions"><button class="btn btn-gold" id="modalAdd" ${price==null?"disabled":""}>${p.supplierCatalogItem?"السعر قيد التأكيد":"أضف للسلة"}</button><button class="btn btn-outline" id="speakDetails">استمع للوصف</button></div></div></div>`;
-    $("#modalBackdrop").classList.remove("hidden");
-    $("#modalAdd").addEventListener("click",()=>{const s=$("#modalSize").value;addToCart(id,s);});
-    $("#modalSize").addEventListener("change",e=>{$(".modal-price").textContent=formatMoney(currentPrice(p,e.target.value));$("#modalAdd").disabled=currentPrice(p,e.target.value)==null;});
-    $("#speakDetails").addEventListener("click",()=>{if(!("speechSynthesis" in window)){notify("الشرح الصوتي غير مدعوم في هذا المتصفح.");return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(`${p.nameAr||""}. ${p.descriptionAr||""}`);u.lang="ar-EG";speechSynthesis.speak(u);});
+    const modal=$("#modalBackdrop");
+    modal.classList.remove("hidden");
+    modal.setAttribute("aria-hidden","false");
+    const addButton=$("#modalAdd");
+    const sizeSelect=$("#modalSize");
+    // Bind to the current product only; replacing handlers prevents repeated clicks
+    // from adding the same item multiple times after opening several product details.
+    addButton.onclick=()=>{
+      if(!sizeSelect){notify("هذا زيت مخصص للتركيب؛ اختره من قسم الزيوت لتكوين طلب.");return;}
+      const selectedSize=sizeSelect.value;
+      if(currentPrice(p,selectedSize)==null){notify("سعر هذا الحجم غير محدد حاليًا.");return;}
+      addToCart(id,selectedSize);
+    };
+    if(sizeSelect){
+      sizeSelect.onchange=()=>{
+        const nextPrice=currentPrice(p,sizeSelect.value);
+        $(".modal-price").textContent=formatMoney(nextPrice);
+        addButton.disabled=nextPrice==null;
+      };
+    }
+    $("#speakDetails").onclick=()=>{
+      if(!("speechSynthesis" in window)){notify("الشرح الصوتي غير مدعوم في هذا المتصفح.");return;}
+      speechSynthesis.cancel();
+      const u=new SpeechSynthesisUtterance(`${p.nameAr||""}. ${p.descriptionAr||""}`);
+      u.lang="ar-EG";
+      speechSynthesis.speak(u);
+    };
+    $("#closeModal").focus({preventScroll:true});
   }
-  function closeModal(){ $("#modalBackdrop").classList.add("hidden");if("speechSynthesis" in window)speechSynthesis.cancel(); }
+  function closeModal(){
+    $("#modalBackdrop").classList.add("hidden");
+    $("#modalBackdrop").setAttribute("aria-hidden","true");
+    if("speechSynthesis" in window)speechSynthesis.cancel();
+  }
   function checkout(){
     if(!cart.length){notify("أضف منتجًا إلى السلة أولًا.");return;}
     const lines=cart.map((x,i)=>`${i+1}) ${x.nameAr}${x.nameEn?" ("+x.nameEn+")":""}${x.custom?.description?" — "+x.custom.description:""} - ${x.size} مل × ${x.qty} = ${formatMoney(x.price*x.qty)}`);
@@ -271,7 +299,13 @@
   $("#advisorForm").addEventListener("submit",e=>{e.preventDefault();submitAdvisor($("#advisorInput").value);});
   $("#contactWhatsapp").href=`https://wa.me/${getWaNumber()}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن منتجات مملكة العطور.")}`;
   $("#menuToggle").addEventListener("click",()=>{const open=$("#mainNav").classList.toggle("open");$("#menuToggle").setAttribute("aria-expanded",String(open));});
-  $$("#mainNav a").forEach(a=>a.addEventListener("click",()=>{$("#mainNav").classList.remove("open");$("#menuToggle").setAttribute("aria-expanded","false");}));
+  $("#mainNav a").forEach(a=>a.addEventListener("click",()=>{$("#mainNav").classList.remove("open");$("#menuToggle").setAttribute("aria-expanded","false");}));
+  document.addEventListener("keydown",e=>{
+    if(e.key!=="Escape")return;
+    if(!$("#modalBackdrop").classList.contains("hidden"))closeModal();
+    if($("#cartDrawer").classList.contains("open"))closeDrawer();
+    if($("#mainNav").classList.contains("open")){$("#mainNav").classList.remove("open");$("#menuToggle").setAttribute("aria-expanded","false");$("#menuToggle").focus({preventScroll:true});}
+  });
   $("#languageToggle").addEventListener("click",()=>setLanguage(language==="ar"?"en":"ar"));
   $("#voiceSearch").addEventListener("click",()=>{
     const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
