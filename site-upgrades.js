@@ -44,8 +44,10 @@
         <label class="btn btn-outline file-label">اختيار ملف JSON<input id="royalJsonFile" type="file" accept=".json,application/json"></label>
         <button type="button" class="btn btn-gold" id="royalExportAll">معاينة وتصدير نسخة كاملة</button>
         <button type="button" class="btn btn-outline" id="royalExportProducts">تصدير المنتجات فقط</button>
+        <button type="button" class="btn btn-outline" id="royalCatalogAudit">فحص جودة كتالوج الموقع</button>
       </div>
       <div id="royalFilePreview" class="royal-file-preview hidden"></div>
+      <div id="royalCatalogAuditResult" class="royal-file-preview hidden" aria-live="polite"></div>
       <h4>مكتبة الملفات المستوردة والمصدّرة</h4>
       <div class="royal-file-search"><input id="royalFileSearch" type="search" placeholder="ابحث باسم الملف أو نوع البيانات..."></div>
       <div id="royalFileList" class="royal-file-list"></div>
@@ -92,6 +94,41 @@
       showExportPreview("mamlaka-full-backup.json",data);
     });
     $("#royalExportProducts")?.addEventListener("click",()=>showExportPreview("mamlaka-products.json",{schemaVersion:1,exportedAt:new Date().toISOString(),products:read("mamlaka_custom_products_v1",[])}));
+    $("#royalCatalogAudit")?.addEventListener("click", async () => {
+      const output = $("#royalCatalogAuditResult");
+      output.classList.remove("hidden");
+      output.textContent = "جارٍ فحص كتالوج الموقع…";
+      try {
+        const response = await fetch("data/products.json", { cache: "no-cache" });
+        if (!response.ok) throw new Error("تعذر قراءة ملف الكتالوج: HTTP " + response.status);
+        const payload = await response.json();
+        const products = Array.isArray(payload) ? payload : payload?.products;
+        if (!Array.isArray(products)) throw new Error("صيغة الملف لا تحتوي مصفوفة products.");
+        const normalize = value => String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
+        const idCounts = new Map(), nameCounts = new Map();
+        products.forEach(p => {
+          const id = normalize(p.id); if (id) idCounts.set(id, (idCounts.get(id) || 0) + 1);
+          const name = normalize(p.nameEn || p.name_en || p.nameAr || p.name_ar);
+          if (name) nameCounts.set(name, (nameCounts.get(name) || 0) + 1);
+        });
+        const duplicateIds = products.filter(p => normalize(p.id) && idCounts.get(normalize(p.id)) > 1).map(p => ({ id: p.id, name: p.nameEn || p.nameAr || "" }));
+        const duplicateNames = products.filter(p => {
+          const name = normalize(p.nameEn || p.name_en || p.nameAr || p.name_ar);
+          return name && nameCounts.get(name) > 1;
+        }).map(p => ({ id: p.id || "", name: p.nameEn || p.name_en || p.nameAr || p.name_ar || "" }));
+        const missingName = products.filter(p => !(p.nameAr || p.name_ar || p.nameEn || p.name_en)).map(p => p.id || "(بدون معرّف)");
+        const missingSource = products.filter(p => !(p.sourceUrl || p.source_url)).map(p => p.id || p.nameEn || p.nameAr || "(منتج بلا اسم)");
+        const missingPyramid = products.filter(p => !Array.isArray(p.topNotes || p.notes_top) || !(p.topNotes || p.notes_top).length || !Array.isArray(p.heartNotes || p.notes_heart) || !(p.heartNotes || p.notes_heart).length || !Array.isArray(p.baseNotes || p.notes_base) || !(p.baseNotes || p.notes_base).length).map(p => p.id || p.nameEn || p.nameAr || "(منتج بلا اسم)");
+        const needsReview = products.filter(p => p.needsReview === true || p.notesStatus === "needs-review" || p.notesStatus === "needsReview").length;
+        const report = { schemaVersion: 1, generatedAt: new Date().toISOString(), source: "data/products.json",
+          summary: { total: products.length, duplicateIds: duplicateIds.length, duplicateNames: duplicateNames.length, missingName: missingName.length, missingSource: missingSource.length, missingNotePyramid: missingPyramid.length, needsReview },
+          duplicateIds, duplicateNames, missingName, missingSource, missingNotePyramid: missingPyramid };
+        output.innerHTML = "<strong>نتيجة فحص الكتالوج</strong><p>إجمالي المنتجات: " + report.summary.total + " · معرّفات مكررة: " + duplicateIds.length + " · أسماء محتملة التكرار: " + duplicateNames.length + " · بلا مصدر: " + missingSource.length + " · هرم عطري ناقص: " + missingPyramid.length + " · تحتاج مراجعة: " + needsReview + "</p><p class=\"admin-note\">التكرار بالاسم تنبيه للمراجعة فقط؛ قد توجد إصدارات مختلفة بالاسم المتشابه. لم يتم تعديل أي بيانات.</p>";
+        const details = document.createElement("pre"); details.className = "royal-json-preview"; details.dir = "ltr"; details.textContent = JSON.stringify(report, null, 2); output.append(details);
+        const exportButton = document.createElement("button"); exportButton.type = "button"; exportButton.className = "small-btn primary"; exportButton.textContent = "تنزيل تقرير الفحص JSON";
+        exportButton.addEventListener("click", () => download("mamlakat-catalog-audit.json", JSON.stringify(report, null, 2))); output.append(exportButton);
+      } catch (error) { output.textContent = "تعذر فحص الكتالوج: " + error.message + " — لم يتم تعديل البيانات."; }
+    });
     $("#royalFileSearch")?.addEventListener("input",renderFileList);
   }
   function importData(data,name,raw,id){
