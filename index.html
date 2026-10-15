@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261015-low-stock1">
   <link rel="stylesheet" href="site-upgrades.css?v=20261015-roadmap1">
-  <link rel="stylesheet" href="royal-polish.css?v=20261015-card-size-price1">
+  <link rel="stylesheet" href="royal-polish.css?v=20261015-advisor-illustrations1">
 </head>
 <body>
   <div class="intro" id="intro" aria-label="دخول المملكة">
@@ -167,9 +167,9 @@
       <div class="section-heading"><div><p class="eyebrow">SCENT CONCIERGE</p><h2>مستشار مملكة العطور</h2></div><p>أخبرنا عن ذوقك وسنقترح لك من المنتجات المسجلة في الكتالوج.</p></div>
       <div class="advisor-box">
         <div class="advisor-symbol">♛</div>
-        <div class="advisor-chat"><div class="assistant-message">مرحبًا بك في مملكة العطور. ما الطابع الذي تبحث عنه؟ جرّب: خشبي، زهري، شرقي، حلو، منعش أو مسكي.</div><div id="advisorReplies" class="advisor-replies" aria-live="polite"></div>
-          <form id="advisorForm" class="advisor-form"><input id="advisorInput" placeholder="مثال: أريد عطرًا خشبيًا رجاليًا..." required><button class="btn btn-gold" type="submit">اقترح لي</button></form>
-          <small class="muted">المستشار الحالي يعتمد على مطابقة الكلمات مع بيانات الكتالوج، وليس خدمة ذكاء اصطناعي خارجية.</small>
+        <div class="advisor-chat"><div class="assistant-message">أهلًا بك في مستشار مملكة العطور 👑 أقدر أساعدك تختار حسب ذوقك، استخدامك، والفئة السعرية. ابدأ باختيار سريع أو اكتب وصفك بطريقتك.</div><div class="advisor-quick-prompts" aria-label="اختيارات سريعة للمستشار"><button type="button" data-advisor-prompt="عطر رجالي خشبي للدوام">رجالي للدوام</button><button type="button" data-advisor-prompt="عطر نسائي زهري ناعم">زهري ناعم</button><button type="button" data-advisor-prompt="عطر شرقي عود وعنبر للمناسبات">شرقي للمناسبات</button><button type="button" data-advisor-prompt="عطر منعش صيفي للرجال">منعش للصيف</button><button type="button" data-advisor-prompt="عطر مسكي نظيف يومي">مسكي ونظيف</button><button type="button" data-advisor-prompt="عطر حلو فانيليا">حلو وفانيليا</button></div><div id="advisorReplies" class="advisor-replies" aria-live="polite"></div>
+          <form id="advisorForm" class="advisor-form"><input id="advisorInput" placeholder="مثال: عطر رجالي منعش بميزانية 150 جنيه..." autocomplete="off" required><button class="btn btn-gold" type="submit">رشّح لي</button></form>
+          <small class="muted">المستشار حاليًا مساعد ذكي محلي يعتمد على مطابقة وصفك ببيانات الكتالوج، ولا يتصل بخدمة ذكاء اصطناعي خارجية. الأسعار والتوفر غير المؤكدين يحتاجان إلى مراجعة.</small>
         </div>
       </div>
     </section>
@@ -187,7 +187,7 @@
   <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button type="button" class="modal-close icon-btn" id="closeModal" aria-label="إغلاق">×</button><div id="modalContent"></div></section></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20261015-card-size-price1"></script>
+  <script src="app.js?v=20261015-advisor-illustrations1"></script>
   <script src="settings.js?v=20261015-json-backup-compat1"></script>
   <script src="enhancements.js?v=20261015-voice-guide1"></script>
   <script src="supplier-catalog.js?v=20261014-public-oils1"></script>
