@@ -723,3 +723,42 @@ button:disabled{cursor:not-allowed;opacity:.58;filter:saturate(.5)}
 .checkout-customer input::placeholder,.checkout-customer textarea::placeholder{color:#b9ad98;opacity:1}
 .checkout-customer small{color:#cfc3ad;line-height:1.75}
 .checkout-customer input:focus-visible,.checkout-customer textarea:focus-visible{outline:3px solid #ffe38b;outline-offset:2px}
+
+
+/* 2026-10-15: readable, light control surfaces and stronger product-type distinction */
+#adminLayer{background:rgba(29,22,13,.62);backdrop-filter:blur(7px);padding:clamp(8px,2vw,22px)}
+#adminLayer .admin-panel{background:#fffaf1!important;color:#30281f!important;border:1px solid #c8a24d!important;border-radius:16px;box-shadow:0 24px 90px rgba(0,0,0,.35);color-scheme:light}
+#adminLayer .admin-head{border-bottom:2px solid #e4d2ad;padding-bottom:16px;margin-bottom:12px}
+#adminLayer .admin-head h2,#adminLayer .admin-page h3,#adminLayer .admin-page h4,#adminLayer .admin-login h3{color:#3d2e1b!important}
+#adminLayer .admin-head small,#adminLayer .admin-note,#adminLayer .admin-page p,#adminLayer .admin-login p,#adminLayer .admin-login small{color:#625543!important}
+#adminLayer .eyebrow{color:#8a651f!important}
+#adminLayer .admin-page{background:#fffdf8;border:1px solid #e4d5b8;border-radius:12px;padding:clamp(12px,2vw,20px);margin-block:12px}
+#adminLayer .admin-tabs{position:sticky;top:0;z-index:3;background:#fffaf1;padding:10px 0;border-bottom:1px solid #e4d5b8}
+#adminLayer .admin-tabs button{background:#f2e8d5!important;color:#4b3a24!important;border:1px solid #d8c49e!important;border-radius:8px;font-weight:700;min-height:42px}
+#adminLayer .admin-tabs button.active{background:#9b7326!important;color:#fff!important;border-color:#805b19!important}
+#adminLayer .admin-panel input:not([type=color]):not([type=range]):not([type=file]),#adminLayer .admin-panel select,#adminLayer .admin-panel textarea{background:#fff!important;color:#29231b!important;border:1px solid #b9a47f!important;border-radius:8px;padding:11px 12px;min-height:44px;font-size:15px}
+#adminLayer .admin-panel input::placeholder,#adminLayer .admin-panel textarea::placeholder{color:#786b59!important;opacity:1}
+#adminLayer .admin-panel input:focus,#adminLayer .admin-panel select:focus,#adminLayer .admin-panel textarea:focus{outline:2px solid #a67b29!important;outline-offset:1px;border-color:#8b651f!important}
+#adminLayer .admin-panel label{color:#403426!important;font-size:14px;font-weight:700;line-height:1.65}
+#adminLayer .admin-panel label small{color:#655844!important;font-weight:400}
+#adminLayer .admin-login,#adminLayer .price-settings{background:#f7efdf;border:1px solid #e2cfaa;border-radius:12px;padding:16px}
+#adminLayer .admin-product{background:#fff!important;border:1px solid #e0d1b4!important;border-radius:10px}
+#adminLayer .admin-product strong{color:#30271b!important;font-size:15px}
+#adminLayer .admin-product small{color:#685a46!important;font-size:13px}
+#adminLayer .admin-product .small-btn{min-height:38px}
+#adminLayer .admin-panel .btn-outline{background:#fff!important;color:#654a1c!important;border-color:#aa8848!important}
+#adminLayer .admin-panel .btn-gold{color:#241a09!important}
+#adminLayer .admin-panel hr{border-top-color:#dfceb0}
+#adminLayer .admin-panel input[type=color]{width:100%;min-height:42px;border:1px solid #b9a47f;border-radius:8px;background:#fff}
+#adminLayer .admin-panel input[type=range]{accent-color:#9b7326}
+#adminLayer .admin-panel .file-label{color:#654a1c!important}
+@media(max-width:600px){#adminLayer{padding:5px}#adminLayer .admin-panel{max-height:98dvh;border-radius:12px;padding:12px}#adminLayer .admin-tabs{gap:5px}#adminLayer .admin-tabs button{flex:1;padding:8px 5px;font-size:13px}#adminLayer .admin-page{padding:10px}#adminLayer .admin-panel label{font-size:14px}}
+.product-card-oil .product-visual .placeholder-bottle{width:48px;height:122px;border-radius:7px 7px 10px 10px;transform:scale(.92);background:linear-gradient(90deg,#b9d8c5,#f4f9e9 45%,#77a88c);border-color:#6d987c;box-shadow:inset 0 0 0 3px rgba(255,255,255,.45),0 8px 22px rgba(0,0,0,.16)}
+.product-card-oil .product-visual .placeholder-bottle:before{left:12px;width:22px;height:16px;top:-15px;background:linear-gradient(90deg,#8d6d3b,#d6bd7a,#8d6d3b)}
+.product-card-bakhoor .product-visual .placeholder-bottle{width:108px;height:84px;border-radius:10px 10px 18px 18px;transform:translateY(12px);background:linear-gradient(135deg,#4a3324,#a77a46 50%,#503621);border-color:#c7a15c}
+.product-card-bakhoor .product-visual .placeholder-bottle:before{left:-4px;top:-13px;width:114px;height:18px;border-radius:5px;background:linear-gradient(90deg,#8c632b,#f1d77a,#8c632b)}
+.product-card-gift .product-visual .placeholder-bottle{width:104px;height:88px;border-radius:5px;transform:translateY(12px);background:linear-gradient(135deg,#a66b75,#f0c6c0 48%,#91515e);border-color:#d5a45b}
+.product-card-gift .product-visual .placeholder-bottle:before{left:40px;top:-22px;width:24px;height:20px;border-radius:3px 3px 0 0}
+.product-card-gift .product-visual .placeholder-bottle:after{content:"✦";top:18px;font-size:28px}
+.product-card-ready .product-visual .placeholder-bottle{width:78px;height:125px;border-radius:15px 15px 10px 10px}
+.product-card .product-badge{font-size:12px;font-weight:800;padding:5px 9px;max-width:calc(100% - 70px)}
