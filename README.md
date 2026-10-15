@@ -216,3 +216,9 @@
 - Basenotes — Escada Moon Sparkle: https://basenotes.com/fragrances/escada-moon-sparkle-by-escada.26128653
 - Fragrantica — One Man Show: https://www.fragrantica.com/perfume/Jacques-Bogart/One-Man-Show-7795.html
 - Fragrantica — Silver Scent Midnight: https://www.fragrantica.com/perfume/Jacques-Bogart/Silver-Scent-Midnight-46938.html
+
+
+## أداة تجهيز الهدية وفحوص السلامة
+- قسم الهدايا يحتوي نموذجًا لتجهيز طلب واتساب يشمل المستلم والمناسبة والميزانية والنوع والتغليف ورسالة الإهداء. الأسعار والتوفر تظل بحاجة إلى تأكيد من المتجر.
+- `PROJECT-ROADMAP.md` يشرح مراحل التطوير ومعايير القبول والقيود الحالية.
+- `scripts/smoke-check.mjs` فاحص ثابت بلا اعتماديات: شغّله محليًا باستخدام `node scripts/smoke-check.mjs` من جذر المستودع. لا يحل محل اختبار التفاعل داخل المتصفح.
