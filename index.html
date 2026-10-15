@@ -106,6 +106,7 @@
 
     <section class="section products-section" id="ready">
       <div class="section-heading"><div><p class="eyebrow">THE PERFUME COLLECTION</p><h2>العطور الجاهزة</h2></div><p>تصفّح المجموعة واختر ما يناسب ذوقك.</p></div>
+      <div class="customer-price-notice" role="note"><strong>الأسعار تبدأ من 50 ج.م</strong><span>اختر المنتج والحجم لمعرفة السعر المعروض، وأكّد التوفر والسعر النهائي قبل الطلب.</span></div>
       <div class="toolbar">
         <label class="search-box"><span>⌕</span><input id="productSearch" type="search" placeholder="ابحث باسم العطر أو الشركة..." autocomplete="off"><button id="voiceSearch" class="voice-btn" type="button" aria-label="البحث الصوتي" title="البحث الصوتي">🎙</button></label>
         <select id="genderFilter" aria-label="تصفية حسب الجنس"><option value="">كل الاختيارات</option><option value="رجالي">رجالي</option><option value="نسائي">نسائي</option><option value="للجنسين">للجنسين</option></select>
@@ -128,14 +129,15 @@
         <select id="supplierOilCategory" aria-label="تصنيف الزيوت"><option value="">كل الأقسام</option><option value="MEN">رجالي</option><option value="WOMEN">نسائي</option><option value="UNISEX">للجنسين</option><option value="ORIENTAL">شرقي</option><option value="KIDS">أطفال</option><option value="DIFFUSER">فواحات</option></select>
         <select id="supplierOilFamily" aria-label="العائلة العطرية"><option value="">كل العائلات العطرية</option><option>حمضي ومنعش</option><option>زهري ووردي</option><option>مسكي ونظيف</option><option>حلو وفانيليا</option><option>عنبر وشرقي</option><option>عود وخشبي</option><option>جلدي وتبغي</option><option>عطري وأخضر</option><option>غير محدد</option></select>
       </div>
+      <div class="customer-price-notice" role="note"><strong>الأسعار تبدأ من 50 ج.م</strong><span>اختر المنتج والحجم لمعرفة السعر المعروض، وأكّد التوفر والسعر النهائي قبل الطلب.</span></div>
       <p class="results-message" id="supplierOilSummary" aria-live="polite">استورد ملف كتالوج الموردين من لوحة الإدارة لعرض جميع الأنواع هنا.</p>
       <div class="product-grid" id="supplierOilProducts"></div>
       <div class="empty-state hidden" id="noSupplierOilProducts">لم يتم تحميل كتالوج الموردين بعد، أو لا توجد نتائج مطابقة.</div>
       <div class="section-cta"><button class="btn btn-outline" id="supplierOilMore" type="button">عرض المزيد من الأنواع</button></div>
     </section>
     <section class="section taxonomy-public-section" id="scent-classification">
-      <div class="section-heading"><div><p class="eyebrow">SCENT CLASSIFICATION</p><h2>العائلات العطرية</h2></div><p>تصنيف إرشادي يساعدك على اكتشاف طابع الرائحة؛ بعض الأنواع تحتاج إلى تقييم العينة أو بيانات المورد.</p></div>
-      <div class="category-grid">
+      <div class="section-heading"><div><p class="eyebrow">SCENT CLASSIFICATION</p><h2>دليل العائلات العطرية</h2></div><p>اضغط لفتح التصنيفات ومعرفة طابع كل عائلة.</p></div>
+      <details class="scent-family-accordion"><summary><span class="family-summary-icon" aria-hidden="true">✧</span><span><strong>افتح دليل العائلات العطرية</strong><small>حمضي · زهري · مسكي · حلو · شرقي · خشبي</small></span><span class="family-chevron" aria-hidden="true">⌄</span></summary><div class="category-grid scent-family-grid">
         <a class="category-card category-ready" href="#oil-catalog" data-scent-family="حمضي ومنعش"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="23" cy="27" r="15"/><path d="M23 12v30M8 27h30M12 16l22 22M34 16 12 38M23 12c2-7 8-8 13-5-2 5-7 7-13 5Z"/></svg></span><div><small>CITRUS / FRESH</small><h3>حمضي ومنعش</h3><p>خفيف وحيوي ومناسب للأجواء الدافئة</p></div><b>↗</b></a>
         <a class="category-card category-gift" href="#oil-catalog" data-scent-family="زهري ووردي"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 23c-9-1-12-7-8-11 4-3 8 2 8 11Zm0 0c1-9 7-12 11-8 3 4-2 8-11 8Zm0 0c9 1 12 7 8 11-4 3-8-2-8-11Zm0 0c-1 9-7 12-11 8-3-4 2-8 11-8Z"/><circle cx="24" cy="23" r="4"/><path d="M24 28v14m0-5c-5-1-7-3-8-6m8 3c5-1 7-3 8-6"/></svg></span><div><small>FLORAL / ROSE</small><h3>زهري ووردي</h3><p>ناعم أو وردي أو غني بالزهور</p></div><b>↗</b></a>
         <a class="category-card category-oils" href="#oil-catalog" data-scent-family="مسكي ونظيف"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l5 11 12 2-9 8 2 12-10-6-10 6 2-12-9-8 12-2 5-11Z"/><circle cx="24" cy="24" r="5"/></svg></span><div><small>MUSK / CLEAN</small><h3>مسكي ونظيف</h3><p>ناعم ونظيف وقريب من رائحة الجلد</p></div><b>↗</b></a>
@@ -143,7 +145,7 @@
         <a class="category-card category-oils" href="#oil-catalog" data-scent-family="عنبر وشرقي"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l14 8v17l-14 8-14-8V13L24 5Z"/><path d="M24 5v33M10 13l28 17M38 13 10 30"/><circle cx="24" cy="22" r="5"/></svg></span><div><small>AMBER / ORIENTAL</small><h3>عنبر وشرقي</h3><p>دافئ ومتبل أو بخوري</p></div><b>↗</b></a>
         <a class="category-card category-bakhoor" href="#oil-catalog" data-scent-family="عود وخشبي"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M9 37 34 8l5 4-25 29-5-4Z"/><path d="M14 34l4 3m2-9 4 3m2-9 4 3m2-9 4 3"/><path d="M6 42h36"/></svg></span><div><small>OUD / WOODY</small><h3>عود وخشبي</h3><p>أخشاب دافئة وطابع راتنجي</p></div><b>↗</b></a>
       </div>
-      <p class="admin-note">مهم: التصنيف لبعض الأسماء استدلالي من الاسم والقسم وليس تحليلًا حسيًا أو شهادة من المورد. التركيب الكيميائي الفعلي غير متاح في قوائم الأسعار؛ لا تُعرض أي مادة كيميائية على أنها مؤكدة دون SDS أو IFRA أو نشرة فنية.</p>
+      </div><p class="family-disclaimer">التصنيف إرشادي؛ قد تختلف الرائحة حسب التركيبة والمورّد.</p></details>
     </section>
 
     <section class="section blend-section" id="blend">
@@ -161,11 +163,12 @@
 
     <section class="section products-section" id="bakhoor">
       <div class="section-heading"><div><p class="eyebrow">OUD · BAKHOOR · MUSK</p><h2>العود والبخور والمسك</h2></div><p>قسم مخصص للروائح الشرقية والمنتجات المرتبطة بها.</p></div>
+            <div class="customer-price-notice" role="note"><strong>الأسعار تبدأ من 50 ج.م</strong><span>اختر المنتج والحجم لمعرفة السعر المعروض، وأكّد التوفر والسعر النهائي قبل الطلب.</span></div>
       <div class="feature-banner"><div><p class="eyebrow">A WARMER KIND OF LUXURY</p><h3>للبيت حضور… وللرائحة حكاية</h3><p>اسألنا عن المنتجات المتاحة والأنواع المناسبة لك.</p><a class="btn btn-outline" href="#visit">تواصل للاستفسار</a></div></div>
     </section>
 
     <section class="section gift-section" id="gift">
-      <div class="gift-copy"><p class="eyebrow">GIFT WITH MEANING</p><h2>هدية تحمل أثرًا</h2><p>اطلب اقتراحًا لهدية عطرية، مع اختيار التغليف وفق الخيارات المتاحة لدى المتجر.</p><a class="btn btn-gold" href="#advisor">اختر هدية بمساعدة المستشار</a></div>
+      <div class="gift-copy"><p class="eyebrow">GIFT WITH MEANING</p><h2>هدية تحمل أثرًا</h2><p class="gift-price-note">خيارات الهدايا تبدأ من 50 ج.م حسب المنتج والتغليف.</p><p>اطلب اقتراحًا لهدية عطرية، مع اختيار التغليف وفق الخيارات المتاحة لدى المتجر.</p><a class="btn btn-gold" href="#advisor">اختر هدية بمساعدة المستشار</a></div>
       <div class="gift-art"><span class="gift-frame">♛</span><span class="gift-caption">A ROYAL GESTURE</span></div>
     </section>
 
