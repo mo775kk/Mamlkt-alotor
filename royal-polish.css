@@ -563,3 +563,32 @@ button:disabled{cursor:not-allowed;opacity:.58;filter:saturate(.5)}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
+
+
+/* Clear, responsive perfume details and a prominent size/price selector */
+.modal-product{align-items:start;gap:clamp(16px,3vw,28px);padding:clamp(14px,2.5vw,24px)}
+.modal-product-copy{min-width:0;color:#f5eddd}
+.modal-product-copy h2{font-family:"Amiri","Tajawal",serif;font-size:clamp(25px,3vw,34px);line-height:1.45;color:#f1d77a;margin:4px 0}
+.modal-description{font-size:15px;line-height:1.95;color:#f0e6d4;margin:10px 0 16px}
+.modal-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:14px 0}
+.modal-facts p{display:flex;flex-direction:column;gap:3px;min-width:0;margin:0;padding:10px 12px;border:1px solid rgba(212,175,55,.2);border-radius:8px;background:rgba(255,255,255,.025);font-size:13px;line-height:1.7}
+.modal-facts b,.fragrance-note-pyramid b{color:#f1d77a}
+.modal-facts span{overflow-wrap:anywhere;color:#f7f0e4}
+.purchase-panel{display:grid;gap:10px;margin:16px 0;padding:15px;border:1px solid rgba(212,175,55,.55);border-radius:12px;background:linear-gradient(145deg,rgba(212,175,55,.09),rgba(0,0,0,.25))}
+.purchase-panel>label,.purchase-panel>strong{font-size:15px;font-weight:800;color:#f1d77a;line-height:1.7}
+.purchase-panel select{display:block;width:100%;min-height:50px;padding:11px 40px 11px 12px;border:1px solid rgba(241,215,122,.65);border-radius:9px;background:#15110a;color:#fff8e8;font-size:16px;line-height:1.6;direction:rtl;cursor:pointer}
+.purchase-panel select:focus-visible{outline:2px solid #f1d77a;outline-offset:2px}
+.purchase-panel select option{background:#15110a;color:#fff8e8}
+.modal-price-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:10px;border-top:1px solid rgba(212,175,55,.24);font-size:14px;color:#e7dcc8}
+.modal-price-row strong{font-size:clamp(20px,2.6vw,26px);line-height:1.4;color:#f1d77a;font-weight:800;font-variant-numeric:tabular-nums}
+.purchase-hint{font-size:13px;line-height:1.8;color:#d9cdb8;margin:0}
+.fragrance-note-pyramid{padding:12px 14px;margin:14px 0;background:rgba(255,255,255,.025);border:1px solid rgba(212,175,55,.2)}
+.fragrance-note-pyramid summary{color:#f1d77a;font-weight:700;font-size:14px;line-height:1.8;cursor:pointer;padding:2px 0}
+.fragrance-note-pyramid p{font-size:14px;line-height:1.9;overflow-wrap:anywhere}
+.modal-review-note{font-size:13px;line-height:1.85;padding:10px 12px;border-right:3px solid #d4af37;background:rgba(212,175,55,.06);color:#e8dcc7}
+.modal-source{font-size:13px;line-height:1.8;overflow-wrap:anywhere}
+.modal-source a{color:#f1d77a;text-decoration:underline;text-underline-offset:3px}
+.modal-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.modal-actions .btn{width:100%;min-height:48px;white-space:normal;line-height:1.5}
+@media(max-width:700px){.modal-product{grid-template-columns:1fr!important;gap:14px;padding:12px}.modal-product-image{max-height:210px;min-height:160px}.modal-product-copy h2{font-size:27px}.modal-description{font-size:15px;line-height:1.9}.modal-facts{gap:7px}.modal-facts p{padding:9px;font-size:13px}.purchase-panel{padding:12px;margin:12px 0}.modal-actions{grid-template-columns:1fr}.modal-actions .btn{min-height:48px}}
+@media(max-width:360px){.modal-facts{grid-template-columns:1fr}.modal-price-row{align-items:flex-start;flex-direction:column;gap:4px}}
