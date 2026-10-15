@@ -206,3 +206,9 @@ select option{background:#14110d;color:#fff8e8}
  .hero:after,.hero-note span{animation:none!important}
  .royal-reveal{opacity:1!important;transform:none!important;transition:none!important}
 }
+
+/* Screen-reader-only helper and resilient image fallback */
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.hero.hero-image-missing{background:radial-gradient(ellipse at 76% 45%,rgba(212,175,55,.18),transparent 36%),linear-gradient(120deg,#080706,#1b1308 55%,#080706)}
+.hero-image-missing .hero-shade{background:linear-gradient(90deg,rgba(7,6,5,.95),rgba(7,6,5,.7) 58%,rgba(7,6,5,.35))}
+.royal-image-missing{visibility:hidden}
