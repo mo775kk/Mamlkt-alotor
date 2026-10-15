@@ -17,6 +17,8 @@ const defaultConfig={
  {id:'عود وخشبي',labelEn:'Oud / Woody',nature:'خشبي دافئ؛ قد يكون جافًا أو راتنجيًا أو مدخنًا',notes:'أخشاب؛ عود/صندل حسب الإصدار؛ راتنجات أو توابل محتملة.'},
  {id:'جلدي وتبغي',labelEn:'Leather / Tobacco',nature:'جلدي أو مدخن أو تبغي ودافئ',notes:'جلد أو تبغ كطابع عطري؛ توابل/أخشاب؛ عنبر أو فانيليا محتملة.'},
  {id:'عطري وأخضر',labelEn:'Aromatic / Green',nature:'أخضر أو عشبي أو عطري ونظيف',notes:'أعشاب أو أوراق خضراء؛ لافندر/توابل محتملة؛ أخشاب أو مسك.'},
+ {id:'بحري',labelEn:'Aquatic / Marine',nature:'مائي أو بحري ومنعش وقد يحمل لمسة ملحية',notes:'نوتات مائية أو بحرية؛ حمضيات أو أعشاب أو أخشاب محتملة.'},
+ {id:'بودري',labelEn:'Powdery / Soft',nature:'ناعم ونظيف وقد يشبه البودرة أو المكياج الكلاسيكي',notes:'السوسن أو البنفسج أو المسك الناعم؛ لمسات زهرية أو خشبية محتملة.'},
  {id:'غير محدد',labelEn:'Unclassified',nature:'يلزم تقييم العينة أو الرجوع إلى بيانات المورد',notes:'التصنيف غير مؤكد من الاسم وحده.'}
  ]};
 const loadConfig=()=>{try{const saved=JSON.parse(localStorage.getItem(TAXKEY)||'{}')||{};const c={...defaultConfig,...saved};const p=Array.isArray(saved.retailBlendPrices)&&saved.retailBlendPrices.length?saved.retailBlendPrices:defaultConfig.retailBlendPrices;c.retailBlendPrices=p.map((x,i)=>({size:String(x.size||defaultConfig.retailBlendPrices[i]?.size||'حجم جديد'),price:Math.max(50,Number(x.price)||Number(defaultConfig.retailBlendPrices[i]?.price)||50)}));return c}catch{return structuredClone(defaultConfig)}};
