@@ -36,12 +36,15 @@
         return;
       }
       const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
-      const win = window.open(url, "_blank", "noopener");
-      if (!win) {
-        $("#royalGiftStatus", panel).textContent = "تعذر فتح واتساب تلقائيًا. اسمح بفتح النافذة أو أعد المحاولة.";
-      } else {
-        $("#royalGiftStatus", panel).textContent = "تم تجهيز الرسالة. راجع التفاصيل والسعر مع المتجر قبل التأكيد.";
-      }
+      window.open(url, "_blank", "noopener,noreferrer");
+      const status = $("#royalGiftStatus", panel);
+      status.textContent = "تم تجهيز الرسالة. راجع السعر والتوفر قبل التأكيد. ";
+      const fallback = document.createElement("a");
+      fallback.href = url;
+      fallback.target = "_blank";
+      fallback.rel = "noopener noreferrer";
+      fallback.textContent = "فتح واتساب يدويًا";
+      status.append(fallback);
     });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initGiftPlanner);
