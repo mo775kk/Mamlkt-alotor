@@ -189,3 +189,17 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
  .royal-family-facts>div{grid-template-columns:92px minmax(0,1fr);gap:8px;padding:9px}
 }
 @media(prefers-reduced-motion:reduce){.royal-family-box,.royal-family-plus{transition:none}.royal-family-content{animation:none}}
+
+
+/* Merged oil catalog: customer retail prices and expandable scent-family guide */
+.oil-retail-guide-wrap{margin:24px 0 30px;padding:clamp(12px,2.2vw,22px);border:1px solid rgba(244,215,124,.45);border-radius:20px;background:linear-gradient(135deg,rgba(28,16,27,.70),rgba(117,47,79,.28) 52%,rgba(118,83,30,.24));box-shadow:0 12px 28px rgba(0,0,0,.14)}
+.oil-retail-guide-wrap .blend-price-guide{margin:0;border-color:rgba(244,215,124,.42);background:linear-gradient(130deg,rgba(35,18,32,.92),rgba(97,42,69,.78),rgba(112,80,31,.62))}
+.oil-retail-guide-wrap .blend-price-guide h3{color:#FFE28A;margin-top:0}
+.oil-retail-guide-wrap .blend-price-guide>p{color:#FFF0F6;line-height:1.9}
+.oil-retail-guide-wrap .gram-price-grid,.oil-retail-guide-wrap .blend-price-grid{gap:9px}
+.oil-retail-guide-wrap .gram-price-grid>div,.oil-retail-guide-wrap .blend-price-grid>div{border:1px solid rgba(232,140,184,.35);border-radius:12px;background:linear-gradient(125deg,rgba(232,140,184,.12),rgba(212,175,55,.09));padding:12px}
+.oil-retail-guide-wrap .gram-price-grid strong,.oil-retail-guide-wrap .blend-price-grid strong{color:#FFE28A;font-weight:800}
+.oil-catalog-retail-note{margin-top:16px}
+.taxonomy-public-section{margin-top:22px;padding:clamp(14px,2.5vw,26px);border:1px solid rgba(244,215,124,.34);border-radius:22px;background:linear-gradient(135deg,rgba(28,16,27,.72),rgba(95,39,66,.42),rgba(111,78,29,.34))!important}
+.taxonomy-public-section .section-heading{margin-top:0}
+@media(max-width:700px){.oil-retail-guide-wrap{margin:18px 0;padding:11px;border-radius:15px}.taxonomy-public-section{padding:12px;border-radius:16px}}
