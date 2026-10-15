@@ -89,3 +89,5 @@ body{background-color:var(--bg);color:var(--text);background-image:radial-gradie
 .royal-gift-note,.royal-gift-status{display:block;margin:9px 0 0;color:var(--muted);font-size:12px}
 .royal-gift-status:empty{display:none}
 @media(max-width:560px){.royal-gift-planner{padding:12px}.royal-gift-grid{grid-template-columns:1fr}.royal-gift-wide{grid-column:auto}}
+
+.royal-gift-status a{display:inline-block;margin-inline-start:6px;color:var(--gold2);text-decoration:underline;font-weight:700}
