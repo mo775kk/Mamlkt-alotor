@@ -17,7 +17,7 @@ const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 try {
   const html = read("index.html");
   report(!/\\n\s*<(?:link|script)\b/.test(html), "index.html has no literal backslash-n before link/script tags");
-  const untypedButtons = [...html.matchAll(/<button\\b(?![^>]*\\btype\\s*=)[^>]*>/gi)];
+  const untypedButtons = [...html.matchAll(/<button\b(?![^>]*\btype\s*=)[^>]*>/gi)];
   report(untypedButtons.length === 0, untypedButtons.length ? "Buttons missing explicit type: " + untypedButtons.length : "All static buttons declare an explicit type");
   const refs = [...html.matchAll(/<(?:script|link)\b[^>]*(?:src|href)="([^"]+)"[^>]*>/g)]
     .map((m) => m[1])
