@@ -51,3 +51,6 @@
 - هذه فحوص ساكنة للشيفرة وليست اختبار متصفح حي أو اختبارًا على أجهزة فعلية. يجب متابعة اختبار رحلة الطلب والبيانات المحلية على الموقع المنشور.
 - Commit إصلاح التفاعلات: https://github.com/mo775kk/Mamlkt-alotor/commit/c68981949033c6054f2286f20076175fb6ec2879
 - Commit تحديث تحميل app.js: https://github.com/mo775kk/Mamlkt-alotor/commit/de9c3e43b02f9510376e03ebcb44101a5db170c4
+
+- متابعة إصلاح نافذة الزيت: زر تفاصيل زيت المورد يظل قابلًا للضغط حتى دون سعر بيع مباشر، ويشرح للعميل أنه مخصص للتركيب. Commit: https://github.com/mo775kk/Mamlkt-alotor/commit/d7eea2faa2f91b045f00204be7fe93b8442394b2
+- تحديث cache-buster التالي للتعديل: https://github.com/mo775kk/Mamlkt-alotor/commit/5d9dec5b52e8003f64d36b8fa26142934195d344
