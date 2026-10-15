@@ -107,3 +107,6 @@ body{background-color:var(--bg);color:var(--text);background-image:radial-gradie
 .ia-table{width:100%;border-collapse:collapse;min-width:700px;font-size:12px}.ia-table th,.ia-table td{padding:9px 10px;border-bottom:1px solid rgba(212,175,55,.18);text-align:right;white-space:nowrap}.ia-table th{color:var(--gold2,#f1d77a);font-weight:700}.ia-table td small{display:block;white-space:normal;max-width:240px}
 .ia-note{color:var(--muted,#b5aa98);font-size:11px}.ia-table .small-btn{border:1px solid #a54b40;color:#a54b40;background:transparent;padding:5px 8px}
 @media(max-width:600px){.ia-card{padding:12px}.ia-heading{align-items:flex-start;flex-direction:column}.ia-metric strong{font-size:16px}.ia-table{min-width:660px}}
+
+/* Low-stock notice in the owner inventory dashboard */
+.ia-stock-alert{margin:14px 0;padding:12px 16px;border:1px solid rgba(212,175,55,.28);border-right:3px solid var(--gold);background:rgba(212,175,55,.055);border-radius:4px}.ia-stock-alert strong{display:block;color:var(--gold2);margin-bottom:3px}.ia-stock-alert p{margin:0;color:var(--text);overflow-wrap:anywhere}
