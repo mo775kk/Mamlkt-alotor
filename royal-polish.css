@@ -592,3 +592,16 @@ button:disabled{cursor:not-allowed;opacity:.58;filter:saturate(.5)}
 .modal-actions .btn{width:100%;min-height:48px;white-space:normal;line-height:1.5}
 @media(max-width:700px){.modal-product{grid-template-columns:1fr!important;gap:14px;padding:12px}.modal-product-image{max-height:210px;min-height:160px}.modal-product-copy h2{font-size:27px}.modal-description{font-size:15px;line-height:1.9}.modal-facts{gap:7px}.modal-facts p{padding:9px;font-size:13px}.purchase-panel{padding:12px;margin:12px 0}.modal-actions{grid-template-columns:1fr}.modal-actions .btn{min-height:48px}}
 @media(max-width:360px){.modal-facts{grid-template-columns:1fr}.modal-price-row{align-items:flex-start;flex-direction:column;gap:4px}}
+
+
+/* Product cards: compact, readable size and price controls */
+.card-buy-panel{display:grid;grid-template-columns:minmax(0,1fr);gap:7px;margin:12px 0;padding:11px 12px;border:1px solid rgba(212,175,55,.38);border-radius:10px;background:rgba(212,175,55,.055);min-width:0}
+.card-buy-panel label{font-size:13px;line-height:1.7;font-weight:800;color:#f1d77a}
+.card-size-select{display:block;width:100%;min-width:0;min-height:44px;padding:9px 12px;border:1px solid rgba(241,215,122,.6);border-radius:8px;background:#15110a;color:#fff8e8;font-family:inherit;font-size:15px;line-height:1.6;direction:rtl}
+.card-size-select option{background:#15110a;color:#fff8e8}
+.card-size-select:focus-visible{outline:2px solid #f1d77a;outline-offset:2px}
+.card-price-line{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding-top:8px;border-top:1px solid rgba(212,175,55,.2);font-size:12px;line-height:1.7;color:#e5dac6}
+.card-price-line strong{font-size:17px;line-height:1.5;color:#f1d77a;font-weight:800;font-variant-numeric:tabular-nums}
+.product-card .product-info{min-width:0}
+.product-card .product-info h3,.product-card .product-en,.product-card .product-desc{overflow-wrap:anywhere}
+@media(max-width:480px){.card-buy-panel{padding:10px;margin:10px 0}.card-size-select{font-size:15px;min-height:46px}.card-price-line strong{font-size:18px}}
