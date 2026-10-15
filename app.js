@@ -187,7 +187,7 @@
   let supplierVisibleLimit=24;
   function populateBlendOils(){
     const sel=$("#blendOil");if(!sel)return;const current=sel.value;
-    const oils=products.filter(p=>p.supplierCatalogItem);
+    const oils=products.filter(p=>p.supplierCatalogItem||p.productType==="oil");
     sel.innerHTML='<option value="">اختر زيتًا من كتالوج الموردين</option>'+oils.map(p=>'<option value="'+escapeHTML(p.id)+'">'+escapeHTML(p.nameAr)+' — '+escapeHTML(p.nameEn)+'</option>').join('');
     if(oils.some(p=>p.id===current))sel.value=current;
   }
