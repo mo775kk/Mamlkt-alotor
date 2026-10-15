@@ -897,3 +897,49 @@ body{background-color:#070605;background-image:radial-gradient(ellipse at 50% 0%
  .feature-copy{padding:25px 20px}
  .site-footer{flex-wrap:wrap;justify-content:center;text-align:center;padding:22px 14px}
 }
+
+
+/* CINEMATIC REFERENCE DESIGN — palace glow, layered gold frames, premium storefront */
+:root{--royal-gold:#e7b93f;--royal-champagne:#ffe28a;--royal-ivory:#fff8e8;--royal-line:rgba(237,181,47,.72)}
+body{background-color:#030303;background-image:radial-gradient(ellipse at 50% 0%,rgba(119,70,10,.18),transparent 42%),linear-gradient(180deg,#030303 0%,#090704 38%,#020202 100%)}
+.site-header{position:sticky;top:0;z-index:50;min-height:92px;background:linear-gradient(90deg,rgba(2,2,2,.98),rgba(25,15,4,.96),rgba(2,2,2,.98));border-bottom:1px solid #b88622;box-shadow:0 4px 24px rgba(240,174,34,.15),inset 0 -1px rgba(255,219,112,.28);backdrop-filter:blur(14px)}
+.brand strong,.hero h1,.section-heading h2,.feature-copy h2{color:#ffdc79;text-shadow:0 0 8px rgba(255,191,46,.62),0 0 24px rgba(255,171,21,.25)}
+.brand-crown{color:#ffe28a;text-shadow:0 0 12px #d89d22,0 0 25px rgba(255,191,50,.55)}
+.main-nav{border-top:1px solid rgba(238,183,49,.35);border-bottom:1px solid rgba(238,183,49,.7);background:linear-gradient(90deg,#050403,#171006 48%,#050403);box-shadow:0 5px 18px rgba(0,0,0,.55)}
+.main-nav a{color:#ffedbd}
+.main-nav a:hover,.main-nav a[aria-current="page"]{color:#fff0a4;text-shadow:0 0 10px #eab53d}
+.icon-btn,.header-actions .icon-btn{border:1px solid rgba(229,177,49,.58);background:linear-gradient(145deg,rgba(28,20,8,.95),rgba(2,2,2,.96));color:#ffda70;box-shadow:inset 0 0 12px rgba(237,178,40,.06),0 0 8px rgba(237,178,40,.07)}
+.hero{isolation:isolate;min-height:clamp(440px,46vw,660px);border-bottom:1px solid #c99627;box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 52%,transparent 8%,rgba(0,0,0,.15) 47%,rgba(0,0,0,.7) 100%);border-bottom:1px solid rgba(255,198,61,.55)}
+.hero-image{filter:saturate(1.12) contrast(1.08);transform:scale(1.015)}
+.hero-shade{background:linear-gradient(90deg,rgba(0,0,0,.76),rgba(0,0,0,.2) 48%,rgba(0,0,0,.48)),linear-gradient(0deg,rgba(0,0,0,.66),transparent 50%,rgba(0,0,0,.2))}
+.hero-copy{max-width:790px;text-shadow:0 2px 8px #000}
+.hero h1{font-size:clamp(42px,6.2vw,82px);line-height:1.25;letter-spacing:.01em}
+.hero-copy>p:not(.eyebrow){color:#fff5df;font-size:clamp(16px,1.45vw,20px)}
+.eyebrow{color:#ffdc76;text-shadow:0 0 10px rgba(237,177,42,.3);letter-spacing:.12em}
+.btn-gold{border:1px solid #ffda72;background:linear-gradient(120deg,#4a2d06,#bd8520 45%,#6e480d);color:#fff8dc;box-shadow:0 0 10px rgba(255,190,42,.42),inset 0 1px rgba(255,255,220,.45)}
+.btn-gold:hover{box-shadow:0 0 22px rgba(255,190,42,.72)}
+.btn-outline{border:1px solid #d8a83a;color:#ffe8a0;background:rgba(0,0,0,.68)}
+.trust-strip{background:linear-gradient(90deg,#030303,#171006 50%,#030303);border-bottom:1px solid #b88622;box-shadow:0 5px 16px rgba(0,0,0,.35)}
+.trust-strip .line-icon{color:#ffcf4c;text-shadow:0 0 12px rgba(255,188,44,.5)}
+.section{position:relative}
+.section-heading{border-bottom:1px solid rgba(218,166,44,.23);padding-bottom:12px}
+.section-heading h2{font-size:clamp(25px,3vw,36px)}
+.category-card{border:1px solid rgba(225,174,48,.72);background:linear-gradient(145deg,rgba(24,17,7,.97),rgba(2,2,2,.99));box-shadow:inset 0 0 20px rgba(218,158,34,.06),0 4px 15px rgba(0,0,0,.3);transition:transform .25s,border-color .25s,box-shadow .25s}
+.category-card:hover{transform:translateY(-3px);border-color:#ffe18a;box-shadow:0 0 19px rgba(235,177,42,.2),inset 0 0 20px rgba(218,158,34,.08)}
+.category-icon-wrap,.royal-category-icon{color:#ffd75f;filter:drop-shadow(0 0 5px rgba(242,179,43,.35))}
+.toolbar{border:1px solid rgba(221,171,49,.48);border-radius:12px;padding:10px;background:linear-gradient(120deg,rgba(22,16,7,.94),rgba(3,3,3,.98))}
+.toolbar input,.toolbar select{background:#090806;color:#fff3d2;border:1px solid rgba(229,179,57,.55);min-height:44px}
+.product-card{border:1px solid #b98218;border-radius:12px;background:linear-gradient(180deg,rgba(18,13,7,.99),#020202);box-shadow:0 0 0 1px rgba(255,194,55,.08),inset 0 0 22px rgba(225,170,47,.07),0 8px 18px rgba(0,0,0,.3)}
+.product-visual{background:radial-gradient(ellipse at 50% 70%,rgba(237,168,36,.26),transparent 63%),linear-gradient(180deg,#0a0805,#030303);border-bottom:1px solid rgba(220,169,45,.25)}
+.product-info{gap:7px}
+.product-card h3{color:#ffe08a;text-shadow:0 0 8px rgba(255,190,44,.38)}
+.product-price{color:#ffdb68;text-shadow:0 0 9px rgba(244,178,39,.28)}
+.split-feature{position:relative;border-block:1px solid #a8781b;background:linear-gradient(105deg,#100b04,#030303 68%);box-shadow:inset 0 0 35px rgba(222,161,34,.08)}
+.feature-image img{filter:saturate(1.15) contrast(1.05)}
+.advisor-panel,.blend-panel,.contact-card,.gift-art{background:linear-gradient(145deg,rgba(21,15,7,.98),rgba(2,2,2,.99));border:1px solid rgba(225,174,48,.7);box-shadow:inset 0 0 25px rgba(218,158,34,.08),0 6px 18px rgba(0,0,0,.35)}
+.site-footer{background:linear-gradient(90deg,#020202,#100b04,#020202);border-top:1px solid #b88622}
+button,select,.btn,.category-card,.product-card{transition-duration:.22s}
+@media(min-width:1000px){.site-header{padding-inline:clamp(24px,5vw,84px)}.main-nav{padding-block:10px}.hero-copy{padding-block:55px}.product-grid{gap:15px}.product-visual{height:clamp(180px,19vw,270px)}}
+@media(max-width:700px){.site-header{background:rgba(4,3,2,.98);min-height:68px}.hero{min-height:420px}.hero h1{font-size:clamp(35px,9vw,49px)}.hero-copy>p:not(.eyebrow){font-size:15px}.product-card{border-radius:10px}.product-visual{height:clamp(135px,43vw,190px)}.category-card{border-radius:10px}.toolbar{gap:8px}}
+@media(prefers-reduced-motion:reduce){.category-card,.product-card,button,.btn{transition:none!important}}
