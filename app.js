@@ -254,11 +254,11 @@
     const area=$("#checkoutArea")?.value.trim()||"";
     const notes=$("#checkoutNotes")?.value.trim()||"";
     if(name.length<2){notify("اكتب اسم العميل لإكمال الطلب.");$("#checkoutName")?.focus();return;}
-    const phoneDigits=phone.replace(/\\D/g,"");
+    const phoneDigits=phone.replace(/\D/g,"");
     if(phoneDigits.length<7){notify("اكتب رقم هاتف صحيحًا للتواصل.");$("#checkoutPhone")?.focus();return;}
     const lines=cart.map((x,i)=>(i+1)+") "+x.nameAr+(x.nameEn?" ("+x.nameEn+")":"")+(x.custom?.description?" — "+x.custom.description:"")+" - "+x.size+" مل × "+x.qty+" = "+formatMoney(x.price*x.qty));
     const total=cart.reduce((n,x)=>n+x.price*x.qty,0);
-    const msg="مرحبًا، أريد مراجعة طلب من مملكة العطور:\\nاسم العميل: "+name+"\\nهاتف العميل: "+phone+(area?"\\nالعنوان / المنطقة: "+area:"")+(notes?"\\nملاحظات: "+notes:"")+"\\n\\nتفاصيل الطلب:\\n"+lines.join("\\n")+"\\nالإجمالي المرجعي: "+formatMoney(total)+"\\nيرجى تأكيد التوفر والسعر النهائي وتكلفة التوصيل.";
+    const msg="مرحبًا، أريد مراجعة طلب من مملكة العطور:\nاسم العميل: "+name+"\nهاتف العميل: "+phone+(area?"\nالعنوان / المنطقة: "+area:"")+(notes?"\nملاحظات: "+notes:"")+"\n\nتفاصيل الطلب:\n"+lines.join("\n")+"\nالإجمالي المرجعي: "+formatMoney(total)+"\nيرجى تأكيد التوفر والسعر النهائي وتكلفة التوصيل.";
     window.open("https://wa.me/"+getWaNumber()+"?text="+encodeURIComponent(msg),"_blank","noopener");
   }
   function blendPrice(){const s=$("#blendSize").value;$("#blendPrice").textContent=formatMoney(sizes[s]);}
