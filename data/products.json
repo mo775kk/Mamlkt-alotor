@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "currency": "EGP",
   "updatedAt": "2026-10-15",
-  "notes": "نوتات العطور موثقة بمصادر عامة؛ راجع sourceUrl. المنتجات التي تحمل needsReview=true لا تُعتمد قبل تحديد الإصدار. بيانات العطور لا تكشف الصيغة الكيميائية الكاملة.",
+  "notes": "نوتات العطور موثقة بمصادر عامة؛ راجع sourceUrl. المنتجات التي تحمل needsReview=true لا تُعتمد قبل تحديد الإصدار. بيانات العطور لا تكشف الصيغة الكيميائية الكاملة. تمت إضافة دفعة عطور لطافة بنوتات من صفحات الشركة الرسمية؛ السعر والمخزون غير محددين حتى إدخال بيانات المتجر.",
   "products": [
     {
       "id": "demo-yara-candy",
@@ -433,6 +433,414 @@
       "available": true,
       "featured": false,
       "tags": [],
+      "source": "web-research"
+    },
+    {
+      "id": "lattafa-khamrah",
+      "nameAr": "خمرة",
+      "nameEn": "Khamrah",
+      "brand": "Lattafa",
+      "supplier": "",
+      "productType": "ready",
+      "gender": "للجنسين",
+      "origin": "الإمارات",
+      "family": "عنبرية حارة / غورماند",
+      "scentNature": "حلو دافئ وغني؛ قرفة وجوزة الطيب في الافتتاحية، قلب تمر وبرالين وزهور، وقاعدة فانيليا وتونكا وراتنجات خشبية.",
+      "topNotes": [
+        "البرغموت",
+        "القرفة",
+        "جوزة الطيب"
+      ],
+      "heartNotes": [
+        "أكورد التمر",
+        "زنبق الوادي",
+        "البرالين",
+        "مسك الروم"
+      ],
+      "baseNotes": [
+        "حبوب التونكا المحمصة",
+        "بنزوين لاوس",
+        "المر",
+        "أكيغالاوود",
+        "الفانيليا",
+        "أمبرووود"
+      ],
+      "descriptionAr": "عطر شرقي غورماند دافئ، تتداخل فيه التوابل مع حلاوة التمر والبرالين، ثم قاعدة راتنجية فانيليّة وخشبية.",
+      "sourceUrl": "https://lattafa.com/product/khamrah/",
+      "notesStatus": "verified-brand-source",
+      "notesConfidence": "مرتفع — صفحة Lattafa الرسمية",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "100"
+      ],
+      "prices": {},
+      "price": null,
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": false,
+      "featured": true,
+      "tags": [
+        "شرقي",
+        "حلو",
+        "غورماند"
+      ],
+      "source": "web-research"
+    },
+    {
+      "id": "lattafa-khamrah-qahwa",
+      "nameAr": "خمرة قهوة",
+      "nameEn": "Khamrah Qahwa",
+      "brand": "Lattafa",
+      "supplier": "",
+      "productType": "ready",
+      "gender": "للجنسين",
+      "origin": "الإمارات",
+      "family": "غورماند قهوة / عنبري حار",
+      "scentNature": "توابل دافئة وحلاوة مسكّرة تتطور إلى قهوة عربية وفانيليا وتونكا ومسك.",
+      "topNotes": [
+        "الزنجبيل",
+        "القرفة",
+        "الهيل"
+      ],
+      "heartNotes": [
+        "البرالين",
+        "الفواكه المسكّرة",
+        "الزهور البيضاء"
+      ],
+      "baseNotes": [
+        "قهوة أرابيكا",
+        "حبوب التونكا",
+        "المسك",
+        "البنزوين",
+        "الفانيليا"
+      ],
+      "descriptionAr": "نسخة قهوة من عائلة خمرة؛ افتتاحية توابل، قلب حلو، وقاعدة قهوة وفانيليا وتونكا.",
+      "sourceUrl": "https://lattafa.com/product/khamrah-qahwa/",
+      "notesStatus": "verified-brand-source",
+      "notesConfidence": "مرتفع — صفحة Lattafa الرسمية",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "100"
+      ],
+      "prices": {},
+      "price": null,
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": false,
+      "featured": true,
+      "tags": [
+        "قهوة",
+        "حلو",
+        "شرقي"
+      ],
+      "source": "web-research"
+    },
+    {
+      "id": "lattafa-asad",
+      "nameAr": "أسد",
+      "nameEn": "Asad",
+      "brand": "Lattafa",
+      "supplier": "",
+      "productType": "ready",
+      "gender": "رجالي",
+      "origin": "الإمارات",
+      "family": "عنبرية / حارة / خشبية",
+      "scentNature": "حار وجاف مع فلفل وتبغ وأناناس، وقلب قهوة وباتشولي وسوسن، وقاعدة عنبرية فانيليّة.",
+      "topNotes": [
+        "الفلفل الأسود",
+        "الأناناس",
+        "التبغ"
+      ],
+      "heartNotes": [
+        "القهوة",
+        "السوسن",
+        "الباتشولي"
+      ],
+      "baseNotes": [
+        "العنبر",
+        "الفانيليا",
+        "الأخشاب الجافة",
+        "البنزوين",
+        "اللادن"
+      ],
+      "descriptionAr": "عطر رجالي عنبري حار؛ افتتاحية متبّلة، قلب قهوة وباتشولي، وقاعدة خشبية فانيليّة.",
+      "sourceUrl": "https://lattafa.com/product/asad/",
+      "notesStatus": "verified-brand-source",
+      "notesConfidence": "مرتفع — صفحة Lattafa الرسمية",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "100"
+      ],
+      "prices": {},
+      "price": null,
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": false,
+      "featured": true,
+      "tags": [
+        "رجالي",
+        "حار",
+        "عنبر"
+      ],
+      "source": "web-research"
+    },
+    {
+      "id": "lattafa-badee-amethyst",
+      "nameAr": "بديع العود أماثيست",
+      "nameEn": "Badee Al Oud Amethyst",
+      "brand": "Lattafa",
+      "supplier": "",
+      "productType": "ready",
+      "gender": "للجنسين",
+      "origin": "الإمارات",
+      "family": "وردي شرقي / عودي",
+      "scentNature": "ورود غنية مع لمسة فلفل وردي وبرغموت، ثم عود وعنبر وفانيليا دافئة.",
+      "topNotes": [
+        "الفلفل الوردي",
+        "البرغموت"
+      ],
+      "heartNotes": [
+        "الورد التركي",
+        "الورد البلغاري",
+        "الياسمين"
+      ],
+      "baseNotes": [
+        "العود",
+        "العنبر",
+        "الفانيليا"
+      ],
+      "descriptionAr": "تركيبة وردية عودية؛ افتتاحية حمضية متبّلة، قلب من الورود والياسمين، وقاعدة دافئة من العود والعنبر والفانيليا.",
+      "sourceUrl": "https://lattafa.com/product/badee-al-oud-amethyest/",
+      "notesStatus": "verified-brand-source",
+      "notesConfidence": "مرتفع — صفحة Lattafa الرسمية",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "100"
+      ],
+      "prices": {},
+      "price": null,
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": false,
+      "featured": false,
+      "tags": [
+        "وردي",
+        "عود",
+        "شرقي"
+      ],
+      "source": "web-research"
+    },
+    {
+      "id": "lattafa-amethyst-fusion",
+      "nameAr": "بديع العود أماثيست فيوجن",
+      "nameEn": "Badee Al Oud Amethyst Fusion",
+      "brand": "Lattafa",
+      "supplier": "",
+      "productType": "ready",
+      "gender": "للجنسين",
+      "origin": "الإمارات",
+      "family": "غورماند عنبري / خشبي",
+      "scentNature": "فاكهي كحولي حلو مع الماندرين والأماريتو، ثم كراميل وعنبر وباتشولي، وقاعدة فانيليا وصندل وبنزوين.",
+      "topNotes": [
+        "الروم",
+        "الماندرين",
+        "الأماريتو"
+      ],
+      "heartNotes": [
+        "العنبر",
+        "الباتشولي",
+        "الكراميل"
+      ],
+      "baseNotes": [
+        "البنزوين",
+        "خشب الصندل",
+        "الفانيليا"
+      ],
+      "descriptionAr": "عطر غورماند غني؛ افتتاحية روم وماندرين وأماريتو، قلب عنبري كراميلي، وقاعدة كريمية من الصندل والفانيليا.",
+      "sourceUrl": "https://lattafa.com/product/badee-al-oud-amethyst-fusion/",
+      "notesStatus": "verified-brand-source",
+      "notesConfidence": "مرتفع — صفحة Lattafa الرسمية",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "100"
+      ],
+      "prices": {},
+      "price": null,
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": false,
+      "featured": false,
+      "tags": [
+        "غورماند",
+        "حلو",
+        "عنبر"
+      ],
+      "source": "web-research"
+    },
+    {
+      "id": "lattafa-khamrah-waha",
+      "nameAr": "خمرة واحة",
+      "nameEn": "Khamrah Waha",
+      "brand": "Lattafa",
+      "supplier": "",
+      "productType": "ready",
+      "gender": "للجنسين",
+      "origin": "الإمارات",
+      "family": "عطري منعش / خشبي",
+      "scentNature": "افتتاحية منعشة من الحمضيات والزنجبيل والعرعر، قلب معدني مائي عشبي، وقاعدة خشبية مسكية فانيليّة.",
+      "topNotes": [
+        "البرغموت",
+        "العرعر",
+        "اليوزو",
+        "الزنجبيل"
+      ],
+      "heartNotes": [
+        "السوسن",
+        "الخيار",
+        "المريمية",
+        "أكورد ملح البحر"
+      ],
+      "baseNotes": [
+        "أكيغالاوود",
+        "التونكا",
+        "الفانيليا",
+        "المسك",
+        "أمبروفيكس"
+      ],
+      "descriptionAr": "قراءة أكثر انتعاشًا لعائلة خمرة، تجمع اليوزو والزنجبيل مع قلب مائي مالح وقاعدة خشبية ناعمة.",
+      "sourceUrl": "https://lattafa.com/product/khamrah-waha/",
+      "notesStatus": "verified-brand-source",
+      "notesConfidence": "مرتفع — صفحة Lattafa الرسمية",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "100"
+      ],
+      "prices": {},
+      "price": null,
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": false,
+      "featured": false,
+      "tags": [
+        "منعش",
+        "خشبي",
+        "للجنسين"
+      ],
+      "source": "web-research"
+    },
+    {
+      "id": "lattafa-asad-zanzibar",
+      "nameAr": "أسد زنجبار",
+      "nameEn": "Asad Zanzibar",
+      "brand": "Lattafa",
+      "supplier": "",
+      "productType": "ready",
+      "gender": "رجالي",
+      "origin": "الإمارات",
+      "family": "مائي مالح / عطري",
+      "scentNature": "طابع مالح ومائي بجوز الهند والسوسن، مع فلفل أسود وخزامى بحرية وقاعدة بخور وفانيليا.",
+      "topNotes": [
+        "الفلفل الأسود",
+        "الخزامى البحرية"
+      ],
+      "heartNotes": [
+        "ماء جوز الهند المالح",
+        "السوسن"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "البخور"
+      ],
+      "descriptionAr": "عطر رجالي بطابع بحري مالح غير تقليدي، يجمع ماء جوز الهند والسوسن مع بخور وفانيليا.",
+      "sourceUrl": "https://lattafa.com/product/asad-collection-25-ml/",
+      "notesStatus": "verified-brand-source",
+      "notesConfidence": "مرتفع — صفحة مجموعة Asad الرسمية لدى Lattafa",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "100"
+      ],
+      "prices": {},
+      "price": null,
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": false,
+      "featured": false,
+      "tags": [
+        "رجالي",
+        "مائي",
+        "مالح"
+      ],
+      "source": "web-research"
+    },
+    {
+      "id": "lattafa-asad-bourbon",
+      "nameAr": "أسد بوربون",
+      "nameEn": "Asad Bourbon",
+      "brand": "Lattafa",
+      "supplier": "",
+      "productType": "ready",
+      "gender": "رجالي",
+      "origin": "الإمارات",
+      "family": "عنبرية غورماند / توابل",
+      "scentNature": "فلفل وردي وخزامى وبرقوق ميرابيل، ثم كاكاو وجوزة الطيب، وقاعدة فيتيفر وفانيليا بوربون وعنبر.",
+      "topNotes": [
+        "الفلفل الوردي",
+        "الخزامى",
+        "برقوق ميرابيل"
+      ],
+      "heartNotes": [
+        "الكاكاو",
+        "دافانا",
+        "جوزة الطيب"
+      ],
+      "baseNotes": [
+        "الفيتيفر",
+        "فانيليا بوربون",
+        "العنبر"
+      ],
+      "descriptionAr": "تركيبة رجالية دافئة تجمع فاكهة البرقوق والتوابل مع كاكاو وفانيليا بوربون وقاعدة عنبرية.",
+      "sourceUrl": "https://lattafa.com/product/asad-collection-25-ml/",
+      "notesStatus": "verified-brand-source",
+      "notesConfidence": "مرتفع — صفحة مجموعة Asad الرسمية لدى Lattafa",
+      "verified": true,
+      "needsReview": false,
+      "image": "",
+      "sizes": [
+        "100"
+      ],
+      "prices": {},
+      "price": null,
+      "cost": null,
+      "stock": null,
+      "sku": "",
+      "available": false,
+      "featured": false,
+      "tags": [
+        "رجالي",
+        "فانيليا",
+        "حار"
+      ],
       "source": "web-research"
     }
   ]
