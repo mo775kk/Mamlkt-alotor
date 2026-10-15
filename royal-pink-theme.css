@@ -1,105 +1,107 @@
-/* MAMLKAT AL-OTOR — bright royal blush, ivory, rose and gold
-   Loaded last to keep the whole storefront cheerful, clear and readable. */
+/* MAMLKAT AL-OTOR — blended black, royal pink and gold theme
+   The palette is layered across the whole site, never a single flat color. */
 :root{
-  color-scheme:light;
-  --bg:#FFF4F8;
-  --panel:#FFFCFD;
-  --panel2:#FCE8F0;
-  --gold:#A97813;
-  --gold2:#C89522;
-  --pink:#D96C9A;
-  --pink-soft:#A83D70;
-  --pink-deep:#B9477C;
-  --text:#382431;
-  --muted:#755F6C;
-  --line:rgba(185,71,124,.24);
-  --shadow:0 12px 32px rgba(125,57,88,.10),0 0 18px rgba(217,108,154,.07);
+  color-scheme:dark;
+  --bg:#100A10;
+  --panel:#21131D;
+  --panel2:#321A2A;
+  --gold:#D4AF37;
+  --gold2:#F4D77C;
+  --pink:#E88CB8;
+  --pink-soft:#FFD5E8;
+  --pink-deep:#B94F80;
+  --text:#FFF5FA;
+  --muted:#E1C8D5;
+  --line:rgba(232,140,184,.36);
+  --shadow:0 16px 38px rgba(0,0,0,.24),0 0 24px rgba(232,140,184,.10);
 }
-html{background:#FFF4F8}
+html{background:#100A10}
 body{
   color:var(--text);
-  background-color:#FFF4F8;
+  background-color:#100A10;
   background-image:
-    radial-gradient(ellipse at 8% 4%,rgba(255,255,255,.96),transparent 35%),
-    radial-gradient(ellipse at 88% 16%,rgba(247,214,229,.88),transparent 34%),
-    radial-gradient(ellipse at 48% 62%,rgba(255,250,231,.75),transparent 40%),
-    linear-gradient(135deg,#FFF8FB 0%,#FBE8F1 48%,#FFF7E7 100%);
+    radial-gradient(ellipse at 8% 5%,rgba(232,140,184,.30),transparent 32%),
+    radial-gradient(ellipse at 92% 14%,rgba(212,175,55,.24),transparent 30%),
+    radial-gradient(ellipse at 78% 58%,rgba(185,79,128,.24),transparent 36%),
+    radial-gradient(ellipse at 18% 82%,rgba(212,175,55,.13),transparent 31%),
+    linear-gradient(125deg,#100A10 0%,#2A1424 28%,#54243E 48%,#21151E 67%,#4A3518 84%,#100A10 100%);
   background-attachment:fixed;
 }
 .site-header,.header,.topbar,.navbar{
-  background:rgba(255,250,252,.94)!important;
-  color:var(--text)!important;
-  border-color:rgba(185,71,124,.20)!important;
-  box-shadow:0 5px 24px rgba(125,57,88,.08);
+  background:linear-gradient(100deg,rgba(16,10,16,.96),rgba(65,27,48,.94) 55%,rgba(76,55,20,.92))!important;
+  color:var(--text)!important;border-color:rgba(232,140,184,.32)!important;
+  box-shadow:0 6px 25px rgba(0,0,0,.20),0 1px 0 rgba(244,215,124,.20);
   backdrop-filter:blur(14px);
 }
 .site-header a,.header a,.navbar a,.brand strong{color:var(--text)}
 .site-footer,footer{
-  background:linear-gradient(135deg,#F7DCE8,#FFF6FA 58%,#F9EBCB)!important;
-  color:var(--text)!important;
-  border-color:var(--line)!important;
+  background:linear-gradient(110deg,#100A10 0%,#3C1B30 42%,#65471C 72%,#170D15 100%)!important;
+  color:var(--text)!important;border-color:var(--line)!important;
 }
 h1,h2,h3,h4,.section-title,.page-title,.gold-text,.price,.product-price{
-  color:#9E3F6C;
-  text-shadow:none;
+  color:var(--gold2);text-shadow:0 0 14px rgba(244,215,124,.13)
 }
-.eyebrow{color:#A34C75;text-shadow:none;font-weight:800}
+.eyebrow{color:var(--pink-soft);text-shadow:0 0 12px rgba(232,140,184,.25);font-weight:800}
 p,li,label,small,.muted,.section-subtitle{color:var(--muted)}
-a{color:#A83D70}
-a:hover{color:#7C244E}
-.btn{border-color:rgba(185,71,124,.48)}
+a{color:var(--pink-soft)}a:hover{color:var(--gold2)}
+.btn{border-color:rgba(232,140,184,.65)}
 .btn-gold{
-  background:linear-gradient(115deg,#E7B84B 0%,#F7D989 42%,#F0AFCB 100%);
-  color:#492538!important;border-color:#D9AE48;box-shadow:0 5px 16px rgba(185,71,124,.13)
+  background:linear-gradient(115deg,#A97B20 0%,#F4D77C 36%,#E88CB8 72%,#B94F80 100%);
+  color:#1B0D16!important;border:1px solid #F4D77C;box-shadow:0 5px 18px rgba(232,140,184,.18)
 }
-.btn-outline{color:#9E3F6C;border-color:rgba(185,71,124,.42);background:rgba(255,255,255,.65)}
-.btn-outline:hover,.icon-btn:hover{background:#FBE2ED;border-color:var(--pink);color:#7C244E}
-.icon-btn{color:#8F3D65;border-color:var(--line);background:rgba(255,255,255,.76)}
+.btn-outline{color:var(--pink-soft);border-color:rgba(232,140,184,.58);background:linear-gradient(120deg,rgba(232,140,184,.08),rgba(212,175,55,.06))}
+.btn-outline:hover,.icon-btn:hover{background:linear-gradient(120deg,rgba(232,140,184,.23),rgba(212,175,55,.15));border-color:var(--gold2);color:#fff}
+.icon-btn{color:var(--gold2);border-color:var(--line);background:linear-gradient(135deg,rgba(232,140,184,.11),rgba(212,175,55,.08))}
 .card,.product-card,.category-card,.panel,.modal-content,.admin-card,.stat-card,
 .contact-card,.advisor-card,.drawer,.product-modal,.ia-card,.royal-gift-planner{
   color:var(--text);
-  background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(255,244,249,.96))!important;
-  border-color:rgba(185,71,124,.22)!important;
+  background:linear-gradient(145deg,rgba(34,19,30,.97) 0%,rgba(75,32,55,.95) 52%,rgba(55,42,24,.95) 100%)!important;
+  border:1px solid rgba(232,140,184,.30)!important;
   box-shadow:var(--shadow);
 }
+.product-card:nth-child(3n+2),.category-card:nth-child(3n+2){
+  background:linear-gradient(145deg,rgba(48,24,41,.97),rgba(91,42,66,.95),rgba(70,51,25,.94))!important
+}
+.product-card:nth-child(3n),.category-card:nth-child(3n){
+  background:linear-gradient(145deg,rgba(28,19,29,.97),rgba(66,34,51,.95),rgba(91,66,29,.88))!important
+}
 .product-card:hover,.category-card:hover{
-  border-color:rgba(217,108,154,.72)!important;
-  box-shadow:0 14px 32px rgba(125,57,88,.13),0 0 22px rgba(217,108,154,.12)
+  border-color:rgba(244,215,124,.80)!important;
+  box-shadow:0 14px 32px rgba(0,0,0,.26),0 0 25px rgba(232,140,184,.18),0 0 12px rgba(212,175,55,.10)
 }
 .product-card p,.product-card small,.category-card p,.category-card small,
 .card p,.panel p,.contact-card p,.admin-card p{color:var(--muted)}
 .product-card h2,.product-card h3,.product-card h4,.category-card h2,.category-card h3,
-.product-name,.product-title{color:#71304F}
+.product-name,.product-title{color:var(--pink-soft)}
 .badge,.tag,.chip,.filter-chip{
-  color:#8F3D65;background:#FFF1F7;border-color:rgba(185,71,124,.28)
+  color:var(--pink-soft);background:linear-gradient(120deg,rgba(232,140,184,.17),rgba(212,175,55,.10));border-color:rgba(232,140,184,.38)
 }
 .badge.active,.tag.active,.chip.active,.filter-chip.active,[aria-pressed="true"]{
-  background:linear-gradient(135deg,#F7D6E5,#FFF0C7);
-  border-color:#D96C9A;color:#76264E
+  background:linear-gradient(125deg,rgba(232,140,184,.38),rgba(212,175,55,.25));border-color:var(--gold2);color:#FFF8E7
 }
 input,select,textarea,.royal-gift-grid input,.royal-gift-grid select,.royal-gift-grid textarea{
-  color:#382431!important;background:#FFFEFF!important;border:1px solid rgba(185,71,124,.30)!important;
-  border-radius:10px;
+  color:#FFF5FA!important;background:linear-gradient(120deg,#241621,#38202F 70%,#302719)!important;
+  border:1px solid rgba(232,140,184,.42)!important;border-radius:10px
 }
-input::placeholder,textarea::placeholder{color:#9B8491!important;opacity:1}
-select option,.royal-gift-grid select option{background:#FFFCFD!important;color:#382431!important}
-input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:2px solid #D96C9A;outline-offset:3px}
-input[type="checkbox"],input[type="radio"]{accent-color:#B9477C}
-::selection{background:rgba(217,108,154,.28);color:#382431}
-hr,.divider{border-color:rgba(185,71,124,.22)}
-.drawer-backdrop,.modal-backdrop{background:rgba(67,34,51,.30)!important;backdrop-filter:blur(4px)}
+input::placeholder,textarea::placeholder{color:#D6B8C8!important;opacity:1}
+select option,.royal-gift-grid select option{background:#281823!important;color:#FFF5FA!important}
+input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+input[type="checkbox"],input[type="radio"]{accent-color:#E88CB8}
+::selection{background:rgba(232,140,184,.38);color:#fff}
+hr,.divider{border-color:rgba(232,140,184,.28)}
+.drawer-backdrop,.modal-backdrop{background:rgba(8,4,8,.70)!important;backdrop-filter:blur(6px)}
 .drawer-head,.drawer-bottom{border-color:var(--line)!important}
-.total-row strong,.ia-metric strong{color:#9E3F6C}
-.ia-card h4,.ia-table th,.royal-gift-heading h3{color:#9E3F6C}
-.ia-metric,.ia-stock-alert{background:#FFF8FB;border-color:rgba(185,71,124,.24)}
-.ia-stock-alert strong{color:#9E3F6C}
-.ia-table th,.ia-table td{border-color:rgba(185,71,124,.16)}
-.royal-gift-heading>span{border-color:#D96C9A;color:#A83D70}
+.total-row strong,.ia-metric strong{color:var(--gold2)}
+.ia-card h4,.ia-table th,.royal-gift-heading h3{color:var(--gold2)}
+.ia-metric,.ia-stock-alert{background:linear-gradient(120deg,rgba(232,140,184,.10),rgba(212,175,55,.08));border-color:rgba(232,140,184,.30)}
+.ia-stock-alert strong{color:var(--gold2)}
+.ia-table th,.ia-table td{border-color:rgba(232,140,184,.20)}
+.royal-gift-heading>span{border-color:var(--pink);color:var(--pink-soft)}
 .royal-gift-grid label,.royal-gift-note,.royal-gift-status{color:var(--muted)}
-.royal-gift-status a{color:#9E3F6C}
-.fragrance-note-pyramid{background:linear-gradient(145deg,#FFF7FB,#FFF4D9);border-color:rgba(185,71,124,.25)}
-.fragrance-note-pyramid h3,.fragrance-note-pyramid b{color:#9E3F6C}
-.site-footer .brand-crown,.brand-crown{color:#C89522}
+.royal-gift-status a{color:var(--gold2)}
+.fragrance-note-pyramid{background:linear-gradient(135deg,rgba(232,140,184,.14),rgba(212,175,55,.10),rgba(16,10,16,.92));border-color:rgba(232,140,184,.35)}
+.fragrance-note-pyramid h3,.fragrance-note-pyramid b{color:var(--gold2)}
+.site-footer .brand-crown,.brand-crown{color:var(--gold2);text-shadow:0 0 14px rgba(212,175,55,.30)}
 @media(prefers-reduced-motion:no-preference){
   .btn,.product-card,.category-card,.icon-btn{transition:background-color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease}
 }
