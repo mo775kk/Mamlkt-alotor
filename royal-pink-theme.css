@@ -138,3 +138,54 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .modal-backdrop,.drawer-backdrop{background:rgba(15,7,14,.74)!important}
 .site-footer{background:linear-gradient(110deg,#130B13 0%,#4A2038 38%,#765222 72%,#1B1019 100%)!important}
 @media(max-width:850px){.main-nav{background:linear-gradient(150deg,#1B101A,#54233D 58%,#64451E)!important}}
+
+
+/* Royal expandable scent encyclopedia — rose, gold and palace-black */
+.taxonomy-public-section .family-guide-intro{
+ display:flex;align-items:center;gap:15px;margin:0 0 22px;padding:18px 20px;
+ border:1px solid rgba(244,215,124,.52);border-radius:17px;
+ background:linear-gradient(110deg,rgba(30,16,28,.92),rgba(126,47,83,.70) 48%,rgba(120,83,30,.68));
+ box-shadow:0 12px 30px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.06)
+}
+.family-guide-crown{display:grid;place-items:center;flex:0 0 48px;height:48px;border:1px solid rgba(244,215,124,.65);border-radius:50%;font-size:30px;color:#F4D77C;text-shadow:0 0 15px rgba(244,215,124,.38)}
+.family-guide-intro strong{display:block;color:#FFE8A0;font-size:17px}
+.family-guide-intro p{margin:3px 0 0;color:#FFE6F0;font-size:13px;line-height:1.8}
+.royal-family-boxes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;align-items:start}
+.royal-family-box{min-width:0;overflow:hidden;border:1px solid rgba(232,140,184,.48);border-radius:17px;background:linear-gradient(135deg,rgba(29,16,27,.97),rgba(92,37,65,.96) 57%,rgba(105,76,32,.91));box-shadow:0 10px 26px rgba(0,0,0,.17);transition:border-color .2s,box-shadow .2s,transform .2s}
+.royal-family-box:nth-child(3n+2){background:linear-gradient(130deg,rgba(82,31,59,.96),rgba(131,48,84,.88) 55%,rgba(77,48,31,.95))}
+.royal-family-box:nth-child(3n){background:linear-gradient(130deg,rgba(33,20,31,.97),rgba(79,53,42,.96) 60%,rgba(123,85,31,.88))}
+.royal-family-box[open]{border-color:#F4D77C;box-shadow:0 14px 32px rgba(0,0,0,.22),0 0 0 1px rgba(244,215,124,.12),0 0 24px rgba(232,140,184,.12)}
+.royal-family-box>summary{display:flex;align-items:center;gap:13px;min-height:102px;padding:17px;list-style:none;cursor:pointer;position:relative}
+.royal-family-box>summary::-webkit-details-marker{display:none}
+.royal-family-box>summary:focus-visible{outline:2px solid #FFE8A0;outline-offset:-4px;border-radius:14px}
+.royal-family-symbol{display:grid;place-items:center;flex:0 0 54px;height:54px;border-radius:16px;border:1px solid rgba(244,215,124,.68);background:linear-gradient(145deg,rgba(232,140,184,.19),rgba(212,175,55,.13));color:#FFE49A;font-family:serif;font-size:32px;text-shadow:0 0 14px rgba(244,215,124,.28)}
+.royal-family-title{display:grid;gap:2px;min-width:0;flex:1}
+.royal-family-title small{font:700 10px "Cormorant Garamond",serif;letter-spacing:1.4px;color:#FFD5E8}
+.royal-family-title strong{font:700 21px/1.45 "Amiri",serif;color:#FFE28A;overflow-wrap:anywhere}
+.royal-family-title em{font-style:normal;font-size:12px;line-height:1.6;color:#FBE6EF}
+.royal-family-plus{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border:1px solid rgba(244,215,124,.46);border-radius:50%;color:#FFE49A;font-size:21px;transition:transform .2s,background .2s}
+.royal-family-box[open] .royal-family-plus{transform:rotate(45deg);background:rgba(244,215,124,.12)}
+.royal-family-content{padding:0 18px 18px;border-top:1px solid rgba(244,215,124,.22);animation:royalFamilyReveal .24s ease-out}
+.royal-family-content>p{margin:15px 0;color:#FFF1F7;font-size:14px;line-height:1.95}
+.royal-family-facts{display:grid;gap:8px}
+.royal-family-facts>div{display:grid;grid-template-columns:minmax(90px,.7fr) minmax(0,1.6fr);gap:10px;padding:10px 12px;border:1px solid rgba(232,140,184,.24);border-radius:10px;background:linear-gradient(100deg,rgba(232,140,184,.10),rgba(212,175,55,.07))}
+.royal-family-facts b{color:#FFE28A;font-size:12px;line-height:1.8}
+.royal-family-facts span{color:#FFF0F6;font-size:12px;line-height:1.85;overflow-wrap:anywhere}
+.royal-family-link{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:9px 13px;border:1px solid rgba(244,215,124,.55);border-radius:9px;color:#FFE8A0!important;background:linear-gradient(100deg,rgba(232,140,184,.12),rgba(212,175,55,.10));font-size:12px;font-weight:800}
+.royal-family-link:hover{background:linear-gradient(100deg,rgba(232,140,184,.25),rgba(212,175,55,.22))}
+.family-disclaimer{margin:18px 0 0;padding:13px 15px;border-inline-start:3px solid #E88CB8;border-radius:7px;background:rgba(232,140,184,.08);color:#F6DDE8;font-size:12px;line-height:1.9}
+@keyframes royalFamilyReveal{from{opacity:.3;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){
+ .taxonomy-public-section .family-guide-intro{padding:14px;gap:11px}
+ .family-guide-crown{flex-basis:42px;height:42px;font-size:26px}
+ .family-guide-intro strong{font-size:15px}
+ .family-guide-intro p{font-size:12px}
+ .royal-family-boxes{grid-template-columns:minmax(0,1fr);gap:11px}
+ .royal-family-box>summary{min-height:88px;padding:14px;gap:11px}
+ .royal-family-symbol{flex-basis:48px;height:48px;font-size:29px;border-radius:14px}
+ .royal-family-title strong{font-size:20px}
+ .royal-family-content{padding:0 13px 14px}
+ .royal-family-content>p{font-size:13px}
+ .royal-family-facts>div{grid-template-columns:92px minmax(0,1fr);gap:8px;padding:9px}
+}
+@media(prefers-reduced-motion:reduce){.royal-family-box,.royal-family-plus{transition:none}.royal-family-content{animation:none}}
