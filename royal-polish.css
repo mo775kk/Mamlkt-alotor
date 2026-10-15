@@ -996,3 +996,43 @@ button,select,.btn,.category-card,.product-card{transition-duration:.22s}
  .product-modal .modal-actions{display:grid;grid-template-columns:1fr 1fr}
  .product-modal .modal-actions .btn{padding-inline:8px;font-size:14px}
 }
+
+
+/* 2026-10-15: consistent customer copy, compact tables and expandable scent-family guide */
+.section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.section-heading>div{min-width:0;max-width:100%}
+.section-heading>p{max-width:min(100%,38rem);width:100%;margin:0;overflow-wrap:anywhere;text-wrap:pretty}
+.customer-price-notice{display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);align-items:center;gap:12px;margin:0 0 20px;padding:13px 16px;border:1px solid rgba(212,175,55,.48);border-radius:12px;background:linear-gradient(110deg,rgba(212,175,55,.12),rgba(20,17,13,.92));max-width:100%;box-sizing:border-box}
+.customer-price-notice strong{color:#f1d77a;font-size:clamp(17px,2vw,21px);line-height:1.5;white-space:normal;text-shadow:0 0 12px rgba(212,175,55,.2)}
+.customer-price-notice span{color:#f5eddf;font-size:14px;line-height:1.8;min-width:0;overflow-wrap:anywhere}
+.gift-price-note{color:#f1d77a;font-weight:800;line-height:1.8;overflow-wrap:anywhere}
+.scent-family-accordion{border:1px solid rgba(212,175,55,.5);border-radius:16px;background:linear-gradient(145deg,rgba(27,21,12,.98),rgba(9,8,7,.98));overflow:hidden}
+.scent-family-accordion>summary{display:flex;align-items:center;gap:13px;list-style:none;cursor:pointer;padding:17px 20px;min-height:74px;color:#f1d77a}
+.scent-family-accordion>summary::-webkit-details-marker{display:none}
+.scent-family-accordion>summary:focus-visible{outline:2px solid #fff0a6;outline-offset:-4px}
+.family-summary-icon{display:grid;place-items:center;flex:0 0 42px;height:42px;border:1px solid rgba(241,215,122,.58);border-radius:50%;font-size:26px;color:#f1d77a}
+.scent-family-accordion>summary>span:nth-child(2){display:grid;gap:2px;min-width:0;flex:1}
+.scent-family-accordion summary strong{font-size:17px;line-height:1.6;color:#f1d77a}
+.scent-family-accordion summary small{font-size:12px;line-height:1.7;color:#e0d5c3;overflow-wrap:anywhere}
+.family-chevron{font-size:24px;transition:transform .2s}
+.scent-family-accordion[open] .family-chevron{transform:rotate(180deg)}
+.scent-family-grid{padding:0 16px 16px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.scent-family-grid .category-card{min-width:0}
+.family-disclaimer{margin:0;padding:0 18px 16px;color:#d0c4b0;font-size:12px;line-height:1.7}
+/* Align customer-facing tables and prevent long copy from exceeding their content width */
+.blend-price-guide{width:100%;max-width:100%;box-sizing:border-box;overflow:hidden}
+.blend-price-grid{width:100%;grid-template-columns:repeat(auto-fit,minmax(min(100%,125px),1fr))}
+.blend-price-grid>div{min-width:0;overflow-wrap:anywhere}
+.blend-price-grid span,.blend-price-grid strong{line-height:1.65;overflow-wrap:anywhere}
+.product-info,.product-info *,.product-modal,.product-modal *,.admin-panel,.admin-panel *{overflow-wrap:anywhere}
+.product-desc,.modal-description,.admin-note{max-width:100%;text-wrap:pretty}
+@media(max-width:700px){
+ .section-heading{align-items:flex-start;gap:8px}
+ .section-heading>p{font-size:14px;line-height:1.75}
+ .customer-price-notice{grid-template-columns:1fr;gap:4px;padding:12px}
+ .customer-price-notice span{font-size:13px}
+ .scent-family-accordion>summary{padding:13px;gap:10px}
+ .scent-family-grid{grid-template-columns:repeat(1,minmax(0,1fr));padding:0 10px 10px}
+ .scent-family-grid .category-card{min-height:150px;padding:16px}
+ .blend-price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
