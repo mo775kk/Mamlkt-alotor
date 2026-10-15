@@ -1,0 +1,36 @@
+/* MAMLKAT AL-OTOR — Royal Pink / Gold / Black unified theme
+   Loaded after all other stylesheets so the palette stays consistent across the full site. */
+:root{
+  --bg:#0A0A0A;--panel:#121014;--panel2:#1B141B;
+  --gold:#D4AF37;--gold2:#F1D77A;
+  --pink:#E8A0BF;--pink-soft:#F7D6E5;--pink-deep:#A94D78;
+  --text:#FFF8FC;--muted:#D0BFC9;--line:rgba(232,160,191,.30);
+  --shadow:0 18px 55px rgba(0,0,0,.42),0 0 24px rgba(232,160,191,.07);
+}
+body{
+  color:var(--text);
+  background-image:
+    radial-gradient(ellipse at 12% 8%,rgba(169,77,120,.13),transparent 34%),
+    radial-gradient(ellipse at 88% 26%,rgba(212,175,55,.09),transparent 30%),
+    linear-gradient(rgba(8,7,9,var(--bg-overlay)),rgba(8,7,9,var(--bg-overlay))),
+    var(--page-image);
+}
+.eyebrow{color:var(--pink-soft);text-shadow:0 0 12px rgba(232,160,191,.24)}
+.btn{border-color:rgba(232,160,191,.68)}
+.btn-gold{background:linear-gradient(115deg,#B68A20 0%,#F1D77A 48%,#E8A0BF 100%);color:#160D13}
+.btn-outline{color:var(--pink-soft);border-color:rgba(232,160,191,.56)}
+.btn-outline:hover,.icon-btn:hover{background:rgba(232,160,191,.12);border-color:var(--pink)}
+.icon-btn{border-color:var(--line)}
+input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+::selection{background:rgba(232,160,191,.38);color:#fff}
+a:hover{color:var(--pink-soft)}
+.product-card:hover,.category-card:hover{border-color:rgba(232,160,191,.66);box-shadow:0 12px 32px rgba(0,0,0,.34),0 0 22px rgba(232,160,191,.10)}
+input,select,textarea{accent-color:var(--pink-deep)}
+input[type="checkbox"],input[type="radio"]{accent-color:var(--pink-deep)}
+.badge.active,.tag.active,.chip.active,.filter-chip.active,[aria-pressed="true"]{
+  background:linear-gradient(135deg,rgba(232,160,191,.22),rgba(212,175,55,.12));
+  border-color:var(--pink);color:var(--pink-soft);
+}
+hr,.divider{border-color:rgba(232,160,191,.24)}
+/* Keep form fields and detail panels readable on the dark royal background. */
+input,select,textarea,.modal-content,.admin-card{color:var(--text)}
