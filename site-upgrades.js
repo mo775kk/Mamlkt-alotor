@@ -18,7 +18,7 @@
     const url=URL.createObjectURL(blob), a=document.createElement("a");
     a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);
   };
-  const catalogKeys = ["mamlaka_custom_products_v1","mamlaka_supplier_oils_v1","mamlaka_catalog_taxonomy_config_v1","mamlaka_theme_v1","mamlaka_admin_whatsapp_v1","mamlaka_store_name_v1","mamlaka_cart_v1","mamlaka_favorites_v1","mamlaka_requests_v1"];
+  const catalogKeys = ["mamlaka_custom_products_v1","mamlaka_supplier_oils_v1","mamlaka_catalog_taxonomy_config_v1","mamlaka_theme_v1","mamlaka_admin_whatsapp_v1","mamlaka_store_name_v1","mamlaka_cart_v1","mamlaka_favorites_v1","mamlaka_requests_v1","mamlaka_inventory_accounting_v1"];
   function summarize(data){
     if(Array.isArray(data)) return {count:data.length,kind:"قائمة سجلات"};
     if(data && typeof data==="object"){
