@@ -24,10 +24,14 @@
       <p class="eyebrow">CROWN · MAISON DE PARFUM</p>
       <h1>مملكة العطور</h1>
       <p class="intro-subtitle">حكاية فخامة تبدأ بقطرة</p>
-      <button type="button" class="btn btn-gold" id="enterBtn" onclick="document.getElementById('intro').classList.add('dismissed')">دخول المملكة</button>
+      <button type="button" class="btn btn-gold" id="enterBtn" onclick="var gate=document.getElementById('intro');if(gate){gate.remove();document.body.classList.remove('intro-open')}">دخول المملكة</button>
       <button type="button" class="intro-skip" id="skipIntro" onclick="document.getElementById('intro').classList.add('dismissed')">تخطي المقدمة</button>
     </div>
   </div>
+  <script>
+    // Critical entrance fallback: this runs before external app scripts and removes the overlay directly.
+    (function(){var gate=document.getElementById("intro");if(!gate)return;function leave(){var current=document.getElementById("intro");if(current)current.remove();document.body.classList.remove("intro-open");}["enterBtn","skipIntro"].forEach(function(id){var button=document.getElementById(id);if(button){button.addEventListener("click",leave,true);button.addEventListener("touchend",function(){leave();},{passive:true,once:true});}});})();
+  </script>
 
   <header class="site-header">
     <a class="brand" href="#home" aria-label="مملكة العطور - الرئيسية">
