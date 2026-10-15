@@ -160,7 +160,7 @@
   let favorites = readArray(STORAGE.fav);
   let toastTimer;
   const formatMoney = n => n == null || !Number.isFinite(Number(n)) ? "السعر غير محدد" : `${Number(n).toLocaleString("ar-EG")} ج.م`;
-  const priceFor = p => p.price != null ? Number(p.price) : (p.prices && p.prices["10"] != null ? Number(p.prices["10"]) : null);
+  const priceFor = p => { const n=p?.price != null ? Number(p.price) : (p?.prices && p.prices["10"] != null ? Number(p.prices["10"]) : null); return Number.isFinite(n) && n>0 ? Math.max(50,n) : null; };
   const escapeHTML = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const norm = s => String(s ?? "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[أإآ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه").replace(/[^\p{L}\p{N}]+/gu," ").trim();
   function save(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { notify("تعذر الحفظ في هذا المتصفح. صدّر نسخة احتياطية إن أمكن."); return false; } }
