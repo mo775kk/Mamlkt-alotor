@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#5B243F">
+  <meta name="theme-color" content="#71324F">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="manifest" href="manifest.webmanifest?v=20261016-pwa-raster1">
@@ -27,6 +27,30 @@
   <link rel="stylesheet" href="blending-atelier.css?v=20261016-atelier2">
   <link rel="stylesheet" href="royal-bright-ux.css?v=20261016-bright1">
   <link rel="stylesheet" href="royal-bright-redesign.css?v=20261016-rose-champagne2">
+  <style id="mamlaka-live-royal-palette">
+    /* Highest-priority palette safety net for browsers/PWA shells that retain older CSS. */
+    :root{color-scheme:light!important;--bg:#fffaf5!important;--panel:#fff!important;--panel2:#fff0f6!important;--text:#4d2b3e!important;--muted:#765d6d!important;--gold:#b9872f!important;--gold2:#f6dfa0!important;--line:#e8c7d6!important}
+    html,body{background:#fffaf5!important;color:#4d2b3e!important}
+    body{background-image:radial-gradient(ellipse at 5% 0%,#f4c6da 0,transparent 33%),radial-gradient(ellipse at 100% 12%,#f8e4b6 0,transparent 28%),linear-gradient(135deg,#fffaf5,#fff 52%,#fff0f6)!important}
+    main{background:linear-gradient(180deg,#fffaf5,#fff 45%,#fff0f6 78%,#fff9ed)!important}
+    .site-header{background:linear-gradient(105deg,#4f213a,#793858 54%,#a45176)!important;border-bottom:2px solid #e7c77f!important}
+    .site-header.is-scrolled{background:linear-gradient(105deg,#4f213a,#793858)!important}
+    .site-header .main-nav{background:linear-gradient(145deg,#fffaf6,#fff0f6)!important;border:1px solid #e8c7d6!important}
+    .hero{background:linear-gradient(120deg,#6d2e50,#bd7093 58%,#f0d3a0)!important;border-color:#e7c77f!important}
+    .hero .hero-shade{background:linear-gradient(90deg,rgba(57,22,42,.64),rgba(81,29,56,.28) 58%,rgba(81,29,56,.06))!important}
+    .trust-strip{background:linear-gradient(100deg,#fbe5ef,#fff9ed 48%,#f8dce9)!important;border-color:#e8c7d6!important}
+    .section-heading h2,.category-card h3,.feature-copy h2,.contact-card h2,.gift-copy h2,.royal-family-box summary{color:#71324f!important}
+    .category-card,.category-tile,.feature-card,.contact-card,.gift-card,.guide-card,.info-card{background:linear-gradient(145deg,#fff,#fff1f7 72%,#fff8e9)!important;border-color:#e8c7d6!important}
+    .product-card,.product-tile,.product-item{background:linear-gradient(160deg,#fff,#fffaf7 65%,#fff0f6)!important;border:1px solid #e8c7d6!important}
+    .price,.product-price,.price-tag{color:#bd4779!important}
+    .btn-gold,.btn-primary,.primary-btn,.full-width.btn-gold{background:linear-gradient(110deg,#f6dfa0,#d8ad54 52%,#e9a0bf)!important;color:#4f213a!important;border:1px solid #d1a64b!important}
+    input,select,textarea,.search-box{background:#fffdfb!important;color:#4d2b3e!important;border-color:#e1bfd0!important}
+    .product-modal,.cart-drawer,.settings-panel,.admin-panel,.modal-content{background:linear-gradient(145deg,#fffdfb,#fff0f6)!important;color:#4d2b3e!important;border-color:#dfbf82!important}
+    .site-footer,footer{background:linear-gradient(110deg,#4f213a,#793858 58%,#a45d48)!important;color:#fff8f2!important;border-top:2px solid #e7c77f!important}
+    .site-footer a,footer a{color:#ffe4a0!important}
+    :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #d979a1!important;box-shadow:0 0 0 5px #d979a12e!important}
+    @media(max-width:760px){body{background:linear-gradient(160deg,#fffaf5,#fff 52%,#fff0f6)!important}.hero .hero-shade{background:linear-gradient(0deg,rgba(62,23,45,.76),rgba(75,27,51,.30) 52%,rgba(75,27,51,.05))!important}}
+  </style>
   <style>.pwa-install-btn{white-space:nowrap;font-size:.82rem;padding:.55rem .75rem;min-height:38px}.pwa-install-btn[hidden]{display:none!important}.pwa-help-backdrop{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:18px;background:rgba(25,9,20,.78);backdrop-filter:blur(8px)}.pwa-help-backdrop[hidden]{display:none!important}.pwa-help-card{position:relative;width:min(520px,100%);max-height:85vh;overflow:auto;padding:clamp(22px,5vw,34px);border:1px solid rgba(212,175,55,.7);border-radius:24px;background:linear-gradient(145deg,#fff8fc,#fffdf5 60%,#ffeaf3);color:#5b243f;box-shadow:0 25px 80px rgba(0,0,0,.35);text-align:right}.pwa-help-card h2{margin:4px 0 8px;color:#5b243f;font:700 27px/1.45 Amiri,serif}.pwa-help-crown{font-size:34px;color:#b68a20}.pwa-help-close{position:absolute;top:12px;left:12px;width:38px;height:38px;border:1px solid #ecd2df;border-radius:50%;background:#fff;color:#5b243f;font-size:25px}.pwa-help-lead,.pwa-help-note{color:#705565;line-height:1.9}.pwa-help-steps{display:grid;gap:8px;margin:16px 0}.pwa-help-steps p{margin:0;padding:10px 12px;border:1px solid #efd9e3;border-radius:12px;background:#fff;color:#553148;line-height:1.8}.pwa-help-steps b{color:#a8751b}.pwa-help-note{font-size:12px;border-top:1px solid #ecd7e1;padding-top:12px}@media(max-width:680px){.pwa-install-btn{font-size:.75rem;padding:.45rem .55rem}.pwa-help-card h2{font-size:23px}}@media(prefers-reduced-motion:reduce){.pwa-help-backdrop{backdrop-filter:none}}</style>
   <script>
   // PWA installation: use the browser's native one-tap prompt when available,
