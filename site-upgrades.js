@@ -7,6 +7,11 @@
   const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const read = (key, fallback) => { try { const x=JSON.parse(localStorage.getItem(key)); return x ?? fallback; } catch { return fallback; } };
   const write = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+  function recordLatestJson(name, action, details = {}) {
+    const meta = { name, action, at: new Date().toISOString(), ...details };
+    try { localStorage.setItem("mamlaka_recent_json_file_v1", JSON.stringify(meta)); } catch {}
+    document.dispatchEvent(new CustomEvent("mamlaka:json-file-updated", { detail: meta }));
+  }
   const toast = message => {
     const el=$("#toast");
     if(el){el.textContent=message;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),3200);}
@@ -145,7 +150,7 @@
         const mergeById=(a,b)=>{const map=new Map((Array.isArray(a)?a:[]).map((x,i)=>[String(x.id||x.itemId||x.name||("old-"+i)),x]));(Array.isArray(b)?b:[]).forEach((x,i)=>{const key=String(x.id||x.itemId||x.name||("new-"+i));if(!map.has(key))map.set(key,x)});return [...map.values()]};
         ledger={items:mergeById(current.items,data.items),sales:mergeById(current.sales,data.sales),expenses:mergeById(current.expenses,data.expenses),movements:mergeById(current.movements,data.movements)};
       }
-      write("mamlaka_inventory_accounting_v1",ledger);updateFileStatus(id,mode==="replace"?"تم استبدال دفتر الحسابات":"تم دمج دفتر الحسابات");toast("تم استيراد دفتر المخزون والحسابات. راجع الأرصدة والتقارير.");return;
+      write("mamlaka_inventory_accounting_v1",ledger);updateFileStatus(id,mode==="replace"?"تم استبدال دفتر الحسابات":"تم دمج دفتر الحسابات");recordLatestJson(name,"import",{kind:"دفتر المخزون والحسابات",records:(data.items||[]).length+(data.sales||[]).length+(data.expenses||[]).length});toast("تم استيراد دفتر المخزون والحسابات. راجع الأرصدة والتقارير.");return;
     }
     let records=Array.isArray(data)?data:Array.isArray(data.products)?data.products:Array.isArray(data.oils)?data.oils:Array.isArray(data.items)?data.items:Array.isArray(data.records)?data.records:null;
     if(data && data.localStorage && typeof data.localStorage==="object"){
@@ -162,9 +167,9 @@
           write(k,[...map.values()]);
         }else localStorage.setItem(k,JSON.stringify(incoming));
       });
-      updateFileStatus(id,mode==="replace"?"تم الاستيراد بالاستبدال":"تم الاستيراد بالدمج");document.dispatchEvent(new Event("mamlaka:products-updated"));toast("تم استيراد البيانات المعروفة. راجع الموقع قبل المتابعة.");return;
+      updateFileStatus(id,mode==="replace"?"تم الاستيراد بالاستبدال":"تم الاستيراد بالدمج");recordLatestJson(name,"import",{kind:"نسخة احتياطية",keys:keys.length});document.dispatchEvent(new Event("mamlaka:products-updated"));toast("تم استيراد البيانات المعروفة. راجع الموقع قبل المتابعة.");return;
     }
-    if(!records){toast("لم أتعرف على قائمة سجلات. يجب أن يحتوي JSON على مصفوفة أو products أو oils أو items أو records.");return;} const supplierLike=(Array.isArray(data.products)&&data.products.some(p=>p&&("sku" in p||"price_1kg" in p||"price_500g" in p)))||Array.isArray(data.oils); if(supplierLike){if(!confirm("يبدو أن هذا ملف كتالوج موردين. سيتم حفظه في كتالوج الموردين المحلي دون استبدال منتجات المتجر. هل تريد المتابعة؟"))return;write("mamlaka_supplier_catalog_v1",{...data,products:records,_sourceFileId:id,_sourceFileName:name});updateFileStatus(id,"تم الاستيراد إلى كتالوج الموردين","supplierCatalog");toast("تم استيراد كتالوج الموردين إلى التخزين المحلي. راجع النتائج قبل الاستخدام.");return;}
+    if(!records){toast("لم أتعرف على قائمة سجلات. يجب أن يحتوي JSON على مصفوفة أو products أو oils أو items أو records.");return;} const supplierLike=(Array.isArray(data.products)&&data.products.some(p=>p&&("sku" in p||"price_1kg" in p||"price_500g" in p)))||Array.isArray(data.oils); if(supplierLike){if(!confirm("يبدو أن هذا ملف كتالوج موردين. سيتم حفظه في كتالوج الموردين المحلي دون استبدال منتجات المتجر. هل تريد المتابعة؟"))return;write("mamlaka_supplier_catalog_v1",{...data,products:records,_sourceFileId:id,_sourceFileName:name});updateFileStatus(id,"تم الاستيراد إلى كتالوج الموردين","supplierCatalog");recordLatestJson(name,"import",{kind:"كتالوج الموردين",products:records.length});toast("تم استيراد كتالوج الموردين إلى التخزين المحلي. راجع النتائج قبل الاستخدام.");return;}
     if(records.some(x=>!x || typeof x!=="object" || Array.isArray(x))){toast("توجد سجلات غير صالحة؛ لم يتم الاستيراد.");return;}
     if(mode==="replace") saveLocalBackup("قبل استبدال المنتجات");
     if(!confirm("تم العثور على "+records.length+" سجل. "+(mode==="replace"?"سيتم استبدال قائمة المنتجات المحلية بالكامل بعد تنزيل نسخة احتياطية.":"سيتم دمج السجلات وتحديث المطابق منها.")+" هل تريد المتابعة؟"))return;
@@ -174,7 +179,7 @@
       if(key)map.set(key,{...(map.get(key)||{}),...p});
     });
     write("mamlaka_custom_products_v1",[...map.values()]);
-    updateFileStatus(id,mode==="replace"?"تم الاستبدال":"تم الدمج");document.dispatchEvent(new Event("mamlaka:products-updated"));
+    updateFileStatus(id,mode==="replace"?"تم الاستبدال":"تم الدمج");recordLatestJson(name,"import",{products:records.length});document.dispatchEvent(new Event("mamlaka:products-updated"));
     toast((mode==="replace"?"تم استبدال المنتجات بـ ":"تم دمج ")+records.length+" سجلًا. تحقق من الأسعار والبيانات قبل البيع.");
   }
   function saveLocalBackup(label){
@@ -202,7 +207,7 @@
     preview.innerHTML=`<div class="royal-file-head"><div><strong>${esc(name)}</strong><small>معاينة قبل التنزيل · ${raw.length.toLocaleString("ar-EG")} حرف</small></div><button type="button" class="small-btn" id="royalClosePreview">إغلاق</button></div><pre class="royal-json-preview" dir="ltr"></pre><button type="button" class="btn btn-gold" id="royalConfirmExport">تنزيل ملف JSON</button>`;
     $(".royal-json-preview").textContent=raw.slice(0,60000)+(raw.length>60000?"\n… تم اختصار المعاينة":"");
     $("#royalClosePreview").onclick=()=>preview.classList.add("hidden");
-    $("#royalConfirmExport").onclick=()=>{download(name,raw);const items=library();items.unshift({id:"export-"+Date.now(),name,size:new Blob([raw]).size,importedAt:new Date().toISOString(),kind:"ملف مُصدّر",count:summarize(data).count,status:"تم التصدير",content:raw});saveLibrary(items.slice(0,100));renderFileList();toast("تم تنزيل نسخة JSON وتسجيلها في المكتبة.");};
+    $("#royalConfirmExport").onclick=()=>{download(name,raw);const items=library();items.unshift({id:"export-"+Date.now(),name,size:new Blob([raw]).size,importedAt:new Date().toISOString(),kind:"ملف مُصدّر",count:summarize(data).count,status:"تم التصدير",content:raw});saveLibrary(items.slice(0,100));renderFileList();recordLatestJson(name,"export",{records:summarize(data).count});toast("تم تنزيل نسخة JSON وتسجيلها في المكتبة.");};
   }
   function bindBackgroundManager(){
     const select=$("#royalBgTarget");if(!select)return;
