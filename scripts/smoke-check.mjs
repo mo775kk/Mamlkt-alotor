@@ -169,6 +169,26 @@ try {
   report(false, "Unable to validate AI advisor integration: " + e.message);
 }
 
+try {
+  const settings = read("settings.js");
+  const html = read("index.html");
+  const polish = read("royal-polish.css");
+  report(settings.includes("data-copy-secret=\"CLOUDFLARE_API_TOKEN\"") &&
+    settings.includes("data-copy-secret=\"CLOUDFLARE_ACCOUNT_ID\"") &&
+    settings.includes("data-copy-secret=\"OPENAI_API_KEY\""),
+    "AI deployment settings expose copy controls for all three required secret names");
+  report(settings.includes("settings/secrets/actions") &&
+    settings.includes("actions/workflows/deploy-ai-worker.yml") &&
+    settings.includes("navigator.clipboard"),
+    "AI deployment guide links to GitHub secrets and workflow and wires copy interaction");
+  report(polish.includes(".ai-secret-list{") &&
+    html.includes("settings.js?v=20261016-ai-settings2") &&
+    html.includes("royal-polish.css?v=20261016-ai-setup1"),
+    "AI deployment guide styles and cache-busted script/style versions are present");
+} catch (e) {
+  report(false, "Unable to validate AI deployment settings: " + e.message);
+}
+
 for (const message of pass) console.log("PASS  " + message);
 for (const message of failures) console.error("FAIL  " + message);
 console.log("\n" + pass.length + " passed; " + failures.length + " failed.");
