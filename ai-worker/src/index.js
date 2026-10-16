@@ -1,0 +1,22 @@
+const HEADERS={"content-type":"application/json; charset=utf-8","cache-control":"no-store"};
+function cors(req,env){const origin=req.headers.get("Origin")||"";const allow=(env.ALLOWED_ORIGINS||"https://mo775kk.github.io,https://mamlaketalotor.com,https://www.mamlaketalotor.com").split(",").map(x=>x.trim());const h={"Vary":"Origin","Access-Control-Allow-Methods":"POST, OPTIONS","Access-Control-Allow-Headers":"Content-Type","Access-Control-Max-Age":"86400"};if(allow.includes(origin))h["Access-Control-Allow-Origin"]=origin;return h}
+function reply(req,env,data,status=200){return new Response(JSON.stringify(data),{status,headers:{...HEADERS,...cors(req,env)}})}
+function clean(v,n=300){return typeof v==="string"?v.replace(/[\u0000-\u001f]/g," ").slice(0,n):""}
+export default {async fetch(req,env){
+ const h=cors(req,env),url=new URL(req.url);
+ if(req.method==="OPTIONS")return new Response(null,{status:204,headers:h});
+ if(url.pathname==="/health"&&req.method==="GET")return reply(req,env,{ok:true,service:"Mamlakat Al-Otor AI",configured:!!env.OPENAI_API_KEY});
+ if(url.pathname!=="/api/ask"||req.method!=="POST")return reply(req,env,{error:"المسار غير متاح."},404);
+ if(!h["Access-Control-Allow-Origin"])return reply(req,env,{error:"المصدر غير مسموح."},403);
+ if(!env.OPENAI_API_KEY)return reply(req,env,{error:"مفتاح الخدمة غير مضبوط على الخادم."},503);
+ let b;try{const raw=await req.text();if(raw.length>45000)return reply(req,env,{error:"الطلب أكبر من الحد المسموح."},413);b=JSON.parse(raw)}catch{return reply(req,env,{error:"بيانات الطلب غير صالحة."},400)}
+ const q=clean(b.question,1200).trim();if(!q)return reply(req,env,{error:"اكتب وصف العطر الذي تبحث عنه."},400);
+ const products=(Array.isArray(b.products)?b.products:[]).slice(0,80).map((p,i)=>({id:clean(p.id,100)||String(i),nameAr:clean(p.nameAr,120),nameEn:clean(p.nameEn,120),brand:clean(p.brand,100),type:clean(p.productType||p.type,40),gender:clean(p.gender,40),family:clean(p.family,120),scentNature:clean(p.scentNature,250),description:clean(p.descriptionAr||p.description,250),price:p.price==null||p.price===""?null:(Number.isFinite(Number(p.price))?Number(p.price):null),needsReview:!!p.needsReview}));
+ const instructions=["أنت مستشار العطور الرسمي لمملكة العطور MAMLKAT AL-OTOR في الإسكندرية بمصر. أجب بلغة العميل، والعربية المصرية الواضحة افتراضيًا.","ساعد في اختيار العطر حسب الرائحة والاستخدام والمناسبة والفئة والميزانية بالجنيه المصري.","قائمة المنتجات المرسلة هي مصدر الحقيقة الوحيد. لا تخترع أسماء أو شركات أو أسعارًا أو مخزونًا أو نوتات. السعر null غير مؤكد. لا تدّعِ الأصالة أو التوفر دون دليل. اطلب تأكيد السعر والتوفر من المتجر.","لا تقدم وصفات تصنيع كيميائية أو ادعاءات طبية. لا تطلب معلومات شخصية غير لازمة.","أعد JSON فقط بالشكل {\"answer\":string,\"recommendedProductIds\":string[]}. اختر حتى 3 معرفات من القائمة فقط. إذا كانت المعلومات غير كافية فاسأل سؤال متابعة واحدًا داخل answer."].join("\n");
+ let upstream;try{upstream=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+env.OPENAI_API_KEY,"Content-Type":"application/json"},body:JSON.stringify({model:env.OPENAI_MODEL||"gpt-4.1-mini",instructions,input:"كتالوج مملكة العطور:\n"+JSON.stringify(products)+"\nطلب العميل:\n"+q,max_output_tokens:700,store:false})})}catch{return reply(req,env,{error:"تعذر الاتصال بخدمة الذكاء الاصطناعي؛ استخدم المستشار المحلي."},502)}
+ if(!upstream.ok)return reply(req,env,{error:upstream.status===429?"الخدمة مشغولة الآن؛ حاول بعد قليل.":"تعذر إكمال الرد الذكي الآن؛ استخدم المستشار المحلي."},upstream.status===429?429:502);
+ const data=await upstream.json(),out=(data.output||[]).flatMap(x=>x.content||[]).filter(x=>x.type==="output_text").map(x=>x.text).join("\n").trim();if(!out)return reply(req,env,{error:"وصل رد فارغ من الخدمة."},502);
+ let parsed;try{const m=out.match(/\{[\s\S]*\}/);parsed=JSON.parse(m?m[0]:out)}catch{parsed={answer:out,recommendedProductIds:[]}}
+ const idsOk=new Set(products.map(p=>p.id)),ids=Array.isArray(parsed.recommendedProductIds)?[...new Set(parsed.recommendedProductIds.map(String).filter(x=>idsOk.has(x)))].slice(0,3):[];
+ return reply(req,env,{answer:clean(parsed.answer,2200)||"ما الطابع العطري أو الميزانية التي تفضلها؟",recommendedProductIds:ids})
+}};
