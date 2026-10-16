@@ -1,0 +1,39 @@
+name: Mamlaka AI Worker Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "ai-worker/**"
+      - "scripts/ai-worker-test.mjs"
+      - ".github/workflows/ai-worker-tests.yml"
+      - ".github/workflows/deploy-ai-worker.yml"
+  pull_request:
+    paths:
+      - "ai-worker/**"
+      - "scripts/ai-worker-test.mjs"
+      - ".github/workflows/ai-worker-tests.yml"
+      - ".github/workflows/deploy-ai-worker.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mamlaka-ai-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run Worker security and response tests
+        run: node scripts/ai-worker-test.mjs
