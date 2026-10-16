@@ -202,7 +202,7 @@
   }
   function renderProducts() {
     const q=norm($("#productSearch").value), gender=$("#genderFilter").value, family=$("#familyFilter").value;
-    const list=products.filter(p=>p.productType!=="oil" && p.productType!=="bakhoor" && (!gender||p.gender===gender) && (!family||p.family===family) && (!q||norm([p.nameAr,p.nameEn,p.brand,p.family,p.descriptionAr].join(" ")).includes(q)));
+    const list=products.filter(p=>p.productType!=="oil" && p.productType!=="bakhoor" && (!gender||p.gender===gender) && (!family||p.family===family) && (!q||norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[]),p.family,p.descriptionAr].join(" ")).includes(q)));
     $("#readyProducts").innerHTML=list.map(productCard).join("");
     $("#noProducts").classList.toggle("hidden",list.length>0);
     $("#resultsMessage").textContent=`${list.length} منتج في الكتالوج المعروض · الأسماء التي تحمل «يحتاج مراجعة» غير معتمدة للبيع حتى مراجعتها.`;
@@ -220,7 +220,7 @@
     const all=products.filter(p=>p.supplierCatalogItem || p.productType==="oil");
     const q=norm($("#supplierOilSearch")?.value||""),cat=$("#supplierOilCategory")?.value||"",family=$("#supplierOilFamily")?.value||"";
     const categoryMap={MEN:"رجالي",WOMEN:"نسائي",UNISEX:"للجنسين",ORIENTAL:"شرقي",KIDS:"أطفال",DIFFUSER:"فواحات"};
-    const filtered=all.filter(p=>(!cat||!p.supplierCatalogItem||p.supplierCategory===cat)&&(!family||p.family===family)&&(!q||norm([p.nameAr,p.nameEn,p.supplierSku,p.family,p.gender,p.brand].join(" ")).includes(q)));
+    const filtered=all.filter(p=>(!cat||!p.supplierCatalogItem||p.supplierCategory===cat)&&(!family||p.family===family)&&(!q||norm([p.nameAr,p.nameEn,p.supplierSku,p.family,p.gender,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(q)));
     const visible=filtered.slice(0,supplierVisibleLimit);
     grid.innerHTML=visible.map(productCard).join("");
     $("#supplierOilSummary").textContent=all.length?("إجمالي "+all.length+" نوع زيت من الموردين · المعروض "+visible.length+" من "+filtered.length+" · الأسعار الداخلية غير معروضة هنا."): "استورد ملف كتالوج الموردين من لوحة الإدارة لعرض الأنواع كاملة.";
@@ -326,7 +326,7 @@
     const occasion=/سهرة|فرح|زفاف|مناسبة|مساء|حفلة|evening|wedding|event/.test(q);
     const candidates=products.filter(p=>p.productType!=="oil"&&p.productType!=="bakhoor");
     const scored=candidates.map(p=>{
-      const hay=norm([p.family,p.scentNature,p.descriptionAr,p.nameAr,p.nameEn,p.gender].join(" "));
+      const hay=norm([p.family,p.scentNature,p.descriptionAr,p.nameAr,p.nameEn,p.gender,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" "));
       let score=0;
       if(matched){const hits=matched.words.filter(w=>hay.includes(norm(w)));score+=hits.length?Math.min(8,hits.length*2):0;if(hay.includes(norm(matched.label)))score+=2;}
       if(gender){if(p.gender===gender)score+=4;else if(p.gender==="للجنسين")score+=2;else score-=5;}
@@ -408,5 +408,5 @@
   document.addEventListener("mamlaka:supplier-catalog-updated",syncAllProducts);
   setLanguage(language);renderProducts();renderSupplierOils();populateBlendOils();renderCart();updateCounts();blendPrice();loadPublicCatalog();
   // If search misses, offer a direct request without pretending the catalog contains the item.
-  $("#productSearch").addEventListener("keydown",e=>{if(e.key==="Enter" && !products.some(p=>norm([p.nameAr,p.nameEn,p.brand].join(" ")).includes(norm(e.target.value)))){if(e.target.value.trim() && confirm(`لم نعثر على «${e.target.value.trim()}». هل تريد الاستفسار عنه عبر واتساب؟`))requestMissing(e.target.value.trim());}});
+  $("#productSearch").addEventListener("keydown",e=>{if(e.key==="Enter" && !products.some(p=>norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(norm(e.target.value)))){if(e.target.value.trim() && confirm(`لم نعثر على «${e.target.value.trim()}». هل تريد الاستفسار عنه عبر واتساب؟`))requestMissing(e.target.value.trim());}});
 })();
