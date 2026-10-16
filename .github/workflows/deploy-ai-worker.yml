@@ -1,0 +1,66 @@
+name: Deploy Mamlaka AI Worker
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "ai-worker/**"
+      - ".github/workflows/deploy-ai-worker.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mamlaka-ai-worker
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check required secrets
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          AI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          test -n "$CF_API_TOKEN" || (echo "::error::Add CLOUDFLARE_API_TOKEN in GitHub Actions secrets." && exit 1)
+          test -n "$CF_ACCOUNT_ID" || (echo "::error::Add CLOUDFLARE_ACCOUNT_ID in GitHub Actions secrets." && exit 1)
+          test -n "$AI_API_KEY" || (echo "::error::Add OPENAI_API_KEY in GitHub Actions secrets." && exit 1)
+
+      - name: Install Wrangler
+        run: npm install --global wrangler
+
+      - name: Configure Worker secret
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          printf '%s' "$OPENAI_API_KEY" | wrangler secret put OPENAI_API_KEY --config ai-worker/wrangler.toml
+
+      - name: Deploy Worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: wrangler deploy --config ai-worker/wrangler.toml
+
+      - name: Verify Worker health endpoint
+        env:
+          WORKER_BASE_URL: ${{ vars.MAMLAKA_AI_WORKER_URL }}
+        run: |
+          if [ -z "$WORKER_BASE_URL" ]; then
+            echo "::notice::Set repository variable MAMLAKA_AI_WORKER_URL to your https://<worker>.workers.dev URL to enable this verification step."
+            exit 0
+          fi
+          curl --fail --silent --show-error "$WORKER_BASE_URL/health" | tee health.json
+          node -e "const fs=require('fs');const x=JSON.parse(fs.readFileSync('health.json','utf8'));if(x.ok!==true||x.configured!==true)process.exit(1)"
