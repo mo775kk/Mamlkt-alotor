@@ -89,18 +89,25 @@ try {
   const head = html.split(/<\/head>/i, 1)[0];
   report(head.includes("window.addEventListener('beforeinstallprompt'") &&
     head.includes("window.addEventListener('appinstalled'") &&
-    head.includes("dataset.installHandlerAttached"),
+    head.includes("dataset.pwaBound") && head.includes("showHelp()"),
     "PWA install lifecycle listeners are registered in the document head before UI scripts");
   report(html.includes("event.preventDefault()") && html.includes("promptEvent.prompt()") &&
     html.includes("promptEvent.userChoice") && html.includes("button.addEventListener('click'"),
     "Install button captures and invokes the browser-native install prompt and handles completion");
-  report(html.includes("button.hidden=isStandalone()||!installPrompt"),
-    "Install button is only offered when a native install prompt is available and app is not installed");
+  report(html.includes("button.hidden=standalone()") && html.includes("pwaInstallHelp") &&
+    html.includes("showHelp()") && !html.includes("button.hidden=isStandalone()||!installPrompt"),
+    "Install action stays available and offers browser-specific guidance when native install prompt is withheld");
+  report(html.includes("id=\"pwaHelpSteps\"") && html.includes("إضافة إلى الشاشة الرئيسية"),
+    "Install fallback explains Android/iOS steps in an accessible dialog");
+  report(html.includes('content="#5B243F"') && manifest.theme_color === "#5B243F",
+    "Browser and installed-app theme colors match the royal berry palette");
+  report(html.includes("royal-bright-ux.css?v=20261016-bright1"),
+    "Bright pearl-pink and gold visual layer is linked from the storefront");
 } catch (e) {
   report(false, "Unable to validate PWA install files: " + e.message);
 }
 
-const jsFiles = ["app.js", "ai-service.js", "settings.js", "enhancements.js", "supplier-catalog.js", "catalog-editor.js", "site-upgrades.js", "royal-gift-planner.js", "inventory-accounting.js", "royal-interactions.js", "royal-finish.js", "section-folds.js"];
+const jsFiles = ["app.js", "ai-service.js", "settings.js", "enhancements.js", "supplier-catalog.js", "catalog-editor.js", "site-upgrades.js", "royal-gift-planner.js", "inventory-accounting.js", "royal-interactions.js", "royal-finish.js", "section-folds.js", "blending-atelier.js"];
 for (const file of jsFiles) {
   try {
     new vm.Script(read(file), { filename: file });
