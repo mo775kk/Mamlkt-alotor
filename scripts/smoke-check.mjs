@@ -30,7 +30,7 @@ try {
   report(false, "Unable to validate index.html: " + e.message);
 }
 
-const jsFiles = ["app.js", "settings.js", "enhancements.js", "supplier-catalog.js", "catalog-editor.js", "site-upgrades.js", "royal-gift-planner.js", "inventory-accounting.js", "royal-interactions.js"];
+const jsFiles = ["app.js", "settings.js", "enhancements.js", "supplier-catalog.js", "catalog-editor.js", "site-upgrades.js", "royal-gift-planner.js", "inventory-accounting.js", "royal-interactions.js", "royal-finish.js", "section-folds.js"];
 for (const file of jsFiles) {
   try {
     new vm.Script(read(file), { filename: file });
