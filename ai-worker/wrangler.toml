@@ -1,0 +1,7 @@
+name = "mamlakat-al-otor-ai"
+main = "src/index.js"
+compatibility_date = "2026-10-16"
+
+[vars]
+OPENAI_MODEL = "gpt-4.1-mini"
+ALLOWED_ORIGINS = "https://mo775kk.github.io,https://mamlaketalotor.com,https://www.mamlaketalotor.com"
