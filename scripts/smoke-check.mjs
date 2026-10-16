@@ -41,6 +41,18 @@ try {
     "PWA service worker is registered and handles requests");
   report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length,
     "PWA manifest contains app identity, launch URL, display mode and icon");
+  const iconFiles = (manifest.icons || []).map((icon) => icon.src).filter(Boolean);
+  report(iconFiles.length >= 2 && iconFiles.every((src) => fs.existsSync(path.join(root, src))),
+    "PWA manifest icon paths resolve to local files");
+  report(String(manifest.scope || "").startsWith("./") && String(manifest.start_url || "").startsWith("./"),
+    "PWA start URL and scope are relative to the GitHub Pages project path");
+  report(html.includes("window.addEventListener('beforeinstallprompt'") &&
+    html.includes("event.preventDefault()") && html.includes("promptEvent.prompt()") &&
+    html.includes("promptEvent.userChoice") && html.includes("window.addEventListener('appinstalled'"),
+    "Install button captures and invokes the browser-native install prompt and handles completion");
+  report(html.includes("button.hidden=isStandalone()||!installPrompt") &&
+    html.includes("button.addEventListener('click'"),
+    "Install button is only offered when a native install prompt is available and app is not installed");
 } catch (e) {
   report(false, "Unable to validate PWA install files: " + e.message);
 }
