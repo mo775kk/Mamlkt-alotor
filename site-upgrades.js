@@ -127,14 +127,20 @@
         const missingName = products.filter(p => !(p.nameAr || p.name_ar || p.nameEn || p.name_en)).map(p => p.id || "(بدون معرّف)");
         const missingSource = products.filter(p => !(p.sourceUrl || p.source_url)).map(p => p.id || p.nameEn || p.nameAr || "(منتج بلا اسم)");
         const missingPyramid = products.filter(p => !Array.isArray(p.topNotes || p.notes_top) || !(p.topNotes || p.notes_top).length || !Array.isArray(p.heartNotes || p.notes_heart) || !(p.heartNotes || p.notes_heart).length || !Array.isArray(p.baseNotes || p.notes_base) || !(p.baseNotes || p.notes_base).length).map(p => p.id || p.nameEn || p.nameAr || "(منتج بلا اسم)");
+        const hasPrice = p => {
+          const direct = Number(p.price);
+          if (p.price != null && Number.isFinite(direct) && direct > 0) return true;
+          const prices = p.prices && typeof p.prices === "object" ? Object.values(p.prices) : [];
+          return prices.some(value => value != null && Number.isFinite(Number(value)) && Number(value) > 0);
+        };
+        const missingPrice = products.filter(p => !hasPrice(p)).map(p => p.id || p.nameEn || p.nameAr || "(منتج بلا اسم)");
+        const missingImage = products.filter(p => !(p.image || p.imageUrl || p.image_url)).map(p => p.id || p.nameEn || p.nameAr || "(منتج بلا اسم)");
+        const notAvailable = products.filter(p => p.available !== true || p.needsReview !== false).map(p => p.id || p.nameEn || p.nameAr || "(منتج بلا اسم)");
         const needsReview = products.filter(p => p.needsReview === true || p.notesStatus === "needs-review" || p.notesStatus === "needsReview").length;
-        const report = { schemaVersion: 1, generatedAt: new Date().toISOString(), source: "data/products.json",
-          summary: { total: products.length, duplicateIds: duplicateIds.length, duplicateNames: duplicateNames.length, missingName: missingName.length, missingSource: missingSource.length, missingNotePyramid: missingPyramid.length, needsReview },
-          duplicateIds, duplicateNames, missingName, missingSource, missingNotePyramid: missingPyramid };
-        output.innerHTML = "<strong>نتيجة فحص الكتالوج</strong><p>إجمالي المنتجات: " + report.summary.total + " · معرّفات مكررة: " + duplicateIds.length + " · أسماء محتملة التكرار: " + duplicateNames.length + " · بلا مصدر: " + missingSource.length + " · هرم عطري ناقص: " + missingPyramid.length + " · تحتاج مراجعة: " + needsReview + "</p><p class=\"admin-note\">التكرار بالاسم تنبيه للمراجعة فقط؛ قد توجد إصدارات مختلفة بالاسم المتشابه. لم يتم تعديل أي بيانات.</p>";
-        const details = document.createElement("pre"); details.className = "royal-json-preview"; details.dir = "ltr"; details.textContent = JSON.stringify(report, null, 2); output.append(details);
-        const exportButton = document.createElement("button"); exportButton.type = "button"; exportButton.className = "small-btn primary"; exportButton.textContent = "تنزيل تقرير الفحص JSON";
-        exportButton.addEventListener("click", () => download("mamlakat-catalog-audit.json", JSON.stringify(report, null, 2))); output.append(exportButton);
+        const report = { schemaVersion: 2, generatedAt: new Date().toISOString(), source: "data/products.json",
+          summary: { total: products.length, duplicateIds: duplicateIds.length, duplicateNames: duplicateNames.length, missingName: missingName.length, missingSource: missingSource.length, missingNotePyramid: missingPyramid.length, missingPrice: missingPrice.length, missingImage: missingImage.length, notAvailable: notAvailable.length, needsReview },
+          duplicateIds, duplicateNames, missingName, missingSource, missingNotePyramid: missingPyramid, missingPrice, missingImage, notAvailable };
+        output.innerHTML = "<strong>نتيجة فحص الكتالوج</strong><p>إجمالي المنتجات: " + report.summary.total + " · معرّفات مكررة: " + duplicateIds.length + " · أسماء محتملة التكرار: " + duplicateNames.length + " · بلا مصدر: " + missingSource.length + " · هرم عطري ناقص: " + missingPyramid.length + "</p><p>بلا سعر: " + missingPrice.length + " · بلا صورة: " + missingImage.length + " · غير معتمد للبيع: " + notAvailable.length + " · تحتاج مراجعة: " + needsReview + "</p><p class=\"admin-note\">غياب السعر أو الصورة تنبيه لإكمال البيانات، وليس إذنًا بتخمينها. التكرار بالاسم تنبيه للمراجعة فقط؛ قد توجد إصدارات مختلفة بالاسم المتشابه. لم يتم تعديل أي بيانات.</p>";
       } catch (error) { output.textContent = "تعذر فحص الكتالوج: " + error.message + " — لم يتم تعديل البيانات."; }
     });
     $("#royalFileSearch")?.addEventListener("input",renderFileList);
