@@ -1,0 +1,33 @@
+name: Mamlaka Website Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mamlaka-site-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check storefront files, PWA, catalog and AI integration
+        run: node scripts/smoke-check.mjs
+
+      - name: Check AI Worker request handling
+        run: node scripts/ai-worker-test.mjs
