@@ -44,6 +44,13 @@ try {
   const iconFiles = (manifest.icons || []).map((icon) => icon.src).filter(Boolean);
   report(iconFiles.length >= 2 && iconFiles.every((src) => fs.existsSync(path.join(root, src))),
     "PWA manifest icon paths resolve to local files");
+  const rasterSizes = new Set((manifest.icons || []).filter((icon) => icon.type === "image/png").map((icon) => icon.sizes));
+  report(rasterSizes.has("192x192") && rasterSizes.has("512x512"),
+    "PWA manifest includes 192px and 512px PNG install-icon fallbacks");
+  report(worker.includes('const CACHE_NAME = "mamlakat-al-otor-shell-v4"') &&
+    worker.includes('BASE_PATH + "assets/images/app-icon-192.png"') &&
+    worker.includes('BASE_PATH + "assets/images/app-icon-512.png"'),
+    "PWA service worker pre-caches both raster install icons in the current shell");
   report(String(manifest.scope || "").startsWith("./") && String(manifest.start_url || "").startsWith("./"),
     "PWA start URL and scope are relative to the GitHub Pages project path");
   const head = html.split(/<\/head>/i, 1)[0];
