@@ -1,0 +1,54 @@
+/* MAMLaka — complete visible visual overhaul, v2026.10.16 */
+:root{
+ --mk-ink:#3a1830;--mk-berry:#6b294d;--mk-berry2:#8b3f68;--mk-rose:#e9a2bd;
+ --mk-pink:#f6d6e4;--mk-blush:#fff0f6;--mk-gold:#c69a3b;--mk-champagne:#f7e6b3;
+ --mk-cream:#fffaf4;--mk-paper:#fffdfb;--mk-text:#42283a;--mk-muted:#856b7a;
+ --mk-border:rgba(198,154,59,.42);--mk-shadow:0 14px 40px rgba(77,31,57,.13);
+}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:radial-gradient(ellipse at 8% 8%,rgba(246,214,228,.88),transparent 34%),radial-gradient(ellipse at 92% 26%,rgba(247,230,179,.58),transparent 28%),linear-gradient(145deg,#fffaf4 0%,#fff0f6 42%,#fffdfb 100%)!important;color:var(--mk-text)!important}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(120deg,transparent 0 48%,rgba(255,255,255,.32) 49%,transparent 51%);opacity:.6}
+header,.site-header,.main-header,.topbar,.navbar,.nav-bar,.header-inner{background:linear-gradient(110deg,#4c1e39 0%,#71324f 48%,#9c5277 100%)!important;color:#fff8f2!important;border-color:rgba(247,230,179,.48)!important;box-shadow:0 8px 30px rgba(65,22,47,.2)!important}
+header a,.site-header a,.main-header a,.navbar a,.topbar a,header button{color:#fff7ed!important}
+nav a,.nav-link{border-radius:999px;transition:background .2s,transform .2s}
+nav a:hover,.nav-link:hover{background:rgba(247,230,179,.2)!important;color:#ffe5a2!important;transform:translateY(-1px)}
+main,.page,.container,.content,.section,.section-inner{color:var(--mk-text)}
+.hero,.hero-section,.home-hero,.banner,.landing-hero,[class*="hero"]{border-color:var(--mk-border)!important}
+.hero,.hero-section,.home-hero,.landing-hero{background:linear-gradient(120deg,rgba(255,245,249,.97),rgba(255,250,244,.92) 48%,rgba(247,230,179,.45))!important;color:var(--mk-ink)!important;border-radius:28px;box-shadow:var(--mk-shadow)}
+.hero h1,.hero h2,.hero-section h1,.home-hero h1,.landing-hero h1,[class*="hero"] h1{color:var(--mk-berry)!important;text-shadow:none!important}
+h1,h2,h3,h4,.section-title,.brand-title{color:var(--mk-berry)!important}
+p,li,label,.muted,.subtitle,.description{color:inherit}
+section{scroll-margin-top:100px}
+.card,.product-card,.perfume-card,.category-card,.feature-card,.panel,.box,.modal-content,.dialog,.product-detail,.advisor-card,.stat-card,.guide-card,.family-card,.oil-card,.gift-card,[class*="product-card"],[class*="category-card"]{background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(255,244,249,.94))!important;color:var(--mk-text)!important;border:1px solid var(--mk-border)!important;border-radius:20px!important;box-shadow:var(--mk-shadow)!important}
+.card:hover,.product-card:hover,.perfume-card:hover,.category-card:hover,[class*="product-card"]:hover{border-color:var(--mk-gold)!important;box-shadow:0 18px 44px rgba(107,41,77,.18)!important}
+.product-card img,.perfume-card img,.category-card img{border-radius:15px;object-fit:contain}
+.price,.product-price,.price-tag,.amount,[class*="price"]{color:#8a5d0d!important;font-weight:800}
+button,.btn,.button,input[type=submit],input[type=button]{transition:transform .18s,box-shadow .18s,filter .18s}
+button:not(.icon-button),.btn,.button,input[type=submit],input[type=button]{background:linear-gradient(120deg,#6b294d,#9b4e76)!important;color:#fffaf4!important;border:1px solid rgba(247,230,179,.82)!important;border-radius:999px!important;box-shadow:0 6px 16px rgba(107,41,77,.18)}
+button:hover,.btn:hover,.button:hover,input[type=submit]:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 10px 22px rgba(107,41,77,.22)}
+button.secondary,.btn-secondary,.outline,.icon-button{background:rgba(255,255,255,.86)!important;color:var(--mk-berry)!important;border:1px solid var(--mk-border)!important}
+input,select,textarea{background:#fffdfb!important;color:var(--mk-text)!important;border:1px solid rgba(139,63,104,.3)!important;border-radius:13px!important;box-shadow:inset 0 1px 2px rgba(77,31,57,.03)}
+input:focus,select:focus,textarea:focus{outline:3px solid rgba(233,162,189,.3)!important;border-color:var(--mk-berry2)!important}
+a{color:var(--mk-berry2)}
+a:hover{color:#9b5e0a}
+hr,.divider{border-color:var(--mk-border)!important}
+.badge,.tag,.chip,.pill{border-radius:999px}
+footer,.site-footer{background:linear-gradient(120deg,#3a1830,#6b294d 65%,#8b3f68)!important;color:#fff6ed!important;border-top:2px solid var(--mk-gold)!important}
+footer p,footer a,footer h2,footer h3,.site-footer p,.site-footer a{color:#fff6ed!important}
+.modal,.modal-backdrop,.overlay{backdrop-filter:blur(8px)}
+.modal-content,.dialog{background:linear-gradient(145deg,#fffdfb,#fff0f6)!important}
+table{border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:14px;background:#fffdfb}
+th{background:#6b294d!important;color:#fff7ed!important}
+td{border-color:rgba(198,154,59,.25)!important}
+tr:nth-child(even) td{background:#fff3f8}
+::selection{background:#e9a2bd;color:#3a1830}
+:focus-visible{outline:3px solid #c69a3b!important;outline-offset:3px}
+img{max-width:100%}
+@media(max-width:760px){
+ body{background:radial-gradient(ellipse at 50% 0%,#f8dce8 0%,transparent 38%),linear-gradient(160deg,#fffaf4,#fff0f6 65%,#fffdfb)!important}
+ header,.site-header,.main-header,.topbar,.navbar,.nav-bar{border-radius:0 0 18px 18px!important}
+ .hero,.hero-section,.home-hero,.landing-hero{border-radius:20px!important;padding:18px!important}
+ .card,.product-card,.perfume-card,.category-card,.panel{border-radius:16px!important}
+ button,.btn,.button{min-height:42px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
