@@ -106,7 +106,7 @@ try {
 
 report(html.includes("royal-bright-redesign.css?v=20261016-visible-hotfix1"),
   "Visible bright theme hotfix is linked with a fresh cache-buster");
-report(html.includes("sw.js?v=20261016-shell7") && read("sw.js").includes('const CACHE_NAME = "mamlakat-al-otor-shell-v7"'),
+report(html.includes("sw.js?v=20261016-fragrance-notes3") && read("sw.js").includes('const CACHE_NAME = "mamlakat-al-otor-shell-v9"'),
   "Service worker URL and cache shell version are synchronized");
 
 } catch (e) {
@@ -220,10 +220,10 @@ try {
     app.includes("لم تُوثق بعد"),
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
-  report(html.includes("app.js?v=20261016-fragrance-notes1") &&
+  report(html.includes("app.js?v=20261016-fragrance-notes3") &&
     html.includes("royal-polish.css?v=20261016-fragrance-notes1"),
     "Storefront cache-busters point to the latest fragrance-note interface");
-  report(read("sw.js").includes('const CACHE_NAME = "mamlakat-al-otor-shell-v7"'),
+  report(read("sw.js").includes('const CACHE_NAME = "mamlakat-al-otor-shell-v9"'),
     "PWA cache version is refreshed to deliver the updated catalog");
 } catch (e) {
   report(false, "Unable to validate fragrance-note research coverage: " + e.message);
