@@ -131,6 +131,12 @@ try {
     "Catalog audit reports missing prices, missing images and unapproved products");
   report(upgrades.includes("schemaVersion: 2") && upgrades.includes("missingPrice, missingImage, notAvailable"),
     "Catalog audit exports the expanded diagnostic fields");
+  report(upgrades.includes("noteCoverage") && upgrades.includes("completeOils") &&
+    upgrades.includes("completeReady") && upgrades.includes("royalDownloadCatalogAudit") &&
+    upgrades.includes("mamlakat-catalog-audit.json"),
+    "Catalog audit separates oil/ready-fragrance note coverage and exports a JSON report");
+  report(read("index.html").includes("site-upgrades.js?v=20261016-note-coverage3"),
+    "Catalog note-coverage audit is linked with a fresh cache-buster");
 } catch (e) {
   report(false, "Unable to validate catalog audit diagnostics: " + e.message);
 }
