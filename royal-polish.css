@@ -1053,3 +1053,9 @@ button,select,.btn,.category-card,.product-card{transition-duration:.22s}
 
 /* AI deployment helper: readable secret names and thumb-friendly copy controls. */
 .ai-secret-list{display:grid;gap:8px;padding-inline-start:20px;margin:12px 0}.ai-secret-list li{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 10px;border:1px solid rgba(212,175,55,.28);border-radius:10px;background:rgba(212,175,55,.06)}.ai-secret-list code{direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}.ai-secret-list .small-btn{flex:0 0 auto;min-width:92px}
+
+
+/* Fragrance note provenance and transparent research status */
+.fragrance-note-pyramid .note-disclaimer{margin:10px 0;padding:10px 12px;border-inline-start:3px solid #d4af37;border-radius:8px;background:rgba(212,175,55,.08);color:var(--muted,#665b66);font-size:.92em;line-height:1.8;overflow-wrap:anywhere}
+.fragrance-note-pyramid .note-confidence{margin:8px 0;color:var(--text,#332637);font-size:.9em;line-height:1.8;overflow-wrap:anywhere}
+.fragrance-note-pyramid .modal-review-note{margin:10px 0;padding:10px 12px;border-inline-start:3px solid #c06b8e;border-radius:8px;background:rgba(192,107,142,.09);line-height:1.8;overflow-wrap:anywhere}
