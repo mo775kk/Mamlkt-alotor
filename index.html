@@ -79,7 +79,7 @@
     function init(){
       sync();
       if('serviceWorker' in navigator&&location.protocol==='https:'){
-        navigator.serviceWorker.register('./sw.js?v=20261016-shell7',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
+        navigator.serviceWorker.register('./sw.js?v=20261016-house-search2',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
       }
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
@@ -341,7 +341,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="ai-service.js?v=20261016-ai-bridge1"></script>
-  <script src="app.js?v=20261016-fragrance-notes1"></script>
+  <script src="app.js?v=20261016-house-search2"></script>
   <script src="settings.js?v=20261016-ai-diagnostics1"></script>
   <script src="enhancements.js?v=20261015-voice-guide1"></script>
   <script src="supplier-catalog.js?v=20261014-public-oils1"></script>
