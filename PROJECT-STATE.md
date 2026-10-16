@@ -376,3 +376,12 @@
 - Commit سير الاختبارات: https://github.com/mo775kk/Mamlkt-alotor/commit/ccd9765b6ea70cb778e937647477564544499e74
 - Commit توثيق النشر والاختبارات: https://github.com/mo775kk/Mamlkt-alotor/commit/5196c54a85aa6ddc2cc98252e2f015f486980bee
 - الحالة: تم حفظ الملفات في المستودع. لا أملك حتى الآن نتيجة تشغيل GitHub Actions تؤكد نجاح الاختبارات؛ يجب مراجعة تبويب Actions. لم تُنشر خدمة AI ولم يُثبت اتصال حي بالنموذج حتى الآن.
+
+
+## متابعة تنفيذ 2026-10-16 — فحص المتجر وملفات PWA تلقائيًا
+- إضافة سير عمل `.github/workflows/site-checks.yml` لتشغيل `scripts/smoke-check.mjs` و`scripts/ai-worker-test.mjs` عند كل push إلى `main`، وعلى Pull Requests، مع تشغيل يدوي.
+- الهدف: كشف الملفات المرتبطة المفقودة، أخطاء صياغة JavaScript، ومشكلات تكامل PWA والكتالوج ومستشار AI قبل اعتبار التعديل سليمًا.
+- Commit: https://github.com/mo775kk/Mamlkt-alotor/commit/12dd0b0f9a038f919a34ff2e36a5885428eac1a0
+- الموقع المنشور المفترض وفق إعداد GitHub Pages الحالي: https://mo775kk.github.io/Mamlkt-alotor/
+- قيد التحقق: بيئة هذه الجلسة لم تستطع الاتصال بعنوان الموقع مباشرة بسبب تعذر حل DNS، ولا يوجد حتى هذه اللحظة تقرير Actions مؤكد لهذا التغيير. لذلك لم أؤكد حالة النشر الحية أو نجاح الفحوص بعد.
+- لا تغيّر ملفات إعداد GitHub Pages أو تنشئ نشرًا بديلًا قبل التأكد من طريقة النشر الحالية؛ تجنبًا لتعطيل الموقع الموجود.
