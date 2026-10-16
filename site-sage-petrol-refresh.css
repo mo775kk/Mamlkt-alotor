@@ -1,0 +1,101 @@
+/* MAMLKAT AL-OTOR — Sage, petrol & porcelain visual refresh
+   Presentation-only layer: no product, cart, customer, or localStorage data is changed. */
+:root{
+  color-scheme:light!important;
+  --bg:#f3f6f2!important;
+  --panel:#ffffff!important;
+  --panel2:#e8f0eb!important;
+  --text:#263f3d!important;
+  --muted:#617875!important;
+  --gold:#b76e4b!important;
+  --gold2:#e5b18c!important;
+  --line:#d4e1db!important;
+  --shadow:0 16px 38px rgba(35,69,64,.09)!important;
+  --mk-ink:#213c3a;--mk-berry:#285752;--mk-berry2:#477b70;
+}
+html{background:#f3f6f2!important;color-scheme:light!important;scroll-padding-top:100px}
+body{
+  color:#263f3d!important;
+  background:
+    radial-gradient(ellipse at 4% 0%,rgba(173,207,190,.34),transparent 32%),
+    radial-gradient(ellipse at 100% 16%,rgba(231,190,159,.22),transparent 29%),
+    linear-gradient(140deg,#f3f6f2 0%,#fff 48%,#edf3ef 100%)!important;
+  font-size:16px;line-height:1.85;letter-spacing:.012em;
+}
+main{width:100%;max-width:none!important;margin-inline:auto;background:linear-gradient(180deg,rgba(243,246,242,.72),#fff 35%,#eef4f0 80%,#f8f3ed)!important}
+.site-header{
+  background:linear-gradient(105deg,#203d3b 0%,#2f625b 58%,#568477 100%)!important;
+  border-bottom:2px solid #d8a27e!important;box-shadow:0 8px 26px rgba(32,61,59,.17)!important;
+}
+.site-header .brand strong,.site-header .main-nav a,.site-header .header-actions .icon-btn,.site-header .menu-toggle{color:#f8fbf7!important}
+.site-header .brand small{color:#e9c3a8!important}
+.site-header .main-nav{background:#f8fbf8!important;border-color:#d4e1db!important}
+.site-header .main-nav a{border-radius:10px;color:#285752!important}
+.site-header .main-nav a:hover,.site-header .main-nav a.active{background:#e3eee8!important;color:#a45d3d!important}
+.site-header .header-actions .icon-btn,.site-header .menu-toggle{border-color:rgba(232,244,237,.45)!important}
+.hero{background:linear-gradient(120deg,#244b47,#538477 58%,#d8b094)!important;border:1px solid #d8a27e!important;box-shadow:0 18px 42px rgba(35,69,64,.15)!important}
+.hero .hero-shade{background:linear-gradient(90deg,rgba(22,47,45,.70),rgba(30,65,59,.32) 55%,rgba(30,65,59,.04))!important}
+.hero .hero-copy h1{color:#fff!important;line-height:1.4;letter-spacing:.01em}
+.hero .hero-copy h1 span,.hero .hero-copy .eyebrow{color:#f0c6a6!important}
+.hero .hero-actions .btn-gold{background:linear-gradient(115deg,#f0d0b5,#dba17e)!important;color:#243d3a!important;border-color:#d6a17e!important}
+.trust-strip{background:linear-gradient(100deg,#e4efe9,#fff 55%,#f5e9df)!important;border-color:#d4e1db!important;border-radius:20px!important}
+.section,.section-inner{max-width:1440px!important;margin-inline:auto!important}
+.section{padding-block:clamp(30px,4.4vw,68px)!important;padding-inline:clamp(18px,4vw,64px)!important}
+.section-heading{gap:22px!important;align-items:end!important;margin-bottom:clamp(22px,3vw,38px)!important}
+.section-heading h2,.contact-card h2,.gift-copy h2,.feature-copy h2,.category-card h3,.royal-family-box summary,.blend-step label{color:#285752!important;line-height:1.55!important;letter-spacing:.015em}
+.section-heading p,.section p:not(.eyebrow),.section li,.section label,.product-card p,.product-card small{color:#617875}
+.eyebrow{color:#a45d3d!important;letter-spacing:.09em!important;line-height:1.8!important}
+.category-grid{gap:clamp(14px,2vw,26px)!important}
+.category-card,.category-tile,.feature-card,.contact-card,.gift-card,.guide-card,.info-card,.product-card,.product-tile,.product-item,.split-feature,.blend-panel,.royal-family-box,.toolbar,.customer-price-notice,.blend-price-guide{
+  color:#263f3d!important;border-color:#d4e1db!important;border-radius:20px!important;
+  box-shadow:0 12px 30px rgba(35,69,64,.075)!important;
+}
+.category-card{background:linear-gradient(145deg,#fff,#edf5f0 76%,#f8eee6)!important;padding:clamp(16px,2vw,26px)!important}
+.product-card,.product-tile,.product-item{background:linear-gradient(155deg,#fff,#f7faf7 70%,#edf4ef)!important}
+.product-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr))!important;gap:clamp(14px,1.8vw,24px)!important}
+.product-card:hover,.category-card:hover{border-color:#8eb4a5!important;box-shadow:0 18px 36px rgba(35,69,64,.13)!important}
+.category-icon-wrap{background:linear-gradient(145deg,#e6f1eb,#f8ece3)!important;color:#a45d3d!important;border-color:#c6dbd0!important}
+.price,.product-price,.price-tag{color:#a45d3d!important}
+.btn-gold,.btn-primary,.primary-btn,.full-width.btn-gold{background:linear-gradient(115deg,#e8c09f,#c98762)!important;color:#263f3d!important;border:1px solid #c98762!important;box-shadow:0 7px 18px rgba(164,93,61,.16)!important}
+.btn-outline,.secondary-btn{background:#fff!important;color:#2f625b!important;border-color:#9bbdb0!important}
+input,select,textarea,.search-box{background:#fff!important;color:#263f3d!important;border-color:#cbdcd3!important;border-radius:12px!important;line-height:1.7!important}
+input::placeholder,textarea::placeholder{color:#7b928b!important}
+.toolbar{padding:clamp(12px,1.8vw,22px)!important;gap:12px!important;background:linear-gradient(110deg,#f5faf7,#fff)!important}
+.split-feature{max-width:1320px!important;margin:clamp(24px,4vw,54px) auto!important;background:linear-gradient(120deg,#fff,#eaf3ee)!important}
+.product-modal,.cart-drawer,.settings-panel,.admin-panel,.modal-content,.drawer{background:linear-gradient(145deg,#fff,#edf5f0)!important;color:#263f3d!important;border-color:#cbdcd3!important}
+.fragrance-note-pyramid{background:linear-gradient(145deg,#fff,#eef5f1)!important;border-color:#d4e1db!important}
+.fragrance-note-pyramid h3,.fragrance-note-pyramid b{color:#a45d3d!important}
+.note-disclaimer,.modal-review-note{background:#f7eee6!important;border-color:#e5c8b3!important;color:#5d6256!important}
+.site-footer,footer{background:linear-gradient(110deg,#203d3b,#2f625b 65%,#6e8777)!important;color:#f7fbf7!important;border-top:2px solid #d8a27e!important}
+.site-footer a,footer a{color:#f1c7a8!important}
+.site-footer p,footer p,.site-footer small,footer small{color:#edf5ef!important}
+table{width:100%;max-width:100%;border-collapse:separate!important;border-spacing:0!important;border:1px solid #d4e1db!important;border-radius:14px!important;overflow:hidden;background:#fff!important;line-height:1.75!important}
+th{background:#2f625b!important;color:#fff!important;text-align:right!important;padding:13px 15px!important;white-space:normal!important}
+td{padding:12px 15px!important;border-bottom:1px solid #e1ebe5!important;color:#314b47!important;white-space:normal!important;overflow-wrap:anywhere!important;vertical-align:top!important}
+tr:nth-child(even) td{background:#f1f7f3!important}
+.ia-table-wrap{width:100%;max-width:100%;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+.ia-table{min-width:680px!important;font-size:13px!important}
+.ia-table th,.ia-table td{padding:11px 13px!important;white-space:normal!important}
+.ia-table td small{max-width:260px!important;line-height:1.7!important}
+p,li,.product-description,.section-heading p{overflow-wrap:anywhere;line-height:1.9}
+p{margin-block:.55em}
+h1,h2,h3,h4{line-height:1.5!important;letter-spacing:.012em}
+section{scroll-margin-top:105px}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #c98762!important;box-shadow:0 0 0 5px rgba(201,135,98,.18)!important}
+::selection{background:#c7dfd3;color:#203d3b}
+@media(min-width:1500px){.section{padding-inline:clamp(64px,6vw,100px)!important}.product-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))!important}}
+@media(max-width:760px){
+ body{font-size:15px;background:linear-gradient(160deg,#f3f6f2,#fff 52%,#edf3ef)!important}
+ .section{padding:30px 17px!important}
+ .section-heading{align-items:flex-start!important;gap:8px!important}
+ .category-grid{gap:12px!important}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:11px!important}
+ .product-card{min-width:0;padding:10px!important;border-radius:15px!important}
+ .product-card p,.product-card small{line-height:1.7!important}
+ .toolbar{display:grid!important;grid-template-columns:1fr!important}
+ .toolbar>*{width:100%;min-width:0;max-width:100%}
+ .split-feature{margin:18px 12px!important;border-radius:18px!important}
+ table:not(.ia-table){display:block!important;overflow-x:auto!important;max-width:100%!important}
+}
+@media(max-width:380px){.product-grid{grid-template-columns:1fr!important}.section{padding-inline:13px!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
