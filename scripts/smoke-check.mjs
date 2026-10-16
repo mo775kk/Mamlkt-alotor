@@ -30,6 +30,21 @@ try {
   report(false, "Unable to validate index.html: " + e.message);
 }
 
+
+try {
+  const html = read("index.html");
+  const manifest = JSON.parse(read("manifest.webmanifest"));
+  const worker = read("sw.js");
+  report(html.includes('id="installAppBtn"') && html.includes("beforeinstallprompt"),
+    "Storefront exposes an install-app action");
+  report(html.includes("navigator.serviceWorker.register('./sw.js'") && worker.includes("addEventListener(\"fetch\""),
+    "PWA service worker is registered and handles requests");
+  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length,
+    "PWA manifest contains app identity, launch URL, display mode and icon");
+} catch (e) {
+  report(false, "Unable to validate PWA install files: " + e.message);
+}
+
 const jsFiles = ["app.js", "settings.js", "enhancements.js", "supplier-catalog.js", "catalog-editor.js", "site-upgrades.js", "royal-gift-planner.js", "inventory-accounting.js", "royal-interactions.js", "royal-finish.js", "section-folds.js"];
 for (const file of jsFiles) {
   try {
