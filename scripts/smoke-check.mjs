@@ -80,7 +80,7 @@ try {
     "192px PNG install icon has valid chunks, checksums and image data");
   report(validPng("assets/images/app-icon-512.png", 512),
     "512px PNG install icon has valid chunks, checksums and image data");
-  report(worker.includes('const CACHE_NAME = "mamlakat-al-otor-shell-v5"') &&
+  report(worker.includes('const CACHE_NAME = "mamlakat-al-otor-shell-v6"') &&
     worker.includes('BASE_PATH + "assets/images/app-icon-192.png"') &&
     worker.includes('BASE_PATH + "assets/images/app-icon-512.png"'),
     "PWA service worker pre-caches both raster install icons in the current shell");
@@ -172,6 +172,39 @@ try {
   const html = read("index.html");
   report(html.includes("app.js?v=20261016-fragrance-notes1"),
     "Storefront cache-buster points to the latest fragrance-note interface");
+} catch (e) {
+  report(false, "Unable to validate fragrance-note research coverage: " + e.message);
+}
+
+try {
+  const data = JSON.parse(read("data/products.json"));
+  const products = Array.isArray(data) ? data : data.products;
+  const oils = products.filter((p) => p.productType === "oil");
+  const ready = products.filter((p) => p.productType === "ready");
+  const hasPyramid = (p) => [p.topNotes, p.heartNotes, p.baseNotes].some((notes) => Array.isArray(notes) && notes.length);
+  const sourced = products.filter((p) =>
+    p.notesStatus === "reference-fragrance-notes" && /^https:\/\//i.test(String(p.sourceUrl || "")) &&
+    Array.isArray(p.topNotes) && p.topNotes.length &&
+    Array.isArray(p.heartNotes) && p.heartNotes.length &&
+    Array.isArray(p.baseNotes) && p.baseNotes.length &&
+    p.verified === false && p.needsReview === true
+  );
+  report(oils.length === 589 && ready.length === 17,
+    "Oil and ready-fragrance catalog counts remain intact");
+  report(sourced.length >= 50,
+    "Catalog includes at least 50 sourced reference fragrance pyramids with review flags (" + sourced.length + ")");
+  report(oils.filter(hasPyramid).length >= 50 && ready.filter(hasPyramid).length >= 15,
+    "Oil and ready-fragrance note coverage remains populated");
+  const app = read("app.js");
+  report(app.includes("noteDisclaimer") && app.includes("لم نعثر على نوتات موثوقة") &&
+    app.includes("لم تُوثق بعد"),
+    "Product details explain note sources and clearly flag missing researched notes");
+  const html = read("index.html");
+  report(html.includes("app.js?v=20261016-fragrance-notes1") &&
+    html.includes("royal-polish.css?v=20261016-fragrance-notes1"),
+    "Storefront cache-busters point to the latest fragrance-note interface");
+  report(read("sw.js").includes('const CACHE_NAME = "mamlakat-al-otor-shell-v6"'),
+    "PWA cache version is refreshed to deliver the updated catalog");
 } catch (e) {
   report(false, "Unable to validate fragrance-note research coverage: " + e.message);
 }
