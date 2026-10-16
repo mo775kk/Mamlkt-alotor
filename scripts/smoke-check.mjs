@@ -45,7 +45,7 @@ try {
   report(false, "Unable to validate PWA install files: " + e.message);
 }
 
-const jsFiles = ["app.js", "settings.js", "enhancements.js", "supplier-catalog.js", "catalog-editor.js", "site-upgrades.js", "royal-gift-planner.js", "inventory-accounting.js", "royal-interactions.js", "royal-finish.js", "section-folds.js"];
+const jsFiles = ["app.js", "ai-service.js", "settings.js", "enhancements.js", "supplier-catalog.js", "catalog-editor.js", "site-upgrades.js", "royal-gift-planner.js", "inventory-accounting.js", "royal-interactions.js", "royal-finish.js", "section-folds.js"];
 for (const file of jsFiles) {
   try {
     new vm.Script(read(file), { filename: file });
@@ -87,6 +87,24 @@ try {
   }
 } catch (e) {
   report(false, "data/products.json invalid: " + e.message);
+}
+
+try {
+  const bridge = read("ai-service.js");
+  const worker = read("ai-worker/src/index.js");
+  const workerConfig = read("ai-worker/wrangler.toml");
+  report(bridge.includes("window.MamlakaAI") && bridge.includes("/api/ask"),
+    "AI frontend bridge exposes the advisor endpoint");
+  report(!/sk-[A-Za-z0-9]{20,}/.test(bridge) && !/OPENAI_API_KEY\\s*[:=]/.test(bridge),
+    "AI frontend contains no embedded provider API key");
+  report(worker.includes("env.OPENAI_API_KEY") && worker.includes("store:false") &&
+    worker.includes("Access-Control-Allow-Origin") && worker.includes("recommendedProductIds"),
+    "AI Worker uses a server-side secret, non-stored requests and product-ID filtering");
+  report(workerConfig.includes("name = \"mamlakat-al-otor-ai\"") &&
+    workerConfig.includes("OPENAI_MODEL") && workerConfig.includes("ALLOWED_ORIGINS"),
+    "AI Worker deployment configuration declares model and allowed origins");
+} catch (e) {
+  report(false, "Unable to validate AI advisor integration: " + e.message);
 }
 
 for (const message of pass) console.log("PASS  " + message);
