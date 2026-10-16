@@ -129,19 +129,22 @@ try {
     upgrades.includes("const missingImage = products.filter") &&
     upgrades.includes("const notAvailable = products.filter"),
     "Catalog audit reports missing prices, missing images and unapproved products");
-  report(upgrades.includes("schemaVersion: 2") && upgrades.includes("missingPrice, missingImage, notAvailable"),
+  report(upgrades.includes("schemaVersion: 3") && upgrades.includes("missingPrice, missingImage, notAvailable"),
     "Catalog audit exports the expanded diagnostic fields");
   report(upgrades.includes("noteCoverage") && upgrades.includes("completeOils") &&
     upgrades.includes("completeReady") && upgrades.includes("royalDownloadCatalogAudit") &&
     upgrades.includes("mamlakat-catalog-audit.json"),
     "Catalog audit separates oil/ready-fragrance note coverage and exports a JSON report");
-  const houses = products.filter(p => p.productType === "oil" && p.referenceHouseSource === "supplier-name-suffix" && p.referenceHouse);
-  report(houses.length >= 350 && products.filter(p => p.productType === "oil").every(p => p.nameAr && p.nameEn),
+  const auditPayload = JSON.parse(read("data/products.json"));
+  const auditProducts = Array.isArray(auditPayload) ? auditPayload : auditPayload?.products;
+  if (!Array.isArray(auditProducts)) throw new Error("data/products.json has no products array");
+  const houses = auditProducts.filter(p => p.productType === "oil" && p.referenceHouseSource === "supplier-name-suffix" && p.referenceHouse);
+  report(houses.length >= 350 && auditProducts.filter(p => p.productType === "oil").every(p => p.nameAr && p.nameEn),
     "Supplier fragrance names retain their display names while extracted fashion houses are stored separately (" + houses.length + ")");
   const appCode = read("app.js");
   report(appCode.includes("p.referenceHouse") && appCode.includes("p.referenceSearchAliases") && appCode.includes("دار العطر المرجعي"),
     "Fragrance house and alias metadata participates in search and product details");
-  report(products.filter(p => p.notesStatus && p.sourceUrl && p.verified === false && p.needsReview === true).length >= 75,
+  report(auditProducts.filter(p => p.notesStatus && p.sourceUrl && p.verified === false && p.needsReview === true).length >= 75,
     "Sourced fragrance reference notes remain marked unverified until the oil-to-reference match is reviewed");
   report(read("index.html").includes("site-upgrades.js?v=20261016-note-coverage3"),
     "Catalog note-coverage audit is linked with a fresh cache-buster");
@@ -261,11 +264,11 @@ try {
     "AI deployment guide links to GitHub secrets and workflow and wires copy interaction");
   report(settings.includes("setTimeout(()=>controller.abort(),10000)") &&
     settings.includes("data.configured!==true") && settings.includes("AbortError") &&
-    settings.includes("لا يختبر إجابة النموذج نفسها"),
+    settings.includes("لا يختبر إجابة نموذج AI نفسها"),
     "AI connection diagnostics handle timeouts, missing server secrets and health-check limitations");
   report(polish.includes(".ai-secret-list{") &&
     html.includes("settings.js?v=20261016-ai-diagnostics1") &&
-    html.includes("royal-polish.css?v=20261016-ai-setup1"),
+    html.includes("royal-polish.css?v=20261016-fragrance-notes1"),
     "AI deployment guide styles and cache-busted script/style versions are present");
 } catch (e) {
   report(false, "Unable to validate AI deployment settings: " + e.message);
