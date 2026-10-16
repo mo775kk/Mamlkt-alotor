@@ -336,7 +336,7 @@
       return {p,score,price};
     }).filter(x=>(!matched||x.score>0)&&(!gender||x.score>0)).sort((a,b)=>b.score-a.score);
     const list=scored.slice(0,3);
-    const replies=$("#advisorReplies");
+
     if(!list.length){replies.innerHTML=remoteWarning+'<div class="assistant-message">لم أجد تطابقًا موثوقًا في الكتالوج الحالي. جرّب اختيار طابع آخر، أو اكتب اسم عطر محدد لنبحث عنه معك.</div><button type="button" class="small-btn" data-advisor-request>اطلب البحث عن عطر</button>';return;}
     const context=[matched?("الطابع: "+matched.label):"",gender?("الفئة: "+gender):"",budget!==null?("الميزانية المذكورة: "+budget+" ج.م"):"",daily?"الاستخدام: يومي":occasion?"الاستخدام: مناسبة":""] .filter(Boolean).join(" · ");
     replies.innerHTML=remoteWarning+`<div class="assistant-message"><strong>ترشيحات مبدئية من الكتالوج</strong><br>${escapeHTML(context||"رتّبت النتائج حسب قربها من وصفك.")}<br>التوصيات إرشادية وتعتمد على بيانات المنتج المسجلة؛ جرّب العطر وتأكد من السعر والتوفر مع المتجر قبل الشراء.</div>`+list.map(({p,price})=>`<div class="suggestion"><div><h4>${escapeHTML(p.nameAr||p.nameEn||"عطر مسجل")} <span class="product-en">${escapeHTML(p.nameEn||"")}</span></h4><p>${escapeHTML(p.family||"عائلة غير محددة")} · ${price==null?"السعر يحتاج إلى تأكيد":formatMoney(price)}${p.needsReview?" · بيانات تحتاج مراجعة":""}</p><small>${escapeHTML((p.scentNature||p.descriptionAr||"الطابع العطري يحتاج إلى مراجعة").slice(0,150))}</small></div><button class="small-btn" data-action="details" data-id="${escapeHTML(p.id)}">التفاصيل</button></div>`).join("");
