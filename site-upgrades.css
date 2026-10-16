@@ -35,3 +35,8 @@
 .scent-visual.green,.scent-visual.chypre,.scent-visual.fougere{background-image:radial-gradient(ellipse at center,rgba(99,126,76,.22),transparent 70%)}
 @media(max-width:900px){.royal-scent-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.royal-file-card{grid-template-columns:45px minmax(0,1fr)}.royal-file-actions{grid-column:1/-1;justify-content:flex-start}.royal-file-icon{width:40px;height:40px}}
 @media(max-width:560px){.royal-scent-grid{grid-template-columns:1fr}.royal-bg-controls{grid-template-columns:1fr}.royal-file-toolbar>.btn,.royal-file-toolbar .file-label{width:100%;justify-content:center}.royal-file-card{padding:9px}.royal-file-actions .small-btn{font-size:10px;padding:6px}.royal-file-head{align-items:flex-start}.royal-manager{padding:10px}}
+
+/* Latest JSON file indicator and clear file actions. */
+.royal-latest-file{display:grid;gap:4px;margin:12px 0 16px;padding:14px 16px;border:1px solid rgba(212,175,55,.48);border-inline-start:4px solid #d4af37;border-radius:14px;background:linear-gradient(120deg,rgba(212,175,55,.12),rgba(232,140,184,.10));color:var(--text,#f7f1e6)}
+.royal-latest-file strong{color:var(--gold2,#f1d77a);font-size:13px}.royal-latest-file span{font-weight:800;overflow-wrap:anywhere}.royal-latest-file small{opacity:.78;font-size:12px}
+.royal-file-actions [data-file-delete-catalog]{border-color:rgba(190,70,85,.55);color:#f5a8b1}
