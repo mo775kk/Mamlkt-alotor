@@ -1049,3 +1049,7 @@ button,select,.btn,.category-card,.product-card{transition-duration:.22s}
 
 /* Customer order confirmation state */
 .product-actions .small-btn.is-selected{background:linear-gradient(135deg,#d8b64d,#f5e5a0);color:#17120a;border-color:#f1d77a;box-shadow:0 0 0 1px rgba(241,215,122,.45),0 0 16px rgba(212,175,55,.24);font-weight:800}
+
+
+/* AI deployment helper: readable secret names and thumb-friendly copy controls. */
+.ai-secret-list{display:grid;gap:8px;padding-inline-start:20px;margin:12px 0}.ai-secret-list li{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 10px;border:1px solid rgba(212,175,55,.28);border-radius:10px;background:rgba(212,175,55,.06)}.ai-secret-list code{direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}.ai-secret-list .small-btn{flex:0 0 auto;min-width:92px}
