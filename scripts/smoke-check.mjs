@@ -41,6 +41,18 @@ for (const file of jsFiles) {
 }
 
 try {
+  const upgrades = read("site-upgrades.js");
+  report(upgrades.includes("const missingPrice = products.filter") &&
+    upgrades.includes("const missingImage = products.filter") &&
+    upgrades.includes("const notAvailable = products.filter"),
+    "Catalog audit reports missing prices, missing images and unapproved products");
+  report(upgrades.includes("schemaVersion: 2") && upgrades.includes("missingPrice, missingImage, notAvailable"),
+    "Catalog audit exports the expanded diagnostic fields");
+} catch (e) {
+  report(false, "Unable to validate catalog audit diagnostics: " + e.message);
+}
+
+try {
   const data = JSON.parse(read("data/products.json"));
   const products = Array.isArray(data) ? data : data.products;
   report(Array.isArray(products), "data/products.json contains a product array");
