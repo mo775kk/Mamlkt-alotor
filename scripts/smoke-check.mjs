@@ -152,6 +152,31 @@ try {
 }
 
 try {
+  const data = JSON.parse(read("data/products.json"));
+  const products = Array.isArray(data) ? data : data.products;
+  const oils = products.filter((p) => p.productType === "oil");
+  const sourcedOilNotes = oils.filter((p) =>
+    p.notesStatus === "reference-fragrance-notes" &&
+    /^https:\/\//i.test(String(p.sourceUrl || "")) &&
+    Array.isArray(p.topNotes) && p.topNotes.length &&
+    Array.isArray(p.heartNotes) && p.heartNotes.length &&
+    Array.isArray(p.baseNotes) && p.baseNotes.length &&
+    p.verified === false && p.needsReview === true
+  );
+  report(sourcedOilNotes.length >= 20,
+    "Oil catalog includes sourced reference note pyramids with review flags (" + sourcedOilNotes.length + ")");
+  const app = read("app.js");
+  report(app.includes("noteDisclaimer") && app.includes("لم نعثر على نوتات موثوقة") &&
+    app.includes("لم تُوثق بعد"),
+    "Product details explain note sources and clearly flag missing researched notes");
+  const html = read("index.html");
+  report(html.includes("app.js?v=20261016-fragrance-notes1"),
+    "Storefront cache-buster points to the latest fragrance-note interface");
+} catch (e) {
+  report(false, "Unable to validate fragrance-note research coverage: " + e.message);
+}
+
+try {
   const bridge = read("ai-service.js");
   const worker = read("ai-worker/src/index.js");
   const workerConfig = read("ai-worker/wrangler.toml");
