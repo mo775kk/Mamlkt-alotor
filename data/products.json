@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "currency": "EGP",
   "updatedAt": "2026-10-16",
-  "notes": "تم إثراء نوتات عدد من زيوت التركيب بمراجع للعطر المرجعي عند تطابق الاسم بوضوح. النوتات تصف العطر المرجعي ولا تثبت الصيغة الفعلية لزيت المورد. أي منتج غير موثق يظل بلا نوتات تخمينية ويحتاج إلى مراجعة الشركة والإصدار.",
+  "notes": "تمت إضافة نوتات مرجعية موثقة لزيوت تطابق أسماء عطور معروفة. هذه النوتات وصف للعطر المرجعي وليست إثباتًا لتركيبة زيت المورد. المنتجات التي لم تتوفر لها مطابقة موثوقة تبقى بلا نوتات تخمينية وتحتاج إلى تحديد الشركة والإصدار.",
   "products": [
     {
       "id": "demo-yara-candy",
@@ -1071,13 +1071,23 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "نوتات بحرية",
+        "البرغموت"
+      ],
+      "heartNotes": [
+        "إكليل الجبل",
+        "المريمية",
+        "إبرة الراعي"
+      ],
+      "baseNotes": [
+        "البخور",
+        "الباتشولي"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات Acqua di Giò Profumo 2015؛ لا تنطبق تلقائيًا على Acqua di Giò الأصلي أو Elixir",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -1099,7 +1109,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Giorgio-Armani/Acqua-di-Gi-Profumo-29727.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "acqua di gio profumo",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010234",
@@ -1243,13 +1258,29 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "البرتقال",
+        "نوتات بحرية",
+        "ألدهيدات",
+        "اليوسفي الأحمر"
+      ],
+      "heartNotes": [
+        "الفلفل",
+        "النيرولي",
+        "خشب الأرز"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "حبوب التونكا",
+        "المسك الأبيض",
+        "العنبر",
+        "الفيتيفر",
+        "راتنج الإليمي"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات Allure Homme Sport؛ يلزم مطابقة إصدار العبوة",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -1271,7 +1302,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Chanel/Allure-Homme-Sport-607.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "allure sport",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010193",
@@ -2055,13 +2091,40 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الحمضيات",
+        "البرغموت",
+        "العرعر",
+        "اليانسون",
+        "خشب الورد البرازيلي",
+        "الريحان"
+      ],
+      "heartNotes": [
+        "اللافندر",
+        "الورد",
+        "القرنفل",
+        "الياسمين",
+        "الهليوتروب",
+        "إبرة الراعي",
+        "المريمية",
+        "التنوب",
+        "زنبق الوادي"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "حبوب التونكا",
+        "خشب الصندل",
+        "السوسن",
+        "المسك",
+        "خشب الأرز",
+        "العنبر",
+        "الفيتيفر",
+        "الباتشولي"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات Versace Blue Jeans 1994",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -2083,7 +2146,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Versace/Blue-Jeans-637.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "blue jeans",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010049",
@@ -2270,13 +2338,30 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "التفاح",
+        "البرقوق",
+        "البرغموت",
+        "الليمون",
+        "طحلب السنديان",
+        "إبرة الراعي"
+      ],
+      "heartNotes": [
+        "القرفة",
+        "الماهوجني",
+        "القرنفل"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "خشب الصندل",
+        "خشب الأرز",
+        "الفيتيفر",
+        "خشب الزيتون"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات Boss Bottled الأصلي 1998؛ ليس EDP أو إصدارات Beyond/Elixir",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -2298,7 +2383,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Hugo-Boss/Boss-Bottled-383.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "bos bottled",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010082",
@@ -3885,13 +3975,20 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "السرو"
+      ],
+      "heartNotes": [
+        "الفيتيفر"
+      ],
+      "baseNotes": [
+        "خشب الكشمير",
+        "المسك"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات Lalique Encre Noire 2006؛ ليس Sport أو À L’Extrême",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -3913,7 +4010,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Lalique/Encre-Noire-1834.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "encre noir",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010039",
@@ -4205,13 +4307,25 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "البرغموت",
+        "الفلفل الوردي",
+        "المريمية"
+      ],
+      "heartNotes": [
+        "الفيتيفر الهايتي",
+        "الجلد"
+      ],
+      "baseNotes": [
+        "أمبروكسان",
+        "أكيغالاوود",
+        "أوراق الباتشولي الإندونيسي",
+        "حبوب الكاكاو"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات Montblanc Explorer 2019؛ لا تخلطه مع Explorer Platinum",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -4233,7 +4347,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Montblanc/Explorer-52002.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "explorer",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010220",
@@ -4592,13 +4711,21 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "السوسن",
+        "اللويزة"
+      ],
+      "heartNotes": [
+        "أوراق البنفسج"
+      ],
+      "baseNotes": [
+        "العنبر الرمادي",
+        "خشب الصندل"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات Creed Green Irish Tweed",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -4620,7 +4747,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Creed/Creed-Green-Irish-Tweed-474.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "green irish tweed",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010148",
