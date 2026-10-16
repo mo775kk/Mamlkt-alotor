@@ -1,6 +1,6 @@
 # نشر خدمة AI من GitHub Actions
 
-أُضيف سير العمل `.github/workflows/deploy-ai-worker.yml`. يشغّل يدويًا من Actions أو عند تعديل ملفات `ai-worker/**` على فرع `main`.
+أُضيف سير عمل النشر `.github/workflows/deploy-ai-worker.yml` ويُشغّل يدويًا من Actions بعد إعداد الأسرار. كما يشغّل `.github/workflows/ai-worker-tests.yml` اختبارات الخدمة تلقائيًا عند دفع تغييرات مرتبطة بها أو فتح Pull Request، ويمكن تشغيله يدويًا دون أسرار.
 
 ## إعداد مرة واحدة
 1. افتح المستودع على GitHub ثم Settings → Secrets and variables → Actions.
