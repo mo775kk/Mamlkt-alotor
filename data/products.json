@@ -2342,13 +2342,24 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الكشمش الأسود",
+        "الفلفل الوردي",
+        "البرغموت"
+      ],
+      "heartNotes": [
+        "الياسمين",
+        "الياسمين العربي"
+      ],
+      "baseNotes": [
+        "فانيليا بوربون",
+        "خشب الكشمير",
+        "خشب الغاياك"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Valentino Donna Born in Roma؛ الاسم قد يشير إلى إصدار نسائي",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -2370,7 +2381,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Valentino/Valentino-Donna-Born-in-Roma-55805.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "born in roma",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010011",
@@ -7164,13 +7180,20 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "البرغموت"
+      ],
+      "heartNotes": [
+        "زهر البرتقال التونسي"
+      ],
+      "baseNotes": [
+        "الأخشاب",
+        "الباتشولي"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — YSL MYSLF الأصلي؛ تحقق من EDT/Le Parfum",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -7192,7 +7215,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Yves-Saint-Laurent/MYSLF-81682.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "myslf",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010184",
@@ -7835,13 +7863,27 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "اللافندر",
+        "قشر الليمون",
+        "الليمون",
+        "أماريتّو"
+      ],
+      "heartNotes": [
+        "لافندر",
+        "التفاح",
+        "الدخان",
+        "نوتات ترابية"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "الفيتيفر",
+        "الباتشولي"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Rabanne Phantom الأصلي؛ توجد إصدارات مختلفة",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -7863,7 +7905,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Rabanne/Phantom-68766.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "phantom",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010124",
@@ -7964,13 +8011,29 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الزنجبيل",
+        "الزعتر",
+        "الجريب فروت",
+        "البرغموت"
+      ],
+      "heartNotes": [
+        "الفانيليا",
+        "القرفة",
+        "الجلد",
+        "التفاح",
+        "الخمور"
+      ],
+      "baseNotes": [
+        "المر",
+        "السكر",
+        "خشب الأرز",
+        "الكشمير"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Paco Rabanne Pure XS الأصلي",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -7992,7 +8055,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Paco-Rabanne/Pure-XS-46497.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "pure xs",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010244",
@@ -8862,13 +8930,26 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الهيل",
+        "الفلفل الوردي",
+        "البنفسج"
+      ],
+      "heartNotes": [
+        "المريمية",
+        "البطيخ"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "حبوب التونكا",
+        "الكستناء",
+        "الأخشاب",
+        "العنبر"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Emporio Armani Stronger With You الأصلي",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -8890,7 +8971,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Giorgio-Armani/Emporio-Armani-Because-It-s-You-Strong-With-You-45258.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "strong with you",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010232",
@@ -9034,13 +9120,25 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "البرتقال",
+        "الجريب فروت"
+      ],
+      "heartNotes": [
+        "الفلفل",
+        "البلارجونيوم",
+        "الصوان"
+      ],
+      "baseNotes": [
+        "خشب الأرز",
+        "الفيتيفر",
+        "البنزوين",
+        "الباتشولي"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Terre d’Hermès EDT؛ توجد إصدارات مختلفة",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -9062,7 +9160,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Hermes/Terre-d-Hermes-17.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "terre dermes",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010152",
@@ -9120,13 +9223,25 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الجريب فروت",
+        "الكزبرة",
+        "الريحان"
+      ],
+      "heartNotes": [
+        "الزنجبيل",
+        "الهيل",
+        "زهر البرتقال"
+      ],
+      "baseNotes": [
+        "العنبر",
+        "خشب الأرز",
+        "التبغ"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — The One for Men EDT؛ لا ينطبق تلقائيًا على إصدارات أخرى",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -9148,7 +9263,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Dolce-Gabbana/The-One-for-Men-2056.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "the one",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010111",
@@ -9593,13 +9713,27 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "التفاح",
+        "الزنجبيل",
+        "البرغموت"
+      ],
+      "heartNotes": [
+        "المريمية",
+        "العرعر",
+        "إبرة الراعي"
+      ],
+      "baseNotes": [
+        "حبوب التونكا",
+        "خشب الأرز",
+        "الفيتيفر",
+        "الأخشاب",
+        "البخور"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — YSL Y Eau de Parfum؛ لا ينطبق على Y Le Parfum 2025",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -9621,7 +9755,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Yves-Saint-Laurent/Y-50757.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "y",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010243",
@@ -11013,13 +11152,25 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "القهوة",
+        "الكمثرى",
+        "الفلفل الوردي"
+      ],
+      "heartNotes": [
+        "زهر البرتقال",
+        "الياسمين",
+        "اللوز"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "الباتشولي",
+        "الأخشاب"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجع Black Opium الأصلي للاستدلال فقط؛ إصدار Glitter يحتاج مطابقة منفصلة",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -11041,7 +11192,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Yves-Saint-Laurent/Black-Opium-25324.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "black opium glitter",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020256",
@@ -14956,13 +15112,25 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "البرتقال المر",
+        "الليمون",
+        "التوت"
+      ],
+      "heartNotes": [
+        "زهر البرتقال",
+        "الياسمين",
+        "الغاردينيا"
+      ],
+      "baseNotes": [
+        "العسل",
+        "الباتشولي",
+        "العنبر"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Rabanne Lady Million الأصلي",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -14984,7 +15152,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Paco-Rabanne/Lady-Million-9045.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "lady million",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020199",
@@ -14999,13 +15172,23 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "البرتقال",
+        "النيرولي"
+      ],
+      "heartNotes": [
+        "الماغنوليا",
+        "الأوسمانثوس"
+      ],
+      "baseNotes": [
+        "الكونياك",
+        "الباتشولي",
+        "المسك"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Lady Million Empire؛ تأكد من مطابقة الاسم",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -15027,7 +15210,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Paco-Rabanne/Lady-Million-Empire-55974.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "lady million empire",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020081",
@@ -16925,13 +17113,23 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الفلفل الوردي",
+        "البرتقال الأخضر",
+        "الياسمين المائي"
+      ],
+      "heartNotes": [
+        "الفانيليا المالحة"
+      ],
+      "baseNotes": [
+        "خشب الكشمير",
+        "العنبر",
+        "خشب الصندل"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Olympea الأصلي؛ لا ينطبق على Legend أو Absolu",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -16953,7 +17151,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Paco-Rabanne/Olympea-31666.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "olympea",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020270",
@@ -18086,13 +18289,21 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الليمون"
+      ],
+      "heartNotes": [
+        "الورد التركي"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "المسك الأبيض",
+        "الأرز"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Mancera Roses Vanille",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -18114,7 +18325,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Mancera/Roses-Vanille-10471.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "roses vanille",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020017",
@@ -18215,13 +18431,26 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "البرتقال الأحمر",
+        "اليوسفي"
+      ],
+      "heartNotes": [
+        "العسل",
+        "الغاردينيا",
+        "زهر البرتقال",
+        "الياسمين"
+      ],
+      "baseNotes": [
+        "الباتشولي",
+        "شمع العسل",
+        "الكراميل",
+        "العرقسوس"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Jean Paul Gaultier Scandal الأصلي؛ تأكد من الإصدار",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -18243,7 +18472,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Scandal-45709.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "scandal",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020251",
@@ -18860,13 +19094,25 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الجريب فروت",
+        "الكزبرة",
+        "الريحان"
+      ],
+      "heartNotes": [
+        "الزنجبيل",
+        "الهيل",
+        "زهر البرتقال"
+      ],
+      "baseNotes": [
+        "العنبر",
+        "خشب الأرز",
+        "التبغ"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — The One for Men EDT؛ لا ينطبق تلقائيًا على إصدارات أخرى",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -18888,7 +19134,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Dolce-Gabbana/The-One-for-Men-2056.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "the one",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020179",
