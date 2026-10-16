@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="section-folds.css?v=20261015-location-fold1">
   <link rel="stylesheet" href="royal-entrance-cinema.css?v=20261016-cinema1">
   <link rel="stylesheet" href="product-bottle-art.css?v=20261016-bottleart1">
+  <style>.pwa-install-btn{white-space:nowrap;font-size:.82rem;padding:.55rem .75rem;min-height:38px}@media(max-width:680px){.pwa-install-btn{font-size:.75rem;padding:.45rem .55rem}}</style>
 </head>
 <body>
   <div class="intro" id="intro" aria-label="دخول المملكة">
@@ -85,7 +86,7 @@
       <button type="button" class="icon-btn" id="searchFocus" aria-label="بحث" title="بحث"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4.2 4.2"/></svg></button>
       <button type="button" class="icon-btn" id="favoritesShortcut" aria-label="المفضلة" title="المفضلة"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 8.7c0 5.1-8.8 10-8.8 10s-8.8-4.9-8.8-10A4.7 4.7 0 0 1 12 6.1a4.7 4.7 0 0 1 8.8 2.6Z"/></svg><span class="counter" id="favCount">0</span></button>
       <button type="button" class="icon-btn" id="cartShortcut" aria-label="السلة" title="السلة"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 12H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg><span class="counter" id="cartCount">0</span></button>
-      <button type="button" class="btn btn-outline pwa-install-btn" id="installAppBtn" hidden>تثبيت التطبيق</button>
+      <button type="button" class="btn btn-outline pwa-install-btn" id="installAppBtn">تثبيت التطبيق</button>
       <button type="button" class="icon-btn language-btn" id="languageToggle" aria-label="Change language">EN</button>
     </div>
   </header>
@@ -309,7 +310,7 @@
     var installPrompt=null,button=document.getElementById('installAppBtn');
     if(button){
       function isStandalone(){return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;}
-      function showButton(){button.hidden=isStandalone()||!installPrompt;}
+      function showButton(){button.hidden=isStandalone();}
       window.addEventListener('beforeinstallprompt',function(event){event.preventDefault();installPrompt=event;showButton();});
       window.addEventListener('appinstalled',function(){installPrompt=null;button.hidden=true;});
       button.addEventListener('click',async function(){
