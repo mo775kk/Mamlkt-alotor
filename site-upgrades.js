@@ -49,6 +49,7 @@
       <div id="royalFilePreview" class="royal-file-preview hidden"></div>
       <div id="royalCatalogAuditResult" class="royal-file-preview hidden" aria-live="polite"></div>
       <h4>مكتبة الملفات المستوردة والمصدّرة</h4>
+      <div id="royalLatestFile" class="royal-latest-file" aria-live="polite"></div>
       <div class="royal-file-search"><input id="royalFileSearch" type="search" placeholder="ابحث باسم الملف أو نوع البيانات..."></div>
       <div id="royalFileList" class="royal-file-list"></div>
       <hr><h3>مكتبة الصور الملكية والخلفيات</h3>
@@ -163,7 +164,7 @@
       });
       updateFileStatus(id,mode==="replace"?"تم الاستيراد بالاستبدال":"تم الاستيراد بالدمج");document.dispatchEvent(new Event("mamlaka:products-updated"));toast("تم استيراد البيانات المعروفة. راجع الموقع قبل المتابعة.");return;
     }
-    if(!records){toast("لم أتعرف على قائمة سجلات. يجب أن يحتوي JSON على مصفوفة أو products أو oils أو items أو records.");return;} const supplierLike=(Array.isArray(data.products)&&data.products.some(p=>p&&("sku" in p||"price_1kg" in p||"price_500g" in p)))||Array.isArray(data.oils); if(supplierLike){if(!confirm("يبدو أن هذا ملف كتالوج موردين. سيتم حفظه في كتالوج الموردين المحلي دون استبدال منتجات المتجر. هل تريد المتابعة؟"))return;write("mamlaka_supplier_catalog_v1",{...data,products:records});updateFileStatus(id,"تم الاستيراد إلى كتالوج الموردين");toast("تم استيراد كتالوج الموردين إلى التخزين المحلي. راجع النتائج قبل الاستخدام.");return;}
+    if(!records){toast("لم أتعرف على قائمة سجلات. يجب أن يحتوي JSON على مصفوفة أو products أو oils أو items أو records.");return;} const supplierLike=(Array.isArray(data.products)&&data.products.some(p=>p&&("sku" in p||"price_1kg" in p||"price_500g" in p)))||Array.isArray(data.oils); if(supplierLike){if(!confirm("يبدو أن هذا ملف كتالوج موردين. سيتم حفظه في كتالوج الموردين المحلي دون استبدال منتجات المتجر. هل تريد المتابعة؟"))return;write("mamlaka_supplier_catalog_v1",{...data,products:records,_sourceFileId:id,_sourceFileName:name});updateFileStatus(id,"تم الاستيراد إلى كتالوج الموردين","supplierCatalog");toast("تم استيراد كتالوج الموردين إلى التخزين المحلي. راجع النتائج قبل الاستخدام.");return;}
     if(records.some(x=>!x || typeof x!=="object" || Array.isArray(x))){toast("توجد سجلات غير صالحة؛ لم يتم الاستيراد.");return;}
     if(mode==="replace") saveLocalBackup("قبل استبدال المنتجات");
     if(!confirm("تم العثور على "+records.length+" سجل. "+(mode==="replace"?"سيتم استبدال قائمة المنتجات المحلية بالكامل بعد تنزيل نسخة احتياطية.":"سيتم دمج السجلات وتحديث المطابق منها.")+" هل تريد المتابعة؟"))return;
@@ -181,15 +182,19 @@
     catalogKeys.forEach(k=>{const value=localStorage.getItem(k);if(value!==null){try{snapshot.localStorage[k]=JSON.parse(value)}catch{snapshot.localStorage[k]=value}}});
     download("mamlaka-auto-backup-"+new Date().toISOString().replace(/[:.]/g,"-")+".json",JSON.stringify(snapshot,null,2));
   }
-  function updateFileStatus(id,status){const a=library().map(x=>x.id===id?{...x,status}:x);saveLibrary(a);renderFileList();}
+  function updateFileStatus(id,status,importTarget){const a=library().map(x=>x.id===id?{...x,status,...(importTarget?{importTarget}: {})}:x);saveLibrary(a);renderFileList();}
   function renderFileList(){
     const box=$("#royalFileList");if(!box)return;
     const q=($("#royalFileSearch")?.value||"").toLowerCase();
-    const items=library().filter(x=>(x.name+" "+x.kind+" "+x.status).toLowerCase().includes(q));
-    box.innerHTML=items.length?items.map(x=>`<article class="royal-file-card"><span class="royal-file-icon">JSON</span><div class="royal-file-meta"><strong>${esc(x.name)}</strong><small>${esc(x.kind)} · ${Number(x.count)||0} سجل · ${esc(fileBytes({size:Number(x.size)||0}))}</small><small>${esc(new Date(x.importedAt).toLocaleString("ar-EG"))} · ${esc(x.status||"محفوظ")}</small></div><div class="royal-file-actions"><button type="button" class="small-btn" data-file-open="${esc(x.id)}">فتح</button><button type="button" class="small-btn" data-file-download="${esc(x.id)}">تنزيل</button><button type="button" class="small-btn danger" data-file-delete="${esc(x.id)}">حذف السجل</button></div></article>`).join(""):'<p class="admin-note">لا توجد ملفات في المكتبة حتى الآن. اختر ملف JSON للبدء.</p>';
+    const allFiles=library().sort((a,b)=>new Date(b.importedAt||0)-new Date(a.importedAt||0));
+    const latest=$("#royalLatestFile");
+    if(latest){const newest=allFiles[0];latest.innerHTML=newest?`<strong>أحدث ملف محفوظ</strong><span>${esc(newest.name)}</span><small>${esc(new Date(newest.importedAt).toLocaleString("ar-EG"))} · ${esc(newest.status||"محفوظ")}</small>`:`<span>لم تتم إضافة ملفات بعد.</span>`;}
+    const items=allFiles.filter(x=>(x.name+" "+x.kind+" "+x.status).toLowerCase().includes(q));
+    box.innerHTML=items.length?items.map(x=>`<article class="royal-file-card"><span class="royal-file-icon">JSON</span><div class="royal-file-meta"><strong>${esc(x.name)}</strong><small>${esc(x.kind)} · ${Number(x.count)||0} سجل · ${esc(fileBytes({size:Number(x.size)||0}))}</small><small>${esc(new Date(x.importedAt).toLocaleString("ar-EG"))} · ${esc(x.status||"محفوظ")}</small></div><div class="royal-file-actions"><button type="button" class="small-btn" data-file-open="${esc(x.id)}">فتح</button><button type="button" class="small-btn" data-file-download="${esc(x.id)}">تنزيل</button>${x.importTarget==="supplierCatalog"?`<button type="button" class="small-btn danger" data-file-delete-catalog="${esc(x.id)}">حذف كتالوج المورد</button>`:""}<button type="button" class="small-btn danger" data-file-delete="${esc(x.id)}">حذف السجل</button></div></article>`).join(""):'<p class="admin-note">لا توجد ملفات في المكتبة حتى الآن. اختر ملف JSON للبدء.</p>';
     $$("[data-file-open]",box).forEach(b=>b.onclick=()=>{const x=library().find(f=>f.id===b.dataset.fileOpen);if(!x)return;$("#royalFilePreview").classList.remove("hidden");$("#royalFilePreview").innerHTML=`<div class="royal-file-head"><div><strong>${esc(x.name)}</strong><small>${esc(x.status)} · ${esc(x.kind)}</small></div><button class="small-btn" id="royalClosePreview">إغلاق</button></div><pre class="royal-json-preview" dir="ltr"></pre>`;$(".royal-json-preview").textContent=JSON.stringify(JSON.parse(x.content),null,2).slice(0,60000);$("#royalClosePreview").onclick=()=>$("#royalFilePreview").classList.add("hidden");});
     $$("[data-file-download]",box).forEach(b=>b.onclick=()=>{const x=library().find(f=>f.id===b.dataset.fileDownload);if(x)download(x.name,x.content)});
-    $$("[data-file-delete]",box).forEach(b=>b.onclick=()=>{const x=library().find(f=>f.id===b.dataset.fileDelete);if(!x)return;if(!confirm("حذف سجل الملف «"+x.name+"» من المكتبة؟ لن تُحذف المنتجات التي سبق استيرادها."))return;saveLibrary(library().filter(f=>f.id!==x.id));renderFileList();toast("تم حذف سجل الملف من المكتبة.");});
+    $("[data-file-delete-catalog]",box).forEach(b=>b.onclick=()=>{const x=library().find(f=>f.id===b.dataset.fileDeleteCatalog);if(!x)return;const catalog=read("mamlaka_supplier_catalog_v1",null);if(!catalog||catalog._sourceFileId!==x.id){toast("لا يمكن ربط هذا الملف بكتالوج المورد الحالي؛ لم تُحذف أي بيانات.");return;}if(!confirm("حذف كتالوج المورد المستورد من الملف «"+x.name+"»؟ سيُحذف هذا الكتالوج المحلي فقط، ولن تُحذف منتجات المتجر الأخرى."))return;localStorage.removeItem("mamlaka_supplier_catalog_v1");saveLibrary(library().map(f=>f.id===x.id?{...f,status:"حُذف كتالوج المورد المحلي"}:f));renderFileList();toast("تم حذف كتالوج المورد المحلي المرتبط بهذا الملف.");});
+    $("[data-file-delete]",box).forEach(b=>b.onclick=()=>{const x=library().find(f=>f.id===b.dataset.fileDelete);if(!x)return;if(!confirm("حذف سجل الملف «"+x.name+"» من المكتبة؟ لن تُحذف المنتجات التي سبق استيرادها."))return;saveLibrary(library().filter(f=>f.id!==x.id));renderFileList();toast("تم حذف سجل الملف من المكتبة.");});
   }
   function showExportPreview(name,data){
     const preview=$("#royalFilePreview");preview.classList.remove("hidden");
