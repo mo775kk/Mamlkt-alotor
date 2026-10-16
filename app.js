@@ -288,8 +288,22 @@
     window.open("https://wa.me/"+getWaNumber()+"?text="+encodeURIComponent(msg),"_blank","noopener");
   }
   function blendPrice(){const s=$("#blendSize").value;$("#blendPrice").textContent=formatMoney(retailSizePrice(s));}
-  function submitAdvisor(query){
+  async function submitAdvisor(query){
     const q=norm(query);if(!q)return;
+    const replies=$("#advisorReplies");
+    let remoteWarning="";
+    if(window.MamlakaAI?.isConfigured()){
+      replies.innerHTML='<div class="assistant-message">مستشار المملكة يراجع طلبك والمنتجات المسجلة…</div>';
+      try{
+        const remote=await window.MamlakaAI.ask(query,products.slice(0,80));
+        if(remote){
+          const byId=new Map(products.map(p=>[String(p.id),p]));
+          const chosen=remote.recommendedProductIds.map(id=>byId.get(String(id))).filter(Boolean).slice(0,3);
+          replies.innerHTML='<div class="assistant-message"><strong>مستشار مملكة العطور الذكي 👑</strong><br>'+escapeHTML(remote.answer)+'</div>'+chosen.map(p=>{const price=priceFor(p);return '<div class="suggestion"><div><h4>'+escapeHTML(p.nameAr||p.nameEn||"عطر مسجل")+' <span class="product-en">'+escapeHTML(p.nameEn||"")+'</span></h4><p>'+escapeHTML(p.family||"عائلة غير محددة")+' · '+(price==null?"السعر يحتاج إلى تأكيد":formatMoney(price))+(p.needsReview?" · بيانات تحتاج مراجعة":"")+'</p><small>'+escapeHTML((p.scentNature||p.descriptionAr||"الطابع العطري يحتاج إلى مراجعة").slice(0,150))+'</small></div><button class="small-btn" data-action="details" data-id="'+escapeHTML(p.id)+'">التفاصيل</button></div>';}).join("");
+          return;
+        }
+      }catch(error){remoteWarning='<div class="assistant-message">تعذر الاتصال بالمستشار الذكي الآن؛ أعرض لك اقتراحات محلية بدلًا من ذلك. '+escapeHTML(error.message||"")+'</div>';}
+    }
     const terms=[
       {label:"خشبي",words:["خشبي","عود","خشب","woody","oud"]},
       {label:"زهري",words:["زهري","ورد","زهور","فل","rose","floral"]},
@@ -323,9 +337,9 @@
     }).filter(x=>(!matched||x.score>0)&&(!gender||x.score>0)).sort((a,b)=>b.score-a.score);
     const list=scored.slice(0,3);
     const replies=$("#advisorReplies");
-    if(!list.length){replies.innerHTML='<div class="assistant-message">لم أجد تطابقًا موثوقًا في الكتالوج الحالي. جرّب اختيار طابع آخر، أو اكتب اسم عطر محدد لنبحث عنه معك.</div><button type="button" class="small-btn" data-advisor-request>اطلب البحث عن عطر</button>';return;}
+    if(!list.length){replies.innerHTML=remoteWarning+'<div class="assistant-message">لم أجد تطابقًا موثوقًا في الكتالوج الحالي. جرّب اختيار طابع آخر، أو اكتب اسم عطر محدد لنبحث عنه معك.</div><button type="button" class="small-btn" data-advisor-request>اطلب البحث عن عطر</button>';return;}
     const context=[matched?("الطابع: "+matched.label):"",gender?("الفئة: "+gender):"",budget!==null?("الميزانية المذكورة: "+budget+" ج.م"):"",daily?"الاستخدام: يومي":occasion?"الاستخدام: مناسبة":""] .filter(Boolean).join(" · ");
-    replies.innerHTML=`<div class="assistant-message"><strong>ترشيحات مبدئية من الكتالوج</strong><br>${escapeHTML(context||"رتّبت النتائج حسب قربها من وصفك.")}<br>التوصيات إرشادية وتعتمد على بيانات المنتج المسجلة؛ جرّب العطر وتأكد من السعر والتوفر مع المتجر قبل الشراء.</div>`+list.map(({p,price})=>`<div class="suggestion"><div><h4>${escapeHTML(p.nameAr||p.nameEn||"عطر مسجل")} <span class="product-en">${escapeHTML(p.nameEn||"")}</span></h4><p>${escapeHTML(p.family||"عائلة غير محددة")} · ${price==null?"السعر يحتاج إلى تأكيد":formatMoney(price)}${p.needsReview?" · بيانات تحتاج مراجعة":""}</p><small>${escapeHTML((p.scentNature||p.descriptionAr||"الطابع العطري يحتاج إلى مراجعة").slice(0,150))}</small></div><button class="small-btn" data-action="details" data-id="${escapeHTML(p.id)}">التفاصيل</button></div>`).join("");
+    replies.innerHTML=remoteWarning+`<div class="assistant-message"><strong>ترشيحات مبدئية من الكتالوج</strong><br>${escapeHTML(context||"رتّبت النتائج حسب قربها من وصفك.")}<br>التوصيات إرشادية وتعتمد على بيانات المنتج المسجلة؛ جرّب العطر وتأكد من السعر والتوفر مع المتجر قبل الشراء.</div>`+list.map(({p,price})=>`<div class="suggestion"><div><h4>${escapeHTML(p.nameAr||p.nameEn||"عطر مسجل")} <span class="product-en">${escapeHTML(p.nameEn||"")}</span></h4><p>${escapeHTML(p.family||"عائلة غير محددة")} · ${price==null?"السعر يحتاج إلى تأكيد":formatMoney(price)}${p.needsReview?" · بيانات تحتاج مراجعة":""}</p><small>${escapeHTML((p.scentNature||p.descriptionAr||"الطابع العطري يحتاج إلى مراجعة").slice(0,150))}</small></div><button class="small-btn" data-action="details" data-id="${escapeHTML(p.id)}">التفاصيل</button></div>`).join("");
   }
   function requestMissing(name){
     const req=safeRead(STORAGE.requests,[]);req.push({name,createdAt:new Date().toISOString()});save(STORAGE.requests,req);
