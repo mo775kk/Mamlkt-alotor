@@ -2,11 +2,6 @@ name: Deploy Mamlaka AI Worker
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "ai-worker/**"
-      - ".github/workflows/deploy-ai-worker.yml"
 
 permissions:
   contents: read
