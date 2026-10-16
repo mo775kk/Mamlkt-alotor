@@ -141,6 +141,8 @@ try {
   const appCode = read("app.js");
   report(appCode.includes("p.referenceHouse") && appCode.includes("p.referenceSearchAliases") && appCode.includes("دار العطر المرجعي"),
     "Fragrance house and alias metadata participates in search and product details");
+  report(products.filter(p => p.notesStatus && p.sourceUrl && p.verified === false && p.needsReview === true).length >= 75,
+    "Sourced fragrance reference notes remain marked unverified until the oil-to-reference match is reviewed");
   report(read("index.html").includes("site-upgrades.js?v=20261016-note-coverage3"),
     "Catalog note-coverage audit is linked with a fresh cache-buster");
 } catch (e) {
