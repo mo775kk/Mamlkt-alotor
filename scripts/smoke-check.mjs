@@ -38,7 +38,7 @@ try {
   const worker = read("sw.js");
   report(html.includes('id="installAppBtn"') && html.includes("beforeinstallprompt"),
     "Storefront exposes an install-app action");
-  report(html.includes("navigator.serviceWorker.register('./sw.js'") && worker.includes("addEventListener(\"fetch\""),
+  report(html.includes("navigator.serviceWorker.register('./sw.js?v=20261016-shell7'") && worker.includes("addEventListener(\"fetch\""),
     "PWA service worker is registered and handles requests");
   report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length,
     "PWA manifest contains app identity, launch URL, display mode and icon");
@@ -80,7 +80,7 @@ try {
     "192px PNG install icon has valid chunks, checksums and image data");
   report(validPng("assets/images/app-icon-512.png", 512),
     "512px PNG install icon has valid chunks, checksums and image data");
-  report(worker.includes('const CACHE_NAME = "mamlakat-al-otor-shell-v6"') &&
+  report(worker.includes('const CACHE_NAME = "mamlakat-al-otor-shell-v7"') &&
     worker.includes('BASE_PATH + "assets/images/app-icon-192.png"') &&
     worker.includes('BASE_PATH + "assets/images/app-icon-512.png"'),
     "PWA service worker pre-caches both raster install icons in the current shell");
@@ -103,6 +103,12 @@ try {
     "Browser and installed-app theme colors match the royal berry palette");
   report(html.includes("royal-bright-ux.css?v=20261016-bright1"),
     "Bright pearl-pink and gold visual layer is linked from the storefront");
+
+report(html.includes("royal-bright-redesign.css?v=20261016-visible-hotfix1"),
+  "Visible bright theme hotfix is linked with a fresh cache-buster");
+report(html.includes("sw.js?v=20261016-shell7") && read("sw.js").includes('const CACHE_NAME = "mamlakat-al-otor-shell-v7"'),
+  "Service worker URL and cache shell version are synchronized");
+
 } catch (e) {
   report(false, "Unable to validate PWA install files: " + e.message);
 }
@@ -203,7 +209,7 @@ try {
   report(html.includes("app.js?v=20261016-fragrance-notes1") &&
     html.includes("royal-polish.css?v=20261016-fragrance-notes1"),
     "Storefront cache-busters point to the latest fragrance-note interface");
-  report(read("sw.js").includes('const CACHE_NAME = "mamlakat-al-otor-shell-v6"'),
+  report(read("sw.js").includes('const CACHE_NAME = "mamlakat-al-otor-shell-v7"'),
     "PWA cache version is refreshed to deliver the updated catalog");
 } catch (e) {
   report(false, "Unable to validate fragrance-note research coverage: " + e.message);
