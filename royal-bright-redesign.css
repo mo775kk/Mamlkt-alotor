@@ -363,3 +363,109 @@ button.btn-gold,.btn-gold{
   .trust-strip{margin:12px!important}
   .section{padding-left:16px!important;padding-right:16px!important}
 }
+
+
+/* FINAL COLOR SYSTEM — Rose Champagne Royal, 2026-10-16
+   Palette-only layer. Keeps product names/data, prices, storage and behavior intact. */
+:root{
+  --royal-berry:#71324f;
+  --royal-berry-deep:#4f213a;
+  --royal-rose:#d979a1;
+  --royal-rose-light:#fbe5ef;
+  --royal-champagne:#f6dfa0;
+  --royal-gold:#b9872f;
+  --royal-ivory:#fffaf5;
+  --royal-text:#4d2b3e;
+  --royal-muted:#765d6d;
+  --royal-border:#e8c7d6;
+}
+html{color-scheme:light!important;background:var(--royal-ivory)!important}
+body{
+ color:var(--royal-text)!important;
+ background:
+  radial-gradient(ellipse at 0% 0%,rgba(238,169,199,.28),transparent 34%),
+  radial-gradient(ellipse at 100% 14%,rgba(247,218,153,.30),transparent 31%),
+  linear-gradient(135deg,#fffaf5 0%,#fff 48%,#fff0f6 100%)!important;
+}
+main{background:linear-gradient(180deg,#fffaf5 0%,#fff 42%,#fff3f8 78%,#fffaf0 100%)!important}
+.site-header{
+ background:linear-gradient(105deg,#4f213a 0%,#793858 52%,#a45176 100%)!important;
+ border-bottom:2px solid #e7c77f!important;
+}
+.site-header.is-scrolled{background:rgba(79,33,58,.97)!important}
+.site-header .main-nav a{color:#fff8f5!important}
+.site-header .main-nav a:hover,.site-header .main-nav a.active{color:#f9dda0!important}
+.site-header .main-nav{
+ background:linear-gradient(145deg,#fffaf6,#fff0f6)!important;
+ border-color:#e8c7d6!important;
+}
+.site-header .main-nav a:hover,.site-header .main-nav a.active{color:#8e3d63!important;background:#fbe5ef!important}
+.site-header .brand strong{color:#fffaf5!important}
+.site-header .brand small{color:#f8dca0!important}
+.site-header .header-actions .icon-btn,.site-header .menu-toggle{
+ color:#ffe7ac!important;border-color:#d8b76e!important;
+}
+.hero{
+ background:linear-gradient(120deg,#6d2e50,#bd7093 58%,#f0d3a0)!important;
+ border-color:rgba(231,199,127,.82)!important;
+}
+.hero .hero-shade{
+ background:linear-gradient(90deg,rgba(57,22,42,.62) 0%,rgba(81,29,56,.34) 48%,rgba(81,29,56,.08) 100%),
+ linear-gradient(0deg,rgba(70,27,49,.18),transparent 55%)!important;
+}
+.hero .hero-copy h1{color:#fffaf4!important}
+.hero .hero-copy h1 span,.hero .hero-copy .eyebrow{color:#ffe4a0!important}
+.hero .hero-copy .eyebrow{background:rgba(79,33,58,.52)!important;border-color:rgba(255,228,160,.7)!important}
+.hero .hero-actions .btn-gold,.hero .hero-actions .btn-primary,.hero .hero-actions .primary-btn{
+ background:linear-gradient(110deg,#ffe8a9,#edc76e 52%,#e8a0be)!important;color:#4f213a!important;
+}
+.trust-strip{
+ background:linear-gradient(100deg,#fbe5ef 0%,#fff9ed 48%,#f8dce9 100%)!important;
+ border-color:#e8c7d6!important;
+}
+.section-heading h2,.contact-card h2,.gift-copy h2,.feature-copy h2,.category-card h3,
+.royal-family-box summary,.blend-step label{color:#71324f!important}
+.section-heading h2:after{background:linear-gradient(90deg,#d979a1,#d2a344)!important}
+.section p:not(.eyebrow),.section li,.section label,.product-card p,.product-card small{color:#765d6d}
+.category-card,.category-tile,.feature-card,.contact-card,.gift-card,.guide-card,.info-card,
+.product-card,.product-tile,.product-item,.split-feature,.blend-panel,.royal-family-box{
+ border-color:var(--royal-border)!important;
+ box-shadow:0 10px 28px rgba(89,35,63,.085)!important;
+}
+.category-card{background:linear-gradient(145deg,#fff 0%,#fff2f7 70%,#fff8e9 100%)!important}
+.product-card,.product-tile,.product-item{background:linear-gradient(160deg,#fff 0%,#fffaf7 68%,#fff0f6 100%)!important}
+.category-icon-wrap{background:linear-gradient(145deg,#fff0f6,#fff7e3)!important;color:#b9872f!important;border-color:#e8c7d6!important}
+.price,.product-price,.price-tag{color:#bd4779!important}
+.btn-gold,.btn-primary,.primary-btn,.hero .btn,.full-width.btn-gold{
+ background:linear-gradient(110deg,#f6dfa0 0%,#d8ad54 52%,#e9a0bf 100%)!important;
+ color:#4f213a!important;border-color:#d1a64b!important;
+}
+.btn-outline,.secondary-btn{background:#fff8fc!important;color:#873c60!important;border-color:#d99ab8!important}
+input,select,textarea,.search-box{
+ background:#fffdfb!important;color:#4d2b3e!important;border-color:#e1bfd0!important;
+}
+input::placeholder,textarea::placeholder{color:#987d8e!important}
+.modal-backdrop{background:rgba(54,22,40,.56)!important}
+.product-modal,.cart-drawer,.settings-panel,.admin-panel,.modal-content{
+ background:linear-gradient(145deg,#fffdfb,#fff0f6)!important;color:#4d2b3e!important;border-color:#dfbf82!important;
+}
+.toolbar,.customer-price-notice,.blend-price-guide,.blend-panel{
+ background:linear-gradient(110deg,#fff6fa,#fffaf0)!important;border-color:#e8c7d6!important;
+}
+.empty-state{background:#fff6fa!important;color:#70415b!important;border-color:#d9a9c1!important}
+.fragrance-note-pyramid{background:linear-gradient(145deg,#fff,#fff4f8)!important;border-color:#e8c7d6!important}
+.note-disclaimer,.modal-review-note{background:#fff8e9!important;border-color:#e7d3a0!important;color:#6f5263!important}
+.site-footer,footer{
+ background:linear-gradient(110deg,#4f213a 0%,#793858 58%,#a45d48 100%)!important;
+ color:#fff8f2!important;border-top:2px solid #e7c77f!important;
+}
+.site-footer a,footer a{color:#ffe4a0!important}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+ outline:3px solid #d979a1!important;box-shadow:0 0 0 5px rgba(217,121,161,.18)!important;
+}
+#mamlakaBackToTop{background:linear-gradient(135deg,#e9a0bf,#f6dfa0)!important;color:#4f213a!important;border-color:#d1a64b!important}
+@media(max-width:760px){
+ body{background:linear-gradient(160deg,#fffaf5,#fff 52%,#fff0f6)!important}
+ .hero .hero-shade{background:linear-gradient(0deg,rgba(62,23,45,.75),rgba(75,27,51,.32) 52%,rgba(75,27,51,.06))!important}
+ .site-header .main-nav{background:linear-gradient(150deg,#fffaf6,#fff0f6)!important}
+}
