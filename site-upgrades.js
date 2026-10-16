@@ -137,10 +137,24 @@
         const missingImage = products.filter(p => !(p.image || p.imageUrl || p.image_url)).map(p => p.id || p.nameEn || p.nameAr || "(منتج بلا اسم)");
         const notAvailable = products.filter(p => p.available !== true || p.needsReview !== false).map(p => p.id || p.nameEn || p.nameAr || "(منتج بلا اسم)");
         const needsReview = products.filter(p => p.needsReview === true || p.notesStatus === "needs-review" || p.notesStatus === "needsReview").length;
-        const report = { schemaVersion: 2, generatedAt: new Date().toISOString(), source: "data/products.json",
-          summary: { total: products.length, duplicateIds: duplicateIds.length, duplicateNames: duplicateNames.length, missingName: missingName.length, missingSource: missingSource.length, missingNotePyramid: missingPyramid.length, missingPrice: missingPrice.length, missingImage: missingImage.length, notAvailable: notAvailable.length, needsReview },
+        const hasPyramid = p => [p.topNotes || p.notes_top, p.heartNotes || p.notes_heart, p.baseNotes || p.notes_base].every(notes => Array.isArray(notes) && notes.length > 0);
+        const oils = products.filter(p => p.productType === "oil");
+        const ready = products.filter(p => p.productType === "ready");
+        const completeOils = oils.filter(hasPyramid);
+        const completeReady = ready.filter(hasPyramid);
+        const referenceNotes = products.filter(p => p.notesStatus === "reference-fragrance-notes" && hasPyramid(p));
+        const verifiedNotes = products.filter(p => p.verified === true && !p.needsReview && hasPyramid(p));
+        const noteCoverage = {
+          oils: { total: oils.length, withPyramid: completeOils.length, withoutPyramid: oils.length - completeOils.length },
+          ready: { total: ready.length, withPyramid: completeReady.length, withoutPyramid: ready.length - completeReady.length },
+          referenceOnly: referenceNotes.length,
+          verifiedPyramids: verifiedNotes.length
+        };
+        const report = { schemaVersion: 3, generatedAt: new Date().toISOString(), source: "data/products.json",
+          summary: { total: products.length, duplicateIds: duplicateIds.length, duplicateNames: duplicateNames.length, missingName: missingName.length, missingSource: missingSource.length, missingNotePyramid: missingPyramid.length, missingPrice: missingPrice.length, missingImage: missingImage.length, notAvailable: notAvailable.length, needsReview, noteCoverage },
           duplicateIds, duplicateNames, missingName, missingSource, missingNotePyramid: missingPyramid, missingPrice, missingImage, notAvailable };
-        output.innerHTML = "<strong>نتيجة فحص الكتالوج</strong><p>إجمالي المنتجات: " + report.summary.total + " · معرّفات مكررة: " + duplicateIds.length + " · أسماء محتملة التكرار: " + duplicateNames.length + " · بلا مصدر: " + missingSource.length + " · هرم عطري ناقص: " + missingPyramid.length + "</p><p>بلا سعر: " + missingPrice.length + " · بلا صورة: " + missingImage.length + " · غير معتمد للبيع: " + notAvailable.length + " · تحتاج مراجعة: " + needsReview + "</p><p class=\"admin-note\">غياب السعر أو الصورة تنبيه لإكمال البيانات، وليس إذنًا بتخمينها. التكرار بالاسم تنبيه للمراجعة فقط؛ قد توجد إصدارات مختلفة بالاسم المتشابه. لم يتم تعديل أي بيانات.</p>";
+        output.innerHTML = "<strong>نتيجة فحص الكتالوج</strong><p>إجمالي المنتجات: " + report.summary.total + " · معرّفات مكررة: " + duplicateIds.length + " · أسماء محتملة التكرار: " + duplicateNames.length + " · بلا مصدر: " + missingSource.length + " · هرم عطري ناقص: " + missingPyramid.length + "</p><p>بلا سعر: " + missingPrice.length + " · بلا صورة: " + missingImage.length + " · غير معتمد للبيع: " + notAvailable.length + " · تحتاج مراجعة: " + needsReview + "</p><h4>تغطية النوتات العطرية</h4><p>الزيوت: " + completeOils.length + " من " + oils.length + " لها هرم عطري كامل؛ ينقص " + (oils.length-completeOils.length) + ". العطور الجاهزة: " + completeReady.length + " من " + ready.length + "؛ ينقص " + (ready.length-completeReady.length) + ".</p><p>نوتات مرجعية تحتاج مراجعة مطابقة الزيت: " + referenceNotes.length + " · نوتات موثقة ومعتمدة: " + verifiedNotes.length + ".</p><button type=\"button\" class=\"btn btn-outline\" id=\"royalDownloadCatalogAudit\">تنزيل تقرير الفحص JSON</button><p class=\"admin-note\">النوتات المرجعية تصف العطر الأصلي المحتمل وليست إثباتًا لتركيبة زيت المورد. غياب السعر أو الصورة تنبيه لإكمال البيانات، وليس إذنًا بتخمينها. لم يتم تعديل أي بيانات.</p>";
+        $("#royalDownloadCatalogAudit")?.addEventListener("click", () => download("mamlakat-catalog-audit.json", report));
       } catch (error) { output.textContent = "تعذر فحص الكتالوج: " + error.message + " — لم يتم تعديل البيانات."; }
     });
     $("#royalFileSearch")?.addEventListener("input",renderFileList);
