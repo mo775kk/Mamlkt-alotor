@@ -38,7 +38,7 @@ try {
   const worker = read("sw.js");
   report(html.includes('id="installAppBtn"') && html.includes("beforeinstallprompt"),
     "Storefront exposes an install-app action");
-  report(html.includes("navigator.serviceWorker.register('./sw.js?v=20261016-house-search2'") && worker.includes("addEventListener(\"fetch\""),
+  report(html.includes("navigator.serviceWorker.register('./sw.js?v=20261016-fragrance-notes3'") && worker.includes("addEventListener(\"fetch\""),
     "PWA service worker is registered and handles requests");
   report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length,
     "PWA manifest contains app identity, launch URL, display mode and icon");
@@ -80,7 +80,7 @@ try {
     "192px PNG install icon has valid chunks, checksums and image data");
   report(validPng("assets/images/app-icon-512.png", 512),
     "512px PNG install icon has valid chunks, checksums and image data");
-  report(worker.includes('const CACHE_NAME = "mamlakat-al-otor-shell-v8"') &&
+  report(worker.includes('const CACHE_NAME = "mamlakat-al-otor-shell-v9"') &&
     worker.includes('BASE_PATH + "assets/images/app-icon-192.png"') &&
     worker.includes('BASE_PATH + "assets/images/app-icon-512.png"'),
     "PWA service worker pre-caches both raster install icons in the current shell");
@@ -188,7 +188,7 @@ try {
     app.includes("لم تُوثق بعد"),
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
-  report(html.includes("app.js?v=20261016-house-search2"),
+  report(html.includes("app.js?v=20261016-fragrance-notes3"),
     "Storefront cache-buster points to the latest fragrance-note interface");
 } catch (e) {
   report(false, "Unable to validate fragrance-note research coverage: " + e.message);
