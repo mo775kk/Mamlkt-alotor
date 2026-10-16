@@ -290,3 +290,76 @@ a:not(.btn):not(.main-nav a){text-decoration-color:rgba(201,79,131,.35)}
   .hero .hero-shade{background:linear-gradient(90deg,rgba(45,17,34,.38),rgba(55,20,41,.82))!important}
   .hero .hero-copy>p:not(.eyebrow),.hero .hero-note{color:#fff!important}
 }
+
+
+/* HOTFIX 2026-10-16: force the bright palette on the actual storefront selectors.
+   Presentation-only override; product data, localStorage and app logic are untouched. */
+:root{
+  --bg:#fff8f3!important;--panel:#fffdfb!important;--panel2:#fff0f6!important;
+  --text:#54263f!important;--muted:#806277!important;--gold:#bd8b2e!important;
+  --gold2:#f1d77a!important;--line:rgba(173,104,139,.25)!important;
+  --shadow:0 14px 38px rgba(91,36,63,.10)!important;
+}
+html,body{
+  background-color:#fff8f3!important;
+  background-image:none!important;
+  color:#54263f!important;
+}
+body::before,body::after{pointer-events:none}
+main{background:linear-gradient(180deg,#fff8f3 0%,#fff 38%,#fff1f7 72%,#fffaf0 100%)!important}
+.site-header{
+  background:linear-gradient(105deg,#54243f 0%,#803b60 52%,#a35d78 100%)!important;
+  border-bottom:2px solid #e2c078!important;
+  box-shadow:0 8px 26px rgba(91,36,63,.16)!important;
+}
+.hero{
+  border:1px solid rgba(215,174,98,.7)!important;
+  box-shadow:0 18px 44px rgba(91,36,63,.16)!important;
+}
+.hero .hero-shade{
+  background:linear-gradient(90deg,rgba(49,18,37,.72) 0%,rgba(73,28,53,.40) 48%,rgba(73,28,53,.08) 100%)!important;
+}
+.trust-strip{
+  margin:20px auto!important;padding:8px!important;
+  border:1px solid #ecd2df!important;border-radius:20px!important;
+  background:linear-gradient(105deg,#fff0f6,#fffaf0)!important;
+  box-shadow:0 10px 26px rgba(91,36,63,.07)!important;
+}
+.trust-strip b,.section-heading h2,.feature-copy h2{color:#713352!important}
+.section{
+  background:transparent!important;
+}
+.section-heading{margin-bottom:22px!important}
+.category-card,.product-card,.product-tile,.product-item,.split-feature,.blend-panel,
+.royal-family-box,.toolbar,.customer-price-notice,.blend-price-guide{
+  color:#54263f!important;
+  border-color:#e7c5d5!important;
+  box-shadow:0 10px 28px rgba(91,36,63,.075)!important;
+}
+.category-card{
+  background:linear-gradient(145deg,#fff 0%,#fff2f7 72%,#fff9e9 100%)!important;
+}
+.product-card,.product-tile,.product-item{
+  background:linear-gradient(160deg,#fff 0%,#fffaf7 65%,#fff0f6 100%)!important;
+}
+.toolbar,.customer-price-notice,.blend-price-guide,.blend-panel{
+  background:linear-gradient(110deg,#fff7fb,#fffaf0)!important;
+}
+input,select,textarea{
+  color:#54263f!important;background:#fff!important;border-color:#e3c5d4!important;
+}
+button.btn-gold,.btn-gold{
+  background:linear-gradient(110deg,#f3d98d,#c99a35 58%,#a97924)!important;
+  color:#3d2030!important;border:1px solid #e6c36b!important;
+  box-shadow:0 7px 18px rgba(173,126,37,.2)!important;
+}
+.site-footer,footer{
+  background:linear-gradient(110deg,#54243f,#7b385b 58%,#9b6544)!important;
+  color:#fff8f1!important;border-top:2px solid #e2c078!important;
+}
+@media(max-width:760px){
+  body{background:#fff8f3!important}
+  .hero{min-height:500px!important}
+  .trust-strip{margin:12px!important}
+  .section{padding-left:16px!important;padding-right:16px!important}
+}
