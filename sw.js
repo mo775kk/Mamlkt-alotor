@@ -2,13 +2,14 @@
  * Keep HTML network-first so visitors receive storefront updates.
  * Cache successful same-origin static assets for offline revisits.
  */
-const CACHE_NAME = "mamlakat-al-otor-shell-v2";
+const CACHE_NAME = "mamlakat-al-otor-shell-v3";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const APP_SHELL = [
   BASE_PATH,
   BASE_PATH + "index.html",
   BASE_PATH + "manifest.webmanifest",
-  BASE_PATH + "assets/images/royal-crown-icon.svg"
+  BASE_PATH + "assets/images/app-icon-192.svg",
+  BASE_PATH + "assets/images/app-icon-512.svg"
 ];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
