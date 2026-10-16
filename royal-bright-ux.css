@@ -66,3 +66,10 @@ select option,.royal-gift-grid select option{background:#fff!important;color:#51
   .category-card,.product-card{box-shadow:0 8px 20px rgba(103,42,76,.08)!important}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+
+/* Accessible floating back-to-top action; sized for touch and safe-area insets. */
+.mamlaka-back-to-top{position:fixed;z-index:70;left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:7px;min-width:48px;min-height:48px;padding:10px 14px;border:1px solid rgba(212,175,55,.85);border-radius:999px;background:linear-gradient(135deg,#5b243f,#8e4268 65%,#9b7931);color:#fff8fc;font-weight:800;box-shadow:0 8px 24px rgba(61,23,45,.24);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+.mamlaka-back-to-top span[aria-hidden="true"]{font-size:1.35rem;line-height:1}.mamlaka-back-to-top-label{font-size:.82rem}.mamlaka-back-to-top:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(61,23,45,.3)}.mamlaka-back-to-top:focus-visible{outline:3px solid #d4af37;outline-offset:3px}.mamlaka-back-to-top[hidden]{display:none!important}
+@media(max-width:480px){.mamlaka-back-to-top{left:calc(12px + env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));min-height:46px;padding:9px 12px}}
+@media(prefers-reduced-motion:reduce){.mamlaka-back-to-top{transition:none}}
