@@ -7,6 +7,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import { inflateSync } from "node:zlib";
 
 const root = process.cwd();
 const failures = [];
@@ -47,6 +48,38 @@ try {
   const rasterSizes = new Set((manifest.icons || []).filter((icon) => icon.type === "image/png").map((icon) => icon.sizes));
   report(rasterSizes.has("192x192") && rasterSizes.has("512x512"),
     "PWA manifest includes 192px and 512px PNG install-icon fallbacks");
+  const pngCrcTable = new Uint32Array(256);
+  for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; pngCrcTable[n] = c >>> 0; }
+  const pngCrc32 = (bytes) => { let c = 0xffffffff; for (const byte of bytes) c = pngCrcTable[(c ^ byte) & 255] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; };
+  const validPng = (file, expectedSize) => {
+    try {
+      const png = fs.readFileSync(path.join(root, file));
+      if (png.length < 45 || !png.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) return false;
+      let offset = 8, width = 0, height = 0, bitDepth = 0, colorType = 0, interlace = 0, ended = false;
+      const imageData = [];
+      while (offset + 12 <= png.length) {
+        const length = png.readUInt32BE(offset);
+        if (offset + 12 + length > png.length) return false;
+        const type = png.toString("ascii", offset + 4, offset + 8);
+        const payload = png.subarray(offset + 8, offset + 8 + length);
+        const expectedCrc = png.readUInt32BE(offset + 8 + length);
+        if (pngCrc32(png.subarray(offset + 4, offset + 8 + length)) !== expectedCrc) return false;
+        if (type === "IHDR") { width = payload.readUInt32BE(0); height = payload.readUInt32BE(4); bitDepth = payload[8]; colorType = payload[9]; interlace = payload[12]; }
+        if (type === "IDAT") imageData.push(payload);
+        offset += 12 + length;
+        if (type === "IEND") { ended = true; break; }
+      }
+      if (!ended || offset !== png.length || width !== expectedSize || height !== expectedSize || interlace !== 0 || !imageData.length) return false;
+      const channels = ({ 0: 1, 2: 3, 3: 1, 4: 2, 6: 4 })[colorType];
+      if (!channels) return false;
+      const decoded = inflateSync(Buffer.concat(imageData));
+      return decoded.length === (Math.ceil(width * bitDepth * channels / 8) + 1) * height;
+    } catch { return false; }
+  };
+  report(validPng("assets/images/app-icon-192.png", 192),
+    "192px PNG install icon has valid chunks, checksums and image data");
+  report(validPng("assets/images/app-icon-512.png", 512),
+    "512px PNG install icon has valid chunks, checksums and image data");
   report(worker.includes('const CACHE_NAME = "mamlakat-al-otor-shell-v4"') &&
     worker.includes('BASE_PATH + "assets/images/app-icon-192.png"') &&
     worker.includes('BASE_PATH + "assets/images/app-icon-512.png"'),
