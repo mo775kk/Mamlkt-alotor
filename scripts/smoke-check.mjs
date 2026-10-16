@@ -181,8 +181,12 @@ try {
     settings.includes("actions/workflows/deploy-ai-worker.yml") &&
     settings.includes("navigator.clipboard"),
     "AI deployment guide links to GitHub secrets and workflow and wires copy interaction");
+  report(settings.includes("setTimeout(()=>controller.abort(),10000)") &&
+    settings.includes("data.configured!==true") && settings.includes("AbortError") &&
+    settings.includes("لا يختبر إجابة النموذج نفسها"),
+    "AI connection diagnostics handle timeouts, missing server secrets and health-check limitations");
   report(polish.includes(".ai-secret-list{") &&
-    html.includes("settings.js?v=20261016-ai-settings2") &&
+    html.includes("settings.js?v=20261016-ai-diagnostics1") &&
     html.includes("royal-polish.css?v=20261016-ai-setup1"),
     "AI deployment guide styles and cache-busted script/style versions are present");
 } catch (e) {
