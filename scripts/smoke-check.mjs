@@ -221,7 +221,7 @@ try {
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
   report(html.includes("app.js?v=20261016-fragrance-notes3") &&
-    html.includes("royal-polish.css?v=20261016-fragrance-notes1"),
+    html.includes("royal-bright-redesign.css?v=20261016-visible-hotfix1"),
     "Storefront cache-busters point to the latest fragrance-note interface");
   report(read("sw.js").includes('const CACHE_NAME = "mamlakat-al-otor-shell-v9"'),
     "PWA cache version is refreshed to deliver the updated catalog");
