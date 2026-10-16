@@ -80,7 +80,7 @@ try {
     "192px PNG install icon has valid chunks, checksums and image data");
   report(validPng("assets/images/app-icon-512.png", 512),
     "512px PNG install icon has valid chunks, checksums and image data");
-  report(worker.includes('const CACHE_NAME = "mamlakat-al-otor-shell-v4"') &&
+  report(worker.includes('const CACHE_NAME = "mamlakat-al-otor-shell-v5"') &&
     worker.includes('BASE_PATH + "assets/images/app-icon-192.png"') &&
     worker.includes('BASE_PATH + "assets/images/app-icon-512.png"'),
     "PWA service worker pre-caches both raster install icons in the current shell");
