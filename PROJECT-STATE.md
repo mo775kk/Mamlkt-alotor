@@ -368,3 +368,11 @@
 - أضيف `ai-worker/GITHUB-ACTIONS-DEPLOY.md` لتوثيق إعداد الأسرار والمتغير الاختياري `MAMLAKA_AI_WORKER_URL` وخطوات التحقق.
 - Commits: `af0df832cd5a462439eaa208bb48a5205222f275`, `606e0a835a52f911c784dceb92e1cba886b4c10a`, `58a5318f66a96536992041a9bf237ace1bddda8a`, `9ab03b601a8b3f406c31bcd98a1e6c38bb0b484b`, `fbb84c3cbebc85416b3e9e42e6093ceacccf2221`.
 - **حدود التحقق:** الملفات أضيفت إلى GitHub، لكن لم يُشغّل سير النشر ولم تُضف أسرار الحساب في هذه الجولة، ولم تُنفذ الاختبارات في بيئة CI بعد؛ لا يُدّعى أن الخادم أصبح منشورًا أو أن الاتصال الحي يعمل. بعد إضافة الأسرار، شغّل Actions يدويًا وراجع نتيجة جميع الخطوات.
+
+
+## متابعة تنفيذ 2026-10-16 — فحوص آلية مستمرة لخدمة AI
+- إضافة سير عمل مستقل `.github/workflows/ai-worker-tests.yml` لتشغيل `node scripts/ai-worker-test.mjs` تلقائيًا عند تغييرات خدمة AI والاختبارات وملفات سير العمل، وعلى Pull Requests، مع إمكانية تشغيله يدويًا.
+- تحديث `ai-worker/GITHUB-ACTIONS-DEPLOY.md` لتمييز اختبار الكود التلقائي عن النشر الفعلي الذي يتطلب أسرار Cloudflare وOpenAI.
+- Commit سير الاختبارات: https://github.com/mo775kk/Mamlkt-alotor/commit/ccd9765b6ea70cb778e937647477564544499e74
+- Commit توثيق النشر والاختبارات: https://github.com/mo775kk/Mamlkt-alotor/commit/5196c54a85aa6ddc2cc98252e2f015f486980bee
+- الحالة: تم حفظ الملفات في المستودع. لا أملك حتى الآن نتيجة تشغيل GitHub Actions تؤكد نجاح الاختبارات؛ يجب مراجعة تبويب Actions. لم تُنشر خدمة AI ولم يُثبت اتصال حي بالنموذج حتى الآن.
