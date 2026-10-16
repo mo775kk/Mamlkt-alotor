@@ -2,7 +2,7 @@
  * Keep HTML network-first so visitors receive storefront updates.
  * Cache successful same-origin static assets for offline revisits.
  */
-const CACHE_NAME = "mamlakat-al-otor-shell-v6";
+const CACHE_NAME = "mamlakat-al-otor-shell-v7";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const APP_SHELL = [
   BASE_PATH,
