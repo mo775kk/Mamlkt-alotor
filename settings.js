@@ -152,6 +152,59 @@
         html[data-visual-style="windows"] .product-card img,html[data-visual-style="android"] .product-card img,html[data-visual-style="ios"] .product-card img,html[data-visual-style="oneui"] .product-card img,html[data-visual-style="pixel"] .product-card img{max-height:190px!important}
         html[data-visual-style="windows"] .site-header,html[data-visual-style="android"] .site-header,html[data-visual-style="ios"] .site-header,html[data-visual-style="oneui"] .site-header,html[data-visual-style="pixel"] .site-header{position:sticky!important;top:0!important;z-index:100!important}
       }
+      /* Full-store theme coverage: all sections, cards, imagery, admin, overlays and controls. */
+      html,body,#app,main,header,nav,section,article,aside,footer,.site-shell,.page-shell,.section,.section-inner,.section-wrap,.content-wrap,.container,.page-content{color:${x.text};}
+      body{background-color:${x.bg}!important;background-image:linear-gradient(145deg,color-mix(in srgb,${x.bg} 94%,${x.panel}),${x.panel} 55%,color-mix(in srgb,${x.bg} 90%,${x.gold}))!important}
+      .site-header,.site-header.is-scrolled,.main-nav,.mobile-nav,.nav-drawer,.menu-panel,.search-panel,.search-overlay,.search-results,.suggestions,.search-suggestions,.toolbar,.filter-bar,.sort-bar,.breadcrumb,.trust-strip,.announcement-bar,.promo-strip,.site-footer,footer{background:${x.panel}!important;color:${x.text}!important;border-color:${line}!important;box-shadow:0 5px 22px color-mix(in srgb,${x.text} 7%,transparent)!important}
+      .hero,.hero-banner,.intro,.intro-content,.entrance-screen,.royal-entrance,.section-banner,.page-banner{border-color:${x.gold}!important}
+      .hero{background-color:${x.bg}!important;background-image:linear-gradient(115deg,color-mix(in srgb,${x.bg} 35%,transparent),color-mix(in srgb,${x.gold} 20%,transparent)),var(--page-image)!important;background-position:center!important;background-size:cover!important}
+      .hero .hero-shade,.intro::before,.intro::after{background-color:color-mix(in srgb,${x.bg} ${Math.round((x.overlay??.58)*100)}%,transparent)!important}
+      .product-grid,.products-grid,.category-grid,.categories-grid,.family-grid,.guide-grid,.feature-grid,.gift-grid,.service-grid,.brand-grid,.result-grid,.favorites-grid,.wishlist-grid{gap:var(--os-gap,18px)!important}
+      .product-card,.product-tile,.product-item,.product-result,.search-result,.favorite-item,.wishlist-item,.cart-item,.category-card,.category-tile,.family-card,.family-tile,.guide-card,.guide-item,.feature-card,.feature-tile,.contact-card,.gift-card,.gift-option,.service-card,.brand-card,.info-card,.info-tile,.split-feature,.blend-panel,.blend-step,.royal-family-box,.fragrance-note-pyramid,.note-card,.note-group,.price-card,.price-option,.advisor-card,.recommendation-card,.request-card,.order-card,.customer-card,.accounting-card,.inventory-card,.stat-card,.dashboard-card,.report-card,.admin-card,.panel,.panel-card,.settings-card,.settings-section,.section-card{background:${x.panel}!important;color:${x.text}!important;border:1px solid ${line}!important;border-radius:var(--os-radius,18px)!important;box-shadow:var(--os-shadow,0 5px 20px rgba(20,35,45,.08))!important}
+      .product-card:hover,.category-card:hover,.feature-card:hover,.guide-card:hover,.gift-card:hover,.service-card:hover,.brand-card:hover{border-color:${x.gold}!important;transform:translateY(-2px)}
+      .product-card h1,.product-card h2,.product-card h3,.product-card h4,.category-card h1,.category-card h2,.category-card h3,.feature-card h2,.feature-card h3,.guide-card h2,.guide-card h3,.contact-card h2,.gift-card h2,.price-card h3,.advisor-card h3,.recommendation-card h3{color:${x.text}!important;text-shadow:none!important}
+      .product-card p,.product-card small,.product-card .description,.category-card p,.category-card small,.feature-card p,.guide-card p,.gift-card p,.contact-card p,.info-card p,.info-tile p,.section .muted,.section .subtitle{color:${muted}!important;opacity:1!important;text-shadow:none!important}
+      .product-card img,.product-tile img,.product-item img,.product-result img,.search-result img,.favorite-item img,.wishlist-item img,.cart-item img,.category-card img,.category-tile img,.family-card img,.family-tile img,.guide-card img,.feature-card img,.gift-card img,.service-card img,.brand-card img,.info-card img,.product-image img,.product-photo img,.perfume-image img,.bottle-image img{background:${x.bg}!important;border-radius:calc(var(--os-radius,18px) - 5px)!important;object-fit:contain!important;max-width:100%!important}
+      .product-image,.product-photo,.perfume-image,.bottle-image,.category-image,.card-image,.product-media,.product-card .image-wrap,.product-card .product-image-wrap{background:${x.bg}!important;border-radius:calc(var(--os-radius,18px) - 5px)!important;overflow:hidden!important}
+      .category-icon-wrap,.category-icon,.feature-icon,.service-icon,.line-icon,.icon-badge,.family-icon,.brand-icon,.stat-icon{background:color-mix(in srgb,${x.gold} 12%,${x.panel})!important;color:${x.gold}!important;border-color:color-mix(in srgb,${x.gold} 38%,${line})!important;border-radius:calc(var(--os-radius,18px) - 4px)!important}
+      svg,.line-icon svg,.category-icon-wrap svg,.feature-icon svg,.service-icon svg{stroke:currentColor!important}
+      .btn,.button,.btn-primary,.btn-secondary,.btn-outline,.btn-gold,.primary-btn,.secondary-btn,.text-btn,.icon-btn,.menu-toggle,.filter-chip,.category-chip,.tag,.badge,.pill,.tab,.admin-tabs button,.pagination button{border-radius:var(--os-button-radius,10px)!important}
+      .btn-primary,.primary-btn,.btn-gold,.btn-gold:hover,.btn-primary:hover,.full-width.btn-gold,.checkout-btn,.add-to-cart,.buy-button,.install-btn{background:${x.gold}!important;color:${lum(x.gold)>.48?"#20251f":"#ffffff"}!important;border-color:${x.gold}!important;text-shadow:none!important}
+      .btn-outline,.secondary-btn,.text-btn,.icon-btn,.menu-toggle,.filter-chip,.category-chip,.tag,.badge,.pill,.tab{background:${x.panel}!important;color:${x.text}!important;border-color:${line}!important}
+      .filter-chip.active,.category-chip.active,.tab.active,.admin-tabs button.active,.pagination button.active,.main-nav a.active{background:${x.gold}!important;color:${lum(x.gold)>.48?"#20251f":"#ffffff"}!important;border-color:${x.gold}!important}
+      input,select,textarea,button,.search-box,.search-input,.form-control,.quantity-input,.admin-login input,.admin-grid input,.admin-grid select,.admin-grid textarea{font-family:"Tajawal",sans-serif!important}
+      input,select,textarea,.search-box,.search-input,.form-control,.quantity-input,.admin-login input,.admin-grid input,.admin-grid select,.admin-grid textarea{background:${x.panel}!important;color:${x.text}!important;border:1px solid ${line}!important;border-radius:var(--os-button-radius,10px)!important;box-shadow:none!important}
+      input::placeholder,textarea::placeholder,.search-input::placeholder{color:${muted}!important;opacity:1!important}
+      .modal-backdrop,.overlay,.drawer-backdrop,.cart-backdrop,.admin-layer,.pwa-help-backdrop{background:color-mix(in srgb,${x.bg} 72%,#000 28%)!important}
+      .product-modal,.modal-content,.cart-drawer,.drawer,.cart-panel,.settings-panel,.admin-panel,.admin-head,.admin-page,.admin-login,.admin-card,.admin-tabs,.pwa-help-card,.toast,.confirm-dialog,.advisor-modal,.search-modal,.quick-view-modal{background:${x.panel}!important;color:${x.text}!important;border-color:${x.gold}!important}
+      .admin-head,.admin-tabs,.admin-page,.admin-note,.admin-login,.settings-section,.settings-card{border-color:${line}!important}
+      .admin-panel h1,.admin-panel h2,.admin-panel h3,.admin-panel label,.admin-panel p,.admin-panel small,.admin-panel summary,.product-modal h2,.product-modal h3,.cart-drawer h2,.cart-drawer h3,.pwa-help-card h2{color:${x.text}!important;text-shadow:none!important}
+      .admin-panel p,.admin-panel small,.admin-note,.admin-login small{color:${muted}!important;opacity:1!important}
+      table,.data-table,.inventory-table,.report-table{background:${x.panel}!important;color:${x.text}!important;border-color:${line}!important;border-radius:var(--os-radius,18px)!important;overflow:hidden}
+      th,.data-table th,.inventory-table th,.report-table th{background:${x.bg}!important;color:${x.text}!important;border-color:${line}!important}
+      td,.data-table td,.inventory-table td,.report-table td{color:${x.text}!important;border-color:${line}!important}
+      tr:nth-child(even) td{background:color-mix(in srgb,${x.panel} 88%,${x.bg})!important}
+      .price,.product-price,.price-tag,.amount,[class*="price"]{color:${x.gold}!important}
+      :where(a,button,input,select,textarea,[tabindex],[role="button"]):focus-visible{outline:3px solid ${x.gold}!important;outline-offset:3px!important;box-shadow:0 0 0 4px color-mix(in srgb,${x.gold} 22%,transparent)!important}
+      ::selection{background:${x.gold2}!important;color:${x.text}!important}
+      html[data-visual-style="windows"]{--os-radius:14px;--os-button-radius:8px;--os-gap:18px;--os-shadow:0 5px 20px rgba(20,35,45,.09)}
+      html[data-visual-style="android"]{--os-radius:26px;--os-button-radius:999px;--os-gap:16px;--os-shadow:0 5px 18px color-mix(in srgb,${x.gold} 13%,transparent)}
+      html[data-visual-style="ios"]{--os-radius:20px;--os-button-radius:14px;--os-gap:20px;--os-shadow:0 8px 28px rgba(20,30,45,.08)}
+      html[data-visual-style="oneui"]{--os-radius:24px;--os-button-radius:16px;--os-gap:14px;--os-shadow:0 3px 14px rgba(20,30,45,.07)}
+      html[data-visual-style="pixel"]{--os-radius:28px;--os-button-radius:18px;--os-gap:18px;--os-shadow:0 6px 20px color-mix(in srgb,${x.gold} 12%,transparent)}
+      html[data-visual-style="classic"]{--os-radius:8px;--os-button-radius:6px;--os-gap:18px;--os-shadow:none}
+      html[data-visual-style="ios"] .site-header,html[data-visual-style="ios"] .main-nav,html[data-visual-style="ios"] .toolbar{backdrop-filter:blur(20px)!important}
+      html[data-visual-style="android"] .category-icon-wrap,html[data-visual-style="pixel"] .category-icon-wrap{border-radius:22px 22px 8px 22px!important}
+      html[data-visual-style="oneui"] .section-heading h2{font-size:clamp(1.7rem,4vw,2.5rem)!important;font-weight:800!important}
+      html[data-visual-style="classic"] .product-card,html[data-visual-style="classic"] .category-card,html[data-visual-style="classic"] .feature-card{box-shadow:none!important}
+      html[data-visual-style="ios"] .icon-btn{border-radius:50%!important}
+      @media(max-width:700px){
+        .product-grid,.products-grid,.category-grid,.categories-grid,.family-grid,.guide-grid,.feature-grid,.gift-grid,.service-grid,.brand-grid,.result-grid,.favorites-grid,.wishlist-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+        .product-card,.product-tile,.product-item,.product-result,.category-card,.category-tile,.family-card,.guide-card,.feature-card,.gift-card,.service-card,.brand-card{min-width:0!important;padding:10px!important}
+        .product-card img,.product-tile img,.product-item img,.product-result img,.category-card img,.category-tile img,.family-card img,.guide-card img,.feature-card img,.gift-card img{max-height:190px!important}
+        .site-header{z-index:100!important}
+      }
+
     `;
     const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.setAttribute("content",x.bg||baseTheme.bg);
     document.documentElement.style.colorScheme=dark?"dark":"light";write(THEME_KEY,x);
