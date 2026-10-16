@@ -99,3 +99,67 @@ section{scroll-margin-top:105px}
 }
 @media(max-width:380px){.product-grid{grid-template-columns:1fr!important}.section{padding-inline:13px!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+
+/* READABILITY FIX — high-contrast typography and crisp surfaces */
+:root{
+  --text:#172f2d!important;--muted:#405d58!important;
+  --line:#b8cec4!important;--gold:#98502f!important;--gold2:#a85e3a!important;
+}
+body,main,.section,.section-inner{color:#172f2d!important}
+p,li,dd,dt,label,small,.muted,.subtitle,.description,
+.section p:not(.eyebrow),.section li,.section label,
+.product-card p,.product-card small,.section-heading p,
+.ia-note,.royal-gift-note,.royal-gift-status{
+  color:#40534f!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+small,.product-card small{font-size:13px!important;line-height:1.75!important}
+h1,h2,h3,h4,h5,.section-heading h2,.contact-card h2,.gift-copy h2,
+.feature-copy h2,.category-card h3,.royal-family-box summary,
+.page-title,.section-title{
+  color:#183f3a!important;text-shadow:none!important;font-weight:800!important;
+}
+.hero .hero-copy h1,.hero .hero-copy h2{color:#fff!important}
+.hero .hero-copy p,.hero .hero-copy .hero-note{color:#fff!important;text-shadow:0 1px 3px rgba(0,0,0,.32)!important}
+.eyebrow{color:#7e3e26!important;background:#fff8f0!important;border-color:#d9a17e!important;text-shadow:none!important}
+.price,.product-price,.price-tag,.amount,[class*="price"]{color:#873d22!important;font-weight:900!important}
+.category-card,.product-card,.product-tile,.product-item,.feature-card,
+.contact-card,.gift-card,.guide-card,.info-card,.panel,.blend-panel,
+.royal-family-box,.toolbar,.customer-price-notice,.blend-price-guide{
+  background:#fff!important;color:#172f2d!important;
+  border:1px solid #c4d7ce!important;
+  box-shadow:0 8px 24px rgba(23,63,58,.10)!important;
+}
+.product-card p,.product-card small,.product-card h3,.product-card h4{opacity:1!important}
+.product-card h3,.product-card h4{color:#183f3a!important}
+button,.btn,.button,input[type=submit],input[type=button]{
+  font-weight:800!important;text-shadow:none!important;opacity:1!important;
+}
+.btn-gold,.btn-primary,.primary-btn,.full-width.btn-gold{
+  background:#d9a077!important;color:#172f2d!important;border:2px solid #8d4e2f!important;
+}
+.btn-outline,.secondary-btn{
+  background:#fff!important;color:#20564d!important;border:2px solid #568579!important;
+}
+.site-header .main-nav a{font-weight:700!important}
+input,select,textarea,.search-box{
+  color:#172f2d!important;background:#fff!important;border:1px solid #8daea0!important;
+}
+input::placeholder,textarea::placeholder{color:#536c65!important;opacity:1!important}
+table{border:1px solid #b7cec3!important;background:#fff!important}
+th{background:#24554e!important;color:#fff!important;font-weight:800!important}
+td{color:#243d38!important;border-bottom:1px solid #d3e1da!important}
+tr:nth-child(even) td{background:#f0f6f2!important}
+.site-footer,footer{color:#fff!important}
+.site-footer p,footer p,.site-footer small,footer small{color:#fff!important;opacity:1!important}
+.site-footer a,footer a{color:#ffe0bd!important;font-weight:800!important}
+.fragrance-note-pyramid h3,.fragrance-note-pyramid b{color:#873d22!important}
+.ia-metric strong,.ia-card h4{color:#24554e!important}
+::selection{background:#24554e!important;color:#fff!important}
+@media(max-width:760px){
+  body{font-size:16px!important}
+  p,li,label,.product-card p{line-height:1.85!important}
+  .product-card small,small{font-size:12px!important}
+}
