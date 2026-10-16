@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "currency": "EGP",
   "updatedAt": "2026-10-16",
-  "notes": "تمت إضافة نوتات مرجعية موثقة لزيوت تطابق أسماء عطور معروفة. هذه النوتات وصف للعطر المرجعي وليست إثباتًا لتركيبة زيت المورد. المنتجات التي لم تتوفر لها مطابقة موثوقة تبقى بلا نوتات تخمينية وتحتاج إلى تحديد الشركة والإصدار.",
+  "notes": "نوتات العطر المرجعي موثقة بروابط مصادر عند مطابقة الاسم. لا تمثل إثباتًا لتركيبة زيت المورد أو أي إصدار مختلف. تبقى المنتجات غير المطابقة بلا نوتات تخمينية.",
   "products": [
     {
       "id": "demo-yara-candy",
@@ -306,12 +306,24 @@
       "gender": "رجالي",
       "family": "غير محدد حتى تأكيد الإصدار",
       "scentNature": "اسم مختصر قد يشير إلى L.12.12 Blanc EDT أو EDP أو Eau Fraîche، ولكل إصدار نوتات مختلفة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
-      "sourceUrl": "https://www.lacoste.com.eg/en/fragrance/mens-l.12.12-blanc-eau-de-parfum-100ml/99350066867.html",
-      "notesStatus": "needs-variant-confirmation",
-      "notesConfidence": "غير محسوم — توجد إصدارات متعددة",
+      "topNotes": [
+        "الجريب فروت",
+        "إكليل الجبل",
+        "الهيل"
+      ],
+      "heartNotes": [
+        "مسك الروم المكسيكي",
+        "الإيلنغ إيلنغ",
+        "البخور"
+      ],
+      "baseNotes": [
+        "الأرز الفيرجيني",
+        "الجلد",
+        "السويد"
+      ],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Lacoste-Fragrances/L-12-12-White-11018.html",
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Lacoste L.12.12 Blanc؛ يجب تأكيد أن الزيت يحاكي هذا الإصدار",
       "verified": false,
       "needsReview": true,
       "image": "",
@@ -333,7 +345,10 @@
       "tags": [
         "needsReview"
       ],
-      "source": "web-research"
+      "source": "web-research",
+      "notesLanguage": "ar",
+      "notesReferenceName": "lacoste white",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور."
     },
     {
       "id": "demo-kayali-marshmallow",
@@ -985,13 +1000,22 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الباشن فروت",
+        "الروم"
+      ],
+      "heartNotes": [
+        "الغاردينيا",
+        "المسك"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "حبوب التونكا"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Carolina Herrera 212 VIP الأصلي؛ لا ينطبق على 212 VIP Men أو Wins",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -1013,7 +1037,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Carolina-Herrera/212-VIP-10554.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "212 vip",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010215",
@@ -1365,13 +1394,26 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "القرفة",
+        "الهيل",
+        "البرغموت",
+        "زهر البرتقال"
+      ],
+      "heartNotes": [
+        "الفانيليا",
+        "الإليمي"
+      ],
+      "baseNotes": [
+        "حبوب التونكا",
+        "البرالين",
+        "المسك",
+        "الأخشاب"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Parfums de Marly Althaïr",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -1393,7 +1435,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Parfums-de-Marly/Althair-78574.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "althair",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010209",
@@ -5155,13 +5202,26 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "السترونيلا",
+        "البرغموت",
+        "البرتقال الصقلي"
+      ],
+      "heartNotes": [
+        "الزنجبيل النيجيري",
+        "القرفة",
+        "النيرولي"
+      ],
+      "baseNotes": [
+        "الشاي الأسود الصيني",
+        "الأمبروكسان",
+        "الغاياك",
+        "البخور"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Louis Vuitton Imagination",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -5183,7 +5243,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Louis-Vuitton/Imagination-67370.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "imagination",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010174",
@@ -7710,13 +7775,25 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الهليوتروب",
+        "الكمون",
+        "البرغموت"
+      ],
+      "heartNotes": [
+        "اللوز المر",
+        "اللافندر",
+        "الياسمين"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "خشب الصندل",
+        "العنبر"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Parfums de Marly Pegasus الأصلي",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -7738,7 +7815,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Parfums-de-Marly/Pegasus-16908.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "pegasus",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010214",
@@ -9769,13 +9851,22 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الباشن فروت",
+        "الروم"
+      ],
+      "heartNotes": [
+        "الغاردينيا",
+        "المسك"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "حبوب التونكا"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Carolina Herrera 212 VIP الأصلي؛ لا ينطبق على 212 VIP Men أو Wins",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -9797,7 +9888,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Carolina-Herrera/212-VIP-10554.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "212 vip",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020094",
@@ -9984,13 +10080,19 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الياسمين"
+      ],
+      "heartNotes": [
+        "الأخشاب الكشميرية"
+      ],
+      "baseNotes": [
+        "العنبر الأبيض"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Mugler Alien الأصلي",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -10012,7 +10114,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Mugler/Alien-707.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "alien",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020264",
@@ -10844,13 +10951,27 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الكمثرى",
+        "الفلفل الوردي",
+        "زهر البرتقال"
+      ],
+      "heartNotes": [
+        "القهوة",
+        "الياسمين",
+        "اللوز المر",
+        "عرق السوس"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "الباتشولي",
+        "خشب الأرز",
+        "خشب الكشمير"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Black Opium الأصلي؛ لا ينطبق تلقائيًا على Glitter أو Over Red",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -10872,7 +10993,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Yves-Saint-Laurent/Black-Opium-25324.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "black opium",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020263",
@@ -10973,13 +11099,34 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الكمأة",
+        "الغاردينيا",
+        "الكشمش الأسود",
+        "الإيلنغ إيلنغ",
+        "البرغموت",
+        "الماندرين"
+      ],
+      "heartNotes": [
+        "الأوركيد الأسود",
+        "التوابل",
+        "الغاردينيا",
+        "الفواكه",
+        "اللوتس"
+      ],
+      "baseNotes": [
+        "الشوكولاتة المكسيكية",
+        "الباتشولي",
+        "الفانيليا",
+        "البخور",
+        "العنبر",
+        "خشب الصندل",
+        "الفيتيفر"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Tom Ford Black Orchid الأصلي",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -11001,7 +11148,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Tom-Ford/Black-Orchid-1018.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "black orchid",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020087",
@@ -13379,13 +13531,33 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "اللوز",
+        "القهوة",
+        "البرغموت",
+        "الليمون"
+      ],
+      "heartNotes": [
+        "مسك الروم",
+        "الياسمين العربي",
+        "زهر البرتقال",
+        "السوسن",
+        "الورد البلغاري"
+      ],
+      "baseNotes": [
+        "حبوب التونكا",
+        "الكاكاو",
+        "الفانيليا",
+        "خشب الصندل",
+        "المسك",
+        "العنبر",
+        "خشب الكشمير",
+        "القرفة"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Carolina Herrera Good Girl الأصلي؛ توجد إصدارات متعددة",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -13407,7 +13579,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Carolina-Herrera/Good-Girl-39681.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "good girl",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020165",
@@ -13981,13 +14158,32 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الكمثرى",
+        "الشمام",
+        "المانغو",
+        "البرغموت",
+        "الخوخ",
+        "الماندرين"
+      ],
+      "heartNotes": [
+        "الياسمين",
+        "الورد",
+        "الإيلنغ إيلنغ",
+        "مسك الروم",
+        "الأوركيد",
+        "البنفسج"
+      ],
+      "baseNotes": [
+        "المسك",
+        "الفانيليا",
+        "خشب الأرز",
+        "التوت"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Dior J’adore الأصلي؛ توجد صيغ وإصدارات مختلفة",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -14009,7 +14205,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Dior/J-Adore-210.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "jadore",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020098",
@@ -15013,13 +15214,27 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "اللافندر",
+        "اليوسفي",
+        "الكشمش الأسود",
+        "البيتيتغرين"
+      ],
+      "heartNotes": [
+        "اللافندر",
+        "زهر البرتقال",
+        "الياسمين"
+      ],
+      "baseNotes": [
+        "فانيليا مدغشقر",
+        "المسك",
+        "العنبر",
+        "خشب الأرز"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — YSL Libre الأصلي؛ لا ينطبق على Intense/Le Parfum",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -15041,7 +15256,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Yves-Saint-Laurent/Libre-55824.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "libre",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020261",
@@ -15615,13 +15835,23 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الفواكه",
+        "الأناناس"
+      ],
+      "heartNotes": [
+        "الورد",
+        "الزهور"
+      ],
+      "baseNotes": [
+        "المسك",
+        "الأخشاب",
+        "العنبر"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي تقريبي — Madawi؛ تختلف تفاصيل النوتات المنشورة بين المراجع، تحقق من إصدار Arabian Oud",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -15643,7 +15873,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Arabian-Oud/Madawi-45320.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "madawi",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020049",
@@ -19485,13 +19720,24 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الكشمش الأسود",
+        "الماندرين الأخضر"
+      ],
+      "heartNotes": [
+        "الفراولة الفوارة",
+        "الغاردينيا"
+      ],
+      "baseNotes": [
+        "خشب الصندل",
+        "الفانيليا",
+        "المسك",
+        "العنبر"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Lattafa Yara Candy؛ تحقق من إصدار المنتج",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -19513,7 +19759,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "WOMEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Lattafa-Perfumes/Yara-Candy-89767.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "yara candy",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-N1020212",
@@ -21721,13 +21972,28 @@
       "origin": "شرقي",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "القرفة",
+        "جوزة الطيب",
+        "البرغموت"
+      ],
+      "heartNotes": [
+        "التمر",
+        "البرالين",
+        "مسك الروم"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "حبوب التونكا",
+        "العنبر",
+        "خشب المر",
+        "البنزوين",
+        "خشب أكيغالاوود"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Lattafa Khamrah الأصلي",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -21749,7 +22015,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "ORIENTAL",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Lattafa-Perfumes/Khamrah-75805.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "khamrah",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-O1030173",
@@ -21764,13 +22035,28 @@
       "origin": "شرقي",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "القرفة",
+        "الهيل",
+        "الزنجبيل"
+      ],
+      "heartNotes": [
+        "القهوة",
+        "البرالين",
+        "الشمام المسكر",
+        "الزهور البيضاء"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "حبوب التونكا",
+        "البنزوين",
+        "المسك",
+        "خشب أكيغالاوود"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Lattafa Khamrah Qahwa",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -21792,7 +22078,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "ORIENTAL",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Lattafa-Perfumes/Khamrah-Qahwa-88175.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "khamrah qahwa",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-O1030150",
@@ -22151,13 +22442,24 @@
       "origin": "شرقي",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "البرغموت",
+        "الليمون"
+      ],
+      "heartNotes": [
+        "نوتات بحرية",
+        "كالون"
+      ],
+      "baseNotes": [
+        "المسك",
+        "الأمبروكسان",
+        "الأخشاب",
+        "الطحالب"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "مرجعي — Megamare من Orto Parisi؛ نوتات منشورة محدودة وليست كشفًا كاملًا للتركيبة",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -22179,7 +22481,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "ORIENTAL",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Orto-Parisi/Megamare-53471.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "megamare",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-O1030008",
