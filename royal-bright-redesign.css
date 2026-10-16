@@ -1,0 +1,72 @@
+/* MAMLKAT AL-OTOR — bright royal redesign layer.
+   Presentation only: does not touch catalog, orders, localStorage, admin settings, or product records. */
+:root{
+  --bright-ink:#51243e;--bright-muted:#806277;--bright-pink:#e98fb4;--bright-pink-deep:#c94f83;
+  --bright-gold:#c99a35;--bright-cream:#fff8f1;--bright-paper:#fffdfb;
+  --bright-line:rgba(201,154,53,.38);--bright-shadow:0 14px 38px rgba(109,42,78,.12);
+}
+html{background:#fff8f4!important;color-scheme:light}
+body{
+ color:var(--bright-ink)!important;
+ background:radial-gradient(ellipse at 8% 7%,rgba(242,170,202,.30),transparent 30%),
+ radial-gradient(ellipse at 94% 20%,rgba(255,218,141,.25),transparent 27%),
+ linear-gradient(135deg,#fff9f5 0%,#fffdf9 48%,#fff0f6 100%)!important;
+ background-attachment:scroll!important;
+}
+.site-header{
+ background:linear-gradient(105deg,rgba(70,25,51,.97),rgba(112,40,76,.96) 52%,rgba(158,103,43,.96))!important;
+ border-bottom:1px solid rgba(241,207,127,.82)!important;box-shadow:0 8px 26px rgba(87,36,63,.17)!important
+}
+.site-header.is-scrolled{background:rgba(83,31,58,.97)!important}
+.site-header .main-nav a{color:#fff8f3!important}
+.site-header .main-nav a:hover,.site-header .main-nav a.active{color:#ffe4a2!important}
+.site-header .brand strong{color:#fff8f3!important}.site-header .brand small{color:#ffe0a0!important}
+.site-header .header-actions .icon-btn{color:#ffe3a0!important;border-color:rgba(255,226,160,.5)!important}
+.hero,.hero-section,.hero-content{color:#fff9f5}
+.hero h1,.hero h2{color:#fff0c7!important;text-shadow:0 3px 20px rgba(0,0,0,.42)!important}
+.hero p,.hero .hero-copy{color:#fff9f5!important}
+.section{color:var(--bright-ink)!important}
+.section-heading h2,.contact-card h2,.gift-copy h2,.feature-copy h2{color:#792d53!important;text-shadow:none!important}
+.section-heading>p,.section p:not(.eyebrow),.section li,.section label{color:var(--bright-muted)}
+.eyebrow{color:#b84e7d!important}
+.section,.content-section,.catalog-section{background-color:transparent}
+.trust-strip{background:linear-gradient(100deg,#ffe8f1,#fff9ec,#ffeaf2)!important;border-block:1px solid #f0d4e1!important}
+.trust-strip b{color:#6d294b!important}.trust-strip small{color:#806277!important}
+.category-card,.category-tile,.feature-card,.contact-card,.gift-card,.guide-card,.info-card{
+ background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(255,239,246,.94))!important;
+ border:1px solid rgba(194,126,157,.34)!important;box-shadow:var(--bright-shadow)!important;color:var(--bright-ink)!important
+}
+.product-card,.product-tile,.product-item{
+ background:linear-gradient(180deg,#fff 0%,#fffaf8 100%)!important;
+ border:1px solid rgba(194,126,157,.27)!important;border-radius:16px!important;
+ box-shadow:0 9px 24px rgba(106,43,76,.10)!important;overflow:hidden
+}
+.product-card h3,.product-card h4,.product-card .product-name,.product-tile h3{color:#4f203b!important}
+.product-card p,.product-card small,.product-card .muted{color:#806277!important}
+.price,.product-price,.price-tag{color:#c63d75!important;font-weight:800}
+.btn-gold,.btn-primary,.primary-btn,.hero .btn,.full-width.btn-gold{
+ color:#54233e!important;background:linear-gradient(110deg,#ffe6a0 0%,#f2c76d 42%,#f6a8c8 100%)!important;
+ border:1px solid rgba(191,139,49,.62)!important;box-shadow:0 7px 18px rgba(155,80,111,.18)!important
+}
+.btn-outline,.secondary-btn{border-color:#d79ab5!important;color:#8c345e!important;background:#fff8fc!important}
+button:not(.btn-gold):not(.btn-primary):not(.primary-btn):not(.icon-btn){accent-color:#d65c91}
+input,select,textarea,.search-box{
+ color:#51243e!important;background:#fffdfb!important;border-color:#dfbfd0!important
+}
+input::placeholder,textarea::placeholder{color:#a18597!important}
+.modal-backdrop{background:rgba(67,26,49,.58)!important;backdrop-filter:blur(5px)}
+.product-modal,.cart-drawer,.settings-panel,.admin-panel,.modal-content{
+ color:#51243e!important;background:linear-gradient(145deg,#fffdfb,#fff0f6)!important;
+ border-color:rgba(201,154,53,.48)!important;box-shadow:0 24px 70px rgba(61,20,42,.25)!important
+}
+.product-modal p,.product-modal label,.cart-drawer p{color:#76586b}
+.section details,.accordion-item,.fold-card{background:rgba(255,255,255,.76);border-color:#ebd0dd}
+a{ text-underline-offset:3px}
+a:not(.btn):not(.main-nav a){text-decoration-color:rgba(201,79,131,.35)}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #d65c91!important;box-shadow:0 0 0 5px rgba(214,92,145,.15)!important}
+#mamlakaBackToTop{background:linear-gradient(135deg,#f5b1cd,#f4d17c)!important;color:#54233e!important;border:1px solid #d4a54e!important}
+@media(max-width:760px){
+ .site-header{box-shadow:0 5px 18px rgba(87,36,63,.16)!important}
+ .product-card,.product-tile,.product-item{border-radius:13px!important}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
