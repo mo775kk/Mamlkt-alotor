@@ -46,12 +46,15 @@ try {
     "PWA manifest icon paths resolve to local files");
   report(String(manifest.scope || "").startsWith("./") && String(manifest.start_url || "").startsWith("./"),
     "PWA start URL and scope are relative to the GitHub Pages project path");
-  report(html.includes("window.addEventListener('beforeinstallprompt'") &&
-    html.includes("event.preventDefault()") && html.includes("promptEvent.prompt()") &&
-    html.includes("promptEvent.userChoice") && html.includes("window.addEventListener('appinstalled'"),
+  const head = html.split(/<\\/head>/i, 1)[0];
+  report(head.includes("window.addEventListener('beforeinstallprompt'") &&
+    head.includes("window.addEventListener('appinstalled'") &&
+    head.includes("dataset.installHandlerAttached"),
+    "PWA install lifecycle listeners are registered in the document head before UI scripts");
+  report(html.includes("event.preventDefault()") && html.includes("promptEvent.prompt()") &&
+    html.includes("promptEvent.userChoice") && html.includes("button.addEventListener('click'"),
     "Install button captures and invokes the browser-native install prompt and handles completion");
-  report(html.includes("button.hidden=isStandalone()||!installPrompt") &&
-    html.includes("button.addEventListener('click'"),
+  report(html.includes("button.hidden=isStandalone()||!installPrompt"),
     "Install button is only offered when a native install prompt is available and app is not installed");
 } catch (e) {
   report(false, "Unable to validate PWA install files: " + e.message);
