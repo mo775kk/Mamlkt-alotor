@@ -46,7 +46,7 @@ try {
     "PWA manifest icon paths resolve to local files");
   report(String(manifest.scope || "").startsWith("./") && String(manifest.start_url || "").startsWith("./"),
     "PWA start URL and scope are relative to the GitHub Pages project path");
-  const head = html.split(/<\\/head>/i, 1)[0];
+  const head = html.split(/<\/head>/i, 1)[0];
   report(head.includes("window.addEventListener('beforeinstallprompt'") &&
     head.includes("window.addEventListener('appinstalled'") &&
     head.includes("dataset.installHandlerAttached"),
