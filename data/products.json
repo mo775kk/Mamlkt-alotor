@@ -4410,13 +4410,38 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "زهر جوزة الطيب",
+        "اللافندر",
+        "خشب الأرز",
+        "اليوسفي",
+        "البابونج",
+        "البرغموت",
+        "الزعرور",
+        "الليمون"
+      ],
+      "heartNotes": [
+        "أوراق البنفسج",
+        "جوزة الطيب",
+        "خشب الأرز",
+        "خشب الصندل",
+        "القرنفل",
+        "زهر العسل",
+        "الياسمين",
+        "زنبق الوادي"
+      ],
+      "baseNotes": [
+        "الجلد",
+        "الفيتيفر",
+        "المسك",
+        "العنبر",
+        "الباتشولي",
+        "حبوب التونكا"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات Dior Fahrenheit الأصلي 1988؛ اسم المورد مختصر ويحتاج تأكيد العبوة",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -4438,7 +4463,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Dior/Fahrenheit-228.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "fahren",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010056",
@@ -4982,13 +5012,22 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "اللافندر"
+      ],
+      "heartNotes": [
+        "السوسن",
+        "الأمبريت (مسك الملوخية)",
+        "الكمثرى"
+      ],
+      "baseNotes": [
+        "خشب الأرز الفيرجيني",
+        "الفيتيفر"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — بيانات Dior Homme Intense 2011؛ تأكد من سنة/إصدار المنتج",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -5010,7 +5049,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Christian-Dior/Dior-Homme-Intense-2011-13016.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "homme intense",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010037",
@@ -5283,13 +5327,25 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "نوتات بحرية",
+        "الجريب فروت",
+        "اليوسفي"
+      ],
+      "heartNotes": [
+        "ورق الغار",
+        "الياسمين"
+      ],
+      "baseNotes": [
+        "العنبر الرمادي",
+        "خشب الغاياك",
+        "طحلب السنديان",
+        "الباتشولي"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات Invictus Eau de Toilette 2013؛ توجد إصدارات متعددة",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -5311,7 +5367,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Paco-Rabanne/Invictus-18471.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "inviktus",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010205",
@@ -5928,13 +5989,22 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الهيل"
+      ],
+      "heartNotes": [
+        "اللافندر",
+        "خشب الأرز الفيرجيني",
+        "البرغموت"
+      ],
+      "baseNotes": [
+        "الفيتيفر",
+        "الكراوية"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات La Nuit de L’Homme EDT الأصلي 2009؛ ليس EDP أو إصدارًا آخر",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -5956,7 +6026,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Yves-Saint-Laurent/La-Nuit-de-l-Homme-5521.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "la nuit de l homme",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010033",
@@ -6272,13 +6347,29 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "اللافندر",
+        "النعناع",
+        "الهيل",
+        "البرغموت",
+        "الأرتميسيا"
+      ],
+      "heartNotes": [
+        "القرفة",
+        "زهر البرتقال",
+        "الكراوية"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "حبوب التونكا",
+        "العنبر",
+        "خشب الصندل",
+        "خشب الأرز"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات Le Male الأصلي 1995؛ لا تنطبق على Le Male Elixir أو Lover أو إصدارات أخرى",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -6300,7 +6391,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Le-Male-430.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "le male",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010235",
@@ -7166,13 +7262,26 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "اليوسفي الأحمر",
+        "الجريب فروت",
+        "النعناع"
+      ],
+      "heartNotes": [
+        "القرفة",
+        "نوتات التوابل",
+        "الورد"
+      ],
+      "baseNotes": [
+        "العنبر",
+        "الجلد",
+        "نوتات خشبية",
+        "الباتشولي الهندي"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات Rabanne 1 Million الأصلي 2008؛ لا تنطبق على Lucky أو Elixir أو إصدارات Gold",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -7194,7 +7303,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Paco-Rabanne/1-Million-3747.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "one million",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010177",
@@ -8562,13 +8676,26 @@
       "origin": "غير محدد",
       "family": "غير محدد",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الفلفل الوردي",
+        "الإليمي",
+        "البرغموت",
+        "الجريب فروت"
+      ],
+      "heartNotes": [
+        "القرفة",
+        "البابريكا",
+        "الزعفران"
+      ],
+      "baseNotes": [
+        "التبغ",
+        "الجلد",
+        "الفيتيفر"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات Spicebomb الأصلي 2012؛ لا تنطبق على Extreme أو Metallic Musk",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -8590,7 +8717,12 @@
       ],
       "source": "قائمة المورد المركزة بتاريخ 2026-06-16",
       "supplierCategory": "MEN",
-      "supplierName": "AQUA D’OR Parfums"
+      "supplierName": "AQUA D’OR Parfums",
+      "sourceUrl": "https://www.fragrantica.com/perfume/Viktor-Rolf/Spicebomb-13857.html",
+      "notesLanguage": "ar",
+      "notesReferenceName": "spicebomb",
+      "notesDisclaimer": "هذه نوتات العطر المرجعي للاستدلال على طابعه، وليست تحليلًا مؤكدًا لزيت المورد أو تركيبة مملكة العطور.",
+      "verified": false
     },
     {
       "id": "oil-R1010238",
