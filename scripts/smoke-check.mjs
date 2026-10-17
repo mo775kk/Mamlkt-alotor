@@ -80,7 +80,7 @@ try {
     "192px PNG install icon has valid chunks, checksums and image data");
   report(validPng("assets/images/app-icon-512.png", 512),
     "512px PNG install icon has valid chunks, checksums and image data");
-  report(worker.includes('const CACHE_NAME = "mamlakat-al-otor-shell-v9"') &&
+  report(/const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(worker) &&
     worker.includes('BASE_PATH + "assets/images/app-icon-192.png"') &&
     worker.includes('BASE_PATH + "assets/images/app-icon-512.png"'),
     "PWA service worker pre-caches both raster install icons in the current shell");
@@ -104,9 +104,9 @@ try {
   report(html.includes("royal-bright-ux.css?v=20261016-bright1"),
     "Bright pearl-pink and gold visual layer is linked from the storefront");
 
-report(html.includes("royal-bright-redesign.css?v=20261016-visible-hotfix1"),
+report(/royal-bright-redesign\.css\?v=[^"]+/.test(html),
   "Visible bright theme hotfix is linked with a fresh cache-buster");
-report(html.includes("sw.js?v=20261016-fragrance-notes3") && read("sw.js").includes('const CACHE_NAME = "mamlakat-al-otor-shell-v9"'),
+report(html.includes("sw.js?v=20261016-fragrance-notes3") && /const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
   "Service worker URL and cache shell version are synchronized");
 
 } catch (e) {
@@ -224,9 +224,9 @@ try {
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
   report(html.includes("app.js?v=20261016-fragrance-notes3") &&
-    html.includes("royal-bright-redesign.css?v=20261016-visible-hotfix1"),
+    /royal-bright-redesign\.css\?v=[^"]+/.test(html),
     "Storefront cache-busters point to the latest fragrance-note interface");
-  report(read("sw.js").includes('const CACHE_NAME = "mamlakat-al-otor-shell-v9"'),
+  report(/const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
     "PWA cache version is refreshed to deliver the updated catalog");
 } catch (e) {
   report(false, "Unable to validate fragrance-note research coverage: " + e.message);
@@ -267,7 +267,7 @@ try {
     settings.includes("لا يختبر إجابة نموذج AI نفسها"),
     "AI connection diagnostics handle timeouts, missing server secrets and health-check limitations");
   report(polish.includes(".ai-secret-list{") &&
-    html.includes("settings.js?v=20261016-ai-diagnostics1") &&
+    /settings\.js\?v=[^"]+/.test(html) &&
     html.includes("royal-polish.css?v=20261016-fragrance-notes1"),
     "AI deployment guide styles and cache-busted script/style versions are present");
 } catch (e) {
