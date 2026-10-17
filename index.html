@@ -111,7 +111,7 @@
     function init(){
       sync();
       if('serviceWorker' in navigator&&location.protocol==='https:'){
-        navigator.serviceWorker.register('./sw.js?v=20261017-visible-reset2',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
+        navigator.serviceWorker.register('./sw.js?v=20261018-cache-refresh3',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
       }
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
@@ -129,7 +129,7 @@
   <link rel="stylesheet" href="taif-inspired-storefront.css?v=20261017-taif-inspired1">
   <link rel="stylesheet" href="mamlaka-admin-visual.css?v=20261017-black-gold-white1">
   <link rel="stylesheet" href="khaleej-inspired-refresh.css?v=20261017-khaleej1">
-  <link rel="stylesheet" href="royal-gold-public-gate.css?v=20261017-gold-gate1">
+  <link rel="stylesheet" href="royal-gold-public-gate.css?v=20261018-gold-storefront2">
 </head>
 <body>
   <div class="intro intro-magic" id="intro" aria-label="دخول المملكة">
