@@ -1,0 +1,62 @@
+/* Mamlakat Al-Otor — public royal gold + black theme */
+:root{
+ --bg:#f3d779;--panel:#fff8dc;--panel2:#f8e8ad;--text:#17130a;--muted:#514321;
+ --gold:#9a6b00;--gold2:#e9bd3e;--line:#c99a24;--shadow:0 14px 36px rgba(88,60,0,.13);
+ color-scheme:light;
+}
+html,body{background:#f3d779!important;color:#17130a!important}
+body{background:linear-gradient(135deg,#fff2b9 0%,#efd06a 48%,#f9e7a1 100%)!important;color:#17130a!important}
+body::before{background:transparent!important;opacity:0!important}
+main,.site-main,.page-content{background:transparent!important;color:#17130a!important}
+.site-header,.main-nav,.header-actions{color:#17130a!important}
+.site-header{background:rgba(255,247,210,.97)!important;border-bottom:2px solid #b88712!important;box-shadow:0 8px 26px rgba(92,62,0,.12)!important}
+.brand strong,.main-nav a,.hero-copy h1,.hero-copy p,.section-title,.section-heading,.section-title h2,.section-heading h2,
+label,.product-card h3,.product-card h4,.product-price,.trust-strip b,.trust-strip small,.footer,.site-footer,
+p,li,summary,.field-label{color:#17130a}
+.brand small,.muted,.eyebrow,.section-subtitle,.product-card small{color:#55431a!important}
+.btn-gold,.btn-primary,.small-btn{background:linear-gradient(135deg,#f8df80,#d5a627 55%,#f3d66d)!important;color:#17130a!important;border:1px solid #9b6b05!important;box-shadow:0 5px 13px rgba(91,62,0,.14)!important}
+.btn-outline,.icon-btn,.text-btn{color:#17130a!important;border-color:#a77b12!important}
+.product-card,.product-tile,.product-item,.trust-strip,.category-card,.panel,.section-card,.advisor-card,.blend-card,.contact-card,.reference-card,.settings-card,.admin-card,.stat-card,.inventory-card,.report-card{
+ background:#fff9e5!important;color:#17130a!important;border-color:#d4aa3c!important;box-shadow:0 9px 25px rgba(87,61,0,.10)!important
+}
+input,select,textarea,.search-box{background:#fffdf5!important;color:#17130a!important;border:1px solid #b58a21!important}
+input::placeholder,textarea::placeholder{color:#6e5b31!important;opacity:1}
+hr,.divider{border-color:#d1aa43!important}
+.hero{border-color:#c99a24!important}
+.hero-shade{background:linear-gradient(90deg,rgba(255,240,174,.94),rgba(255,239,170,.76) 48%,rgba(255,239,170,.15))!important}
+.hero-image{filter:saturate(.72) brightness(1.14)!important}
+.hero-copy h1 span{color:#946600!important}
+.counter{background:#17130a!important;color:#f9df7a!important}
+.toast{background:#fff8dc!important;color:#17130a!important;border:1px solid #b88712!important}
+.drawer,.cart-drawer,.product-modal,.modal-content{background:#fff8df!important;color:#17130a!important;border-color:#c99a24!important}
+.footer,.site-footer{background:#e9c95e!important;border-top:2px solid #b88712!important}
+body.en{color:#17130a!important}
+#intro.intro-magic{background:radial-gradient(ellipse at 50% 30%,#fff5c6 0%,#efd06a 58%,#c89620 100%)!important;color:#17130a!important;isolation:isolate;overflow:hidden}
+#intro .intro-content,#intro .intro-content *{color:#17130a!important}
+#intro .crown-mark{color:#a06e00!important;text-shadow:0 0 24px rgba(255,255,220,.95)!important}
+#intro .magic-promise,#intro .magic-wishes span{color:#3f310d!important}
+#intro .intro-skip{color:#3b2d0b!important}
+#intro .magic-stage{opacity:.65}
+#intro .magic-stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 55%,rgba(255,251,217,.65),transparent 50%)}
+#intro::before,#intro::after{content:"";position:absolute;z-index:3;top:0;bottom:0;width:50.5%;border:clamp(5px,1vw,12px) ridge #b58112;box-sizing:border-box;pointer-events:none;background:
+ repeating-linear-gradient(90deg,transparent 0 7%,rgba(255,235,145,.34) 7.5% 8%,transparent 8.5% 15%),
+ linear-gradient(110deg,#8e5d09 0%,#e8bf48 17%,#b78014 33%,#f7dc80 48%,#a36e0a 68%,#e7c45c 84%,#80510a 100%);
+ box-shadow:inset 0 0 0 5px rgba(255,230,125,.65),inset 0 0 35px rgba(62,38,0,.45),0 0 35px rgba(111,72,0,.22);
+ transition:transform 1.25s cubic-bezier(.7,0,.2,1),filter 1.25s ease}
+#intro::before{left:0;transform-origin:left center;border-radius:0 12px 12px 0}
+#intro::after{right:0;transform-origin:right center;border-radius:12px 0 0 12px}
+#intro.intro-leaving::before{transform:perspective(1100px) rotateY(-105deg);filter:brightness(1.3)}
+#intro.intro-leaving::after{transform:perspective(1100px) rotateY(105deg);filter:brightness(1.3)}
+#intro .intro-content{position:relative;z-index:4}
+#intro .magic-stage{z-index:2}
+#intro .intro-content .btn{position:relative;z-index:5}
+@media(max-width:700px){
+ body{font-size:18px!important}
+ .site-header{background:#fff5c8!important}
+ .product-grid,.products-grid,#productsGrid{gap:12px!important}
+ .product-card{padding:12px!important}
+ #intro::before,#intro::after{width:50.8%}
+}
+@media(prefers-reduced-motion:reduce){
+ #intro::before,#intro::after{transition-duration:.15s}
+}
