@@ -1,0 +1,43 @@
+/* Mamlakat Al-Otor: black, gold and white editorial interface */
+:root{--mamlaka-ink:#101010;--mamlaka-gold:#d4af37;--mamlaka-white:#fff;--mamlaka-soft:#f7f6f2}
+html,body{background:#fff!important;color:#151515!important}
+body{font-family:"Tajawal",Arial,sans-serif!important;font-size:18px!important;line-height:1.85!important}
+h1,h2,h3,.section-heading h2,.brand strong{font-family:"Amiri","Tajawal",serif!important;font-weight:700!important;letter-spacing:.01em}
+p,small,label,button,input,select,textarea{ text-shadow:none!important}
+.site-header,.header,.main-header{background:#fff!important;color:#111!important;border-bottom:2px solid #d4af37!important;box-shadow:0 5px 20px #0000000c!important}
+.brand strong,.brand small,.main-nav a,.header-actions button{color:#111!important}
+.brand-crown,.royal-category-icon,.section-heading .eyebrow,.eyebrow{color:#9a7410!important}
+.hero-copy{background:#fff!important;color:#111!important;border:2px solid #d4af37!important;box-shadow:0 18px 60px #0002!important}
+.hero-copy h1,.hero-copy h2,.hero-copy p,.hero-note{color:#111!important}
+.btn-primary,.btn-gold,.btn-primary:visited{background:#111!important;color:#fff!important;border:1px solid #d4af37!important}
+.btn-gold:hover,.btn-primary:hover{background:#d4af37!important;color:#111!important}
+.trust-strip{background:#111!important;color:#fff!important;border-block:1px solid #d4af37!important}
+.trust-strip *{color:#fff!important}
+.category-card,.product-card,.product-tile,.product-item,.product-grid>*{background:#fff!important;color:#151515!important;border:1px solid #d4af37!important;box-shadow:0 8px 25px #0000000a!important}
+.category-card:hover,.product-card:hover,.product-grid>*:hover{box-shadow:0 12px 30px #0002!important;border-color:#111!important}
+.product-card .price,.product-grid .price{color:#8a6710!important;font-weight:800!important}
+input,select,textarea{background:#fff!important;color:#111!important;border:1px solid #aaa!important;border-radius:10px!important;min-height:44px}
+input::placeholder,textarea::placeholder{color:#666!important;opacity:1!important}
+footer,.site-footer{background:#111!important;color:#fff!important;border-top:2px solid #d4af37!important}
+footer *, .site-footer *{color:#fff}
+#adminLayer{z-index:99999}
+.admin-panel{background:#fff!important;color:#111!important;border:2px solid #d4af37!important}
+.admin-head{background:#111!important;color:#fff!important;border-bottom:2px solid #d4af37!important}
+.admin-head *{color:#fff!important}
+.admin-tabs button.active,.admin-tabs button[aria-selected=true]{background:#111!important;color:#fff!important;border-color:#d4af37!important}
+.admin-page{color:#111!important}
+#adminLayer label{color:#222!important}
+#adminLayer .admin-note{color:#555!important}
+#adminLayer .btn-gold{background:#111!important;color:#fff!important;border-color:#d4af37!important}
+#adminLayer .btn-outline{background:#fff!important;color:#111!important;border:1px solid #b08b24!important}
+.mamlaka-editor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.mamlaka-editor-grid label{display:grid;gap:5px;font-weight:700}
+.mamlaka-editor-grid .wide{grid-column:1/-1}
+.mamlaka-editor-card{padding:16px;margin:14px 0;background:#fff;border:1px solid #d4af37;border-radius:16px}
+.mamlaka-editor-actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.mamlaka-save-state{position:sticky;top:0;z-index:2;padding:10px 12px;border:1px solid #d4af37;border-radius:12px;background:#fffdf4;color:#222;font-weight:700}
+.mamlaka-ref-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px;border-bottom:1px solid #eee}
+.mamlaka-ref-row a{overflow-wrap:anywhere;color:#775500}
+.mamlaka-ref-row button{min-height:36px}
+#referenceLibrary{max-width:none!important;margin:0!important;padding:12px!important;border-radius:12px!important}
+@media(max-width:650px){.mamlaka-editor-grid{grid-template-columns:minmax(0,1fr)}.mamlaka-editor-grid .wide{grid-column:auto}.mamlaka-ref-row{grid-template-columns:minmax(0,1fr)}.hero-copy{max-width:calc(100% - 24px)!important}}
