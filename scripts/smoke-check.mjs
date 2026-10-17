@@ -38,7 +38,7 @@ try {
   const worker = read("sw.js");
   report(html.includes('id="installAppBtn"') && html.includes("beforeinstallprompt"),
     "Storefront exposes an install-app action");
-  report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes("addEventListener(\\\"fetch\\\""),
+  report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes('addEventListener("fetch"'),
     "PWA service worker is registered and handles requests");
   report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length,
     "PWA manifest contains app identity, launch URL, display mode and icon");
