@@ -118,19 +118,65 @@
   })();
   </script>  <link rel="stylesheet" href="royal-complete-overhaul.css?v=20261016-final-visual">\n  <link rel="stylesheet" href="site-sage-petrol-refresh.css?v=20261017-unified-design3">
   <link rel="stylesheet" href="royal-unified-finish.css?v=20261017-unified-finish2">
+  <link rel="stylesheet" href="magic-lamp-entrance.css?v=20261017-genie-motion1">
 </head>
 <body>
-  <div class="intro" id="intro" aria-label="دخول المملكة">
-    <div class="intro-glow"></div>
-    <div class="intro-content">
+  <div class="intro intro-magic" id="intro" aria-label="دخول المملكة">
+    <div class="intro-glow" aria-hidden="true"></div>
+    <div class="magic-stars" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i><i>✦</i><i>·</i><i>✧</i></div>
+    <div class="magic-stage" aria-hidden="true">
+      <div class="magic-smoke magic-smoke-one"></div><div class="magic-smoke magic-smoke-two"></div>
+      <div class="magic-genie"><span class="genie-head"></span><span class="genie-body"></span><span class="genie-arm"></span><span class="genie-tail"></span></div>
+      <div class="magic-lamp"><span class="lamp-handle"></span><span class="lamp-body"></span><span class="lamp-neck"></span><span class="lamp-spout"></span><span class="lamp-lid"></span><span class="lamp-flame"></span></div>
+      <div class="magic-platform"></div>
+    </div>
+    <div class="intro-content magic-copy">
       <div class="crown-mark" aria-hidden="true">♛</div>
       <p class="eyebrow">CROWN · MAISON DE PARFUM</p>
       <h1>مملكة العطور</h1>
-      <p class="intro-subtitle">حكاية فخامة تبدأ بقطرة</p>
-      <button type="button" class="btn btn-gold" id="enterBtn" onclick="window.mamlakaLeaveIntro&&window.mamlakaLeaveIntro()">دخول المملكة</button>
-      <button type="button" class="intro-skip" id="skipIntro" onclick="window.mamlakaLeaveIntro&&window.mamlakaLeaveIntro()">تخطي المقدمة</button>
+      <p class="intro-subtitle magic-typed" id="magicGreeting" aria-live="polite">افرك المصباح… ودعني أساعدك في العثور على عطرك!</p>
+      <p class="magic-promise">✨ أنا خادم الروائح الملكية… أخبرني بما تحب وسأرشدك إلى اختيارك.</p>
+      <div class="magic-wishes" aria-label="طلبات يمكنك البدء بها">
+        <span>🌹 عطر يناسب ذوقي</span><span>🪵 عود وبخور</span><span>🎁 هدية مميزة</span>
+      </div>
+      <button type="button" class="btn btn-gold" id="enterBtn" onclick="window.mamlakaLeaveIntro&&window.mamlakaLeaveIntro()">افتح أبواب المملكة</button>
+      <button type="button" class="intro-skip" id="skipIntro" onclick="window.mamlakaLeaveIntro&&window.mamlakaLeaveIntro()">تخطي الحركة والدخول مباشرة</button>
     </div>
   </div>
+  <script>
+    // Accessible greeting cycle for the magical entrance. The gate and existing buttons remain unchanged.
+    (function(){
+      var greeting=document.getElementById("magicGreeting");
+      if(!greeting)return;
+      var lines=[
+        "افرك المصباح… ودعني أساعدك في العثور على عطرك!",
+        "أتمُرّ على قلبك رائحة الورد أم سحر العود؟",
+        "اطلب ما تشاء: عطرًا لك، بخورًا للبيت، أو هدية لمن تحب.",
+        "أهلًا بك في مملكة العطور… رحلتك الملكية تبدأ الآن."
+      ];
+      var index=0,timer=null;
+      function showNext(){
+        if(!greeting.isConnected)return;
+        index=(index+1)%lines.length;
+        greeting.classList.remove("magic-text-show");
+        greeting.classList.add("magic-text-hide");
+        window.setTimeout(function(){
+          if(!greeting.isConnected)return;
+          greeting.textContent=lines[index];
+          greeting.classList.remove("magic-text-hide");
+          greeting.classList.add("magic-text-show");
+        },320);
+      }
+      greeting.classList.add("magic-text-show");
+      timer=window.setInterval(showNext,4300);
+      var gate=document.getElementById("intro");
+      if(gate){
+        var stop=function(){if(timer)window.clearInterval(timer);};
+        gate.addEventListener("click",function(e){if(e.target.closest("#enterBtn,#skipIntro"))stop();},{once:true});
+      }
+      document.addEventListener("visibilitychange",function(){if(document.hidden){if(timer)window.clearInterval(timer);timer=null;}else if(!timer)timer=window.setInterval(showNext,4300);});
+    })();
+  </script>
   <script>
     // Self-contained entrance transition: available before storefront scripts load.
     (function(){
