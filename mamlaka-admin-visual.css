@@ -41,3 +41,5 @@ footer *, .site-footer *{color:#fff}
 .mamlaka-ref-row button{min-height:36px}
 #referenceLibrary{max-width:none!important;margin:0!important;padding:12px!important;border-radius:12px!important}
 @media(max-width:650px){.mamlaka-editor-grid{grid-template-columns:minmax(0,1fr)}.mamlaka-editor-grid .wide{grid-column:auto}.mamlaka-ref-row{grid-template-columns:minmax(0,1fr)}.hero-copy{max-width:calc(100% - 24px)!important}}
+
+#referenceLibrary{display:none!important}#referenceLibraryHost #referenceLibrary{display:block!important}body{font-family:var(--mamlaka-body-font,"Tajawal"),Arial,sans-serif!important;font-size:var(--mamlaka-font-size,18px)!important}h1,h2,h3,h4,.section-heading h2,.brand strong{font-family:var(--mamlaka-heading-font,"Amiri"),serif!important}
