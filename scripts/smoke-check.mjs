@@ -233,6 +233,10 @@ try {
 }
 
 try {
+  report(settings.includes('dp={"3":50,"5":75,"10":100,"22":130,"30":100,"50":150,"100":300}') &&
+    html.includes("30 مل · زيت فقط / رش',price:100") && html.includes("50 مل · زيت فقط / رش',price:150") && html.includes("100 مل · زيت فقط / رش',price:300"),
+    "Oil-only/spray retail price defaults are consistent between owner controls and customer guide");
+
   const bridge = read("ai-service.js");
   const worker = read("ai-worker/src/index.js");
   const workerConfig = read("ai-worker/wrangler.toml");
