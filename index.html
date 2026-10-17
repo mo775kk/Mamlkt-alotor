@@ -111,7 +111,7 @@
     function init(){
       sync();
       if('serviceWorker' in navigator&&location.protocol==='https:'){
-        navigator.serviceWorker.register('./sw.js?v=20261016-fragrance-notes3',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
+        navigator.serviceWorker.register('./sw.js?v=20261017-visible-reset2',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
       }
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
@@ -122,7 +122,9 @@
   <link rel="stylesheet" href="magic-lamp-entrance.css?v=20261017-genie-motion1">
   <link rel="stylesheet" href="fragrance-visual-repair.css?v=20261017-repair2">
   <link rel="stylesheet" href="fragrance-total-redesign.css?v=20261017-total-redesign3">
-  <link rel="stylesheet" href="settings-control-repair.css?v=20261017-save-controls1">\n</head>
+  <link rel="stylesheet" href="settings-control-repair.css?v=20261017-save-controls1">
+  <link rel="stylesheet" href="royal-live-visible-fix.css?v=20261017-visible-reset2">
+</head>
 <body>
   <div class="intro intro-magic" id="intro" aria-label="دخول المملكة">
     <div class="intro-glow" aria-hidden="true"></div>
