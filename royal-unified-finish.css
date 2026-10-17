@@ -67,17 +67,17 @@ th{font-weight:800}
 .store-map-frame{min-width:0;overflow:hidden;border-radius:var(--mk-radius-lg)}
 .store-map-frame iframe{display:block;width:100%;min-height:300px;border:0}
 .site-footer{padding:clamp(28px,4vw,52px) 20px}
-body[data-visual-style="windows"] .product-card,body[data-visual-style="windows"] .category-card{border-radius:12px}
-body[data-visual-style="android"] .product-card,body[data-visual-style="android"] .category-card{border-radius:24px}
-body[data-visual-style="ios"] .product-card,body[data-visual-style="ios"] .category-card{border-radius:22px;backdrop-filter:blur(12px)}
-body[data-visual-style="oneui"] .product-card,body[data-visual-style="oneui"] .category-card{border-radius:28px}
-body[data-visual-style="pixel"] .product-card,body[data-visual-style="pixel"] .category-card{border-radius:16px;border-style:solid}
-body[data-visual-style="classic"] .product-card,body[data-visual-style="classic"] .category-card{border-radius:5px;box-shadow:none}
-body[data-visual-style="windows"] button,body[data-visual-style="windows"] .btn{border-radius:8px}
-body[data-visual-style="android"] button,body[data-visual-style="android"] .btn{border-radius:999px}
-body[data-visual-style="ios"] button,body[data-visual-style="ios"] .btn{border-radius:14px}
-body[data-visual-style="oneui"] button,body[data-visual-style="oneui"] .btn{border-radius:18px}
-body[data-visual-style="classic"] button,body[data-visual-style="classic"] .btn{border-radius:4px}
+html[data-visual-style="windows"] .product-card,html[data-visual-style="windows"] .category-card{border-radius:12px}
+html[data-visual-style="android"] .product-card,html[data-visual-style="android"] .category-card{border-radius:24px}
+html[data-visual-style="ios"] .product-card,html[data-visual-style="ios"] .category-card{border-radius:22px;backdrop-filter:blur(12px)}
+html[data-visual-style="oneui"] .product-card,html[data-visual-style="oneui"] .category-card{border-radius:28px}
+html[data-visual-style="pixel"] .product-card,html[data-visual-style="pixel"] .category-card{border-radius:16px;border-style:solid}
+html[data-visual-style="classic"] .product-card,html[data-visual-style="classic"] .category-card{border-radius:5px;box-shadow:none}
+html[data-visual-style="windows"] button,html[data-visual-style="windows"] .btn{border-radius:8px}
+html[data-visual-style="android"] button,html[data-visual-style="android"] .btn{border-radius:999px}
+html[data-visual-style="ios"] button,html[data-visual-style="ios"] .btn{border-radius:14px}
+html[data-visual-style="oneui"] button,html[data-visual-style="oneui"] .btn{border-radius:18px}
+html[data-visual-style="classic"] button,html[data-visual-style="classic"] .btn{border-radius:4px}
 @media(max-width:760px){
  .section{width:calc(100% - 28px);padding-block:38px}
  .section-heading{align-items:start;gap:10px}
