@@ -82,7 +82,7 @@
     });
   }
   function init(){
-    installUtilities();setupReveal();setupNav();setupButtonFeedback();setupImageFallbacks();updateScroll();
+    installUtilities();setupNav();setupImageFallbacks();updateScroll();
     window.addEventListener("scroll",updateScroll,{passive:true});
     window.addEventListener("resize",updateScroll,{passive:true});
     document.addEventListener("mamlaka:products-updated",()=>{setupImageFallbacks();});
