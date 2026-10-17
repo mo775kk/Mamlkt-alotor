@@ -99,8 +99,8 @@ try {
     "Install action stays available and offers browser-specific guidance when native install prompt is withheld");
   report(html.includes("id=\"pwaHelpSteps\"") && html.includes("إضافة إلى الشاشة الرئيسية"),
     "Install fallback explains Android/iOS steps in an accessible dialog");
-  report(html.includes('content="#5B243F"') && manifest.theme_color === "#5B243F",
-    "Browser and installed-app theme colors match the royal berry palette");
+  report(html.includes('content="#201E19"') && manifest.theme_color === "#201E19",
+    "Browser and installed-app theme colors match the cinematic charcoal palette");
   report(html.includes("royal-bright-ux.css?v=20261016-bright1"),
     "Bright pearl-pink and gold visual layer is linked from the storefront");
 
