@@ -58,5 +58,13 @@
     if (location.hash === "#references") setTimeout(route,100);
     render();
   }
+  window.MamlakaReferenceLibrary = {
+    mountInto(target) {
+      if (!target) return;
+      let section = document.getElementById("referenceLibrary");
+      if (!section) { mount(); section = document.getElementById("referenceLibrary"); }
+      if (section) target.appendChild(section);
+    }
+  };
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",mount); else mount();
 })();
