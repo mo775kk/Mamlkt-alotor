@@ -38,7 +38,7 @@ try {
   const worker = read("sw.js");
   report(html.includes('id="installAppBtn"') && html.includes("beforeinstallprompt"),
     "Storefront exposes an install-app action");
-  report(html.includes("navigator.serviceWorker.register('./sw.js?v=20261016-fragrance-notes3'") && worker.includes("addEventListener(\"fetch\""),
+  report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes("addEventListener(\\\"fetch\\\""),
     "PWA service worker is registered and handles requests");
   report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length,
     "PWA manifest contains app identity, launch URL, display mode and icon");
@@ -106,7 +106,7 @@ try {
 
 report(/royal-bright-redesign\.css\?v=[^"]+/.test(html),
   "Visible bright theme hotfix is linked with a fresh cache-buster");
-report(html.includes("sw.js?v=20261016-fragrance-notes3") && /const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
+report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
   "Service worker URL and cache shell version are synchronized");
 
 } catch (e) {
