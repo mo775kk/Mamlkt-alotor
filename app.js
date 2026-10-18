@@ -153,6 +153,7 @@
       }));
       products = combineProducts();
       renderProducts();
+      renderHomeShowcase();
       renderSupplierOils();
       renderCart();
       updateCounts();
@@ -200,6 +201,29 @@
     const cardPrice=s=>currentPrice(p,s), money=s=>cardPrice(s)==null?"السعر يحتاج تأكيد":formatMoney(cardPrice(s));
     return `<article class="product-card product-card-${escapeHTML(p.productType||"ready")}" data-product-type="${escapeHTML(p.productType||"ready")}" data-id="${escapeHTML(p.id)}"><div class="product-visual">${imageMarkup(p)}<span class="product-badge">${p.needsReview?"يحتاج مراجعة":({"oil":"زيت للتركيب","bakhoor":"عود وبخور","gift":"هدية","blend":"تركيب خاص","ready":"عطر جاهز"}[p.productType]||"عطر جاهز") }</span><button class="favorite-btn ${fav?"is-fav":""}" data-action="favorite" data-id="${escapeHTML(p.id)}" aria-label="إضافة للمفضلة">${fav?"♥":"♡"}</button></div><div class="product-info"><h3>${escapeHTML(p.nameAr||p.nameEn||"منتج جديد")}</h3><div class="product-en" dir="ltr">${escapeHTML(p.nameEn||"")}</div><div class="product-meta">${escapeHTML(p.supplierCatalogItem?(p.gender||"زيت عطري مركز"):(p.brand||"الشركة غير محددة"))} · ${escapeHTML(p.gender||"")}</div><p class="product-desc">${escapeHTML(p.scentNature||p.descriptionAr||"الطابع العطري قيد المراجعة.")}</p><div class="card-buy-panel"><label for="card-size-${escapeHTML(p.id)}">الحجم والسعر</label><select id="card-size-${escapeHTML(p.id)}" class="card-size-select" data-card-size="${escapeHTML(p.id)}" aria-label="اختر حجم ${escapeHTML(p.nameAr||p.nameEn||"العطر")}">${sizeList.map(s=>`<option value="${escapeHTML(s)}" ${s===defaultSize?"selected":""}>${escapeHTML(s)} مل${p.productType==="oil"?(["3","5","10"].includes(s)?" · زيت فقط":" · بخاخ"):""} — ${escapeHTML(money(s))}</option>`).join("")}</select><div class="card-price-line"><span>سعر الحجم المختار</span><strong data-card-price="${escapeHTML(p.id)}">${escapeHTML(money(defaultSize))}</strong></div></div><div class="product-bottom"><span class="product-price">${p.supplierCatalogItem?"للاختيار والتركيب":(price==null?"السعر قيد التأكيد":formatMoney(price))}</span><span class="muted">${escapeHTML(p.family||"غير محدد")}</span></div><div class="product-actions"><button class="small-btn" data-action="details" data-id="${escapeHTML(p.id)}">التفاصيل</button><button class="small-btn primary ${selected?"is-selected":""}" data-action="add" data-id="${escapeHTML(p.id)}" ${canBuy?"":"disabled"} aria-pressed="${String(selected)}" title="${escapeHTML(addTitle)}">${addLabel}</button></div></div></article>`;
   }
+  function homeShowcaseCard(p,kind){
+    const id=escapeHTML(p.id),name=escapeHTML(p.nameAr||p.nameEn||"منتج مسجل"),english=escapeHTML(p.nameEn||"");
+    const family=escapeHTML(p.family||"العائلة العطرية قيد التحديد"),descRaw=String(p.scentNature||p.descriptionAr||"تفاصيل الرائحة قيد المراجعة.");
+    const desc=escapeHTML(descRaw.length>150?descRaw.slice(0,147)+"…":descRaw);
+    const isOil=kind==="oil",meta=isOil?((p.gender&&p.gender!=="غير محدد"?escapeHTML(p.gender)+" · ":"")+"زيت عطري مركز"):((p.brand&&p.brand!=="غير محدد"?escapeHTML(p.brand):"الشركة تحتاج تأكيد")+(p.gender?" · "+escapeHTML(p.gender):""));
+    const price=isOil?"أحجام التركيب تبدأ من 50 ج.م":"السعر والتوفر يؤكدان قبل الطلب";
+    return '<article class="home-showcase-card home-showcase-'+kind+'"><div class="home-showcase-visual">'+imageMarkup(p)+'<span class="home-showcase-badge">'+(isOil?"زيت للتركيب":"عطر جاهز")+'</span></div><div class="home-showcase-card-body"><div class="home-showcase-meta">'+meta+'</div><h4>'+name+'</h4>'+(english?'<div class="home-showcase-english" dir="ltr">'+english+'</div>':"")+'<p class="home-showcase-description">'+desc+'</p><div class="home-showcase-family"><span>الطابع</span><strong>'+family+'</strong></div><div class="home-showcase-price">'+price+'</div><div class="home-showcase-actions"><button class="small-btn" type="button" data-action="details" data-id="'+id+'">تفاصيل المنتج</button>'+(isOil?'<button class="small-btn primary" type="button" data-home-blend-id="'+id+'">اختيار للتركيب</button>':'<a class="small-btn primary" href="#ready">تصفح العطور</a>')+'</div></div></article>';
+  }
+  function renderHomeShowcase(){
+    const readyRoot=$("#homeReadyProducts"),oilRoot=$("#homeOilProducts");
+    if(!readyRoot||!oilRoot)return;
+    const readyAll=products.filter(p=>p.productType==="ready");
+    const oilAll=products.filter(p=>p.productType==="oil"||p.supplierCatalogItem);
+    const ready=readyAll.filter(p=>p.needsReview!==true).slice(0,4);
+    const usefulOils=oilAll.filter(p=>p.family&&p.family!=="غير محدد"&&p.scentNature&&!/تفاصيل الرائحة تحتاج|الطابع العطري يحتاج/.test(String(p.scentNature)));
+    const seen=new Set(usefulOils.map(p=>p.id));
+    const oils=[...usefulOils,...oilAll.filter(p=>!seen.has(p.id))].slice(0,6);
+    readyRoot.innerHTML=ready.length?ready.map(p=>homeShowcaseCard(p,"ready")).join(""):'<p class="home-showcase-empty">لا توجد عطور جاهزة معتمدة للعرض حاليًا. يمكن استعراض الأسماء المسجلة من الكتالوج الكامل.</p>';
+    oilRoot.innerHTML=oils.length?oils.map(p=>homeShowcaseCard(p,"oil")).join(""):'<p class="home-showcase-empty">لا توجد بيانات زيوت محمّلة حاليًا.</p>';
+    const readyCount=$("#homeReadyCount"),oilCount=$("#homeOilCount");
+    if(readyCount)readyCount.textContent=readyAll.length.toLocaleString("ar-EG")+" عطر";
+    if(oilCount)oilCount.textContent=oilAll.length.toLocaleString("ar-EG")+" زيت";
+  }
   function renderProducts() {
     const q=norm($("#productSearch").value), gender=$("#genderFilter").value, family=$("#familyFilter").value;
     const list=products.filter(p=>p.productType!=="oil" && p.productType!=="bakhoor" && (!gender||p.gender===gender) && (!family||p.family===family) && (!q||norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[]),p.family,p.descriptionAr].join(" ")).includes(q)));
@@ -207,6 +231,7 @@
     $("#noProducts").classList.toggle("hidden",list.length>0);
     $("#resultsMessage").textContent=`${list.length} منتج في الكتالوج المعروض · الأسماء التي تحمل «يحتاج مراجعة» غير معتمدة للبيع حتى مراجعتها.`;
     updateCounts();
+    renderHomeShowcase();
   }
   let supplierVisibleLimit=24;
   function populateBlendOils(){
@@ -360,6 +385,7 @@
   }
   document.addEventListener("change",e=>{const select=e.target.closest("[data-card-size]");if(!select)return;const id=select.dataset.cardSize,size=select.value,p=findProduct(id);if(!p)return;const price=currentPrice(p,size),priceNode=document.querySelector(`[data-card-price="${CSS.escape(id)}"]`),cardNode=select.closest(".product-card"),add=cardNode?.querySelector('[data-action="add"]');if(priceNode)priceNode.textContent=price==null?"السعر يحتاج تأكيد":formatMoney(price);if(add){add.disabled=!p.available||price==null||Boolean(p.supplierCatalogItem);add.title=price==null?"لا يوجد سعر معتمد لهذا الحجم":!p.available?"يلزم تأكيد التوفر قبل البيع":"";add.textContent=p.supplierCatalogItem?"للاختيار والتركيب":!p.available?"التوفر قيد التأكيد":price==null?"السعر قيد التأكيد":"أضف للسلة";}});
   document.addEventListener("click",e=>{
+    const homeBlend=e.target.closest("[data-home-blend-id]");if(homeBlend){const select=$("#blendOil");if(select){select.value=homeBlend.dataset.homeBlendId;if(select.value!==homeBlend.dataset.homeBlendId){notify("افتح كتالوج الزيوت لاختيار هذا النوع أو ابحث عنه بالاسم.");return;}$("#blend")?.scrollIntoView({behavior:"smooth",block:"start"});blendPrice();notify("تم اختيار الزيت. أكمل الحجم والعبوة ثم راجع الطلب.");}return;}
     const action=e.target.closest("[data-action]");if(action){const {action:act,id}=action.dataset;if(act==="favorite")toggleFavorite(id);if(act==="add"){const card=e.target.closest(".product-card"),size=card?.querySelector("[data-card-size]")?.value||"10";addToCart(id,size);const chosen=cart.some(item=>item.id===id&&String(item.size)===String(size));const button=card?.querySelector('[data-action="add"]');if(button){button.classList.toggle("is-selected",chosen);button.textContent=chosen?"✓ تم الاختيار":(findProduct(id)?.supplierCatalogItem?"للاختيار والتركيب":"أضف للسلة");button.setAttribute("aria-pressed",String(chosen));}}if(act==="details")openDetails(id);}
     const ca=e.target.closest("[data-cart]");if(ca){const item=cart.find(x=>x.key===ca.dataset.key);if(!item)return;if(ca.dataset.cart==="plus")item.qty=Math.min(99,Number(item.qty)+1);if(ca.dataset.cart==="minus")item.qty=Number(item.qty)-1;if(ca.dataset.cart==="remove"||item.qty<=0)cart=cart.filter(x=>x.key!==item.key);save(STORAGE.cart,cart);renderCart();updateCounts();syncProductCardSelectionStates();}
   });
