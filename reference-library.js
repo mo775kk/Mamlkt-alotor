@@ -36,10 +36,7 @@
       <div id="refCount" class="ref-count" aria-live="polite"></div><div id="refGrid" class="ref-grid"></div>`;
     const footer = document.querySelector(".site-footer");
     (footer?.parentNode || document.querySelector("main") || document.body).insertBefore(section, footer || null);
-    const nav = document.getElementById("mainNav");
-    if (nav && !nav.querySelector('[data-nav="references"]')) {
-      const a = document.createElement("a"); a.href = "#references"; a.dataset.nav = "references"; a.textContent = "مكتبة المواقع"; nav.appendChild(a);
-    }
+    // The reference library is mounted only inside the owner settings panel.
     const search = section.querySelector("#refSearch"), category = section.querySelector("#refCategory"), grid = section.querySelector("#refGrid"), count = section.querySelector("#refCount"), favOnly = section.querySelector("#refOnlyFav");
     let onlyFav = false;
     function render() {
@@ -53,9 +50,6 @@
     favOnly.addEventListener("click",()=>{onlyFav=!onlyFav;favOnly.setAttribute("aria-pressed",String(onlyFav));favOnly.textContent=onlyFav?"عرض كل المواقع":"★ المفضلة فقط";render();});
     section.querySelector("#refClear").addEventListener("click",()=>{search.value="";category.value="";onlyFav=false;favOnly.setAttribute("aria-pressed","false");favOnly.textContent="★ المفضلة فقط";render();search.focus();});
     grid.addEventListener("click",e=>{const b=e.target.closest("[data-fav]");if(!b)return;const i=Number(b.dataset.fav),favs=readFav();saveFav(favs.includes(i)?favs.filter(n=>n!==i):[...favs,i]);render();});
-    function route() { if (location.hash === "#references") { section.scrollIntoView({behavior:"smooth",block:"start"}); } }
-    window.addEventListener("hashchange",route);
-    if (location.hash === "#references") setTimeout(route,100);
     render();
   }
   window.MamlakaReferenceLibrary = {
