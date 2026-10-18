@@ -76,94 +76,10 @@
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
   })();
-  </script>  <link rel="stylesheet" href="mamlaka-world-class.css?v=20261018-visibility-legibility-v4">
+  </script>  <link rel="stylesheet" href="mamlaka-world-class.css?v=20261018-direct-home-v5">
 </head>
 <body>
-  <div class="intro intro-magic" id="intro" aria-label="دخول المملكة">
-    <div class="intro-glow" aria-hidden="true"></div>
-    <div class="magic-stars" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i><i>✦</i><i>·</i><i>✧</i></div>
-    <div class="magic-stage" aria-hidden="true">
-      <div class="magic-smoke magic-smoke-one"></div><div class="magic-smoke magic-smoke-two"></div>
-      <div class="magic-genie"><span class="genie-head"></span><span class="genie-body"></span><span class="genie-arm"></span><span class="genie-tail"></span></div>
-      <div class="magic-lamp"><span class="lamp-handle"></span><span class="lamp-body"></span><span class="lamp-neck"></span><span class="lamp-spout"></span><span class="lamp-lid"></span><span class="lamp-flame"></span></div>
-      <div class="magic-platform"></div>
-    </div>
-    <div class="intro-content magic-copy">
-      <div class="crown-mark" aria-hidden="true">♛</div>
-      <p class="eyebrow">CROWN · MAISON DE PARFUM</p>
-      <h1>مملكة العطور</h1>
-      <p class="intro-subtitle magic-typed" id="magicGreeting" aria-live="polite">افرك المصباح… ودعني أساعدك في العثور على عطرك!</p>
-      <p class="magic-promise">✨ أنا خادم الروائح الملكية… أخبرني بما تحب وسأرشدك إلى اختيارك.</p>
-      <div class="magic-wishes" aria-label="طلبات يمكنك البدء بها">
-        <span>🌹 عطر يناسب ذوقي</span><span>🪵 عود وبخور</span><span>🎁 هدية مميزة</span>
-      </div>
-      <button type="button" class="btn btn-gold" id="enterBtn" onclick="window.mamlakaLeaveIntro&&window.mamlakaLeaveIntro()">افتح أبواب المملكة</button>
-      <button type="button" class="intro-skip" id="skipIntro" onclick="window.mamlakaLeaveIntro&&window.mamlakaLeaveIntro()">تخطي الحركة والدخول مباشرة</button>
-    </div>
-  </div>
-  <script>
-    // Accessible greeting cycle for the magical entrance. The gate and existing buttons remain unchanged.
-    (function(){
-      var greeting=document.getElementById("magicGreeting");
-      if(!greeting)return;
-      var lines=[
-        "افرك المصباح… ودعني أساعدك في العثور على عطرك!",
-        "أتمُرّ على قلبك رائحة الورد أم سحر العود؟",
-        "اطلب ما تشاء: عطرًا لك، بخورًا للبيت، أو هدية لمن تحب.",
-        "أهلًا بك في مملكة العطور… رحلتك الملكية تبدأ الآن."
-      ];
-      var index=0,timer=null;
-      function showNext(){
-        if(!greeting.isConnected)return;
-        index=(index+1)%lines.length;
-        greeting.classList.remove("magic-text-show");
-        greeting.classList.add("magic-text-hide");
-        window.setTimeout(function(){
-          if(!greeting.isConnected)return;
-          greeting.textContent=lines[index];
-          greeting.classList.remove("magic-text-hide");
-          greeting.classList.add("magic-text-show");
-        },320);
-      }
-      greeting.classList.add("magic-text-show");
-      timer=window.setInterval(showNext,4300);
-      var gate=document.getElementById("intro");
-      if(gate){
-        var stop=function(){if(timer)window.clearInterval(timer);};
-        gate.addEventListener("click",function(e){if(e.target.closest("#enterBtn,#skipIntro"))stop();},{once:true});
-      }
-      document.addEventListener("visibilitychange",function(){if(document.hidden){if(timer)window.clearInterval(timer);timer=null;}else if(!timer)timer=window.setInterval(showNext,4300);});
-    })();
-  </script>
-  <script>
-    // Self-contained entrance transition: available before storefront scripts load.
-    (function(){
-      var gate=document.getElementById("intro");
-      if(!gate)return;
-      document.body.classList.add("intro-open");
-      var busy=false;
-      window.mamlakaLeaveIntro=function(){
-        if(busy)return;
-        busy=true;
-        gate.classList.add("intro-leaving");
-        document.body.classList.add("intro-transitioning");
-        window.setTimeout(function(){
-          var current=document.getElementById("intro");
-          if(current)current.remove();
-          document.body.classList.remove("intro-open","intro-transitioning");
-        },850);
-      };
-      ["enterBtn","skipIntro"].forEach(function(id){
-        var button=document.getElementById(id);
-        if(button)button.addEventListener("click",function(event){
-          event.preventDefault();
-          event.stopPropagation();
-          window.mamlakaLeaveIntro();
-        });
-      });
-    })();
-  </script>
-
+  <!-- تم إلغاء شاشة الدخول المنفصلة؛ تظهر صورة الواجهة الرئيسية مباشرة عند فتح الموقع. -->
   <header class="site-header">
     <a class="brand" href="#home" aria-label="مملكة العطور - الرئيسية">
       <span class="brand-crown">♛</span>
