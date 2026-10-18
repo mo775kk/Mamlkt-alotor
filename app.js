@@ -173,6 +173,7 @@
   function save(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { notify("تعذر الحفظ في هذا المتصفح. صدّر نسخة احتياطية إن أمكن."); return false; } }
   function notify(msg) { const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),3000); }
   function findProduct(id) { return products.find(p=>p.id===id); }
+  const isOilProduct = p => Boolean(p && (["oil","blend","customblend"].includes(String(p.productType||p.product_type||"").toLowerCase()) || p.customBlend === true || p.supplierCatalogItem === true || p.supplierSku));
   function retailSizePrice(size){const key=String(size);try{const cfg=JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")||"null");const item=Array.isArray(cfg?.retailBlendPrices)?cfg.retailBlendPrices.find(x=>String(x.size||"").match(/[0-9]+/)?.[0]===key):null;if(item&&Number.isFinite(Number(item.price))&&Number(item.price)>=50)return Number(item.price);}catch{}return sizes[key]??null;}
   function currentPrice(p,size) { if(!p || p.supplierCatalogItem || p.supplierSku) return null; if(p.productType === "blend" || p.productType === "oil" || p.customBlend === true) return retailSizePrice(size); const specific=p.prices && p.prices[String(size)] != null ? Number(p.prices[String(size)]) : null; if(Number.isFinite(specific) && specific>0) return Math.max(50,specific); const base=p.price != null ? Number(p.price) : null; if(Number.isFinite(base) && base>0) return Math.max(50,base); return null; }
   function imageMarkup(p){
@@ -226,7 +227,7 @@
   }
   function renderProducts() {
     const q=norm($("#productSearch").value), gender=$("#genderFilter").value, family=$("#familyFilter").value;
-    const list=products.filter(p=>p.productType!=="oil" && p.productType!=="bakhoor" && (!gender||p.gender===gender) && (!family||p.family===family||displayFamily(p.family,p.nameAr||p.nameEn)===family) && (!q||norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[]),p.family,p.descriptionAr].join(" ")).includes(q)));
+    const list=products.filter(p=>!isOilProduct(p) && p.productType!=="bakhoor" && (!gender||p.gender===gender) && (!family||p.family===family||displayFamily(p.family,p.nameAr||p.nameEn)===family) && (!q||norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[]),p.family,p.descriptionAr].join(" ")).includes(q)));
     $("#readyProducts").innerHTML=list.map(productCard).join("");
     $("#noProducts").classList.toggle("hidden",list.length>0);
     $("#resultsMessage").textContent=`${list.length} منتج في الكتالوج المعروض · الأسماء التي تحمل «يحتاج مراجعة» غير معتمدة للبيع حتى مراجعتها.`;
@@ -236,13 +237,13 @@
   let supplierVisibleLimit=24;
   function populateBlendOils(){
     const sel=$("#blendOil");if(!sel)return;const current=sel.value;
-    const oils=products.filter(p=>p.supplierCatalogItem||p.productType==="oil");
+    const oils=products.filter(isOilProduct);
     sel.innerHTML='<option value="">اختر زيتًا من كتالوج الموردين</option>'+oils.map(p=>'<option value="'+escapeHTML(p.id)+'">'+escapeHTML(p.nameAr)+' — '+escapeHTML(p.nameEn)+'</option>').join('');
     if(oils.some(p=>p.id===current))sel.value=current;
   }
   function renderSupplierOils(){
     const grid=$("#supplierOilProducts");if(!grid)return;
-    const all=products.filter(p=>p.supplierCatalogItem || p.productType==="oil");
+    const all=products.filter(isOilProduct);
     const q=norm($("#supplierOilSearch")?.value||""),cat=$("#supplierOilCategory")?.value||"",family=$("#supplierOilFamily")?.value||"";
     const categoryMap={MEN:"رجالي",WOMEN:"نسائي",UNISEX:"للجنسين",ORIENTAL:"شرقي",KIDS:"أطفال",DIFFUSER:"فواحات"};
     const filtered=all.filter(p=>(!cat||(p.supplierCategory?p.supplierCategory===cat:!p.supplierCatalogItem))&&(!family||p.family===family||displayFamily(p.family,p.nameAr||p.nameEn)===family)&&(!q||norm([p.nameAr,p.nameEn,p.supplierSku,p.family,p.gender,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(q)));
