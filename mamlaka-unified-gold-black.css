@@ -1,0 +1,58 @@
+/* MAMLKAT AL-OTOR — unified solid gold/black storefront
+   Single final visual layer. No pink palette, mixed theme gradients, or data/script changes. */
+:root{
+  color-scheme: light;
+  --bg:#F2D36B; --panel:#F7E7A6; --panel2:#E8C653;
+  --text:#090909; --muted:#29251A; --gold:#B58A12; --gold2:#F2D36B;
+  --line:#A98217; --radius:14px; --shadow:0 5px 14px rgba(0,0,0,.08);
+}
+html{background:#F2D36B!important;color:#090909!important;scroll-behavior:smooth}
+body{background:#F2D36B!important;background-image:none!important;color:#090909!important;font:18px/1.8 "Tajawal",sans-serif!important;text-shadow:none!important}
+body::before,body::after{background-image:none!important;box-shadow:none!important}
+main{width:100%!important;max-width:none!important;margin-inline:auto!important;padding:18px clamp(12px,3vw,40px)!important;color:#090909!important}
+.site-header,header.site-header{background:#080808!important;background-image:none!important;color:#F2D36B!important;border:0!important;border-bottom:3px solid #B58A12!important;box-shadow:none!important;backdrop-filter:none!important}
+.site-header a,.site-header button,.site-header .brand strong,.site-header .brand small,.site-header .main-nav a,.site-header .icon-btn,.site-header .btn-outline{color:#F2D36B!important;text-shadow:none!important}
+.site-header .main-nav a:hover,.site-header .main-nav a.active{background:#F2D36B!important;color:#080808!important}
+.brand-crown{color:#F2D36B!important}
+.hero{background:#F2D36B!important;background-image:none!important;border:2px solid #080808!important;border-radius:14px!important;box-shadow:none!important;overflow:hidden}
+.hero-image{opacity:.12!important;filter:none!important}
+.hero-shade{background:#F2D36B!important;opacity:.88!important}
+.hero-copy,.hero-copy *,.hero-copy h1,.hero-copy p,.hero-note{color:#090909!important;text-shadow:none!important}
+.hero-copy h1{font-size:clamp(2rem,5vw,4.4rem)!important;line-height:1.25!important}
+.eyebrow,.section-subtitle,.muted,small,.product-card small{color:#29251A!important;text-shadow:none!important}
+h1,h2,h3,h4,h5,h6,.section-title,.section-heading,.section-title h2,.section-heading h2,label,p,li,summary,.field-label,.product-card h3,.product-card h4,.product-price,.trust-strip b,.trust-strip small,.site-footer,.footer{color:#090909!important;text-shadow:none!important}
+a{color:#090909}
+a:hover{color:#5A4100!important}
+.btn,.btn-gold,.btn-primary,.small-btn,.text-btn,.btn-outline,.icon-btn,button:not(.intro button){background:#F2D36B!important;background-image:none!important;color:#090909!important;border:2px solid #080808!important;border-radius:9px!important;box-shadow:none!important;text-shadow:none!important;font-weight:800!important}
+.btn:hover,.btn-gold:hover,.btn-primary:hover,.small-btn:hover,.text-btn:hover,.btn-outline:hover,.icon-btn:hover{background:#080808!important;color:#F2D36B!important}
+.product-card,.product-tile,.product-item,.trust-strip,.category-card,.panel,.section-card,.advisor-card,.blend-card,.contact-card,.reference-card,.settings-card,.admin-card,.stat-card,.inventory-card,.report-card,.family-card,.guide-card{
+ background:#F7E7A6!important;background-image:none!important;color:#090909!important;border:1px solid #A98217!important;border-radius:12px!important;box-shadow:none!important
+}
+.product-card{overflow:hidden}
+.product-card img{object-fit:contain}
+input,select,textarea,.search-box{background:#FFF4C8!important;color:#090909!important;border:2px solid #A98217!important;border-radius:8px!important;box-shadow:none!important}
+input::placeholder,textarea::placeholder{color:#49402A!important;opacity:1}
+hr,.divider{border-color:#A98217!important}
+.counter{background:#080808!important;color:#F2D36B!important}
+.toast,.drawer,.cart-drawer,.product-modal,.modal-content{background:#F7E7A6!important;background-image:none!important;color:#090909!important;border:2px solid #A98217!important;box-shadow:none!important}
+.footer,.site-footer{background:#080808!important;background-image:none!important;color:#F2D36B!important;border-top:3px solid #B58A12!important}
+.footer a,.site-footer a{color:#F2D36B!important}
+.admin-layer{background:rgba(0,0,0,.65)!important;backdrop-filter:none!important}
+.admin-panel,.admin-login,.admin-page{background:#F7E7A6!important;background-image:none!important;color:#090909!important;border-color:#A98217!important;box-shadow:none!important}
+.admin-head{background:#080808!important;background-image:none!important;color:#F2D36B!important;border-bottom:2px solid #B58A12!important}
+.admin-head h2,.admin-head .eyebrow,.admin-head small{color:#F2D36B!important}
+.admin-tabs{background:#E8C653!important;border-color:#A98217!important}
+.admin-tabs button,.admin-tabs button.active{background:#F2D36B!important;background-image:none!important;color:#090909!important;border:1px solid #080808!important;box-shadow:none!important}
+:where(button,a,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #080808!important;outline-offset:3px!important}
+::selection{background:#080808!important;color:#F2D36B!important}
+.intro,.intro *,.magic-stage,.magic-stage *{ /* preserve the entrance gate's own visuals */ }
+@media(max-width:700px){
+ body{font-size:17px!important}
+ main{padding:12px!important}
+ .site-header{background:#080808!important}
+ .product-grid,.products-grid,#productsGrid{gap:12px!important}
+ .product-card{padding:12px!important;min-width:0}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
