@@ -1,0 +1,47 @@
+/* Mamlakat Al-Otor — royal hero and marquee polish */
+:root{--mamlaka-black:#08080a;--mamlaka-gold:#d4af37;--mamlaka-gold-soft:#f1d98a;--mamlaka-gold-deep:#b8932b}
+.hero#home{position:relative;min-height:max(560px,85svh);height:85svh;isolation:isolate;overflow:hidden;background:var(--mamlaka-black);color:#fff}
+.hero#home::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 55% 38%,rgba(212,175,55,.22),transparent 42%),linear-gradient(180deg,rgba(8,8,10,.12) 0%,rgba(8,8,10,.2) 45%,rgba(0,0,0,.82) 100%)}
+.hero#home .hero-image{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;object-position:center 42%;z-index:-1;will-change:transform;filter:saturate(.9) contrast(1.04);animation:mamlakaHeroImageIn 1.2s cubic-bezier(.2,.8,.2,1) both}
+.hero#home .hero-shade{z-index:0;background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.18) 60%,rgba(0,0,0,.08))}
+.hero#home .hero-copy{z-index:2;max-width:min(690px,calc(100% - 36px));inset-inline-start:clamp(18px,6vw,84px);bottom:clamp(32px,7vh,76px);text-align:start;text-shadow:0 2px 18px rgba(0,0,0,.78)}
+.hero#home .hero-copy .eyebrow{color:var(--mamlaka-gold-soft);letter-spacing:clamp(1px,.35vw,4px);font-size:clamp(12px,1.6vw,15px);font-weight:700}
+.hero#home .hero-copy h1{font-size:clamp(34px,7.2vw,68px);line-height:1.16;font-weight:800;text-wrap:balance;margin-block:12px 18px;color:#fff}
+.hero#home .hero-copy h1 span{color:var(--mamlaka-gold-soft)}
+.hero#home .hero-copy>p:not(.eyebrow){font-size:clamp(16px,2.2vw,20px);line-height:1.9;max-width:600px;color:#fff}
+.hero#home .hero-actions{gap:12px;margin-top:22px}
+.hero#home .hero-actions .btn{min-height:52px;padding:14px 28px;border-radius:999px;font-weight:800;transition:transform .22s ease,box-shadow .22s ease}
+.hero#home .hero-actions .btn-gold{background:linear-gradient(135deg,#f1d98a,#d4af37 60%,#b8932b);color:#171106;border:1px solid rgba(255,239,175,.8);box-shadow:0 8px 28px rgba(212,175,55,.2)}
+.hero#home .hero-actions .btn-gold:hover,.hero#home .hero-actions .btn-gold:active{transform:scale(1.04);box-shadow:0 0 28px rgba(212,175,55,.48)}
+.hero#home .hero-actions .btn-outline{border-color:rgba(241,217,138,.8);color:#fff;background:rgba(8,8,10,.58);backdrop-filter:blur(8px)}
+.hero#home .hero-note{color:#fff;font-size:14px;margin-top:20px}
+.hero#home .hero-note span{background:var(--mamlaka-gold);box-shadow:0 0 12px rgba(212,175,55,.8)}
+.hero#home .hero-pagination{z-index:3}
+.hero#home .hero-next{z-index:3;border-color:rgba(241,217,138,.8);color:var(--mamlaka-gold-soft);background:rgba(8,8,10,.45)}
+.mamlaka-marquee{height:70px;display:flex;align-items:center;overflow:hidden;position:relative;background:var(--mamlaka-black);border-top:1px solid rgba(212,175,55,.5);border-bottom:1px solid rgba(212,175,55,.22);isolation:isolate}
+.mamlaka-marquee-track{display:flex;align-items:center;gap:clamp(20px,3vw,40px);width:max-content;flex:none;will-change:transform;animation:mamlakaMarquee 28s linear infinite}
+.mamlaka-marquee:hover .mamlaka-marquee-track,.mamlaka-marquee:active .mamlaka-marquee-track,.mamlaka-marquee.is-paused .mamlaka-marquee-track{animation-play-state:paused}
+.mamlaka-marquee-item{display:inline-flex;align-items:center;gap:clamp(20px,3vw,40px);flex:none;white-space:nowrap;color:var(--mamlaka-gold-soft);font-family:"Cormorant Garamond","Tajawal",serif;font-size:clamp(16px,3.5vw,25px);font-weight:700;letter-spacing:clamp(1px,.45vw,5px);padding-inline:5px}
+.mamlaka-marquee-item[lang="ar"]{font-family:"Tajawal",sans-serif;letter-spacing:1px}
+.mamlaka-marquee-seal{width:38px;height:38px;flex:none;border:1px solid rgba(212,175,55,.8);border-radius:50%;display:inline-grid;place-items:center;background:#111;position:relative}
+.mamlaka-marquee-seal::after{content:"";width:9px;height:9px;background:var(--mamlaka-gold);border-radius:50%;box-shadow:0 0 10px rgba(212,175,55,.55)}
+@keyframes mamlakaMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes mamlakaHeroImageIn{from{opacity:.65;transform:scale(1.035)}to{opacity:1;transform:scale(1)}}
+@media(max-width:600px){
+ .hero#home{height:82svh;min-height:570px;max-height:780px}
+ .hero#home .hero-image{object-position:58% center}
+ .hero#home .hero-copy{inset-inline-start:18px;inset-inline-end:18px;bottom:42px;max-width:none}
+ .hero#home .hero-copy h1{font-size:clamp(34px,9vw,46px);line-height:1.22}
+ .hero#home .hero-copy>p:not(.eyebrow){font-size:16px;line-height:1.8}
+ .hero#home .hero-actions{display:flex;flex-wrap:wrap}
+ .hero#home .hero-actions .btn{padding:13px 20px;min-height:48px;font-size:15px}
+ .hero#home .hero-note{font-size:13px}
+ .mamlaka-marquee{height:62px}
+ .mamlaka-marquee-seal{width:32px;height:32px}
+ .mamlaka-marquee-item{font-size:17px;letter-spacing:1.5px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero#home .hero-image,.mamlaka-marquee-track{animation:none!important;will-change:auto}
+ .mamlaka-marquee-track{transform:none!important}
+ .hero#home .hero-actions .btn{transition:none}
+}
