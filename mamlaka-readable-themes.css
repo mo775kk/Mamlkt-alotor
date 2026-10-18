@@ -51,3 +51,30 @@ button,a,.btn,.small-btn{line-height:1.55}
  .hero-copy{width:100%!important;max-width:100%!important;padding:24px!important}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Every saved palette controls the public storefront, overlays, cards, controls and modals */
+html body{color:var(--text)!important;background-color:var(--bg)!important;background-image:linear-gradient(color-mix(in srgb,var(--bg) 72%,transparent),color-mix(in srgb,var(--bg) 80%,transparent)),var(--page-image,url("assets/images/royal-hero.jpg"))!important;background-position:center!important;background-size:cover!important;background-attachment:fixed!important}
+html body .site-header,html body header.site-header{background:var(--header-bg)!important;color:var(--panel)!important;border-bottom:2px solid var(--gold)!important}
+html body .site-header .brand strong,html body .site-header .main-nav a,html body .site-header .icon-btn{color:var(--panel)!important}
+html body .site-header .brand small,html body .site-header .brand-crown,html body .site-header .main-nav a:hover,html body .site-header .main-nav a.active{color:var(--gold2)!important}
+html body .hero{background:var(--bg)!important;border-color:var(--gold)!important}
+html body .hero .hero-shade{background:linear-gradient(90deg,color-mix(in srgb,var(--header-bg) 18%,transparent),color-mix(in srgb,var(--header-bg) 78%,transparent)),linear-gradient(0deg,color-mix(in srgb,var(--header-bg) 48%,transparent),transparent 62%)!important;opacity:1!important}
+html body .hero .hero-copy h1,html body .hero .hero-copy p,html body .hero .hero-note{color:var(--panel)!important}
+html body .hero .hero-copy h1 span,html body .section-heading h2,html body .contact-card h2,html body .gift-copy h2,html body .feature-copy h2{color:var(--heading)!important;text-shadow:none!important}
+html body .hero .hero-copy h1 span{color:var(--gold2)!important}
+html body .section,html body .section-heading,html body .quick-start-section,html body .category-section,html body .products-section,html body .blend-section,html body .advisor-section{color:var(--text)!important}
+html body .section-heading>p,html body .section p:not(.eyebrow),html body .section li,html body .section label{color:var(--muted)!important}
+html body :is(.category-card,.category-tile,.feature-card,.contact-card,.gift-card,.guide-card,.info-card,.product-card,.product-tile,.product-item,.blend-panel,.advisor-box,.store-location-panel,.royal-family-box,.customer-price-notice,.supplier-catalog-panel,.admin-card,.stat-card,.royal-family-content){background:var(--card)!important;color:var(--text)!important;border-color:var(--line)!important;box-shadow:0 8px 26px rgba(0,0,0,.10)!important}
+html body :is(.category-card,.category-tile,.feature-card,.contact-card,.gift-card,.guide-card,.info-card,.product-card,.product-tile,.product-item,.blend-panel,.advisor-box,.store-location-panel,.royal-family-box,.customer-price-notice,.supplier-catalog-panel,.admin-card,.stat-card) :is(h2,h3,h4,p,span,small,label,li,strong,em){color:var(--text)!important;text-shadow:none!important}
+html body .product-card .product-price,html body .customer-price-notice strong,html body .blend-price-guide strong,html body .eyebrow{color:var(--gold)!important}
+html body .trust-strip,html body .site-footer{background:var(--footer-bg)!important;color:var(--panel)!important;border-color:var(--gold)!important}
+html body .trust-strip b,html body .site-footer .brand small{color:var(--gold2)!important}
+html body :is(.btn,.btn-gold,.btn-primary,.primary-btn,.small-btn,.text-btn,.btn-outline){background:var(--button-bg)!important;color:var(--button-text)!important;border-color:var(--gold)!important;text-shadow:none!important}
+html body :is(.btn-outline,.secondary-btn){background:var(--panel)!important;color:var(--text)!important}
+html body :is(input,select,textarea,.search-box,.toolbar select,.blend-step select){background:var(--field)!important;color:var(--text)!important;border-color:var(--line)!important;box-shadow:none!important}
+html body :is(input,select,textarea)::placeholder{color:var(--muted)!important;opacity:1}
+html body :is(.modal-backdrop,.drawer-backdrop,.admin-layer){background:rgba(18,10,16,.74)!important}
+html body :is(.product-modal,.drawer,.admin-panel,.admin-login){background:var(--panel)!important;color:var(--text)!important;border-color:var(--gold)!important}
+html body :is(.product-modal,.drawer,.admin-panel,.admin-login) :is(h1,h2,h3,h4,p,small,label,span){color:var(--text)!important}
+html body .admin-tabs button.active{background:var(--button-bg)!important;color:var(--button-text)!important;border-color:var(--gold)!important}
+html body .admin-panel .admin-note{background:var(--panel2)!important;color:var(--text)!important;border-color:var(--line)!important}
