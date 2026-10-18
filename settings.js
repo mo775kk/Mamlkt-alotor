@@ -63,27 +63,27 @@
     let sheet=document.getElementById("mamlaka-runtime-theme");
     if(!sheet){sheet=document.createElement("style");sheet.id="mamlaka-runtime-theme";document.head.appendChild(sheet)}
     sheet.textContent=`
-      :root{--bg:${x.bg}!important;--panel:${x.panel}!important;--panel2:${x.bg}!important;--gold:${x.gold}!important;--gold2:${x.gold2}!important;--text:${x.text}!important;--muted:${muted}!important;--line:${line}!important;color-scheme:${dark?"dark":"light"}!important}
-      html,body,main{background:${x.bg}!important;color:${x.text}!important}
-      body{background-image:linear-gradient(145deg,${x.bg},${x.panel} 60%,${x.bg})!important}
-      .site-header,.site-footer,footer{background:linear-gradient(110deg,${x.bg},${x.panel})!important;color:${x.text}!important;border-color:${x.gold}!important}
+      :root{--bg:${x.bg}!important;--panel:${x.panel}!important;--panel2:${x.panel2}!important;--gold:${x.gold}!important;--gold2:${x.gold2}!important;--text:${x.text}!important;--muted:${muted}!important;--line:${line}!important;color-scheme:${dark?"dark":"light"}!important}
+      html,body,main{background:${x.bg}!important;background-image:none!important;color:${x.text}!important}
+      body{background-image:none!important}
+      .site-header{background:${x.header}!important;background-image:none!important;color:${x.text}!important;border-color:${x.gold}!important}.site-footer,footer{background:${x.footer}!important;background-image:none!important;color:${x.text}!important;border-color:${x.gold}!important}
       .site-header .brand strong,.site-header .main-nav a,.site-header .header-actions .icon-btn,.site-header .menu-toggle,.site-footer p,footer p,.site-footer small,footer small{color:${x.text}!important;text-shadow:none!important}
       .site-header .brand small,.site-footer a,footer a{color:${x.gold2}!important}
-      .site-header .main-nav{background:${x.panel}!important;border-color:${line}!important}
+      .site-header .main-nav{background:${x.header}!important;border-color:${line}!important}
       .site-header .main-nav a{color:${x.text}!important}
-      .site-header .main-nav a:hover,.site-header .main-nav a.active{background:${x.bg}!important;color:${x.gold}!important}
+      .site-header .main-nav a:hover,.site-header .main-nav a.active{background:${x.gold2}!important;color:${x.header}!important}
       .section,.section-inner{color:${x.text}!important}
       .section-heading h2,.contact-card h2,.gift-copy h2,.feature-copy h2,.category-card h3,.royal-family-box summary,.page-title,.section-title,h1,h2,h3,h4,h5{color:${x.text}!important;text-shadow:none!important}
       .section p,.section li,.section label,.product-card p,.product-card small,.section-heading p,.feature-copy p,.contact-card p,.gift-copy p,.guide-card p,.category-card p,.info-card p,.muted,.subtitle,.description{color:${muted}!important;opacity:1!important;text-shadow:none!important}
-      .category-card,.category-tile,.feature-card,.contact-card,.gift-card,.guide-card,.info-card,.product-card,.product-tile,.product-item,.split-feature,.blend-panel,.royal-family-box,.toolbar,.customer-price-notice,.blend-price-guide,.panel,.product-modal,.cart-drawer,.settings-panel,.admin-panel,.modal-content,.drawer{background:${x.panel}!important;color:${x.text}!important;border-color:${line}!important}
+      .category-card,.category-tile,.feature-card,.contact-card,.gift-card,.guide-card,.info-card,.product-card,.product-tile,.product-item,.split-feature,.blend-panel,.royal-family-box,.toolbar,.customer-price-notice,.blend-price-guide,.panel,.product-modal,.cart-drawer,.settings-panel,.admin-panel,.modal-content,.drawer{background:${x.panel}!important;background-image:none!important;color:${x.text}!important;border-color:${line}!important}
       .hero{border-color:${x.gold}!important}
-      .hero .hero-copy h1,.hero .hero-copy h2,.hero .hero-copy p{color:#fff!important}
-      .hero .hero-copy h1 span,.hero .hero-copy .eyebrow{color:${x.gold2}!important}
+      .hero .hero-copy h1,.hero .hero-copy h2,.hero .hero-copy p{color:${x.text}!important;text-shadow:none!important}
+      .hero .hero-copy h1 span,.hero .hero-copy .eyebrow{color:${x.gold}!important}
       .eyebrow{color:${x.gold}!important;text-shadow:none!important}
       .price,.product-price,.price-tag,.amount,[class*="price"]{color:${x.gold}!important}
       .category-icon-wrap,.trust-strip,.trust-strip .line-icon{background:${x.bg}!important;color:${x.gold}!important;border-color:${line}!important}
       .trust-strip b{color:${x.text}!important}.trust-strip small{color:${muted}!important}
-      .btn-gold,.btn-primary,.primary-btn,.full-width.btn-gold{background:${x.gold}!important;color:${lum(x.gold)>.48?"#20251f":"#ffffff"}!important;border-color:${x.gold}!important}
+      .btn-gold,.btn-primary,.primary-btn,.full-width.btn-gold{background:${x.button}!important;background-image:none!important;color:${x.buttonText}!important;border-color:${x.line}!important}
       .btn-outline,.secondary-btn{background:${x.panel}!important;color:${x.text}!important;border-color:${x.gold}!important}
       input,select,textarea,.search-box{background:${x.panel}!important;color:${x.text}!important;border-color:${line}!important}
       input::placeholder,textarea::placeholder{color:${muted}!important;opacity:1!important}
@@ -97,20 +97,20 @@
       :where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid ${x.gold}!important}
       ::selection{background:${x.gold2}!important;color:${x.text}!important}
       /* Responsive visual identities: shape, spacing, icons and product imagery */
-      html[data-visual-style="royal"] .product-card,html[data-visual-style="royal"] .category-card{border-radius:18px!important;box-shadow:0 8px 24px color-mix(in srgb,${x.text} 9%,transparent)!important}
+      html[data-visual-style="royal"] .product-card,html[data-visual-style="royal"] .category-card{border-radius:18px!important;box-shadow:none!important}
       html[data-visual-style="editorial"] .product-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr))!important;gap:clamp(22px,3vw,38px)!important}
       html[data-visual-style="editorial"] .product-card{border-radius:5px!important;border-width:0 0 1px!important;box-shadow:none!important;padding:clamp(16px,2.2vw,28px)!important}
       html[data-visual-style="editorial"] .product-card img,html[data-visual-style="editorial"] .product-image img{border-radius:4px!important;aspect-ratio:4/5!important;object-fit:contain!important}
-      html[data-visual-style="soft"] .product-card,html[data-visual-style="soft"] .category-card,html[data-visual-style="soft"] .feature-card{border-radius:28px!important;box-shadow:0 8px 24px color-mix(in srgb,${x.gold} 13%,transparent)!important}
+      html[data-visual-style="soft"] .product-card,html[data-visual-style="soft"] .category-card,html[data-visual-style="soft"] .feature-card{border-radius:28px!important;box-shadow:none!important}
       html[data-visual-style="soft"] .category-icon-wrap,html[data-visual-style="soft"] .trust-strip .line-icon{border-radius:50%!important}
-      html[data-visual-style="glass"] .product-card,html[data-visual-style="glass"] .category-card,html[data-visual-style="glass"] .toolbar,html[data-visual-style="glass"] .contact-card{background:color-mix(in srgb,${x.panel} 88%,transparent)!important;backdrop-filter:blur(14px)!important;border:1px solid color-mix(in srgb,${x.gold} 35%,transparent)!important;box-shadow:0 12px 32px color-mix(in srgb,${x.text} 10%,transparent)!important}
+      html[data-visual-style="glass"] .product-card,html[data-visual-style="glass"] .category-card,html[data-visual-style="glass"] .toolbar,html[data-visual-style="glass"] .contact-card{background:${x.panel}!important;background-image:none!important;backdrop-filter:none!important;border:1px solid ${line}!important;box-shadow:none!important}
       html[data-visual-style="glass"] .category-icon-wrap{border-radius:18px!important;transform:rotate(-2deg)}
-      html[data-visual-style="boutique"] .product-card,html[data-visual-style="boutique"] .category-card{border-radius:2px!important;border:1px solid ${x.gold}!important;box-shadow:inset 0 0 0 4px color-mix(in srgb,${x.gold} 9%,transparent)!important}
+      html[data-visual-style="boutique"] .product-card,html[data-visual-style="boutique"] .category-card{border-radius:2px!important;border:1px solid ${x.gold}!important;box-shadow:none!important}
       html[data-visual-style="boutique"] .product-card img,html[data-visual-style="boutique"] .product-image img{border-radius:2px!important}
       html[data-visual-style="bold"] body{font-size:19px!important;line-height:1.9!important}
-      html[data-visual-style="bold"] .product-card,html[data-visual-style="bold"] .category-card{border-width:2px!important;border-radius:14px!important;box-shadow:0 6px 0 color-mix(in srgb,${x.gold} 20%,transparent)!important}
+      html[data-visual-style="bold"] .product-card,html[data-visual-style="bold"] .category-card{border-width:2px!important;border-radius:14px!important;box-shadow:none!important}
       html[data-visual-style="bold"] .btn,html[data-visual-style="bold"] button{border-radius:10px!important;font-weight:900!important}
-      html[data-visual-style="minimal"] .product-card,html[data-visual-style="minimal"] .category-card,html[data-visual-style="minimal"] .feature-card{border-radius:12px!important;box-shadow:none!important;border-color:color-mix(in srgb,${x.text} 16%,transparent)!important}
+      html[data-visual-style="minimal"] .product-card,html[data-visual-style="minimal"] .category-card,html[data-visual-style="minimal"] .feature-card{border-radius:12px!important;box-shadow:none!important;border-color:${line}!important}
       html[data-visual-style="minimal"] .section{padding-inline:clamp(22px,6vw,90px)!important}
       html[data-visual-style="botanical"] .product-card,html[data-visual-style="botanical"] .category-card,html[data-visual-style="botanical"] .contact-card{border-radius:24px 8px 24px 8px!important}
       html[data-visual-style="botanical"] .category-icon-wrap,html[data-visual-style="botanical"] .trust-strip .line-icon{border-radius:50% 50% 16px 50%!important}
@@ -128,8 +128,8 @@
       html[data-visual-style="windows"] .site-header{border-radius:0 0 18px 18px!important;box-shadow:0 3px 18px rgba(20,35,45,.08)!important}
       html[data-visual-style="windows"] .product-card,html[data-visual-style="windows"] .category-card,html[data-visual-style="windows"] .contact-card,html[data-visual-style="windows"] .feature-card{border-radius:14px!important;box-shadow:var(--os-shadow)!important;border:1px solid ${line}!important}
       html[data-visual-style="windows"] button,html[data-visual-style="windows"] .btn,html[data-visual-style="windows"] .icon-btn{border-radius:8px!important}
-      html[data-visual-style="android"]{--os-radius:26px;--os-button-radius:999px;--os-gap:16px;--os-shadow:0 5px 18px color-mix(in srgb,${x.gold} 13%,transparent)}
-      html[data-visual-style="android"] .product-card,html[data-visual-style="android"] .category-card,html[data-visual-style="android"] .contact-card,html[data-visual-style="android"] .feature-card{border-radius:26px!important;box-shadow:var(--os-shadow)!important;border:1px solid color-mix(in srgb,${x.gold} 18%,transparent)!important;overflow:hidden}
+      html[data-visual-style="android"]{--os-radius:26px;--os-button-radius:999px;--os-gap:16px;--os-shadow:none}
+      html[data-visual-style="android"] .product-card,html[data-visual-style="android"] .category-card,html[data-visual-style="android"] .contact-card,html[data-visual-style="android"] .feature-card{border-radius:26px!important;box-shadow:var(--os-shadow)!important;border:1px solid ${line}!important;overflow:hidden}
       html[data-visual-style="android"] button,html[data-visual-style="android"] .btn,html[data-visual-style="android"] .icon-btn{border-radius:999px!important}
       html[data-visual-style="android"] .category-icon-wrap,html[data-visual-style="android"] .line-icon{border-radius:18px!important}
       html[data-visual-style="ios"]{--os-radius:20px;--os-button-radius:14px;--os-gap:20px;--os-shadow:0 8px 28px rgba(20,30,45,.08)}
@@ -199,7 +199,7 @@
       :where(a,button,input,select,textarea,[tabindex],[role="button"]):focus-visible{outline:3px solid ${x.gold}!important;outline-offset:3px!important;box-shadow:0 0 0 4px color-mix(in srgb,${x.gold} 22%,transparent)!important}
       ::selection{background:${x.gold2}!important;color:${x.text}!important}
       html[data-visual-style="windows"]{--os-radius:14px;--os-button-radius:8px;--os-gap:18px;--os-shadow:0 5px 20px rgba(20,35,45,.09)}
-      html[data-visual-style="android"]{--os-radius:26px;--os-button-radius:999px;--os-gap:16px;--os-shadow:0 5px 18px color-mix(in srgb,${x.gold} 13%,transparent)}
+      html[data-visual-style="android"]{--os-radius:26px;--os-button-radius:999px;--os-gap:16px;--os-shadow:none}
       html[data-visual-style="ios"]{--os-radius:20px;--os-button-radius:14px;--os-gap:20px;--os-shadow:0 8px 28px rgba(20,30,45,.08)}
       html[data-visual-style="oneui"]{--os-radius:24px;--os-button-radius:16px;--os-gap:14px;--os-shadow:0 3px 14px rgba(20,30,45,.07)}
       html[data-visual-style="pixel"]{--os-radius:28px;--os-button-radius:18px;--os-gap:18px;--os-shadow:0 6px 20px color-mix(in srgb,${x.gold} 12%,transparent)}
