@@ -71,7 +71,7 @@
     function init(){
       sync();
       if('serviceWorker' in navigator&&location.protocol==='https:'){
-        navigator.serviceWorker.register('./sw.js?v=20261018-royal-photo-contrast1',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
+        navigator.serviceWorker.register('./sw.js?v=20261018-theme-readable2',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
       }
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
@@ -300,7 +300,7 @@
   <script src="ai-service.js?v=20261016-ai-bridge1"></script>
   <script src="app.js?v=20261016-fragrance-notes3"></script>
   <script src="royal-gold-gate.js?v=20261017-gold-gate1"></script>
-  <script src="reference-library.js?v=20261017-site-library1"></script>
+  <script src="reference-library.js?v=20261018-settings-only2"></script>
   <script src="settings.js?v=20261018-reference-library-steps1"></script>
   <script src="mamlaka-full-editor.js?v=20261017-full-editor1"></script>
   <script src="enhancements.js?v=20261015-voice-guide1"></script>
