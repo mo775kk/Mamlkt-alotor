@@ -108,15 +108,15 @@ tr:nth-child(even) td{background:#F3EDE1!important}
 .pwa-help-card{max-width:520px;width:100%;padding:28px!important}
 .pwa-help-card h2,.pwa-help-crown,.pwa-help-steps b{color:var(--gold)!important}
 .pwa-help-steps p{background:var(--panel2)!important;color:var(--text)!important;border:1px solid var(--line)!important}
-.intro,.intro-magic{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;overflow:hidden;padding:24px;background:#171914!important;background-image:none!important;color:#F5F1E8!important}
+.intro,.intro-magic{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;overflow:hidden;padding:24px;background-color:#F5F1E8!important;background-image:linear-gradient(rgba(245,241,232,.58),rgba(245,241,232,.68)),url("assets/images/royal-hero.jpg")!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important;color:#25221D!important}
 .intro::before,.intro::after,.intro-glow,.magic-stars,.magic-smoke,.magic-platform,.magic-genie,.magic-lamp{display:none!important;animation:none!important;background-image:none!important}
-.intro-content,.magic-copy{position:relative;width:min(700px,100%);padding:clamp(28px,6vw,70px);background:#171914!important;border:1px solid var(--gold)!important;text-align:center;color:#F5F1E8!important}
-.intro .crown-mark{font-size:38px;color:var(--gold2)!important}
+.intro-content,.magic-copy{position:relative;width:min(700px,100%);padding:clamp(28px,6vw,70px);background:rgba(255,252,246,.93)!important;border:1px solid var(--gold)!important;text-align:center;color:#25221D!important;box-shadow:0 18px 60px rgba(50,37,17,.18)}
+.intro .crown-mark{font-size:38px;color:#946A12!important}
 .intro .eyebrow{color:var(--gold2)!important}
-.intro h1{font-family:"Amiri",serif!important;font-size:clamp(40px,8vw,76px)!important;color:#F5F1E8!important}
-.intro p,.intro-subtitle,.magic-promise,.magic-wishes{color:#D9D4C8!important}
+.intro h1{font-family:"Amiri",serif!important;font-size:clamp(40px,8vw,76px)!important;color:#25221D!important}
+.intro p,.intro-subtitle,.magic-promise,.magic-wishes{color:#514A3F!important}
 .intro .btn{margin-top:20px}
-.intro-skip{display:block;margin:14px auto 0;background:transparent!important;color:#D6B76B!important;border:0!important;text-decoration:underline}
+.intro-skip{display:block;margin:14px auto 0;background:transparent!important;color:#80570A!important;border:0!important;text-decoration:underline}
 .intro-leaving{opacity:0!important;transition:opacity .6s ease}
 .intro[hidden]{display:none!important}
 .hero,.section,.category-card,.product-card,.drawer,.modal-content{scroll-margin-top:100px}
