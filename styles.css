@@ -132,7 +132,7 @@ body{background-color:var(--bg);color:var(--text);background-image:linear-gradie
 html,body{background-color:#F5F0E6;color:#25221D}
 body{
   background-image:
-    linear-gradient(rgba(247,242,232,.84),rgba(247,242,232,.91)),
+    linear-gradient(rgba(247,242,232,var(--bg-overlay,.38)),rgba(247,242,232,calc(var(--bg-overlay,.38) + .10))),
     var(--page-image);
   background-size:cover;background-position:center;background-attachment:fixed;
 }
