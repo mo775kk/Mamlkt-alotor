@@ -153,3 +153,79 @@ tr:nth-child(even) td{background:#F3EDE1!important}
  table{display:block;max-width:100%;overflow-x:auto}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* FINAL LEGIBILITY + VISIBLE ROYAL BACKGROUND FIX — 2026-10-18 */
+html{background:transparent!important}
+body{
+  min-height:100vh!important;
+  background-color:#F5F0E6!important;
+  background-image:linear-gradient(rgba(245,240,230,.32),rgba(245,240,230,.40)),url("assets/images/royal-hero.jpg")!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  background-attachment:fixed!important;
+  color:#201B14!important;
+  font-size:20px!important;
+  line-height:1.85!important;
+  text-shadow:none!important;
+}
+main{background:transparent!important}
+body p,body li,body label,body input,body select,body textarea{font-size:inherit}
+body p{color:#393126}
+.section-heading p,.category-card p,.product-card p,.product-tile p,.product-item p,
+.hero-copy p,.feature-copy p,.muted,.product-meta,.product-desc{
+  color:#393126!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+.hero{
+  background:rgba(255,252,246,.30)!important;
+  min-height:clamp(470px,58vw,720px)!important;
+}
+.hero-image{
+  opacity:.68!important;
+  filter:none!important;
+  object-position:center 42%!important;
+}
+.hero-shade{
+  background:rgba(245,240,230,.28)!important;
+  opacity:1!important;
+}
+.hero-copy h1{font-size:clamp(48px,7.5vw,92px)!important;color:#201B14!important}
+.hero-copy h1 span{color:#80570A!important}
+.hero-copy p:not(.eyebrow){font-size:clamp(19px,2vw,23px)!important;color:#29231B!important;font-weight:600!important}
+.eyebrow{font-size:15px!important;color:#704B06!important;letter-spacing:1.4px!important}
+.section-heading h2,.section-title,.section-title h2{font-size:clamp(34px,4.5vw,52px)!important;color:#201B14!important}
+.category-card h3,.product-card h3,.product-card h4,.product-tile h3,.product-item h3{font-size:clamp(21px,2vw,25px)!important;color:#201B14!important}
+.category-card p,.product-card p,.product-tile p,.product-item p{font-size:17px!important;line-height:1.75!important}
+.site-header .main-nav a{font-size:16px!important}
+.site-header .brand strong{font-size:clamp(23px,2.2vw,30px)!important}
+.site-header .brand small{font-size:12px!important}
+.btn,.btn-gold,.btn-primary,.primary-btn,.btn-outline,.small-btn,.text-btn{font-size:17px!important;min-height:50px!important}
+.toolbar input,.toolbar select,.search-box input{font-size:17px!important;min-height:48px}
+.trust-strip b{font-size:18px!important}
+.trust-strip small{font-size:14px!important}
+.product-grid,.products-grid,#productsGrid,.products-list,.catalog-grid{gap:20px!important}
+.category-card,.product-card,.product-tile,.product-item{background:rgba(255,252,246,.94)!important}
+.intro,.intro-magic{
+  background-color:#F5F0E6!important;
+  background-image:linear-gradient(rgba(245,240,230,.24),rgba(245,240,230,.34)),url("assets/images/royal-hero.jpg")!important;
+  background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important;
+  color:#201B14!important;
+}
+.intro-content,.magic-copy{background:rgba(255,252,246,.96)!important;color:#201B14!important}
+.intro h1{font-size:clamp(46px,8vw,80px)!important;color:#201B14!important}
+.intro p,.intro-subtitle,.magic-promise,.magic-wishes{font-size:19px!important;color:#393126!important}
+@media(max-width:760px){
+  body{font-size:18px!important;line-height:1.8!important;background-attachment:scroll!important}
+  .hero{min-height:500px!important;padding:0!important}
+  .hero-image{opacity:.74!important}
+  .hero-copy{padding:46px 22px 52px!important}
+  .hero-copy h1{font-size:clamp(42px,11vw,60px)!important}
+  .hero-copy p:not(.eyebrow){font-size:18px!important}
+  .section-heading h2,.section-title,.section-title h2{font-size:34px!important}
+  .section-heading p{font-size:16px!important}
+  .site-header .main-nav a{font-size:15px!important}
+  .category-card p,.product-card p,.product-tile p,.product-item p{font-size:16px!important}
+}
