@@ -169,7 +169,7 @@
       .site-header,.site-header.is-scrolled,.main-nav,.mobile-nav,.nav-drawer,.menu-panel,.search-panel,.search-overlay,.search-results,.suggestions,.search-suggestions,.toolbar,.filter-bar,.sort-bar,.breadcrumb,.trust-strip,.announcement-bar,.promo-strip,.site-footer,footer{background:${x.panel}!important;color:${x.text}!important;border-color:${line}!important;box-shadow:0 5px 22px color-mix(in srgb,${x.text} 7%,transparent)!important}
       .hero,.hero-banner,.intro,.intro-content,.entrance-screen,.royal-entrance,.section-banner,.page-banner{border-color:${x.gold}!important}
       .hero{background-color:${x.bg}!important;background-image:linear-gradient(115deg,color-mix(in srgb,${x.bg} 35%,transparent),color-mix(in srgb,${x.gold} 20%,transparent)),var(--page-image)!important;background-position:center!important;background-size:cover!important}
-      .hero .hero-shade,.intro::before,.intro::after{background-color:color-mix(in srgb,${x.bg} ${Math.round((x.overlay??.58)*100)}%,transparent)!important}
+      .hero .hero-shade{background-color:color-mix(in srgb,${x.bg} ${Math.round((x.overlay??.58)*100)}%,transparent)!important}
       .product-grid,.products-grid,.category-grid,.categories-grid,.family-grid,.guide-grid,.feature-grid,.gift-grid,.service-grid,.brand-grid,.result-grid,.favorites-grid,.wishlist-grid{gap:var(--os-gap,18px)!important}
       .product-card,.product-tile,.product-item,.product-result,.search-result,.favorite-item,.wishlist-item,.cart-item,.category-card,.category-tile,.family-card,.family-tile,.guide-card,.guide-item,.feature-card,.feature-tile,.contact-card,.gift-card,.gift-option,.service-card,.brand-card,.info-card,.info-tile,.split-feature,.blend-panel,.blend-step,.royal-family-box,.fragrance-note-pyramid,.note-card,.note-group,.price-card,.price-option,.advisor-card,.recommendation-card,.request-card,.order-card,.customer-card,.accounting-card,.inventory-card,.stat-card,.dashboard-card,.report-card,.admin-card,.panel,.panel-card,.settings-card,.settings-section,.section-card{background:${x.panel}!important;color:${x.text}!important;border:1px solid ${line}!important;border-radius:var(--os-radius,18px)!important;box-shadow:var(--os-shadow,0 5px 20px rgba(20,35,45,.08))!important}
       .product-card:hover,.category-card:hover,.feature-card:hover,.guide-card:hover,.gift-card:hover,.service-card:hover,.brand-card:hover{border-color:${x.gold}!important;transform:translateY(-2px)}
@@ -250,6 +250,30 @@
       .theme-palette-heading h4{margin:0 0 4px;color:${x.heading}}.theme-palette-heading p{margin:0;color:${x.muted};line-height:1.7}
       input[type="color"]{width:100%;min-height:46px;padding:4px;border:1px solid ${x.line}!important;border-radius:10px;background:${x.panel}!important;cursor:pointer}
       @media(max-width:700px){.theme-palette-heading{padding:10px}.admin-grid input[type="color"]{min-height:44px}}
+      /* Last layer: flat colors only, so every saved palette visibly applies to the full storefront. */
+      html,body,main{background:${x.bg}!important;background-image:none!important;color:${x.text}!important}
+      body{background-image:none!important}
+      .site-header,.site-header.is-scrolled,.main-nav,.mobile-nav,.nav-drawer,.menu-panel,.search-panel{background:${x.header}!important;background-image:none!important;color:${x.text}!important}
+      .site-footer,footer{background:${x.footer}!important;background-image:none!important;color:${x.text}!important}
+      .site-header .brand strong,.site-header .main-nav a,.site-header .header-actions .icon-btn,.site-header .menu-toggle{color:${x.text}!important}
+      .site-header .brand small,.site-footer a,footer a{color:${x.gold2}!important}
+      .site-header .main-nav a:hover,.site-header .main-nav a.active{background:${x.gold2}!important;color:${x.header}!important}
+      .hero,.hero-banner,.section-banner{background:${x.bg}!important;background-image:none!important;border-color:${x.line}!important}
+      .hero-image{opacity:.12!important;filter:none!important}
+      .hero .hero-shade{background:${x.bg}!important;opacity:.88!important}
+      .hero .hero-copy h1,.hero .hero-copy h2,.hero .hero-copy p,.hero .hero-copy h1 span,.hero .hero-copy .eyebrow{color:${x.text}!important;text-shadow:none!important}
+      .category-card,.category-tile,.feature-card,.contact-card,.gift-card,.guide-card,.info-card,.product-card,.product-tile,.product-item,.split-feature,.blend-panel,.royal-family-box,.toolbar,.customer-price-notice,.blend-price-guide,.panel,.product-modal,.cart-drawer,.settings-panel,.admin-panel,.modal-content,.drawer,.trust-strip{background:${x.panel}!important;background-image:none!important;color:${x.text}!important;border-color:${line}!important;box-shadow:none!important}
+      .btn,.btn-gold,.btn-primary,.primary-btn,.full-width.btn-gold,.btn-outline,.secondary-btn{background:${x.button}!important;background-image:none!important;color:${x.buttonText}!important;border-color:${line}!important;box-shadow:none!important}
+      input,select,textarea,.search-box{background:${x.field}!important;background-image:none!important;color:${x.text}!important;border-color:${line}!important}
+      .admin-head{background:${x.header}!important;background-image:none!important;color:${x.gold2}!important;border-color:${x.gold}!important}
+      .admin-head h2,.admin-head .eyebrow,.admin-head small{color:${x.gold2}!important}
+      .admin-tabs,.admin-tabs button,.admin-tabs button.active{background:${x.panel2}!important;background-image:none!important;color:${x.text}!important;border-color:${line}!important;box-shadow:none!important}
+      .pwa-help-card,.pwa-help-steps p{background:${x.panel}!important;background-image:none!important;color:${x.text}!important;border-color:${line}!important;box-shadow:none!important}
+      .pwa-help-card h2,.pwa-help-crown,.pwa-help-steps b,.pwa-help-lead,.pwa-help-note{color:${x.text}!important}
+      .product-card p,.product-card small,.section p,.section li,.section label,.section-heading p,.feature-copy p,.contact-card p,.gift-copy p,.guide-card p,.category-card p,.info-card p,.muted,.subtitle,.description{color:${x.muted}!important;text-shadow:none!important}
+      .price,.product-price,.price-tag,.amount,[class*="price"]{color:${x.gold}!important}
+      :where(a,button,input,select,textarea,[tabindex],[role="button"]):focus-visible{outline:3px solid ${x.gold}!important;outline-offset:3px!important;box-shadow:none!important}
+      ::selection{background:${x.gold2}!important;color:${x.text}!important}
     `;
     const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.setAttribute("content",x.bg||baseTheme.bg);
     document.documentElement.style.colorScheme=dark?"dark":"light";write(THEME_KEY,x);
