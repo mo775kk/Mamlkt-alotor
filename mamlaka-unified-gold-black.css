@@ -56,3 +56,9 @@ hr,.divider{border-color:#A98217!important}
 @media(prefers-reduced-motion:reduce){
  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+/* Neutralize pink styling in non-gate helper panels; entrance gate itself remains unchanged. */
+.pwa-help-backdrop{background:rgba(0,0,0,.72)!important;backdrop-filter:none!important}
+.pwa-help-card,.pwa-help-steps p{background:#F7E7A6!important;background-image:none!important;color:#090909!important;border-color:#A98217!important;box-shadow:none!important}
+.pwa-help-card h2,.pwa-help-crown,.pwa-help-steps b,.pwa-help-lead,.pwa-help-note,.pwa-help-steps p{color:#090909!important}
+.pwa-help-steps p{border-color:#A98217!important}
+.pwa-help-close{background:#F2D36B!important;color:#090909!important;border-color:#080808!important}
