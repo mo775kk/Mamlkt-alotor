@@ -193,7 +193,7 @@ try {
     app.includes("لم تُوثق بعد"),
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
-  report(html.includes("app.js?v=20261016-fragrance-notes3"),
+  report(html.includes("app.js?v=20261018-home-catalog-showcase3"),
     "Storefront cache-buster points to the latest fragrance-note interface");
 } catch (e) {
   report(false, "Unable to validate fragrance-note research coverage: " + e.message);
@@ -223,7 +223,7 @@ try {
     app.includes("لم تُوثق بعد"),
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
-  report(html.includes("app.js?v=20261016-fragrance-notes3") &&
+  report(html.includes("app.js?v=20261018-home-catalog-showcase3") &&
     /mamlaka-live-finish\.css\?v=[^"]+/.test(html),
     "Storefront cache-busters point to the latest fragrance-note interface");
   report(/const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
