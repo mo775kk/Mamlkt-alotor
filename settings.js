@@ -30,7 +30,7 @@
     const x=completeTheme(t),root=document.documentElement,style=root.style; const visualStyle=({windows:"windows",android:"android",ios:"ios",oneui:"oneui",pixel:"pixel",classic:"classic",royal:"windows",editorial:"ios",soft:"android",glass:"ios",boutique:"classic",bold:"windows",minimal:"classic",botanical:"pixel"})[x.visualStyle]||"classic"; root.dataset.visualStyle=visualStyle;
     style.setProperty("--bg",x.bg);style.setProperty("--panel",x.panel);style.setProperty("--panel2",x.panel2);style.setProperty("--card",x.card);style.setProperty("--field",x.field);style.setProperty("--gold",x.gold);style.setProperty("--gold2",x.gold2);style.setProperty("--text",x.text);style.setProperty("--heading",x.heading);style.setProperty("--muted",x.muted);style.setProperty("--line",x.line);style.setProperty("--header-bg",x.header);style.setProperty("--footer-bg",x.footer);style.setProperty("--button-bg",x.button);style.setProperty("--button-text",x.buttonText);
     style.setProperty("--page-image",`url("${String(x.backgroundImage||baseTheme.backgroundImage).replace(/"/g,"")}")`);
-    style.setProperty("--bg-overlay",String(Math.max(0.35,Math.min(0.95,Number(x.overlay??0.58)))));
+    style.setProperty("--bg-overlay",String(Math.max(0.05,Math.min(0.85,Number(x.overlay??0.28)))));
     const hex=v=>{const z=String(v||"#ffffff").replace("#","");return z.length===3?z.split("").map(q=>q+q).join(""):z.slice(0,6)};
     const rgb=v=>{const z=hex(v);return [parseInt(z.slice(0,2),16)||0,parseInt(z.slice(2,4),16)||0,parseInt(z.slice(4,6),16)||0]};
     const lum=v=>{const c=rgb(v).map(n=>{n/=255;return n<=.04045?n/12.92:Math.pow((n+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]};
