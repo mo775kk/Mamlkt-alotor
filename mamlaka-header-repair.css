@@ -1,0 +1,63 @@
+/* MAMLKAT AL-OTOR — mobile header and navigation repair */
+html, body { max-width:100%; overflow-x:hidden; }
+html body .site-header {
+  position:sticky!important; top:0!important; z-index:100!important;
+  width:100%!important; min-height:82px!important; height:auto!important;
+  display:flex!important; align-items:center!important; justify-content:space-between!important;
+  gap:clamp(8px,1.3vw,18px)!important; padding:10px clamp(12px,2.4vw,32px)!important;
+  background:rgba(20,12,17,.97)!important; color:#fff2d2!important;
+  border-bottom:2px solid #d4af37!important; backdrop-filter:blur(14px)!important;
+  box-shadow:0 5px 22px rgba(0,0,0,.2)!important;
+}
+html body .site-header .brand { flex:0 1 auto!important; min-width:0!important; }
+html body .site-header .brand strong { color:#ffe4a0!important; font-size:clamp(19px,2vw,27px)!important; }
+html body .site-header .brand small { color:#fff0cf!important; font-size:clamp(9px,1vw,11px)!important; }
+html body .site-header .main-nav { flex:1 1 auto!important; min-width:0!important; justify-content:center!important; gap:clamp(3px,.7vw,12px)!important; }
+html body .site-header .main-nav a { color:#fff4dc!important; font-size:clamp(13px,1.15vw,16px)!important; white-space:nowrap!important; }
+html body .site-header .main-nav a::before { color:#f4cc67!important; text-shadow:none!important; }
+html body .site-header .header-actions { flex:0 0 auto!important; display:flex!important; align-items:center!important; gap:6px!important; }
+html body .site-header .icon-btn { background:#281a22!important; color:#ffe4a0!important; border:1px solid #d7b65c!important; }
+html body .site-header .counter { background:#f3d37c!important; color:#261720!important; }
+html body .main-nav.open, html body .main-nav.active {
+  background:#21141c!important; color:#fff2d2!important; border:1px solid #d4af37!important;
+  box-shadow:0 16px 36px rgba(0,0,0,.45)!important;
+}
+html body .main-nav a:hover, html body .main-nav a.active, html body .main-nav a[aria-current="page"] {
+  color:#ffe08b!important; background:rgba(212,175,55,.13)!important;
+}
+html body .hero { clip-path:none!important; transform:none!important; }
+html body .hero-image, html body .hero-shade, html body .hero-copy { clip-path:none!important; }
+html body .site-header, html body .main-nav { clip-path:none!important; }
+@media (max-width: 980px) {
+  html body .site-header {
+    display:grid!important; grid-template-columns:minmax(0,1fr) auto!important;
+    gap:8px 10px!important; padding:10px 12px!important;
+  }
+  html body .site-header .brand { grid-column:1!important; grid-row:1!important; }
+  html body .site-header .menu-toggle { display:inline-flex!important; grid-column:2!important; grid-row:1!important; }
+  html body .site-header .header-actions {
+    grid-column:1 / -1!important; grid-row:2!important; width:100%!important;
+    justify-content:center!important; flex-wrap:wrap!important; gap:7px!important;
+  }
+  html body .site-header .header-actions .icon-btn { width:42px!important; height:42px!important; }
+  html body .site-header .main-nav {
+    display:none!important; position:absolute!important; top:calc(100% + 5px)!important;
+    left:10px!important; right:10px!important; width:auto!important; max-height:70svh!important;
+    overflow-y:auto!important; flex-direction:column!important; align-items:stretch!important;
+    padding:8px!important; margin:0!important; border-radius:14px!important;
+    background:#21141c!important; border:1px solid #d4af37!important;
+  }
+  html body .site-header .main-nav.open, html body .site-header .main-nav.active {
+    display:flex!important;
+  }
+  html body .site-header .main-nav a {
+    display:flex!important; align-items:center!important; min-height:46px!important;
+    padding:10px 14px!important; border-bottom:1px solid rgba(212,175,55,.2)!important;
+    color:#fff4dc!important; font-size:16px!important;
+  }
+}
+@media (max-width: 420px) {
+  html body .site-header .brand strong { font-size:19px!important; }
+  html body .site-header .brand small { font-size:9px!important; letter-spacing:.08em!important; }
+  html body .site-header .header-actions .pwa-install-btn { font-size:13px!important; }
+}
