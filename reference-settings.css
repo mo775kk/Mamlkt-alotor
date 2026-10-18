@@ -1,0 +1,16 @@
+/* Clear, high-contrast reference library and settings instructions */
+.admin-panel .reference-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.admin-panel .reference-steps article{padding:16px;border-radius:14px;border:1px solid #d9b5c7;background:#fff0f6!important;color:#24131f!important}
+.admin-panel .reference-steps article b{display:block;color:#81550a!important;font-size:17px!important;margin-bottom:5px}
+.admin-panel .reference-steps article p{margin:0;color:#3c2936!important;font-size:16px!important;line-height:1.9!important}
+#adminReferenceLibraryHost #referenceLibrary{margin:0!important;max-width:none!important;width:100%!important;background:#fffaf5!important;color:#24131f!important;border:2px solid #d4af37!important}
+#adminReferenceLibraryHost #referenceLibrary h2{color:#76264e!important;font-size:clamp(24px,3.5vw,34px)!important}
+#adminReferenceLibraryHost #referenceLibrary p{color:#44313e!important;font-size:16px!important;line-height:1.9!important}
+#adminReferenceLibraryHost #referenceLibrary .ref-count,#adminReferenceLibraryHost #referenceLibrary .ref-tag{color:#80540a!important;font-size:14px!important;font-weight:800!important}
+#adminReferenceLibraryHost #referenceLibrary .ref-card{background:#fff!important;border-color:#d9b6c8!important}
+#adminReferenceLibraryHost #referenceLibrary .ref-card h3{color:#24131f!important;font-size:18px!important;line-height:1.65!important}
+#adminReferenceLibraryHost #referenceLibrary .ref-url{color:#5a4653!important;font-size:13px!important}
+#adminReferenceLibraryHost #referenceLibrary .ref-open{color:#fff!important;background:#672747!important;border:1px solid #d4af37!important}
+#adminReferenceLibraryHost #referenceLibrary .ref-star,#adminReferenceLibraryHost #referenceLibrary .ref-btn{color:#52213c!important;background:#fff0f6!important;border:1px solid #c98baa!important;font-size:15px!important}
+#adminReferenceLibraryHost #referenceLibrary input,#adminReferenceLibraryHost #referenceLibrary select{color:#24131f!important;background:#fff!important;border:1px solid #b77e9b!important;font-size:16px!important}
+@media(max-width:620px){.admin-panel .reference-steps{grid-template-columns:1fr}}
