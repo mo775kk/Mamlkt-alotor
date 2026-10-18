@@ -3,7 +3,7 @@
   const getWaNumber = () => (localStorage.getItem("mamlaka_admin_whatsapp_v1") || "201272776928").replace(/\D/g, "");
   const STORAGE = {cart:"mamlaka_cart_v1", fav:"mamlaka_favorites_v1", lang:"mamlaka_language_v1", custom:"mamlaka_custom_products_v1", requests:"mamlaka_requests_v1"};
   const sizes = (() => {
-    const fallback = {"3":50,"5":75,"10":100,"22":130,"30":150,"50":200,"100":450};
+    const fallback = {"3":50,"5":75,"10":100,"22":130,"30":100,"50":150,"100":300};
     try {
       const cfg = JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1") || "null");
       if (Array.isArray(cfg?.retailBlendPrices) && cfg.retailBlendPrices.length) {
@@ -12,8 +12,8 @@
           const size = String(item.size || "").match(/[0-9]+/)?.[0];
           if (size && Number.isFinite(Number(item.price)) && Number(item.price) >= 50) editable[size] = Number(item.price);
         });
-        if (editable["30"] === 100 && editable["50"] === 150 && editable["100"] === 300) {
-          editable["30"] = 150; editable["50"] = 200; editable["100"] = 450;
+        if (editable["30"] === 150 && editable["50"] === 200 && editable["100"] === 450) {
+          editable["30"] = 100; editable["50"] = 150; editable["100"] = 300;
         }
         if (editable["22"] == null) editable["22"] = 130;
         const normalized = Object.fromEntries(Object.entries(fallback).map(([size, price]) => [size, editable[size] ?? price]));
@@ -226,7 +226,7 @@
   }
   function renderProducts() {
     const q=norm($("#productSearch").value), gender=$("#genderFilter").value, family=$("#familyFilter").value;
-    const list=products.filter(p=>p.productType!=="oil" && p.productType!=="bakhoor" && (!gender||p.gender===gender) && (!family||p.family===family) && (!q||norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[]),p.family,p.descriptionAr].join(" ")).includes(q)));
+    const list=products.filter(p=>p.productType!=="oil" && p.productType!=="bakhoor" && (!gender||p.gender===gender) && (!family||p.family===family||displayFamily(p.family,p.nameAr||p.nameEn)===family) && (!q||norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[]),p.family,p.descriptionAr].join(" ")).includes(q)));
     $("#readyProducts").innerHTML=list.map(productCard).join("");
     $("#noProducts").classList.toggle("hidden",list.length>0);
     $("#resultsMessage").textContent=`${list.length} منتج في الكتالوج المعروض · الأسماء التي تحمل «يحتاج مراجعة» غير معتمدة للبيع حتى مراجعتها.`;
@@ -245,7 +245,7 @@
     const all=products.filter(p=>p.supplierCatalogItem || p.productType==="oil");
     const q=norm($("#supplierOilSearch")?.value||""),cat=$("#supplierOilCategory")?.value||"",family=$("#supplierOilFamily")?.value||"";
     const categoryMap={MEN:"رجالي",WOMEN:"نسائي",UNISEX:"للجنسين",ORIENTAL:"شرقي",KIDS:"أطفال",DIFFUSER:"فواحات"};
-    const filtered=all.filter(p=>(!cat||!p.supplierCatalogItem||p.supplierCategory===cat)&&(!family||p.family===family)&&(!q||norm([p.nameAr,p.nameEn,p.supplierSku,p.family,p.gender,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(q)));
+    const filtered=all.filter(p=>(!cat||(p.supplierCategory?p.supplierCategory===cat:!p.supplierCatalogItem))&&(!family||p.family===family||displayFamily(p.family,p.nameAr||p.nameEn)===family)&&(!q||norm([p.nameAr,p.nameEn,p.supplierSku,p.family,p.gender,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(q)));
     const visible=filtered.slice(0,supplierVisibleLimit);
     grid.innerHTML=visible.map(productCard).join("");
     $("#supplierOilSummary").textContent=all.length?("إجمالي "+all.length+" نوع زيت من الموردين · المعروض "+visible.length+" من "+filtered.length+" · الأسعار الداخلية غير معروضة هنا."): "استورد ملف كتالوج الموردين من لوحة الإدارة لعرض الأنواع كاملة.";
