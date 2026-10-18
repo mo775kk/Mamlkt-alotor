@@ -139,3 +139,26 @@ html body .settings-panel input,html body .settings-panel select,html body .sett
  html body .main-nav a{display:block!important;padding:12px 14px!important;border-bottom:1px solid rgba(239,197,103,.18)!important}
  html body .brand-crown{width:42px!important;height:42px!important;font-size:25px!important}
 }
+
+
+/* Royal icon system for the primary menu: consistent line-like symbols and clear touch targets */
+html body .main-nav a{display:inline-flex!important;align-items:center!important;gap:8px!important}
+html body .main-nav a::before{display:inline-grid;place-items:center;min-width:22px;height:22px;color:#f5d27c;font-size:19px;line-height:1;text-shadow:0 1px 5px #000}
+html body .main-nav a[data-nav="home"]::before{content:"⌂"}
+html body .main-nav a[href="#ready"]::before{content:"♛"}
+html body .main-nav a[href="#oils"]::before{content:"◈"}
+html body .main-nav a[href="#bakhoor"]::before{content:"♨"}
+html body .main-nav a[href="#gift"]::before{content:"◇"}
+html body .main-nav a[href="#advisor"]::before{content:"✧"}
+html body .main-nav a[href="#visit"]::before{content:"⌖"}
+html body .main-nav a:hover::before,html body .main-nav a.active::before{color:#fff0bb}
+html body .menu-toggle{font-size:0!important}
+html body .menu-toggle::before{content:"☰";font-size:24px;line-height:1;color:#ffe09a}
+html body .header-actions #searchFocus::before{content:"";display:block}
+html body .header-actions #searchFocus{position:relative}
+html body .header-actions #favoritesShortcut,html body .header-actions #cartShortcut{position:relative}
+html body .header-actions .language-btn{font-size:13px!important;font-weight:800!important}
+@media(max-width:760px){
+ html body .main-nav.open,html body .main-nav.active{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:2px!important;position:absolute!important;top:100%!important;left:10px!important;right:10px!important;width:auto!important;max-height:min(70svh,560px)!important;overflow:auto!important;padding:10px!important;background:linear-gradient(145deg,#24141c,#100b0e)!important;box-shadow:0 16px 40px rgba(0,0,0,.48)!important}
+ html body .main-nav a{min-height:45px!important;border-bottom:1px solid rgba(239,197,103,.2)!important;padding:10px 12px!important}
+}
