@@ -1,32 +1,22 @@
-/* MAMLKAT AL-OTOR — safe duplicate-section prevention and accessible navigation */
+/* MAMLKAT AL-OTOR — non-destructive duplicate diagnostics and accessible navigation */
 (function(){
   "use strict";
-  function clean(){
+  function enhance(){
     var main=document.querySelector("main");
     if(!main)return;
-    // Remove only repeated directory/quick-start cards when a matching destination
-    // is already present in the main directory. Keep the actual catalog sections intact.
-    var directory=main.querySelector("#homeIndex");
-    if(directory){
-      var seen=new Set();
-      directory.querySelectorAll('a[href^="#"]').forEach(function(a){
-        var href=a.getAttribute("href");
-        if(!href||href==="#")return;
-        if(seen.has(href)){a.remove();return;}
-        seen.add(href);
-      });
-    }
-    // Avoid duplicate IDs from future edits; preserve the first canonical target.
-    var ids=new Set();
-    main.querySelectorAll("[id]").forEach(function(el){
-      if(ids.has(el.id)){el.removeAttribute("id");return;}
-      ids.add(el.id);
-    });
-    // Ensure directory links have a visible, keyboard-friendly focus state.
+    // Never remove customer-facing links, content, or IDs at runtime.
+    // Duplicate cleanup belongs in the source files so navigation targets stay stable.
     main.querySelectorAll('a[href^="#"],button').forEach(function(el){
-      if(!el.hasAttribute("aria-label")&&!el.textContent.trim()&&!el.querySelector("svg[aria-hidden='true']"))return;
-      el.classList.add("mamlaka-interactive");
+      if(el.hasAttribute("aria-label")||el.textContent.trim()||el.querySelector("svg[aria-hidden='true']")){
+        el.classList.add("mamlaka-interactive");
+      }
     });
+    var ids=new Set(),duplicates=[];
+    main.querySelectorAll("[id]").forEach(function(el){
+      if(ids.has(el.id))duplicates.push(el.id);
+      else ids.add(el.id);
+    });
+    if(duplicates.length)console.warn("[Mamlakat Al-Otor] Duplicate IDs detected; kept intact to avoid breaking links:",Array.from(new Set(duplicates)));
   }
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",clean,{once:true});else clean();
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",enhance,{once:true});else enhance();
 })();
