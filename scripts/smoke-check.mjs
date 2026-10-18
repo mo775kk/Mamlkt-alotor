@@ -104,7 +104,7 @@ try {
   report(html.includes("mamlaka-live-finish.css?v=20261018-royal-photo-contrast1"),
     "Bright pearl-pink and gold visual layer is linked from the storefront");
 
-report(/royal-bright-redesign\.css\?v=[^"]+/.test(html),
+report(/mamlaka-live-finish\.css\?v=[^"]+/.test(html),
   "Visible bright theme hotfix is linked with a fresh cache-buster");
 report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
   "Service worker URL and cache shell version are synchronized");
@@ -224,7 +224,7 @@ try {
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
   report(html.includes("app.js?v=20261016-fragrance-notes3") &&
-    /royal-bright-redesign\.css\?v=[^"]+/.test(html),
+    /mamlaka-live-finish\.css\?v=[^"]+/.test(html),
     "Storefront cache-busters point to the latest fragrance-note interface");
   report(/const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
     "PWA cache version is refreshed to deliver the updated catalog");
