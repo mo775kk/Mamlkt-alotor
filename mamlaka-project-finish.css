@@ -1,0 +1,79 @@
+/* MAMLKAT AL-OTOR — final responsive polish, October 2026 */
+:root { --mamlaka-gold-readable:#f3d77e; --mamlaka-pink:#f1b7d0; --mamlaka-ink:#21141c; }
+html { scroll-behavior:smooth; scroll-padding-top:110px; }
+body { overflow-x:clip; }
+main section[id], main [id].section { scroll-margin-top:110px; }
+.site-header { box-sizing:border-box; }
+.site-header .brand, .site-header .header-actions, .site-header .main-nav { min-width:0; }
+.site-header .brand strong { line-height:1.35!important; }
+.site-header .brand small { white-space:normal!important; line-height:1.35!important; }
+.site-header .icon-btn, .site-header .pwa-install-btn {
+  min-height:42px!important; display:inline-flex; align-items:center; justify-content:center;
+}
+.site-header .icon-btn { position:relative; }
+.site-header .counter { top:-5px!important; inset-inline-end:-5px!important; }
+.site-header .main-nav a { text-decoration:none!important; text-shadow:none!important; }
+.site-header .main-nav a:focus-visible, .site-header button:focus-visible,
+main a:focus-visible, main button:focus-visible, footer a:focus-visible {
+  outline:3px solid var(--mamlaka-pink)!important; outline-offset:3px!important;
+}
+main .section-heading { gap:clamp(12px,2vw,28px); }
+main .section-heading h2, main .home-showcase-heading h3 {
+  text-wrap:balance; line-height:1.5!important; overflow-wrap:anywhere;
+}
+main .section-heading > p, main .home-showcase-heading p {
+  max-width:58ch; line-height:1.9!important;
+}
+main .home-index-card, main .category-card {
+  min-width:0; box-sizing:border-box; transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+main .home-index-card:focus-visible, main .category-card:focus-visible {
+  outline:3px solid var(--mamlaka-pink); outline-offset:3px;
+}
+main .home-index-copy, main .home-index-copy strong, main .home-index-copy small,
+main .category-card h3, main .category-card p { overflow-wrap:anywhere; }
+main input, main select, main textarea, .drawer input, .drawer textarea {
+  max-width:100%; box-sizing:border-box;
+}
+main .toolbar { flex-wrap:wrap; }
+main .toolbar > * { min-width:0; }
+.toast { line-height:1.8!important; }
+@media (min-width:981px) {
+  .site-header { flex-wrap:nowrap!important; }
+  .site-header .main-nav { flex-wrap:wrap; }
+}
+@media (max-width:980px) {
+  html { scroll-padding-top:150px; }
+  main section[id], main [id].section { scroll-margin-top:150px; }
+  .site-header { position:sticky!important; }
+  .site-header .main-nav { z-index:120!important; }
+  .site-header .main-nav.open {
+    visibility:visible!important; opacity:1!important; pointer-events:auto!important;
+  }
+  .site-header .header-actions { min-width:0!important; }
+  .site-header .brand small { max-width:62vw; }
+  main .section { padding-inline:clamp(14px,4vw,28px)!important; }
+  main .section-heading { align-items:flex-start!important; flex-direction:column!important; }
+  main .section-heading > p { margin-top:0!important; }
+  main .home-index-grid, main .category-grid { grid-template-columns:repeat(2,minmax(0,1fr))!important; }
+}
+@media (max-width:520px) {
+  html { scroll-padding-top:160px; }
+  main section[id], main [id].section { scroll-margin-top:160px; }
+  .site-header .brand strong { font-size:20px!important; }
+  .site-header .brand small { font-size:9px!important; letter-spacing:.04em!important; }
+  .site-header .header-actions { gap:6px!important; }
+  .site-header .header-actions .icon-btn { width:40px!important; min-width:40px!important; height:40px!important; padding:0!important; }
+  .site-header .pwa-install-btn { min-height:40px!important; padding:6px 8px!important; font-size:12px!important; }
+  main .home-index-grid, main .category-grid { grid-template-columns:minmax(0,1fr)!important; }
+  main .home-index-card { min-height:84px; }
+  main .hero { min-height:clamp(510px,78svh,720px)!important; }
+  main .hero-copy h1 { font-size:clamp(36px,10vw,52px)!important; }
+  main .hero-copy p { font-size:16px!important; line-height:1.95!important; }
+  main .hero-actions { flex-wrap:wrap!important; gap:10px!important; }
+  main .hero-actions .btn { flex:1 1 150px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto!important; }
+  *, *::before, *::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
+}
