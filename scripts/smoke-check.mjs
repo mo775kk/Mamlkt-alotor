@@ -99,9 +99,9 @@ try {
     "Install action stays available and offers browser-specific guidance when native install prompt is withheld");
   report(html.includes("id=\"pwaHelpSteps\"") && html.includes("إضافة إلى الشاشة الرئيسية"),
     "Install fallback explains Android/iOS steps in an accessible dialog");
-  report(html.includes('content="#201E19"') && manifest.theme_color === "#201E19",
+  report(html.includes('content="#160D14"') && manifest.theme_color === "#160D14",
     "Browser and installed-app theme colors match the cinematic charcoal palette");
-  report(html.includes("royal-bright-ux.css?v=20261016-bright1"),
+  report(html.includes("mamlaka-live-finish.css?v=20261018-royal-photo-contrast1"),
     "Bright pearl-pink and gold visual layer is linked from the storefront");
 
 report(/royal-bright-redesign\.css\?v=[^"]+/.test(html),
@@ -254,6 +254,7 @@ try {
   const settings = read("settings.js");
   const html = read("index.html");
   const polish = read("royal-polish.css");
+  const liveFinish = read("mamlaka-live-finish.css");
   report(settings.includes('dp={"3":50,"5":75,"10":100,"22":130,"30":100,"50":150,"100":300}') &&
     html.includes("30 مل · زيت فقط / رش',price:100") && html.includes("50 مل · زيت فقط / رش',price:150") && html.includes("100 مل · زيت فقط / رش',price:300"),
     "Oil-only/spray retail price defaults are consistent between owner controls and customer guide");
@@ -272,7 +273,7 @@ try {
     "AI connection diagnostics handle timeouts, missing server secrets and health-check limitations");
   report(polish.includes(".ai-secret-list{") &&
     /settings\.js\?v=[^"]+/.test(html) &&
-    html.includes("royal-polish.css?v=20261016-fragrance-notes1"),
+    html.includes("mamlaka-live-finish.css?v=20261018-royal-photo-contrast1") && liveFinish.includes("var(--page-image") && liveFinish.includes("opacity:1!important"),
     "AI deployment guide styles and cache-busted script/style versions are present");
 } catch (e) {
   report(false, "Unable to validate AI deployment settings: " + e.message);
