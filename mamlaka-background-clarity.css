@@ -1,8 +1,8 @@
-/* MAMLKAT AL-OTOR — background visibility and legibility fix
-   Loaded last so this layer wins over earlier theme overrides. */
+/* MAMLKAT AL-OTOR — visible royal photograph with readable text
+   Loaded last so the background treatment is consistent across the full storefront. */
 :root{
-  --royal-photo-overlay:rgba(24,10,19,.22);
-  --royal-photo-overlay-end:rgba(24,10,19,.30);
+  --royal-photo-overlay:rgba(24,10,19,.30);
+  --royal-photo-overlay-end:rgba(24,10,19,.40);
 }
 html body{
   background-color:#241521!important;
@@ -20,22 +20,31 @@ html body .category-section,
 html body .products-section,
 html body .blend-section,
 html body .advisor-section,
-html body .contact-section{background:transparent!important}
+html body .contact-section,
+html body .home-index-section,
+html body .home-showcase-section{background:transparent!important}
 html body .section-heading h2,
 html body .section-heading>p,
 html body .section>p,
 html body .section li,
-html body .section label{
-  text-shadow:0 1px 5px rgba(18,7,15,.58)!important;
+html body .section label,
+html body .section .muted,
+html body .section .results-message{
+  text-shadow:0 2px 8px rgba(12,5,11,.88)!important;
 }
 html body .hero .hero-shade{
-  background:linear-gradient(90deg,rgba(18,8,16,.10) 0%,rgba(18,8,16,.34) 48%,rgba(18,8,16,.72) 100%),linear-gradient(0deg,rgba(18,8,16,.30),rgba(18,8,16,.02) 58%)!important;
+  background:linear-gradient(90deg,rgba(18,8,16,.12) 0%,rgba(18,8,16,.38) 48%,rgba(18,8,16,.74) 100%),linear-gradient(0deg,rgba(18,8,16,.32),rgba(18,8,16,.03) 58%)!important;
 }
 html body .site-header{backdrop-filter:blur(12px)}
+/* Keep product cards readable while allowing a hint of the photo through. */
+html body .home-showcase-block{background:rgba(255,250,252,.94)!important}
+html body .home-index-card{background:rgba(255,250,252,.96)!important}
 @media(max-width:700px){
   html body{background-attachment:scroll!important;background-position:center top!important}
   html body .section-heading h2,
   html body .section-heading>p,
-  html body .section>p{ text-shadow:0 1px 4px rgba(18,7,15,.68)!important }
+  html body .section>p,
+  html body .section li,
+  html body .section label{ text-shadow:0 2px 7px rgba(12,5,11,.92)!important }
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
