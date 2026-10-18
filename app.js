@@ -424,10 +424,8 @@
     const rec=new SpeechRecognition();rec.lang=language==="ar"?"ar-EG":"en-US";rec.interimResults=false;rec.maxAlternatives=1;
     $("#voiceSearch").textContent="…";rec.onresult=e=>{$("#productSearch").value=e.results[0][0].transcript;renderProducts();};rec.onerror=()=>notify("تعذر بدء البحث الصوتي. تحقق من إذن الميكروفون.");rec.onend=()=>$("#voiceSearch").textContent="🎙";try{rec.start();}catch{notify("تعذر بدء البحث الصوتي.");$("#voiceSearch").textContent="🎙";}
   });
-  $("#enterBtn").addEventListener("click",()=>{save("mamlaka_intro_seen_v1",true);$("#intro").classList.add("dismissed");});
-  $("#skipIntro").addEventListener("click",()=>{$("#intro").classList.add("dismissed");save("mamlaka_intro_seen_v1",true);});
-  // Always show the royal entrance on a fresh page load; the visitor can enter or skip explicitly.
-  // This avoids silently bypassing the entrance because an old localStorage flag remained set.
+  // The separate entrance screen was removed from index.html by design.
+  // Do not bind obsolete entrance buttons: a missing element must never stop storefront initialization.
   $("#year").textContent=new Date().getFullYear();
   function syncAllProducts(){products=combineProducts();renderProducts();renderSupplierOils();renderCart();updateCounts();populateBlendOils();}
   document.addEventListener("mamlaka:products-updated",syncAllProducts);
