@@ -207,14 +207,14 @@
     const desc=escapeHTML(descRaw.length>150?descRaw.slice(0,147)+"…":descRaw);
     const isOil=kind==="oil",meta=isOil?((p.gender&&p.gender!=="غير محدد"?escapeHTML(p.gender)+" · ":"")+"زيت عطري مركز"):((p.brand&&p.brand!=="غير محدد"?escapeHTML(p.brand):"الشركة تحتاج تأكيد")+(p.gender?" · "+escapeHTML(p.gender):""));
     const price=isOil?"أحجام التركيب تبدأ من 50 ج.م":"السعر والتوفر يؤكدان قبل الطلب";
-    return '<article class="home-showcase-card home-showcase-'+kind+'"><div class="home-showcase-visual">'+imageMarkup(p)+'<span class="home-showcase-badge">'+(isOil?"زيت للتركيب":"عطر جاهز")+'</span></div><div class="home-showcase-card-body"><div class="home-showcase-meta">'+meta+'</div><h4>'+name+'</h4>'+(english?'<div class="home-showcase-english" dir="ltr">'+english+'</div>':"")+'<p class="home-showcase-description">'+desc+'</p><div class="home-showcase-family"><span>الطابع</span><strong>'+family+'</strong></div><div class="home-showcase-price">'+price+'</div><div class="home-showcase-actions"><button class="small-btn" type="button" data-action="details" data-id="'+id+'">تفاصيل المنتج</button>'+(isOil?'<button class="small-btn primary" type="button" data-home-blend-id="'+id+'">اختيار للتركيب</button>':'<a class="small-btn primary" href="#ready">تصفح العطور</a>')+'</div></div></article>';
+    return '<article class="home-showcase-card home-showcase-'+kind+'"><div class="home-showcase-visual">'+imageMarkup(p)+'<span class="home-showcase-badge">'+(p.needsReview?"بيانات تحتاج تأكيد":(isOil?"زيت للتركيب":"عطر جاهز"))+'</span></div><div class="home-showcase-card-body"><div class="home-showcase-meta">'+meta+'</div><h4>'+name+'</h4>'+(english?'<div class="home-showcase-english" dir="ltr">'+english+'</div>':"")+'<p class="home-showcase-description">'+desc+'</p><div class="home-showcase-family"><span>الطابع</span><strong>'+family+'</strong></div><div class="home-showcase-price">'+price+'</div><div class="home-showcase-actions"><button class="small-btn" type="button" data-action="details" data-id="'+id+'">تفاصيل المنتج</button>'+(isOil?'<button class="small-btn primary" type="button" data-home-blend-id="'+id+'">اختيار للتركيب</button>':'<a class="small-btn primary" href="#ready">تصفح العطور</a>')+'</div></div></article>';
   }
   function renderHomeShowcase(){
     const readyRoot=$("#homeReadyProducts"),oilRoot=$("#homeOilProducts");
     if(!readyRoot||!oilRoot)return;
     const readyAll=products.filter(p=>p.productType==="ready");
     const oilAll=products.filter(p=>p.productType==="oil"||p.supplierCatalogItem);
-    const ready=readyAll.filter(p=>p.needsReview!==true).slice(0,4);
+    const ready=readyAll.filter(p=>p.available!==false).slice(0,4);
     const usefulOils=oilAll.filter(p=>p.family&&p.family!=="غير محدد"&&p.scentNature&&!/تفاصيل الرائحة تحتاج|الطابع العطري يحتاج/.test(String(p.scentNature)));
     const seen=new Set(usefulOils.map(p=>p.id));
     const oils=[...usefulOils,...oilAll.filter(p=>!seen.has(p.id))].slice(0,6);
