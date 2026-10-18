@@ -9,7 +9,7 @@
 }
 *{box-sizing:border-box}
 html{background:var(--bg)!important;color:var(--text)!important;scroll-behavior:smooth;scroll-padding-top:95px}
-body{margin:0;background-color:var(--bg)!important;background-image:url("assets/images/royal-hero.jpg")!important;background-position:center center!important;background-size:cover!important;background-repeat:no-repeat!important;background-attachment:fixed!important;color:var(--text)!important;font-family:"Tajawal",sans-serif!important;font-size:18px;line-height:1.8;letter-spacing:0;text-shadow:none!important}
+body{margin:0;background-color:var(--bg)!important;background-image:linear-gradient(rgba(245,241,232,.70),rgba(245,241,232,.78)),url("assets/images/royal-hero.jpg")!important;background-position:center center!important;background-size:cover!important;background-repeat:no-repeat!important;background-attachment:fixed!important;background-blend-mode:normal!important;color:var(--text)!important;font-family:"Tajawal",sans-serif!important;font-size:18px;line-height:1.8;letter-spacing:0;text-shadow:none!important}
 body::before,body::after{content:none!important;background:none!important}
 img{max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
