@@ -126,7 +126,7 @@ try {
   report(app.includes('const voiceButton=$("#voiceSearch");if(!voiceButton)return;') &&
     app.includes('if(search){search.value=e.results[0][0].transcript;renderProducts();}'),
     "Voice search checks its button and search field before updating them");
-  report(app.includes('const familyFilter=$("#supplierOilFamily");if(!familyFilter)return;') &&
+  report(app.includes('familyFilter=$("#supplierOilFamily");if(!familyFilter)return;') &&
     app.includes('input=$("#advisorInput");if(!input)return;'),
     "Scent-family and advisor shortcut handlers guard dependent form fields");
 } catch (e) {
