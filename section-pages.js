@@ -52,7 +52,13 @@
     return host && host.parentElement === main && host.tagName === "SECTION" ? {target, host} : null;
   }
 
+  function canonicalSectionId(id) {
+    // توجيه «مكتشف العطور» إلى مختبر تركيب العطر بدل اختبار الترشيح القديم.
+    return id === "quiz" ? "blend" : id;
+  }
+
   function navigate(id, replace = false, preserveLocation = false) {
+    id = canonicalSectionId(id);
     if (id !== "home" && !resolveSection(id)) return;
     const resolved = resolveSection(id);
     const section = resolved?.target || document.getElementById("home");
@@ -102,7 +108,8 @@
   document.addEventListener("click", event => {
     const link = event.target.closest('a[href^="#"]');
     if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    const id = decodeURIComponent(link.getAttribute("href").slice(1));
+    const requestedId = decodeURIComponent(link.getAttribute("href").slice(1));
+    const id = canonicalSectionId(requestedId);
     if (id !== "home" && !resolveSection(id)) return;
     const target = document.getElementById(id);
     if (!target || !main.contains(target)) return;
