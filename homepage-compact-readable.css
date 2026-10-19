@@ -586,3 +586,101 @@ main, .hero, #home, .section, section {
   .hero-actions { display: flex !important; flex-wrap: wrap !important; }
   .hero-actions > * { flex: 1 1 145px !important; min-width: 0 !important; }
 }
+
+
+/* Final mobile alignment correction: neutralize desktop page gutters and fixed hero widths. */
+@media (max-width: 600px) {
+  body { overflow-x: hidden !important; }
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: 0 !important;
+    padding: 8px 10px 24px !important;
+  }
+  .site-header {
+    position: sticky !important;
+    inset-inline: 0 !important;
+    padding: 8px 10px !important;
+    gap: 7px !important;
+  }
+  .site-header .brand {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    justify-content: center !important;
+  }
+  .site-header .main-nav {
+    width: 100% !important;
+    inset-inline: 0 !important;
+    padding-inline: 14px !important;
+  }
+  .site-header .header-actions {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    gap: 5px !important;
+  }
+  .site-header .header-actions .icon-btn {
+    flex: 0 0 36px !important;
+    width: 36px !important;
+    min-width: 36px !important;
+  }
+  .site-header .header-actions .pwa-install-btn {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 180px !important;
+    padding-inline: 8px !important;
+    font-size: 12px !important;
+  }
+  .hero {
+    display: flex !important;
+    align-items: flex-end !important;
+    width: 100% !important;
+    min-height: 520px !important;
+    padding: 20px 14px 28px !important;
+    margin: 8px 0 14px !important;
+    border-radius: 2px !important;
+  }
+  .hero-image {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 56% center !important;
+  }
+  .hero-shade {
+    inset: 0 !important;
+    background: linear-gradient(0deg,rgba(12,8,9,.96) 0%,rgba(12,8,9,.74) 45%,rgba(12,8,9,.12) 100%) !important;
+    opacity: 1 !important;
+  }
+  .hero-copy {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: start !important;
+  }
+  .hero-copy .eyebrow {
+    font-size: 10px !important;
+    letter-spacing: 1px !important;
+    overflow-wrap: anywhere !important;
+  }
+  .hero-copy h1, .hero h1 {
+    font-size: clamp(28px, 7.5vw, 38px) !important;
+    line-height: 1.35 !important;
+    overflow-wrap: anywhere !important;
+  }
+  .hero-copy p:not(.eyebrow) {
+    max-width: 100% !important;
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+  }
+  .hero-actions { width: 100% !important; gap: 8px !important; }
+  .hero-actions > a { flex: 1 1 130px !important; min-width: 0 !important; white-space: normal !important; }
+  .section { width: 100% !important; max-width: 100% !important; }
+}
