@@ -14,6 +14,45 @@
   <meta property="og:description" content="اكتشف عطرك في مملكة العطور.">
   <meta property="og:image" content="assets/images/royal-hero.jpg">
   <title>مملكة العطور | CROWN · MAISON DE PARFUM</title>
+  <script>
+  /* One-time recovery for stale installed-site caches + visible JavaScript diagnostics. */
+  (function(){
+    window.addEventListener('error',function(e){
+      try{
+        var box=document.getElementById('mamlakaRuntimeDiagnostic');
+        if(!box){
+          box=document.createElement('div');box.id='mamlakaRuntimeDiagnostic';
+          box.style.cssText='position:fixed;z-index:2147483647;left:10px;right:10px;bottom:10px;max-height:42vh;overflow:auto;padding:14px;border:2px solid #c33;border-radius:12px;background:#fff;color:#300;font:16px/1.6 sans-serif;direction:rtl;white-space:pre-wrap;box-shadow:0 8px 30px #0005';
+          box.innerHTML='<b>تشخيص تشغيل مملكة العطور</b><button type="button" style="float:left;font-size:20px" aria-label="إغلاق">×</button><div class="mamlaka-runtime-errors"></div>';
+          box.querySelector('button').onclick=function(){box.remove()};
+          (document.body||document.documentElement).appendChild(box);
+        }
+        var message=(e.message||'خطأ JavaScript')+' — '+(e.filename||'')+':'+(e.lineno||'');
+        var line=document.createElement('div');line.textContent=message;
+        box.querySelector('.mamlaka-runtime-errors').appendChild(line);
+      }catch(ignore){}
+    });
+    window.addEventListener('unhandledrejection',function(e){
+      try{
+        var message=e.reason&&e.reason.message?e.reason.message:String(e.reason||'خطأ غير معروف');
+        var box=document.getElementById('mamlakaRuntimeDiagnostic');
+        if(!box){window.dispatchEvent(new ErrorEvent('error',{message:'فشل تنفيذ مهمة: '+message}));return;}
+        var line=document.createElement('div');line.textContent='فشل تنفيذ مهمة: '+message;box.querySelector('.mamlaka-runtime-errors').appendChild(line);
+      }catch(ignore){}
+    });
+    function recoverOnce(){
+      var key='mamlaka-cache-recovery-20261019';
+      var seen=false;try{seen=sessionStorage.getItem(key)==='1';}catch(ignore){}
+      if(seen){try{sessionStorage.removeItem(key)}catch(ignore){};return;}
+      try{sessionStorage.setItem(key,'1')}catch(ignore){return;}
+      var tasks=[];
+      if('serviceWorker' in navigator)tasks.push(navigator.serviceWorker.getRegistrations().then(function(regs){return Promise.all(regs.map(function(reg){return reg.unregister()}))}).catch(function(){}));
+      if('caches' in window)tasks.push(caches.keys().then(function(keys){return Promise.all(keys.filter(function(k){return k.indexOf('mamlakat-al-otor-')===0}).map(function(k){return caches.delete(k)}))}).catch(function(){}));
+      Promise.all(tasks).then(function(){location.reload()});
+    }
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',recoverOnce,{once:true});else recoverOnce();
+  })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
