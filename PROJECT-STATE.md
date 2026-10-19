@@ -19,7 +19,7 @@
 - لا تدّع اختبارًا على جهاز حقيقي ما لم يحدث فعليًا. لا تعرض صورًا مرجعية على أنها لقطات من الموقع.
 
 ## الأسعار المرجعية للتركيب
-3 مل: 50 ج.م؛ 5 مل: 75؛ 10 مل: 100؛ 22 مل: 130؛ 30 مل: 150؛ 50 مل: 200؛ 100 مل: 450. لا تُعمم على العطور الجاهزة دون تأكيد.
+3 مل: 50 ج.م؛ 5 مل: 75؛ 10 مل: 100؛ 22 مل: 130؛ 30 مل: 100؛ 50 مل: 150؛ 100 مل: 300. هذه أسعار التركيب/الزيت فقط حسب نوع الطلب، ولا تُعمم على العطور الجاهزة دون تأكيد.
 
 ## بنية تقنية وحدود الحفظ
 الموقع الحالي HTML/CSS/JavaScript على GitHub Pages. الملفات الرئيسية: index.html، app.js، settings.js، styles.css، site-upgrades.css، royal-polish.css، enhancements.js، supplier-catalog.js، catalog-editor.js، site-upgrades.js، royal-gift-planner.js، inventory-accounting.js، royal-interactions.js، royal-finish.js.
