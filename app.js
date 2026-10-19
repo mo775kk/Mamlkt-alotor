@@ -35,7 +35,9 @@
     {id:"researched-silver-scent-midnight",nameAr:"سيلفر سنت ميدنايت",nameEn:"Silver Scent Midnight",brand:"Jacques Bogart",productType:"ready",gender:"رجالي",family:"فوجير عطري خشبي",scentNature:"حمضي عشبي مع هيل وتوابل وزهر البرتقال، ثم قاعدة خشبية حلوة من التونكا والأرز والغاياك.",topNotes:["الجريب فروت","المريمية","الهيل"],heartNotes:["الشيح (أرتميسيا)","جوزة الطيب","زهر البرتقال"],baseNotes:["حبوب التونكا","خشب الغاياك","خشب الأرز"],descriptionAr:"هذه بيانات Silver Scent Midnight تحديدًا، وليست لأي عطر آخر يحمل اسم Midnight فقط. يلزم مطابقة اسم الشركة والعبوة قبل اعتماد المنتج في المخزون.",sourceUrl:"https://www.fragrantica.com/perfume/Jacques-Bogart/Silver-Scent-Midnight-46938.html",notesStatus:"verified-fragrance-directory",notesConfidence:"جيد — دليل عطري متخصص؛ لا تخلطه مع أسماء Midnight الأخرى",price:null,available:true,needsReview:true}
   ];
   const $ = s => document.querySelector(s);
-  const $$ = s => [...document.querySelectorAll(s)];
+  const $ = s => [...document.querySelectorAll(s)];
+  // Bind only when an optional page element exists; a missing control must not abort the storefront.
+  const bind = (selector, eventName, handler, options) => { const el = $(selector); if (el) el.addEventListener(eventName, handler, options); };
   const safeRead = (key, fallback) => { try { const v = JSON.parse(localStorage.getItem(key)); return v ?? fallback; } catch { return fallback; } };
   const readArray = key => { const value = safeRead(key, []); return Array.isArray(value) ? value : []; };
   // Normalize persisted cart data before it reaches totals or HTML.
@@ -389,15 +391,15 @@
     const action=e.target.closest("[data-action]");if(action){const {action:act,id}=action.dataset;if(act==="favorite")toggleFavorite(id);if(act==="add"){const card=e.target.closest(".product-card"),size=card?.querySelector("[data-card-size]")?.value||"10";addToCart(id,size);const chosen=cart.some(item=>item.id===id&&String(item.size)===String(size));const button=card?.querySelector('[data-action="add"]');if(button){button.classList.toggle("is-selected",chosen);button.textContent=chosen?"✓ تم الاختيار":(findProduct(id)?.supplierCatalogItem?"للاختيار والتركيب":"أضف للسلة");button.setAttribute("aria-pressed",String(chosen));}}if(act==="details")openDetails(id);}
     const ca=e.target.closest("[data-cart]");if(ca){const item=cart.find(x=>x.key===ca.dataset.key);if(!item)return;if(ca.dataset.cart==="plus")item.qty=Math.min(99,Number(item.qty)+1);if(ca.dataset.cart==="minus")item.qty=Number(item.qty)-1;if(ca.dataset.cart==="remove"||item.qty<=0)cart=cart.filter(x=>x.key!==item.key);save(STORAGE.cart,cart);renderCart();updateCounts();syncProductCardSelectionStates();}
   });
-  $("#productSearch").addEventListener("input",renderProducts);$("#genderFilter").addEventListener("change",renderProducts);$("#familyFilter").addEventListener("change",renderProducts);
-  $("#requestMissingBtn").addEventListener("click",()=>{const name=$("#productSearch").value.trim();if(!name){notify("اكتب اسم العطر الذي تبحث عنه أولًا.");$("#productSearch").focus();return;}requestMissing(name);notify("تم تسجيل طلب البحث وفتح واتساب لإرساله.");});
-  $("#searchFocus").addEventListener("click",()=>{$("#productSearch").focus();document.querySelector("#ready").scrollIntoView({behavior:"smooth"});});
-  $("#favoritesShortcut").addEventListener("click",()=>{const fav=products.filter(p=>favorites.includes(p.id));if(!fav.length){notify("قائمة المفضلة فارغة.");return;}$("#productSearch").value="";$("#genderFilter").value="";$("#familyFilter").value="";$("#readyProducts").innerHTML=fav.map(productCard).join("");$("#resultsMessage").textContent=`${fav.length} منتج في المفضلة`;$("#noProducts").classList.add("hidden");document.querySelector("#ready").scrollIntoView({behavior:"smooth"});});
-  $("#cartShortcut").addEventListener("click",openDrawer);$("#closeDrawer").addEventListener("click",closeDrawer);$("#drawerBackdrop").addEventListener("click",closeDrawer);
-  $("#closeModal").addEventListener("click",closeModal);$("#modalBackdrop").addEventListener("click",e=>{if(e.target===$("#modalBackdrop"))closeModal();});
-  $("#checkoutBtn").addEventListener("click",checkout);$("#clearCart").addEventListener("click",()=>{cart=[];save(STORAGE.cart,cart);renderCart();updateCounts();syncProductCardSelectionStates();notify("تم إفراغ السلة.");});
-  $("#blendSize").addEventListener("change",blendPrice);
-  $("#addBlend").addEventListener("click",()=>{
+  bind("#productSearch", "input",renderProducts);bind("#genderFilter", "change",renderProducts);bind("#familyFilter", "change",renderProducts);
+  bind("#requestMissingBtn", "click",()=>{const name=$("#productSearch").value.trim();if(!name){notify("اكتب اسم العطر الذي تبحث عنه أولًا.");$("#productSearch").focus();return;}requestMissing(name);notify("تم تسجيل طلب البحث وفتح واتساب لإرساله.");});
+  bind("#searchFocus", "click",()=>{$("#productSearch").focus();document.querySelector("#ready").scrollIntoView({behavior:"smooth"});});
+  bind("#favoritesShortcut", "click",()=>{const fav=products.filter(p=>favorites.includes(p.id));if(!fav.length){notify("قائمة المفضلة فارغة.");return;}$("#productSearch").value="";$("#genderFilter").value="";$("#familyFilter").value="";$("#readyProducts").innerHTML=fav.map(productCard).join("");$("#resultsMessage").textContent=`${fav.length} منتج في المفضلة`;$("#noProducts").classList.add("hidden");document.querySelector("#ready").scrollIntoView({behavior:"smooth"});});
+  bind("#cartShortcut", "click",openDrawer);bind("#closeDrawer", "click",closeDrawer);bind("#drawerBackdrop", "click",closeDrawer);
+  bind("#closeModal", "click",closeModal);bind("#modalBackdrop", "click",e=>{if(e.target===$("#modalBackdrop"))closeModal();});
+  bind("#checkoutBtn", "click",checkout);bind("#clearCart", "click",()=>{cart=[];save(STORAGE.cart,cart);renderCart();updateCounts();syncProductCardSelectionStates();notify("تم إفراغ السلة.");});
+  bind("#blendSize", "change",blendPrice);
+  bind("#addBlend", "click",()=>{
     const size=$("#blendSize").value,family=$("#blendScent").value,bottle=$("#blendBottle").value;
     const oilId=$("#blendOil")?.value||"",oil=findProduct(oilId),oilName=oil?(oil.nameAr||oil.nameEn):"زيت يختاره المتجر";
     const label=`تركيبة-${family}-${size}-${bottle}-${oil?.supplierSku||"اختيار-المتجر"}`;
@@ -405,11 +407,11 @@
     const last=cart[cart.length-1];if(last&&last.custom)last.nameAr=`تركيبة ${family} — ${oilName} (${bottle})`;
     save(STORAGE.cart,cart);updateCounts();
   });
-  $("#advisorForm").addEventListener("submit",e=>{e.preventDefault();submitAdvisor($("#advisorInput").value);});
+  bind("#advisorForm", "submit",e=>{e.preventDefault();submitAdvisor($("#advisorInput").value);});
   document.querySelectorAll("[data-advisor-prompt]").forEach(button=>button.addEventListener("click",()=>{const prompt=button.dataset.advisorPrompt||"";$("#advisorInput").value=prompt;submitAdvisor(prompt);}));
   $("#advisorReplies")?.addEventListener("click",e=>{if(e.target.closest("[data-advisor-request]"))requestMissing($("#advisorInput").value.trim()||"اقتراح عطر مناسب");});
   $("#contactWhatsapp").href=`https://wa.me/${getWaNumber()}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن منتجات مملكة العطور.")}`;
-  $("#menuToggle").addEventListener("click",()=>{const open=$("#mainNav").classList.toggle("open");$("#menuToggle").setAttribute("aria-expanded",String(open));});
+  bind("#menuToggle", "click",()=>{const open=$("#mainNav").classList.toggle("open");$("#menuToggle").setAttribute("aria-expanded",String(open));});
   $("#mainNav").querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{$("#mainNav").classList.remove("open");$("#menuToggle").setAttribute("aria-expanded","false");}));
   document.addEventListener("keydown",e=>{
     if(e.key!=="Escape")return;
@@ -417,15 +419,15 @@
     if($("#cartDrawer").classList.contains("open"))closeDrawer();
     if($("#mainNav").classList.contains("open")){$("#mainNav").classList.remove("open");$("#menuToggle").setAttribute("aria-expanded","false");$("#menuToggle").focus({preventScroll:true});}
   });
-  $("#languageToggle").addEventListener("click",()=>setLanguage(language==="ar"?"en":"ar"));
-  $("#voiceSearch").addEventListener("click",()=>{
+  bind("#languageToggle", "click",()=>setLanguage(language==="ar"?"en":"ar"));
+  bind("#voiceSearch", "click",()=>{
     const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
     if(!SpeechRecognition){notify("البحث الصوتي غير مدعوم هنا. استخدم مربع البحث الكتابي.");return;}
     const rec=new SpeechRecognition();rec.lang=language==="ar"?"ar-EG":"en-US";rec.interimResults=false;rec.maxAlternatives=1;
     $("#voiceSearch").textContent="…";rec.onresult=e=>{$("#productSearch").value=e.results[0][0].transcript;renderProducts();};rec.onerror=()=>notify("تعذر بدء البحث الصوتي. تحقق من إذن الميكروفون.");rec.onend=()=>$("#voiceSearch").textContent="🎙";try{rec.start();}catch{notify("تعذر بدء البحث الصوتي.");$("#voiceSearch").textContent="🎙";}
   });
-  $("#enterBtn").addEventListener("click",()=>{save("mamlaka_intro_seen_v1",true);$("#intro").classList.add("dismissed");});
-  $("#skipIntro").addEventListener("click",()=>{$("#intro").classList.add("dismissed");save("mamlaka_intro_seen_v1",true);});
+  bind("#enterBtn", "click",()=>{save("mamlaka_intro_seen_v1",true);$("#intro").classList.add("dismissed");});
+  bind("#skipIntro", "click",()=>{$("#intro").classList.add("dismissed");save("mamlaka_intro_seen_v1",true);});
   // Always show the royal entrance on a fresh page load; the visitor can enter or skip explicitly.
   // This avoids silently bypassing the entrance because an old localStorage flag remained set.
   $("#year").textContent=new Date().getFullYear();
@@ -434,5 +436,5 @@
   document.addEventListener("mamlaka:supplier-catalog-updated",syncAllProducts);
   setLanguage(language);renderProducts();renderSupplierOils();populateBlendOils();renderCart();updateCounts();blendPrice();loadPublicCatalog();
   // If search misses, offer a direct request without pretending the catalog contains the item.
-  $("#productSearch").addEventListener("keydown",e=>{if(e.key==="Enter" && !products.some(p=>norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(norm(e.target.value)))){if(e.target.value.trim() && confirm(`لم نعثر على «${e.target.value.trim()}». هل تريد الاستفسار عنه عبر واتساب؟`))requestMissing(e.target.value.trim());}});
+  bind("#productSearch", "keydown",e=>{if(e.key==="Enter" && !products.some(p=>norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(norm(e.target.value)))){if(e.target.value.trim() && confirm(`لم نعثر على «${e.target.value.trim()}». هل تريد الاستفسار عنه عبر واتساب؟`))requestMissing(e.target.value.trim());}});
 })();
