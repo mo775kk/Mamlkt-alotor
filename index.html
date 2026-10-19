@@ -223,6 +223,7 @@
   <link rel="stylesheet" href="royal-visual-control.css?v=20261020-1">
   <link rel="stylesheet" href="royal-theme-bridge.css?v=20261020-1">
   <link rel="stylesheet" href="royal-compact-layout.css?v=20261020-compact1">
+  <link rel="stylesheet" href="royal-page-end.css?v=20261020-contact-boundary1">
 </head>
 <body>
   <div id="scrollProgress" aria-hidden="true"></div>
@@ -486,6 +487,11 @@
           <a class="btn btn-gold" id="contactWhatsapp" href="https://wa.me/201272776928" target="_blank" rel="noopener">تواصل عبر واتساب</a>
           <a class="btn btn-outline" href="https://whatsapp.com/channel/0029Vb8l5QRBPzjhHbvbzn2W" target="_blank" rel="noopener">قناة واتساب</a>
         </div>
+        <div class="footer-social-actions contact-social-actions" aria-label="روابط المشاركة والتواصل">
+          <a class="btn btn-gold" href="https://chat.whatsapp.com/Hss5ldmziuw1zI1EtlWOTz?s=cl&amp;p=a&amp;mlu=4&amp;ilr=4" target="_blank" rel="noopener noreferrer">انضم إلى مجموعة واتساب</a>
+          <a class="btn btn-outline" href="https://whatsapp.com/channel/0029Vb8l5QRBPzjhHbvbzn2W" target="_blank" rel="noopener noreferrer">تابع قناة واتساب</a>
+          <button class="btn btn-outline" type="button" id="shareKingdomButton">مشاركة الموقع ↗</button>
+        </div>
         <small>تأكد من توافر المنتج والسعر النهائي مع المتجر قبل إتمام الطلب.</small>
       </div>
     </section>
@@ -495,11 +501,6 @@
   <footer class="site-footer">
     <a class="brand footer-brand" href="#home"><span class="brand-crown" aria-hidden="true">♛</span><span><strong>مملكة العطور</strong><small>CROWN · MAISON DE PARFUM</small></span></a>
     <p>العطر توقيع… والمملكة اختيارك.</p>
-    <div class="footer-social-actions" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;justify-content:center;max-width:440px;margin:14px auto">
-      <a class="btn btn-gold" style="min-width:0;padding-inline:10px;text-align:center" href="https://chat.whatsapp.com/Hss5ldmziuw1zI1EtlWOTz?s=cl&amp;p=a&amp;mlu=4&amp;ilr=4" target="_blank" rel="noopener noreferrer">المجموعة</a>
-      <a class="btn btn-outline" style="min-width:0;padding-inline:10px;text-align:center" href="https://whatsapp.com/channel/0029Vb8l5QRBPzjhHbvbzn2W" target="_blank" rel="noopener noreferrer">القناة</a>
-    </div>
-    <p style="font-size:.85rem;opacity:.9">واتساب: <span dir="ltr">01272776928</span></p>
     <small>© <span id="year"></span> MAMLKAT AL-OTOR</small>
   </footer>
 
@@ -662,5 +663,8 @@
   })();
   </script>
   <script defer src="royal-visual-control.js?v=20261020-1"></script>
+  <script>
+  (function(){var b=document.getElementById("shareKingdomButton");if(!b)return;b.addEventListener("click",function(){var d={title:document.title,text:"اكتشف مملكة العطور",url:window.location.href};if(navigator.share){navigator.share(d).catch(function(){});return;}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.url).then(function(){b.textContent="تم نسخ رابط الموقع ✓";},function(){window.prompt("انسخ رابط الموقع:",d.url);});}else{window.prompt("انسخ رابط الموقع:",d.url);}});})();
+  </script>
 </body>
 </html>
