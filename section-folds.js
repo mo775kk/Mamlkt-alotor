@@ -9,7 +9,7 @@
     var content=document.createElement('div');
     content.className='section-fold-content';
     content.id='section-fold-content-'+index;
-    content.hidden=true;
+    content.hidden=false;
     children.forEach(function(node){
       if(node!==heading) content.appendChild(node);
     });
@@ -27,9 +27,10 @@
     var button=document.createElement('button');
     button.type='button';
     button.className='section-fold-toggle';
-    button.setAttribute('aria-expanded','false');
+    button.setAttribute('aria-expanded','true');
     button.setAttribute('aria-controls',content.id);
-    button.innerHTML='<span class="fold-label">عرض التفاصيل</span><span class="fold-chevron" aria-hidden="true">⌄</span>';
+    button.innerHTML='<span class="fold-label">إخفاء التفاصيل</span><span class="fold-chevron" aria-hidden="true">⌃</span>';
+    section.classList.add('section-is-open');
     button.addEventListener('click',function(){
       var opening=button.getAttribute('aria-expanded')!=='true';
       button.setAttribute('aria-expanded',String(opening));
