@@ -106,7 +106,7 @@ body{font-size:15px;line-height:1.75;letter-spacing:0}
  .header-actions .pwa-install-btn{display:none}
  .header-actions .language-btn{font-size:10px}
  .main-nav{display:none;order:4;flex-basis:100%;padding:8px 4px 3px;border-top:1px solid var(--home-line);justify-content:flex-start;gap:4px 14px}
- .main-nav.is-open{display:flex}
+ .main-nav.open{display:flex}
  .main-nav a{font-size:12px;padding:7px 0}
  .hero{min-height:390px;min-height:clamp(360px,100svh,490px);max-height:500px}
  .hero-image{object-position:58% center}
