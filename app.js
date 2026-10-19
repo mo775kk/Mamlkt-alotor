@@ -122,7 +122,10 @@
   };
   let products = combineProducts();
   async function loadPublicCatalog() {
-    if (typeof fetch !== "function") return;
+    if (typeof fetch !== "function") {
+      renderHomeShowcase();
+      return;
+    }
     try {
       const response = await fetch("data/products.json", { cache: "no-cache" });
       if (!response.ok) throw new Error("HTTP " + response.status);
@@ -160,7 +163,18 @@
       populateBlendOils();
       document.dispatchEvent(new CustomEvent("mamlaka:public-catalog-loaded", { detail: { count: publicCatalogProducts.length } }));
     } catch (error) {
+      // Never leave the homepage stuck on "loading" when the network/catalog fails.
+      // Render the locally available fallback and explain the issue without deleting data.
+      renderHomeShowcase();
       console.warn("تعذر تحميل كتالوج data/products.json؛ يستمر المتجر بالكتالوج المحلي.", error);
+      const readyRoot = $("#homeReadyProducts");
+      if (readyRoot && !readyRoot.querySelector(".catalog-load-warning")) {
+        const notice = document.createElement("p");
+        notice.className = "catalog-load-warning";
+        notice.setAttribute("role", "status");
+        notice.textContent = "تعذر تحديث الكتالوج الآن؛ المعروض بيانات محلية احتياطية. أعد تحميل الصفحة للمحاولة مجددًا.";
+        readyRoot.prepend(notice);
+      }
     }
   }
   let cart = normalizeCart(readArray(STORAGE.cart));
@@ -436,7 +450,7 @@
   function syncAllProducts(){products=combineProducts();renderProducts();renderSupplierOils();renderCart();updateCounts();populateBlendOils();}
   document.addEventListener("mamlaka:products-updated",syncAllProducts);
   document.addEventListener("mamlaka:supplier-catalog-updated",syncAllProducts);
-  setLanguage(language);renderProducts();renderSupplierOils();populateBlendOils();renderCart();updateCounts();blendPrice();loadPublicCatalog();
+  setLanguage(language);renderProducts();renderHomeShowcase();renderSupplierOils();populateBlendOils();renderCart();updateCounts();blendPrice();loadPublicCatalog();
   // If search misses, offer a direct request without pretending the catalog contains the item.
   $("#productSearch").addEventListener("keydown",e=>{if(e.key==="Enter" && !products.some(p=>norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(norm(e.target.value)))){if(e.target.value.trim() && confirm(`لم نعثر على «${e.target.value.trim()}». هل تريد الاستفسار عنه عبر واتساب؟`))requestMissing(e.target.value.trim());}});
 })();
