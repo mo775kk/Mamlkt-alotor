@@ -71,7 +71,7 @@
     function init(){
       sync();
       if('serviceWorker' in navigator&&location.protocol==='https:'){
-        navigator.serviceWorker.register('./sw.js?v=20261018-theme-readable2',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
+        navigator.serviceWorker.register('./sw.js?v=20261019-live-assets1',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
       }
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
