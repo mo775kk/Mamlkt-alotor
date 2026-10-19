@@ -213,7 +213,7 @@
       <div class="section-cta"><button class="btn btn-outline" id="supplierOilMore" type="button">عرض المزيد من الأنواع</button></div>
     
       <div class="oil-retail-guide-wrap">
-<div class="blend-price-guide" aria-label="قائمة أسعار الزيوت والتركيب"><h3>أسعار الزيوت والتركيب للعميل</h3><p>سعر الجرام حسب الفئة، بالإضافة إلى أسعار أحجام التركيب. الأسعار قابلة للتعديل من الإدارة؛ أقل طلب للتركيب يبدأ من 50 ج.م.</p><div class="gram-price-grid" id="customerGramPriceGuide"><div><span>الزيوت الفرنسية</span><strong>10 ج.م / جرام</strong></div><div><span>الزيوت الشرقية</span><strong>15 ج.م / جرام</strong></div><div><span>الشرقي الممتاز</span><strong>20 ج.م / جرام</strong></div></div><div class="blend-price-grid" id="blendPriceGuide"><div><span>3 مل · زيت فقط</span><strong>50 ج.م</strong></div><div><span>5 مل · زيت فقط</span><strong>75 ج.م</strong></div><div><span>10 مل · زيت فقط</span><strong>100 ج.م</strong></div><div><span>22 مل</span><strong>130 ج.م</strong></div><div><span>30 مل · زيت فقط / رش بعد التأكيد</span><strong>100 ج.م</strong></div><div><span>50 مل · زيت فقط / رش بعد التأكيد</span><strong>150 ج.م</strong></div><div><span>100 مل · زيت فقط / رش بعد التأكيد</span><strong>300 ج.م</strong></div></div></div>
+<div class="blend-price-grid" id="blendPriceGuide"><div><span>3 مل · زيت فقط</span><strong>50 ج.م</strong></div><div><span>5 مل · زيت فقط</span><strong>75 ج.م</strong></div><div><span>10 مل · زيت فقط</span><strong>100 ج.م</strong></div><div><span>22 مل</span><strong>130 ج.م</strong></div><div><span>30 مل · زيت فقط / رش بعد التأكيد</span><strong>100 ج.م</strong></div><div><span>50 مل · زيت فقط / رش بعد التأكيد</span><strong>150 ج.م</strong></div><div><span>100 مل · زيت فقط / رش بعد التأكيد</span><strong>300 ج.م</strong></div></div></div>
       </div>
 <div class="section taxonomy-public-section" id="scent-classification">
       <div class="section-heading">
@@ -275,7 +275,7 @@
         <div class="blend-step"><label for="blendScent">العائلة العطرية</label><select id="blendScent"><option value="شرقي">شرقي دافئ</option><option value="خشبي">خشبي أنيق</option><option value="زهري">زهري ناعم</option><option value="منعش">منعش وحيوي</option><option value="حلو">حلو ودافئ</option><option value="مسكي">مسكي نظيف</option><option value="حمضي ومنعش">حمضي ومنعش</option><option value="زهري ووردي">زهري ووردي</option><option value="مسكي ونظيف">مسكي ونظيف</option><option value="حلو وفانيليا">حلو وفانيليا</option><option value="عنبر وشرقي">عنبر وشرقي</option><option value="عود وخشبي">عود وخشبي</option><option value="جلدي وتبغي">جلدي وتبغي</option><option value="عطري وأخضر">عطري وأخضر</option></select></div>
         <div class="blend-step"><label for="blendSize">الحجم</label><select id="blendSize"><option value="3">3 مل</option><option value="5">5 مل</option><option value="10" selected>10 مل · زيت فقط</option><option value="22">22 مل</option><option value="30">30 مل · بخاخ</option><option value="50">50 مل · بخاخ</option><option value="100">100 مل · بخاخ</option></select></div>
         <div class="blend-step"><label for="blendBottle">طريقة التعبئة</label><select id="blendBottle"><option>زيت فقط — بدون بخاخ</option><option>بخاخ — بعد تأكيد ملاءمة التركيبة</option><option>أترك اختيار التعبئة للمتجر</option></select><small>ليس كل زيت مركز مناسبًا للرش مباشرة؛ يؤكد المتجر طريقة التخفيف والتعبئة قبل تجهيز الطلب.</small></div>
-        <div class="blend-summary"><span>السعر المرجعي للحجم المختار</span><strong id="blendPrice">100 ج.م</strong><small>السعر النهائي والتوفر يحتاجان إلى تأكيد المتجر قبل الطلب.</small></div>
+        <div class="blend-step"><label for="blendPricingMode">طريقة حساب السعر</label><select id="blendPricingMode"><option value="size">السعر حسب الحجم</option><option value="gram">السعر بالجرام</option></select></div><div class="blend-step hidden" id="blendGramOptions"><label for="blendGramClass">فئة الزيت وسعر الجرام</label><select id="blendGramClass"><option value="french">فرنسي — 10 جنيهات/جرام</option><option value="oriental">شرقي — 15 جنيهًا/جرام</option><option value="orientalPremium">شرقي ممتاز — 20 جنيهًا/جرام</option></select><label for="blendGramAmount">عدد الجرامات</label><input id="blendGramAmount" type="number" min="1" step="1" value="5" inputmode="numeric"></div><div class="blend-summary" id="blendPriceDetails"><span id="blendPriceLabel">السعر حسب الحجم المختار</span><strong id="blendPrice">100 ج.م</strong><small id="blendPriceBreakdown">اختر الحجم أو طريقة الحساب لمراجعة السعر.</small><small>السعر النهائي والتوفر يحتاجان إلى تأكيد المتجر قبل الطلب.</small></div>
        <button type="button" class="btn btn-gold" id="addBlend">إضافة طلب التركيب</button>
       </div>
     </section>
@@ -328,7 +328,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="ai-service.js?v=20261016-ai-bridge1"></script>
-  <script src="app.js?v=20261019-init-fix1"></script>
+  <script src="app.js?v=20261019-pricing2"></script>
   <script src="mamlaka-hero-marquee.js?v=20261019-hero-marquee2"></script>
   <script src="royal-gold-gate.js?v=20261017-gold-gate1"></script>
   <script src="reference-library.js?v=20261018-settings-only2"></script>
@@ -345,7 +345,7 @@
   <script src="royal-finish.js?v=20261016-backtotop1"></script>
   <script src="section-folds.js?v=20261019-visible-details-nav1"></script>
   <script src="mamlaka-deduplicate.js?v=20261019-dedupe-guard1"></script>
-  <script src="blending-atelier.js?v=20261016-atelier2"></script>
+  <script src="blending-atelier.js?v=20261019-pricing2"></script>
   <script>
   (function(){
     function updateBlendPriceGuide(){
