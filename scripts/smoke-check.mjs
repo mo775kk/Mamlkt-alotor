@@ -120,6 +120,8 @@ try {
   report(!app.includes('$("#mainNav").querySelectorAll("a")') &&
     app.includes("const mainNav=$(\"#mainNav\");if(mainNav)mainNav.querySelectorAll"),
     "Mobile navigation links are bound only when the navigation element exists");
+  report(app.includes('const nav=$("#mainNav"),toggle=$("#menuToggle");if(!nav||!toggle)return;'),
+    "Mobile menu toggle checks both the menu and navigation elements before use");
   report(app.includes('const contactWhatsapp=$("#contactWhatsapp");if(contactWhatsapp)contactWhatsapp.href=') &&
     app.includes('const languageToggle=$("#languageToggle");if(languageToggle)languageToggle.textContent='),
     "WhatsApp and language controls tolerate optional/missing elements");
