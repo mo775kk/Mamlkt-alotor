@@ -58,4 +58,4 @@ input,select,textarea{min-height:42px;max-width:100%;font:inherit}
  .product-grid{gap:10px}
  .product-visual{height:120px}
 }
-@media(min-width:761px){main>.section,main>section.section{max-width:var(--royal-content-width);margin-inline:auto;padding-inline:clamp(18px,2.5vw,32px)}}
+@media(min-width:761px){.section-heading,.product-grid,.category-grid{max-width:100%}}
