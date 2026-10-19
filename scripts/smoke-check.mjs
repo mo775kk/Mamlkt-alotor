@@ -273,7 +273,7 @@ try {
     "AI connection diagnostics handle timeouts, missing server secrets and health-check limitations");
   report(polish.includes(".ai-secret-list{") &&
     /settings\.js\?v=[^"]+/.test(html) &&
-    html.includes("mamlaka-live-finish.css?v=20261018-royal-photo-contrast1") && liveFinish.includes("var(--page-image") && liveFinish.includes("opacity:1!important"),
+    /mamlaka-live-finish\.css\?v=[^"]+/.test(html) && liveFinish.includes("var(--page-image") && liveFinish.includes("opacity:1!important"),
     "AI deployment guide styles and cache-busted script/style versions are present");
 } catch (e) {
   report(false, "Unable to validate AI deployment settings: " + e.message);
