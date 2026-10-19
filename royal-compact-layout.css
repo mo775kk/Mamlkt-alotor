@@ -1,0 +1,85 @@
+/* MAMLKAT AL-OTOR — compact, readable layout pass
+   Additive override only: preserves existing content, controls and stored settings. */
+:root{
+  --royal-compact-gap:clamp(8px,1.4vw,14px);
+  --royal-compact-pad:clamp(10px,1.7vw,18px);
+}
+html{scroll-padding-top:78px}
+body{line-height:1.5}
+main{width:min(100% - 24px,1240px);margin-inline:auto}
+main>section,main section.page-section,.page-section,.content-section{
+  margin-block:clamp(10px,1.7vw,18px)!important;
+}
+section[id],main [id].section-anchor{scroll-margin-top:84px}
+section .section-heading,.section-heading{
+  margin:0 0 10px!important;
+  gap:5px!important;
+}
+.section-heading h1,.section-heading h2,
+main h1.section-title,main h2.section-title{
+  margin:0!important;line-height:1.25;
+}
+.section-heading>p{margin:3px 0 0!important;line-height:1.45}
+.home-index,.home-index-grid,.category-grid,.product-grid,.products-grid,
+.cards-grid,.features-grid,.stats-grid,.info-grid,.contact-grid,.admin-grid{
+  gap:var(--royal-compact-gap)!important;
+}
+.home-index-card,.category-card,.product-card,.quiz-shell,.testimonial,
+.contact-card,.advisor-box,.blend-panel,.section-card,.info-card,.oil-card,
+.gift-card,.admin-card,.product-tile{
+  padding:var(--royal-compact-pad)!important;
+  border-radius:clamp(10px,var(--radius-sm,14px),16px)!important;
+}
+.home-index-card h3,.category-card h3,.product-info h3,
+.info-card h3,.section-card h3{margin-block:4px!important;line-height:1.35}
+.home-index-card p,.category-card p,.product-info p,
+.info-card p,.section-card p{margin-block:4px!important;line-height:1.45}
+.home-index-card img,.category-card img,.product-card img,
+.product-tile img{max-height:210px;object-fit:cover}
+.product-card .product-info,.product-tile .product-info{gap:5px!important}
+button,.btn,a.btn{min-height:36px}
+input,select,textarea{min-height:38px;max-width:100%}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:.92em;line-height:1.4}
+th,td{padding:8px 10px!important;vertical-align:middle}
+th{white-space:nowrap}
+td{overflow-wrap:anywhere}
+.table-wrap,.table-responsive,.admin-table-wrap,.report-table-wrap{
+  width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;
+  border-radius:10px;-webkit-overflow-scrolling:touch;
+}
+table img{max-width:56px;height:auto;object-fit:contain}
+form,.form-grid,.settings-grid,.filter-row,.toolbar,.action-row{
+  gap:8px!important;
+}
+hr,.section-divider{margin-block:12px!important}
+.site-header{gap:10px!important;padding:8px clamp(10px,2.5vw,24px)!important}
+.site-footer{padding:18px clamp(12px,2.5vw,24px)!important}
+.drawer,.product-modal,.modal,.modal-content{max-height:90dvh;overflow:auto}
+@media(max-width:760px){
+  main{width:calc(100% - 16px)}
+  main>section,main section.page-section,.page-section,.content-section{
+    margin-block:9px!important;
+  }
+  .section-heading{margin-bottom:8px!important}
+  .home-index,.home-index-grid,.category-grid,.product-grid,.products-grid,
+  .cards-grid,.features-grid,.stats-grid,.info-grid,.contact-grid,.admin-grid{
+    gap:8px!important;
+  }
+  .home-index-card,.category-card,.product-card,.quiz-shell,.testimonial,
+  .contact-card,.advisor-box,.blend-panel,.section-card,.info-card,.oil-card,
+  .gift-card,.admin-card,.product-tile{padding:10px!important}
+  .home-index-card img,.category-card img,.product-card img,
+  .product-tile img{max-height:160px}
+  table{font-size:12px;min-width:520px}
+  th,td{padding:7px 8px!important}
+  .site-header{padding:7px 9px!important}
+  .site-footer{padding:14px 10px!important}
+  h1{line-height:1.25}
+}
+@media(min-width:761px){
+  .table-wrap table,.table-responsive table,.admin-table-wrap table,.report-table-wrap table{min-width:0}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
