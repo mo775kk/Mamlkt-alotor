@@ -77,3 +77,6 @@ main .toolbar > * { min-width:0; }
   html { scroll-behavior:auto!important; }
   *, *::before, *::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
 }
+
+/* Integrated customer blend pricing */
+#blendGramOptions{display:grid;gap:10px}#blendGramOptions.hidden{display:none!important}#blendGramAmount{width:100%;min-height:46px;padding:10px;border:1px solid var(--line,#c9a84c);border-radius:10px;background:var(--field,#fff);color:var(--text,#222);font:inherit}.blend-summary #blendPriceBreakdown{display:block;margin-top:6px;font-size:1rem;line-height:1.6;color:var(--text,#222)}
