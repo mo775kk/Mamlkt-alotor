@@ -47,7 +47,7 @@
     return [...main.children].filter(el => el.id !== "sectionPageToolbar" && el.id !== "sectionPageEnd");
   }
 
-  function navigate(id, replace = false) {
+  function navigate(id, replace = false, preserveLocation = false) {
     if (!sectionIds.has(id)) return;
     const section = document.getElementById(id);
     if (!section || !main.contains(section)) return;
@@ -73,10 +73,12 @@
       const footer = document.querySelector(".site-footer");
       if (footer && end.nextElementSibling !== footer) footer.parentNode.insertBefore(end, footer);
     }
-    const url = new URL(window.location.href);
-    url.hash = id === "home" ? "home" : id;
-    if (replace) history.replaceState({sectionPage:id}, "", url);
-    else if (window.location.hash !== "#" + id) history.pushState({sectionPage:id}, "", url);
+    if (!preserveLocation) {
+      const url = new URL(window.location.href);
+      url.hash = id === "home" ? "home" : id;
+      if (replace) history.replaceState({sectionPage:id}, "", url);
+      else if (window.location.hash !== "#" + id) history.pushState({sectionPage:id}, "", url);
+    }
     const nav = document.getElementById("mainNav");
     nav?.classList.remove("open");
     document.getElementById("menuToggle")?.setAttribute("aria-expanded", "false");
@@ -98,7 +100,8 @@
 
   window.addEventListener("popstate", () => {
     const id = decodeURIComponent(location.hash.slice(1) || "home");
-    navigate(sectionIds.has(id) ? id : "home", true);
+    if (sectionIds.has(id)) navigate(id, true);
+    else navigate("home", true, true);
   });
   window.addEventListener("hashchange", () => {
     const id = decodeURIComponent(location.hash.slice(1) || "home");
@@ -107,5 +110,5 @@
 
   ensureNavigation();
   const initial = decodeURIComponent(location.hash.slice(1) || "home");
-  navigate(sectionIds.has(initial) ? initial : "home", true);
+  if (sectionIds.has(initial)) navigate(initial, true);
 })();
