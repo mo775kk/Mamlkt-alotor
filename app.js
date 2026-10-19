@@ -401,8 +401,13 @@
   $("#addBlend").addEventListener("click",()=>{
     const size=$("#blendSize").value,family=$("#blendScent").value,bottle=$("#blendBottle").value;
     const oilId=$("#blendOil")?.value||"",oil=findProduct(oilId),oilName=oil?(oil.nameAr||oil.nameEn):"زيت يختاره المتجر";
-    const label=`تركيبة-${family}-${size}-${bottle}-${oil?.supplierSku||"اختيار-المتجر"}`;
-    addToCart("custom-"+Date.now(),size,retailSizePrice(size),{nameAr:`تركيبة ${family}`,nameEn:"Custom Blend",label,description:`الزيت الأساسي: ${oilName}، العائلة: ${family}، ${size} مل، ${bottle}`});
+    const mode=$("#blendPricingMode")?.value||"size",gramClass=$("#blendGramClass")?.value||"french",grams=Math.max(1,Math.floor(Number($("#blendGramAmount")?.value)||1));
+    const gramDefaults={french:10,oriental:15,orientalPremium:20};try{const cfg=JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")||"null");if(cfg?.gramPricing)Object.keys(gramDefaults).forEach(k=>{const n=Number(cfg.gramPricing[k]);if(Number.isFinite(n)&&n>0)gramDefaults[k]=n})}catch{}
+    const gramLabels={french:"فرنسي",oriental:"شرقي",orientalPremium:"شرقي ممتاز"};
+    const chosenPrice=mode==="gram"?Math.max(50,gramDefaults[gramClass]*grams):retailSizePrice(size);
+    const pricingDetail=mode==="gram"?`التسعير بالجرام: ${gramLabels[gramClass]||"فرنسي"}، ${gramDefaults[gramClass]} جنيه/جرام × ${grams} جرام = ${chosenPrice} جنيه`:`التسعير حسب الحجم: ${size} مل = ${chosenPrice} جنيه`;
+    const label=`تركيبة-${family}-${mode==="gram"?grams+"g":size}-${bottle}-${oil?.supplierSku||"اختيار-المتجر"}`;
+    addToCart("custom-"+Date.now(),size,chosenPrice,{nameAr:`تركيبة ${family}`,nameEn:"Custom Blend",label,description:`الزيت الأساسي: ${oilName}، العائلة: ${family}، الحجم: ${size} مل، ${bottle}، ${pricingDetail}`});
     const last=cart[cart.length-1];if(last&&last.custom)last.nameAr=`تركيبة ${family} — ${oilName} (${bottle})`;
     save(STORAGE.cart,cart);updateCounts();
   });
