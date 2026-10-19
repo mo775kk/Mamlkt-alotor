@@ -1,10 +1,12 @@
 /* MAMLKAT AL-OTOR PWA service worker — resilient update strategy */
-const CACHE_NAME = "mamlakat-al-otor-shell-v27-unified";
+const CACHE_NAME = "mamlakat-al-otor-shell-v28-unified";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const APP_SHELL = [
   BASE_PATH,
   BASE_PATH + "index.html",
-  BASE_PATH + "manifest.webmanifest"
+  BASE_PATH + "manifest.webmanifest",
+  BASE_PATH + "assets/images/app-icon-192.png",
+  BASE_PATH + "assets/images/app-icon-512.png"
 ];
 self.addEventListener("install", event => {
   event.waitUntil((async () => {
