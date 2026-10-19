@@ -29,3 +29,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{out
 @media(max-width:760px){body{background-attachment:scroll;font-size:16px}.site-header{background:rgba(255,251,248,.98)}.hero{min-height:440px}.hero-copy{width:100%;padding:42px 18px 50px}#readyProducts,#homeReadyProducts,#homeOilProducts,#supplierOilProducts{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product-info{padding:10px}.product-info h3{font-size:16px}.product-desc,.product-meta{font-size:13px}.product-actions{display:grid;grid-template-columns:1fr}.main-nav{background:#fffaf7;border-color:#e0c99b}.main-nav a{font-size:15px}}
 @media(max-width:380px){#readyProducts,#homeReadyProducts,#homeOilProducts,#supplierOilProducts{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+/* Keep the primary storefront content visible while preserving hidden dialogs and drawers. */
+body>main>.hero#home>.hero-copy{visibility:visible!important;opacity:1!important}
