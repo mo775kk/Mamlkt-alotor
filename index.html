@@ -40,17 +40,8 @@
         var line=document.createElement('div');line.textContent='فشل تنفيذ مهمة: '+message;box.querySelector('.mamlaka-runtime-errors').appendChild(line);
       }catch(ignore){}
     });
-    function recoverOnce(){
-      var key='mamlaka-cache-recovery-20261019';
-      var seen=false;try{seen=sessionStorage.getItem(key)==='1';}catch(ignore){}
-      if(seen)return;
-      try{sessionStorage.setItem(key,'1')}catch(ignore){return;}
-      var tasks=[];
-      if('serviceWorker' in navigator)tasks.push(navigator.serviceWorker.getRegistrations().then(function(regs){return Promise.all(regs.map(function(reg){return reg.unregister()}))}).catch(function(){}));
-      if('caches' in window)tasks.push(caches.keys().then(function(keys){return Promise.all(keys.filter(function(k){return k.indexOf('mamlakat-al-otor-')===0}).map(function(k){return caches.delete(k)}))}).catch(function(){}));
-      Promise.all(tasks).then(function(){location.reload()});
-    }
-    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',recoverOnce,{once:true});else recoverOnce();
+    // Do not unregister service workers or clear caches automatically on page load.
+    // Forced reloads here can interrupt product-catalog requests and leave the storefront blank.
   })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
