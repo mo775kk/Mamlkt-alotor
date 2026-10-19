@@ -274,6 +274,8 @@ try {
 
 try {
   const settings = read("settings.js");
+  report(!/\$\(["\'][^"\']+["\']\)\.addEventListener\(/.test(settings),
+    "Admin settings guards selector-based event bindings against missing optional elements");
   const html = read("index.html");
   const polish = read("royal-polish.css");
   const liveFinish = read("mamlaka-live-finish.css");
