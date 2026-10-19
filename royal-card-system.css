@@ -1,0 +1,137 @@
+/* MAMLKAT AL-OTOR — Royal Card System
+   Visual-only enhancement layer. Preserves existing content, IDs, data, and JavaScript behavior. */
+:root{
+ --royal-card-bg:color-mix(in srgb,var(--panel,#fffaf0) 86%,transparent);
+ --royal-card-border:color-mix(in srgb,var(--gold,#b58a25) 28%,var(--line,#e8ddcb));
+ --royal-card-shadow:0 10px 28px rgba(53,34,18,.09);
+ --royal-card-shadow-hover:0 18px 38px rgba(53,34,18,.15);
+ --royal-card-radius:17px;
+ --royal-rose:#b85f7a;
+ --royal-glint:rgba(255,255,255,.52);
+}
+html{scroll-behavior:smooth}
+.section-heading{position:relative;padding-bottom:13px;margin-bottom:22px}
+.section-heading:after{content:"";position:absolute;bottom:0;right:0;width:clamp(56px,8vw,96px);height:2px;border-radius:4px;background:linear-gradient(90deg,var(--royal-rose),var(--gold2,#e2c56c),transparent)}
+.section-heading .eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:5px}
+.section-heading .eyebrow:before{content:"✦";color:var(--royal-rose);font-size:11px}
+.home-index-grid,.category-grid,.product-grid,.testimonial-grid{align-items:stretch}
+.home-index-card,.category-card,.product-card,.testimonial,.quiz-shell,.blend-panel,.advisor-box,
+.contact-card,.gift-art,.feature-banner,.split-feature,.scent-family-card,.scent-family-box,
+.oil-card,.gift-card,.royal-family-box,.info-card,.section-card,.blend-card,.settings-panel,
+.admin-panel,.product-tile,.royal-feature-card,.contact-method,.visit-card,.advisor-card{
+ position:relative;isolation:isolate;overflow:hidden;
+ border:1px solid var(--royal-card-border);
+ border-radius:var(--royal-card-radius);
+ box-shadow:var(--royal-card-shadow);
+ transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background-color .22s ease;
+}
+.home-index-card,.category-card,.product-card,.testimonial,.quiz-shell,.blend-panel,.advisor-box,
+.contact-card,.gift-art,.scent-family-card,.scent-family-box,.oil-card,.gift-card,
+.royal-family-box,.info-card,.section-card,.blend-card,.settings-panel,.admin-panel,
+.product-tile,.royal-feature-card,.contact-method,.visit-card,.advisor-card{
+ background:var(--royal-card-bg)!important;
+ backdrop-filter:blur(9px) saturate(118%);
+ -webkit-backdrop-filter:blur(9px) saturate(118%);
+}
+.home-index-card:before,.category-card:before,.product-card:before,.testimonial:before,
+.quiz-shell:before,.blend-panel:before,.advisor-box:before,.contact-card:before,
+.gift-art:before,.oil-card:before,.gift-card:before,.info-card:before,.section-card:before,
+.blend-card:before,.royal-family-box:before,.product-tile:before,.royal-feature-card:before,
+.contact-method:before,.visit-card:before,.advisor-card:before{
+ content:"";position:absolute;inset:0 0 auto;height:2px;z-index:2;pointer-events:none;
+ background:linear-gradient(90deg,transparent,var(--royal-rose),var(--gold2,#e2c56c),transparent);
+ opacity:.7;
+}
+.home-index-card:after,.category-card:after,.product-card:after,.testimonial:after,
+.quiz-shell:after,.blend-panel:after,.advisor-box:after,.contact-card:after,
+.gift-art:after,.oil-card:after,.gift-card:after,.info-card:after,.section-card:after,
+.blend-card:after,.royal-family-box:after,.product-tile:after,.royal-feature-card:after,
+.contact-method:after,.visit-card:after,.advisor-card:after{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.42;
+ background:radial-gradient(120% 90% at 100% 0%,color-mix(in srgb,var(--gold2,#e2c56c) 12%,transparent),transparent 58%);
+}
+.home-index-card{min-height:84px;gap:12px;padding:14px}
+.home-index-card:hover,.category-card:hover,.product-card:hover,.testimonial:hover,
+.oil-card:hover,.gift-card:hover,.info-card:hover,.section-card:hover,.blend-card:hover,
+.royal-family-box:hover,.product-tile:hover,.royal-feature-card:hover,.contact-method:hover,
+.visit-card:hover,.advisor-card:hover{
+ transform:translateY(-3px);border-color:color-mix(in srgb,var(--gold,#b58a25) 64%,var(--royal-rose));
+ box-shadow:var(--royal-card-shadow-hover);
+}
+.home-index-icon{border:1px solid color-mix(in srgb,var(--gold,#b58a25) 34%,var(--royal-rose));box-shadow:inset 0 1px 0 var(--royal-glint);transition:transform .2s ease,background .2s ease}
+.home-index-card:hover .home-index-icon{transform:rotate(-4deg) scale(1.04);background:color-mix(in srgb,var(--gold2,#e2c56c) 24%,var(--panel,#fff))}
+.home-index-copy{min-width:0}
+.home-index-copy strong{line-height:1.6;text-wrap:balance}
+.home-index-copy small{display:block;line-height:1.7}
+.home-index-count{font-variant-numeric:tabular-nums}
+.category-card{min-height:190px;padding:clamp(15px,2vw,24px)}
+.category-card .category-icon-wrap{display:grid;place-items:center;width:54px;height:54px;border-radius:15px;border:1px solid var(--royal-card-border);background:linear-gradient(145deg,color-mix(in srgb,var(--gold2,#e2c56c) 15%,var(--panel,#fff)),color-mix(in srgb,var(--royal-rose) 8%,var(--panel,#fff)));box-shadow:inset 0 1px 0 var(--royal-glint)}
+.category-card .category-icon-wrap svg{width:32px;height:32px}
+.category-card h3{margin-top:13px;line-height:1.5}
+.category-card b{display:grid;place-items:center;width:29px;height:29px;left:14px;right:auto;bottom:14px;border:1px solid var(--royal-card-border);border-radius:50%;background:color-mix(in srgb,var(--panel,#fff) 85%,transparent);font-size:15px}
+.product-card{display:flex;flex-direction:column;min-height:100%;border-radius:16px}
+.product-visual{position:relative;isolation:isolate;flex-shrink:0;background:linear-gradient(145deg,color-mix(in srgb,var(--panel2,#f7efe2) 92%,transparent),color-mix(in srgb,var(--gold2,#e2c56c) 12%,var(--panel,#fff)))!important}
+.product-visual:after{content:"";position:absolute;inset:auto 14% 7px;height:14px;border-radius:50%;background:color-mix(in srgb,var(--gold,#b58a25) 18%,transparent);filter:blur(11px);pointer-events:none;z-index:-1}
+.product-visual img{transition:transform .28s ease!important}
+.product-card:hover .product-visual img{transform:scale(1.035)}
+.product-info{display:flex;flex:1;flex-direction:column;gap:3px}
+.product-info h3{margin:0;line-height:1.55;overflow-wrap:anywhere}
+.product-en{line-height:1.5;overflow-wrap:anywhere}
+.product-meta{display:flex;align-items:center;flex-wrap:wrap;gap:4px 7px}
+.product-desc{line-height:1.75}
+.product-bottom{margin-top:auto;align-items:center}
+.product-price{display:inline-flex;align-items:center;gap:4px;padding:5px 9px;border:1px solid color-mix(in srgb,var(--gold,#b58a25) 32%,transparent);border-radius:9px;background:color-mix(in srgb,var(--gold2,#e2c56c) 12%,var(--panel,#fff));white-space:nowrap}
+.product-actions{margin-top:10px}
+.small-btn{border-radius:9px;transition:transform .16s ease,background .16s ease,border-color .16s ease}
+.small-btn:active,.btn:active,.icon-btn:active{transform:scale(.98)}
+.favorite-btn{border-radius:50%;backdrop-filter:blur(8px)}
+.product-badge{border-radius:999px;backdrop-filter:blur(8px)}
+.quiz-shell{padding:clamp(18px,3vw,32px)}
+.quiz-progress{height:6px;border:1px solid var(--royal-card-border)}
+.quiz-opt{min-height:50px;border-radius:12px;line-height:1.7}
+.quiz-opt:hover,.quiz-opt.selected{box-shadow:0 5px 16px color-mix(in srgb,var(--gold,#b58a25) 14%,transparent)}
+.blend-panel{padding:clamp(14px,2.2vw,24px);gap:clamp(10px,1.5vw,18px)}
+.blend-step select,.toolbar select,.search-box,.checkout-customer input,.checkout-customer textarea{border-radius:11px;min-height:44px}
+.blend-summary{border-radius:12px}
+.testimonial{padding:clamp(16px,2vw,24px)}
+.testimonial .stars{display:inline-block;padding:4px 9px;border:1px solid var(--royal-card-border);border-radius:999px;background:color-mix(in srgb,var(--gold2,#e2c56c) 12%,transparent)}
+.split-feature{border-radius:18px;overflow:hidden}
+.feature-image img{transition:transform .5s ease}
+.split-feature:hover .feature-image img{transform:scale(1.025)}
+.feature-copy{padding:clamp(22px,4vw,48px)}
+.feature-copy h2,.gift-copy h2{line-height:1.45}
+.feature-banner{border-radius:18px;padding:clamp(20px,4vw,38px)}
+.gift-art{position:relative}
+.gift-art:before{height:3px}
+.site-footer{position:relative}
+.site-footer:before{content:"";display:block;width:100px;height:2px;margin:0 auto 20px;background:linear-gradient(90deg,transparent,var(--royal-rose),var(--gold2,#e2c56c),transparent)}
+:where(input,select,textarea){border-radius:10px}
+:where(button,a,input,select,textarea):focus-visible{outline:3px solid var(--royal-rose)!important;outline-offset:3px}
+:where(.section-heading h2,.category-card h3,.product-info h3,.home-index-copy strong){text-wrap:balance}
+@media(hover:none){
+ .home-index-card:hover,.category-card:hover,.product-card:hover,.testimonial:hover,.oil-card:hover,
+ .gift-card:hover,.info-card:hover,.section-card:hover,.blend-card:hover,.royal-family-box:hover,
+ .product-tile:hover,.royal-feature-card:hover,.contact-method:hover,.visit-card:hover,.advisor-card:hover{transform:none}
+}
+@media(max-width:760px){
+ :root{--royal-card-radius:13px}
+ .home-index-card{min-height:76px;padding:10px;gap:8px}
+ .category-card{min-height:140px;padding:13px}
+ .category-card .category-icon-wrap{width:42px;height:42px;border-radius:12px}
+ .category-card .category-icon-wrap svg{width:27px;height:27px}
+ .product-card{border-radius:12px}
+ .product-info{gap:2px}
+ .product-price{padding:4px 6px;font-size:11px}
+ .quiz-opt{min-height:44px;padding:11px}
+ .testimonial{padding:15px}
+}
+@media(max-width:370px){
+ .home-index-copy strong{font-size:11px}
+ .home-index-copy small{font-size:9px}
+ .category-card{padding:10px}
+ .product-actions{flex-wrap:wrap}
+ .product-actions .small-btn{min-width:0}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}
+}
