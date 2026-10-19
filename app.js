@@ -260,7 +260,7 @@
   document.addEventListener("change",e=>{const select=e.target.closest("[data-card-size]");if(!select)return;const card=select.closest(".product-card");if(!card)return;const id=select.dataset.cardSize,p=findProduct(id),size=String(select.value),price=currentPrice(p,size),priceLine=card.querySelector("[data-card-price]"),basePrice=card.querySelector(".product-price"),button=card.querySelector('[data-action="add"]');if(priceLine)priceLine.textContent=price==null?"السعر يحتاج تأكيد":formatMoney(price);if(basePrice)basePrice.textContent=p?.supplierCatalogItem?"للاختيار والتركيب":price==null?"السعر قيد التأكيد":formatMoney(price);if(!button)return;const chosen=cart.some(item=>item.id===id&&String(item.size)===size);button.classList.toggle("is-selected",chosen);button.textContent=p?.supplierCatalogItem?"للاختيار والتركيب":!p?.available?"التوفر قيد التأكيد":price==null?"السعر قيد التأكيد":chosen?"✓ تم الاختيار":"أضف للسلة";button.disabled=Boolean(p?.supplierCatalogItem)||!p?.available||price==null;button.setAttribute("aria-pressed",String(chosen));});
   $("#supplierOilFamily")?.addEventListener("change",()=>{supplierVisibleLimit=24;renderSupplierOils()});
   $("#supplierOilMore")?.addEventListener("click",()=>{supplierVisibleLimit+=24;renderSupplierOils()});
-  document.querySelectorAll("[data-scent-family]").forEach(card=>card.addEventListener("click",()=>{const fam=card.dataset.scentFamily;$("#supplierOilFamily").value=fam;supplierVisibleLimit=24;renderSupplierOils()}));
+  document.querySelectorAll("[data-scent-family]").forEach(card=>card.addEventListener("click",()=>{const fam=card.dataset.scentFamily, familyFilter=$("#supplierOilFamily");if(!familyFilter)return;familyFilter.value=fam;supplierVisibleLimit=24;renderSupplierOils()}));
   function updateCounts(){ $("#cartCount").textContent=cart.reduce((n,x)=>n+x.qty,0); $("#favCount").textContent=favorites.length; }
   function toggleFavorite(id){ favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];save(STORAGE.fav,favorites);renderProducts();notify(favorites.includes(id)?"أُضيف إلى المفضلة":"أُزيل من المفضلة"); }
   function addToCart(id,size="10",priceOverride=null,custom=null){
@@ -381,7 +381,7 @@
     en:{ready:"Ready Perfumes",oils:"Oils & Blending",bakhoor:"Oud & Bakhoor",gift:"Gifts",advisor:"Scent Advisor",visit:"Contact",home:"Home"}
   };
   function setLanguage(lang){
-    language=lang;save(STORAGE.lang,lang);document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";document.body.classList.toggle("en",lang==="en");$("#languageToggle").textContent=lang==="ar"?"EN":"عربي";
+    language=lang;save(STORAGE.lang,lang);document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";document.body.classList.toggle("en",lang==="en");const languageToggle=$("#languageToggle");if(languageToggle)languageToggle.textContent=lang==="ar"?"EN":"عربي";
     $$(".main-nav a").forEach(a=>{const k=a.dataset.nav;if(translations[lang][k])a.textContent=translations[lang][k];});
     notify(lang==="en"?"Navigation labels switched. Some product content remains in Arabic.":"تم تغيير لغة القوائم. بعض محتوى المنتجات ما زال بالعربية.");
   }
@@ -408,29 +408,29 @@
     save(STORAGE.cart,cart);updateCounts();
   });
   bind("#advisorForm", "submit",e=>{e.preventDefault();submitAdvisor($("#advisorInput").value);});
-  document.querySelectorAll("[data-advisor-prompt]").forEach(button=>button.addEventListener("click",()=>{const prompt=button.dataset.advisorPrompt||"";$("#advisorInput").value=prompt;submitAdvisor(prompt);}));
-  $("#advisorReplies")?.addEventListener("click",e=>{if(e.target.closest("[data-advisor-request]"))requestMissing($("#advisorInput").value.trim()||"اقتراح عطر مناسب");});
-  $("#contactWhatsapp").href=`https://wa.me/${getWaNumber()}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن منتجات مملكة العطور.")}`;
+  document.querySelectorAll("[data-advisor-prompt]").forEach(button=>button.addEventListener("click",()=>{const prompt=button.dataset.advisorPrompt||"",input=$("#advisorInput");if(!input)return;input.value=prompt;submitAdvisor(prompt);}));
+  const advisorReplies=$("#advisorReplies");if(advisorReplies)advisorReplies.addEventListener("click",e=>{if(e.target.closest("[data-advisor-request]"))requestMissing($("#advisorInput")?.value.trim()||"اقتراح عطر مناسب");});
+  const contactWhatsapp=$("#contactWhatsapp");if(contactWhatsapp)contactWhatsapp.href=`https://wa.me/${getWaNumber()}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن منتجات مملكة العطور.")}`;
   bind("#menuToggle", "click",()=>{const open=$("#mainNav").classList.toggle("open");$("#menuToggle").setAttribute("aria-expanded",String(open));});
-  $("#mainNav").querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{$("#mainNav").classList.remove("open");$("#menuToggle").setAttribute("aria-expanded","false");}));
+  const mainNav=$("#mainNav");if(mainNav)mainNav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{mainNav.classList.remove("open");const menuToggle=$("#menuToggle");if(menuToggle)menuToggle.setAttribute("aria-expanded","false");}));
   document.addEventListener("keydown",e=>{
     if(e.key!=="Escape")return;
     if(!$("#modalBackdrop").classList.contains("hidden"))closeModal();
     if($("#cartDrawer").classList.contains("open"))closeDrawer();
-    if($("#mainNav").classList.contains("open")){$("#mainNav").classList.remove("open");$("#menuToggle").setAttribute("aria-expanded","false");$("#menuToggle").focus({preventScroll:true});}
+    const mainNav=$("#mainNav"),menuToggle=$("#menuToggle");if(mainNav?.classList.contains("open")){mainNav.classList.remove("open");if(menuToggle){menuToggle.setAttribute("aria-expanded","false");menuToggle.focus({preventScroll:true});}}
   });
   bind("#languageToggle", "click",()=>setLanguage(language==="ar"?"en":"ar"));
   bind("#voiceSearch", "click",()=>{
     const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
     if(!SpeechRecognition){notify("البحث الصوتي غير مدعوم هنا. استخدم مربع البحث الكتابي.");return;}
     const rec=new SpeechRecognition();rec.lang=language==="ar"?"ar-EG":"en-US";rec.interimResults=false;rec.maxAlternatives=1;
-    $("#voiceSearch").textContent="…";rec.onresult=e=>{$("#productSearch").value=e.results[0][0].transcript;renderProducts();};rec.onerror=()=>notify("تعذر بدء البحث الصوتي. تحقق من إذن الميكروفون.");rec.onend=()=>$("#voiceSearch").textContent="🎙";try{rec.start();}catch{notify("تعذر بدء البحث الصوتي.");$("#voiceSearch").textContent="🎙";}
+    const voiceButton=$("#voiceSearch");if(!voiceButton)return;voiceButton.textContent="…";rec.onresult=e=>{const search=$("#productSearch");if(search){search.value=e.results[0][0].transcript;renderProducts();}};rec.onerror=()=>notify("تعذر بدء البحث الصوتي. تحقق من إذن الميكروفون.");rec.onend=()=>{if(voiceButton.isConnected)voiceButton.textContent="🎙";};try{rec.start();}catch{notify("تعذر بدء البحث الصوتي.");voiceButton.textContent="🎙";}
   });
   bind("#enterBtn", "click",()=>{save("mamlaka_intro_seen_v1",true);$("#intro").classList.add("dismissed");});
   bind("#skipIntro", "click",()=>{$("#intro").classList.add("dismissed");save("mamlaka_intro_seen_v1",true);});
   // Always show the royal entrance on a fresh page load; the visitor can enter or skip explicitly.
   // This avoids silently bypassing the entrance because an old localStorage flag remained set.
-  $("#year").textContent=new Date().getFullYear();
+  const yearNode=$("#year");if(yearNode)yearNode.textContent=new Date().getFullYear();
   function syncAllProducts(){products=combineProducts();renderProducts();renderSupplierOils();renderCart();updateCounts();populateBlendOils();}
   document.addEventListener("mamlaka:products-updated",syncAllProducts);
   document.addEventListener("mamlaka:supplier-catalog-updated",syncAllProducts);
