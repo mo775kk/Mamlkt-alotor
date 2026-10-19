@@ -1,0 +1,11 @@
+/* Emergency storefront visibility recovery — ensure the hero photograph cannot cover the page content. */
+html body main{display:block!important;visibility:visible!important;opacity:1!important}
+html body main section{visibility:visible!important;opacity:1!important}
+html body .hero{position:relative!important;isolation:isolate!important;overflow:hidden!important}
+html body .hero .hero-image{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;z-index:0!important;pointer-events:none!important}
+html body .hero .hero-shade{position:absolute!important;inset:0!important;z-index:1!important;pointer-events:none!important}
+html body .hero .hero-copy{position:relative!important;z-index:2!important;visibility:visible!important;opacity:1!important}
+html body .hero .hero-pagination,html body .hero .hero-next{position:absolute!important;z-index:3!important}
+html body .mamlaka-marquee,html body .trust-strip,html body .section{position:relative!important;z-index:1!important}
+html body .site-header{position:sticky!important;z-index:100!important}
+html body .hero .hero-copy h1,html body .hero .hero-copy p,html body .hero .hero-copy a,html body .hero .hero-note{visibility:visible!important;opacity:1!important}
