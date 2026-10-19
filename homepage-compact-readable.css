@@ -237,3 +237,85 @@ th, td { padding: 7px 8px !important; }
   .hero-copy h1, .hero h1 { font-size: 25px !important; }
   .section-heading h2, .section-title, .section-title h2 { font-size: 19px !important; }
 }
+
+
+/* Global site-wide compact layout: consistent professional density on every section. */
+* { box-sizing: border-box; }
+body { font-size: 13px !important; line-height: 1.6 !important; }
+main { padding-block: 0 !important; }
+section, article, aside, .section, .panel, .card, .feature-banner, .gift-section,
+.products-section, .advisor-section, .contact-section, .blend-section { scroll-margin-top: 68px; }
+.section { width: min(1060px, calc(100% - 36px)) !important; margin-top: 0 !important; margin-bottom: 24px !important; }
+.section-heading { margin-bottom: 12px !important; padding-bottom: 8px !important; gap: 10px !important; }
+.section-heading h2, .section-title, .section-title h2, .feature-copy h2, .gift-copy h2, .contact-card h2 { font-size: clamp(20px, 2.1vw, 28px) !important; line-height: 1.35 !important; }
+.section-heading p, .section-description { font-size: 12px !important; line-height: 1.65 !important; }
+.eyebrow { font-size: 9px !important; letter-spacing: 1.1px !important; margin-bottom: 5px !important; }
+.grid, .product-grid, .category-grid, .home-index-grid, .home-showcase-grid { gap: 10px !important; }
+.category-card, .home-index-card, .home-showcase-card { padding: 12px !important; }
+.product-card, .product-tile, .product-item { min-width: 0; padding: 10px !important; border-radius: 14px !important; }
+.product-card h3, .product-info h3, .product-tile h3, .product-item h3 { font-size: 14px !important; line-height: 1.4 !important; margin-block: 5px !important; }
+.product-card p, .product-info p, .product-tile p, .product-item p { font-size: 11px !important; line-height: 1.55 !important; }
+.product-card img, .product-tile img, .product-item img { max-height: 220px; object-fit: contain; }
+.product-card .price, .product-price, .modal-price { font-size: 14px !important; }
+button, input, select, textarea { font-size: 12px !important; }
+button, .btn, .small-btn { min-height: 34px; }
+.btn { padding: 7px 12px !important; border-radius: 10px !important; }
+input, select, textarea { min-height: 38px; padding: 8px 10px !important; border-radius: 9px !important; }
+textarea { min-height: 70px; }
+.blend-panel, .advisor-box, .contact-card, .admin-panel, .feature-copy, .gift-copy { padding: clamp(12px, 2vw, 20px) !important; gap: 12px !important; }
+.blend-step { gap: 5px !important; }
+.blend-summary strong { font-size: 16px !important; }
+.trust-strip { margin-block: 12px !important; padding: 10px !important; }
+.feature-banner { min-height: 190px !important; padding: 20px !important; }
+.feature-banner h3 { font-size: clamp(19px, 2vw, 25px) !important; }
+.advisor-symbol { width: 48px !important; height: 48px !important; font-size: 28px !important; }
+.assistant-message, .suggestion p { font-size: 12px !important; line-height: 1.65 !important; padding: 10px !important; }
+.contact-phone { font-size: 18px !important; }
+.store-location-panel { gap: 12px !important; }
+.store-map-frame { min-height: 210px !important; }
+.site-footer { padding: 22px 14px !important; }
+.site-footer p { font-size: 12px !important; }
+.drawer { width: min(400px, 94vw) !important; padding: 14px !important; }
+.drawer-head h2 { font-size: 20px !important; }
+.drawer-bottom { gap: 8px !important; }
+.modal-backdrop { padding: 12px !important; }
+.product-modal { width: min(760px, 96vw) !important; padding: 16px !important; border-radius: 16px !important; }
+.modal-product { gap: 12px !important; }
+.modal-product-image { max-height: 280px !important; }
+.admin-panel { max-width: 100% !important; }
+.admin-head { gap: 10px !important; }
+.admin-head h2 { font-size: 21px !important; }
+.admin-tabs { gap: 6px !important; }
+.admin-tabs button { min-height: 33px !important; padding: 6px 9px !important; }
+table { font-size: 11px !important; }
+th, td { padding: 6px 7px !important; line-height: 1.5 !important; }
+.toast { font-size: 12px !important; padding: 9px 12px !important; }
+@media (min-width: 1100px) {
+ .section { width: min(1020px, calc(100% - 64px)) !important; }
+ .hero { min-height: 320px !important; }
+ .product-grid, .products-grid { gap: 12px !important; }
+}
+@media (max-width: 760px) {
+ body { font-size: 12px !important; line-height: 1.6 !important; }
+ .section { width: calc(100% - 22px) !important; margin-bottom: 19px !important; }
+ .section-heading { margin-bottom: 9px !important; }
+ .section-heading h2, .section-title, .section-title h2, .feature-copy h2, .gift-copy h2, .contact-card h2 { font-size: 19px !important; }
+ .section-heading p, .section-description { font-size: 11px !important; }
+ .eyebrow { font-size: 8px !important; }
+ .grid, .product-grid, .category-grid, .home-index-grid, .home-showcase-grid { gap: 7px !important; }
+ .category-card, .home-index-card, .home-showcase-card { padding: 9px !important; }
+ .product-card, .product-tile, .product-item { padding: 8px !important; }
+ .product-card h3, .product-info h3, .product-tile h3, .product-item h3 { font-size: 13px !important; }
+ .product-card p, .product-info p, .product-tile p, .product-item p { font-size: 10px !important; }
+ .product-card img, .product-tile img, .product-item img { max-height: 160px; }
+ button, input, select, textarea { font-size: 11px !important; }
+ .btn { min-height: 32px; padding: 6px 9px !important; }
+ input, select, textarea { min-height: 35px; padding: 7px 8px !important; }
+ .feature-banner { min-height: 160px !important; padding: 14px !important; }
+ .feature-banner h3 { font-size: 19px !important; }
+ .store-map-frame { min-height: 170px !important; }
+ .product-modal { padding: 12px !important; }
+ .admin-head h2 { font-size: 18px !important; }
+ table { font-size: 10px !important; }
+ th, td { padding: 5px !important; }
+}
