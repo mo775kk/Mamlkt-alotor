@@ -31,3 +31,7 @@ body{font-size:calc(1em * var(--rcp-text-scale,1))}
 #royalControlPanel input:focus-visible,#royalControlPanel button:focus-visible,#royalControlPanel a:focus-visible{outline:2px solid #ffe08a;outline-offset:3px}
 @media(max-width:520px){#royalControlLauncher{inset-inline-end:10px;bottom:10px;padding:11px 13px;font-size:12px}#royalControlPanel{inset-inline:8px;bottom:62px;width:auto;max-height:78vh;padding:12px}#royalControlPanel .rcp-control{grid-template-columns:92px minmax(80px,1fr) 35px;gap:6px}#royalControlPanel .rcp-jumps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){#royalControlPanel *,#royalControlLauncher{transition:none!important;animation:none!important}}
+
+/* Live controls: consistent glass blur and adjustable outline strength */
+.home-index-card,.category-card,.product-card,.quiz-shell,.testimonial,.advisor-box,.contact-card,.blend-panel,.drawer,.product-modal{backdrop-filter:blur(var(--rcp-blur,14px)) saturate(125%);border-color:rgba(212,175,55,var(--rcp-border-alpha,.35))}
+#royalControlPanel{filter:none;}
