@@ -124,7 +124,8 @@
   async function loadPublicCatalog() {
     if (typeof fetch !== "function") return;
     try {
-      const response = await fetch("data/products.json", { cache: "no-cache" });
+      const catalogUrl = new URL("data/products.json", document.baseURI);
+      const response = await fetch(catalogUrl.href, { cache: "no-store" });
       if (!response.ok) throw new Error("HTTP " + response.status);
       const payload = await response.json();
       const records = Array.isArray(payload) ? payload : payload?.products;
@@ -161,6 +162,9 @@
       document.dispatchEvent(new CustomEvent("mamlaka:public-catalog-loaded", { detail: { count: publicCatalogProducts.length } }));
     } catch (error) {
       console.warn("تعذر تحميل كتالوج data/products.json؛ يستمر المتجر بالكتالوج المحلي.", error);
+      const readyRoot = $("#homeReadyProducts"), oilRoot = $("#homeOilProducts");
+      if (readyRoot && !publicCatalogProducts.length) readyRoot.innerHTML = '<p class="home-showcase-empty">تعذر تحميل الكتالوج الكامل الآن. يمكنك استخدام البحث أو إعادة تحميل الصفحة.</p>';
+      if (oilRoot && !products.some(p => isOilProduct(p))) oilRoot.innerHTML = '<p class="home-showcase-empty">تعذر تحميل كتالوج الزيوت. أعد المحاولة أو تواصل مع المتجر.</p>';
     }
   }
   let cart = normalizeCart(readArray(STORAGE.cart));
