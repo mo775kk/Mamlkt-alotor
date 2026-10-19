@@ -1,0 +1,33 @@
+/* Mamlakat Al-Otor — global visual control studio */
+#royalControlLauncher{position:fixed;z-index:1400;inset-inline-end:14px;bottom:18px;border:1px solid rgba(230,190,75,.75);border-radius:999px;padding:12px 16px;background:linear-gradient(135deg,#c9a227,#f4d987);color:#24180a;font:800 14px/1.2 Tajawal,sans-serif;box-shadow:0 8px 30px #0005;cursor:pointer}
+#royalControlPanel{position:fixed;z-index:1401;inset-inline-end:12px;bottom:76px;width:min(440px,calc(100vw - 24px));max-height:min(78vh,780px);overflow:auto;display:none;background:rgba(20,15,22,.97);color:#fff8e8;border:1px solid rgba(226,188,76,.7);border-radius:22px;box-shadow:0 24px 80px #0009;backdrop-filter:blur(18px);padding:16px;font:14px/1.6 Tajawal,sans-serif}
+#royalControlPanel.rcp-open{display:block}
+#royalControlPanel *{box-sizing:border-box}
+#royalControlPanel .rcp-head{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #d4af3744;padding-bottom:12px;margin-bottom:12px}
+#royalControlPanel h2{font:700 22px/1.3 Amiri,serif;color:#f4d987;margin:0}
+#royalControlPanel .rcp-close{border:1px solid #d4af3766;background:#ffffff10;color:#fff;border-radius:12px;width:38px;height:38px;font-size:24px;cursor:pointer}
+#royalControlPanel .rcp-sub{color:#d9cdb6;font-size:12px;margin:4px 0 0}
+#royalControlPanel .rcp-jumps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:12px 0}
+#royalControlPanel .rcp-jumps a{display:block;text-align:center;text-decoration:none;padding:9px 5px;border:1px solid #d4af3744;background:#ffffff08;border-radius:11px;color:#ffe6a0;font-size:12px}
+#royalControlPanel .rcp-group{border:1px solid #ffffff18;border-radius:15px;padding:12px;margin:10px 0;background:#ffffff06}
+#royalControlPanel .rcp-group h3{font-size:14px;color:#f4d987;margin:0 0 8px}
+#royalControlPanel .rcp-control{display:grid;grid-template-columns:minmax(100px,1fr) minmax(100px,1.35fr) 42px;align-items:center;gap:8px;margin:11px 0}
+#royalControlPanel .rcp-control label{font-size:12px;color:#fff4dc}
+#royalControlPanel input[type=range]{width:100%;accent-color:#e2bd52;min-width:0}
+#royalControlPanel output{font-size:12px;text-align:left;color:#f4d987;font-variant-numeric:tabular-nums}
+#royalControlPanel .rcp-select,#royalControlPanel .rcp-color{width:100%;min-width:0;background:#211a23;color:#fff;border:1px solid #d4af3755;border-radius:9px;padding:8px;font:inherit}
+#royalControlPanel .rcp-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+#royalControlPanel .rcp-actions button{border-radius:12px;padding:11px 8px;border:1px solid #d4af3780;font:700 13px Tajawal,sans-serif;cursor:pointer}
+#royalControlPanel .rcp-save{background:linear-gradient(135deg,#c9a227,#f4d987);color:#211608}
+#royalControlPanel .rcp-reset{background:#ffffff0c;color:#fff4dc}
+#royalControlPanel .rcp-status{font-size:12px;color:#bfe8b9;min-height:20px;margin-top:9px}
+#royalControlPanel .rcp-note{font-size:11px;color:#b9ad9b;margin:8px 0 0}
+html{--rcp-card-alpha:.92;--rcp-image-alpha:1;--rcp-bg-shade:.35;--rcp-text-scale:1;--rcp-blur:14px;--rcp-brightness:1}
+body{filter:brightness(var(--rcp-brightness,1))}
+body{font-size:calc(1em * var(--rcp-text-scale,1))}
+.product-card,.category-card,.home-index-card,.quiz-shell,.testimonial,.contact-card,.advisor-box,.blend-panel,.section-panel,.admin-panel,.settings-panel,.oil-card,.gift-card,.family-card,.product-modal,.drawer,.trust-strip>div{background-color:rgba(25,20,28,var(--rcp-card-alpha,.92))}
+.hero-image,.section img,.product-card img,.category-card img,.gift-card img,.oil-card img{opacity:var(--rcp-image-alpha,1)}
+.hero-shade{background:linear-gradient(180deg,rgba(5,5,5,var(--rcp-bg-shade,.35)),rgba(5,5,5,calc(var(--rcp-bg-shade,.35) + .25)) 62%,var(--ink))}
+#royalControlPanel input:focus-visible,#royalControlPanel button:focus-visible,#royalControlPanel a:focus-visible{outline:2px solid #ffe08a;outline-offset:3px}
+@media(max-width:520px){#royalControlLauncher{inset-inline-end:10px;bottom:10px;padding:11px 13px;font-size:12px}#royalControlPanel{inset-inline:8px;bottom:62px;width:auto;max-height:78vh;padding:12px}#royalControlPanel .rcp-control{grid-template-columns:92px minmax(80px,1fr) 35px;gap:6px}#royalControlPanel .rcp-jumps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){#royalControlPanel *,#royalControlLauncher{transition:none!important;animation:none!important}}
