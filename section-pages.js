@@ -70,10 +70,11 @@
     const end = document.getElementById("sectionPageEnd");
     activeId = id;
     document.body.classList.toggle("section-page-mode", id !== "home");
+    document.body.classList.toggle("index-only-mode", id === "home");
     const isHome = id === "home";
     allPageSections().forEach(el => {
       if (!originalHidden.has(el)) originalHidden.set(el, el.hidden);
-      el.hidden = isHome ? originalHidden.get(el) : el !== host;
+      el.hidden = isHome ? (el.id !== "homeIndex" || originalHidden.get(el)) : el !== host;
     });
     if (!isHome) {
       host.setAttribute("data-standalone-section", "true");
