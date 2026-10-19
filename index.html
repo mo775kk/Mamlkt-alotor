@@ -101,13 +101,13 @@
     function init(){
       sync();
       if('serviceWorker' in navigator&&location.protocol==='https:'){
-        navigator.serviceWorker.register('./sw.js?v=20261019-release10',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
+        navigator.serviceWorker.register('./sw.js?v=20261019-release11',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
       }
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
   })();
   </script>  <link rel="stylesheet" href="mamlaka-world-class.css?v=20261019-repair9">
-  <link rel="stylesheet" href="mamlaka-live-finish.css?v=20261019-release10">
+  <link rel="stylesheet" href="mamlaka-live-finish.css?v=20261019-release11">
   <link rel="stylesheet" href="reference-settings.css?v=20261019-repair9">
   <link rel="stylesheet" href="mamlaka-readable-themes.css?v=20261019-repair9">
   <link rel="stylesheet" href="homepage-catalog.css?v=20261019-repair9">
