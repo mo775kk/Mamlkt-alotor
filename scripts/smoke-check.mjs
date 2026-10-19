@@ -278,6 +278,17 @@ try {
   report(settings.includes('dp={"3":50,"5":75,"10":100,"22":130,"30":100,"50":150,"100":300}') &&
     html.includes("30 مل · زيت فقط / رش',price:100") && html.includes("50 مل · زيت فقط / رش',price:150") && html.includes("100 مل · زيت فقط / رش',price:300"),
     "Oil-only/spray retail price defaults are consistent between owner controls and customer guide");
+  const catalogEditor = read("catalog-editor.js");
+  const blendingAtelier = read("blending-atelier.js");
+  const priceConfig = JSON.parse(read("data/catalog-configuration.json"));
+  const pricesBySize = Object.fromEntries((priceConfig.retailBlendPrices || []).map(item => [String(item.size).match(/[0-9]+/)?.[0], Number(item.price)]));
+  report(pricesBySize["3"] === 50 && pricesBySize["5"] === 75 && pricesBySize["10"] === 100 &&
+    pricesBySize["22"] === 130 && pricesBySize["30"] === 100 && pricesBySize["50"] === 150 && pricesBySize["100"] === 300,
+    "Shared catalog configuration uses the current approved blend-size prices");
+  report(catalogEditor.includes("{size:'30 مل',price:100},{size:'50 مل',price:150},{size:'100 مل',price:300}") &&
+    blendingAtelier.includes("var defaults={'3':50,'5':75,'10':100,'22':130,'30':100,'50':150,'100':300}"),
+    "Admin catalog editor and blending atelier fallback prices match the shared configuration");
+
 
   report(settings.includes("data-copy-secret=\"CLOUDFLARE_API_TOKEN\"") &&
     settings.includes("data-copy-secret=\"CLOUDFLARE_ACCOUNT_ID\"") &&
