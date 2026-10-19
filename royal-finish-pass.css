@@ -1,0 +1,123 @@
+/* MAMLKAT AL-OTOR — final visual consistency pass
+   Additive, reversible CSS only. Keeps product data, checkout and existing handlers unchanged. */
+:root{
+  --finish-rose:#b65d7a;
+  --finish-rose-soft:#f4dce4;
+  --finish-gold:#b38a2b;
+  --finish-gold-light:#e0c36b;
+  --finish-paper:#fffaf2;
+  --finish-ink:#38271f;
+  --finish-muted:#6c5d53;
+  --finish-border:color-mix(in srgb,var(--gold2,#d4af37) 30%,var(--line,#eadfcf));
+}
+html,body{background:var(--bg,#fffaf3);color:var(--text,var(--finish-ink))}
+body{
+  background-image:
+    radial-gradient(ellipse at 92% 0%,color-mix(in srgb,var(--finish-rose) 8%,transparent),transparent 38%),
+    radial-gradient(ellipse at 5% 22%,color-mix(in srgb,var(--finish-gold-light) 9%,transparent),transparent 34%);
+  font-size:15px;line-height:1.72
+}
+body::before{display:none}
+.site-header{
+  background:color-mix(in srgb,var(--header-bg,#fffdf8) 94%,transparent)!important;
+  border-bottom:1px solid var(--finish-border);
+  box-shadow:0 4px 18px rgba(70,45,25,.07);
+  backdrop-filter:blur(14px) saturate(135%)
+}
+.brand strong,.section-heading h2,.category-card h3,.product-info h3,.drawer-head h2{color:var(--heading,#38271f)}
+.brand-crown,.category-icon-wrap svg,.trust-strip svg{color:var(--finish-gold);stroke:var(--finish-gold)}
+.eyebrow,.section-page-heading>small{color:var(--finish-rose)}
+.btn-gold,.counter{
+  background:linear-gradient(135deg,var(--gold2,#c9a64b),var(--finish-gold-light));
+  color:var(--button-text,#332316);border-color:color-mix(in srgb,var(--finish-gold) 45%,transparent)
+}
+.btn-outline{border-color:var(--finish-border);color:var(--finish-gold);background:var(--panel,#fff)}
+:where(.home-index-card,.category-card,.product-card,.quiz-shell,.blend-panel,.advisor-box,
+.contact-card,.gift-art,.feature-banner,.split-feature,.scent-family-card,.scent-family-box,
+.oil-card,.gift-card,.royal-family-box,.info-card,.section-card,.blend-card,.settings-panel,
+.admin-panel,.product-tile,.royal-feature-card,.contact-method,.visit-card,.advisor-card){
+  border-color:var(--finish-border);
+  box-shadow:0 6px 22px rgba(67,44,27,.065)
+}
+:where(.home-index-card,.product-card,.quiz-shell,.blend-panel,.advisor-box,.contact-card,
+.gift-art,.feature-banner,.split-feature,.scent-family-card,.scent-family-box,.oil-card,
+.gift-card,.royal-family-box,.info-card,.section-card,.blend-card,.settings-panel,.admin-panel,
+.product-tile,.royal-feature-card,.contact-method,.visit-card,.advisor-card){
+  background:color-mix(in srgb,var(--panel,#fff) 94%,var(--finish-rose-soft))!important
+}
+.home-index-card,.category-card{min-width:0}
+.home-index-card{min-height:76px;padding:12px;gap:10px}
+.home-index-icon{width:36px;height:36px;background:color-mix(in srgb,var(--finish-rose-soft) 45%,var(--panel,#fff));border-color:var(--finish-border);color:var(--finish-rose)}
+.home-index-copy strong{color:var(--heading,#38271f);line-height:1.45}
+.home-index-copy small{color:var(--muted,#6c5d53);line-height:1.55}
+.category-card{min-height:185px;padding:20px}
+.category-card p,.product-desc,.section-heading>p{color:var(--muted,#6c5d53)}
+.product-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:14px}
+.product-card{min-width:0}
+.product-info{padding:12px}
+.product-info h3{font-size:clamp(14px,1.25vw,17px);line-height:1.55;text-wrap:balance}
+:where(.product-price,.price,.product-price strong){color:var(--finish-gold)}
+:where(input,select,textarea){
+  border-color:var(--finish-border);
+  background:var(--field,#fffdf9);
+  color:var(--text,var(--finish-ink))
+}
+:where(input,select,textarea):focus-visible{outline:2px solid var(--finish-gold)!important;outline-offset:2px}
+.section-page-toolbar{
+  background:
+    radial-gradient(ellipse at 10% 0%,rgba(182,93,122,.10),transparent 48%),
+    linear-gradient(135deg,var(--panel,#fffdf8),var(--panel2,#fff5e8));
+  border-color:var(--finish-border);
+  box-shadow:0 7px 22px rgba(70,45,25,.07)
+}
+.section-page-heading h1{color:var(--finish-gold)}
+.section-page-back{background:var(--panel,#fff);color:var(--finish-gold);border-color:var(--finish-border)}
+.section-page-back:hover{background:var(--finish-rose-soft);color:#71354a}
+.section-page-mark{color:var(--finish-gold-light);text-shadow:0 0 16px rgba(179,138,43,.18)}
+.section-page-end{border-color:var(--finish-border)}
+.section-page-end p{color:var(--muted,#6c5d53)}
+.section-page-end button{color:var(--finish-rose)}
+#cartShortcut{border-color:var(--finish-border)}
+#cartShortcut .counter{background:var(--finish-gold-light);color:#332316}
+#scrollProgress{background:linear-gradient(90deg,var(--finish-rose),var(--finish-gold-light),var(--finish-gold))}
+:where(.toast,.notice,.alert){max-width:min(92vw,440px);line-height:1.65}
+img{max-width:100%}
+@media(max-width:760px){
+  .site-header{gap:8px;padding-inline:10px}
+  .main-nav{gap:7px}
+  .main-nav a{font-size:11px}
+  .hero{min-height:clamp(320px,76svh,460px)}
+  .hero-copy{width:min(100%,600px);padding:26px 18px}
+  .hero-shade{
+    background:linear-gradient(90deg,rgba(39,26,21,.72),rgba(39,26,21,.38) 70%,rgba(39,26,21,.20)),
+      linear-gradient(0deg,rgba(39,26,21,.35),transparent 58%)!important
+  }
+  .hero h1{font-size:clamp(30px,8vw,44px)}
+  .hero-copy>p:not(.eyebrow){font-size:14px;line-height:1.8}
+  .section{width:calc(100% - 24px);padding-block:28px}
+  .section-heading{margin-bottom:15px;padding-bottom:10px}
+  .home-index-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .home-index-card{grid-template-columns:auto minmax(0,1fr) auto;padding:10px;gap:8px}
+  .home-index-copy strong{font-size:13px}
+  .home-index-copy small{font-size:11px}
+  .home-index-count{font-size:.9rem}
+  .category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .category-card{min-height:160px;padding:14px}
+  .category-card h3{font-size:18px}
+  .category-card p{font-size:12px;line-height:1.6}
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .product-info{padding:9px}
+  .product-info h3{font-size:13px}
+}
+@media(max-width:390px){
+  .brand small{display:none}
+  .brand-crown{width:32px;height:32px;flex-basis:32px}
+  .header-actions .icon-btn{width:32px;height:32px}
+  .home-index-grid,.category-grid{grid-template-columns:1fr}
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .section-page-toolbar{grid-template-columns:auto minmax(0,1fr);gap:8px}
+  .section-page-mark{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
