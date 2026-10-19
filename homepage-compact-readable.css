@@ -95,3 +95,65 @@ body { font-size: 16px !important; line-height: 1.7 !important; }
 @media (prefers-reduced-motion: reduce) {
   .hero, .hero-copy, .category-card { transition: none !important; animation: none !important; }
 }
+
+/* Consistent compact sizing across product, blending, contact and owner panels. */
+.product-card { padding: 14px !important; gap: 10px !important; }
+.product-info h3, .product-card h3, .product-tile h3, .product-item h3 {
+  font-size: 18px !important; line-height: 1.45 !important; overflow-wrap: anywhere;
+}
+.product-card p, .product-tile p, .product-item p, .product-info p {
+  font-size: 13px !important; line-height: 1.7 !important;
+}
+.product-card .price, .product-price, .modal-price { font-size: 16px !important; line-height: 1.5 !important; }
+.product-card .btn, .product-card .small-btn, .small-btn {
+  min-height: 39px; padding: 8px 12px !important; font-size: 13px !important; line-height: 1.45 !important;
+}
+.toolbar, .search-box { min-height: 42px; }
+.toolbar select, .search-box input, .blend-step select {
+  font-size: 14px !important; min-height: 42px; line-height: 1.5;
+}
+.blend-panel { gap: 13px !important; padding: clamp(14px, 2.5vw, 22px) !important; }
+.blend-summary strong { font-size: 19px !important; line-height: 1.5 !important; }
+.feature-copy { padding: clamp(22px, 4vw, 42px) !important; }
+.feature-copy h2, .gift-copy h2, .contact-card h2 { font-size: clamp(24px, 3vw, 34px) !important; line-height: 1.4 !important; }
+.advisor-box { padding: clamp(14px, 2.5vw, 22px) !important; gap: 16px !important; }
+.assistant-message, .suggestion p { font-size: 13px !important; line-height: 1.75 !important; }
+.contact-card { padding: clamp(24px, 4vw, 38px) 18px !important; }
+.contact-phone { font-size: 21px !important; }
+.product-modal { padding: clamp(16px, 3vw, 24px) !important; }
+.modal-product { gap: 16px !important; }
+.modal-product h2 { font-size: 25px !important; line-height: 1.4 !important; }
+.modal-product p, .modal-product label { font-size: 14px !important; line-height: 1.75 !important; }
+.admin-panel { padding: clamp(14px, 2.5vw, 24px) !important; }
+.admin-head h2 { font-size: clamp(21px, 2.5vw, 28px) !important; line-height: 1.4 !important; }
+.admin-panel h3 { font-size: 19px !important; line-height: 1.5 !important; }
+.admin-panel label, .admin-panel input, .admin-panel select, .admin-panel textarea,
+.admin-panel button, .admin-note, .admin-product { font-size: 14px !important; line-height: 1.7 !important; }
+.admin-tabs { gap: 7px !important; }
+.admin-tabs button { padding: 8px 11px !important; min-height: 39px; }
+table { font-size: 13px; }
+th, td { padding: 8px 10px; line-height: 1.6; }
+img, svg { max-width: 100%; }
+body, main, section, article, .product-card, .admin-panel, .product-modal { overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .product-card { padding: 10px !important; gap: 8px !important; }
+  .product-info h3, .product-card h3, .product-tile h3, .product-item h3 { font-size: 16px !important; }
+  .product-card p, .product-tile p, .product-item p, .product-info p { font-size: 12px !important; }
+  .product-card .btn, .product-card .small-btn, .small-btn { font-size: 12px !important; padding: 8px 9px !important; }
+  .modal-backdrop { padding: 10px !important; }
+  .product-modal { max-height: 92vh !important; }
+  .modal-product { grid-template-columns: minmax(0, 1fr) !important; gap: 12px !important; }
+  .modal-product-image { height: 160px !important; }
+  .blend-panel { grid-template-columns: minmax(0, 1fr) !important; }
+  .blend-summary { grid-column: 1 !important; }
+  .advisor-box { grid-template-columns: 1fr !important; }
+  .advisor-symbol { width: 54px !important; height: 54px !important; font-size: 32px !important; }
+  .feature-banner { min-height: 220px !important; padding: 24px !important; }
+  .feature-banner h3 { font-size: 24px !important; line-height: 1.4 !important; }
+  .gift-section { grid-template-columns: minmax(0, 1fr) !important; gap: 18px !important; }
+  .admin-panel { max-height: 96vh !important; }
+  .admin-tabs { flex-wrap: wrap; }
+  .admin-tabs button { flex: 1 1 120px; }
+  table { font-size: 12px; }
+  th, td { padding: 7px 8px; }
+}
