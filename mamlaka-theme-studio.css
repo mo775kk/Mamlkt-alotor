@@ -1,0 +1,18 @@
+/* Mamlakat Al-Otor — Theme Studio: shape variants built on the saved settings palette. */
+:root{--theme-radius:14px;--theme-card-shadow:0 7px 22px rgba(55,38,19,.07);--theme-control-radius:10px}
+html[data-visual-style="classic"]{--theme-radius:10px;--theme-card-shadow:0 3px 12px rgba(55,38,19,.05);--theme-control-radius:7px}
+html[data-visual-style="windows"]{--theme-radius:5px;--theme-card-shadow:0 2px 7px rgba(35,50,70,.07);--theme-control-radius:4px}
+html[data-visual-style="android"]{--theme-radius:22px;--theme-card-shadow:0 8px 24px rgba(55,38,19,.08);--theme-control-radius:999px}
+html[data-visual-style="ios"]{--theme-radius:17px;--theme-card-shadow:0 8px 28px rgba(30,35,45,.06);--theme-control-radius:12px}
+html[data-visual-style="oneui"]{--theme-radius:20px;--theme-card-shadow:0 5px 18px rgba(30,50,65,.06);--theme-control-radius:14px}
+html[data-visual-style="pixel"]{--theme-radius:12px;--theme-card-shadow:0 4px 0 color-mix(in srgb,var(--line) 65%,transparent);--theme-control-radius:9px}
+.product-card,.category-card,.royal-family-box,.admin-card,.product-tile,.gift-card,.oil-card,.blend-card,.section-card,.info-card,.modal-card,.drawer-panel{border-radius:var(--theme-radius)!important;box-shadow:var(--theme-card-shadow)}
+button,.btn,.icon-btn,input,select,textarea,.search-box{border-radius:var(--theme-control-radius)}
+.product-card,.category-card,.royal-family-box,.product-tile,.gift-card,.oil-card,.blend-card,.section-card,.info-card{border-color:var(--line,var(--line))!important}
+button,.btn{transition:transform .16s ease,box-shadow .16s ease,filter .16s ease}
+@media(hover:hover){.product-card:hover,.category-card:hover,.product-tile:hover,.gift-card:hover,.oil-card:hover,.blend-card:hover{transform:translateY(-2px)}button:hover,.btn:hover{filter:brightness(1.035)}}
+:focus-visible{outline:3px solid var(--gold2,#d4af37)!important;outline-offset:2px}
+.product-info h3,.category-card h3,.section-heading h2{line-height:1.35;text-wrap:balance}
+.product-card img,.product-image,.category-card img,.product-tile img{border-radius:calc(var(--theme-radius) - 4px)}
+@media(max-width:640px){.product-card,.category-card,.product-tile,.gift-card,.oil-card,.blend-card{box-shadow:0 3px 12px rgba(55,38,19,.06)}button,.btn{min-height:40px}.product-info h3,.category-card h3{font-size:clamp(14px,3.8vw,17px)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
