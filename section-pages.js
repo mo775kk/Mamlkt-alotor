@@ -47,8 +47,9 @@
     if (!id) return null;
     const target = document.getElementById(id);
     if (!target || !main.contains(target)) return null;
-    const host = target.closest("section");
-    return host && main.contains(host) ? {target, host} : null;
+    let host = target;
+    while (host && host.parentElement !== main) host = host.parentElement;
+    return host && host.parentElement === main && host.tagName === "SECTION" ? {target, host} : null;
   }
 
   function navigate(id, replace = false, preserveLocation = false) {
@@ -112,7 +113,6 @@
   window.addEventListener("popstate", () => {
     const id = decodeURIComponent(location.hash.slice(1) || "home");
     if (id === "home" || resolveSection(id)) navigate(id, true);
-
   });
   window.addEventListener("hashchange", () => {
     const id = decodeURIComponent(location.hash.slice(1) || "home");
