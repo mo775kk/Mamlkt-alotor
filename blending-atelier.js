@@ -1,0 +1,24 @@
+/* Interactive blending atelier: progressive guidance, family shortcuts, live summary. */
+(function(){
+'use strict';
+function init(){
+ var section=document.getElementById('blend'),panel=section&&section.querySelector('.blend-panel');
+ if(!section||!panel||section.dataset.blendAtelierReady==='1')return;
+ section.dataset.blendAtelierReady='1';
+ var oil=document.getElementById('blendOil'),family=document.getElementById('blendScent'),size=document.getElementById('blendSize'),bottle=document.getElementById('blendBottle');
+ if(!oil||!family||!size||!bottle)return;
+ var intro=document.createElement('div');intro.className='blend-intro';intro.innerHTML='<div class="blend-intro-card"><h3>اصنع بصمتك العطرية</h3><p>اختَر طابع الرائحة، ثم الحجم والعبوة. يمكنك تحديد زيت من الكتالوج أو ترك الاختيار للمتجر، وبعدها أضف طلبك للسلة وأرسله عبر واتساب للمراجعة.</p></div><div class="blend-intro-card"><h3>اختيار واضح قبل الطلب</h3><p>السعر الظاهر تقديري وفق قائمة البيع المسجلة. لا نعرض سعر المورد للعميل، ويؤكد المتجر التوفر والتكلفة النهائية قبل تجهيز التركيبة.</p></div>';
+ var steps=document.createElement('div');steps.className='blend-steps';steps.setAttribute('aria-label','خطوات تركيب العطر');steps.innerHTML='<div class="blend-step-chip"><b>١</b><span>حدّد العائلة العطرية</span></div><div class="blend-step-chip"><b>٢</b><span>اختر الزيت والحجم</span></div><div class="blend-step-chip"><b>٣</b><span>راجع الطلب وأضفه للسلة</span></div>';
+ var heading=section.querySelector('.section-heading');if(!heading)return;heading.insertAdjacentElement('afterend',intro);intro.insertAdjacentElement('afterend',steps);
+ var familyStep=family.closest('.blend-step');
+ if(familyStep){familyStep.classList.add('blend-family-picker');var label=familyStep.querySelector('label');var shortcuts=document.createElement('div');shortcuts.className='blend-family-options';shortcuts.setAttribute('aria-label','اختيارات سريعة للعائلة العطرية');var choices=[['شرقي','شرقي دافئ'],['خشبي','خشبي أنيق'],['زهري','زهري ناعم'],['منعش','منعش وحيوي'],['حلو','حلو وفانيليا'],['مسكي','مسكي نظيف'],['عود وخشبي','عود وخشبي'],['حمضي ومنعش','حمضي ومنعش']];
+ choices.forEach(function(item){var b=document.createElement('button');b.type='button';b.className='blend-family-option';b.textContent=item[1];b.dataset.family=item[0];b.setAttribute('aria-pressed',String(family.value===item[0]));b.addEventListener('click',function(){family.value=item[0];family.dispatchEvent(new Event('change',{bubbles:true}));sync()});shortcuts.appendChild(b)});(label||familyStep).insertAdjacentElement('afterend',shortcuts)}
+ var live=document.createElement('div');live.className='blend-live-summary';live.setAttribute('aria-live','polite');var summary=panel.querySelector('.blend-summary');if(summary)summary.insertAdjacentElement('afterend',live);
+ var note=document.createElement('p');note.className='blend-footnote';note.textContent='تنبيه: اختيار العائلة يصف الطابع المرغوب ولا يعني خلط زيوت متعددة تلقائيًا. تفاصيل المكونات النهائية يراجعها المتجر معك.';panel.appendChild(note);
+ function esc(v){return String(v).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+ function refreshPrice(){var defaults={'3':50,'5':75,'10':100,'22':130,'30':100,'50':150,'100':300};try{var cfg=JSON.parse(localStorage.getItem('mamlaka_catalog_taxonomy_config_v1')||'null');if(cfg&&Array.isArray(cfg.retailBlendPrices)){cfg.retailBlendPrices.forEach(function(item){var n=String(item.size||'').match(/[0-9]+/),v=Number(item.price);if(n&&Number.isFinite(v)&&v>=50)defaults[n[0]]=v})}}catch(e){}var el=document.getElementById('blendPrice'),value=defaults[String(size.value)]||50;if(el)el.textContent=value.toLocaleString('ar-EG')+' ج.م';return value}
+ function sync(){var selectedOil=oil.options[oil.selectedIndex];var oilName=selectedOil&&selectedOil.value?selectedOil.textContent:'اختيار الزيت بمساعدة المتجر';var sizeText=size.options[size.selectedIndex]?size.options[size.selectedIndex].textContent:size.value+' مل';var bottleText=bottle.options[bottle.selectedIndex]?bottle.options[bottle.selectedIndex].textContent:bottle.value;var amount=refreshPrice();live.innerHTML='<span>✧ <b>الطابع:</b> '+esc(family.options[family.selectedIndex]?.textContent||family.value)+'</span><span>◈ <b>الزيت:</b> '+esc(oilName)+'</span><span>◇ <b>الحجم:</b> '+esc(sizeText)+'</span><span>♢ <b>العبوة:</b> '+esc(bottleText)+'</span><span>ج.م <b>السعر المرجعي:</b> '+amount.toLocaleString('ar-EG')+'</span>';Array.prototype.forEach.call(section.querySelectorAll('.blend-family-option'),function(b){b.setAttribute('aria-pressed',String(b.dataset.family===family.value))})}
+ [oil,family,size,bottle].forEach(function(el){el.addEventListener('change',sync)});document.addEventListener('mamlaka:products-updated',sync);document.addEventListener('mamlaka:supplier-catalog-updated',sync);sync();
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
