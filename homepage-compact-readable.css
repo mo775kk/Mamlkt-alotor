@@ -157,3 +157,83 @@ body, main, section, article, .product-card, .admin-panel, .product-modal { over
   table { font-size: 12px; }
   th, td { padding: 7px 8px; }
 }
+
+
+/* Professional scale pass: balanced desktop proportions and tighter mobile layout. */
+html { font-size: 14px; scroll-padding-top: 64px; }
+body { font-size: 14px !important; line-height: 1.65 !important; }
+.site-header { min-height: 60px !important; padding: 7px clamp(14px, 2.5vw, 28px) !important; gap: 12px !important; }
+.site-header .brand strong { font-size: 18px !important; }
+.site-header .brand small { font-size: 8px !important; }
+.site-header .main-nav { gap: clamp(8px, 1.25vw, 16px) !important; }
+.site-header .main-nav a { font-size: 12px !important; padding: 6px 2px !important; }
+.icon-btn { min-width: 34px; min-height: 34px; }
+.hero { min-height: clamp(270px, 31vw, 370px) !important; padding: clamp(22px, 3vw, 36px) !important; margin: 8px 0 14px !important; }
+.hero-copy { max-width: 560px !important; }
+.hero-copy h1, .hero h1 { font-size: clamp(29px, 3.5vw, 44px) !important; line-height: 1.2 !important; margin: 5px 0 9px !important; }
+.hero-copy p, .hero p { font-size: clamp(13px, 1.05vw, 15px) !important; line-height: 1.7 !important; }
+.hero-actions { margin-top: 13px !important; }
+.hero-actions .btn, .btn { min-height: 36px; padding: 8px 13px !important; font-size: 12px !important; }
+.section { width: min(1080px, calc(100% - 40px)) !important; margin-bottom: 30px !important; }
+.section-heading { margin-bottom: 14px !important; padding-bottom: 9px !important; gap: 10px !important; }
+.section-heading h2, .section-title, .section-title h2, .feature-copy h2, .gift-copy h2, .contact-card h2 { font-size: clamp(22px, 2.4vw, 30px) !important; line-height: 1.35 !important; }
+.section-heading p { font-size: 12px !important; line-height: 1.65 !important; }
+.category-grid { gap: 9px !important; }
+.category-card { min-height: 132px !important; padding: 12px !important; }
+.category-card h3 { font-size: 17px !important; }
+.category-card p { font-size: 11px !important; }
+.trust-strip { padding: 11px !important; gap: 20px !important; }
+.product-card { padding: 11px !important; gap: 8px !important; }
+.product-info h3, .product-card h3, .product-tile h3, .product-item h3 { font-size: 15px !important; line-height: 1.4 !important; }
+.product-card p, .product-tile p, .product-item p, .product-info p { font-size: 12px !important; line-height: 1.6 !important; }
+.product-card .price, .product-price, .modal-price { font-size: 14px !important; }
+.product-card .btn, .product-card .small-btn, .small-btn { min-height: 34px; padding: 7px 10px !important; font-size: 12px !important; }
+.toolbar select, .search-box input, .blend-step select, input, select, textarea { font-size: 13px !important; }
+.blend-panel, .advisor-box, .admin-panel { padding: 16px !important; gap: 12px !important; }
+.blend-summary strong { font-size: 17px !important; }
+.modal-product h2 { font-size: 22px !important; }
+.contact-card { padding: 24px 16px !important; }
+.contact-phone { font-size: 19px !important; }
+.admin-head h2 { font-size: 24px !important; }
+.admin-panel h3 { font-size: 17px !important; }
+.admin-panel label, .admin-panel input, .admin-panel select, .admin-panel textarea, .admin-panel button, .admin-note, .admin-product { font-size: 12px !important; }
+table { font-size: 12px !important; }
+th, td { padding: 7px 8px !important; }
+@media (max-width: 760px) {
+  html { font-size: 13px; scroll-padding-top: 58px; }
+  body { font-size: 13px !important; line-height: 1.65 !important; }
+  .site-header { min-height: 54px !important; padding: 6px 10px !important; gap: 6px !important; }
+  .site-header .brand strong { font-size: 15px !important; }
+  .site-header .brand small { font-size: 7px !important; }
+  .brand-crown { width: 27px !important; height: 27px !important; font-size: 18px !important; }
+  .site-header .main-nav a { font-size: 12px !important; }
+  .hero { padding: 24px 15px 22px !important; margin: 6px 0 10px !important; }
+  .hero-copy h1, .hero h1 { font-size: clamp(25px, 7vw, 34px) !important; line-height: 1.25 !important; }
+  .hero-copy p, .hero p { font-size: 12px !important; line-height: 1.7 !important; }
+  .hero-actions { gap: 7px !important; margin-top: 11px !important; }
+  .hero-actions .btn, .btn { min-height: 34px; padding: 7px 10px !important; font-size: 11px !important; }
+  .section { width: calc(100% - 24px) !important; margin-bottom: 24px !important; }
+  .section-heading { margin-bottom: 11px !important; }
+  .section-heading h2, .section-title, .section-title h2, .feature-copy h2, .gift-copy h2, .contact-card h2 { font-size: 21px !important; }
+  .section-heading p { font-size: 11px !important; }
+  .category-card { min-height: 118px !important; padding: 10px !important; }
+  .category-card h3 { font-size: 15px !important; }
+  .category-card p { font-size: 10px !important; }
+  .trust-strip { gap: 10px 14px !important; padding: 10px 8px !important; }
+  .trust-strip b { font-size: 11px !important; }
+  .trust-strip small { font-size: 9px !important; }
+  .product-card { padding: 9px !important; }
+  .product-info h3, .product-card h3, .product-tile h3, .product-item h3 { font-size: 14px !important; }
+  .product-card p, .product-tile p, .product-item p, .product-info p { font-size: 11px !important; }
+  .product-card .btn, .product-card .small-btn, .small-btn { font-size: 11px !important; min-height: 32px; padding: 6px 8px !important; }
+  .blend-panel, .advisor-box, .admin-panel { padding: 12px !important; gap: 10px !important; }
+  .modal-product h2 { font-size: 20px !important; }
+  .modal-product p, .modal-product label { font-size: 12px !important; }
+  .admin-panel label, .admin-panel input, .admin-panel select, .admin-panel textarea, .admin-panel button, .admin-note, .admin-product { font-size: 11px !important; }
+  th, td { padding: 6px !important; }
+}
+@media (max-width: 380px) {
+  .site-header .brand strong { font-size: 14px !important; }
+  .hero-copy h1, .hero h1 { font-size: 25px !important; }
+  .section-heading h2, .section-title, .section-title h2 { font-size: 19px !important; }
+}
