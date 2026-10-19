@@ -9,10 +9,6 @@
   const header = document.querySelector(".site-header");
   if (!main || !header) return;
 
-  const sectionIds = new Set([
-    "home","homeIndex","ready","oils","oil-catalog","scent-classification",
-    "blend","bakhoor","gift","advisor","visit","quiz","homeCatalog"
-  ]);
   const originalHidden = new Map();
   let activeId = "";
 
@@ -47,11 +43,20 @@
     return [...main.children].filter(el => el.id !== "sectionPageToolbar" && el.id !== "sectionPageEnd");
   }
 
+  function resolveSection(id) {
+    if (!id) return null;
+    const target = document.getElementById(id);
+    if (!target || !main.contains(target)) return null;
+    const host = target.closest("section");
+    return host && main.contains(host) ? {target, host} : null;
+  }
+
   function navigate(id, replace = false, preserveLocation = false) {
-    if (!sectionIds.has(id)) return;
-    const section = document.getElementById(id);
+    if (id !== "home" && !resolveSection(id)) return;
+    const resolved = resolveSection(id);
+    const section = resolved?.target || document.getElementById("home");
     if (!section || !main.contains(section)) return;
-    const host = section.closest("section") || section;
+    const host = id === "home" ? section : resolved.host;
     if (!host || !main.contains(host)) return;
     ensureNavigation();
     const bar = document.getElementById("sectionPageToolbar");
@@ -63,6 +68,12 @@
       if (!originalHidden.has(el)) originalHidden.set(el, el.hidden);
       el.hidden = isHome ? originalHidden.get(el) : el !== host;
     });
+    if (!isHome) {
+      host.setAttribute("data-standalone-section", "true");
+      host.setAttribute("aria-label", host.getAttribute("aria-label") || titleFor(host));
+    } else {
+      allPageSections().forEach(el => el.removeAttribute("data-standalone-section"));
+    }
     bar.hidden = isHome;
     end.hidden = isHome;
     if (!isHome) {
@@ -91,7 +102,7 @@
     const link = event.target.closest('a[href^="#"]');
     if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const id = decodeURIComponent(link.getAttribute("href").slice(1));
-    if (!sectionIds.has(id)) return;
+    if (id !== "home" && !resolveSection(id)) return;
     const target = document.getElementById(id);
     if (!target || !main.contains(target)) return;
     event.preventDefault();
@@ -100,15 +111,15 @@
 
   window.addEventListener("popstate", () => {
     const id = decodeURIComponent(location.hash.slice(1) || "home");
-    if (sectionIds.has(id)) navigate(id, true);
-    else navigate("home", true, true);
+    if (id === "home" || resolveSection(id)) navigate(id, true);
+
   });
   window.addEventListener("hashchange", () => {
     const id = decodeURIComponent(location.hash.slice(1) || "home");
-    if (sectionIds.has(id) && id !== activeId) navigate(id, true);
+    if ((id === "home" || resolveSection(id)) && id !== activeId) navigate(id, true);
   });
 
   ensureNavigation();
   const initial = decodeURIComponent(location.hash.slice(1) || "home");
-  if (sectionIds.has(initial)) navigate(initial, true);
+  if (initial === "home" || resolveSection(initial)) navigate(initial, true);
 })();
