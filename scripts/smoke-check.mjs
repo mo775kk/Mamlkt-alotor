@@ -113,6 +113,26 @@ report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor
   report(false, "Unable to validate PWA install files: " + e.message);
 }
 
+try {
+  const app = read("app.js");
+  report(app.includes('const bind = (selector, eventName, handler, options) => { const el = $(selector); if (el) el.addEventListener(eventName, handler, options); }'),
+    "app.js shared event binder checks that an element exists before attaching listeners");
+  report(!app.includes('$("#mainNav").querySelectorAll("a")') &&
+    app.includes("const mainNav=$(\"#mainNav\");if(mainNav)mainNav.querySelectorAll"),
+    "Mobile navigation links are bound only when the navigation element exists");
+  report(app.includes('const contactWhatsapp=$("#contactWhatsapp");if(contactWhatsapp)contactWhatsapp.href=') &&
+    app.includes('const languageToggle=$("#languageToggle");if(languageToggle)languageToggle.textContent='),
+    "WhatsApp and language controls tolerate optional/missing elements");
+  report(app.includes('const voiceButton=$("#voiceSearch");if(!voiceButton)return;') &&
+    app.includes('if(search){search.value=e.results[0][0].transcript;renderProducts();}'),
+    "Voice search checks its button and search field before updating them");
+  report(app.includes('const familyFilter=$("#supplierOilFamily");if(!familyFilter)return;') &&
+    app.includes('const input=$("#advisorInput");if(!input)return;'),
+    "Scent-family and advisor shortcut handlers guard dependent form fields");
+} catch (e) {
+  report(false, "Unable to validate null-safe event bindings: " + e.message);
+}
+
 const jsFiles = ["app.js", "ai-service.js", "settings.js", "enhancements.js", "supplier-catalog.js", "catalog-editor.js", "site-upgrades.js", "royal-gift-planner.js", "inventory-accounting.js", "royal-interactions.js", "royal-finish.js", "section-folds.js", "blending-atelier.js"];
 for (const file of jsFiles) {
   try {
