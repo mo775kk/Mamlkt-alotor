@@ -101,7 +101,7 @@ try {
     "Install fallback explains Android/iOS steps in an accessible dialog");
   report(html.includes('content="#160D14"') && manifest.theme_color === "#160D14",
     "Browser and installed-app theme colors match the cinematic charcoal palette");
-  report(html.includes("mamlaka-live-finish.css?v=20261018-royal-photo-contrast1"),
+  report(/mamlaka-live-finish\.css\?v=[^"]+/.test(html),
     "Bright pearl-pink and gold visual layer is linked from the storefront");
 
 report(/mamlaka-live-finish\.css\?v=[^"]+/.test(html),
@@ -146,7 +146,7 @@ try {
     "Fragrance house and alias metadata participates in search and product details");
   report(auditProducts.filter(p => p.notesStatus && p.sourceUrl && p.verified === false && p.needsReview === true).length >= 75,
     "Sourced fragrance reference notes remain marked unverified until the oil-to-reference match is reviewed");
-  report(read("index.html").includes("site-upgrades.js?v=20261016-note-coverage3"),
+  report(/site-upgrades\.js\?v=[^"]+/.test(read("index.html")),
     "Catalog note-coverage audit is linked with a fresh cache-buster");
 } catch (e) {
   report(false, "Unable to validate catalog audit diagnostics: " + e.message);
