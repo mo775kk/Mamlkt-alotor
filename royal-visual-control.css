@@ -22,9 +22,9 @@
 #royalControlPanel .rcp-reset{background:#ffffff0c;color:#fff4dc}
 #royalControlPanel .rcp-status{font-size:12px;color:#bfe8b9;min-height:20px;margin-top:9px}
 #royalControlPanel .rcp-note{font-size:11px;color:#b9ad9b;margin:8px 0 0}
-html{--rcp-card-alpha:.92;--rcp-image-alpha:1;--rcp-bg-shade:.35;--rcp-text-scale:1;--rcp-blur:14px;--rcp-brightness:1}
+html{font-size:calc(16px * var(--rcp-text-scale,1));--rcp-card-alpha:.92;--rcp-image-alpha:1;--rcp-bg-shade:.35;--rcp-text-scale:1;--rcp-blur:14px;--rcp-brightness:1}
 body{filter:brightness(var(--rcp-brightness,1))}
-body{font-size:calc(1em * var(--rcp-text-scale,1))}
+body{font-size:1rem}
 .product-card,.category-card,.home-index-card,.quiz-shell,.testimonial,.contact-card,.advisor-box,.blend-panel,.section-panel,.admin-panel,.settings-panel,.oil-card,.gift-card,.family-card,.product-modal,.drawer,.trust-strip>div{background-color:rgba(25,20,28,var(--rcp-card-alpha,.92))}
 .hero-image,.section img,.product-card img,.category-card img,.gift-card img,.oil-card img{opacity:var(--rcp-image-alpha,1)}
 .hero-shade{background:linear-gradient(180deg,rgba(5,5,5,var(--rcp-bg-shade,.35)),rgba(5,5,5,calc(var(--rcp-bg-shade,.35) + .25)) 62%,var(--ink))}
