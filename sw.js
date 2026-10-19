@@ -31,7 +31,7 @@ self.addEventListener("fetch", event => {
     return;
   }
   if (url.pathname.startsWith(BASE_PATH)) {
-    const isCodeOrStyle = /\\.(?:js|css)$/i.test(url.pathname);
+      const isCodeOrStyle = /\.(?:js|css)$/i.test(url.pathname);
     event.respondWith((async () => {
       if (isCodeOrStyle) {
         try {
