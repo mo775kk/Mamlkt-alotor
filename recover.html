@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#160D14">
+<title>إصلاح تشغيل مملكة العطور</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(145deg,#fff8fc,#fffdf5 60%,#ffeaf3);color:#52243c;font:18px/1.9 system-ui,Tahoma,Arial}.card{width:min(600px,100%);padding:clamp(22px,5vw,38px);border:1px solid #d4af37;border-radius:24px;background:#fffdfb;box-shadow:0 18px 55px #3a17301c;text-align:center}h1{font-size:clamp(25px,6vw,36px);margin:0 0 12px;color:#8d6720}p{margin:10px 0}.status{min-height:3em;color:#70485e;font-size:16px}.btn{display:inline-block;border:0;border-radius:12px;padding:13px 24px;background:#b68a20;color:#fff;font:700 17px system-ui;cursor:pointer}.small{font-size:13px;color:#705565}
+</style>
+</head>
+<body>
+<main class="card">
+<div aria-hidden="true" style="font-size:42px;color:#b68a20">♛</div>
+<h1>إصلاح تشغيل مملكة العطور</h1>
+<p>هذه أداة إصلاح آمنة تستهدف ملفات التخزين المؤقت القديمة فقط. لن تحذف المنتجات أو إعداداتك المحفوظة في المتصفح.</p>
+<p class="status" id="status" role="status" aria-live="polite">اضغط الزر لتنظيف ذاكرة الموقع القديمة وإعادة فتح الصفحة الرئيسية.</p>
+<button class="btn" id="repair" type="button">إصلاح الموقع وفتحه</button>
+<p class="small">لن يتم مسح بيانات المنتجات أو السلة أو إعدادات الإدارة.</p>
+</main>
+<script>
+(function(){
+var button=document.getElementById('repair'),status=document.getElementById('status'),busy=false;
+button.addEventListener('click',async function(){
+ if(busy)return;busy=true;button.disabled=true;button.textContent='جارٍ الإصلاح…';
+ status.textContent='جارٍ إيقاف نسخة الموقع القديمة وتنظيف ملفات التخزين المؤقت…';
+ try{
+  if('serviceWorker' in navigator){
+   var regs=await navigator.serviceWorker.getRegistrations();
+   await Promise.all(regs.map(function(reg){return reg.unregister().catch(function(){return false;});}));
+  }
+  if('caches' in window){
+   var keys=await caches.keys();
+   await Promise.all(keys.filter(function(key){return key.indexOf('mamlakat-al-otor-')===0;}).map(function(key){return caches.delete(key).catch(function(){return false;});}));
+  }
+  status.textContent='اكتمل التنظيف. جارٍ فتح الموقع بنسخة جديدة…';
+  setTimeout(function(){location.replace('./?recovery='+Date.now()+'#home');},500);
+ }catch(error){
+  status.textContent='تعذر التنظيف التلقائي في هذا المتصفح. افتح الموقع في Chrome ثم جرّب مرة أخرى.';
+  button.disabled=false;button.textContent='إعادة المحاولة';busy=false;
+ }
+});
+})();
+</script>
+</body>
+</html>
