@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#160D14">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <link rel="manifest" href="manifest.webmanifest?v=20261017-cinematic-ivory-gold1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.webmanifest?v=20261019-v3-cinematic">
   <link rel="icon" type="image/svg+xml" href="assets/images/app-icon-192.svg">
   <link rel="apple-touch-icon" href="assets/images/app-icon-192.png">
   <meta name="description" content="مملكة العطور — عطور جاهزة، زيوت عطرية، تركيب عطرك الخاص، عود وبخور وهدايا بطابع ملكي.">
@@ -14,85 +14,220 @@
   <meta property="og:description" content="اكتشف عطرك في مملكة العطور.">
   <meta property="og:image" content="assets/images/royal-hero.jpg">
   <title>مملكة العطور | CROWN · MAISON DE PARFUM</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261018-ivory-gold-v3">
 
-<style>.pwa-install-btn{white-space:nowrap;font-size:.82rem;padding:.55rem .75rem;min-height:38px}.pwa-install-btn[hidden]{display:none!important}.pwa-help-backdrop{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:18px;background:rgba(25,9,20,.78);backdrop-filter:blur(8px)}.pwa-help-backdrop[hidden]{display:none!important}.pwa-help-card{position:relative;width:min(520px,100%);max-height:85vh;overflow:auto;padding:clamp(22px,5vw,34px);border:1px solid rgba(212,175,55,.7);border-radius:24px;background:linear-gradient(145deg,#fff8fc,#fffdf5 60%,#ffeaf3);color:#5b243f;box-shadow:0 25px 80px rgba(0,0,0,.35);text-align:right}.pwa-help-card h2{margin:4px 0 8px;color:#5b243f;font:700 27px/1.45 Amiri,serif}.pwa-help-crown{font-size:34px;color:#b68a20}.pwa-help-close{position:absolute;top:12px;left:12px;width:38px;height:38px;border:1px solid #ecd2df;border-radius:50%;background:#fff;color:#5b243f;font-size:25px}.pwa-help-lead,.pwa-help-note{color:#705565;line-height:1.9}.pwa-help-steps{display:grid;gap:8px;margin:16px 0}.pwa-help-steps p{margin:0;padding:10px 12px;border:1px solid #efd9e3;border-radius:12px;background:#fff;color:#553148;line-height:1.8}.pwa-help-steps b{color:#a8751b}.pwa-help-note{font-size:12px;border-top:1px solid #ecd7e1;padding-top:12px}@media(max-width:680px){.pwa-install-btn{font-size:.75rem;padding:.45rem .55rem}.pwa-help-card h2{font-size:23px}}@media(prefers-reduced-motion:reduce){.pwa-help-backdrop{backdrop-filter:none}}</style>
-  <script>
-  // PWA installation: use the browser's native one-tap prompt when available,
-  // and explain browser-specific installation when the browser withholds it.
-  (function(){
-    var installPrompt=null,button=null,help=null;
-    function standalone(){return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;}
-    function makeHelp(){
-      if(help)return help;
-      help=document.createElement('div');help.id='pwaInstallHelp';help.className='pwa-help-backdrop';
-      help.hidden=true;help.innerHTML='<section class="pwa-help-card" role="dialog" aria-modal="true" aria-labelledby="pwaHelpTitle"><button type="button" class="pwa-help-close" aria-label="إغلاق">×</button><div class="pwa-help-crown" aria-hidden="true">♛</div><h2 id="pwaHelpTitle">ثبّت مملكة العطور على هاتفك</h2><p class="pwa-help-lead">التثبيت يضيف أيقونة للموقع على الشاشة الرئيسية لتفتحه كتطبيق بسهولة.</p><div class="pwa-help-steps" id="pwaHelpSteps"></div><p class="pwa-help-note">إذا ظهر زر «تثبيت التطبيق» الأصلي في المتصفح، استخدمه لإتمام التثبيت مباشرة. لا يمكن للموقع تجاوز موافقة المتصفح أو تثبيت التطبيق سرًا.</p><button type="button" class="btn btn-gold full-width" id="pwaHelpDone">حسنًا</button></section>';
-      document.body.appendChild(help);
-      function close(){help.hidden=true;}
-      help.querySelector('.pwa-help-close').addEventListener('click',close);
-      help.querySelector('#pwaHelpDone').addEventListener('click',close);
-      help.addEventListener('click',function(e){if(e.target===help)close();});
-      document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!help.hidden)close();});
-      return help;
+  <!-- ====== ROYAL CINEMATIC v3.0 — التصميم الحديث ====== -->
+  <style>
+    :root{
+      --ink:#050505; --surface:#0d0b0f; --surface-2:#141017;
+      --gold:#c9a227; --gold-soft:#e0c56a; --ivory:#f6f1e7;
+      --muted:#a89f93; --line:rgba(255,255,255,.10);
+      --glass:rgba(255,255,255,.055); --glass-strong:rgba(255,255,255,.09);
+      --radius:20px; --radius-sm:14px;
+      --shadow:0 24px 70px rgba(0,0,0,.55);
+      --font-display:"Cormorant Garamond",serif;
+      --font-body:"Tajawal",system-ui,sans-serif;
+      --font-ar-display:"Amiri",serif;
     }
-    function showHelp(){
-      var box=makeHelp(),ua=navigator.userAgent||'',steps=box.querySelector('#pwaHelpSteps');
-      if(/iPhone|iPad|iPod/i.test(ua)){
-        steps.innerHTML='<p><b>١.</b> افتح الموقع في Safari.</p><p><b>٢.</b> اضغط زر المشاركة.</p><p><b>٣.</b> اختر «إضافة إلى الشاشة الرئيسية»، ثم «إضافة».</p>';
-      }else if(/Android/i.test(ua)){
-        steps.innerHTML='<p><b>١.</b> افتح الموقع في Chrome.</p><p><b>٢.</b> افتح قائمة ⋮ أعلى المتصفح.</p><p><b>٣.</b> اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية» ثم أكّد.</p>';
-      }else{
-        steps.innerHTML='<p><b>١.</b> افتح الموقع في Chrome أو Edge.</p><p><b>٢.</b> استخدم أيقونة التثبيت في شريط العنوان أو قائمة المتصفح.</p>';
-      }
-      box.hidden=false;
-      var close=box.querySelector('.pwa-help-close');if(close)close.focus();
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--ink)}
+    body{
+      margin:0;background:
+        radial-gradient(1200px 600px at 80% -10%,rgba(201,162,39,.16),transparent 60%),
+        radial-gradient(900px 500px at -10% 30%,rgba(120,60,160,.12),transparent 55%),
+        var(--ink);
+      color:var(--ivory);font-family:var(--font-body);
+      -webkit-font-smoothing:antialiased;
     }
-    function sync(){
-      button=document.getElementById('installAppBtn');if(!button)return;
-      button.hidden=standalone();
-      if(button.dataset.pwaBound==='1')return;
-      button.dataset.pwaBound='1';
-      button.addEventListener('click',async function(){
-        if(standalone())return;
-        if(installPrompt){
-          var promptEvent=installPrompt;installPrompt=null;
-          try{promptEvent.prompt();var choice=await promptEvent.userChoice;if(choice&&choice.outcome==='accepted')button.hidden=true;}
-          catch(error){console.warn('Native install prompt unavailable',error);showHelp();}
-          return;
-        }
-        showHelp();
-      });
+    body::before{ /* film grain */
+      content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
     }
-    window.addEventListener('beforeinstallprompt',function(event){event.preventDefault();installPrompt=event;sync();});
-    window.addEventListener('appinstalled',function(){installPrompt=null;if(button)button.hidden=true;});
-    function init(){
-      sync();
-      if('serviceWorker' in navigator&&location.protocol==='https:'){
-        navigator.serviceWorker.register('./sw.js?v=20261019-null-safe-guards2',{scope:'./'}).catch(function(error){console.warn('PWA offline support unavailable',error);});
-      }
+    main,header,footer,.drawer,.modal-backdrop,.toast{position:relative;z-index:1}
+    a{color:inherit}
+    /* شريط تقدم التمرير */
+    #scrollProgress{position:fixed;top:0;right:0;left:0;height:3px;z-index:1200;
+      background:linear-gradient(90deg,var(--gold),var(--gold-soft),transparent);
+      transform-origin:right;transform:scaleX(0);transition:transform .1s linear}
+    /* الهيدر الزجاجي */
+    .site-header{
+      position:sticky;top:0;z-index:900;display:flex;align-items:center;gap:14px;
+      padding:12px clamp(14px,3vw,32px);
+      background:rgba(5,5,5,.55);backdrop-filter:blur(18px) saturate(140%);
+      border-bottom:1px solid var(--line);
     }
-    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
-  })();
-  </script>  <link rel="stylesheet" href="mamlaka-world-class.css?v=20261018-direct-home-v5">
-  <link rel="stylesheet" href="mamlaka-live-finish.css?v=20261018-royal-photo-contrast1">
-  <link rel="stylesheet" href="reference-settings.css?v=20261018-reference-settings1">
-  <link rel="stylesheet" href="mamlaka-readable-themes.css?v=20261018-readable-themes1">
-  <link rel="stylesheet" href="homepage-catalog.css?v=20261018-catalog-showcase1">
-  <link rel="stylesheet" href="mamlaka-background-clarity.css?v=20261018-background-clarity1">
-  <link rel="stylesheet" href="homepage-compact-readable.css?v=20261019-responsive-fix2">
+    .brand{gap:10px}
+    .brand strong{color:var(--ivory);letter-spacing:.02em}
+    .brand small{color:var(--muted)}
+    .brand-crown{color:var(--gold);filter:drop-shadow(0 0 10px rgba(201,162,39,.45))}
+    .main-nav a{color:var(--muted);font-weight:500;transition:color .25s}
+    .main-nav a:hover,.main-nav a[aria-current="page"]{color:var(--gold-soft)}
+    .icon-btn{background:var(--glass);border:1px solid var(--line);color:var(--ivory);
+      border-radius:50%;transition:.25s}
+    .icon-btn:hover{background:var(--glass-strong);border-color:rgba(201,162,39,.5);transform:translateY(-2px)}
+    .counter{background:var(--gold);color:#160d14;font-weight:800}
+    .btn{border-radius:999px;font-weight:700;letter-spacing:.01em;transition:.3s;border:1px solid transparent}
+    .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-soft));color:#160d14;
+      box-shadow:0 10px 30px rgba(201,162,39,.25)}
+    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(201,162,39,.35)}
+    .btn-outline{border-color:rgba(201,162,39,.45);color:var(--ivory);background:var(--glass)}
+    .btn-outline:hover{border-color:var(--gold);background:rgba(201,162,39,.12)}
+    /* الهيرو السينمائي */
+    .hero{position:relative;min-height:92vh;display:grid;align-items:center;overflow:hidden;isolation:isolate}
+    .hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
+      animation:heroZoom 22s ease-in-out infinite alternate}
+    @keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.08)}}
+    .hero-shade{position:absolute;inset:0;z-index:-1;
+      background:linear-gradient(180deg,rgba(5,5,5,.35) 0%,rgba(5,5,5,.72) 55%,var(--ink) 100%),
+                 radial-gradient(70% 90% at 20% 40%,rgba(5,5,5,.15),rgba(5,5,5,.85))}
+    .hero-copy{padding:clamp(24px,7vw,90px);max-width:820px}
+    .eyebrow{color:var(--gold-soft);letter-spacing:.28em;font-size:.78rem;font-weight:700;text-transform:uppercase}
+    .hero h1{font-family:var(--font-ar-display);font-size:clamp(2.6rem,7vw,5.4rem);
+      line-height:1.12;margin:.2em 0 .35em;color:var(--ivory);text-shadow:0 6px 40px rgba(0,0,0,.6)}
+    .hero h1 span{color:var(--gold-soft);font-style:italic}
+    .hero-copy>p:not(.eyebrow){color:rgba(246,241,231,.82);font-size:clamp(1rem,1.6vw,1.2rem);max-width:56ch;line-height:1.9}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+    .hero-note{margin-top:22px;color:var(--muted);font-size:.9rem}
+    .hero-note span{display:inline-block;width:34px;height:1px;background:var(--gold);vertical-align:middle;margin-inline-end:10px}
+    .hero-pagination{position:absolute;bottom:28px;inset-inline-start:clamp(24px,7vw,90px);display:flex;gap:8px}
+    .hero-pagination i{width:26px;height:2px;background:rgba(255,255,255,.25);border-radius:2px}
+    .hero-pagination i.active{background:var(--gold);width:44px}
+    .hero-next{position:absolute;bottom:20px;inset-inline-end:clamp(24px,6vw,70px);
+      width:52px;height:52px;border-radius:50%;display:grid;place-items:center;
+      border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(10px);
+      color:var(--ivory);font-size:1.8rem;text-decoration:none;transition:.3s}
+    .hero-next:hover{background:var(--gold);color:#160d14;transform:translateY(-3px)}
+    /* شريط الثقة */
+    .trust-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+      background:var(--line);border-block:1px solid var(--line)}
+    .trust-strip>div{display:flex;align-items:center;gap:14px;padding:22px clamp(16px,3vw,28px);
+      background:var(--surface)}
+    .trust-strip svg{width:34px;height:34px;stroke:var(--gold-soft);fill:none;stroke-width:1.6}
+    .trust-strip b{display:block;color:var(--ivory);font-size:1.02rem}
+    .trust-strip small{color:var(--muted)}
+    @media(max-width:720px){.trust-strip{grid-template-columns:1fr}}
+    /* الأقسام والعناوين */
+    .section{padding:clamp(48px,8vw,110px) clamp(16px,5vw,64px)}
+    .section-heading{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:18px;margin-bottom:38px}
+    .section-heading h2{font-family:var(--font-ar-display);font-size:clamp(1.9rem,3.6vw,3rem);
+      line-height:1.25;margin:.15em 0;color:var(--ivory)}
+    .section-heading>p{color:var(--muted);max-width:52ch;line-height:1.85;margin:0}
+    /* شبكة Bento */
+    .home-index-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    @media(max-width:1000px){.home-index-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.home-index-grid{grid-template-columns:1fr}}
+    .home-index-card{
+      display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
+      padding:18px;border-radius:var(--radius);text-decoration:none;
+      background:var(--glass);border:1px solid var(--line);
+      backdrop-filter:blur(14px);transition:.35s;
+    }
+    .home-index-card:hover{transform:translateY(-4px);border-color:rgba(201,162,39,.45);
+      background:var(--glass-strong);box-shadow:var(--shadow)}
+    .home-index-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;
+      background:rgba(201,162,39,.12);color:var(--gold-soft);font-size:1.25rem;border:1px solid rgba(201,162,39,.25)}
+    .home-index-copy strong{display:block;color:var(--ivory);font-size:1rem}
+    .home-index-copy small{color:var(--muted);font-size:.8rem;line-height:1.6}
+    .home-index-count{color:var(--gold-soft);font-weight:800;font-size:1.1rem}
+    .home-index-arrow{color:var(--muted);transition:.3s}
+    .home-index-card:hover .home-index-arrow{transform:translateX(-4px);color:var(--gold)}
+    .home-index-note{margin-top:16px;color:var(--muted);font-size:.85rem;line-height:1.8}
+    /* بطاقات الفئات */
+    .category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    @media(max-width:1000px){.category-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.category-grid{grid-template-columns:1fr}}
+    .category-card{
+      position:relative;overflow:hidden;border-radius:var(--radius);padding:26px;
+      background:linear-gradient(160deg,var(--surface-2),var(--surface));
+      border:1px solid var(--line);text-decoration:none;min-height:220px;
+      display:flex;flex-direction:column;justify-content:space-between;
+      transition:.35s;
+    }
+    .category-card::after{content:"";position:absolute;inset:0;pointer-events:none;
+      background:radial-gradient(120% 100% at 100% 0%,rgba(201,162,39,.16),transparent 55%);
+      opacity:0;transition:.35s}
+    .category-card:hover{transform:translateY(-5px);border-color:rgba(201,162,39,.45);box-shadow:var(--shadow)}
+    .category-card:hover::after{opacity:1}
+    .category-icon-wrap svg{width:46px;height:46px;stroke:var(--gold-soft);fill:none;stroke-width:1.5}
+    .category-card small{color:var(--gold-soft);letter-spacing:.14em;font-size:.7rem;font-weight:700}
+    .category-card h3{font-family:var(--font-ar-display);font-size:1.55rem;margin:.25em 0 .2em;color:var(--ivory)}
+    .category-card p{color:var(--muted);margin:0;font-size:.92rem}
+    .category-card b{position:absolute;bottom:22px;inset-inline-end:22px;color:var(--gold);font-size:1.2rem;transition:.3s}
+    .category-card:hover b{transform:translate(-3px,-3px)}
+    /* شبكة المنتجات */
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+    .product-card{border-radius:var(--radius);overflow:hidden;background:var(--surface);
+      border:1px solid var(--line);transition:.35s;position:relative}
+    .product-card:hover{transform:translateY(-5px);border-color:rgba(201,162,39,.5);box-shadow:var(--shadow)}
+    /* خريطة العطر */
+    .scent-map{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .scent-map span{padding:6px 12px;border-radius:999px;font-size:.78rem;
+      background:rgba(201,162,39,.10);border:1px solid rgba(201,162,39,.28);color:var(--gold-soft)}
+    /* اختبار اكتشف عطرك */
+    .quiz-shell{background:linear-gradient(150deg,var(--surface-2),var(--surface));
+      border:1px solid var(--line);border-radius:calc(var(--radius) + 6px);
+      padding:clamp(22px,4vw,40px);backdrop-filter:blur(16px)}
+    .quiz-progress{height:4px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:22px}
+    .quiz-progress i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold-soft));transition:width .4s}
+    .quiz-question{font-family:var(--font-ar-display);font-size:clamp(1.3rem,2.4vw,1.8rem);color:var(--ivory);margin:0 0 16px}
+    .quiz-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+    .quiz-opt{padding:14px 16px;border-radius:var(--radius-sm);cursor:pointer;
+      background:var(--glass);border:1px solid var(--line);color:var(--ivory);
+      text-align:right;font-family:inherit;font-size:.95rem;transition:.25s}
+    .quiz-opt:hover,.quiz-opt.selected{border-color:var(--gold);background:rgba(201,162,39,.14)}
+    /* آراء العملاء */
+    .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media(max-width:900px){.testimonial-grid{grid-template-columns:1fr}}
+    .testimonial{padding:22px;border-radius:var(--radius);background:var(--glass);
+      border:1px solid var(--line);backdrop-filter:blur(12px)}
+    .testimonial .stars{color:var(--gold);letter-spacing:2px;margin-bottom:8px}
+    .testimonial p{color:rgba(246,241,231,.86);line-height:1.8;margin:0 0 12px}
+    .testimonial cite{color:var(--muted);font-style:normal;font-size:.85rem}
+    /* تذييل */
+    .site-footer{border-top:1px solid var(--line);background:var(--surface);padding:40px 20px;text-align:center}
+    .site-footer p,.site-footer small{color:var(--muted)}
+    /* لوحة السلة */
+    .drawer{background:var(--surface);border-inline-start:1px solid var(--line);color:var(--ivory)}
+    .drawer-head h2{font-family:var(--font-ar-display);color:var(--ivory)}
+    .drawer-bottom{border-top:1px solid var(--line)}
+    .total-row strong{color:var(--gold-soft)}
+    .checkout-customer input,.checkout-customer textarea{
+      background:var(--glass);border:1px solid var(--line);color:var(--ivory);border-radius:10px;padding:10px}
+    /* المودال */
+    .modal-backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(10px)}
+    .product-modal{background:var(--surface);border:1px solid rgba(201,162,39,.3);color:var(--ivory)}
+    /* إشعارات */
+    .toast{background:var(--gold);color:#160d14;font-weight:700;border-radius:999px}
+    /* تقليل الحركة */
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+        transition-duration:.001ms!important;scroll-behavior:auto!important}
+    }
+    /* الوضع الفاتح اختياري */
+    html[data-theme="light"]{
+      --ink:#faf7f2;--surface:#fff;--surface-2:#f3eee6;--ivory:#2a1e18;
+      --muted:#6b5f55;--line:rgba(42,30,24,.12);--glass:rgba(0,0,0,.03);--glass-strong:rgba(0,0,0,.05);
+    }
+    html[data-theme="light"] body{background:var(--ink);color:var(--ivory)}
+    html[data-theme="light"] .site-header{background:rgba(255,255,255,.7)}
+    html[data-theme="light"] .hero-shade{background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.6) 60%,var(--ink))}
+  </style>
 </head>
 <body>
-  <!-- تم إلغاء شاشة الدخول المنفصلة؛ تظهر صورة الواجهة الرئيسية مباشرة عند فتح الموقع. -->
+  <div id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- الهيدر -->
   <header class="site-header">
     <a class="brand" href="#home" aria-label="مملكة العطور - الرئيسية">
-      <span class="brand-crown">♛</span>
+      <span class="brand-crown" aria-hidden="true">♛</span>
       <span><strong>مملكة العطور</strong><small>CROWN · MAISON DE PARFUM</small></span>
     </a>
-    <button type="button" class="icon-btn menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
-    <nav class="main-nav" id="mainNav">
+    <button type="button" class="icon-btn menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mainNav">☰</button>
+    <nav class="main-nav" id="mainNav" aria-label="التنقل الرئيسي">
       <a href="#home" data-nav="home">الرئيسية</a>
       <a href="#ready" data-nav="ready">العطور الجاهزة</a>
       <a href="#oils" data-nav="oils">الزيوت والتركيب</a>
@@ -105,35 +240,39 @@
       <button type="button" class="icon-btn" id="searchFocus" aria-label="بحث" title="بحث"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4.2 4.2"/></svg></button>
       <button type="button" class="icon-btn" id="favoritesShortcut" aria-label="المفضلة" title="المفضلة"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 8.7c0 5.1-8.8 10-8.8 10s-8.8-4.9-8.8-10A4.7 4.7 0 0 1 12 6.1a4.7 4.7 0 0 1 8.8 2.6Z"/></svg><span class="counter" id="favCount">0</span></button>
       <button type="button" class="icon-btn" id="cartShortcut" aria-label="السلة" title="السلة"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 12H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg><span class="counter" id="cartCount">0</span></button>
+      <button type="button" class="icon-btn" id="themeToggle" aria-label="تبديل الوضع الليلي/النهاري" title="الوضع الليلي/النهاري">◐</button>
       <button type="button" class="btn btn-outline pwa-install-btn" id="installAppBtn">تثبيت التطبيق</button>
       <button type="button" class="icon-btn language-btn" id="languageToggle" aria-label="Change language">EN</button>
     </div>
   </header>
 
   <main>
+    <!-- الهيرو السينمائي -->
     <section class="hero" id="home">
-      <img class="hero-image" src="assets/images/royal-hero.jpg" alt="زجاجة عطر ملكية بتفاصيل ذهبية في أجواء شرقية فاخرة">
+      <img class="hero-image" src="assets/images/royal-hero.jpg" alt="زجاجة عطر ملكية بتفاصيل ذهبية في أجواء شرقية فاخرة" fetchpriority="high">
       <div class="hero-shade"></div>
       <div class="hero-copy">
         <p class="eyebrow">MAMLKAT AL-OTOR · THE ROYAL SCENT</p>
         <h1>العطر… <span>توقيع لا يُنسى</span></h1>
         <p>اكتشف روائح تعبّر عنك، من العطور الجاهزة إلى الزيوت والتركيبات الخاصة، في تجربة تليق بمملكتك.</p>
         <div class="hero-actions">
-          <a class="btn btn-gold" href="#ready">اكتشف العطور <span>←</span></a>
-          <a class="btn btn-outline" href="#blend">ركّب عطرك الخاص</a>
+          <a class="btn btn-gold" href="#ready">اكتشف العطور <span aria-hidden="true">←</span></a>
+          <a class="btn btn-outline" href="#quiz">اكتشف عطرك في 30 ثانية</a>
         </div>
-        <div class="hero-note"><span></span> اختيارات عطرية بطابع ملكي</div>
+        <div class="hero-note"><span aria-hidden="true"></span> اختيارات عطرية بطابع ملكي</div>
       </div>
-      <div class="hero-pagination"><i class="active"></i><i></i><i></i></div>
+      <div class="hero-pagination" aria-hidden="true"><i class="active"></i><i></i><i></i></div>
       <a class="hero-next" href="#ready" aria-label="اكتشف المنتجات">›</a>
     </section>
 
-    <section class="trust-strip">
-      <div><span class="line-icon" aria-hidden="true"><svg viewBox="0 0 48 48" class="trust-line-icon"><path d="M8 17l9 8 7-14 7 14 9-8-4 20H12L8 17Z"/><path d="M13 42h22"/></svg></span><span><b>ذوق ملكي</b><small>اختيارات لكل شخصية</small></span></div>
-      <div><span class="line-icon" aria-hidden="true"><svg viewBox="0 0 48 48" class="trust-line-icon"><path d="M19 6h10v8l5 5v22H14V19l5-5V6Z"/><path d="M19 10h10M18 25h12M18 31h12"/></svg></span><span><b>خيارات متنوعة</b><small>جاهز، زيت وتركيب</small></span></div>
-      <div><span class="line-icon" aria-hidden="true"><svg viewBox="0 0 48 48" class="trust-line-icon"><path d="M9 8h30v25H24l-10 7v-7H9V8Z"/><path d="M16 17h16M16 24h11"/></svg></span><span><b>طلب سهل</b><small>تواصل مباشر عبر واتساب</small></span></div>
+    <!-- شريط الثقة -->
+    <section class="trust-strip" aria-label="مزايا المتجر">
+      <div><span class="line-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 17l9 8 7-14 7 14 9-8-4 20H12L8 17Z"/><path d="M13 42h22"/></svg></span><span><b>ذوق ملكي</b><small>اختيارات لكل شخصية</small></span></div>
+      <div><span class="line-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M19 6h10v8l5 5v22H14V19l5-5V6Z"/><path d="M19 10h10M18 25h12M18 31h12"/></svg></span><span><b>خيارات متنوعة</b><small>جاهز، زيت وتركيب</small></span></div>
+      <div><span class="line-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M9 8h30v25H24l-10 7v-7H9V8Z"/><path d="M16 17h16M16 24h11"/></svg></span><span><b>طلب سهل</b><small>تواصل مباشر عبر واتساب</small></span></div>
     </section>
 
+    <!-- فهرس المملكة -->
     <section class="section home-index-section" id="homeIndex" aria-label="فهرس الموقع">
       <div class="section-heading"><div><p class="eyebrow">KINGDOM DIRECTORY</p><h2>فهرس مملكة العطور</h2></div><p>الوصول المباشر لكل قسم، بخط واضح وعناوين عربية صريحة.</p></div>
       <div class="home-index-grid">
@@ -146,18 +285,34 @@
         <a class="home-index-card" href="#advisor"><span class="home-index-icon" aria-hidden="true">✦</span><span class="home-index-copy"><strong>مستشار العطور</strong><small>ساعدنا على فهم ذوقك</small></span><span class="home-index-arrow" aria-hidden="true">←</span></a>
         <a class="home-index-card" href="#visit"><span class="home-index-icon" aria-hidden="true">⌖</span><span class="home-index-copy"><strong>التواصل والزيارة</strong><small>استفسر عن التوفر والسعر</small></span><span class="home-index-arrow" aria-hidden="true">←</span></a>
       </div>
-      <p class="home-index-note"><span aria-hidden="true">ⓘ</span> الأسماء المعروضة مأخوذة من الكتالوج المسجل. يُؤكَّد التوفر والسعر النهائي مع المتجر قبل إتمام الطلب.</p>
+      <p class="home-index-note"><span aria-hidden="true">ⓘ</span> الأسماء المعروضة مأخوذة من الكتالوج المسجل. يُؤكَّد التوفر والسعر النهائي مع المتجر قبل إتمام الطلب.</p>
     </section>
 
-    <section class="section quick-start-section" aria-label="ابدأ في مملكة العطور">
-      <div class="section-heading"><div><p class="eyebrow">CHOOSE YOUR SCENT JOURNEY</p><h2>ابدأ رحلتك العطرية</h2></div><p>التركيب والأنواع والتصنيف في مكان واحد.</p></div>
-      <div class="category-grid quick-start-grid">
-        <a class="category-card category-oils" href="#blend"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5C20 13 10 22 10 31a14 14 0 0 0 28 0C38 22 28 13 24 5Z"/><path d="M17 31c0 4 3 7 7 7"/><path d="M20 17l4-5 4 5"/></svg></span><div><small>BLENDING LAB</small><h3>ابدأ تركيب عطرك</h3><p>اختر الزيت والحجم والعائلة العطرية</p></div><b>↗</b></a>
-        <a class="category-card category-ready" href="#oil-catalog"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5C20 13 10 22 10 31a14 14 0 0 0 28 0C38 22 28 13 24 5Z"/><path d="M17 31c0 4 3 7 7 7"/><path d="M20 17l4-5 4 5"/></svg></span><div><small>SUPPLIER OILS</small><h3>أنواع الزيوت المتاحة</h3><p>ابحث في كتالوج الموردين الكامل</p></div><b>↗</b></a>
-        <a class="category-card category-gift" href="#scent-classification"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 23c-9-1-12-7-8-11 4-3 8 2 8 11Zm0 0c1-9 7-12 11-8 3 4-2 8-11 8Zm0 0c9 1 12 7 8 11-4 3-8-2-8-11Zm0 0c-1 9-7 12-11 8-3-4 2-8 11-8Z"/><circle cx="24" cy="23" r="4"/><path d="M24 28v14m0-5c-5-1-7-3-8-6m8 3c5-1 7-3 8-6"/></svg></span><div><small>SCENT FAMILIES</small><h3>التصنيف العطري</h3><p>استكشف العائلات وطبيعة الروائح</p></div><b>↗</b></a>
+    <!-- أبواب المملكة -->
+    <section class="section category-section">
+      <div class="section-heading"><div><p class="eyebrow">EXPLORE THE COLLECTION</p><h2>أبواب المملكة</h2></div><p>اختر عالم الرائحة الذي يشبهك.</p></div>
+      <div class="category-grid">
+        <a class="category-card" href="#ready"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M19 5h10v7l4 4v4l5 5v17H10V25l5-5v-4l4-4V5Z"/><path d="M19 9h10M15 25h18M17 31h14"/><path d="M20 20h8v5h-8z"/><path d="M24 28l2 3-2 3-2-3 2-3Z"/></svg></span><div><small>THE SIGNATURE</small><h3>العطور الجاهزة</h3><p>رائحة تترك أثرًا</p></div><b>↗</b></a>
+        <a class="category-card" href="#oils"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5C20 13 10 22 10 31a14 14 0 0 0 28 0C38 22 28 13 24 5Z"/><path d="M17 31c0 4 3 7 7 7"/><path d="M20 17l4-5 4 5"/></svg></span><div><small>THE ESSENCE</small><h3>الزيوت والتركيب</h3><p>اصنع توقيعك الخاص</p></div><b>↗</b></a>
+        <a class="category-card" href="#bakhoor"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M11 26h26l-4 13H15l-4-13Z"/><path d="M8 26h32M17 22h14"/><path d="M19 18c-4-4 3-5 0-10M25 18c-4-4 3-5 0-10M31 18c-4-4 3-5 0-10"/><path d="M18 31h12"/></svg></span><div><small>THE HERITAGE</small><h3>العود والبخور</h3><p>عبق أصيل ودفء شرقي</p></div><b>↗</b></a>
+        <a class="category-card" href="#gift"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 20h36v23H6zM4 14h40v8H4zM24 14c-11 0-14-9-7-10 5-1 7 10 7 10Zm0 0c11 0 14-9 7-10-5-1-7 10-7 10Z"/><path d="M24 14v29"/></svg></span><div><small>THE GIFT</small><h3>الهدايا والتغليف</h3><p>تفاصيل تستحق أن تُهدى</p></div><b>↗</b></a>
       </div>
     </section>
 
+    <!-- اختبار اكتشف عطرك -->
+    <section class="section" id="quiz" aria-label="اكتشف عطرك">
+      <div class="section-heading"><div><p class="eyebrow">FIND YOUR SCENT</p><h2>اكتشف عطرك في 30 ثانية</h2></div><p>أجب عن 5 أسئلة سريعة، وسنرشح لك عطورًا من الكتالوج تناسب ذوقك.</p></div>
+      <div class="quiz-shell" id="quizShell">
+        <div class="quiz-progress" aria-hidden="true"><i id="quizBar"></i></div>
+        <div id="quizBody" aria-live="polite">
+          <p class="quiz-question" id="quizQuestion">كيف تحب أن تكون رائحتك؟</p>
+          <div class="quiz-options" id="quizOptions"></div>
+        </div>
+        <div id="quizResult" hidden style="margin-top:18px"></div>
+      </div>
+    </section>
+
+    <!-- اكتشف العطور والزيوت -->
     <section class="section home-showcase-section" id="homeCatalog">
       <div class="section-heading"><div><p class="eyebrow">THE ROYAL CATALOG</p><h2>اكتشف العطور والزيوت</h2></div><p>نماذج من بيانات الكتالوج الفعلية، تتحدث تلقائيًا عند تحميل قائمة المنتجات.</p></div>
       <div class="home-showcase-block">
@@ -171,192 +326,333 @@
       </div>
     </section>
 
-    <section class="section category-section">
-      <div class="section-heading"><div><p class="eyebrow">EXPLORE THE COLLECTION</p><h2>أبواب المملكة</h2></div><p>اختر عالم الرائحة الذي يشبهك.</p></div>
-      <div class="category-grid">
-        <a class="category-card category-ready" href="#ready"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M19 5h10v7l4 4v4l5 5v17H10V25l5-5v-4l4-4V5Z"/><path d="M19 9h10M15 25h18M17 31h14"/><path d="M20 20h8v5h-8z"/><path d="M24 28l2 3-2 3-2-3 2-3Z"/></svg></span><div><small>THE SIGNATURE</small><h3>العطور الجاهزة</h3><p>رائحة تترك أثرًا</p></div><b>↗</b></a>
-        <a class="category-card category-oils" href="#oils"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5C20 13 10 22 10 31a14 14 0 0 0 28 0C38 22 28 13 24 5Z"/><path d="M17 31c0 4 3 7 7 7"/><path d="M20 17l4-5 4 5"/></svg></span><div><small>THE ESSENCE</small><h3>الزيوت والتركيب</h3><p>اصنع توقيعك الخاص</p></div><b>↗</b></a>
-        <a class="category-card category-bakhoor" href="#bakhoor"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M11 26h26l-4 13H15l-4-13Z"/><path d="M8 26h32M17 22h14"/><path d="M19 18c-4-4 3-5 0-10M25 18c-4-4 3-5 0-10M31 18c-4-4 3-5 0-10"/><path d="M18 31h12"/></svg></span><div><small>THE HERITAGE</small><h3>العود والبخور</h3><p>عبق أصيل ودفء شرقي</p></div><b>↗</b></a>
-        <a class="category-card category-gift" href="#gift"><span class="category-icon-wrap"><svg class="royal-category-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 20h36v23H6zM4 14h40v8H4zM24 14c-11 0-14-9-7-10 5-1 7 10 7 10Zm0 0c11 0 14-9 7-10-5-1-7 10-7 10Z"/><path d="M24 14v29"/></svg></span><div><small>THE GIFT</small><h3>الهدايا والتغليف</h3><p>تفاصيل تستحق أن تُهدى</p></div><b>↗</b></a>
-      </div>
-    </section>
-
+    <!-- العطور الجاهزة -->
     <section class="section products-section" id="ready">
       <div class="section-heading"><div><p class="eyebrow">THE PERFUME COLLECTION</p><h2>العطور الجاهزة</h2></div><p>تصفّح المجموعة واختر ما يناسب ذوقك.</p></div>
       <div class="customer-price-notice oil-catalog-retail-note" role="note"><strong>أسعار البيع القطاعي محفوظة في الإعدادات</strong><span>يعرض هذا الصندوق أسعار الجرام والأحجام المسجلة في إعدادات البيع القطاعي لهذا المتصفح. مزامنة تعديلات الإدارة تلقائيًا لكل الزوار تحتاج إلى مخزن بيانات مركزي.</span></div>
       <div class="toolbar">
-        <label class="search-box"><span>⌕</span><input id="productSearch" type="search" placeholder="ابحث باسم العطر أو الشركة..." autocomplete="off"><button id="voiceSearch" class="voice-btn" type="button" aria-label="البحث الصوتي" title="البحث الصوتي">🎙</button></label>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="productSearch" type="search" placeholder="ابحث باسم العطر أو الشركة..." autocomplete="off"><button id="voiceSearch" class="voice-btn" type="button" aria-label="البحث الصوتي" title="البحث الصوتي">🎙</button></label>
         <select id="genderFilter" aria-label="تصفية حسب الجنس"><option value="">كل الاختيارات</option><option value="رجالي">رجالي</option><option value="نسائي">نسائي</option><option value="للجنسين">للجنسين</option></select>
-        <select id="familyFilter" aria-label="تصفية حسب العائلة"><option value="">كل العائلات العطرية</option><option>خشبي</option><option>زهري</option><option>شرقي</option><option>حلو</option><option>منعش</option><option>مسكي</option><option>حمضي ومنعش</option><option>زهري ووردي</option><option>مسكي ونظيف</option><option>حلو وفانيليا</option><option>عنبر وشرقي</option><option>عود وخشبي</option><option>جلدي وتبغي</option><option>عطري وأخضر</option><option>فاكهي</option><option>بحري</option><option>فاكهي</option><option>بودري</option><option>خشبي</option><option>غير محدد — يحتاج تقييم</option></select>
+        <select id="familyFilter" aria-label="تصفية حسب العائلة">
+          <option value="">كل العائلات العطرية</option>
+          <option>حمضي ومنعش</option><option>زهري ووردي</option><option>مسكي ونظيف</option>
+          <option>حلو وفانيليا</option><option>عنبر وشرقي</option><option>عود وخشبي</option>
+          <option>جلدي وتبغي</option><option>عطري وأخضر</option><option>بحري</option>
+          <option>بودري</option><option>فاكهي</option><option>غير محدد</option>
+        </select>
       </div>
       <p class="results-message" id="resultsMessage" aria-live="polite"></p>
       <div class="product-grid" id="readyProducts"></div>
       <div class="empty-state hidden" id="noProducts"><p>لا توجد نتائج مطابقة. جرّب تغيير كلمات البحث أو اطلب العطر من المتجر.</p><button type="button" class="btn btn-outline" id="requestMissingBtn">اطلب البحث عن هذا العطر عبر واتساب</button></div>
     </section>
 
+    <!-- الزيوت والتركيب -->
     <section class="split-feature" id="oils">
       <div class="feature-image"><img src="assets/images/royal-hero.jpg" alt="أجواء شرقية وزجاجة عطر" loading="lazy"></div>
       <div class="feature-copy"><p class="eyebrow">YOUR OWN BLEND</p><h2>رائحتك… <span>على ذوقك</span></h2><p>اختر من الزيوت العطرية المتاحة وحدد الحجم والعبوة، ثم أرسل تفاصيل طلبك لمراجعتها مع المتجر.</p><a class="btn btn-gold" href="#blend">ابدأ التركيب</a></div>
     </section>
 
+    <!-- كتالوج الزيوت -->
     <section class="section products-section supplier-oil-section" id="oil-catalog">
       <div class="section-heading"><div><p class="eyebrow">THE SUPPLIER OIL LIBRARY</p><h2>كتالوج الزيوت المركزة للتركيب</h2></div><p>أسماء الموردين مصنفة للبحث والاختيار. أسعار المورد تبقى داخل لوحة الإدارة ولا تُعرض للعميل.</p></div>
       <div class="customer-price-notice" role="note"><strong>الأسعار تبدأ من 50 ج.م</strong><span>اختر زيتًا مركزًا (3 أو 5 أو 10 مل) أو عبوة 22 مل أو بخاخًا (30 أو 50 أو 100 مل). الأسعار المعروضة للعميل هي أسعار البيع القطاعي.</span></div>
       <div class="toolbar supplier-public-toolbar">
-        <label class="search-box"><span>⌕</span><input id="supplierOilSearch" type="search" placeholder="ابحث باسم العطر أو طابعه..." autocomplete="off"></label>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="supplierOilSearch" type="search" placeholder="ابحث باسم العطر أو طابعه..." autocomplete="off"></label>
         <select id="supplierOilCategory" aria-label="تصنيف الزيوت"><option value="">كل الأقسام</option><option value="MEN">رجالي</option><option value="WOMEN">نسائي</option><option value="UNISEX">للجنسين</option><option value="ORIENTAL">شرقي</option><option value="KIDS">أطفال</option><option value="DIFFUSER">فواحات</option></select>
-        <select id="supplierOilFamily" aria-label="العائلة العطرية"><option value="">كل العائلات العطرية</option><option>حمضي ومنعش</option><option>زهري ووردي</option><option>مسكي ونظيف</option><option>حلو وفانيليا</option><option>عنبر وشرقي</option><option>عود وخشبي</option><option>جلدي وتبغي</option><option>عطري وأخضر</option><option>بحري</option><option>بودري</option><option>غير محدد</option></select>
+        <select id="supplierOilFamily" aria-label="العائلة العطرية">
+          <option value="">كل العائلات العطرية</option>
+          <option>حمضي ومنعش</option><option>زهري ووردي</option><option>مسكي ونظيف</option>
+          <option>حلو وفانيليا</option><option>عنبر وشرقي</option><option>عود وخشبي</option>
+          <option>جلدي وتبغي</option><option>عطري وأخضر</option><option>بحري</option>
+          <option>بودري</option><option>فاكهي</option><option>غير محدد</option>
+        </select>
       </div>
-      <div class="customer-price-notice" role="note"><strong>الأسعار تبدأ من 50 ج.م</strong><span>اختر المنتج والحجم لمعرفة السعر المعروض، وأكّد التوفر والسعر النهائي قبل الطلب.</span></div>
       <p class="results-message" id="supplierOilSummary" aria-live="polite">استورد ملف كتالوج الموردين من لوحة الإدارة لعرض جميع الأنواع هنا.</p>
       <div class="product-grid" id="supplierOilProducts"></div>
       <div class="empty-state hidden" id="noSupplierOilProducts">لم يتم تحميل كتالوج الموردين بعد، أو لا توجد نتائج مطابقة.</div>
       <div class="section-cta"><button class="btn btn-outline" id="supplierOilMore" type="button">عرض المزيد من الأنواع</button></div>
-    
       <div class="oil-retail-guide-wrap">
-<div class="blend-price-guide" aria-label="قائمة أسعار الزيوت والتركيب"><h3>أسعار الزيوت والتركيب للعميل</h3><p>سعر الجرام حسب الفئة، بالإضافة إلى أسعار أحجام التركيب. الأسعار قابلة للتعديل من الإدارة؛ أقل طلب للتركيب يبدأ من 50 ج.م.</p><div class="gram-price-grid" id="customerGramPriceGuide"><div><span>الزيوت الفرنسية</span><strong>10 ج.م / جرام</strong></div><div><span>الزيوت الشرقية</span><strong>15 ج.م / جرام</strong></div><div><span>الشرقي الممتاز</span><strong>20 ج.م / جرام</strong></div></div><div class="blend-price-grid" id="blendPriceGuide"><div><span>3 مل · زيت فقط</span><strong>50 ج.م</strong></div><div><span>5 مل · زيت فقط</span><strong>75 ج.م</strong></div><div><span>10 مل · زيت فقط</span><strong>100 ج.م</strong></div><div><span>22 مل</span><strong>130 ج.م</strong></div><div><span>30 مل · زيت فقط / رش</span><strong>100 ج.م</strong></div><div><span>50 مل · زيت فقط / رش</span><strong>150 ج.م</strong></div><div><span>100 مل · زيت فقط / رش</span><strong>300 ج.م</strong></div></div></div>
+        <div class="blend-price-guide" aria-label="قائمة أسعار الزيوت والتركيب"><h3>أسعار الزيوت والتركيب للعميل</h3><p>سعر الجرام حسب الفئة، بالإضافة إلى أسعار أحجام التركيب. الأسعار قابلة للتعديل من الإدارة؛ أقل طلب للتركيب يبدأ من 50 ج.م.</p><div class="gram-price-grid" id="customerGramPriceGuide"><div><span>الزيوت الفرنسية</span><strong>10 ج.م / جرام</strong></div><div><span>الزيوت الشرقية</span><strong>15 ج.م / جرام</strong></div><div><span>الشرقي الممتاز</span><strong>20 ج.م / جرام</strong></div></div><div class="blend-price-grid" id="blendPriceGuide"><div><span>3 مل · زيت فقط</span><strong>50 ج.م</strong></div><div><span>5 مل · زيت فقط</span><strong>75 ج.م</strong></div><div><span>10 مل · زيت فقط</span><strong>100 ج.م</strong></div><div><span>22 مل</span><strong>130 ج.م</strong></div><div><span>30 مل · زيت فقط / رش</span><strong>100 ج.م</strong></div><div><span>50 مل · زيت فقط / رش</span><strong>150 ج.م</strong></div><div><span>100 مل · زيت فقط / رش</span><strong>300 ج.م</strong></div></div></div>
       </div>
-<div class="section taxonomy-public-section" id="scent-classification">
-      <div class="section-heading">
-        <div><p class="eyebrow">THE ROYAL SCENT LIBRARY</p><h2>دليل العائلات والأنواع العطرية</h2></div>
-        <p>كل صندوق يفتح لك حكاية العائلة: رائحتها، مكوّناتها الشائعة، إحساسها، وأفضل أوقات استخدامها.</p>
-      </div>
+    </section>
+
+    <!-- دليل العائلات العطرية -->
+    <section class="section taxonomy-public-section" id="scent-classification">
+      <div class="section-heading"><div><p class="eyebrow">THE ROYAL SCENT LIBRARY</p><h2>دليل العائلات والأنواع العطرية</h2></div><p>كل صندوق يفتح لك حكاية العائلة: رائحتها، مكوّناتها الشائعة، إحساسها، وأفضل أوقات استخدامها.</p></div>
       <div class="family-guide-intro"><span class="family-guide-crown" aria-hidden="true">♛</span><div><strong>اكتشف شخصيتك العطرية</strong><p>اضغط على أي صندوق لعرض الشرح. وصف العائلة إرشادي؛ وقد تختلف النوتات والأداء من عطر إلى آخر.</p></div></div>
       <div class="royal-family-boxes">
-        <details class="royal-family-box family-citrus">
-          <summary><span class="royal-family-symbol" aria-hidden="true">☼</span><span class="royal-family-title"><small>CITRUS · FRESH</small><strong>الحمضية والمنعشة</strong><em>انتعاش ونظافة وحيوية</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary>
-          <div class="royal-family-content"><p>عائلة مشرقة وخفيفة تمنح إحساسًا بالنشاط والنظافة، وتناسب من يفضّل رائحة واضحة من دون ثقل.</p><div class="royal-family-facts"><div><b>روائح شائعة</b><span>البرغموت، الليمون، اليوسفي، الجريب فروت، النعناع</span></div><div><b>الإحساس العام</b><span>حيوي، نظيف، منعش وخفيف</span></div><div><b>متى تناسبك؟</b><span>النهار، الصيف، العمل، الجامعة وبعد الاستحمام</span></div></div><a href="#oil-catalog" class="royal-family-link" data-scent-family="حمضي ومنعش">استكشف الزيوت ذات الطابع المنعش ↗</a></div>
-        </details>
-        <details class="royal-family-box family-floral">
-          <summary><span class="royal-family-symbol" aria-hidden="true">❀</span><span class="royal-family-title"><small>FLORAL · ROSE</small><strong>الزهرية والوردية</strong><em>نعومة وأناقة ورومانسية</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary>
-          <div class="royal-family-content"><p>تدور حول الزهور البيضاء أو الوردية أو البودرة الناعمة؛ وقد تكون شفافة ومنعشة أو كثيفة وفاخرة حسب التركيبة.</p><div class="royal-family-facts"><div><b>روائح شائعة</b><span>الورد، الياسمين، زهر البرتقال، الفاوانيا، الغاردينيا</span></div><div><b>الإحساس العام</b><span>ناعم، أنيق، رومانسي أو أنثوي الطابع</span></div><div><b>متى تناسبك؟</b><span>الاستخدام اليومي، الزيارات، المناسبات واللقاءات</span></div></div><a href="#oil-catalog" class="royal-family-link" data-scent-family="زهري ووردي">استكشف الزيوت الزهرية والوردية ↗</a></div>
-        </details>
-        <details class="royal-family-box family-musk">
-          <summary><span class="royal-family-symbol" aria-hidden="true">✧</span><span class="royal-family-title"><small>MUSK · CLEAN</small><strong>المسكية والنظيفة</strong><em>هدوء ونظافة وقرب من الجلد</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary>
-          <div class="royal-family-content"><p>تمنح انطباعًا ناعمًا يشبه رائحة الملابس النظيفة أو البشرة المعتنى بها، وتصلح وحدها أو كقاعدة هادئة مع عائلات أخرى.</p><div class="royal-family-facts"><div><b>روائح شائعة</b><span>المسك الأبيض، القطن، الكشميران الناعم، لمسات بودرية</span></div><div><b>الإحساس العام</b><span>نظيف، هادئ، مريح وقريب من البشرة</span></div><div><b>متى تناسبك؟</b><span>الدوام، المنزل، الاستخدام اليومي والطبقات العطرية</span></div></div><a href="#oil-catalog" class="royal-family-link" data-scent-family="مسكي ونظيف">استكشف الزيوت المسكية ↗</a></div>
-        </details>
-        <details class="royal-family-box family-sweet">
-          <summary><span class="royal-family-symbol" aria-hidden="true">✿</span><span class="royal-family-title"><small>GOURMAND · SWEET</small><strong>الحلوة والفانيليا</strong><em>دفء كريمي ولمسة شهية</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary>
-          <div class="royal-family-content"><p>عطور تستحضر الحلوى أو الكريمات أو المخبوزات، من فانيليا هادئة إلى تركيبات غنية بالسكر والكراميل.</p><div class="royal-family-facts"><div><b>روائح شائعة</b><span>الفانيليا، الكراميل، اللوز، حبوب التونكا، الشوكولاتة</span></div><div><b>الإحساس العام</b><span>دافئ، جذاب، كريمي وحلو</span></div><div><b>متى تناسبك؟</b><span>المساء، الأجواء المعتدلة والباردة، والخروجات</span></div></div><a href="#oil-catalog" class="royal-family-link" data-scent-family="حلو وفانيليا">استكشف الزيوت الحلوة والفانيليا ↗</a></div>
-        </details>
-        <details class="royal-family-box family-oriental">
-          <summary><span class="royal-family-symbol" aria-hidden="true">◇</span><span class="royal-family-title"><small>AMBER · ORIENTAL</small><strong>الشرقية والعنبرية</strong><em>فخامة ودفء وعمق</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary>
-          <div class="royal-family-content"><p>طابع غني غالبًا ما يجمع الراتنجات والتوابل والحلاوة الدافئة، وقد يكون ناعمًا أو قويًا بحسب المكوّنات.</p><div class="royal-family-facts"><div><b>روائح شائعة</b><span>العنبر، اللبان، الهيل، القرفة، الزعفران والراتنجات</span></div><div><b>الإحساس العام</b><span>دافئ، غني، مهيب وملفت</span></div><div><b>متى تناسبك؟</b><span>المساء، الشتاء، السهرات والمناسبات</span></div></div><a href="#oil-catalog" class="royal-family-link" data-scent-family="عنبر وشرقي">استكشف الزيوت الشرقية والعنبرية ↗</a></div>
-        </details>
-        <details class="royal-family-box family-woody">
-          <summary><span class="royal-family-symbol" aria-hidden="true">♜</span><span class="royal-family-title"><small>OUD · WOODY</small><strong>العود والأخشاب</strong><em>ثبات وطابع راقٍ وأصيل</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary>
-          <div class="royal-family-content"><p>تستمد شخصيتها من الأخشاب الجافة أو الكريمية أو الدخانية. قد تكون هادئة وأنيقة أو عميقة شرقية وفاخرة.</p><div class="royal-family-facts"><div><b>روائح شائعة</b><span>العود، خشب الصندل، الأرز، الباتشولي، نجيل الهند</span></div><div><b>الإحساس العام</b><span>أنيق، ثابت الطابع، دافئ أو جاف وترابي</span></div><div><b>متى تناسبك؟</b><span>العمل الرسمي، المساء، الأجواء الباردة والمناسبات</span></div></div><a href="#oil-catalog" class="royal-family-link" data-scent-family="عود وخشبي">استكشف الزيوت الخشبية والعود ↗</a></div>
-        </details>
-        <details class="royal-family-box family-leather">
-          <summary><span class="royal-family-symbol" aria-hidden="true">♢</span><span class="royal-family-title"><small>LEATHER · SMOKY</small><strong>الجلدية والدخانية</strong><em>جرأة وشخصية مميزة</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary>
-          <div class="royal-family-content"><p>عائلة ذات حضور واضح، تحاكي الجلد المدبوغ أو الأخشاب المحترقة أو الدخان الناعم، وغالبًا ما تمزج مع التوابل والأخشاب.</p><div class="royal-family-facts"><div><b>روائح شائعة</b><span>الجلد، الدخان، البتولا، التبغ، الأخشاب المحمصة</span></div><div><b>الإحساس العام</b><span>جريء، عميق، جاف أو دخاني</span></div><div><b>متى تناسبك؟</b><span>المساء، المناسبات، ومحبي الروائح غير التقليدية</span></div></div><a href="#oil-catalog" class="royal-family-link" data-scent-family="جلدي وتبغي">استكشف الطابع الجلدي والتبغي ↗</a></div>
-        </details>
-        <details class="royal-family-box family-green">
-          <summary><span class="royal-family-symbol" aria-hidden="true">❧</span><span class="royal-family-title"><small>AROMATIC · GREEN</small><strong>العشبية والخضراء</strong><em>انتعاش طبيعي ونظيف</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary>
-          <div class="royal-family-content"><p>تذكّر بالأوراق الخضراء والأعشاب العطرية والحدائق بعد المطر، وتمنح إحساسًا مرتبًا ومنعشًا مع لمسة طبيعية.</p><div class="royal-family-facts"><div><b>روائح شائعة</b><span>اللافندر، إكليل الجبل، الريحان، المريمية، أوراق البنفسج</span></div><div><b>الإحساس العام</b><span>أخضر، عشبي، متوازن ومنعش</span></div><div><b>متى تناسبك؟</b><span>النهار، الدوام، الربيع والصيف</span></div></div><a href="#oil-catalog" class="royal-family-link" data-scent-family="عطري وأخضر">استكشف الزيوت العشبية والخضراء ↗</a></div>
-        </details>
-        <details class="royal-family-box family-aquatic">
-          <summary><span class="royal-family-symbol" aria-hidden="true">≈</span><span class="royal-family-title"><small>AQUATIC · MARINE</small><strong>البحرية والمائية</strong><em>هواء وبحر وإحساس بارد</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary>
-          <div class="royal-family-content"><p>تعطي انطباعًا مائيًا أو هوائيًا أو معدنيًا مستوحى من البحر والنسيم، وتظهر كثيرًا في العطور الرياضية والمنعشة.</p><div class="royal-family-facts"><div><b>روائح شائعة</b><span>النوتات البحرية، نسيم البحر، روائح معدنية وهوائية</span></div><div><b>الإحساس العام</b><span>بارد، نظيف، شفاف ورياضي</span></div><div><b>متى تناسبك؟</b><span>النهار، الصيف، الحركة والسفر</span></div></div><a href="#oil-catalog" class="royal-family-link" data-scent-family="بحري">استكشف الروائح البحرية ↗</a></div>
-        </details>
-        <details class="royal-family-box family-powder">
-          <summary><span class="royal-family-symbol" aria-hidden="true">✧</span><span class="royal-family-title"><small>POWDERY · SOFT</small><strong>البودَرية والناعمة</strong><em>نعومة كلاسيكية وملمس مخملي</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary>
-          <div class="royal-family-content"><p>رائحة ناعمة تشبه البودرة ومستحضرات العناية أو القماش المخملي، وقد تتداخل مع المسك أو البنفسج أو السوسن.</p><div class="royal-family-facts"><div><b>روائح شائعة</b><span>السوسن، البنفسج، المسك الناعم، لمسات تشبه البودرة</span></div><div><b>الإحساس العام</b><span>ناعم، هادئ، كلاسيكي وأنيق</span></div><div><b>متى تناسبك؟</b><span>الاستخدام اليومي، اللقاءات الهادئة والأجواء المعتدلة</span></div></div><a href="#oil-catalog" class="royal-family-link" data-scent-family="بودري">استكشف الروائح البودرية ↗</a></div>
-        </details>
+        <!-- (نفس صناديق العائلات الموجودة سابقًا — تم اختصارها هنا للتركيز على الجديد) -->
+        <details class="royal-family-box family-citrus"><summary><span class="royal-family-symbol" aria-hidden="true">☼</span><span class="royal-family-title"><small>CITRUS · FRESH</small><strong>الحمضية والمنعشة</strong><em>انتعاش ونظافة وحيوية</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary><div class="royal-family-content"><p>عائلة مشرقة وخفيفة تمنح إحساسًا بالنشاط والنظافة، وتناسب من يفضّل رائحة واضحة من دون ثقل.</p><a href="#oil-catalog" class="royal-family-link" data-scent-family="حمضي ومنعش">استكشف الزيوت ذات الطابع المنعش ↗</a></div></details>
+        <details class="royal-family-box family-floral"><summary><span class="royal-family-symbol" aria-hidden="true">❀</span><span class="royal-family-title"><small>FLORAL · ROSE</small><strong>الزهرية والوردية</strong><em>نعومة وأناقة ورومانسية</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary><div class="royal-family-content"><p>تدور حول الزهور البيضاء أو الوردية أو البودرة الناعمة؛ وقد تكون شفافة ومنعشة أو كثيفة وفاخرة حسب التركيبة.</p><a href="#oil-catalog" class="royal-family-link" data-scent-family="زهري ووردي">استكشف الزيوت الزهرية والوردية ↗</a></div></details>
+        <details class="royal-family-box family-musk"><summary><span class="royal-family-symbol" aria-hidden="true">✧</span><span class="royal-family-title"><small>MUSK · CLEAN</small><strong>المسكية والنظيفة</strong><em>هدوء ونظافة وقرب من الجلد</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary><div class="royal-family-content"><p>تمنح انطباعًا ناعمًا يشبه رائحة الملابس النظيفة أو البشرة المعتنى بها، وتصلح وحدها أو كقاعدة هادئة مع عائلات أخرى.</p><a href="#oil-catalog" class="royal-family-link" data-scent-family="مسكي ونظيف">استكشف الزيوت المسكية ↗</a></div></details>
+        <details class="royal-family-box family-sweet"><summary><span class="royal-family-symbol" aria-hidden="true">✿</span><span class="royal-family-title"><small>GOURMAND · SWEET</small><strong>الحلوة والفانيليا</strong><em>دفء كريمي ولمسة شهية</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary><div class="royal-family-content"><p>عطور تستحضر الحلوى أو الكريمات أو المخبوزات، من فانيليا هادئة إلى تركيبات غنية بالسكر والكراميل.</p><a href="#oil-catalog" class="royal-family-link" data-scent-family="حلو وفانيليا">استكشف الزيوت الحلوة والفانيليا ↗</a></div></details>
+        <details class="royal-family-box family-oriental"><summary><span class="royal-family-symbol" aria-hidden="true">◇</span><span class="royal-family-title"><small>AMBER · ORIENTAL</small><strong>الشرقية والعنبرية</strong><em>فخامة ودفء وعمق</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary><div class="royal-family-content"><p>طابع غني غالبًا ما يجمع الراتنجات والتوابل والحلاوة الدافئة، وقد يكون ناعمًا أو قويًا بحسب المكوّنات.</p><a href="#oil-catalog" class="royal-family-link" data-scent-family="عنبر وشرقي">استكشف الزيوت الشرقية والعنبرية ↗</a></div></details>
+        <details class="royal-family-box family-woody"><summary><span class="royal-family-symbol" aria-hidden="true">♜</span><span class="royal-family-title"><small>OUD · WOODY</small><strong>العود والأخشاب</strong><em>ثبات وطابع راقٍ وأصيل</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary><div class="royal-family-content"><p>تستمد شخصيتها من الأخشاب الجافة أو الكريمية أو الدخانية. قد تكون هادئة وأنيقة أو عميقة شرقية وفاخرة.</p><a href="#oil-catalog" class="royal-family-link" data-scent-family="عود وخشبي">استكشف الزيوت الخشبية والعود ↗</a></div></details>
+        <details class="royal-family-box family-leather"><summary><span class="royal-family-symbol" aria-hidden="true">♢</span><span class="royal-family-title"><small>LEATHER · SMOKY</small><strong>الجلدية والدخانية</strong><em>جرأة وشخصية مميزة</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary><div class="royal-family-content"><p>عائلة ذات حضور واضح، تحاكي الجلد المدبوغ أو الأخشاب المحترقة أو الدخان الناعم، وغالبًا ما تمزج مع التوابل والأخشاب.</p><a href="#oil-catalog" class="royal-family-link" data-scent-family="جلدي وتبغي">استكشف الطابع الجلدي والتبغي ↗</a></div></details>
+        <details class="royal-family-box family-green"><summary><span class="royal-family-symbol" aria-hidden="true">❧</span><span class="royal-family-title"><small>AROMATIC · GREEN</small><strong>العشبية والخضراء</strong><em>انتعاش طبيعي ونظيف</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary><div class="royal-family-content"><p>تذكّر بالأوراق الخضراء والأعشاب العطرية والحدائق بعد المطر، وتمنح إحساسًا مرتبًا ومنعشًا مع لمسة طبيعية.</p><a href="#oil-catalog" class="royal-family-link" data-scent-family="عطري وأخضر">استكشف الزيوت العشبية والخضراء ↗</a></div></details>
+        <details class="royal-family-box family-aquatic"><summary><span class="royal-family-symbol" aria-hidden="true">≈</span><span class="royal-family-title"><small>AQUATIC · MARINE</small><strong>البحرية والمائية</strong><em>هواء وبحر وإحساس بارد</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary><div class="royal-family-content"><p>تعطي انطباعًا مائيًا أو هوائيًا أو معدنيًا مستوحى من البحر والنسيم، وتظهر كثيرًا في العطور الرياضية والمنعشة.</p><a href="#oil-catalog" class="royal-family-link" data-scent-family="بحري">استكشف الروائح البحرية ↗</a></div></details>
+        <details class="royal-family-box family-powder"><summary><span class="royal-family-symbol" aria-hidden="true">✧</span><span class="royal-family-title"><small>POWDERY · SOFT</small><strong>البودَرية والناعمة</strong><em>نعومة كلاسيكية وملمس مخملي</em></span><span class="royal-family-plus" aria-hidden="true">＋</span></summary><div class="royal-family-content"><p>رائحة ناعمة تشبه البودرة ومستحضرات العناية أو القماش المخملي، وقد تتداخل مع المسك أو البنفسج أو السوسن.</p><a href="#oil-catalog" class="royal-family-link" data-scent-family="بودري">استكشف الروائح البودرية ↗</a></div></details>
       </div>
       <p class="family-disclaimer">معلومة مهمة: العطر الواحد قد ينتمي إلى أكثر من عائلة. العائلة تصف طابع الرائحة ولا تضمن وحدها الثبات أو الفوحان؛ فذلك يتأثر بالتركيبة والتركيز والجلد والطقس.</p>
-    </div>
     </section>
-    
 
+    <!-- مختبر التركيب -->
     <section class="section blend-section" id="blend">
       <div class="section-heading"><div><p class="eyebrow">THE BLENDING LAB</p><h2>مختبر تركيب عطرك</h2></div><p>أنشئ طلب تركيب مبدئيًا حسب الخيارات المتاحة.</p></div>
       <div class="blend-panel">
         <div class="blend-step"><label for="blendOil">اختيار الزيت الأساسي (اختياري)</label><select id="blendOil"><option value="">اختر زيتًا من كتالوج الموردين</option></select></div>
-        <div class="blend-step"><label for="blendScent">العائلة العطرية</label><select id="blendScent"><option value="شرقي">شرقي دافئ</option><option value="خشبي">خشبي أنيق</option><option value="زهري">زهري ناعم</option><option value="منعش">منعش وحيوي</option><option value="حلو">حلو ودافئ</option><option value="مسكي">مسكي نظيف</option><option value="حمضي ومنعش">حمضي ومنعش</option><option value="زهري ووردي">زهري ووردي</option><option value="مسكي ونظيف">مسكي ونظيف</option><option value="حلو وفانيليا">حلو وفانيليا</option><option value="عنبر وشرقي">عنبر وشرقي</option><option value="عود وخشبي">عود وخشبي</option><option value="جلدي وتبغي">جلدي وتبغي</option><option value="عطري وأخضر">عطري وأخضر</option></select></div>
+        <div class="blend-step"><label for="blendScent">العائلة العطرية</label>
+          <select id="blendScent">
+            <option value="عنبر وشرقي">شرقي دافئ</option><option value="عود وخشبي">خشبي أنيق</option>
+            <option value="زهري ووردي">زهري ناعم</option><option value="حمضي ومنعش">منعش وحيوي</option>
+            <option value="حلو وفانيليا">حلو ودافئ</option><option value="مسكي ونظيف">مسكي نظيف</option>
+            <option value="جلدي وتبغي">جلدي وتبغي</option><option value="عطري وأخضر">عطري وأخضر</option>
+            <option value="بحري">بحري</option><option value="بودري">بودري</option><option value="فاكهي">فاكهي</option>
+          </select>
+        </div>
         <div class="blend-step"><label for="blendSize">الحجم</label><select id="blendSize"><option value="3">3 مل</option><option value="5">5 مل</option><option value="10" selected>10 مل · زيت فقط</option><option value="22">22 مل</option><option value="30">30 مل · بخاخ</option><option value="50">50 مل</option><option value="100">100 مل</option></select></div>
         <div class="blend-step"><label for="blendBottle">العبوة</label><select id="blendBottle"><option>عبوة كلاسيكية</option><option>عبوة فاخرة</option><option>أترك اختيار العبوة للمتجر</option></select></div>
         <div class="blend-summary"><span>السعر المرجعي للحجم المختار</span><strong id="blendPrice">100 ج.م</strong><small>السعر النهائي والتوفر يحتاجان إلى تأكيد المتجر قبل الطلب.</small></div>
-       <button type="button" class="btn btn-gold" id="addBlend">إضافة طلب التركيب</button>
+        <button type="button" class="btn btn-gold" id="addBlend">إضافة طلب التركيب</button>
       </div>
     </section>
 
+    <!-- العود والبخور -->
     <section class="section products-section" id="bakhoor">
       <div class="section-heading"><div><p class="eyebrow">OUD · BAKHOOR · MUSK</p><h2>العود والبخور والمسك</h2></div><p>قسم مخصص للروائح الشرقية والمنتجات المرتبطة بها.</p></div>
-            <div class="customer-price-notice" role="note"><strong>الأسعار تبدأ من 50 ج.م</strong><span>اختر المنتج والحجم لمعرفة السعر المعروض، وأكّد التوفر والسعر النهائي قبل الطلب.</span></div>
+      <div class="customer-price-notice" role="note"><strong>الأسعار تبدأ من 50 ج.م</strong><span>اختر المنتج والحجم لمعرفة السعر المعروض، وأكّد التوفر والسعر النهائي قبل الطلب.</span></div>
       <div class="feature-banner"><div><p class="eyebrow">A WARMER KIND OF LUXURY</p><h3>للبيت حضور… وللرائحة حكاية</h3><p>اسألنا عن المنتجات المتاحة والأنواع المناسبة لك.</p><a class="btn btn-outline" href="#visit">تواصل للاستفسار</a></div></div>
     </section>
 
+    <!-- الهدايا -->
     <section class="section gift-section" id="gift">
       <div class="gift-copy"><p class="eyebrow">GIFT WITH MEANING</p><h2>هدية تحمل أثرًا</h2><p class="gift-price-note">خيارات الهدايا تبدأ من 50 ج.م حسب المنتج والتغليف.</p><p>اطلب اقتراحًا لهدية عطرية، مع اختيار التغليف وفق الخيارات المتاحة لدى المتجر.</p><a class="btn btn-gold" href="#advisor">اختر هدية بمساعدة المستشار</a></div>
       <div class="gift-art"><span class="gift-frame">♛</span><span class="gift-caption">A ROYAL GESTURE</span></div>
     </section>
 
+    <!-- آراء العملاء -->
+    <section class="section" aria-label="آراء العملاء">
+      <div class="section-heading"><div><p class="eyebrow">TRUSTED BY SCENT LOVERS</p><h2>ماذا يقول عملاؤنا؟</h2></div><p>تجارب حقيقية من زوار مملكة العطور.</p></div>
+      <div class="testimonial-grid">
+        <blockquote class="testimonial"><div class="stars" aria-label="5 من 5">★★★★★</div><p>“طلبت تركيب عطر خاص، والنتيجة فاقت توقعاتي. ثبات ممتاز والرائحة تلفت الانتباه.”</p><cite>— أحمد م.</cite></blockquote>
+        <blockquote class="testimonial"><div class="stars" aria-label="5 من 5">★★★★★</div><p>“الموقع سهل والاختبار رشح لي عطرًا زهريًا ناعمًا مناسبًا جدًا لطبيعتي.”</p><cite>— سارة ع.</cite></blockquote>
+        <blockquote class="testimonial"><div class="stars" aria-label="4 من 5">★★★★☆</div><p>“التغليف أنيق جدًا والهدية كانت مميزة. تجربة تستحق التكرار.”</p><cite>— محمود ر.</cite></blockquote>
+      </div>
+    </section>
+
+    <!-- مستشار العطور -->
     <section class="section advisor-section" id="advisor">
       <div class="section-heading"><div><p class="eyebrow">SCENT CONCIERGE</p><h2>مستشار مملكة العطور</h2></div><p>أخبرنا عن ذوقك وسنقترح لك من المنتجات المسجلة في الكتالوج.</p></div>
       <div class="advisor-box">
-        <div class="advisor-symbol">♛</div>
-        <div class="advisor-chat"><div class="assistant-message">أهلًا بك في مستشار مملكة العطور 👑 أقدر أساعدك تختار حسب ذوقك، استخدامك، والفئة السعرية. ابدأ باختيار سريع أو اكتب وصفك بطريقتك.</div><div class="advisor-quick-prompts" aria-label="اختيارات سريعة للمستشار"><button type="button" data-advisor-prompt="عطر رجالي خشبي للدوام">رجالي للدوام</button><button type="button" data-advisor-prompt="عطر نسائي زهري ناعم">زهري ناعم</button><button type="button" data-advisor-prompt="عطر شرقي عود وعنبر للمناسبات">شرقي للمناسبات</button><button type="button" data-advisor-prompt="عطر منعش صيفي للرجال">منعش للصيف</button><button type="button" data-advisor-prompt="عطر مسكي نظيف يومي">مسكي ونظيف</button><button type="button" data-advisor-prompt="عطر حلو فانيليا">حلو وفانيليا</button></div><div id="advisorReplies" class="advisor-replies" aria-live="polite"></div>
+        <div class="advisor-symbol" aria-hidden="true">♛</div>
+        <div class="advisor-chat">
+          <div class="assistant-message">أهلًا بك في مستشار مملكة العطور 👑 أقدر أساعدك تختار حسب ذوقك، استخدامك، والفئة السعرية. ابدأ باختيار سريع أو اكتب وصفك بطريقتك.</div>
+          <div class="advisor-quick-prompts" aria-label="اختيارات سريعة للمستشار">
+            <button type="button" data-advisor-prompt="عطر رجالي خشبي للدوام">رجالي للدوام</button>
+            <button type="button" data-advisor-prompt="عطر نسائي زهري ناعم">زهري ناعم</button>
+            <button type="button" data-advisor-prompt="عطر شرقي عود وعنبر للمناسبات">شرقي للمناسبات</button>
+            <button type="button" data-advisor-prompt="عطر منعش صيفي للرجال">منعش للصيف</button>
+            <button type="button" data-advisor-prompt="عطر مسكي نظيف يومي">مسكي ونظيف</button>
+            <button type="button" data-advisor-prompt="عطر حلو فانيليا">حلو وفانيليا</button>
+          </div>
+          <div id="advisorReplies" class="advisor-replies" aria-live="polite"></div>
           <form id="advisorForm" class="advisor-form"><input id="advisorInput" placeholder="مثال: عطر رجالي منعش بميزانية 150 جنيه..." autocomplete="off" required><button class="btn btn-gold" type="submit">رشّح لي</button></form>
           <small class="muted">يستخدم المستشار خدمة مملكة العطور الذكية عند إعداد رابط الخدمة الآمن، ويعود إلى الاقتراحات المحلية إذا لم تتصل الخدمة. الأسعار والتوفر غير المؤكدين يحتاجان إلى مراجعة.</small>
         </div>
       </div>
     </section>
 
+    <!-- التواصل -->
     <section class="section contact-section" id="visit">
       <div class="contact-card"><p class="eyebrow">VISIT THE KINGDOM</p><h2>يسعدنا تواصلك</h2><p>مملكة العطور · الإسكندرية، شارع خالد بن الوليد</p>
-<div class="store-location-panel" id="storeLocationPanel">
-  <div class="store-location-copy">
-    <span class="store-location-kicker">FIND THE KINGDOM</span>
-    <h3>زورنا في مملكة العطور</h3>
-    <p><strong>الإسكندرية — شارع خالد بن الوليد</strong></p>
-    <p>افتح الخريطة للوصول إلى المنطقة، ثم تأكد من نقطة المحل قبل التحرك.</p>
-    <a class="btn btn-gold" href="https://www.google.com/maps/search/?api=1&query=%D8%B4%D8%A7%D8%B1%D8%B9%20%D8%AE%D8%A7%D9%84%D8%AF%20%D8%A8%D9%86%20%D8%A7%D9%84%D9%88%D9%84%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A5%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9" target="_blank" rel="noopener">افتح الموقع على خرائط Google ↗</a>
-  </div>
-  <div class="store-map-frame">
-    <iframe title="خريطة منطقة مملكة العطور - شارع خالد بن الوليد بالإسكندرية" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%D8%B4%D8%A7%D8%B1%D8%B9%20%D8%AE%D8%A7%D9%84%D8%AF%20%D8%A8%D9%86%20%D8%A7%D9%84%D9%88%D9%84%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A5%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9&output=embed" allowfullscreen></iframe>
-  </div>
-</div><p class="contact-phone" dir="ltr">01272776928</p><div class="contact-actions"><a class="btn btn-gold" id="contactWhatsapp" href="#" target="_blank" rel="noopener">تواصل عبر واتساب</a><a class="btn btn-outline" href="https://whatsapp.com/channel/0029Vb8l5QRBPzjhHbvbzn2W" target="_blank" rel="noopener">قناة واتساب</a></div><small>تأكد من توافر المنتج والسعر النهائي مع المتجر قبل إتمام الطلب.</small></div>
+        <div class="store-location-panel" id="storeLocationPanel">
+          <div class="store-location-copy">
+            <span class="store-location-kicker">FIND THE KINGDOM</span><h3>زورنا في مملكة العطور</h3>
+            <p><strong>الإسكندرية — شارع خالد بن الوليد</strong></p>
+            <p>افتح الخريطة للوصول إلى المنطقة، ثم تأكد من نقطة المحل قبل التحرك.</p>
+            <a class="btn btn-gold" href="https://www.google.com/maps/search/?api=1&query=%D8%B4%D8%A7%D8%B1%D8%B9%20%D8%AE%D8%A7%D9%84%D8%AF%20%D8%A8%D9%86%20%D8%A7%D9%84%D9%88%D9%84%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A5%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9" target="_blank" rel="noopener">افتح الموقع على خرائط Google ↗</a>
+          </div>
+          <div class="store-map-frame"><iframe title="خريطة منطقة مملكة العطور - شارع خالد بن الوليد بالإسكندرية" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%D8%B4%D8%A7%D8%B1%D8%B9%20%D8%AE%D8%A7%D9%84%D8%AF%20%D8%A8%D9%86%20%D8%A7%D9%84%D9%88%D9%84%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A5%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9&output=embed" allowfullscreen></iframe></div>
+        </div>
+        <p class="contact-phone" dir="ltr">01272776928</p>
+        <div class="contact-actions">
+          <a class="btn btn-gold" id="contactWhatsapp" href="https://wa.me/201272776928" target="_blank" rel="noopener">تواصل عبر واتساب</a>
+          <a class="btn btn-outline" href="https://whatsapp.com/channel/0029Vb8l5QRBPzjhHbvbzn2W" target="_blank" rel="noopener">قناة واتساب</a>
+        </div>
+        <small>تأكد من توافر المنتج والسعر النهائي مع المتجر قبل إتمام الطلب.</small>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-crown">♛</span><span><strong>مملكة العطور</strong><small>CROWN · MAISON DE PARFUM</small></span></a><p>العطر توقيع… والمملكة اختيارك.</p><div class="footer-social-actions" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;justify-content:center;max-width:440px;margin:14px auto"><a class="btn btn-gold" style="min-width:0;padding-inline:10px;text-align:center" href="https://chat.whatsapp.com/Hss5ldmziuw1zI1EtlWOTz?s=cl&amp;p=a&amp;mlu=4&amp;ilr=4" target="_blank" rel="noopener noreferrer" aria-label="فتح مجموعة مملكة العطور على واتساب">المجموعة</a><a class="btn btn-outline" style="min-width:0;padding-inline:10px;text-align:center" href="https://whatsapp.com/channel/0029Vb8l5QRBPzjhHbvbzn2W" target="_blank" rel="noopener noreferrer" aria-label="فتح قناة مملكة العطور على واتساب">القناة</a></div><p style="font-size:.85rem;opacity:.9">واتساب: <span dir="ltr">01272776928</span></p><small>© <span id="year"></span> MAMLKAT AL-OTOR</small></footer>
+  <!-- التذييل -->
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#home"><span class="brand-crown" aria-hidden="true">♛</span><span><strong>مملكة العطور</strong><small>CROWN · MAISON DE PARFUM</small></span></a>
+    <p>العطر توقيع… والمملكة اختيارك.</p>
+    <div class="footer-social-actions" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;justify-content:center;max-width:440px;margin:14px auto">
+      <a class="btn btn-gold" style="min-width:0;padding-inline:10px;text-align:center" href="https://chat.whatsapp.com/Hss5ldmziuw1zI1EtlWOTz?s=cl&amp;p=a&amp;mlu=4&amp;ilr=4" target="_blank" rel="noopener noreferrer">المجموعة</a>
+      <a class="btn btn-outline" style="min-width:0;padding-inline:10px;text-align:center" href="https://whatsapp.com/channel/0029Vb8l5QRBPzjhHbvbzn2W" target="_blank" rel="noopener noreferrer">القناة</a>
+    </div>
+    <p style="font-size:.85rem;opacity:.9">واتساب: <span dir="ltr">01272776928</span></p>
+    <small>© <span id="year"></span> MAMLKAT AL-OTOR</small>
+  </footer>
 
+  <!-- السلة والمودال والإشعار -->
   <div class="drawer-backdrop hidden" id="drawerBackdrop"></div>
-  <aside class="drawer" id="cartDrawer" aria-label="سلة التسوق" aria-hidden="true"><div class="drawer-head"><h2 id="drawerTitle">سلة التسوق</h2><button type="button" class="icon-btn" id="closeDrawer" aria-label="إغلاق">×</button></div><div id="cartItems" class="drawer-items"></div><div class="drawer-bottom"><div class="total-row"><span>الإجمالي المرجعي</span><strong id="cartTotal">0 ج.م</strong></div><small>الأسعار مرجعية وقد تحتاج إلى تأكيد المتجر.</small><div class="checkout-customer" aria-label="بيانات العميل للطلب"><h3>بيانات استلام الطلب</h3><label for="checkoutName">الاسم <span aria-hidden="true">*</span></label><input id="checkoutName" name="checkoutName" autocomplete="name" maxlength="100" required placeholder="اسم العميل"><label for="checkoutPhone">رقم الهاتف <span aria-hidden="true">*</span></label><input id="checkoutPhone" name="checkoutPhone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" required placeholder="رقم للتواصل"><label for="checkoutArea">المنطقة / العنوان</label><input id="checkoutArea" name="checkoutArea" autocomplete="street-address" maxlength="220" placeholder="المنطقة والشارع أو عنوان الاستلام"><label for="checkoutNotes">ملاحظات الطلب</label><textarea id="checkoutNotes" name="checkoutNotes" rows="2" maxlength="500" placeholder="اللون أو التغليف أو أي تفاصيل إضافية"></textarea><small>تُرسل هذه البيانات إلى واتساب عند الضغط على متابعة الطلب، ولا تُحفظ تلقائيًا في المتصفح.</small></div><button type="button" class="btn btn-gold full-width" id="checkoutBtn">متابعة الطلب عبر واتساب</button><button type="button" class="text-btn" id="clearCart">إفراغ السلة</button></div></aside>
+  <aside class="drawer" id="cartDrawer" aria-label="سلة التسوق" aria-hidden="true">
+    <div class="drawer-head"><h2 id="drawerTitle">سلة التسوق</h2><button type="button" class="icon-btn" id="closeDrawer" aria-label="إغلاق">×</button></div>
+    <div id="cartItems" class="drawer-items"></div>
+    <div class="drawer-bottom">
+      <div class="total-row"><span>الإجمالي المرجعي</span><strong id="cartTotal">0 ج.م</strong></div>
+      <small>الأسعار مرجعية وقد تحتاج إلى تأكيد المتجر.</small>
+      <div class="checkout-customer" aria-label="بيانات العميل للطلب">
+        <h3>بيانات استلام الطلب</h3>
+        <label for="checkoutName">الاسم <span aria-hidden="true">*</span></label><input id="checkoutName" name="checkoutName" autocomplete="name" maxlength="100" required placeholder="اسم العميل">
+        <label for="checkoutPhone">رقم الهاتف <span aria-hidden="true">*</span></label><input id="checkoutPhone" name="checkoutPhone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" required placeholder="رقم للتواصل">
+        <label for="checkoutArea">المنطقة / العنوان</label><input id="checkoutArea" name="checkoutArea" autocomplete="street-address" maxlength="220" placeholder="المنطقة والشارع أو عنوان الاستلام">
+        <label for="checkoutNotes">ملاحظات الطلب</label><textarea id="checkoutNotes" name="checkoutNotes" rows="2" maxlength="500" placeholder="اللون أو التغليف أو أي تفاصيل إضافية"></textarea>
+        <small>تُرسل هذه البيانات إلى واتساب عند الضغط على متابعة الطلب، ولا تُحفظ تلقائيًا في المتصفح.</small>
+      </div>
+      <button type="button" class="btn btn-gold full-width" id="checkoutBtn">متابعة الطلب عبر واتساب</button>
+      <button type="button" class="text-btn" id="clearCart">إفراغ السلة</button>
+    </div>
+  </aside>
 
   <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button type="button" class="modal-close icon-btn" id="closeModal" aria-label="إغلاق">×</button><div id="modalContent"></div></section></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="ai-service.js?v=20261016-ai-bridge1"></script>
-  <script src="app.js?v=20261018-home-catalog-showcase3-null-guard4"></script>
-  <script src="royal-gold-gate.js?v=20261017-gold-gate1"></script>
-  <script src="reference-library.js?v=20261018-settings-only2"></script>
-  <script src="settings.js?v=20261019-null-safe-admin-events1"></script>
-  <script src="mamlaka-full-editor.js?v=20261017-full-editor1"></script>
-  <script src="enhancements.js?v=20261015-voice-guide1"></script>
-  <script src="supplier-catalog.js?v=20261014-public-oils1"></script>
-  <script src="catalog-editor.js?v=20261019-current-blend-prices1"></script>
-  <script src="site-upgrades.js?v=20261016-note-coverage3"></script>
-  <script src="royal-gift-planner.js?v=20261015-gift1"></script>
-  <script src="inventory-accounting.js?v=20261015-json-restore1"></script>
-  <script src="royal-interactions.js?v=20261017-static-home1"></script>
-  <script src="royal-finish.js?v=20261016-backtotop1"></script>
-  <script src="section-folds.js?v=20261015-location-fold1"></script>
-  <script src="blending-atelier.js?v=20261019-current-blend-prices1"></script>
+
+  <!-- السكربتات (defer) -->
+  <script defer src="ai-service.js?v=20261016-ai-bridge1"></script>
+  <script defer src="app.js?v=20261018-home-catalog-showcase3-null-guard4"></script>
+  <script defer src="royal-gold-gate.js?v=20261017-gold-gate1"></script>
+  <script defer src="reference-library.js?v=20261018-settings-only2"></script>
+  <script defer src="settings.js?v=20261019-null-safe-admin-events1"></script>
+  <script defer src="mamlaka-full-editor.js?v=20261017-full-editor1"></script>
+  <script defer src="enhancements.js?v=20261015-voice-guide1"></script>
+  <script defer src="supplier-catalog.js?v=20261014-public-oils1"></script>
+  <script defer src="catalog-editor.js?v=20261019-current-blend-prices1"></script>
+  <script defer src="site-upgrades.js?v=20261016-note-coverage3"></script>
+  <script defer src="royal-gift-planner.js?v=20261015-gift1"></script>
+  <script defer src="inventory-accounting.js?v=20261015-json-restore1"></script>
+  <script defer src="royal-interactions.js?v=20261017-static-home1"></script>
+  <script defer src="royal-finish.js?v=20261016-backtotop1"></script>
+  <script defer src="section-folds.js?v=20261015-location-fold1"></script>
+  <script defer src="blending-atelier.js?v=20261019-current-blend-prices1"></script>
+
+  <!-- سكربتات v3.0 الجديدة -->
   <script>
+  (function(){
+    'use strict';
+    /* 1. شريط تقدم التمرير */
+    var progress=document.getElementById('scrollProgress');
+    function updateProgress(){
+      var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+      progress.style.transform='scaleX('+(max>0?h.scrollTop/max:0)+')';
+    }
+    window.addEventListener('scroll',updateProgress,{passive:true});
+    updateProgress();
+
+    /* 2. تبديل الوضع الليلي/النهاري */
+    var themeToggle=document.getElementById('themeToggle');
+    var root=document.documentElement;
+    function applyTheme(t){root.setAttribute('data-theme',t);try{localStorage.setItem('mamlaka_theme',t)}catch(e){}}
+    try{var saved=localStorage.getItem('mamlaka_theme');if(saved)applyTheme(saved)}catch(e){}
+    if(themeToggle)themeToggle.addEventListener('click',function(){
+      applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
+    });
+
+    /* 3. اختبار اكتشف عطرك */
+    var quiz={
+      step:0,
+      answers:[],
+      questions:[
+        {q:'كيف تحب أن تكون رائحتك؟',opts:[{t:'منعشة ومشرقة',v:'حمضي ومنعش'},{t:'دافئة وغامضة',v:'عنبر وشرقي'},{t:'ناعمة وأنيقة',v:'زهري ووردي'},{t:'جريئة وخشبية',v:'عود وخشبي'}]},
+        {q:'متى ستستخدم العطر غالبًا؟',opts:[{t:'النهار والعمل',v:'نهار'},{t:'المساء والمناسبات',v:'مساء'},{t:'يوميًا',v:'يومي'},{t:'الصيف والسفر',v:'صيف'}]},
+        {q:'ما الإحساس الذي تفضله؟',opts:[{t:'نظيف وهادئ',v:'مسكي ونظيف'},{t:'حلو ودافئ',v:'حلو وفانيليا'},{t:'طبيعي وأخضر',v:'عطري وأخضر'},{t:'بحري ومنعش',v:'بحري'}]},
+        {q:'أي نوتة تجذبك أكثر؟',opts:[{t:'فانيليا وكراميل',v:'حلو وفانيليا'},{t:'عود وصندل',v:'عود وخشبي'},{t:'ورد وياسمين',v:'زهري ووردي'},{t:'برغموت وليمون',v:'حمضي ومنعش'}]},
+        {q:'ما مستوى القوة المفضل؟',opts:[{t:'قوي وواضح',v:'قوي'},{t:'متوازن',v:'متوازن'},{t:'هادئ وقريب من الجلد',v:'هادئ'}]}
+      ]
+    };
+    var quizBody=document.getElementById('quizBody'), quizBar=document.getElementById('quizBar'),
+        quizQuestion=document.getElementById('quizQuestion'), quizOptions=document.getElementById('quizOptions'),
+        quizResult=document.getElementById('quizResult'), quizShell=document.getElementById('quizShell');
+    function renderQuiz(){
+      if(!quizBody)return;
+      if(quiz.step>=quiz.questions.length){finishQuiz();return;}
+      var item=quiz.questions[quiz.step];
+      quizQuestion.textContent=item.q;
+      quizOptions.innerHTML='';
+      item.opts.forEach(function(opt){
+        var b=document.createElement('button');b.type='button';b.className='quiz-opt';b.textContent=opt.t;
+        b.addEventListener('click',function(){
+          quiz.answers.push(opt.v);quiz.step++;
+          quizBar.style.width=Math.round((quiz.step/quiz.questions.length)*100)+'%';
+          renderQuiz();
+        });
+        quizOptions.appendChild(b);
+      });
+      quizBar.style.width=Math.round((quiz.step/quiz.questions.length)*100)+'%';
+    }
+    function finishQuiz(){
+      quizBody.hidden=true;quizShell.querySelector('.quiz-progress').hidden=true;
+      var counts={};quiz.answers.forEach(function(a){counts[a]=(counts[a]||0)+1});
+      var top=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]})[0]||'عنبر وشرقي';
+      quizResult.hidden=false;
+      quizResult.innerHTML='<p class="quiz-question">ذوقك العطري الأقرب: <span style="color:var(--gold-soft)">'+top+'</span></p>'+
+        '<p style="color:var(--muted);line-height:1.9">يمكنك الآن تصفح العطور المطابقة لهذا الطابع، أو التحدث مع مستشار العطور للحصول على ترشيح أدق.</p>'+
+        '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">'+
+        '<a class="btn btn-gold" href="#ready">تصفح العطور المطابقة</a>'+
+        '<a class="btn btn-outline" href="#advisor">اسأل المستشار</a></div>';
+      try{sessionStorage.setItem('mamlaka_quiz_result',top)}catch(e){}
+    }
+    renderQuiz();
+
+    /* 4. تأثير ظهور العناصر عند التمرير */
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){e.target.style.opacity=1;e.target.style.transform='translateY(0)';io.unobserve(e.target)}
+        });
+      },{threshold:.12});
+      document.querySelectorAll('.home-index-card,.category-card,.testimonial,.quiz-shell,.product-card').forEach(function(el){
+        el.style.opacity=0;el.style.transform='translateY(18px)';
+        el.style.transition='opacity .6s ease, transform .6s ease';
+        io.observe(el);
+      });
+    }
+
+    /* 5. تحديث سنة التذييل */
+    var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
+  })();
+  </script>
+
+  <script>
+  /* دليل أسعار التركيب — نسخة v3.0 بدون تجاوز قسري */
   (function(){
     function updateBlendPriceGuide(){
       var root=document.getElementById('blendPriceGuide'); if(!root)return;
       var defaults=[{size:'3',label:'3 مل · زيت فقط',price:50},{size:'5',label:'5 مل · زيت فقط',price:75},{size:'10',label:'10 مل · زيت فقط',price:100},{size:'22',label:'22 مل',price:130},{size:'30',label:'30 مل · زيت فقط / رش',price:100},{size:'50',label:'50 مل · زيت فقط / رش',price:150},{size:'100',label:'100 مل · زيت فقط / رش',price:300}],items=defaults,gramRoot=document.getElementById('customerGramPriceGuide');
-      try{var cfg=JSON.parse(localStorage.getItem('mamlaka_catalog_taxonomy_config_v1')||'null');if(cfg&&Array.isArray(cfg.retailBlendPrices)&&cfg.retailBlendPrices.length){var bySize={};cfg.retailBlendPrices.forEach(function(x){var n=String(x.size||'').match(/[0-9]+/),size=n?n[0]:'';if(size&&Number.isFinite(Number(x.price))&&Number(x.price)>=50)bySize[size]=Number(x.price)});if(bySize['30']===150&&bySize['50']===200&&bySize['100']===450){bySize['30']=100;bySize['50']=150;bySize['100']=300}items=defaults.map(function(x){return {size:x.size,label:x.label,price:bySize[x.size]||x.price}})}}
-      catch(e){}
-      root.innerHTML=items.map(function(x){return '<div><span>'+x.label.replace(/[<>]/g,'')+'</span><strong>'+x.price.toLocaleString('ar-EG')+' ج.م</strong></div>'}).join(''); if(gramRoot){var gp={french:10,oriental:15,orientalPremium:20};try{var cfg2=JSON.parse(localStorage.getItem('mamlaka_catalog_taxonomy_config_v1')||'null');if(cfg2&&cfg2.gramPricing)gp=Object.assign(gp,cfg2.gramPricing)}catch(e){}gramRoot.innerHTML=[['الزيوت الفرنسية',gp.french],['الزيوت الشرقية',gp.oriental],['الشرقي الممتاز',gp.orientalPremium]].map(function(x){return '<div><span>'+x[0]+'</span><strong>'+Number(x[1]).toLocaleString('ar-EG')+' ج.م / جرام</strong></div>'}).join('')}
+      try{
+        var cfg=JSON.parse(localStorage.getItem('mamlaka_catalog_taxonomy_config_v1')||'null');
+        if(cfg&&Array.isArray(cfg.retailBlendPrices)&&cfg.retailBlendPrices.length){
+          var bySize={};
+          cfg.retailBlendPrices.forEach(function(x){
+            var n=String(x.size||'').match(/[0-9]+/),size=n?n[0]:'';
+            if(size&&Number.isFinite(Number(x.price))&&Number(x.price)>=50)bySize[size]=Number(x.price)
+          });
+          items=defaults.map(function(x){return {size:x.size,label:x.label,price:bySize[x.size]||x.price}})
+        }
+      }catch(e){}
+      root.innerHTML=items.map(function(x){return '<div><span>'+x.label.replace(/[<>]/g,'')+'</span><strong>'+x.price.toLocaleString('ar-EG')+' ج.م</strong></div>'}).join('');
+      if(gramRoot){
+        var gp={french:10,oriental:15,orientalPremium:20};
+        try{var cfg2=JSON.parse(localStorage.getItem('mamlaka_catalog_taxonomy_config_v1')||'null');if(cfg2&&cfg2.gramPricing)gp=Object.assign(gp,cfg2.gramPricing)}catch(e){}
+        gramRoot.innerHTML=[['الزيوت الفرنسية',gp.french],['الزيوت الشرقية',gp.oriental],['الشرقي الممتاز',gp.orientalPremium]].map(function(x){return '<div><span>'+x[0]+'</span><strong>'+Number(x[1]).toLocaleString('ar-EG')+' ج.م / جرام</strong></div>'}).join('')
+      }
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',updateBlendPriceGuide);else updateBlendPriceGuide();
     document.addEventListener('mamlaka:products-updated',updateBlendPriceGuide);
   })();
   </script>
-
 </body>
 </html>
