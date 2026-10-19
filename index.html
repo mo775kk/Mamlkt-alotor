@@ -43,7 +43,7 @@
     function recoverOnce(){
       var key='mamlaka-cache-recovery-20261019';
       var seen=false;try{seen=sessionStorage.getItem(key)==='1';}catch(ignore){}
-      if(seen){try{sessionStorage.removeItem(key)}catch(ignore){};return;}
+      if(seen)return;
       try{sessionStorage.setItem(key,'1')}catch(ignore){return;}
       var tasks=[];
       if('serviceWorker' in navigator)tasks.push(navigator.serviceWorker.getRegistrations().then(function(regs){return Promise.all(regs.map(function(reg){return reg.unregister()}))}).catch(function(){}));
