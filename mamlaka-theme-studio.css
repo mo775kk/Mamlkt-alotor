@@ -16,3 +16,46 @@ button,.btn{transition:transform .16s ease,box-shadow .16s ease,filter .16s ease
 .product-card img,.product-image,.category-card img,.product-tile img{border-radius:calc(var(--theme-radius) - 4px)}
 @media(max-width:640px){.product-card,.category-card,.product-tile,.gift-card,.oil-card,.blend-card{box-shadow:0 3px 12px rgba(55,38,19,.06)}button,.btn{min-height:40px}.product-info h3,.category-card h3{font-size:clamp(14px,3.8vw,17px)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+/* Royal identity finishing layer — coherent hierarchy, legibility and responsive rhythm. */
+:root{--royal-content-width:1240px;--royal-section-space:clamp(26px,4vw,54px)}
+body{line-height:1.7;letter-spacing:0}
+.site-header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(145%) blur(12px);background:color-mix(in srgb,var(--header-bg,#fff8e8) 94%,transparent)!important}
+.brand{gap:10px;min-width:0;text-decoration:none}
+.brand-crown{display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border:1px solid color-mix(in srgb,var(--gold2,#d4af37) 60%,var(--line,#e8dccb));border-radius:12px;background:linear-gradient(145deg,color-mix(in srgb,var(--gold2,#d4af37) 20%,var(--panel,#fff)),var(--panel,#fff));font-size:23px;text-shadow:0 1px 0 #fff7}
+.brand strong{font-size:clamp(16px,1.5vw,21px);letter-spacing:.01em}
+.brand small{font-size:10px;letter-spacing:.11em}
+.hero{isolation:isolate;overflow:hidden}
+.hero-copy{max-width:760px}
+.hero h1{font-size:clamp(2rem,5vw,4.3rem);line-height:1.2;text-wrap:balance}
+.hero p,.hero-note{line-height:1.9}
+.section{padding-block:var(--royal-section-space)}
+.section-heading{gap:18px;align-items:end;margin-bottom:20px}
+.section-heading h2{font-size:clamp(1.35rem,2.6vw,2.15rem);line-height:1.35;text-wrap:balance}
+.section-heading>p{max-width:56ch;line-height:1.8}
+.eyebrow{font-size:.72rem;letter-spacing:.12em;font-weight:800}
+.product-grid{align-items:stretch;gap:clamp(10px,1.5vw,18px)}
+.product-card{height:100%;overflow:hidden;background:var(--card,#fff)!important}
+.product-visual{background:var(--panel2,#f6ead0)!important}
+.product-info{padding:clamp(10px,1.2vw,16px)}
+.product-info h3{font-size:clamp(.9rem,1.25vw,1.05rem);line-height:1.5}
+.product-bottom{align-items:center}
+.product-price{font-weight:800;font-variant-numeric:tabular-nums}
+.category-card,.royal-family-box,.info-card,.blend-card,.gift-card,.oil-card{background:var(--card,#fff)!important}
+input,select,textarea{min-height:42px;max-width:100%;font:inherit}
+:where(button,.btn,a,input,select,textarea):focus-visible{outline-offset:3px}
+.site-footer{border-top:1px solid var(--line,#e7d9bd);padding-top:clamp(24px,4vw,44px)}
+.footer-brand{justify-content:center}
+#cfgPreset,#cfgVisualStyle{font-weight:700}
+@media(max-width:760px){
+ .site-header{padding-inline:12px}
+ .brand-crown{width:34px;height:34px;flex-basis:34px}
+ .brand small{letter-spacing:.04em;font-size:9px}
+ .hero{min-height:440px}
+ .hero-copy{padding-inline:18px}
+ .section-heading{align-items:start}
+ .section-heading>p{font-size:.92rem}
+ .product-grid{gap:10px}
+ .product-visual{height:120px}
+}
+@media(min-width:761px){main>.section,main>section.section{max-width:var(--royal-content-width);margin-inline:auto;padding-inline:clamp(18px,2.5vw,32px)}}
