@@ -1,5 +1,5 @@
 /* MAMLKAT AL-OTOR PWA service worker — resilient update strategy */
-const CACHE_NAME = "mamlakat-al-otor-shell-v36-layout1";
+const CACHE_NAME = "mamlakat-al-otor-shell-v37-release10";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const APP_SHELL = [
   BASE_PATH,
