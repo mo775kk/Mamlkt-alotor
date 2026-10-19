@@ -316,7 +316,7 @@
     const msg="مرحبًا، أريد مراجعة طلب من مملكة العطور:\nاسم العميل: "+name+"\nهاتف العميل: "+phone+(area?"\nالعنوان / المنطقة: "+area:"")+(notes?"\nملاحظات: "+notes:"")+"\n\nتفاصيل الطلب:\n"+lines.join("\n")+"\nالإجمالي المرجعي: "+formatMoney(total)+"\nيرجى تأكيد التوفر والسعر النهائي وتكلفة التوصيل.";
     window.open("https://wa.me/"+getWaNumber()+"?text="+encodeURIComponent(msg),"_blank","noopener");
   }
-  function blendPrice(){const s=$("#blendSize").value;$("#blendPrice").textContent=formatMoney(retailSizePrice(s));}
+  function blendPrice(){const mode=$("#blendPricingMode")?.value||"size";const s=$("#blendSize").value;const priceEl=$("#blendPrice");if(mode==="gram"){const cls=$("#blendGramClass")?.value||"french";const grams=Math.max(1,Math.floor(Number($("#blendGramAmount")?.value)||1));const cfg=(()=>{try{return JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")||"{}")}catch{return {}}})();const gp=cfg.gramPricing||{};const rate=Number(gp[cls])||({french:10,oriental:15,orientalPremium:20}[cls]||10);const total=Math.max(50,rate*grams);if(priceEl)priceEl.textContent=formatMoney(total);const label=$("#blendPriceLabel");if(label)label.textContent="السعر الإجمالي حسب عدد الجرامات";const breakdown=$("#blendPriceBreakdown");if(breakdown)breakdown.textContent=`${formatMoney(rate)} / جرام × ${grams} جرام = ${formatMoney(total)} (حد أدنى 50 ج.م)`;return;}if(priceEl)priceEl.textContent=formatMoney(retailSizePrice(s));const label=$("#blendPriceLabel");if(label)label.textContent="السعر الإجمالي حسب الحجم";}
   async function submitAdvisor(query){
     const q=norm(query);if(!q)return;
     const replies=$("#advisorReplies");
