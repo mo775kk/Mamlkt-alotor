@@ -275,7 +275,7 @@
   function renderCart(){
     const el=$("#cartItems");
     if(!cart.length){el.innerHTML='<div class="empty-state">السلة فارغة حاليًا.</div>';$("#cartTotal").textContent=formatMoney(0);return;}
-    el.innerHTML=cart.map(item=>`<div class="cart-line"><div><h4>${escapeHTML(item.nameAr)}</h4><small>${escapeHTML(item.nameEn||"")} · ${escapeHTML(item.size)} مل · ${formatMoney(item.price)} للقطعة</small>${item.custom?.description?`<small>${escapeHTML(item.custom.description)}</small>`:""}<small>الكمية: ${escapeHTML(item.qty)} — الإجمالي: ${formatMoney(item.price*item.qty)}</small></div><div class="cart-line-actions"><button class="qty-btn" data-cart="minus" data-key="${escapeHTML(item.key)}" aria-label="تقليل الكمية">−</button><button class="qty-btn" data-cart="plus" data-key="${escapeHTML(item.key)}" aria-label="زيادة الكمية">+</button><button class="remove-btn" data-cart="remove" data-key="${escapeHTML(item.key)}">حذف</button></div></div>`).join("");
+    el.innerHTML=cart.map(item=>`<div class="cart-line"><div><h4>${escapeHTML(item.nameAr)}</h4><small>${escapeHTML(item.nameEn||"")} · ${escapeHTML(item.size)}${String(item.size).includes("جرام")?"":" مل"} · ${formatMoney(item.price)} للقطعة</small>${item.custom?.description?`<small>${escapeHTML(item.custom.description)}</small>`:""}<small>الكمية: ${escapeHTML(item.qty)} — الإجمالي: ${formatMoney(item.price*item.qty)}</small></div><div class="cart-line-actions"><button class="qty-btn" data-cart="minus" data-key="${escapeHTML(item.key)}" aria-label="تقليل الكمية">−</button><button class="qty-btn" data-cart="plus" data-key="${escapeHTML(item.key)}" aria-label="زيادة الكمية">+</button><button class="remove-btn" data-cart="remove" data-key="${escapeHTML(item.key)}">حذف</button></div></div>`).join("");
     $("#cartTotal").textContent=formatMoney(cart.reduce((n,x)=>n+x.price*x.qty,0));
   }
   function openDrawer(){ $("#drawerBackdrop").classList.remove("hidden");$("#cartDrawer").classList.add("open");$("#cartDrawer").setAttribute("aria-hidden","false");document.body.classList.add("locked");renderCart(); }
@@ -407,7 +407,7 @@
     const chosenPrice=mode==="gram"?Math.max(50,gramDefaults[gramClass]*grams):retailSizePrice(size);
     const pricingDetail=mode==="gram"?`التسعير بالجرام: ${gramLabels[gramClass]||"فرنسي"}، ${gramDefaults[gramClass]} جنيه/جرام × ${grams} جرام = ${chosenPrice} جنيه`:`التسعير حسب الحجم: ${size} مل = ${chosenPrice} جنيه`;
     const label=`تركيبة-${family}-${mode==="gram"?grams+"g":size}-${bottle}-${oil?.supplierSku||"اختيار-المتجر"}`;
-    addToCart("custom-"+Date.now(),size,chosenPrice,{nameAr:`تركيبة ${family}`,nameEn:"Custom Blend",label,description:`الزيت الأساسي: ${oilName}، العائلة: ${family}، الحجم: ${size} مل، ${bottle}، ${pricingDetail}`});
+    addToCart("custom-"+Date.now(),mode==="gram"?(grams+" جرام"):size,chosenPrice,{nameAr:`تركيبة ${family}`,nameEn:"Custom Blend",label,description:`الزيت الأساسي: ${oilName}، العائلة: ${family}، الحجم: ${size} مل، ${bottle}، ${pricingDetail}`});
     const last=cart[cart.length-1];if(last&&last.custom)last.nameAr=`تركيبة ${family} — ${oilName} (${bottle})`;
     save(STORAGE.cart,cart);updateCounts();
   });
