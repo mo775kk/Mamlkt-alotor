@@ -137,3 +137,67 @@ img,svg{max-width:100%}
  .feature-banner{min-height:220px;padding:22px}.gift-art{height:200px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none;transition:none;scroll-behavior:auto}}
+
+
+/* FINAL SINGLE-PASS POLISH — last visual layer; all colors follow Settings tokens. */
+:root{
+  --ink:var(--bg,#fffdf9);
+  --surface:var(--panel,#fff);
+  --surface-2:var(--panel2,#fff8f1);
+  --ivory:var(--text,#30231d);
+  --glass:var(--card,#fff);
+  --glass-strong:var(--panel2,#fff8ee);
+  --shadow:0 8px 24px rgba(70,44,22,.08);
+}
+html,body{background:var(--bg,#fffdf9)!important;color:var(--text,#30231d)}
+body{background-image:none!important}
+.site-header{background:var(--header-bg,#fff)!important;color:var(--text,#30231d)}
+.site-header .brand strong,.section-heading h2,.category-card h3,.product-info h3,
+.drawer-head h2,.hero h1,.feature-copy h2,.gift-copy h2,.advisor-box h2,.advisor-box h3{
+  color:var(--heading,#38251b)!important
+}
+.site-header .brand small,.main-nav a,.hero-note,.section-heading>p,
+.category-card p,.product-meta,.product-desc,.site-footer p,.site-footer small{
+  color:var(--muted,#665b53)
+}
+.hero{background:var(--panel2,#f7efe4)!important}
+.hero-shade{background:linear-gradient(90deg,
+  color-mix(in srgb,var(--bg,#fffdf9) 98%,transparent),
+  color-mix(in srgb,var(--bg,#fffdf9) 82%,transparent))!important}
+.hero-copy>p:not(.eyebrow){color:var(--text,#57483d)!important;text-shadow:none}
+.trust-strip,.trust-strip>div,.category-card,.product-card,.home-index-card,
+.quiz-shell,.blend-panel,.advisor-box,.testimonial,.split-feature,
+.drawer,.product-modal,.settings-panel,.admin-panel,.gift-art{
+  background:var(--panel,#fff)!important;color:var(--text,#38251b)!important
+}
+.category-card,.product-card,.home-index-card,.quiz-shell,.blend-panel,
+.advisor-box,.testimonial,.split-feature,.drawer,.product-modal,.settings-panel,.admin-panel{
+  border-color:var(--line,#e8ddcf)!important;box-shadow:0 4px 16px rgba(70,44,22,.07)
+}
+.category-card::before,.category-card::after{pointer-events:none}
+.blend-summary,.assistant-message,.quiz-progress{background:var(--panel2,#fff8ee)!important;color:var(--text,#49372a)!important}
+.blend-summary strong,.product-price,.product-en,.eyebrow,.category-card small,
+.home-index-count,.home-index-icon,.category-icon-wrap svg{color:var(--gold,#8e6817)}
+.feature-copy>p:not(.eyebrow),.gift-copy>p:not(.eyebrow){color:var(--muted,#65584e)!important}
+.feature-banner{background:linear-gradient(90deg,
+  color-mix(in srgb,var(--bg,#fffdf9) 96%,transparent),
+  color-mix(in srgb,var(--bg,#fffdf9) 65%,transparent)),
+  var(--page-image,url("assets/images/royal-hero.jpg")) center 57%/cover!important}
+.gift-art{background:radial-gradient(ellipse at center,color-mix(in srgb,var(--gold2,#d4af37) 14%,transparent),transparent 65%),var(--panel2,#fffaf1)!important}
+.site-footer{background:var(--footer-bg,#fff)!important}
+.btn-gold,.small-btn.primary,.toast{background:var(--button-bg,#c8a44b)!important;color:var(--button-text,#30200f)!important;border-color:var(--button-bg,#c8a44b)!important}
+.btn-outline,.icon-btn{background:var(--field,#fff);color:var(--text,#38251b);border-color:var(--line,#e4d7c5)}
+input,select,textarea{background:var(--field,#fff);color:var(--text,#38251b);border-color:var(--line,#e2d5c2)}
+.admin-head,.admin-tabs,.admin-page,.admin-product{border-color:var(--line,#e8ddcf)}
+.admin-note,.admin-login small{color:var(--muted,#665b53)}
+#settingsSaveStatus{position:sticky;top:0;z-index:12}
+@media(max-width:600px){
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .product-card{min-width:0}
+  .product-visual{height:118px}
+  .product-info h3{font-size:.92rem;overflow-wrap:anywhere}
+  .product-bottom{gap:6px;flex-wrap:wrap}
+  .product-price{font-size:.85rem}
+  .section{padding-block:26px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
