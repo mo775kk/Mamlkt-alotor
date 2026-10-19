@@ -2,7 +2,7 @@
  * Keep HTML network-first so visitors receive storefront updates.
  * Cache successful same-origin static assets for offline revisits.
  */
-const CACHE_NAME = "mamlakat-al-otor-shell-v25-readable-themes";
+const CACHE_NAME = "mamlakat-al-otor-shell-v26-live-assets";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const APP_SHELL = [
   BASE_PATH,
@@ -31,12 +31,29 @@ self.addEventListener("fetch", event => {
     return;
   }
   if (url.pathname.startsWith(BASE_PATH)) {
-    event.respondWith(caches.match(request).then(cached => {
-      const network = fetch(request).then(response => {
-        if (response && response.ok && response.type === "basic") caches.open(CACHE_NAME).then(cache => cache.put(request, response.clone()));
-        return response;
-      });
-      return cached || network.catch(() => Response.error());
-    }));
+    const isCodeOrStyle = /\\.(?:js|css)$/i.test(url.pathname);
+    event.respondWith((async () => {
+      if (isCodeOrStyle) {
+        try {
+          const fresh = await fetch(request, { cache: "no-store" });
+          if (fresh && fresh.ok && fresh.type === "basic") {
+            const cache = await caches.open(CACHE_NAME);
+            await cache.put(request, fresh.clone());
+          }
+          return fresh;
+        } catch (error) {
+          return (await caches.match(request)) || Response.error();
+        }
+      }
+      const cached = await caches.match(request);
+      if (cached) return cached;
+      try {
+        const fresh = await fetch(request);
+        if (fresh && fresh.ok && fresh.type === "basic") caches.open(CACHE_NAME).then(cache => cache.put(request, fresh.clone()));
+        return fresh;
+      } catch (error) {
+        return Response.error();
+      }
+    })());
   }
 });
