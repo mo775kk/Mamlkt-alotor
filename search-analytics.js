@@ -67,8 +67,9 @@
     ["genderFilter","familyFilter"].forEach(id=>document.getElementById(id)?.addEventListener("change",queueRecord));
     const message=document.getElementById("resultsMessage");if(message)new MutationObserver(()=>{makeWhatsappButton();queueRecord()}).observe(message,{childList:true,subtree:true,characterData:true});
     makeWhatsappButton();addAdminPage();renderAdminHistory();
-    const layer=document.getElementById("adminLayer");
-    if(layer)new MutationObserver(()=>{addAdminPage();renderAdminHistory()}).observe(layer,{childList:true,subtree:true});
+    const watchLayer=()=>{const layer=document.getElementById("adminLayer");if(layer&&!layer.dataset.searchAnalyticsObserved){layer.dataset.searchAnalyticsObserved="1";new MutationObserver(()=>{addAdminPage();renderAdminHistory()}).observe(layer,{childList:true,subtree:true});addAdminPage();renderAdminHistory()}};
+    watchLayer();
+    new MutationObserver(watchLayer).observe(document.body,{childList:true,subtree:true});
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
