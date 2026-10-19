@@ -113,15 +113,15 @@
     },
     {
       "size": "30 مل",
-      "price": 150
+      "price": 100
     },
     {
       "size": "50 مل",
-      "price": 200
+      "price": 150
     },
     {
       "size": "100 مل",
-      "price": 450
+      "price": 300
     }
   ],
   "editingGuide": [
