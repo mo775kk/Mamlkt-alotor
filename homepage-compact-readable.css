@@ -371,3 +371,92 @@ footer, .site-footer { padding: 14px !important; font-size: 12px !important; }
   table { font-size: 10px !important; }
   th, td { padding: 4px !important; }
 }
+
+
+/* Responsive consistency repair: unify all page widths and prevent horizontal overflow */
+*, *::before, *::after { box-sizing: border-box !important; }
+html { width: 100%; max-width: 100%; overflow-x: clip; -webkit-text-size-adjust: 100%; }
+body { width: 100%; max-width: 100%; min-width: 0 !important; overflow-x: clip; margin-inline: auto; }
+img, video, canvas, iframe, svg { max-width: 100%; }
+img, video { height: auto; }
+button, input, select, textarea { max-width: 100%; font: inherit; }
+button, .btn, a { overflow-wrap: anywhere; }
+main, header, footer, nav, section, article, aside, .app, .app-shell, .site-shell, .page, .page-content,
+main > *, section > *, .container, .container-fluid, .content, .content-wrap, .section-inner {
+  min-width: 0;
+}
+.container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+  width: min(100% - 32px, 1180px) !important;
+  max-width: 1180px !important;
+  margin-inline: auto !important;
+}
+[class*="grid"], .products-grid, .categories-grid, .features-grid, .cards-grid, .product-list {
+  min-width: 0;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+.product-card, .category-card, .feature-card, .info-card, .panel, .admin-card, .card {
+  min-width: 0 !important; max-width: 100%;
+}
+p, h1, h2, h3, h4, h5, label, a, button, th, td, .product-name, .description {
+  overflow-wrap: anywhere;
+}
+table { width: 100%; max-width: 100%; border-collapse: collapse; }
+.table-wrap, .table-responsive, .table-container, .admin-table-wrap, .inventory-table-wrap {
+  display: block; width: 100%; max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain;
+}
+.modal, .modal-content, .dialog, .drawer, .popup, .product-modal, .pwa-help-card {
+  width: min(100% - 24px, 680px) !important; max-width: calc(100vw - 24px) !important;
+  max-height: min(88dvh, 900px); overflow: auto;
+}
+@media (min-width: 1200px) {
+  .container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+    width: min(100% - 48px, 1180px) !important;
+  }
+}
+@media (max-width: 900px) {
+  .container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+    width: calc(100% - 24px) !important;
+  }
+  .hero, .hero-inner, .hero-content, .hero-layout, .banner-inner {
+    min-width: 0 !important; max-width: 100% !important;
+  }
+  .hero h1, .hero-title { font-size: clamp(22px, 5vw, 34px) !important; }
+  .hero p, .hero-description { font-size: clamp(12px, 2vw, 15px) !important; }
+}
+@media (max-width: 600px) {
+  .container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+    width: calc(100% - 20px) !important; padding-inline: 0 !important;
+  }
+  section, .section, .page-section, .content-section { padding-inline: 10px !important; }
+  .products-grid, .categories-grid, .features-grid, .cards-grid, .product-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  .product-card, .category-card, .feature-card, .info-card, .panel, .admin-card, .card {
+    padding: 8px !important; border-radius: 10px !important;
+  }
+  .product-card img, .product-image, .category-card img { width: 100%; max-height: 125px !important; object-fit: contain; }
+  .hero, .hero-inner, .hero-content, .hero-layout, .banner-inner {
+    display: flex; flex-direction: column; align-items: stretch; gap: 10px !important;
+  }
+  .hero img, .hero-media, .hero-visual { width: 100%; max-width: 100%; }
+  .modal, .modal-content, .dialog, .drawer, .popup, .product-modal, .pwa-help-card {
+    width: calc(100vw - 16px) !important; max-width: calc(100vw - 16px) !important;
+    padding: 10px !important; border-radius: 12px !important;
+  }
+  .admin-grid, .dashboard-grid, .stats-grid, .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important;
+  }
+  .admin-grid > *, .dashboard-grid > *, .stats-grid > *, .form-grid > * { min-width: 0 !important; }
+  nav, .navbar, .nav-links, .main-nav { max-width: 100%; }
+  input, select, textarea { width: 100%; min-width: 0 !important; }
+}
+@media (max-width: 360px) {
+  .products-grid, .categories-grid, .features-grid, .cards-grid, .product-list,
+  .admin-grid, .dashboard-grid, .stats-grid, .form-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+    width: calc(100% - 16px) !important;
+  }
+}
