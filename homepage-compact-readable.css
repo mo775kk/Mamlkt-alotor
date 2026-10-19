@@ -1,0 +1,514 @@
+/* Compact, readable homepage refinements — CSS-only; preserves existing site behavior. */
+html { scroll-padding-top: 76px; }
+body { font-size: 16px !important; line-height: 1.7 !important; }
+.site-header { min-height: 68px; height: auto; padding-block: 8px; gap: 18px; }
+.site-header .brand strong { font-size: 20px !important; }
+.site-header .brand small { font-size: 9px !important; }
+.site-header .main-nav a { font-size: 13px !important; padding: 7px 3px !important; }
+.hero {
+  min-height: clamp(300px, 36vw, 440px) !important;
+  padding: clamp(24px, 4vw, 48px) !important;
+  margin: 12px 0 18px !important;
+}
+.hero-copy { width: min(620px, 68%) !important; max-width: 620px !important; padding: 12px 0 !important; }
+.hero-copy h1, .hero h1 {
+  font-size: clamp(34px, 4.2vw, 54px) !important;
+  line-height: 1.22 !important;
+  margin: 7px 0 12px !important;
+  letter-spacing: 0 !important;
+}
+.hero-copy p, .hero p {
+  max-width: 500px !important;
+  font-size: clamp(14px, 1.25vw, 17px) !important;
+  line-height: 1.75 !important;
+  margin-block: 8px !important;
+}
+.hero-actions { gap: 9px !important; margin-top: 18px !important; }
+.hero-actions .btn { min-height: 42px; padding: 9px 16px !important; font-size: 13px !important; }
+.hero-note { margin-top: 16px !important; font-size: 12px !important; }
+.section { width: min(1160px, calc(100% - 36px)) !important; margin-bottom: 38px !important; }
+.section-heading { margin-bottom: 18px !important; padding-bottom: 12px !important; gap: 14px !important; }
+.section-heading h2, .section-title, .section-title h2 {
+  font-size: clamp(25px, 3vw, 36px) !important; line-height: 1.35 !important;
+}
+.section-heading p { font-size: 14px !important; line-height: 1.7 !important; }
+.trust-strip { gap: clamp(16px, 4vw, 48px) !important; padding: 15px 12px !important; }
+.trust-strip b { font-size: 14px !important; }
+.trust-strip small { font-size: 11px !important; }
+.category-grid { gap: 10px !important; }
+.category-card { min-height: 165px !important; padding: 15px !important; }
+.category-card h3 { font-size: 20px !important; line-height: 1.35 !important; }
+.category-card p { font-size: 12px !important; line-height: 1.65 !important; }
+.home-index-section, .home-showcase-section { padding-block: 22px !important; }
+.home-index-section .section-heading h2, .home-showcase-section .section-heading h2 {
+  font-size: clamp(25px, 3vw, 36px) !important;
+}
+.home-index-section .section-heading>p, .home-showcase-section .section-heading>p {
+  font-size: 14px !important; line-height: 1.75 !important;
+}
+.home-index-copy strong { font-size: 16px !important; }
+.home-index-copy small { font-size: 13px !important; }
+.home-showcase-heading h3 { font-size: clamp(21px, 2.5vw, 28px) !important; }
+.home-showcase-heading p, .home-showcase-description { font-size: 14px !important; line-height: 1.75 !important; }
+.home-showcase-card h4 { font-size: 18px !important; }
+.home-showcase-footer { font-size: 15px !important; }
+@media (max-width: 760px) {
+  html { scroll-padding-top: 68px; }
+  body { font-size: 15px !important; line-height: 1.7 !important; }
+  .site-header { min-height: 60px; padding: 7px 12px; gap: 8px; }
+  .site-header .brand strong { font-size: 17px !important; }
+  .site-header .brand small { font-size: 8px !important; letter-spacing: .6px !important; }
+  .brand-crown { width: 30px !important; height: 30px !important; font-size: 20px !important; }
+  .hero {
+    min-height: 0 !important;
+    padding: 30px 18px 28px !important;
+    margin: 8px 0 14px !important;
+  }
+  .hero-copy { width: 100% !important; max-width: 100% !important; padding: 0 !important; }
+  .hero-copy h1, .hero h1 { font-size: clamp(30px, 8.5vw, 42px) !important; line-height: 1.3 !important; margin: 7px 0 10px !important; }
+  .hero-copy p, .hero p { font-size: 14px !important; line-height: 1.8 !important; max-width: 100% !important; }
+  .hero-actions { margin-top: 14px !important; gap: 8px !important; }
+  .hero-actions .btn { flex: 1 1 130px; min-height: 40px; padding: 8px 10px !important; font-size: 13px !important; }
+  .hero-note { margin-top: 12px !important; font-size: 11px !important; }
+  .section { width: calc(100% - 28px) !important; margin-bottom: 30px !important; }
+  .section-heading { display: block !important; margin-bottom: 14px !important; }
+  .section-heading h2, .section-title, .section-title h2 { font-size: 25px !important; }
+  .section-heading p { font-size: 13px !important; margin-top: 6px !important; }
+  .trust-strip { flex-wrap: wrap; justify-content: space-around !important; gap: 12px 18px !important; padding: 12px 10px !important; }
+  .trust-strip>div { gap: 7px !important; }
+  .line-icon { font-size: 20px !important; }
+  .trust-strip b { font-size: 12px !important; }
+  .trust-strip small { font-size: 10px !important; }
+  .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .category-card { min-height: 145px !important; padding: 12px !important; }
+  .category-card h3 { font-size: 18px !important; }
+  .category-card p { font-size: 11px !important; }
+  .home-index-section, .home-showcase-section { padding-block: 16px !important; }
+  .home-index-card { min-height: 70px !important; }
+}
+@media (max-width: 380px) {
+  .hero { padding: 24px 14px !important; }
+  .hero-copy h1, .hero h1 { font-size: 29px !important; }
+  .hero-actions .btn { flex-basis: 100%; }
+  .category-card { min-height: 132px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero, .hero-copy, .category-card { transition: none !important; animation: none !important; }
+}
+
+/* Consistent compact sizing across product, blending, contact and owner panels. */
+.product-card { padding: 14px !important; gap: 10px !important; }
+.product-info h3, .product-card h3, .product-tile h3, .product-item h3 {
+  font-size: 18px !important; line-height: 1.45 !important; overflow-wrap: anywhere;
+}
+.product-card p, .product-tile p, .product-item p, .product-info p {
+  font-size: 13px !important; line-height: 1.7 !important;
+}
+.product-card .price, .product-price, .modal-price { font-size: 16px !important; line-height: 1.5 !important; }
+.product-card .btn, .product-card .small-btn, .small-btn {
+  min-height: 39px; padding: 8px 12px !important; font-size: 13px !important; line-height: 1.45 !important;
+}
+.toolbar, .search-box { min-height: 42px; }
+.toolbar select, .search-box input, .blend-step select {
+  font-size: 14px !important; min-height: 42px; line-height: 1.5;
+}
+.blend-panel { gap: 13px !important; padding: clamp(14px, 2.5vw, 22px) !important; }
+.blend-summary strong { font-size: 19px !important; line-height: 1.5 !important; }
+.feature-copy { padding: clamp(22px, 4vw, 42px) !important; }
+.feature-copy h2, .gift-copy h2, .contact-card h2 { font-size: clamp(24px, 3vw, 34px) !important; line-height: 1.4 !important; }
+.advisor-box { padding: clamp(14px, 2.5vw, 22px) !important; gap: 16px !important; }
+.assistant-message, .suggestion p { font-size: 13px !important; line-height: 1.75 !important; }
+.contact-card { padding: clamp(24px, 4vw, 38px) 18px !important; }
+.contact-phone { font-size: 21px !important; }
+.product-modal { padding: clamp(16px, 3vw, 24px) !important; }
+.modal-product { gap: 16px !important; }
+.modal-product h2 { font-size: 25px !important; line-height: 1.4 !important; }
+.modal-product p, .modal-product label { font-size: 14px !important; line-height: 1.75 !important; }
+.admin-panel { padding: clamp(14px, 2.5vw, 24px) !important; }
+.admin-head h2 { font-size: clamp(21px, 2.5vw, 28px) !important; line-height: 1.4 !important; }
+.admin-panel h3 { font-size: 19px !important; line-height: 1.5 !important; }
+.admin-panel label, .admin-panel input, .admin-panel select, .admin-panel textarea,
+.admin-panel button, .admin-note, .admin-product { font-size: 14px !important; line-height: 1.7 !important; }
+.admin-tabs { gap: 7px !important; }
+.admin-tabs button { padding: 8px 11px !important; min-height: 39px; }
+table { font-size: 13px; }
+th, td { padding: 8px 10px; line-height: 1.6; }
+img, svg { max-width: 100%; }
+body, main, section, article, .product-card, .admin-panel, .product-modal { overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .product-card { padding: 10px !important; gap: 8px !important; }
+  .product-info h3, .product-card h3, .product-tile h3, .product-item h3 { font-size: 16px !important; }
+  .product-card p, .product-tile p, .product-item p, .product-info p { font-size: 12px !important; }
+  .product-card .btn, .product-card .small-btn, .small-btn { font-size: 12px !important; padding: 8px 9px !important; }
+  .modal-backdrop { padding: 10px !important; }
+  .product-modal { max-height: 92vh !important; }
+  .modal-product { grid-template-columns: minmax(0, 1fr) !important; gap: 12px !important; }
+  .modal-product-image { height: 160px !important; }
+  .blend-panel { grid-template-columns: minmax(0, 1fr) !important; }
+  .blend-summary { grid-column: 1 !important; }
+  .advisor-box { grid-template-columns: 1fr !important; }
+  .advisor-symbol { width: 54px !important; height: 54px !important; font-size: 32px !important; }
+  .feature-banner { min-height: 220px !important; padding: 24px !important; }
+  .feature-banner h3 { font-size: 24px !important; line-height: 1.4 !important; }
+  .gift-section { grid-template-columns: minmax(0, 1fr) !important; gap: 18px !important; }
+  .admin-panel { max-height: 96vh !important; }
+  .admin-tabs { flex-wrap: wrap; }
+  .admin-tabs button { flex: 1 1 120px; }
+  table { font-size: 12px; }
+  th, td { padding: 7px 8px; }
+}
+
+
+/* Professional scale pass: balanced desktop proportions and tighter mobile layout. */
+html { font-size: 14px; scroll-padding-top: 64px; }
+body { font-size: 14px !important; line-height: 1.65 !important; }
+.site-header { min-height: 60px !important; padding: 7px clamp(14px, 2.5vw, 28px) !important; gap: 12px !important; }
+.site-header .brand strong { font-size: 18px !important; }
+.site-header .brand small { font-size: 8px !important; }
+.site-header .main-nav { gap: clamp(8px, 1.25vw, 16px) !important; }
+.site-header .main-nav a { font-size: 12px !important; padding: 6px 2px !important; }
+.icon-btn { min-width: 34px; min-height: 34px; }
+.hero { min-height: clamp(270px, 31vw, 370px) !important; padding: clamp(22px, 3vw, 36px) !important; margin: 8px 0 14px !important; }
+.hero-copy { max-width: 560px !important; }
+.hero-copy h1, .hero h1 { font-size: clamp(29px, 3.5vw, 44px) !important; line-height: 1.2 !important; margin: 5px 0 9px !important; }
+.hero-copy p, .hero p { font-size: clamp(13px, 1.05vw, 15px) !important; line-height: 1.7 !important; }
+.hero-actions { margin-top: 13px !important; }
+.hero-actions .btn, .btn { min-height: 36px; padding: 8px 13px !important; font-size: 12px !important; }
+.section { width: min(1080px, calc(100% - 40px)) !important; margin-bottom: 30px !important; }
+.section-heading { margin-bottom: 14px !important; padding-bottom: 9px !important; gap: 10px !important; }
+.section-heading h2, .section-title, .section-title h2, .feature-copy h2, .gift-copy h2, .contact-card h2 { font-size: clamp(22px, 2.4vw, 30px) !important; line-height: 1.35 !important; }
+.section-heading p { font-size: 12px !important; line-height: 1.65 !important; }
+.category-grid { gap: 9px !important; }
+.category-card { min-height: 132px !important; padding: 12px !important; }
+.category-card h3 { font-size: 17px !important; }
+.category-card p { font-size: 11px !important; }
+.trust-strip { padding: 11px !important; gap: 20px !important; }
+.product-card { padding: 11px !important; gap: 8px !important; }
+.product-info h3, .product-card h3, .product-tile h3, .product-item h3 { font-size: 15px !important; line-height: 1.4 !important; }
+.product-card p, .product-tile p, .product-item p, .product-info p { font-size: 12px !important; line-height: 1.6 !important; }
+.product-card .price, .product-price, .modal-price { font-size: 14px !important; }
+.product-card .btn, .product-card .small-btn, .small-btn { min-height: 34px; padding: 7px 10px !important; font-size: 12px !important; }
+.toolbar select, .search-box input, .blend-step select, input, select, textarea { font-size: 13px !important; }
+.blend-panel, .advisor-box, .admin-panel { padding: 16px !important; gap: 12px !important; }
+.blend-summary strong { font-size: 17px !important; }
+.modal-product h2 { font-size: 22px !important; }
+.contact-card { padding: 24px 16px !important; }
+.contact-phone { font-size: 19px !important; }
+.admin-head h2 { font-size: 24px !important; }
+.admin-panel h3 { font-size: 17px !important; }
+.admin-panel label, .admin-panel input, .admin-panel select, .admin-panel textarea, .admin-panel button, .admin-note, .admin-product { font-size: 12px !important; }
+table { font-size: 12px !important; }
+th, td { padding: 7px 8px !important; }
+@media (max-width: 760px) {
+  html { font-size: 13px; scroll-padding-top: 58px; }
+  body { font-size: 13px !important; line-height: 1.65 !important; }
+  .site-header { min-height: 54px !important; padding: 6px 10px !important; gap: 6px !important; }
+  .site-header .brand strong { font-size: 15px !important; }
+  .site-header .brand small { font-size: 7px !important; }
+  .brand-crown { width: 27px !important; height: 27px !important; font-size: 18px !important; }
+  .site-header .main-nav a { font-size: 12px !important; }
+  .hero { padding: 24px 15px 22px !important; margin: 6px 0 10px !important; }
+  .hero-copy h1, .hero h1 { font-size: clamp(25px, 7vw, 34px) !important; line-height: 1.25 !important; }
+  .hero-copy p, .hero p { font-size: 12px !important; line-height: 1.7 !important; }
+  .hero-actions { gap: 7px !important; margin-top: 11px !important; }
+  .hero-actions .btn, .btn { min-height: 34px; padding: 7px 10px !important; font-size: 11px !important; }
+  .section { width: calc(100% - 24px) !important; margin-bottom: 24px !important; }
+  .section-heading { margin-bottom: 11px !important; }
+  .section-heading h2, .section-title, .section-title h2, .feature-copy h2, .gift-copy h2, .contact-card h2 { font-size: 21px !important; }
+  .section-heading p { font-size: 11px !important; }
+  .category-card { min-height: 118px !important; padding: 10px !important; }
+  .category-card h3 { font-size: 15px !important; }
+  .category-card p { font-size: 10px !important; }
+  .trust-strip { gap: 10px 14px !important; padding: 10px 8px !important; }
+  .trust-strip b { font-size: 11px !important; }
+  .trust-strip small { font-size: 9px !important; }
+  .product-card { padding: 9px !important; }
+  .product-info h3, .product-card h3, .product-tile h3, .product-item h3 { font-size: 14px !important; }
+  .product-card p, .product-tile p, .product-item p, .product-info p { font-size: 11px !important; }
+  .product-card .btn, .product-card .small-btn, .small-btn { font-size: 11px !important; min-height: 32px; padding: 6px 8px !important; }
+  .blend-panel, .advisor-box, .admin-panel { padding: 12px !important; gap: 10px !important; }
+  .modal-product h2 { font-size: 20px !important; }
+  .modal-product p, .modal-product label { font-size: 12px !important; }
+  .admin-panel label, .admin-panel input, .admin-panel select, .admin-panel textarea, .admin-panel button, .admin-note, .admin-product { font-size: 11px !important; }
+  th, td { padding: 6px !important; }
+}
+@media (max-width: 380px) {
+  .site-header .brand strong { font-size: 14px !important; }
+  .hero-copy h1, .hero h1 { font-size: 25px !important; }
+  .section-heading h2, .section-title, .section-title h2 { font-size: 19px !important; }
+}
+
+
+/* Global site-wide compact layout: consistent professional density on every section. */
+* { box-sizing: border-box; }
+body { font-size: 13px !important; line-height: 1.6 !important; }
+main { padding-block: 0 !important; }
+section, article, aside, .section, .panel, .card, .feature-banner, .gift-section,
+.products-section, .advisor-section, .contact-section, .blend-section { scroll-margin-top: 68px; }
+.section { width: min(1060px, calc(100% - 36px)) !important; margin-top: 0 !important; margin-bottom: 24px !important; }
+.section-heading { margin-bottom: 12px !important; padding-bottom: 8px !important; gap: 10px !important; }
+.section-heading h2, .section-title, .section-title h2, .feature-copy h2, .gift-copy h2, .contact-card h2 { font-size: clamp(20px, 2.1vw, 28px) !important; line-height: 1.35 !important; }
+.section-heading p, .section-description { font-size: 12px !important; line-height: 1.65 !important; }
+.eyebrow { font-size: 9px !important; letter-spacing: 1.1px !important; margin-bottom: 5px !important; }
+.grid, .product-grid, .category-grid, .home-index-grid, .home-showcase-grid { gap: 10px !important; }
+.category-card, .home-index-card, .home-showcase-card { padding: 12px !important; }
+.product-card, .product-tile, .product-item { min-width: 0; padding: 10px !important; border-radius: 14px !important; }
+.product-card h3, .product-info h3, .product-tile h3, .product-item h3 { font-size: 14px !important; line-height: 1.4 !important; margin-block: 5px !important; }
+.product-card p, .product-info p, .product-tile p, .product-item p { font-size: 11px !important; line-height: 1.55 !important; }
+.product-card img, .product-tile img, .product-item img { max-height: 220px; object-fit: contain; }
+.product-card .price, .product-price, .modal-price { font-size: 14px !important; }
+button, input, select, textarea { font-size: 12px !important; }
+button, .btn, .small-btn { min-height: 34px; }
+.btn { padding: 7px 12px !important; border-radius: 10px !important; }
+input, select, textarea { min-height: 38px; padding: 8px 10px !important; border-radius: 9px !important; }
+textarea { min-height: 70px; }
+.blend-panel, .advisor-box, .contact-card, .admin-panel, .feature-copy, .gift-copy { padding: clamp(12px, 2vw, 20px) !important; gap: 12px !important; }
+.blend-step { gap: 5px !important; }
+.blend-summary strong { font-size: 16px !important; }
+.trust-strip { margin-block: 12px !important; padding: 10px !important; }
+.feature-banner { min-height: 190px !important; padding: 20px !important; }
+.feature-banner h3 { font-size: clamp(19px, 2vw, 25px) !important; }
+.advisor-symbol { width: 48px !important; height: 48px !important; font-size: 28px !important; }
+.assistant-message, .suggestion p { font-size: 12px !important; line-height: 1.65 !important; padding: 10px !important; }
+.contact-phone { font-size: 18px !important; }
+.store-location-panel { gap: 12px !important; }
+.store-map-frame { min-height: 210px !important; }
+.site-footer { padding: 22px 14px !important; }
+.site-footer p { font-size: 12px !important; }
+.drawer { width: min(400px, 94vw) !important; padding: 14px !important; }
+.drawer-head h2 { font-size: 20px !important; }
+.drawer-bottom { gap: 8px !important; }
+.modal-backdrop { padding: 12px !important; }
+.product-modal { width: min(760px, 96vw) !important; padding: 16px !important; border-radius: 16px !important; }
+.modal-product { gap: 12px !important; }
+.modal-product-image { max-height: 280px !important; }
+.admin-panel { max-width: 100% !important; }
+.admin-head { gap: 10px !important; }
+.admin-head h2 { font-size: 21px !important; }
+.admin-tabs { gap: 6px !important; }
+.admin-tabs button { min-height: 33px !important; padding: 6px 9px !important; }
+table { font-size: 11px !important; }
+th, td { padding: 6px 7px !important; line-height: 1.5 !important; }
+.toast { font-size: 12px !important; padding: 9px 12px !important; }
+@media (min-width: 1100px) {
+ .section { width: min(1020px, calc(100% - 64px)) !important; }
+ .hero { min-height: 320px !important; }
+ .product-grid, .products-grid { gap: 12px !important; }
+}
+@media (max-width: 760px) {
+ body { font-size: 12px !important; line-height: 1.6 !important; }
+ .section { width: calc(100% - 22px) !important; margin-bottom: 19px !important; }
+ .section-heading { margin-bottom: 9px !important; }
+ .section-heading h2, .section-title, .section-title h2, .feature-copy h2, .gift-copy h2, .contact-card h2 { font-size: 19px !important; }
+ .section-heading p, .section-description { font-size: 11px !important; }
+ .eyebrow { font-size: 8px !important; }
+ .grid, .product-grid, .category-grid, .home-index-grid, .home-showcase-grid { gap: 7px !important; }
+ .category-card, .home-index-card, .home-showcase-card { padding: 9px !important; }
+ .product-card, .product-tile, .product-item { padding: 8px !important; }
+ .product-card h3, .product-info h3, .product-tile h3, .product-item h3 { font-size: 13px !important; }
+ .product-card p, .product-info p, .product-tile p, .product-item p { font-size: 10px !important; }
+ .product-card img, .product-tile img, .product-item img { max-height: 160px; }
+ button, input, select, textarea { font-size: 11px !important; }
+ .btn { min-height: 32px; padding: 6px 9px !important; }
+ input, select, textarea { min-height: 35px; padding: 7px 8px !important; }
+ .feature-banner { min-height: 160px !important; padding: 14px !important; }
+ .feature-banner h3 { font-size: 19px !important; }
+ .store-map-frame { min-height: 170px !important; }
+ .product-modal { padding: 12px !important; }
+ .admin-head h2 { font-size: 18px !important; }
+ table { font-size: 10px !important; }
+ th, td { padding: 5px !important; }
+}
+
+
+/* Site-wide compact pass 2: tighter professional density */
+:root { --compact-font-scale: .92; }
+html { font-size: 14px !important; }
+body { font-size: 13px !important; line-height: 1.48 !important; }
+h1 { font-size: clamp(23px, 3.2vw, 34px) !important; line-height: 1.2 !important; }
+h2 { font-size: clamp(19px, 2.6vw, 27px) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(16px, 2vw, 21px) !important; line-height: 1.3 !important; }
+h4, h5 { font-size: 14px !important; }
+p, li, label, small { line-height: 1.5 !important; }
+section, .section, .page-section, .content-section { padding-top: 16px !important; padding-bottom: 16px !important; }
+.container, .container-fluid, .page-container, .main-container { max-width: 1180px !important; }
+.card, .product-card, .category-card, .feature-card, .info-card, .panel, .admin-card {
+  padding: 10px !important; border-radius: 12px !important; gap: 8px !important;
+}
+.grid, .products-grid, .categories-grid, .features-grid { gap: 10px !important; }
+.product-card img, .product-image, .category-card img { max-height: 170px !important; object-fit: contain; }
+button, .btn, .button, a.btn {
+  font-size: 12px !important; min-height: 30px !important; padding: 6px 10px !important;
+  border-radius: 8px !important; line-height: 1.3 !important;
+}
+input, select, textarea, .form-control {
+  font-size: 12px !important; min-height: 32px !important; padding: 6px 8px !important;
+}
+header, .site-header, .main-header, nav, .navbar { gap: 8px !important; }
+nav a, .nav-link, .menu-item { font-size: 12px !important; padding: 7px 9px !important; }
+.modal, .modal-content, .dialog, .drawer, .popup, .product-modal {
+  padding: 12px !important; border-radius: 14px !important;
+}
+table { font-size: 11px !important; }
+th, td { padding: 5px 7px !important; }
+footer, .site-footer { padding: 14px !important; font-size: 12px !important; }
+.badge, .tag, .chip { font-size: 10px !important; padding: 3px 6px !important; }
+@media (max-width: 768px) {
+  html { font-size: 13px !important; }
+  body { font-size: 12px !important; }
+  h1 { font-size: 22px !important; }
+  h2 { font-size: 18px !important; }
+  h3 { font-size: 15px !important; }
+  section, .section, .page-section, .content-section { padding: 12px 10px !important; }
+  .container, .container-fluid, .page-container, .main-container { width: 100% !important; max-width: 100% !important; padding-left: 10px !important; padding-right: 10px !important; }
+  .card, .product-card, .category-card, .feature-card, .info-card, .panel, .admin-card { padding: 8px !important; }
+  .grid, .products-grid, .categories-grid, .features-grid { gap: 8px !important; }
+  .product-card img, .product-image, .category-card img { max-height: 135px !important; }
+  button, .btn, .button, a.btn { font-size: 11px !important; min-height: 29px !important; padding: 6px 8px !important; }
+  input, select, textarea, .form-control { font-size: 12px !important; min-height: 32px !important; }
+  nav a, .nav-link, .menu-item { font-size: 11px !important; padding: 6px 7px !important; }
+  .modal, .modal-content, .dialog, .drawer, .popup, .product-modal { padding: 10px !important; max-width: calc(100vw - 16px) !important; }
+  table { font-size: 10px !important; }
+  th, td { padding: 4px !important; }
+}
+
+
+/* Responsive consistency repair: unify all page widths and prevent horizontal overflow */
+*, *::before, *::after { box-sizing: border-box !important; }
+html { width: 100%; max-width: 100%; overflow-x: clip; -webkit-text-size-adjust: 100%; }
+body { width: 100%; max-width: 100%; min-width: 0 !important; overflow-x: clip; margin-inline: auto; }
+img, video, canvas, iframe, svg { max-width: 100%; }
+img, video { height: auto; }
+button, input, select, textarea { max-width: 100%; font: inherit; }
+button, .btn, a { overflow-wrap: anywhere; }
+main, header, footer, nav, section, article, aside, .app, .app-shell, .site-shell, .page, .page-content,
+main > *, section > *, .container, .container-fluid, .content, .content-wrap, .section-inner {
+  min-width: 0;
+}
+.container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+  width: min(100% - 32px, 1180px) !important;
+  max-width: 1180px !important;
+  margin-inline: auto !important;
+}
+[class*="grid"], .products-grid, .categories-grid, .features-grid, .cards-grid, .product-list {
+  min-width: 0;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+.product-card, .category-card, .feature-card, .info-card, .panel, .admin-card, .card {
+  min-width: 0 !important; max-width: 100%;
+}
+p, h1, h2, h3, h4, h5, label, a, button, th, td, .product-name, .description {
+  overflow-wrap: anywhere;
+}
+table { width: 100%; max-width: 100%; border-collapse: collapse; }
+.table-wrap, .table-responsive, .table-container, .admin-table-wrap, .inventory-table-wrap {
+  display: block; width: 100%; max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain;
+}
+.modal, .modal-content, .dialog, .drawer, .popup, .product-modal, .pwa-help-card {
+  width: min(100% - 24px, 680px) !important; max-width: calc(100vw - 24px) !important;
+  max-height: min(88dvh, 900px); overflow: auto;
+}
+@media (min-width: 1200px) {
+  .container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+    width: min(100% - 48px, 1180px) !important;
+  }
+}
+@media (max-width: 900px) {
+  .container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+    width: calc(100% - 24px) !important;
+  }
+  .hero, .hero-inner, .hero-content, .hero-layout, .banner-inner {
+    min-width: 0 !important; max-width: 100% !important;
+  }
+  .hero h1, .hero-title { font-size: clamp(22px, 5vw, 34px) !important; }
+  .hero p, .hero-description { font-size: clamp(12px, 2vw, 15px) !important; }
+}
+@media (max-width: 600px) {
+  .container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+    width: calc(100% - 20px) !important; padding-inline: 0 !important;
+  }
+  section, .section, .page-section, .content-section { padding-inline: 10px !important; }
+  .products-grid, .categories-grid, .features-grid, .cards-grid, .product-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  .product-card, .category-card, .feature-card, .info-card, .panel, .admin-card, .card {
+    padding: 8px !important; border-radius: 10px !important;
+  }
+  .product-card img, .product-image, .category-card img { width: 100%; max-height: 125px !important; object-fit: contain; }
+  .hero, .hero-inner, .hero-content, .hero-layout, .banner-inner {
+    display: flex; flex-direction: column; align-items: stretch; gap: 10px !important;
+  }
+  .hero img, .hero-media, .hero-visual { width: 100%; max-width: 100%; }
+  .modal, .modal-content, .dialog, .drawer, .popup, .product-modal, .pwa-help-card {
+    width: calc(100vw - 16px) !important; max-width: calc(100vw - 16px) !important;
+    padding: 10px !important; border-radius: 12px !important;
+  }
+  .admin-grid, .dashboard-grid, .stats-grid, .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important;
+  }
+  .admin-grid > *, .dashboard-grid > *, .stats-grid > *, .form-grid > * { min-width: 0 !important; }
+  nav, .navbar, .nav-links, .main-nav { max-width: 100%; }
+  input, select, textarea { width: 100%; min-width: 0 !important; }
+}
+@media (max-width: 360px) {
+  .products-grid, .categories-grid, .features-grid, .cards-grid, .product-list,
+  .admin-grid, .dashboard-grid, .stats-grid, .form-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+    width: calc(100% - 16px) !important;
+  }
+}
+
+
+/* Final viewport calibration: compact layout without shrinking readable text */
+:root { --site-content-max: 1180px; }
+html { font-size: 16px !important; }
+body { font-size: 14px !important; line-height: 1.55 !important; }
+p, li, label, .description, .product-description, .section-subtitle { line-height: 1.55; }
+h1 { font-size: clamp(1.55rem, 3vw, 2.35rem) !important; line-height: 1.2 !important; }
+h2 { font-size: clamp(1.25rem, 2.3vw, 1.8rem) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(1.05rem, 1.7vw, 1.35rem) !important; line-height: 1.3 !important; }
+button, .btn, .button, a.btn, input, select, textarea, .form-control {
+  font-size: 14px !important; line-height: 1.35 !important;
+}
+button, .btn, .button, a.btn { min-height: 38px !important; padding: 8px 12px !important; }
+input, select, textarea, .form-control { min-height: 38px !important; padding: 8px 10px !important; }
+nav a, .nav-link, .menu-item { font-size: 13px !important; padding: 8px 10px !important; }
+table { font-size: 12px !important; }
+th, td { padding: 7px 8px !important; }
+.container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+  width: min(calc(100% - 32px), var(--site-content-max)) !important;
+  max-width: var(--site-content-max) !important;
+  margin-inline: auto !important;
+}
+@media (max-width: 768px) {
+  body { font-size: 14px !important; }
+  h1 { font-size: clamp(1.45rem, 5vw, 1.9rem) !important; }
+  h2 { font-size: clamp(1.2rem, 4vw, 1.5rem) !important; }
+  h3 { font-size: 1.05rem !important; }
+  section, .section, .page-section, .content-section { padding: 14px 10px !important; }
+  .container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+    width: calc(100% - 20px) !important; padding-inline: 0 !important;
+  }
+  button, .btn, .button, a.btn, input, select, textarea { font-size: 14px !important; }
+  nav a, .nav-link, .menu-item { font-size: 12px !important; padding: 8px !important; }
+  .product-card img, .product-image, .category-card img { max-height: 150px !important; }
+  .products-grid, .categories-grid, .features-grid, .cards-grid, .product-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important;
+  }
+  .admin-grid, .dashboard-grid, .stats-grid, .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important;
+  }
+}
+@media (max-width: 390px) {
+  .products-grid, .categories-grid, .features-grid, .cards-grid, .product-list,
+  .admin-grid, .dashboard-grid, .stats-grid, .form-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .container, .container-fluid, .content-wrap, .section-inner, .page-container, .main-container {
+    width: calc(100% - 16px) !important;
+  }
+  .product-card img, .product-image, .category-card img { max-height: 180px !important; }
+}
