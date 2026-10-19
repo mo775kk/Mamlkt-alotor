@@ -1,7 +1,7 @@
 /* MAMLKAT AL-OTOR — readable details and complete theme surfaces */
 :root{--readable-ink:#281923;--readable-muted:#5b4654;--readable-line:#d8c2ce}
-html{font-size:17px}
-body{font-size:18px!important;line-height:1.85!important;letter-spacing:0!important;text-shadow:none!important}
+html{font-size:16px}
+body{font-size:16px!important;line-height:1.75!important;letter-spacing:0!important;text-shadow:none!important}
 p,li,dd,dt,label,summary,figcaption,.product-desc,.product-meta,.results-message,.admin-note,.admin-panel small,.admin-panel label,.section-heading>p,.contact-card p,.feature-copy p,.gift-copy p{line-height:1.9!important;text-shadow:none!important}
 h1,h2,h3,h4,h5,h6{line-height:1.45!important;text-shadow:none!important;overflow-wrap:anywhere}
 input,select,textarea,button{font-size:16px}
@@ -10,16 +10,16 @@ button,a,.btn,.small-btn{line-height:1.55}
 :where(.product-card,.product-info,.category-card,.category-tile,.feature-card,.contact-card,.gift-card,.guide-card,.info-card,.blend-panel,.advisor-box,.store-location-panel,.royal-family-box,.admin-card,.stat-card,.customer-price-notice,.supplier-catalog-panel,.modal,.dialog,.drawer,.admin-panel){text-shadow:none!important}
 :where(.product-card,.product-info,.category-card,.category-tile,.feature-card,.contact-card,.gift-card,.guide-card,.info-card,.blend-panel,.advisor-box,.store-location-panel,.royal-family-box,.admin-card,.stat-card,.customer-price-notice,.supplier-catalog-panel){color:#281923}
 :where(.product-card,.product-info,.category-card,.category-tile,.feature-card,.contact-card,.gift-card,.guide-card,.info-card,.blend-panel,.advisor-box,.store-location-panel,.royal-family-box,.admin-card,.stat-card,.customer-price-notice,.supplier-catalog-panel) :where(p,li,span,small,label,dd,dt){text-shadow:none!important}
-.product-info h3,.product-name,.product-title,.category-card h3{font-size:clamp(19px,2vw,23px)!important;line-height:1.6!important}
-.product-desc,.product-meta,.product-info p,.category-card p{font-size:16px!important;line-height:1.85!important}
-.product-price,.customer-price-notice strong,.blend-price-guide strong{font-size:18px!important}
+.product-info h3,.product-name,.product-title,.category-card h3{font-size:clamp(17px,1.6vw,21px)!important;line-height:1.5!important}
+.product-desc,.product-meta,.product-info p,.category-card p{font-size:14px!important;line-height:1.7!important}
+.product-price,.customer-price-notice strong,.blend-price-guide strong{font-size:16px!important}
 .section-heading h2,.contact-card h2,.gift-copy h2,.feature-copy h2{line-height:1.45!important}
 .toolbar input,.toolbar select,.search-box input{font-size:16px!important}
-.admin-panel{font-size:16px!important;line-height:1.9!important}
-.admin-panel h2{font-size:clamp(25px,4vw,34px)!important}
-.admin-panel h3{font-size:22px!important}
-.admin-panel .admin-note,.admin-panel p,.admin-panel label,.admin-panel small{font-size:16px!important;line-height:1.9!important}
-.admin-panel input,.admin-panel select,.admin-panel textarea,.admin-panel button{font-size:16px!important}
+.admin-panel{font-size:15px!important;line-height:1.75!important}
+.admin-panel h2{font-size:clamp(22px,3vw,29px)!important}
+.admin-panel h3{font-size:19px!important}
+.admin-panel .admin-note,.admin-panel p,.admin-panel label,.admin-panel small{font-size:14px!important;line-height:1.75!important}
+.admin-panel input,.admin-panel select,.admin-panel textarea,.admin-panel button{font-size:15px!important}
 #referenceLibrary:not(.in-settings){display:none!important}
 #adminReferenceLibraryHost #referenceLibrary.in-settings{display:block!important}
 #adminReferenceLibraryHost{min-width:0}
@@ -30,15 +30,15 @@ button,a,.btn,.small-btn{line-height:1.55}
 #referenceLibrary .ref-open,#referenceLibrary .ref-star,#referenceLibrary .ref-btn{min-height:44px;font-size:16px!important}
 @media(max-width:700px){
  html{font-size:16px}
- body{font-size:17px!important;line-height:1.85!important}
+ body{font-size:16px!important;line-height:1.75!important}
  main{padding:14px!important}
  .section{width:calc(100% - 28px)!important}
  .section-heading{align-items:flex-start;flex-direction:column;gap:10px}
- .section-heading>p{max-width:none;font-size:16px!important}
+ .section-heading>p{max-width:none;font-size:15px!important}
  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
  .product-visual{height:170px!important}
  .product-info{padding:12px!important}
- .product-desc,.product-meta,.product-info p{font-size:15px!important}
+ .product-desc,.product-meta,.product-info p{font-size:14px!important}
  .toolbar{flex-wrap:wrap}
  .toolbar select{min-width:0;flex:1}
  .admin-panel{padding:14px!important}
@@ -78,3 +78,18 @@ html body :is(.product-modal,.drawer,.admin-panel,.admin-login){background:var(-
 html body :is(.product-modal,.drawer,.admin-panel,.admin-login) :is(h1,h2,h3,h4,p,small,label,span){color:var(--text)!important}
 html body .admin-tabs button.active{background:var(--button-bg)!important;color:var(--button-text)!important;border-color:var(--gold)!important}
 html body .admin-panel .admin-note{background:var(--panel2)!important;color:var(--text)!important;border-color:var(--line)!important}
+
+
+/* Balanced mobile typography: preserve readability without oversized controls. */
+@media(max-width:760px){
+ html{font-size:16px!important}
+ body{font-size:16px!important;line-height:1.7!important}
+ .hero-copy h1{font-size:clamp(34px,8.5vw,48px)!important;line-height:1.3!important}
+ .section-heading h2,.section-title,.section-title h2{font-size:clamp(26px,6.5vw,34px)!important;line-height:1.4!important}
+ .category-card h3,.product-info h3,.product-name,.product-title{font-size:17px!important;line-height:1.5!important}
+ .category-card p,.product-desc,.product-meta,.product-info p{font-size:14px!important;line-height:1.7!important}
+ .btn,.btn-gold,.btn-primary,.primary-btn,.btn-outline,.small-btn,.text-btn{font-size:15px!important;min-height:44px!important;padding:9px 13px!important}
+ .header-actions .icon-btn,.site-header .icon-btn{width:38px!important;min-width:38px!important;height:38px!important;min-height:38px!important;padding:7px!important}
+ .header-actions .icon-btn svg,.site-header .icon-btn svg,.icon-btn svg{width:19px!important;height:19px!important;max-width:19px!important;max-height:19px!important}
+ .admin-panel h2{font-size:24px!important}
+}
