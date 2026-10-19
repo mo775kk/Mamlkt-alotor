@@ -35,7 +35,7 @@
     {id:"researched-silver-scent-midnight",nameAr:"سيلفر سنت ميدنايت",nameEn:"Silver Scent Midnight",brand:"Jacques Bogart",productType:"ready",gender:"رجالي",family:"فوجير عطري خشبي",scentNature:"حمضي عشبي مع هيل وتوابل وزهر البرتقال، ثم قاعدة خشبية حلوة من التونكا والأرز والغاياك.",topNotes:["الجريب فروت","المريمية","الهيل"],heartNotes:["الشيح (أرتميسيا)","جوزة الطيب","زهر البرتقال"],baseNotes:["حبوب التونكا","خشب الغاياك","خشب الأرز"],descriptionAr:"هذه بيانات Silver Scent Midnight تحديدًا، وليست لأي عطر آخر يحمل اسم Midnight فقط. يلزم مطابقة اسم الشركة والعبوة قبل اعتماد المنتج في المخزون.",sourceUrl:"https://www.fragrantica.com/perfume/Jacques-Bogart/Silver-Scent-Midnight-46938.html",notesStatus:"verified-fragrance-directory",notesConfidence:"جيد — دليل عطري متخصص؛ لا تخلطه مع أسماء Midnight الأخرى",price:null,available:true,needsReview:true}
   ];
   const $ = s => document.querySelector(s);
-  const $ = s => [...document.querySelectorAll(s)];
+  const $$ = s => [...document.querySelectorAll(s)];
   // Bind only when an optional page element exists; a missing control must not abort the storefront.
   const bind = (selector, eventName, handler, options) => { const el = $(selector); if (el) el.addEventListener(eventName, handler, options); };
   const safeRead = (key, fallback) => { try { const v = JSON.parse(localStorage.getItem(key)); return v ?? fallback; } catch { return fallback; } };
