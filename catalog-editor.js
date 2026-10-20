@@ -24,7 +24,8 @@ const defaultConfig={
  {id:'غير محدد',labelEn:'Unclassified',nature:'يلزم تقييم العينة أو الرجوع إلى بيانات المورد',notes:'التصنيف غير مؤكد من الاسم وحده.'}
  ]};
 const loadConfig=()=>{try{const saved=JSON.parse(localStorage.getItem(TAXKEY)||'{}')||{};const c={...defaultConfig,...saved};const source=Array.isArray(saved.retailBlendPrices)&&saved.retailBlendPrices.length?saved.retailBlendPrices:defaultConfig.retailBlendPrices;const bySize={};source.forEach(x=>{const n=String(x.size||'').match(/[0-9]+/)?.[0];if(n&&Number.isFinite(Number(x.price))&&Number(x.price)>=50)bySize[n]=Number(x.price)});if(bySize['30']===100&&bySize['50']===150&&bySize['100']===300){bySize['30']=150;bySize['50']=200;bySize['100']=450}const reference={'3':50,'5':75,'10':100,'22':130,'30':150,'50':200,'100':450};c.retailBlendPrices=Object.entries(reference).map(([n,price])=>({size:n+' مل',price:bySize[n]??price}));return c}catch{return structuredClone(defaultConfig)}};
-const saveConfig=c=>localStorage.setItem(TAXKEY,JSON.stringify(c));
+const writeVerified=(key,value)=>{const raw=JSON.stringify(value);let previous=null;try{previous=localStorage.getItem(key);localStorage.setItem(key,raw);if(localStorage.getItem(key)!==raw)throw new Error("تعذر تأكيد الحفظ");return true;}catch(error){try{if(previous===null)localStorage.removeItem(key);else localStorage.setItem(key,previous);}catch{}throw new Error("تعذر حفظ بيانات الكتالوج؛ لم يتم تأكيد الكتابة. صدّر نسخة JSON ثم أعد المحاولة.");}};
+ const saveConfig=c=>writeVerified(TAXKEY,c);
 const readCatalog=()=>{try{const d=JSON.parse(localStorage.getItem(KEY)||'null');return d&&Array.isArray(d.products)?d:null}catch{return null}};
 const saveCatalog=d=>{d.taxonomyConfig=loadConfig();d.metadata=d.metadata||{};d.metadata.lastEditedAt=new Date().toISOString();return writeVerified(KEY,d)};
 const prices=[['1 كجم','price_1kg'],['500 جم','price_500g'],['250 جم','price_250g'],['125 جم','price_125g'],['50 جم','price_50g']];
