@@ -225,7 +225,7 @@
       <div class="empty-state hidden" id="noSupplierOilProducts">لم يتم تحميل كتالوج الموردين بعد، أو لا توجد نتائج مطابقة.</div>
       <div class="section-cta"><button class="btn btn-outline" id="supplierOilMore" type="button">عرض المزيد من الأنواع</button></div>
       <div class="oil-retail-guide-wrap">
-        <div class="blend-price-guide" aria-label="قائمة أسعار الزيوت والتركيب"><h3>أسعار الزيوت والتركيب للعميل</h3><p>سعر الجرام حسب الفئة، بالإضافة إلى أسعار أحجام التركيب. الأسعار قابلة للتعديل من الإدارة؛ أقل طلب للتركيب يبدأ من 50 ج.م.</p><div class="gram-price-grid" id="customerGramPriceGuide"><div><span>الزيوت الفرنسية</span><strong>10 ج.م / جرام</strong></div><div><span>الزيوت الشرقية</span><strong>15 ج.م / جرام</strong></div><div><span>الشرقي الممتاز</span><strong>20 ج.م / جرام</strong></div></div><div class="blend-price-grid" id="blendPriceGuide"><div><span>3 مل · زيت فقط</span><strong>50 ج.م</strong></div><div><span>5 مل · زيت فقط</span><strong>75 ج.م</strong></div><div><span>10 مل · زيت فقط</span><strong>100 ج.م</strong></div><div><span>22 مل</span><strong>130 ج.م</strong></div><div><span>30 مل · زيت فقط / رش</span><strong>100 ج.م</strong></div><div><span>50 مل · زيت فقط / رش</span><strong>150 ج.م</strong></div><div><span>100 مل · زيت فقط / رش</span><strong>300 ج.م</strong></div></div></div>
+        <div class="blend-price-guide" aria-label="قائمة أسعار الزيوت والتركيب"><h3>أسعار الزيوت والتركيب للعميل</h3><p>سعر الجرام حسب الفئة، بالإضافة إلى أسعار أحجام التركيب. الأسعار قابلة للتعديل من الإدارة؛ أقل طلب للتركيب يبدأ من 50 ج.م.</p><div class="gram-price-grid" id="customerGramPriceGuide"><div><span>الزيوت الفرنسية</span><strong>10 ج.م / جرام</strong></div><div><span>الزيوت الشرقية</span><strong>15 ج.م / جرام</strong></div><div><span>الشرقي الممتاز</span><strong>20 ج.م / جرام</strong></div></div><h4>التركيب الأساسي</h4><div class="blend-price-grid" id="blendPriceGuide"><div><span>3 مل</span><strong>50 ج.م</strong></div><div><span>5 مل</span><strong>75 ج.م</strong></div><div><span>10 مل</span><strong>100 ج.م</strong></div><div><span>22 مل</span><strong>130 ج.م</strong></div><div><span>30 مل</span><strong>150 ج.م</strong></div><div><span>50 مل</span><strong>200 ج.م</strong></div><div><span>100 مل</span><strong>450 ج.م</strong></div></div><h4>زيت فقط / رش</h4><div class="blend-price-grid" id="oilOnlyPriceGuide"><div><span>30 مل</span><strong>100 ج.م</strong></div><div><span>50 مل</span><strong>150 ج.م</strong></div><div><span>100 مل</span><strong>300 ج.م</strong></div></div></div>
       </div>
     </section>
 
@@ -263,7 +263,7 @@
             <option value="بحري">بحري</option><option value="بودري">بودري</option><option value="فاكهي">فاكهي</option>
           </select>
         </div>
-        <div class="blend-step"><label for="blendSize">الحجم</label><select id="blendSize"><option value="3">3 مل</option><option value="5">5 مل</option><option value="10" selected>10 مل · زيت فقط</option><option value="22">22 مل</option><option value="30">30 مل · بخاخ</option><option value="50">50 مل</option><option value="100">100 مل</option></select></div>
+        <div class="blend-step"><label for="blendMode">نوع الطلب</label><select id="blendMode"><option value="blend" selected>تركيب أساسي</option><option value="oilOnly">زيت فقط / رش</option></select></div><div class="blend-step"><label for="blendSize">الحجم</label><select id="blendSize"><option value="3">3 مل</option><option value="5">5 مل</option><option value="10" selected>10 مل</option><option value="22">22 مل</option><option value="30">30 مل</option><option value="50">50 مل</option><option value="100">100 مل</option></select></div>
         <div class="blend-step"><label for="blendBottle">العبوة</label><select id="blendBottle"><option>عبوة كلاسيكية</option><option>عبوة فاخرة</option><option>أترك اختيار العبوة للمتجر</option></select></div>
         <div class="blend-summary"><span>السعر المرجعي للحجم المختار</span><strong id="blendPrice">100 ج.م</strong><small>السعر النهائي والتوفر يحتاجان إلى تأكيد المتجر قبل الطلب.</small></div>
         <button type="button" class="btn btn-gold" id="addBlend">إضافة طلب التركيب</button>
@@ -484,19 +484,22 @@
   (function(){
     function updateBlendPriceGuide(){
       var root=document.getElementById('blendPriceGuide'); if(!root)return;
-      var defaults=[{size:'3',label:'3 مل · زيت فقط',price:50},{size:'5',label:'5 مل · زيت فقط',price:75},{size:'10',label:'10 مل · زيت فقط',price:100},{size:'22',label:'22 مل',price:130},{size:'30',label:'30 مل · زيت فقط / رش',price:100},{size:'50',label:'50 مل · زيت فقط / رش',price:150},{size:'100',label:'100 مل · زيت فقط / رش',price:300}],items=defaults,gramRoot=document.getElementById('customerGramPriceGuide');
+      var defaults=[{size:'3',label:'3 مل',price:50},{size:'5',label:'5 مل',price:75},{size:'10',label:'10 مل',price:100},{size:'22',label:'22 مل',price:130},{size:'30',label:'30 مل',price:150},{size:'50',label:'50 مل',price:200},{size:'100',label:'100 مل',price:450}],oilDefaults=[{size:'30',label:'30 مل',price:100},{size:'50',label:'50 مل',price:150},{size:'100',label:'100 مل',price:300}],items=defaults,oilRoot=document.getElementById('oilOnlyPriceGuide'),gramRoot=document.getElementById('customerGramPriceGuide');
       try{
         var cfg=JSON.parse(localStorage.getItem('mamlaka_catalog_taxonomy_config_v1')||'null');
         if(cfg&&Array.isArray(cfg.retailBlendPrices)&&cfg.retailBlendPrices.length){
           var bySize={};
-          cfg.retailBlendPrices.forEach(function(x){
-            var n=String(x.size||'').match(/[0-9]+/),size=n?n[0]:'';
-            if(size&&Number.isFinite(Number(x.price))&&Number(x.price)>=50)bySize[size]=Number(x.price)
-          });
+          cfg.retailBlendPrices.forEach(function(x){var n=String(x.size||'').match(/[0-9]+/),size=n?n[0]:'';if(size&&Number.isFinite(Number(x.price))&&Number(x.price)>=50)bySize[size]=Number(x.price)});
           items=defaults.map(function(x){return {size:x.size,label:x.label,price:bySize[x.size]||x.price}})
+        }
+        if(cfg&&Array.isArray(cfg.retailOilOnlyPrices)&&cfg.retailOilOnlyPrices.length){
+          var oilBySize={};
+          cfg.retailOilOnlyPrices.forEach(function(x){var n=String(x.size||'').match(/[0-9]+/),size=n?n[0]:'';if(size&&Number.isFinite(Number(x.price))&&Number(x.price)>=50)oilBySize[size]=Number(x.price)});
+          oilDefaults=oilDefaults.map(function(x){return {size:x.size,label:x.label,price:oilBySize[x.size]||x.price}})
         }
       }catch(e){}
       root.innerHTML=items.map(function(x){return '<div><span>'+x.label.replace(/[<>]/g,'')+'</span><strong>'+x.price.toLocaleString('ar-EG')+' ج.م</strong></div>'}).join('');
+      if(oilRoot)oilRoot.innerHTML=oilDefaults.map(function(x){return '<div><span>'+x.label+'</span><strong>'+x.price.toLocaleString('ar-EG')+' ج.م</strong></div>'}).join('');
       if(gramRoot){
         var gp={french:10,oriental:15,orientalPremium:20};
         try{var cfg2=JSON.parse(localStorage.getItem('mamlaka_catalog_taxonomy_config_v1')||'null');if(cfg2&&cfg2.gramPricing)gp=Object.assign(gp,cfg2.gramPricing)}catch(e){}
