@@ -2439,3 +2439,79 @@ button svg,.icon-btn svg{width:19px;height:19px;max-width:100%;max-height:100%}
  .product-grid,.products-grid,.catalog-grid,.category-grid,.features-grid,.taxonomy-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* === Royal storefront composition: implemented into the single stylesheet === */
+:root{
+ --royal-night:#120916;--royal-plum:#241027;--royal-magenta:#9d145a;
+ --royal-pink:#ef8fbd;--royal-gold:#f3cc68;--royal-gold-bright:#ffe5a0;
+}
+body{background:radial-gradient(ellipse at 80% -15%,rgba(143,25,94,.28),transparent 40%),linear-gradient(135deg,#130918,#201024 55%,#100914);color:#fff8f0}
+.site-header{background:linear-gradient(100deg,rgba(18,8,23,.98),rgba(48,14,43,.97),rgba(18,8,23,.98));border-bottom:1px solid rgba(243,204,104,.42)}
+.brand-crown{color:var(--royal-gold-bright);filter:drop-shadow(0 0 8px rgba(243,204,104,.32))}
+.brand strong,.hero h1,.section-heading h2{color:var(--royal-gold-bright);text-shadow:0 2px 14px rgba(239,143,189,.12)}
+.btn-gold{background:linear-gradient(135deg,#ffe5a0,#e6ad3c 65%,#ffe6a2);color:#281325;border:1px solid #ffe8b0;box-shadow:0 5px 18px rgba(229,164,54,.17)}
+.btn-outline{border-color:rgba(243,204,104,.72);color:#fff0c7;background:rgba(65,20,53,.25)}
+.hero{min-height:clamp(280px,29vw,390px);border:1px solid rgba(243,204,104,.46);border-radius:14px;margin:12px auto 0;width:min(calc(100% - 24px),1480px);background:#1a0d1c;box-shadow:0 12px 30px rgba(0,0,0,.22)}
+.hero-image{object-position:center 45%;opacity:.92}
+.hero-shade{background:linear-gradient(90deg,rgba(12,5,14,.92) 0%,rgba(17,6,19,.78) 34%,rgba(19,6,18,.1) 78%),linear-gradient(0deg,rgba(12,5,14,.42),transparent 45%)}
+.hero-copy{width:min(560px,52%);padding:28px clamp(20px,5vw,74px) 42px 18px}
+.hero h1{font-size:clamp(30px,4vw,54px);line-height:1.2;margin:5px 0 10px}
+.hero-copy>p:not(.eyebrow){font-size:14px;line-height:1.7}
+.hero-actions{margin-top:16px}
+.hero-note{margin-top:15px}
+.hero-pagination{bottom:12px}
+.section{padding-block:24px!important}
+.section-heading{display:flex;align-items:end;justify-content:space-between;margin-bottom:12px!important}
+.section-heading h2{font-size:clamp(21px,2.4vw,30px);margin:0!important}
+.section-heading>p{max-width:400px;font-size:13px;color:#e5d6e1}
+.home-index-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px!important}
+.home-index-card{min-height:76px;padding:10px!important;border:1px solid rgba(243,204,104,.3)!important;background:linear-gradient(135deg,rgba(62,23,57,.82),rgba(21,11,27,.94))!important;box-shadow:inset 0 1px rgba(255,255,255,.035)}
+.home-index-card:hover{border-color:var(--royal-pink)!important;background:linear-gradient(135deg,rgba(99,24,75,.9),rgba(28,12,34,.98))!important}
+.home-index-icon{background:linear-gradient(145deg,rgba(243,204,104,.18),rgba(157,20,90,.2))!important;color:var(--royal-gold-bright)!important;border:1px solid rgba(243,204,104,.3);font-size:20px}
+.home-index-copy strong{color:#fff2f8;font-size:14px}
+.home-index-copy small{color:#d9c5d5;font-size:11px}
+.category-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:9px!important}
+.category-card{min-height:150px!important;padding:14px!important;border-radius:12px!important;border-color:rgba(243,204,104,.4)!important;background:radial-gradient(ellipse at 50% 0%,rgba(157,20,90,.27),transparent 65%),linear-gradient(150deg,rgba(45,19,45,.98),rgba(15,9,20,.98))!important}
+.category-card:before{width:120px;height:120px;left:auto;right:-35px;top:-45px;border-color:rgba(243,204,104,.22);box-shadow:0 0 0 15px rgba(157,20,90,.04),0 0 0 30px rgba(243,204,104,.025)}
+.category-icon-wrap{width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(243,204,104,.34);border-radius:12px;background:linear-gradient(135deg,rgba(243,204,104,.12),rgba(157,20,90,.2))}
+.royal-category-icon{width:26px!important;height:26px!important;stroke:var(--royal-gold-bright)!important;stroke-width:1.6;fill:rgba(239,143,189,.09)}
+.category-card small{color:var(--royal-pink)!important;letter-spacing:.8px}
+.category-card h3{font-size:19px!important;color:#fff4fa}
+.category-card p{color:#dfcfdd}
+.category-card>b{color:var(--royal-gold-bright)}
+.product-card,.home-showcase-block,.split-feature,.gift-art,.advisor-box,.contact-card{border-color:rgba(243,204,104,.36)!important;background:linear-gradient(145deg,rgba(49,20,47,.97),rgba(16,9,21,.98))!important}
+.product-card{overflow:hidden}
+.product-card .btn,.product-actions .btn{border-radius:999px}
+.home-showcase-grid{gap:9px!important}
+.home-showcase-block{border-radius:13px;padding:12px!important}
+.home-showcase-block .section-heading{margin-bottom:9px!important}
+.home-showcase-block .product-card{border-radius:10px}
+.site-footer{background:linear-gradient(90deg,#150a18,#2b1029,#150a18);border-top:1px solid rgba(243,204,104,.32)}
+/* Make image and icon controls stay within the compact layout */
+img,svg{max-width:100%}
+button,.icon-btn,.category-card,.home-index-card{touch-action:manipulation}
+@media(max-width:900px){
+ .hero{min-height:300px}
+ .home-index-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .section-heading>p{max-width:48%}
+}
+@media(max-width:600px){
+ .hero{width:calc(100% - 12px);min-height:310px;margin-top:6px}
+ .hero-copy{width:75%;padding:22px 12px 34px 8px}
+ .hero h1{font-size:clamp(28px,8vw,39px)}
+ .hero-copy>p:not(.eyebrow){font-size:13px}
+ .hero-actions{gap:6px}
+ .hero-actions .btn{font-size:12px;padding:8px 10px}
+ .section{padding-block:17px!important}
+ .section-heading{align-items:start;gap:6px;flex-direction:column}
+ .section-heading>p{max-width:100%;margin:0}
+ .home-index-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px!important}
+ .home-index-card{min-height:72px}
+ .home-index-copy strong{font-size:12px}
+ .home-index-copy small{font-size:10px}
+ .category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px!important}
+ .category-card{min-height:136px!important;padding:11px!important}
+ .category-card h3{font-size:17px!important}
+}
