@@ -8,8 +8,8 @@
   "start_url": "./?source=pwa",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#160D14",
-  "theme_color": "#160D14",
+  "background_color": "#FFFAF2",
+  "theme_color": "#38271F",
   "prefer_related_applications": false,
   "icons": [
     {
