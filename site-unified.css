@@ -2679,8 +2679,9 @@ button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
  .home-showcase-visual{height:78px!important;min-height:78px!important}
 }
 @media(max-width:360px){
- .compact-size-row{grid-template-columns:minmax(0,1fr)}
- .compact-selected-price{display:none}
+ .compact-size-row{grid-template-columns:minmax(0,1fr) auto;gap:4px;align-items:center}
+ .compact-size-row .card-size-select{font-size:10px!important;min-width:0;padding-inline:4px!important}
+ .compact-selected-price{display:inline!important;font-size:10px;white-space:nowrap}
  .product-card .product-info h3{font-size:11px}
 }
 
