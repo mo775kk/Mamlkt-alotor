@@ -376,12 +376,13 @@ img,svg,video,canvas{height:auto;max-width:100%}
 /* === Original inline style from index.html === */
 
     :root{
-      --ink:#050505; --surface:#0d0b0f; --surface-2:#141017;
-      --gold:#c9a227; --gold-soft:#e0c56a; --ivory:#f6f1e7;
-      --muted:#a89f93; --line:rgba(255,255,255,.10);
-      --glass:rgba(255,255,255,.055); --glass-strong:rgba(255,255,255,.09);
+      --ink:#24151d; --surface:#30202a; --surface-2:#3a2732;
+      --gold:#e2bd54; --gold-soft:#ffe49a; --ivory:#fff8ed;
+      --muted:#e0cbd2; --line:rgba(255,228,154,.24);
+      --glass:rgba(255,248,237,.075); --glass-strong:rgba(255,248,237,.12);
+      --pink:#d982a5; --pink-soft:#f2b5cc; --warm-ivory:#fff8ed;
       --radius:20px; --radius-sm:14px;
-      --shadow:0 24px 70px rgba(0,0,0,.55);
+      --shadow:0 20px 55px rgba(30,12,22,.28);
       --font-display:"Cormorant Garamond",serif;
       --font-body:"Tajawal",system-ui,sans-serif;
       --font-ar-display:"Amiri",serif;
@@ -390,9 +391,9 @@ img,svg,video,canvas{height:auto;max-width:100%}
     html{scroll-behavior:smooth;background:var(--ink)}
     body{
       margin:0;background:
-        radial-gradient(1200px 600px at 80% -10%,rgba(201,162,39,.16),transparent 60%),
-        radial-gradient(900px 500px at -10% 30%,rgba(120,60,160,.12),transparent 55%),
-        var(--ink);
+        radial-gradient(1100px 600px at 85% -10%,rgba(226,189,84,.22),transparent 62%),
+        radial-gradient(900px 540px at -8% 24%,rgba(217,130,165,.18),transparent 58%),
+        linear-gradient(135deg,#24151d 0%,#33202b 52%,#281923 100%);
       color:var(--ivory);font-family:var(--font-body);
       -webkit-font-smoothing:antialiased;
     }
