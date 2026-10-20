@@ -406,6 +406,10 @@ try {
     app.includes('displayFamily(p.family||p.scentFamily||"",p.nameAr||p.nameEn||"")') &&
     app.includes("supplierRetailRate(p)"),
     "Supplier oil cards classify fragrance family and use retail gram tiers");
+  report(app.includes('p.supplierSku||p.sku||"غير محدد"') &&
+    app.includes('اختيار الزيت للتركيب') &&
+    app.includes('oilSelect.value=id;closeModal();location.hash="#blend"'),
+    "Supplier oil details show supplier identifiers and the modal CTA opens the blending selector");
   report(css.includes(".product-card-supplier-oil .product-visual{height:180px") &&
     css.includes(".home-oil-showcase .home-showcase-visual{height:148px"),
     "Oil product cards use larger, readable product visuals on desktop and mobile");
