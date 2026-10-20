@@ -451,7 +451,7 @@
   bind("#cartShortcut", "click",openDrawer);bind("#closeDrawer", "click",closeDrawer);bind("#drawerBackdrop", "click",closeDrawer);
   bind("#closeModal", "click",closeModal);bind("#modalBackdrop", "click",e=>{if(e.target===$("#modalBackdrop"))closeModal();});
   bind("#checkoutBtn", "click",checkout);bind("#clearCart", "click",()=>{cart=[];save(STORAGE.cart,cart);renderCart();updateCounts();syncProductCardSelectionStates();notify("تم إفراغ السلة.");});
-  bind("#blendSize", "change",blendPrice);bind("#blendMode", "change",blendPrice);
+  bind("#blendSize", "change",blendPrice);bind("#blendMode", "change",()=>{const sizeControl=$("#blendSize");if($("#blendMode")?.value==="oilOnly"&&sizeControl&&!["30","50","100"].includes(String(sizeControl.value)))sizeControl.value="30";blendPrice();});
   bind("#addBlend", "click",()=>{
     const size=$("#blendSize").value,family=$("#blendScent").value,bottle=$("#blendBottle").value,mode=$("#blendMode")?.value==="oilOnly"?"oilOnly":"blend";
     const oilId=$("#blendOil")?.value||"",oil=findProduct(oilId),oilName=oil?(oil.nameAr||oil.nameEn):"زيت يختاره المتجر";
