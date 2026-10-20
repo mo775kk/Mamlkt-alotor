@@ -42,6 +42,17 @@ try {
     "PWA service worker is registered and handles requests");
   report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#F4DCE4",
     "PWA manifest contains app identity, launch URL, display mode and icon");
+  const themeBootstrap = read("theme-persistence.js");
+  const settingsSource = read("settings.js");
+  report(html.includes('theme-persistence.js?v=20261020-theme-persist1') &&
+    themeBootstrap.includes('mamlaka_theme_v1') &&
+    themeBootstrap.includes('mamlaka_visual_tuning_v1') &&
+    themeBootstrap.includes('addEventListener("storage"'),
+    "Saved palette, theme mode and display settings are restored across visits");
+  report(settingsSource.includes('"mamlaka_visual_tuning_v1"') &&
+    settingsSource.includes('"mamlaka_theme",') &&
+    settingsSource.includes('localStorage.getItem("mamlaka_visual_tuning_v1")!==raw'),
+    "Color and display settings are verified on save and included in local backups");
   const iconFiles = (manifest.icons || []).map((icon) => icon.src).filter(Boolean);
   report(iconFiles.length >= 2 && iconFiles.every((src) => fs.existsSync(path.join(root, src))),
     "PWA manifest icon paths resolve to local files");
