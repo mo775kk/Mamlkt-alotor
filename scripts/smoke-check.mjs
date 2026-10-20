@@ -413,12 +413,15 @@ try {
   report(css.includes(".product-card-supplier-oil .product-visual{height:180px") &&
     css.includes(".home-oil-showcase .home-showcase-visual{height:148px"),
     "Oil product cards use larger, readable product visuals on desktop and mobile");
+  report(app.includes('<span class="product-image-note">رسم توضيحي</span>') &&
+    app.includes('قائمة المورد لا تتضمن صورة العبوة التجارية'),
+    "Oil image labels identify representative visuals rather than original supplier packaging");
   report(pages.includes("const scrollPositions = new Map()") &&
     pages.includes("scrollPositions.set(activeId, window.scrollY || 0)") &&
     pages.includes('window.scrollTo({top:y,behavior:"auto"})'),
     "Section back navigation restores the previous section's scroll position");
-  report(/app\.js\?v=20261020-oil-catalog-cards4/.test(html) &&
-    /site-unified\.css\?v=20261020-oil-catalog-cards3/.test(html) &&
+  report(/app\.js\?v=20261020-oil-catalog-cards5/.test(html) &&
+    /site-unified\.css\?v=20261020-oil-catalog-cards4/.test(html) &&
     /section-pages\.js\?v=20261020-page-history-scroll6/.test(html),
     "Oil cards, layout and section-history fixes use fresh cache-busters");
   const oilData = JSON.parse(read("oil-catalog-public.json"));
