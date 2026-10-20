@@ -485,8 +485,11 @@
   document.querySelectorAll("[data-advisor-prompt]").forEach(button=>button.addEventListener("click",()=>{const prompt=button.dataset.advisorPrompt||"",input=$("#advisorInput");if(!input)return;input.value=prompt;submitAdvisor(prompt);}));
   const advisorReplies=$("#advisorReplies");if(advisorReplies)advisorReplies.addEventListener("click",e=>{if(e.target.closest("[data-advisor-request]"))requestMissing($("#advisorInput")?.value.trim()||"اقتراح عطر مناسب");});
   const contactWhatsapp=$("#contactWhatsapp");if(contactWhatsapp)contactWhatsapp.href=`https://wa.me/${getWaNumber()}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن منتجات مملكة العطور.")}`;
-  bind("#menuToggle", "click",()=>{const nav=$("#mainNav"),toggle=$("#menuToggle");if(!nav||!toggle)return;const open=nav.classList.toggle("open");toggle.setAttribute("aria-expanded",String(open));});
-  const mainNav=$("#mainNav");if(mainNav)mainNav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{mainNav.classList.remove("open");const menuToggle=$("#menuToggle");if(menuToggle)menuToggle.setAttribute("aria-expanded","false");}));
+  const mainNav=$("#mainNav"), menuToggle=$("#menuToggle"), headerActions=document.querySelector(".header-actions"), headerActionsHome=headerActions?.parentElement;
+  const compactMenu=()=>{if(!mainNav||!headerActions||!headerActionsHome)return;const mobile=window.matchMedia("(max-width: 850px)").matches;if(mobile){if(headerActions.parentElement!==mainNav)mainNav.appendChild(headerActions);}else if(headerActions.parentElement!==headerActionsHome){headerActionsHome.insertBefore(headerActions,menuToggle||null);mainNav.classList.remove("open");if(menuToggle)menuToggle.setAttribute("aria-expanded","false");}};
+  compactMenu();window.addEventListener("resize",compactMenu,{passive:true});
+  bind("#menuToggle","click",()=>{if(!mainNav||!menuToggle)return;const open=mainNav.classList.toggle("open");menuToggle.setAttribute("aria-expanded",String(open));menuToggle.setAttribute("aria-label",open?"إغلاق القائمة":"فتح القائمة");});
+  if(mainNav){mainNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{mainNav.classList.remove("open");if(menuToggle)menuToggle.setAttribute("aria-expanded","false");}));mainNav.addEventListener("click",event=>{if(event.target.closest(".header-actions button")){mainNav.classList.remove("open");if(menuToggle)menuToggle.setAttribute("aria-expanded","false");}});}
   document.addEventListener("keydown",e=>{
     if(e.key!=="Escape")return;
     if(!$("#modalBackdrop").classList.contains("hidden"))closeModal();
