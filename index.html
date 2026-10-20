@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site-unified.css?v=20261020-royal-gold-identity1">
+  <link rel="stylesheet" href="site-unified.css?v=20261020-compact-header1">
 
   <!-- ====== ROYAL CINEMATIC v3.0 — التصميم الحديث ====== -->
   
@@ -89,6 +89,8 @@
     </nav>
     <div class="header-actions">
       <button type="button" class="icon-btn" id="searchFocus" aria-label="بحث" title="بحث"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4.2 4.2"/></svg></button>
+      <button type="button" class="icon-btn header-cart-btn" id="cartHeaderShortcut" aria-label="فتح سلة التسوق" title="سلة التسوق"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 8H6"/><circle cx="10" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></svg><span class="counter" id="headerCartCount">0</span></button>
+      <div class="site-visitor-counter" id="siteVisitorCounter" title="هذا عداد زيارات محلي على هذا الجهاز فقط، وليس إجمالي زوار الموقع"><span class="visitor-dot" aria-hidden="true"></span><span class="visitor-label">الزيارات</span><strong id="siteVisitorCount" aria-live="polite">—</strong></div>
       <button type="button" class="icon-btn" id="favoritesShortcut" aria-label="المفضلة" title="المفضلة"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 8.7c0 5.1-8.8 10-8.8 10s-8.8-4.9-8.8-10A4.7 4.7 0 0 1 12 6.1a4.7 4.7 0 0 1 8.8 2.6Z"/></svg><span class="counter" id="favCount">0</span></button>
       <button type="button" class="icon-btn" id="themeToggle" aria-label="تبديل الوضع الليلي/النهاري" title="الوضع الليلي/النهاري">◐</button>
       <button type="button" class="btn btn-outline pwa-install-btn" id="installAppBtn">تثبيت التطبيق</button>
@@ -377,6 +379,21 @@
   <!-- السكربتات (defer) -->
   <script defer src="ai-service.js?v=20261016-ai-bridge1"></script>
   <script defer src="app.js?v=20261020-compact-cards2"></script>
+  <script>
+  (function(){
+    "use strict";
+    function initHeaderExtras(){
+      var cartButton=document.getElementById("cartHeaderShortcut");
+      if(cartButton)cartButton.addEventListener("click",function(){var shortcut=document.getElementById("cartShortcut");if(shortcut)shortcut.click();});
+      var count=document.getElementById("siteVisitorCount");
+      if(count){try{var key="mamlaka_local_visit_count_v1",seen="mamlaka_seen_this_session_v1";if(!sessionStorage.getItem(seen)){var n=Number(localStorage.getItem(key)||0);n=Number.isFinite(n)&&n>=0?n+1:1;localStorage.setItem(key,String(n));sessionStorage.setItem(seen,"1");}count.textContent=Number(localStorage.getItem(key)||0).toLocaleString("ar-EG");}catch(_){count.textContent="—";}}
+      var cartCount=document.getElementById("cartCount"),headerCount=document.getElementById("headerCartCount");
+      function sync(){if(cartCount&&headerCount)headerCount.textContent=cartCount.textContent||"0";}
+      sync();if(cartCount&&headerCount&&"MutationObserver" in window)new MutationObserver(sync).observe(cartCount,{childList:true,characterData:true,subtree:true});
+    }
+    if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initHeaderExtras);else initHeaderExtras();
+  })();
+  </script>
   <script defer src="royal-gold-gate.js?v=20261017-gold-gate1"></script>
   <script defer src="reference-library.js?v=20261018-settings-only2"></script>
   <script defer src="settings.js?v=20261020-live-single-source3"></script>
