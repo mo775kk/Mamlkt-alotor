@@ -458,7 +458,7 @@
     const modeLabel=mode==="oilOnly"?"زيت فقط / رش":"تركيب أساسي";
     const label=`${modeLabel}-${family}-${size}-${bottle}-${oil?.supplierSku||"اختيار-المتجر"}`;
     addToCart("custom-"+Date.now(),size,retailSizePrice(size,mode),{nameAr:`${modeLabel} ${family}`,nameEn:"Custom Blend",label,description:`نوع الطلب: ${modeLabel}، الزيت الأساسي: ${oilName}، العائلة: ${family}، ${size} مل، ${bottle}`});
-    const last=cart[cart.length-1];if(last&&last.custom)last.nameAr=`تركيبة ${family} — ${oilName} (${bottle})`;
+    const last=cart[cart.length-1];if(last&&last.custom)last.nameAr=`${modeLabel} ${family} — ${oilName} (${bottle})`;
     save(STORAGE.cart,cart);updateCounts();
   });
   bind("#advisorForm", "submit",e=>{e.preventDefault();submitAdvisor($("#advisorInput").value);});
