@@ -337,7 +337,7 @@ try {
   report(narrowPhoneRule.includes(".compact-selected-price{display:inline!important") &&
     narrowPhoneRule.includes("grid-template-columns:minmax(0,1fr) auto"),
     "Selected size and price remain visible together on very narrow phones");
-  report(/site-unified\.css\?v=20261020-standalone-pages3/.test(html),
+  report(/site-unified\.css\?v=20261020-royal-bright8/.test(html),
     "Royal bright release stylesheet is linked through a fresh cache-buster");
 } catch (e) {
   report(false, "Unable to validate narrow-phone size/price visibility: " + e.message);
