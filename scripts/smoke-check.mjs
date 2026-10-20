@@ -387,7 +387,7 @@ try {
     pages.includes('bar.querySelector("#sectionPageBack")') &&
     pages.includes('end.querySelector("button").addEventListener("click", () => navigate("home"))'),
     "Section navigation respects reduced-motion preferences and offers return-home controls");
-  report(html.includes('section-pages.js?v=20261020-home-all-sections1') &&
+  report(html.includes('section-pages.js?v=20261020-toolbar-sections2') &&
     html.includes('id="sectionPageBack"') === false,
     "Section-page controller is versioned and creates its toolbar dynamically without duplicate static controls");
 } catch (e) {
