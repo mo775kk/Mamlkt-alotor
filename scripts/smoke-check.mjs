@@ -358,3 +358,42 @@ for (const message of pass) console.log("PASS  " + message);
 for (const message of failures) console.error("FAIL  " + message);
 console.log("\n" + pass.length + " passed; " + failures.length + " failed.");
 if (failures.length) process.exitCode = 1;
+
+
+try {
+  const pages = read("section-pages.js");
+  const html = read("index.html");
+  report(pages.includes('const canonicalSectionId = (id) =>') &&
+    pages.includes('return id === "quiz" ? "blend" : id;'),
+    "Discover-fragrance entry is routed to the blending atelier");
+  report(pages.includes('window.addEventListener("popstate"') &&
+    pages.includes('window.addEventListener("hashchange"') &&
+    pages.includes('history.pushState') && pages.includes('history.replaceState'),
+    "Standalone sections support browser back/forward and direct hash navigation");
+  report(pages.includes('event.target.closest(\'a[href^="#"]\')') &&
+    pages.includes('event.preventDefault()') && pages.includes('navigate(id);'),
+    "Internal section links use delegated navigation without reloading the storefront");
+  report(pages.includes('window.matchMedia("(prefers-reduced-motion: reduce)")') &&
+    pages.includes('document.getElementById("sectionPageBack")') &&
+    pages.includes('document.getElementById("sectionPageEndBack")'),
+    "Section navigation respects reduced-motion preferences and offers return-home controls");
+  report(html.includes('section-pages.js?v=20261020-home-all-sections1') &&
+    html.includes('id="sectionPageBack"') === false,
+    "Section-page controller is versioned and creates its toolbar dynamically without duplicate static controls");
+} catch (e) {
+  report(false, "Unable to validate standalone section navigation: " + e.message);
+}
+
+try {
+  const settings = read("settings.js");
+  report(settings.includes('const write=(k,v)=>{const raw=JSON.stringify(v);try{localStorage.setItem(k,raw);if(localStorage.getItem(k)!==raw)throw new Error("تعذر التحقق من الحفظ")') &&
+    settings.includes('throw new Error("مساحة التخزين ممتلئة أو غير متاحة. صدّر نسخة JSON'),
+    "Settings storage verifies writes and gives an actionable message when browser storage fails");
+  report(settings.includes('const storageSnapshot=()=>{') &&
+    settings.includes('mamlaka_catalog_taxonomy_config_v1') &&
+    settings.includes('mamlaka_custom_products_v1') &&
+    settings.includes('mamlaka_inventory_accounting_v1'),
+    "Local backup snapshot includes catalog, custom products and inventory/accounting data");
+} catch (e) {
+  report(false, "Unable to validate settings persistence safeguards: " + e.message);
+}
