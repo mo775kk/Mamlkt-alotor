@@ -153,6 +153,34 @@
         available: p.available === true && (p.needsReview === false),
         publicCatalogItem: true
       }));
+      try {
+        const oilResponse = await fetch("oil-catalog-public.json", { cache: "no-cache" });
+        if (oilResponse.ok) {
+          const oilPayload = await oilResponse.json();
+          const oilRecords = Array.isArray(oilPayload?.products) ? oilPayload.products : [];
+          const oilProducts = oilRecords.filter(p => p && typeof p === "object").map(p => ({
+            ...p,
+            id: String(p.id || ("supplier-oil-" + p.sku)),
+            productType: "oil",
+            supplierCatalogItem: true,
+            publicCatalogItem: true,
+            available: false,
+            needsReview: true,
+            price: null,
+            prices: {},
+            topNotes: Array.isArray(p.topNotes) ? p.topNotes : [],
+            heartNotes: Array.isArray(p.heartNotes) ? p.heartNotes : [],
+            baseNotes: Array.isArray(p.baseNotes) ? p.baseNotes : [],
+            scentNature: p.scentNature || "تفاصيل الرائحة تحتاج إلى مصدر موثق.",
+            scentNotesProfile: p.scentNotesProfile || "غير محددة في مستند المورد."
+          }));
+          const ids = new Set(publicCatalogProducts.map(p => p.id));
+          publicCatalogProducts.push(...oilProducts.filter(p => !ids.has(p.id)));
+          document.documentElement.dataset.publicOilCatalog = String(oilProducts.length);
+        }
+      } catch (oilError) {
+        console.warn("تعذر تحميل كتالوج الزيوت العام.", oilError);
+      }
       products = combineProducts();
       renderProducts();
       renderHomeShowcase();
