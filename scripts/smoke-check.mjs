@@ -431,5 +431,5 @@ try {
 
 for (const message of pass) console.log("PASS  " + message);
 for (const message of failures) console.error("FAIL  " + message);
-console.log("\\n" + pass.length + " passed; " + failures.length + " failed.");
+console.log("\n" + pass.length + " passed; " + failures.length + " failed.");
 if (failures.length) process.exitCode = 1;
