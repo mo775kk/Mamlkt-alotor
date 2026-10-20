@@ -578,3 +578,8 @@ p{max-width:78ch}
 
 /* INDEX DIRECTORY CLEANUP: the directory is the entire home screen; branding lives in its own heading. */
 body.index-only-mode .site-header{display:none!important}
+
+/* PWA HELP DIALOG: visible above the index-only screen when explicitly opened. */
+body.index-only-mode>#pwaInstallHelp[open]{display:block!important;position:fixed;inset:0;max-height:calc(100svh - 24px);overflow:auto;z-index:30000}
+.home-index-install-card{width:100%;text-align:start;cursor:pointer;color:inherit;font:inherit;appearance:none;-webkit-appearance:none}
+.home-index-install-card:hover,.home-index-install-card:focus-visible{border-color:rgba(182,93,122,.55)!important;transform:translateY(-2px)}
