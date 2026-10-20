@@ -337,8 +337,8 @@ try {
     "The main directory is excluded from collapsible section details");
   const header = html.slice(html.indexOf('<div class="header-actions">'),html.indexOf('</div>',html.indexOf('<div class="header-actions">')));
   report((html.match(/id="cartShortcut"/g) || []).length === 1 &&
-    (html.match(/id="cartCount"/g) || []).length === 1 && !header.includes("cartShortcut"),
-    "Cart has one entry and one counter, located on the homepage directory rather than the header");
+    (html.match(/id="cartCount"/g) || []).length === 1 && header.includes("header-cart-btn") && /class="icon-btn header-cart-btn" id="cartShortcut"/.test(html) && !html.includes("home-index-cart-card"),
+    "Cart has one entry and one counter in the header toolbar, not the homepage directory");
 } catch (e) {
   report(false, "Unable to validate homepage navigation and cart placement: " + e.message);
 }
@@ -351,7 +351,7 @@ try {
   report(narrowPhoneRule.includes(".compact-selected-price{display:inline!important") &&
     narrowPhoneRule.includes("grid-template-columns:minmax(0,1fr) auto"),
     "Selected size and price remain visible together on very narrow phones");
-  report(/site-unified\.css\?v=20261020-royal-light-pink3/.test(html),
+  report(/site-unified\.css\?v=20261020-royal-compact-toolbar1/.test(html),
     "Mobile size/price and lighter royal theme fixes are linked through a fresh stylesheet cache-buster");
   const settings = read("settings.js");
   const manifest = JSON.parse(read("manifest.webmanifest"));
