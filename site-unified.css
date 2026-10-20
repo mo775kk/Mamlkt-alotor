@@ -2721,3 +2721,48 @@ button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
 @media(max-width:1100px){.site-header{flex-wrap:wrap}.brand{margin-inline-end:auto}.main-nav{order:3;width:100%;justify-content:center;flex-wrap:wrap}.header-actions{gap:5px}.header-actions .pwa-install-btn{display:none}}
 @media(max-width:560px){.site-header{padding:8px 10px;gap:7px}.brand-crown{font-size:25px}.brand strong{font-size:16px}.brand small{font-size:8px}.header-actions{gap:4px}.header-actions .icon-btn{width:34px;height:34px;min-width:34px;border-radius:10px}.header-actions .language-btn{display:none}.site-visitor-counter{gap:4px;padding:6px 7px;font-size:10px}.site-visitor-counter strong{font-size:12px}.visitor-label{max-width:37px;overflow:hidden;text-overflow:ellipsis}.main-nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;white-space:nowrap;padding:3px 0 5px}.main-nav a{font-size:12px;flex:0 0 auto}.section{padding-block:24px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* FINAL CLEANUP 2026-10-20 — remove artificial full-screen gaps, keep all functions */
+:root{
+  --royal-gold:#e4bf63;
+  --royal-pink:#d88fa8;
+}
+html{scroll-padding-top:84px}
+main{min-width:0}
+main>section:not(.hero){min-height:0}
+.section{margin-block:0;padding-block:clamp(20px,2.8vw,34px)}
+.section-heading{gap:10px;margin-bottom:14px}
+.trust-strip{padding-block:12px;gap:clamp(10px,2vw,22px)}
+.trust-strip>div{min-height:44px}
+.home-index-section{min-height:0!important;justify-content:flex-start!important;padding-block:22px!important}
+.home-index-section .section-heading{margin-bottom:14px}
+.home-index-grid{align-content:start}
+.home-index-section .home-index-card{min-height:56px}
+.hero{margin-bottom:0}
+#quiz,#homeCatalog,#ready,#oils,#oil-catalog,#scent-classification,#blend,#bakhoor,#gift,#advisor,#visit{scroll-margin-top:84px}
+@media(min-width:1001px){
+  .section{padding-inline:clamp(16px,3vw,40px)}
+  .home-index-section{padding-inline:clamp(16px,3vw,40px)!important}
+}
+@media(max-width:760px){
+  .section{padding-block:20px}
+  .section-heading{margin-bottom:12px}
+  .trust-strip{padding:10px 12px;gap:8px}
+  .trust-strip>div{gap:7px}
+  .trust-strip .line-icon{width:32px;height:32px}
+}
+@media(max-width:560px){
+  .site-header{min-height:0}
+  .site-visitor-counter{max-width:92px}
+  .visitor-label{max-width:40px}
+  .home-index-section{padding:18px 10px!important}
+  .section{padding-inline:12px}
+  .section-heading h2{line-height:1.3}
+  .hero{min-height:360px;max-height:430px}
+}
+/* Maintain the royal black / warm gold / soft pink balance without heavy overlays. */
+.site-header{background:rgba(29,21,26,.96);border-bottom-color:rgba(216,143,168,.32)}
+.site-visitor-counter{border-color:rgba(216,143,168,.36);background:rgba(216,143,168,.09)}
+.site-visitor-counter strong{color:#f1d77a}
+:focus-visible{outline-color:#e4bf63}
