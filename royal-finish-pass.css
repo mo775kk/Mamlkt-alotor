@@ -566,3 +566,12 @@ p{max-width:78ch}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+
+/* FINAL INDEX-ONLY CART: keep the cart entry inside the directory, never in the site header */
+#cartShortcut{display:none!important}
+.home-index-cart-card{width:100%;text-align:start;cursor:pointer;color:inherit;font:inherit;appearance:none;-webkit-appearance:none}
+.home-index-cart-card:hover,.home-index-cart-card:focus-visible{border-color:rgba(230,196,95,.9);transform:translateY(-2px);box-shadow:0 12px 30px rgba(104,63,30,.12)}
+.home-index-cart-card .home-index-count{display:inline-flex;align-items:center;justify-content:center;min-width:27px;height:27px;padding:0 7px;border-radius:999px;background:linear-gradient(135deg,#d4af37,#f4d982);color:#281b09;font:800 12px/1 Tajawal,sans-serif}
+.home-index-cart-card .home-index-icon{font-size:19px}
+@media(max-width:640px){.home-index-cart-card{min-height:66px}}
