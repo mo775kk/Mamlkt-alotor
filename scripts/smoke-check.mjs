@@ -346,12 +346,13 @@ try {
 try {
   const html = read("index.html");
   const css = read("site-unified.css");
+  const pages = read("section-pages.js");
   report(html.includes('data-theme="light"') && css.includes("--bg:#f7f1f3") &&
     css.includes("--finish-rose:#b65d7a") && css.includes("--gold2:#f0d67e"),
     "Default storefront palette is bright ivory/rose with readable gold accents");
   report(html.includes("section-pages.js?v=20261020-page-history5") &&
-    html.includes('id="sectionPageEnd"') === false &&
-    html.includes('id="cartDrawer"') && html.includes('id="modalBackdrop"'),
+    pages.includes('id="sectionPageEnd"') && html.includes('id="cartDrawer"') &&
+    html.includes('id="modalBackdrop"'),
     "Standalone section navigation, full-page cart and product details remain wired");
 } catch (e) {
   report(false, "Unable to validate royal release theme and navigation: " + e.message);
