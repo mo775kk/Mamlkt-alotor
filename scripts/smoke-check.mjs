@@ -114,6 +114,12 @@ report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor
 
 try {
   const app = read("app.js");
+  report(app.includes("const previousCart=cart.map(item=>({...item}));") && app.includes("if(!save(STORAGE.cart,cart)){cart=previousCart;return;}"),
+    "Adding to cart rolls back the in-memory cart when persistence fails");
+  report(app.includes("const previousCart=cart.map(entry=>({...entry}));") && app.includes("cart=previousCart;renderCart();return;"),
+    "Cart quantity and removal changes roll back when persistence fails");
+  report(app.includes('bind("#clearCart", "click",()=>{const previousCart=cart;cart=[];if(!save(STORAGE.cart,cart)){cart=previousCart;return;}'),
+    "Clear-cart preserves the previous cart if the browser cannot save the empty cart");
   report(app.includes('const bind = (selector, eventName, handler, options) => { const el = $(selector); if (el) el.addEventListener(eventName, handler, options); }'),
     "app.js shared event binder checks that an element exists before attaching listeners");
   report(!app.includes('$("#mainNav").querySelectorAll("a")') &&
