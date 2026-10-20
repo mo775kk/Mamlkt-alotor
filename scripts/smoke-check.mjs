@@ -40,7 +40,7 @@ try {
     "Storefront exposes an install-app action");
   report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes('addEventListener("fetch"'),
     "PWA service worker is registered and handles requests");
-  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length,
+  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#F4DCE4",
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const iconFiles = (manifest.icons || []).map((icon) => icon.src).filter(Boolean);
   report(iconFiles.length >= 2 && iconFiles.every((src) => fs.existsSync(path.join(root, src))),
@@ -338,7 +338,7 @@ try {
     narrowPhoneRule.includes("grid-template-columns:minmax(0,1fr) auto"),
     "Selected size and price remain visible together on very narrow phones");
   report(/site-unified\.css\?v=20261020-standalone-pages3/.test(html),
-    "Mobile size/price fix is linked through a fresh stylesheet cache-buster");
+    "Royal bright release stylesheet is linked through a fresh cache-buster");
 } catch (e) {
   report(false, "Unable to validate narrow-phone size/price visibility: " + e.message);
 }
