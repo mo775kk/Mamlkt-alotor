@@ -236,19 +236,16 @@
     const addTitle = isSupplierOil ? "اختيار هذا الزيت داخل طلب تركيب العطر" : !p.available ? "يلزم تأكيد التوفر قبل البيع" : currentPrice(p,defaultSize)==null ? "يلزم تحديد سعر معتمد قبل البيع" : "";
     const money = s => currentPrice(p,s)==null ? "السعر يحتاج تأكيد" : formatMoney(currentPrice(p,s));
     const category = ({"MEN":"رجالي","WOMEN":"نسائي","UNISEX":"للجنسين","ORIENTAL":"شرقي","KIDS":"أطفال","DIFFUSER":"فواحات"})[p.supplierCategory] || p.supplierCategory || p.gender || "";
-    const notes = p.scentNotesProfile || "النوتات التفصيلية غير واردة في قائمة المورد وتحتاج إلى توثيق.";
-    const oilPanel = isSupplierOil
-      ? '<div class="oil-customer-panel"><div><span>سعر الجرام للعميل</span><strong>'+escapeHTML(p.retailPricePerGram!=null?formatMoney(Number(p.retailPricePerGram)):"يحتاج اعتماد")+'</strong></div><p>يُستخدم في تركيب العطور؛ السعر النهائي حسب الحجم وخيارات التركيب.</p></div>'
-      : '<div class="card-buy-panel"><label for="card-size-'+escapeHTML(p.id)+'">الحجم والسعر</label><select id="card-size-'+escapeHTML(p.id)+'" class="card-size-select" data-card-size="'+escapeHTML(p.id)+'" aria-label="اختر حجم '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'">'+sizeList.map(s=>'<option value="'+escapeHTML(s)+'" '+(s===defaultSize?"selected":"")+'>'+escapeHTML(s)+' مل — '+escapeHTML(money(s))+'</option>').join('')+'</select><div class="card-price-line"><span>سعر الحجم المختار</span><strong data-card-price="'+escapeHTML(p.id)+'">'+escapeHTML(money(defaultSize))+'</strong></div></div>';
+    const shortMeta = isSupplierOil ? (category || "زيت للتركيب") : (p.brand && p.brand!=="غير محدد" ? p.brand : (p.gender || "عطر"));
+    const priceControl = isSupplierOil
+      ? '<div class="product-bottom compact-product-bottom"><span class="product-price">جرام: '+escapeHTML(p.retailPricePerGram!=null?formatMoney(Number(p.retailPricePerGram)):"يحتاج اعتماد")+'</span><span class="muted">'+escapeHTML(p.family||"")+'</span></div>'
+      : '<div class="compact-size-row"><select id="card-size-'+escapeHTML(p.id)+'" class="card-size-select" data-card-size="'+escapeHTML(p.id)+'" aria-label="اختر حجم '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'">'+sizeList.map(s=>'<option value="'+escapeHTML(s)+'" '+(s===defaultSize?"selected":"")+'>'+escapeHTML(s)+' مل · '+escapeHTML(money(s))+'</option>').join('')+'</select><strong class="compact-selected-price" data-card-price="'+escapeHTML(p.id)+'">'+escapeHTML(money(defaultSize))+'</strong></div>';
     return '<article class="product-card product-card-'+escapeHTML(p.productType||"ready")+(isSupplierOil?' product-card-supplier-oil':'')+'" data-product-type="'+escapeHTML(p.productType||"ready")+'" data-id="'+escapeHTML(p.id)+'">'+
       '<div class="product-visual">'+imageMarkup(p)+'<span class="product-badge">'+(isSupplierOil?'زيت للتركيب':p.needsReview?'يحتاج مراجعة':({"oil":"زيت","bakhoor":"عود وبخور","gift":"هدية","blend":"تركيب خاص","ready":"عطر جاهز"}[p.productType]||"عطر جاهز"))+'</span><button class="favorite-btn '+(fav?"is-fav":"")+'" data-action="favorite" data-id="'+escapeHTML(p.id)+'" aria-label="إضافة للمفضلة">'+(fav?"♥":"♡")+'</button></div>'+
-      '<div class="product-info"><h3>'+escapeHTML(p.nameAr||p.nameEn||"منتج جديد")+'</h3><div class="product-en" dir="ltr">'+escapeHTML(p.nameEn||"")+'</div>'+
-      '<div class="product-meta">'+escapeHTML(isSupplierOil?(category||"زيت عطري مركز"):(p.brand||"الشركة غير محددة"))+(p.supplierSku?' · كود '+escapeHTML(p.supplierSku):"")+'</div>'+
-      '<p class="product-desc">'+escapeHTML(isSupplierOil?(p.descriptionAr||"زيت مدرج في قائمة المورد؛ تفاصيل الرائحة تحتاج إلى توثيق."):(p.scentNature||p.descriptionAr||"الطابع العطري قيد المراجعة."))+'</p>'+
-      (isSupplierOil?'<details class="oil-extra-details"><summary>تفاصيل الزيت</summary><p><strong>الاسم:</strong> '+escapeHTML(p.nameEn||"غير محدد")+'</p><p><strong>التصنيف:</strong> '+escapeHTML(category||"غير محدد")+'</p><p><strong>العائلة العطرية:</strong> '+escapeHTML(p.family||"تحتاج مراجعة")+'</p><p><strong>النوتات:</strong> '+escapeHTML(notes)+'</p><p><strong>الكود:</strong> '+escapeHTML(p.supplierSku||"غير محدد")+'</p></details>':
-      (p.scentNotesProfile?'<p class="product-desc product-scent-notes"><strong>النوتات والطابع:</strong> '+escapeHTML(p.scentNotesProfile)+'</p>':""))+
-      oilPanel+
-      '<div class="product-bottom"><span class="product-price">'+(isSupplierOil?'سعر الجرام: '+escapeHTML(p.retailPricePerGram!=null?formatMoney(Number(p.retailPricePerGram)):"يحتاج اعتماد"):(price==null?"السعر قيد التأكيد":formatMoney(price)))+'</span><span class="muted">'+escapeHTML(p.family||"العائلة قيد التحديد")+'</span></div>'+
+      '<div class="product-info compact-product-info"><h3>'+escapeHTML(p.nameAr||p.nameEn||"منتج جديد")+'</h3>'+
+      (p.nameEn?'<div class="product-en" dir="ltr">'+escapeHTML(p.nameEn)+'</div>':"")+
+      '<div class="product-meta compact-product-meta">'+escapeHTML(shortMeta)+'</div>'+
+      priceControl+
       '<div class="product-actions"><button class="small-btn" data-action="details" data-id="'+escapeHTML(p.id)+'">التفاصيل</button><button class="small-btn primary '+(selected?"is-selected":"")+'" data-action="add" data-id="'+escapeHTML(p.id)+'" '+(canBuy||isSupplierOil?"":"disabled")+' aria-pressed="'+String(selected)+'" title="'+escapeHTML(addTitle)+'">'+addLabel+'</button></div></div></article>';
   }
   function homeShowcaseCard(p,kind){
