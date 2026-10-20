@@ -75,6 +75,7 @@
     ensureNavigation();
     const bar = document.getElementById("sectionPageToolbar");
     const end = document.getElementById("sectionPageEnd");
+    if (activeId && activeId !== id && !replace && !preserveLocation) pageHistory.push(activeId);
     activeId = id;
     document.body.classList.toggle("section-page-mode", id !== "home");
     document.body.classList.toggle("index-only-mode", id === "home");
@@ -127,6 +128,7 @@
 
   window.addEventListener("popstate", () => {
     const id = decodeURIComponent(location.hash.slice(1) || "home");
+    if (pageHistory.length) pageHistory.pop();
     if (id === "home" || resolveSection(id)) navigate(id, true);
   });
   window.addEventListener("hashchange", () => {
