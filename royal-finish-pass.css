@@ -575,3 +575,6 @@ p{max-width:78ch}
 .home-index-cart-card .home-index-count{display:inline-flex;align-items:center;justify-content:center;min-width:27px;height:27px;padding:0 7px;border-radius:999px;background:linear-gradient(135deg,#d4af37,#f4d982);color:#281b09;font:800 12px/1 Tajawal,sans-serif}
 .home-index-cart-card .home-index-icon{font-size:19px}
 @media(max-width:640px){.home-index-cart-card{min-height:66px}}
+
+/* INDEX DIRECTORY CLEANUP: the directory is the entire home screen; branding lives in its own heading. */
+body.index-only-mode .site-header{display:none!important}
