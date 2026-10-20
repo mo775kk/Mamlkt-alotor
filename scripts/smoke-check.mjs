@@ -385,7 +385,7 @@ try {
     "Internal section links use delegated navigation without reloading the storefront");
   report(pages.includes('window.matchMedia("(prefers-reduced-motion: reduce)")') &&
     pages.includes('bar.querySelector("#sectionPageBack")') &&
-    pages.includes('document.getElementById("sectionPageEndBack")'),
+    pages.includes('end.querySelector("button").addEventListener("click", () => navigate("home"))'),
     "Section navigation respects reduced-motion preferences and offers return-home controls");
   report(html.includes('section-pages.js?v=20261020-home-all-sections1') &&
     html.includes('id="sectionPageBack"') === false,
