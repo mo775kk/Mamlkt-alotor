@@ -345,8 +345,11 @@ try {
   report(narrowPhoneRule.includes(".compact-selected-price{display:inline!important") &&
     narrowPhoneRule.includes("grid-template-columns:minmax(0,1fr) auto"),
     "Selected size and price remain visible together on very narrow phones");
-  report(/site-unified\.css\?v=20261020-royal-gold-pink2/.test(html),
-    "Mobile size/price fix is linked through a fresh stylesheet cache-buster");
+  report(/site-unified\.css\?v=20261020-royal-light-pink3/.test(html),
+    "Mobile size/price and lighter royal theme fixes are linked through a fresh stylesheet cache-buster");
+  report(css.includes("--ink:#fffaf3") && css.includes("linear-gradient(135deg,#fffaf3 0%,#f8eff0 52%,#f5ead8 100%)") &&
+    css.includes("background:rgba(255,250,243,.94)"),
+    "Final consolidated theme keeps the page and sticky header light with readable rose-gold accents");
 } catch (e) {
   report(false, "Unable to validate narrow-phone size/price visibility: " + e.message);
 }
