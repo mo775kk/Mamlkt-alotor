@@ -3171,3 +3171,21 @@ body{background-color:var(--bg);color:var(--text)}
 .home-showcase-heading h3{font-family:Amiri,Tajawal,serif;line-height:1.45;letter-spacing:0}
 .home-showcase-description{line-height:1.85;overflow-wrap:anywhere}
 @media(max-width:520px){.home-oil-size-prices{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}.home-oil-size-price{padding:6px 1px}.home-oil-size-price b{font-size:10px}.home-oil-size-price strong{font-size:11px}.home-oil-showcase .home-showcase-card{grid-template-columns:minmax(92px,34%) minmax(0,1fr)!important}}
+
+/* Compact installed-app typography and controls */
+@media (display-mode: standalone) and (max-width: 760px) {
+ html { font-size:14px!important; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+ body { font-size:14px!important; line-height:1.55; }
+ .brand strong { font-size:18px!important; line-height:1.25!important; }
+ .section-heading h2,.drawer-head h2,.section-page-heading h1 { font-size:19px!important; line-height:1.4!important; }
+ .section-page-heading p { font-size:12px!important; line-height:1.55!important; }
+ .section-page-toolbar,.toolbar { gap:6px!important; padding:7px!important; }
+ button,.btn,.small-btn,.toolbar button,.toolbar a { font-size:12px!important; line-height:1.35!important; min-height:34px!important; padding:7px 10px!important; }
+ .toolbar svg,.site-header svg,.section-page-toolbar svg { width:17px!important; height:17px!important; }
+ .product-card .product-info,.oil-card .product-info,.gift-card .product-info { padding:9px!important; gap:6px!important; }
+ .product-card h3,.oil-card h3,.gift-card h3 { font-size:14px!important; line-height:1.45!important; }
+ .product-card p,.oil-card p,.gift-card p { font-size:12px; line-height:1.55; }
+ input,select,textarea { font-size:14px!important; min-height:36px; }
+ .home-oil-showcase .home-showcase-card h4 { font-size:15px!important; }
+ .home-oil-showcase .home-showcase-description { font-size:12px!important; }
+}
