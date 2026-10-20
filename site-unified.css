@@ -3068,3 +3068,42 @@ body{background-color:var(--bg);color:var(--text)}
   #cartDrawer .cart-line-title h3{font-size:18px!important}
   #cartDrawer .cart-line{padding:11px!important}
 }
+
+
+/* 2026-10-20 — supplier oil catalogue priority, readable product imagery and card hierarchy */
+.home-showcase-section{margin-top:clamp(12px,2vw,22px)}
+.home-oil-showcase{border:1px solid color-mix(in srgb,var(--gold,#c9a24a) 38%,var(--line,#ead8df));border-radius:18px;padding:clamp(12px,2vw,20px);background:linear-gradient(145deg,color-mix(in srgb,var(--panel,#fffaf8) 94%,#f4dce4),var(--panel,#fffaf8))}
+.home-oil-showcase .home-showcase-heading{align-items:center}
+.home-oil-showcase .home-showcase-visual{height:148px!important;min-height:148px!important;background:radial-gradient(ellipse at 50% 70%,rgba(203,163,73,.22),transparent 65%)}
+.home-oil-showcase .home-showcase-visual .placeholder-bottle{height:125px!important;max-height:125px!important;width:86px!important}
+.home-oil-showcase .home-showcase-card{border-radius:14px;overflow:hidden;border-color:color-mix(in srgb,var(--gold,#c9a24a) 28%,var(--line,#ead8df))}
+.home-oil-showcase .home-showcase-card-body{gap:8px!important;padding:12px!important}
+.home-oil-showcase .home-showcase-card h4{font-size:clamp(15px,1.2vw,18px);line-height:1.5}
+.home-oil-showcase .home-showcase-description{font-size:13px;line-height:1.7}
+.home-oil-showcase .home-showcase-price{font-weight:800;color:var(--gold,#a67c20);font-size:13px;line-height:1.7}
+.product-card-supplier-oil{border-radius:15px;overflow:hidden;background:linear-gradient(155deg,var(--panel,#fffaf8),var(--panel2,#f7edf1));border-color:color-mix(in srgb,var(--gold,#c9a24a) 32%,var(--line,#ead8df))}
+.product-card-supplier-oil .product-visual{height:180px!important;min-height:180px!important;background:radial-gradient(ellipse at 50% 70%,rgba(203,163,73,.2),transparent 64%)!important}
+.product-card-supplier-oil .product-visual .placeholder-bottle{height:148px!important;max-height:148px!important;width:100px!important}
+.product-card-supplier-oil .product-info{padding:12px!important;gap:8px!important}
+.product-card-supplier-oil .product-info h3{font-size:16px;line-height:1.5}
+.product-card-supplier-oil .product-en{font-size:13px}
+.product-card-supplier-oil .product-meta{font-size:12px;line-height:1.6}
+.product-card-supplier-oil .product-price{font-size:15px;font-weight:800}
+.product-card-supplier-oil .compact-product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.product-card-supplier-oil .product-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.product-card-supplier-oil .product-actions button{min-width:0;min-height:38px;white-space:normal;line-height:1.35}
+.product-card-supplier-oil .product-badge{font-size:11px;max-width:calc(100% - 48px)}
+@media(max-width:760px){
+ .home-oil-showcase .home-showcase-visual{height:122px!important;min-height:122px!important}
+ .home-oil-showcase .home-showcase-visual .placeholder-bottle{height:105px!important;max-height:105px!important;width:72px!important}
+ .product-card-supplier-oil .product-visual{height:135px!important;min-height:135px!important}
+ .product-card-supplier-oil .product-visual .placeholder-bottle{height:112px!important;max-height:112px!important;width:78px!important}
+ .product-card-supplier-oil .product-info{padding:9px!important}
+ .product-card-supplier-oil .product-info h3{font-size:14px!important}
+ .product-card-supplier-oil .product-actions button{font-size:11px!important;min-height:36px!important}
+}
+@media(max-width:360px){
+ .product-card-supplier-oil .product-visual{height:120px!important;min-height:120px!important}
+ .product-card-supplier-oil .product-visual .placeholder-bottle{height:98px!important;max-height:98px!important}
+ .product-card-supplier-oil .product-info h3{font-size:13px!important}
+}
