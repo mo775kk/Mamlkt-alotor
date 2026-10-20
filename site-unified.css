@@ -1439,29 +1439,6 @@ hr,.section-divider{margin-block:12px!important}
 }
 
 
-/* Directory mini-mode + oil catalog priority — mobile app */
-.home-index-section .section-heading{margin-bottom:8px!important}
-.home-index-section .home-index-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important}
-.home-index-section .home-index-card{
-  min-width:0;grid-template-columns:28px minmax(0,1fr) auto auto!important;
-  gap:6px!important;padding:8px!important;border-radius:11px!important;
-}
-.home-index-section .home-index-icon{width:28px!important;height:28px!important;border-radius:8px!important;font-size:.78rem!important}
-.home-index-section .home-index-copy strong{font-size:.78rem!important;line-height:1.25}
-.home-index-section .home-index-copy small{font-size:.65rem!important;line-height:1.3}
-.home-index-section .home-index-count{font-size:.72rem!important}
-.home-index-section .home-index-arrow{font-size:.8rem!important}
-.home-index-cart-card,.home-index-install-card,.home-index-settings-card{min-height:0!important}
-@media(max-width:760px){
-  .home-index-section .home-index-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}
-  .home-index-section .home-index-card{grid-template-columns:25px minmax(0,1fr) auto!important;padding:7px!important;gap:5px!important}
-  .home-index-section .home-index-icon{width:25px!important;height:25px!important;font-size:.72rem!important}
-  .home-index-section .home-index-copy strong{font-size:.74rem!important}
-  .home-index-section .home-index-copy small{font-size:.62rem!important}
-  .home-index-section .home-index-count{font-size:.68rem!important}
-}
-
-
 /* === Original source: royal-device-system.css === */
 /* MAMLKAT AL-OTOR — cross-device layout and catalog clarity pass */
 :root{--device-gutter:clamp(10px,2.2vw,28px);--device-card-radius:clamp(12px,1.5vw,20px)}
@@ -2707,24 +2684,25 @@ button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
  .product-card .product-info h3{font-size:11px}
 }
 
-/* === HOME DIRECTORY / PAGE-FIT / SINGLE CART ENTRY · 2026-10-20 === */
-.home-index-section{width:100%;max-width:none;min-height:calc(100svh - 78px);margin:0;padding:clamp(24px,4vw,52px) clamp(14px,4vw,64px);display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,rgba(255,244,230,.92),rgba(250,232,239,.90) 52%,rgba(238,216,174,.91));color:#3c2b28;border-block:1px solid rgba(177,129,62,.35);scroll-margin-top:78px}
-.home-index-section .section-heading{width:100%;margin-bottom:clamp(14px,2.5vh,26px)}
-.home-index-section .section-heading h2{color:#7b4b2d;font-size:clamp(28px,3.4vw,42px)}
+
+/* === CONSOLIDATED DIRECTORY / HOME LAYOUT === */
+.home-index-section{width:100%;max-width:none;min-height:calc(100svh - 76px);margin:0;padding:clamp(22px,3vw,42px) clamp(12px,3vw,38px);display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,rgba(255,245,232,.97),rgba(250,232,239,.96) 52%,rgba(238,216,174,.96));color:#3c2b28;border-block:1px solid rgba(177,129,62,.35);scroll-margin-top:76px}
+.home-index-section .section-heading{width:100%;margin-bottom:clamp(12px,2vh,20px)}
+.home-index-section .section-heading h2{color:#7b4b2d;font-size:clamp(26px,3vw,38px)}
 .home-index-section .section-heading>p{color:#66514c}
-.home-index-grid{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.2vw,14px)}
-.home-index-card{min-width:0;min-height:clamp(70px,10vh,100px);display:grid;grid-template-columns:42px minmax(0,1fr) auto 16px;align-items:center;gap:10px;padding:12px 14px;border:1px solid rgba(158,111,48,.42);border-radius:12px;background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(255,247,237,.95));color:#3d2c29;box-shadow:0 5px 16px rgba(90,55,38,.07);text-align:right;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
-.home-index-card:hover,.home-index-card:focus-visible{border-color:#c49a43;box-shadow:0 9px 22px rgba(90,55,38,.13);transform:translateY(-2px);outline:none}
-.home-index-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:#f4e3d4;color:#9b6b32;font-size:24px}
-.home-index-copy{min-width:0}
-.home-index-copy strong{display:block;color:#5a372d;font-size:clamp(13px,1.2vw,16px);line-height:1.5;overflow-wrap:anywhere}
-.home-index-copy small{display:block;margin-top:3px;color:#78645c;font-size:clamp(10px,.95vw,12px);line-height:1.45}
-.home-index-count{font-size:12px;font-weight:800;color:#8d6429;white-space:nowrap}
-.home-index-arrow{color:#a57939;font-size:18px}
-.home-index-note{color:#715e55}
-.home-index-cart-card{cursor:pointer;font:inherit}
-.home-index-cart-card .home-index-count{display:grid;place-items:center;min-width:25px;height:25px;padding:0 6px;border-radius:99px;background:#e7c77d;color:#49311e}
-.home-index-install-card,.home-index-settings-card{width:100%;margin-top:10px}
-@media(max-width:1000px){.home-index-section{min-height:calc(100svh - 68px);padding:24px 16px}.home-index-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.home-index-section{min-height:calc(100svh - 64px);padding:20px 12px}.home-index-section .section-heading{margin-bottom:14px}.home-index-section .section-heading h2{font-size:27px}.home-index-grid{grid-template-columns:1fr;gap:8px}.home-index-card{min-height:64px;padding:8px 10px;grid-template-columns:36px minmax(0,1fr) auto 14px;gap:8px}.home-index-icon{width:34px;height:34px;font-size:20px}.home-index-copy strong{font-size:13px}.home-index-copy small{font-size:11px;display:block}}
-@media(max-height:700px) and (min-width:561px){.home-index-section{padding-block:18px}.home-index-section .section-heading{margin-bottom:12px}.home-index-card{min-height:58px;padding-block:7px}.home-index-icon{width:34px;height:34px}}
+.home-index-grid{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(7px,1vw,12px)}
+.home-index-section .home-index-card{min-width:0;min-height:68px;display:grid;grid-template-columns:36px minmax(0,1fr) auto 14px;align-items:center;gap:8px;padding:10px 12px;border:1px solid rgba(158,111,48,.42);border-radius:12px;background:linear-gradient(135deg,#fff,#fff7ed);color:#3d2c29;box-shadow:0 4px 14px rgba(90,55,38,.07);text-align:right;text-decoration:none;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.home-index-section .home-index-card:hover,.home-index-section .home-index-card:focus-visible{border-color:#c49a43;box-shadow:0 8px 18px rgba(90,55,38,.12);transform:translateY(-1px);outline-offset:2px}
+.home-index-section .home-index-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:#f4e3d4;color:#9b6b32;font-size:21px}
+.home-index-section .home-index-copy{min-width:0}
+.home-index-section .home-index-copy strong{display:block;color:#5a372d;font-size:clamp(12px,1.1vw,15px);line-height:1.4;overflow-wrap:anywhere}
+.home-index-section .home-index-copy small{display:block;margin-top:2px;color:#78645c;font-size:clamp(10px,.9vw,12px);line-height:1.4;overflow-wrap:anywhere}
+.home-index-section .home-index-count{font-size:12px;font-weight:800;color:#8d6429;white-space:nowrap}
+.home-index-section .home-index-arrow{color:#a57939;font-size:17px}
+.home-index-section .home-index-cart-card{cursor:pointer;font:inherit}
+.home-index-section .home-index-cart-card .home-index-count{display:grid;place-items:center;min-width:24px;height:24px;padding:0 6px;border-radius:99px;background:#e7c77d;color:#49311e}
+.home-index-section .home-index-install-card,.home-index-section .home-index-settings-card{width:100%;margin-top:8px}
+.home-index-section .home-index-note{color:#715e55;font-size:12px;line-height:1.55;margin:10px 0 0}
+@media(max-width:1000px){.home-index-section{min-height:auto;padding:22px 14px}.home-index-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.home-index-section{padding:18px 10px}.home-index-section .section-heading{margin-bottom:12px}.home-index-section .section-heading h2{font-size:25px}.home-index-section .home-index-grid{grid-template-columns:1fr;gap:7px}.home-index-section .home-index-card{min-height:58px;padding:8px;grid-template-columns:32px minmax(0,1fr) auto 12px;gap:7px}.home-index-section .home-index-icon{width:30px;height:30px;font-size:19px}.home-index-section .home-index-copy strong{font-size:13px}.home-index-section .home-index-copy small{font-size:11px;display:block}}
+@media(max-height:700px) and (min-width:561px){.home-index-section{padding-block:14px}.home-index-section .section-heading{margin-bottom:10px}.home-index-section .home-index-card{min-height:54px;padding-block:6px}}
