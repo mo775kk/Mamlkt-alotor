@@ -2378,7 +2378,7 @@ table{max-width:100%;display:block;overflow-x:auto}
 }
 *{box-sizing:border-box}
 html{font-size:16px;scroll-behavior:smooth;scroll-padding-top:84px}
-body{margin:0;max-width:100%;overflow-x:clip;color:var(--text);background:radial-gradient(ellipse at 82% -12%,color-mix(in srgb,var(--gold2) 16%,transparent),transparent 42%),linear-gradient(135deg,var(--bg),var(--panel2) 52%,var(--bg));line-height:1.55}
+body{margin:0;max-width:100%;overflow-x:clip;color:var(--text);background:radial-gradient(ellipse at 82% -12%,color-mix(in srgb,var(--gold2) 16%,transparent),transparent 42%),linear-gradient(135deg,color-mix(in srgb,var(--bg) 82%,transparent),color-mix(in srgb,var(--panel2) 76%,transparent) 52%,color-mix(in srgb,var(--bg) 82%,transparent)),var(--page-image);background-size:cover;background-position:center;background-attachment:fixed;line-height:1.55}
 main{width:100%;min-width:0}
 main>section,.section-page-toolbar,.section-page-end{width:min(calc(100% - 2*var(--layout-gutter)),var(--layout-max));margin-inline:auto}
 main>section[hidden],[hidden]{display:none!important}
