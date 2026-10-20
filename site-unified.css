@@ -376,10 +376,10 @@ img,svg,video,canvas{height:auto;max-width:100%}
 /* === Original inline style from index.html === */
 
     :root{
-      --ink:#24151d; --surface:#30202a; --surface-2:#3a2732;
-      --gold:#e2bd54; --gold-soft:#ffe49a; --ivory:#fff8ed;
-      --muted:#e0cbd2; --line:rgba(255,228,154,.24);
-      --glass:rgba(255,248,237,.075); --glass-strong:rgba(255,248,237,.12);
+      --ink:#fffaf3; --surface:#fffdf8; --surface-2:#f7e9e7;
+      --gold:#a97926; --gold-soft:#d8b45b; --ivory:#30251f;
+      --muted:#65554d; --line:rgba(169,121,38,.28);
+      --glass:rgba(255,255,255,.78); --glass-strong:rgba(255,247,235,.96);
       --pink:#d982a5; --pink-soft:#f2b5cc; --warm-ivory:#fff8ed;
       --radius:20px; --radius-sm:14px;
       --shadow:0 20px 55px rgba(30,12,22,.28);
@@ -391,9 +391,9 @@ img,svg,video,canvas{height:auto;max-width:100%}
     html{scroll-behavior:smooth;background:var(--ink)}
     body{
       margin:0;background:
-        radial-gradient(1100px 600px at 85% -10%,rgba(226,189,84,.22),transparent 62%),
-        radial-gradient(900px 540px at -8% 24%,rgba(217,130,165,.18),transparent 58%),
-        linear-gradient(135deg,#24151d 0%,#33202b 52%,#281923 100%);
+        radial-gradient(1100px 600px at 85% -10%,rgba(226,189,84,.18),transparent 62%),
+        radial-gradient(900px 540px at -8% 24%,rgba(217,130,165,.14),transparent 58%),
+        linear-gradient(135deg,#fffaf3 0%,#f8eff0 52%,#f5ead8 100%);
       color:var(--ivory);font-family:var(--font-body);
       -webkit-font-smoothing:antialiased;
     }
@@ -411,7 +411,7 @@ img,svg,video,canvas{height:auto;max-width:100%}
     .site-header{
       position:sticky;top:0;z-index:900;display:flex;align-items:center;gap:14px;
       padding:12px clamp(14px,3vw,32px);
-      background:rgba(5,5,5,.55);backdrop-filter:blur(18px) saturate(140%);
+      background:rgba(255,250,243,.94);backdrop-filter:blur(18px) saturate(140%);
       border-bottom:1px solid var(--line);
     }
     .brand{gap:10px}
