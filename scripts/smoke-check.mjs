@@ -347,6 +347,16 @@ try {
     "Selected size and price remain visible together on very narrow phones");
   report(/site-unified\.css\?v=20261020-royal-light-pink3/.test(html),
     "Mobile size/price and lighter royal theme fixes are linked through a fresh stylesheet cache-buster");
+  const settings = read("settings.js");
+  const manifest = JSON.parse(read("manifest.webmanifest"));
+  report(html.includes('data-theme="light"') &&
+    /settings\\.js\\?v=20261020-royal-light-pink-gold5/.test(html) &&
+    settings.includes('const baseTheme=completeTheme({...themePresets.plumPinkGold,bg:"#FFFAF3"') &&
+    settings.includes('mamlaka_theme_royal_light_pink_gold_migration_v5'),
+    "The actual JavaScript default theme is light rose-gold and migrates browsers from the previous dark/gold preset");
+  report(manifest.theme_color === "#F8E3ED" &&
+    html.includes('manifest.webmanifest?v=20261020-light-pink-gold1'),
+    "Installed PWA manifest and browser metadata use the same light rose theme and fresh cache version");
   report(css.includes("--ink:#fffaf3") && css.includes("linear-gradient(135deg,#fffaf3 0%,#f8eff0 52%,#f5ead8 100%)") &&
     css.includes("background:rgba(255,250,243,.94)"),
     "Final consolidated theme keeps the page and sticky header light with readable rose-gold accents");
