@@ -226,7 +226,7 @@
   <link rel="stylesheet" href="royal-page-end.css?v=20261020-contact-boundary1">
   <link rel="stylesheet" href="royal-cart-polish.css?v=20261020-cart-polish1">
   <link rel="stylesheet" href="section-pages.css?v=20261020-section-pages1">
-  <link rel="stylesheet" href="royal-finish-pass.css?v=20261020-pwa-shell4">
+  <link rel="stylesheet" href="royal-finish-pass.css?v=20261020-pwa-shell5">
   <script>
     (() => {
       let promptEvent = null;
@@ -261,6 +261,8 @@
             button.hidden = standalone();
           });
         }
+        const homeInstall = document.getElementById('homeInstallShortcut');
+        if (homeInstall) homeInstall.addEventListener('click', () => { const button = document.getElementById('installAppBtn'); if (button) button.click(); else showHelp(); });
         const dialog = document.getElementById('pwaInstallHelp');
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
@@ -340,6 +342,7 @@
         <a class="home-index-card" href="#visit"><span class="home-index-icon" aria-hidden="true">⌖</span><span class="home-index-copy"><strong>التواصل والزيارة</strong><small>استفسر عن التوفر والسعر</small></span><span class="home-index-arrow" aria-hidden="true">←</span></a>
       </div>
       <button type="button" class="home-index-card home-index-cart-card" id="homeCartShortcut" aria-label="فتح سلة التسوق"><span class="home-index-icon" aria-hidden="true">🛍</span><span class="home-index-copy"><strong>سلة المشتريات</strong><small>عرض المنتجات والكميات والإجمالي وإتمام الطلب</small></span><span class="home-index-count" id="cartIndexCount">0</span><span class="home-index-arrow" aria-hidden="true">←</span></button>
+      <button type="button" class="home-index-card home-index-install-card" id="homeInstallShortcut" aria-label="تثبيت تطبيق مملكة العطور"><span class="home-index-icon" aria-hidden="true">📲</span><span class="home-index-copy"><strong>تثبيت التطبيق</strong><small>إضافة مملكة العطور إلى الشاشة الرئيسية</small></span><span class="home-index-arrow" aria-hidden="true">←</span></button>
       <button type="button" class="home-index-card home-index-settings-card" id="homeSettingsShortcut"><span class="home-index-icon" aria-hidden="true">⚙</span><span class="home-index-copy"><strong>الإعدادات والإدارة</strong><small>عرض البيانات المحفوظة والتحكم في الموقع</small></span><span class="home-index-arrow" aria-hidden="true">←</span></button>
       <p class="home-index-note"><span aria-hidden="true">ⓘ</span> الأسماء المعروضة مأخوذة من الكتالوج المسجل. يُؤكَّد التوفر والسعر النهائي مع المتجر قبل إتمام الطلب.</p>
     </section>
