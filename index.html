@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site-unified.css?v=20261020-fullpage-index-cart-home1">
+  <link rel="stylesheet" href="site-unified.css?v=20261020-home-complete1">
 
   <!-- ====== ROYAL CINEMATIC v3.0 — التصميم الحديث ====== -->
   
@@ -62,7 +62,7 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261020-pwa-shell4').catch(error => console.warn('PWA worker registration failed:', error));
+          navigator.serviceWorker.register('./sw.js?v=20261020-pwa-shell5').catch(error => console.warn('PWA worker registration failed:', error));
         }
       });
     })();
@@ -389,7 +389,7 @@
   <script defer src="inventory-accounting.js?v=20261015-json-restore1"></script>
   <script defer src="royal-interactions.js?v=20261017-static-home1"></script>
   <script defer src="royal-finish.js?v=20261020-css-single-source2"></script>
-  <script defer src="section-folds.js?v=20261020-open-section-details1"></script>
+  <script defer src="section-folds.js?v=20261020-index-always-open1"></script>
   <script defer src="blending-atelier.js?v=20261019-current-blend-prices1"></script>
 
   <!-- سكربتات v3.0 الجديدة -->
@@ -507,7 +507,7 @@
     document.addEventListener('mamlaka:products-updated',updateBlendPriceGuide);
   })();
   </script>
-  <script defer src="section-pages.js?v=20261020-directory-first3"></script>
+  <script defer src="section-pages.js?v=20261020-home-all-sections1"></script>
   <script>
   (function(){var b=document.getElementById("shareKingdomButton");if(!b)return;b.addEventListener("click",function(){var d={title:document.title,text:"اكتشف مملكة العطور",url:window.location.href};if(navigator.share){navigator.share(d).catch(function(){});return;}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.url).then(function(){b.textContent="تم نسخ رابط الموقع ✓";},function(){window.prompt("انسخ رابط الموقع:",d.url);});}else{window.prompt("انسخ رابط الموقع:",d.url);}});})();
   </script>
