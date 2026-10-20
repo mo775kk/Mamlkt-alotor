@@ -226,11 +226,14 @@
     return '<div class="placeholder-bottle bottle-'+shape+'" data-family="'+escapeHTML(family)+'" role="img" aria-label="رسم أصلي توضيحي لعبوة عطر '+escapeHTML(labelName)+' بطابع '+escapeHTML(family)+'، وليس صورة العبوة التجارية الأصلية"><svg viewBox="0 0 180 180" aria-hidden="true"><defs><linearGradient id="'+uid+'glass" x1="0" x2="1" y1="0" y2="1"><stop stop-color="'+colors[1]+'"/><stop offset=".5" stop-color="'+colors[0]+'"/><stop offset="1" stop-color="#fff" stop-opacity=".68"/></linearGradient><linearGradient id="'+uid+'cap" x1="0" x2="1"><stop stop-color="#fff0b2"/><stop offset=".48" stop-color="#d4af37"/><stop offset="1" stop-color="#8b6225"/></linearGradient><linearGradient id="'+uid+'shine" x1="0" x2="1"><stop stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><ellipse cx="90" cy="153" rx="48" ry="7" fill="#100a10" opacity=".35"/>'+cap+bottle+' fill="url(#'+uid+'glass)" stroke="#fff8e8" stroke-opacity=".8" stroke-width="1.7"/>'+liquid+'<path d="M68 61h7v61q0 5 4 7h-5q-7 0-7-8Z" fill="url(#'+uid+'shine)"/><path d="M113 67v51q0 8-7 9" fill="none" stroke="#fff" stroke-opacity=".38" stroke-width="2"/><rect x="65" y="88" width="50" height="31" rx="'+(shape==="square"?1:4)+'" fill="#fff8eb" fill-opacity=".92" stroke="#d4af37" stroke-width="1"/><text x="90" y="99" text-anchor="middle" font-size="5.8" fill="#66502a" font-family="Georgia,serif" letter-spacing=".8">MAMLKAT</text><text x="90" y="108" text-anchor="middle" font-size="5" fill="#8b6225" font-family="Arial,sans-serif">AL-OTOR</text><path d="M75 112h30" stroke="#d4af37" stroke-width=".6"/><text x="90" y="116" text-anchor="middle" font-size="4.5" fill="#66502a">'+escapeHTML(labelName)+'</text><path d="M78 128q12 5 24 0" stroke="#fff" stroke-opacity=".55" fill="none"/></svg><span class="bottle-art-note">رسم توضيحي أصلي</span></div>';
   }
   function supplierRetailRate(p){
-    if(!p)return 10;
-    const tier=String(p.retailPriceTier||p.retailTier||"").toLowerCase();
-    if(tier==="premium"||tier==="excellent"||tier==="ممتاز"||Number(p.retailPricePerGram)===20)return 20;
-    if(String(p.supplierCategory||"").toUpperCase()==="ORIENTAL"||Number(p.retailPricePerGram)===15)return 15;
-    return 10;
+    let pricing={french:10,oriental:15,orientalPremium:20};
+    try{const saved=JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")||"null");if(saved?.gramPricing)pricing={...pricing,...saved.gramPricing};}catch{}
+    const tier=String(p?.retailPriceTier||p?.retailTier||"").toLowerCase();
+    const number=(v,fallback)=>Number.isFinite(Number(v))&&Number(v)>0?Number(v):fallback;
+    if(tier==="premium"||tier==="excellent"||tier==="ممتاز"||Number(p?.retailPricePerGram)===20)return number(pricing.orientalPremium,20);
+    if(String(p?.supplierCategory||"").toUpperCase()==="ORIENTAL"||Number(p?.retailPricePerGram)===15)return number(pricing.oriental,15);
+    if(tier==="french"||tier==="فرنسي")return number(pricing.french,10);
+    return number(pricing.french,10);
   }
   function productCard(p) {
     const isSupplierOil = p.supplierCatalogItem === true;
