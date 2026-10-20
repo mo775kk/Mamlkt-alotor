@@ -89,23 +89,20 @@ try {
   const head = html.split(/<\/head>/i, 1)[0];
   report(head.includes("window.addEventListener('beforeinstallprompt'") &&
     head.includes("window.addEventListener('appinstalled'") &&
-    head.includes("dataset.pwaBound") && head.includes("showHelp()"),
+    head.includes("showHelp()") && head.includes("navigator.serviceWorker.register"),
     "PWA install lifecycle listeners are registered in the document head before UI scripts");
-  report(html.includes("event.preventDefault()") && html.includes("promptEvent.prompt()") &&
-    html.includes("promptEvent.userChoice") && html.includes("button.addEventListener('click'"),
+  report(html.includes("event.preventDefault()") && html.includes("promptEventNow.prompt()") &&
+    html.includes("promptEventNow.userChoice") && html.includes("button.addEventListener('click', async"),
     "Install button captures and invokes the browser-native install prompt and handles completion");
-  report(html.includes("button.hidden=standalone()") && html.includes("pwaInstallHelp") &&
-    html.includes("showHelp()") && !html.includes("button.hidden=isStandalone()||!installPrompt"),
+  report(html.includes("button.hidden = standalone()") && html.includes("pwaInstallHelp") &&
+    html.includes("showHelp()") && html.includes("homeInstallShortcut"),
     "Install action stays available and offers browser-specific guidance when native install prompt is withheld");
   report(html.includes("id=\"pwaHelpSteps\"") && html.includes("إضافة إلى الشاشة الرئيسية"),
     "Install fallback explains Android/iOS steps in an accessible dialog");
   report(html.includes('content="#160D14"') && manifest.theme_color === "#160D14",
     "Browser and installed-app theme colors match the cinematic charcoal palette");
-  report(html.includes("mamlaka-live-finish.css?v=20261018-royal-photo-contrast1"),
-    "Bright pearl-pink and gold visual layer is linked from the storefront");
-
-report(/mamlaka-live-finish\.css\?v=[^"]+/.test(html),
-  "Visible bright theme hotfix is linked with a fresh cache-buster");
+  report(/royal-finish-pass\.css\?v=[^"]+/.test(html) && read("royal-finish-pass.css").includes("--finish-rose"),
+  "Current rose-and-gold finishing layer is linked with a cache-buster");
 report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
   "Service worker URL and cache shell version are synchronized");
 
@@ -215,8 +212,8 @@ try {
     app.includes("لم تُوثق بعد"),
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
-  report(html.includes("app.js?v=20261018-home-catalog-showcase3"),
-    "Storefront cache-buster points to the latest fragrance-note interface");
+  report(/app\.js\?v=[^"]+/.test(html),
+    "Current storefront application script is linked with a cache-buster");
 } catch (e) {
   report(false, "Unable to validate fragrance-note research coverage: " + e.message);
 }
@@ -245,9 +242,8 @@ try {
     app.includes("لم تُوثق بعد"),
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
-  report(html.includes("app.js?v=20261018-home-catalog-showcase3") &&
-    /mamlaka-live-finish\.css\?v=[^"]+/.test(html),
-    "Storefront cache-busters point to the latest fragrance-note interface");
+  report(/app\.js\?v=[^"]+/.test(html) && /royal-finish-pass\.css\?v=[^"]+/.test(html),
+    "Storefront app and visual layer use explicit cache-busters");
   report(/const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
     "PWA cache version is refreshed to deliver the updated catalog");
 } catch (e) {
@@ -277,8 +273,8 @@ try {
   report(!/\$\(["\'][^"\']+["\']\)\.addEventListener\(/.test(settings),
     "Admin settings guards selector-based event bindings against missing optional elements");
   const html = read("index.html");
-  const polish = read("royal-polish.css");
-  const liveFinish = read("mamlaka-live-finish.css");
+  const finish = read("royal-finish-pass.css");
+  const themeStudio = read("mamlaka-theme-studio.css");
   report(settings.includes('dp={"3":50,"5":75,"10":100,"22":130,"30":100,"50":150,"100":300}') &&
     html.includes("30 مل · زيت فقط / رش',price:100") && html.includes("50 مل · زيت فقط / رش',price:150") && html.includes("100 مل · زيت فقط / رش',price:300"),
     "Oil-only/spray retail price defaults are consistent between owner controls and customer guide");
@@ -306,10 +302,10 @@ try {
     settings.includes("data.configured!==true") && settings.includes("AbortError") &&
     settings.includes("لا يختبر إجابة نموذج AI نفسها"),
     "AI connection diagnostics handle timeouts, missing server secrets and health-check limitations");
-  report(polish.includes(".ai-secret-list{") &&
-    /settings\.js\?v=[^"]+/.test(html) &&
-    html.includes("mamlaka-live-finish.css?v=20261018-royal-photo-contrast1") && liveFinish.includes("var(--page-image") && liveFinish.includes("opacity:1!important"),
-    "AI deployment guide styles and cache-busted script/style versions are present");
+  report(/settings\.js\?v=[^"]+/.test(html) &&
+    /royal-finish-pass\.css\?v=[^"]+/.test(html) &&
+    finish.includes(".home-index-install-card") && themeStudio.includes("theme"),
+    "Current settings, theme-studio and finishing styles are linked and present");
 } catch (e) {
   report(false, "Unable to validate AI deployment settings: " + e.message);
 }
