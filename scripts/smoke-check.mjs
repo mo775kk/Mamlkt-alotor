@@ -350,9 +350,9 @@ try {
   const settings = read("settings.js");
   const manifest = JSON.parse(read("manifest.webmanifest"));
   report(html.includes('data-theme="light"') &&
-    /settings\\.js\\?v=20261020-royal-light-pink-gold5/.test(html) &&
+    /settings\\.js\\?v=20261020-royal-light-pink-gold6/.test(html) &&
     settings.includes('const baseTheme=completeTheme({...themePresets.plumPinkGold,bg:"#FFFAF3"') &&
-    settings.includes('mamlaka_theme_royal_light_pink_gold_migration_v5'),
+    settings.includes('mamlaka_theme_royal_light_pink_gold_migration_v5') && settings.includes("legacyGoldDefault"),
     "The actual JavaScript default theme is light rose-gold and migrates browsers from the previous dark/gold preset");
   report(manifest.theme_color === "#F8E3ED" &&
     html.includes('manifest.webmanifest?v=20261020-light-pink-gold1'),
