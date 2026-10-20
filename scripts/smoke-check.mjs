@@ -277,19 +277,22 @@ try {
   const html = read("index.html");
   const finish = read("site-unified.css");
   const themeStudio = read("site-unified.css");
-  report(settings.includes('dp={"3":50,"5":75,"10":100,"22":130,"30":100,"50":150,"100":300}') &&
-    settings.includes("mamlaka_catalog_taxonomy_config_v1") && html.includes('id="blendSize"'),
-    "Oil-only/spray retail price defaults are consistent between owner controls and customer guide");
+  report(settings.includes('dp={"3":50,"5":75,"10":100,"22":130,"30":150,"50":200,"100":450}') &&
+    settings.includes("retailOilOnlyPrices") && html.includes('id="blendSize"') && html.includes('id="blendMode"'),
+    "Owner controls expose separate standard blend and oil-only/spray price tables");
   const catalogEditor = read("catalog-editor.js");
   const blendingAtelier = read("blending-atelier.js");
   const priceConfig = JSON.parse(read("data/catalog-configuration.json"));
   const pricesBySize = Object.fromEntries((priceConfig.retailBlendPrices || []).map(item => [String(item.size).match(/[0-9]+/)?.[0], Number(item.price)]));
+  const oilOnlyBySize = Object.fromEntries((priceConfig.retailOilOnlyPrices || []).map(item => [String(item.size).match(/[0-9]+/)?.[0], Number(item.price)]));
   report(pricesBySize["3"] === 50 && pricesBySize["5"] === 75 && pricesBySize["10"] === 100 &&
-    pricesBySize["22"] === 130 && pricesBySize["30"] === 100 && pricesBySize["50"] === 150 && pricesBySize["100"] === 300,
-    "Shared catalog configuration uses the current approved blend-size prices");
-  report(catalogEditor.includes("{size:'30 مل',price:100},{size:'50 مل',price:150},{size:'100 مل',price:300}") &&
-    blendingAtelier.includes("var defaults={'3':50,'5':75,'10':100,'22':130,'30':100,'50':150,'100':300}"),
-    "Admin catalog editor and blending atelier fallback prices match the shared configuration");
+    pricesBySize["22"] === 130 && pricesBySize["30"] === 150 && pricesBySize["50"] === 200 && pricesBySize["100"] === 450,
+    "Shared catalog configuration uses the approved standard blend-size prices");
+  report(oilOnlyBySize["30"] === 100 && oilOnlyBySize["50"] === 150 && oilOnlyBySize["100"] === 300,
+    "Shared catalog configuration preserves separate oil-only/spray prices");
+  report(catalogEditor.includes("retailOilOnlyPrices:[{size:'30 مل',price:100},{size:'50 مل',price:150},{size:'100 مل',price:300}]") &&
+    blendingAtelier.includes("oilDefaults={'30':100,'50':150,'100':300}"),
+    "Admin catalog editor and blending atelier fallback prices match both approved price tables");
 
 
   report(settings.includes("data-copy-secret=\"CLOUDFLARE_API_TOKEN\"") &&
