@@ -3,22 +3,31 @@
   const getWaNumber = () => (localStorage.getItem("mamlaka_admin_whatsapp_v1") || "201272776928").replace(/\D/g, "");
   const STORAGE = {cart:"mamlaka_cart_v1", fav:"mamlaka_favorites_v1", lang:"mamlaka_language_v1", custom:"mamlaka_custom_products_v1", requests:"mamlaka_requests_v1"};
   const sizes = (() => {
-    const fallback = {"3":50,"5":75,"10":100,"22":130,"30":100,"50":150,"100":300};
+    const fallback = {"3":50,"5":75,"10":100,"22":130,"30":150,"50":200,"100":450};
+    const oilOnlyDefaults = {"30":100,"50":150,"100":300};
     try {
       const cfg = JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1") || "null");
-      if (Array.isArray(cfg?.retailBlendPrices) && cfg.retailBlendPrices.length) {
-        const editable = {};
-        cfg.retailBlendPrices.forEach(item => {
-          const size = String(item.size || "").match(/[0-9]+/)?.[0];
-          if (size && Number.isFinite(Number(item.price)) && Number(item.price) >= 50) editable[size] = Number(item.price);
-        });
-        if (editable["30"] === 150 && editable["50"] === 200 && editable["100"] === 450) {
-          editable["30"] = 100; editable["50"] = 150; editable["100"] = 300;
+      if (cfg && typeof cfg === "object") {
+        const old = Object.fromEntries((cfg.retailBlendPrices || []).map(item => {
+          const size=String(item.size||"").match(/[0-9]+/)?.[0];
+          return size ? [size,Number(item.price)] : ["",null];
+        }));
+        const isLegacyDefault = !Array.isArray(cfg.retailOilOnlyPrices) &&
+          old["3"]===50 && old["5"]===75 && old["10"]===100 && old["22"]===130 &&
+          old["30"]===100 && old["50"]===150 && old["100"]===300;
+        if (isLegacyDefault) {
+          cfg.retailBlendPrices=Object.entries(fallback).map(([size,price])=>({size:size+" مل",price}));
+          cfg.retailOilOnlyPrices=Object.entries(oilOnlyDefaults).map(([size,price])=>({size:size+" مل",price}));
+          try { localStorage.setItem("mamlaka_catalog_taxonomy_config_v1",JSON.stringify(cfg)); } catch {}
         }
-        if (editable["22"] == null) editable["22"] = 130;
-        const normalized = Object.fromEntries(Object.entries(fallback).map(([size, price]) => [size, editable[size] ?? price]));
-        try { localStorage.setItem("mamlaka_catalog_taxonomy_config_v1", JSON.stringify({...cfg, retailBlendPrices:Object.entries(normalized).map(([size,price])=>({size:size+" مل",price}))})); } catch {}
-        return normalized;
+        if (Array.isArray(cfg.retailBlendPrices) && cfg.retailBlendPrices.length) {
+          const editable = {};
+          cfg.retailBlendPrices.forEach(item => {
+            const size = String(item.size || "").match(/[0-9]+/)?.[0];
+            if (size && Number.isFinite(Number(item.price)) && Number(item.price) >= 50) editable[size] = Number(item.price);
+          });
+          return Object.fromEntries(Object.entries(fallback).map(([size, price]) => [size, editable[size] ?? price]));
+        }
       }
     } catch {}
     return fallback;
@@ -203,8 +212,8 @@
   function save(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { notify("تعذر الحفظ في هذا المتصفح. صدّر نسخة احتياطية إن أمكن."); return false; } }
   function notify(msg) { const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),3000); }
   function findProduct(id) { return products.find(p=>p.id===id); }
-  function retailSizePrice(size){const key=String(size);try{const cfg=JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")||"null");const item=Array.isArray(cfg?.retailBlendPrices)?cfg.retailBlendPrices.find(x=>String(x.size||"").match(/[0-9]+/)?.[0]===key):null;if(item&&Number.isFinite(Number(item.price))&&Number(item.price)>=50)return Number(item.price);}catch{}return sizes[key]??null;}
-  function currentPrice(p,size) { if(!p || p.supplierCatalogItem || p.supplierSku) return null; if(p.productType === "blend" || p.productType === "oil" || p.customBlend === true) return retailSizePrice(size); const specific=p.prices && p.prices[String(size)] != null ? Number(p.prices[String(size)]) : null; if(Number.isFinite(specific) && specific>0) return Math.max(50,specific); const base=p.price != null ? Number(p.price) : null; if(Number.isFinite(base) && base>0) return Math.max(50,base); return null; }
+  function retailSizePrice(size,mode="blend"){const key=String(size);try{const cfg=JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")||"null");const table=mode==="oilOnly"?cfg?.retailOilOnlyPrices:cfg?.retailBlendPrices;const item=Array.isArray(table)?table.find(x=>String(x.size||"").match(/[0-9]+/)?.[0]===key):null;if(item&&Number.isFinite(Number(item.price))&&Number(item.price)>=50)return Number(item.price);}catch{}if(mode==="oilOnly"&&({"30":1,"50":1,"100":1})[key])return ({"30":100,"50":150,"100":300})[key];return sizes[key]??null;}
+  function currentPrice(p,size) { if(!p || p.supplierCatalogItem || p.supplierSku) return null; if(p.productType === "blend" || p.customBlend === true) return retailSizePrice(size,"blend"); if(p.productType === "oil") return retailSizePrice(size,"oilOnly"); const specific=p.prices && p.prices[String(size)] != null ? Number(p.prices[String(size)]) : null; if(Number.isFinite(specific) && specific>0) return Math.max(50,specific); const base=p.price != null ? Number(p.price) : null; if(Number.isFinite(base) && base>0) return Math.max(50,base); return null; }
   function imageMarkup(p){
     if(p.image&&/^(https?:|assets\/|data:image\/)/i.test(p.image))return '<img class="product-photo" src="'+escapeHTML(p.image)+'" alt="صورة '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'" loading="lazy" onerror="this.remove()">';
     const family=displayFamily(p.family||"",p.nameAr||p.nameEn||"");
@@ -362,7 +371,7 @@
     const msg="مرحبًا، أريد مراجعة طلب من مملكة العطور:\nاسم العميل: "+name+"\nهاتف العميل: "+phone+(area?"\nالعنوان / المنطقة: "+area:"")+(notes?"\nملاحظات: "+notes:"")+"\n\nتفاصيل الطلب:\n"+lines.join("\n")+"\nالإجمالي المرجعي: "+formatMoney(total)+"\nيرجى تأكيد التوفر والسعر النهائي وتكلفة التوصيل.";
     window.open("https://wa.me/"+getWaNumber()+"?text="+encodeURIComponent(msg),"_blank","noopener");
   }
-  function blendPrice(){const s=$("#blendSize").value;$("#blendPrice").textContent=formatMoney(retailSizePrice(s));}
+  function blendPrice(){const s=$("#blendSize").value,mode=$("#blendMode")?.value==="oilOnly"?"oilOnly":"blend";$("#blendPrice").textContent=formatMoney(retailSizePrice(s,mode));}
   async function submitAdvisor(query){
     const q=norm(query);if(!q)return;
     const replies=$("#advisorReplies");
@@ -442,12 +451,13 @@
   bind("#cartShortcut", "click",openDrawer);bind("#closeDrawer", "click",closeDrawer);bind("#drawerBackdrop", "click",closeDrawer);
   bind("#closeModal", "click",closeModal);bind("#modalBackdrop", "click",e=>{if(e.target===$("#modalBackdrop"))closeModal();});
   bind("#checkoutBtn", "click",checkout);bind("#clearCart", "click",()=>{cart=[];save(STORAGE.cart,cart);renderCart();updateCounts();syncProductCardSelectionStates();notify("تم إفراغ السلة.");});
-  bind("#blendSize", "change",blendPrice);
+  bind("#blendSize", "change",blendPrice);bind("#blendMode", "change",blendPrice);
   bind("#addBlend", "click",()=>{
-    const size=$("#blendSize").value,family=$("#blendScent").value,bottle=$("#blendBottle").value;
+    const size=$("#blendSize").value,family=$("#blendScent").value,bottle=$("#blendBottle").value,mode=$("#blendMode")?.value==="oilOnly"?"oilOnly":"blend";
     const oilId=$("#blendOil")?.value||"",oil=findProduct(oilId),oilName=oil?(oil.nameAr||oil.nameEn):"زيت يختاره المتجر";
-    const label=`تركيبة-${family}-${size}-${bottle}-${oil?.supplierSku||"اختيار-المتجر"}`;
-    addToCart("custom-"+Date.now(),size,retailSizePrice(size),{nameAr:`تركيبة ${family}`,nameEn:"Custom Blend",label,description:`الزيت الأساسي: ${oilName}، العائلة: ${family}، ${size} مل، ${bottle}`});
+    const modeLabel=mode==="oilOnly"?"زيت فقط / رش":"تركيب أساسي";
+    const label=`${modeLabel}-${family}-${size}-${bottle}-${oil?.supplierSku||"اختيار-المتجر"}`;
+    addToCart("custom-"+Date.now(),size,retailSizePrice(size,mode),{nameAr:`${modeLabel} ${family}`,nameEn:"Custom Blend",label,description:`نوع الطلب: ${modeLabel}، الزيت الأساسي: ${oilName}، العائلة: ${family}، ${size} مل، ${bottle}`});
     const last=cart[cart.length-1];if(last&&last.custom)last.nameAr=`تركيبة ${family} — ${oilName} (${bottle})`;
     save(STORAGE.cart,cart);updateCounts();
   });
