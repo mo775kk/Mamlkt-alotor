@@ -99,8 +99,10 @@ try {
     "Install action stays available and offers browser-specific guidance when native install prompt is withheld");
   report(html.includes("id=\"pwaHelpSteps\"") && html.includes("إضافة إلى الشاشة الرئيسية"),
     "Install fallback explains Android/iOS steps in an accessible dialog");
-  report(html.includes('content="#160D14"') && manifest.theme_color === "#160D14",
-    "Browser and installed-app theme colors match the cinematic charcoal palette");
+  const browserThemeColor = html.match(/<meta\\s+name="theme-color"\\s+content="([^"]+)"/i)?.[1];
+  report(Boolean(browserThemeColor) && browserThemeColor.toLowerCase() === String(manifest.theme_color || "").toLowerCase() &&
+    /^#[0-9a-f]{6}$/i.test(browserThemeColor),
+    "Browser and installed-app theme colors match the current royal palette");
   report(/royal-finish-pass\.css\?v=[^"]+/.test(html) && read("royal-finish-pass.css").includes("--finish-rose"),
   "Current rose-and-gold finishing layer is linked with a cache-buster");
 report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
