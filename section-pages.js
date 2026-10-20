@@ -12,6 +12,7 @@
   const originalHidden = new Map();
   let activeId = "";
   const pageHistory = [];
+  const scrollPositions = new Map();
 
   const titleFor = (section) => {
     const h = section?.querySelector("h1,h2,h3");
@@ -60,8 +61,10 @@
 
   function navigateBack() {
     const previous = pageHistory.pop();
-    if (previous && (previous === "home" || resolveSection(previous))) navigate(previous, true);
-    else navigate("home");
+    const id = previous && (previous === "home" || resolveSection(previous)) ? previous : "home";
+    navigate(id, true);
+    const y = scrollPositions.get(id);
+    if (Number.isFinite(y)) window.scrollTo({top:y,behavior:"auto"});
   }
 
   function navigate(id, replace = false, preserveLocation = false) {
@@ -75,6 +78,7 @@
     ensureNavigation();
     const bar = document.getElementById("sectionPageToolbar");
     const end = document.getElementById("sectionPageEnd");
+    if (activeId) scrollPositions.set(activeId, window.scrollY || 0);
     if (activeId && activeId !== id && !replace && !preserveLocation) pageHistory.push(activeId);
     activeId = id;
     document.body.classList.toggle("section-page-mode", id !== "home");
