@@ -485,6 +485,18 @@
   document.querySelectorAll("[data-advisor-prompt]").forEach(button=>button.addEventListener("click",()=>{const prompt=button.dataset.advisorPrompt||"",input=$("#advisorInput");if(!input)return;input.value=prompt;submitAdvisor(prompt);}));
   const advisorReplies=$("#advisorReplies");if(advisorReplies)advisorReplies.addEventListener("click",e=>{if(e.target.closest("[data-advisor-request]"))requestMissing($("#advisorInput")?.value.trim()||"اقتراح عطر مناسب");});
   const contactWhatsapp=$("#contactWhatsapp");if(contactWhatsapp)contactWhatsapp.href=`https://wa.me/${getWaNumber()}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن منتجات مملكة العطور.")}`;
+  // Clear, consistent visual feedback for every customer interaction.
+  document.addEventListener("click",event=>{
+    const target=event.target.closest("a,button,[role='button'],summary");
+    if(!target||target.disabled)return;
+    document.querySelectorAll(".is-clicked").forEach(node=>node.classList.remove("is-clicked"));
+    target.classList.add("is-clicked");
+    window.setTimeout(()=>target.classList.remove("is-clicked"),1800);
+    if(target.matches("#mainNav a,[data-nav]")){
+      document.querySelectorAll("#mainNav a[aria-current='page']").forEach(node=>node.removeAttribute("aria-current"));
+      target.setAttribute("aria-current","page");
+    }
+  },true);
   const mainNav=$("#mainNav"), menuToggle=$("#menuToggle"), headerActions=document.querySelector(".header-actions"), headerActionsHome=headerActions?.parentElement;
   const compactMenu=()=>{if(!mainNav||!headerActions||!headerActionsHome)return;const mobile=window.matchMedia("(max-width: 850px)").matches;if(mobile){if(headerActions.parentElement!==mainNav)mainNav.appendChild(headerActions);}else if(headerActions.parentElement!==headerActionsHome){headerActionsHome.appendChild(headerActions);mainNav.classList.remove("open");if(menuToggle)menuToggle.setAttribute("aria-expanded","false");}};
   compactMenu();window.addEventListener("resize",compactMenu,{passive:true});
