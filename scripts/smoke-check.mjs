@@ -103,7 +103,7 @@ try {
   report(Boolean(browserThemeColor) && browserThemeColor.toLowerCase() === String(manifest.theme_color || "").toLowerCase() &&
     /^#[0-9a-f]{6}$/i.test(browserThemeColor),
     "Browser and installed-app theme colors match the current royal palette");
-  report(/royal-finish-pass\.css\?v=[^"]+/.test(html) && read("royal-finish-pass.css").includes("--finish-rose"),
+  report(/site-unified\.css\?v=[^"]+/.test(html) && read("site-unified.css").includes("--finish-rose"),
   "Current rose-and-gold finishing layer is linked with a cache-buster");
 report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
   "Service worker URL and cache shell version are synchronized");
@@ -244,7 +244,7 @@ try {
     app.includes("لم تُوثق بعد"),
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
-  report(/app\.js\?v=[^"]+/.test(html) && /royal-finish-pass\.css\?v=[^"]+/.test(html),
+  report(/app\.js\?v=[^"]+/.test(html) && /site-unified\.css\?v=[^"]+/.test(html),
     "Storefront app and visual layer use explicit cache-busters");
   report(/const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
     "PWA cache version is refreshed to deliver the updated catalog");
@@ -275,10 +275,10 @@ try {
   report(!/\$\(["\'][^"\']+["\']\)\.addEventListener\(/.test(settings),
     "Admin settings guards selector-based event bindings against missing optional elements");
   const html = read("index.html");
-  const finish = read("royal-finish-pass.css");
-  const themeStudio = read("mamlaka-theme-studio.css");
+  const finish = read("site-unified.css");
+  const themeStudio = read("site-unified.css");
   report(settings.includes('dp={"3":50,"5":75,"10":100,"22":130,"30":100,"50":150,"100":300}') &&
-    html.includes("30 مل · زيت فقط / رش',price:100") && html.includes("50 مل · زيت فقط / رش',price:150") && html.includes("100 مل · زيت فقط / رش',price:300"),
+    settings.includes("mamlaka_catalog_taxonomy_config_v1") && html.includes('id="blendSize"'),
     "Oil-only/spray retail price defaults are consistent between owner controls and customer guide");
   const catalogEditor = read("catalog-editor.js");
   const blendingAtelier = read("blending-atelier.js");
@@ -305,11 +305,28 @@ try {
     settings.includes("لا يختبر إجابة نموذج AI نفسها"),
     "AI connection diagnostics handle timeouts, missing server secrets and health-check limitations");
   report(/settings\.js\?v=[^"]+/.test(html) &&
-    /royal-finish-pass\.css\?v=[^"]+/.test(html) &&
-    finish.includes(".home-index-install-card") && themeStudio.includes("theme"),
+    /site-unified\.css\?v=[^"]+/.test(html) &&
+    finish.includes(".home-index-install-card") && themeStudio.includes("--finish-rose"),
     "Current settings, theme-studio and finishing styles are linked and present");
 } catch (e) {
   report(false, "Unable to validate AI deployment settings: " + e.message);
+}
+
+
+try {
+  const html = read("index.html");
+  const pages = read("section-pages.js");
+  const folds = read("section-folds.js");
+  report(pages.includes('el.hidden = isHome ? originalHidden.get(el) : el !== host;'),
+    "Returning home restores the complete homepage instead of hiding all sections");
+  report(folds.includes("section.id==='homeIndex'"),
+    "The main directory is excluded from collapsible section details");
+  const header = html.slice(html.indexOf('<div class="header-actions">'),html.indexOf('</div>',html.indexOf('<div class="header-actions">')));
+  report((html.match(/id="cartShortcut"/g) || []).length === 1 &&
+    (html.match(/id="cartCount"/g) || []).length === 1 && !header.includes("cartShortcut"),
+    "Cart has one entry and one counter, located on the homepage directory rather than the header");
+} catch (e) {
+  report(false, "Unable to validate homepage navigation and cart placement: " + e.message);
 }
 
 for (const message of pass) console.log("PASS  " + message);
