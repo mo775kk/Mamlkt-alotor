@@ -1,6 +1,6 @@
 /* MAMLKAT AL-OTOR — GitHub Pages PWA shell */
 "use strict";
-const CACHE_NAME = "mamlakat-al-otor-shell-v9";
+const CACHE_NAME = "mamlakat-al-otor-shell-v10";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
@@ -13,7 +13,7 @@ const SHELL_URLS = [
 self.addEventListener("install", event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
-    await cache.addAll(SHELL_URLS);
+    try { await cache.addAll(SHELL_URLS); } catch (error) { console.warn("Some shell files could not be cached:", error); }
     await self.skipWaiting();
   })());
 });
@@ -29,33 +29,27 @@ self.addEventListener("fetch", event => {
   if (request.method !== "GET") return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin || !url.pathname.startsWith(BASE_PATH)) return;
-  if (request.mode === "navigate") {
-    event.respondWith((async () => {
-      try {
-        const response = await fetch(request);
-        if (response && response.ok) {
-          const cache = await caches.open(CACHE_NAME);
-          cache.put(BASE_PATH + "index.html", response.clone());
-        }
-        return response;
-      } catch {
-        return (await caches.match(request)) || (await caches.match(BASE_PATH + "index.html")) || (await caches.match(BASE_PATH));
-      }
-    })());
-    return;
-  }
   event.respondWith((async () => {
-    const cached = await caches.match(request);
-    if (cached) return cached;
+    const isNavigation = request.mode === "navigate";
     try {
-      const response = await fetch(request);
+      // Network-first prevents old CSS/JS/HTML from hiding newly published changes.
+      const response = await fetch(request, { cache: "no-cache" });
       if (response && response.ok && response.type === "basic") {
         const cache = await caches.open(CACHE_NAME);
-        cache.put(request, response.clone());
+        await cache.put(request, response.clone());
+        if (isNavigation) await cache.put(BASE_PATH + "index.html", response.clone());
       }
       return response;
-    } catch {
-      return new Response("", {status: 503, statusText: "Offline"});
+    } catch (error) {
+      const cached = await caches.match(request) ||
+        (isNavigation ? await caches.match(BASE_PATH + "index.html") : null) ||
+        (isNavigation ? await caches.match(BASE_PATH) : null);
+      if (cached) return cached;
+      return new Response("غير متصل بالإنترنت. افتح الموقع مرة أخرى عند توفر الاتصال.", {
+        status: 503,
+        statusText: "Offline",
+        headers: { "Content-Type": "text/plain; charset=utf-8" }
+      });
     }
   })());
 });
