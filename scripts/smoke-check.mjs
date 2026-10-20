@@ -291,8 +291,13 @@ try {
   report(oilOnlyBySize["30"] === 100 && oilOnlyBySize["50"] === 150 && oilOnlyBySize["100"] === 300,
     "Shared catalog configuration preserves separate oil-only/spray prices");
   report(catalogEditor.includes("retailOilOnlyPrices:[{size:'30 مل',price:100},{size:'50 مل',price:150},{size:'100 مل',price:300}]") &&
-    blendingAtelier.includes("oilDefaults={'30':100,'50':150,'100':300}"),
-    "Admin catalog editor and blending atelier fallback prices match both approved price tables");
+    catalogEditor.includes('id="ceOilOnlyPrices"') && catalogEditor.includes("data-oil-only-index") &&
+    catalogEditor.includes("ceSaveOilOnlyPrices") && blendingAtelier.includes("oilDefaults={'30':100,'50':150,'100':300}"),
+    "Admin catalog editor exposes separate oil-only controls and both fallback price tables");
+  const appPricing = read("app.js");
+  report(appPricing.includes('option.disabled=oilOnly&&![\"30\",\"50\",\"100\"].includes(option.value)') &&
+    appPricing.includes("last.nameAr=") && appPricing.includes("modeLabel"),
+    "Oil-only mode restricts approved sizes and preserves its label in the cart");
 
 
   report(settings.includes("data-copy-secret=\"CLOUDFLARE_API_TOKEN\"") &&
