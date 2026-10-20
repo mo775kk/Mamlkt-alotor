@@ -2946,3 +2946,55 @@ body.section-page-mode .site-header{position:relative;top:auto}
  #cartDrawer .cart-item-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
  #cartDrawer .cart-line-actions{flex-wrap:wrap}
 }
+
+
+/* === RELEASE 2026-10-20: brighter royal rose, ivory and gold === */
+:root{
+  --bg:#f7f1f3;
+  --panel:#fffaf8;
+  --panel2:#f5e7ed;
+  --gold:#b68a32;
+  --gold2:#f0d67e;
+  --text:#392a31;
+  --muted:#75656d;
+  --line:rgba(182,93,122,.27);
+  --shadow:0 16px 42px rgba(74,43,54,.10);
+  --bg-overlay:.18;
+  --header-bg:#fffaf8;
+  --heading:#4c303a;
+  --button-text:#332316;
+  --finish-rose:#b65d7a;
+  --finish-rose-soft:#f4dce4;
+  --finish-gold:#b38a2b;
+  --finish-gold-light:#e0c36b;
+}
+html[data-theme="light"]{
+  --bg:#f7f1f3;--panel:#fffaf8;--panel2:#f5e7ed;
+  --gold:#b68a32;--gold2:#f0d67e;--text:#392a31;--muted:#75656d;
+  --line:rgba(182,93,122,.27);--header-bg:#fffaf8;--heading:#4c303a;
+  --button-text:#332316;--bg-overlay:.18;
+}
+html[data-theme="dark"]{
+  --bg:#21171d;--panel:#2c2027;--panel2:#3b2a33;
+  --gold:#d6ae4c;--gold2:#ffe6a0;--text:#fff7ed;--muted:#e0d1d9;
+  --line:rgba(214,174,76,.34);--header-bg:#21171d;--heading:#fff1e3;
+  --button-text:#332316;--bg-overlay:.58;
+}
+body{background-color:var(--bg);color:var(--text)}
+.site-header{color:var(--text)}
+.brand strong,.section-heading h2,.drawer-head h2{color:var(--heading)}
+.section-page-toolbar{
+  border-color:color-mix(in srgb,var(--finish-rose) 28%,var(--line))!important;
+  background:linear-gradient(120deg,color-mix(in srgb,var(--panel) 96%,var(--finish-rose-soft)),var(--panel))!important;
+  box-shadow:0 8px 24px rgba(74,43,54,.08)!important;
+}
+.section-page-heading h1{color:var(--heading)!important}
+.section-page-heading p{color:var(--muted)!important}
+.section-page-back,.section-page-end button{border-color:color-mix(in srgb,var(--finish-rose) 55%,transparent)}
+:where(.section-page-mode main>section[data-standalone-section="true"],.product-card,.oil-card,.gift-card,.blend-panel,.advisor-box,.contact-card,.quiz-shell){
+  color:var(--text);
+}
+:where(.product-info h3,.product-card h3,.oil-card h3,.gift-card h3){color:var(--heading)}
+:where(.product-info p,.product-card p,.oil-card p,.gift-card p){color:var(--muted)}
+:where(button,a,input,select,textarea):focus-visible{outline:3px solid color-mix(in srgb,var(--finish-rose) 72%,white);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
