@@ -2,7 +2,7 @@
 (function(){
   'use strict';
   function setupFold(section, index){
-    if(!section || section.dataset.foldReady==='true') return;
+    if(!section || section.id==='homeIndex' || section.dataset.foldReady==='true') return;
     var heading=section.querySelector(':scope > .section-heading');
     if(!heading) return;
     var children=Array.from(section.children);
