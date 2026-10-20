@@ -376,12 +376,13 @@ img,svg,video,canvas{height:auto;max-width:100%}
 /* === Original inline style from index.html === */
 
     :root{
-      --ink:#050505; --surface:#0d0b0f; --surface-2:#141017;
-      --gold:#c9a227; --gold-soft:#e0c56a; --ivory:#f6f1e7;
-      --muted:#a89f93; --line:rgba(255,255,255,.10);
-      --glass:rgba(255,255,255,.055); --glass-strong:rgba(255,255,255,.09);
+      --ink:#fffaf3; --surface:#fffdf8; --surface-2:#f7e9e7;
+      --gold:#a97926; --gold-soft:#d8b45b; --ivory:#30251f;
+      --muted:#65554d; --line:rgba(169,121,38,.28);
+      --glass:rgba(255,255,255,.78); --glass-strong:rgba(255,247,235,.96);
+      --pink:#d982a5; --pink-soft:#f2b5cc; --warm-ivory:#fff8ed;
       --radius:20px; --radius-sm:14px;
-      --shadow:0 24px 70px rgba(0,0,0,.55);
+      --shadow:0 20px 55px rgba(30,12,22,.28);
       --font-display:"Cormorant Garamond",serif;
       --font-body:"Tajawal",system-ui,sans-serif;
       --font-ar-display:"Amiri",serif;
@@ -390,9 +391,9 @@ img,svg,video,canvas{height:auto;max-width:100%}
     html{scroll-behavior:smooth;background:var(--ink)}
     body{
       margin:0;background:
-        radial-gradient(1200px 600px at 80% -10%,rgba(201,162,39,.16),transparent 60%),
-        radial-gradient(900px 500px at -10% 30%,rgba(120,60,160,.12),transparent 55%),
-        var(--ink);
+        radial-gradient(1100px 600px at 85% -10%,rgba(226,189,84,.18),transparent 62%),
+        radial-gradient(900px 540px at -8% 24%,rgba(217,130,165,.14),transparent 58%),
+        linear-gradient(135deg,#fffaf3 0%,#f8eff0 52%,#f5ead8 100%);
       color:var(--ivory);font-family:var(--font-body);
       -webkit-font-smoothing:antialiased;
     }
@@ -410,7 +411,7 @@ img,svg,video,canvas{height:auto;max-width:100%}
     .site-header{
       position:sticky;top:0;z-index:900;display:flex;align-items:center;gap:14px;
       padding:12px clamp(14px,3vw,32px);
-      background:rgba(5,5,5,.55);backdrop-filter:blur(18px) saturate(140%);
+      background:rgba(255,250,243,.94);backdrop-filter:blur(18px) saturate(140%);
       border-bottom:1px solid var(--line);
     }
     .brand{gap:10px}
@@ -2687,7 +2688,7 @@ button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
 
 
 /* === CONSOLIDATED DIRECTORY / HOME LAYOUT === */
-.home-index-section{width:100%;max-width:none;min-height:calc(100svh - 76px);margin:0;padding:clamp(22px,3vw,42px) clamp(12px,3vw,38px);display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,rgba(255,245,232,.97),rgba(250,232,239,.96) 52%,rgba(238,216,174,.96));color:#3c2b28;border-block:1px solid rgba(177,129,62,.35);scroll-margin-top:76px}
+.home-index-section{width:100%;max-width:none;min-height:0;margin:0;padding:clamp(16px,2vw,26px) clamp(12px,3vw,38px);display:flex;flex-direction:column;justify-content:flex-start;background:linear-gradient(135deg,rgba(255,245,232,.97),rgba(250,232,239,.96) 52%,rgba(238,216,174,.96));color:#3c2b28;border-block:1px solid rgba(177,129,62,.35);scroll-margin-top:76px}
 .home-index-section .section-heading{width:100%;margin-bottom:clamp(12px,2vh,20px)}
 .home-index-section .section-heading h2{color:#7b4b2d;font-size:clamp(26px,3vw,38px)}
 .home-index-section .section-heading>p{color:#66514c}
@@ -2702,8 +2703,16 @@ button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
 .home-index-section .home-index-arrow{color:#a57939;font-size:17px}
 .home-index-section .home-index-cart-card{cursor:pointer;font:inherit}
 .home-index-section .home-index-cart-card .home-index-count{display:grid;place-items:center;min-width:24px;height:24px;padding:0 6px;border-radius:99px;background:#e7c77d;color:#49311e}
-.home-index-section .home-index-install-card,.home-index-section .home-index-settings-card{width:100%;margin-top:8px}
+.home-index-section .home-index-install-card,.home-index-section .home-index-settings-card{width:100%;margin-top:6px}
 .home-index-section .home-index-note{color:#715e55;font-size:12px;line-height:1.55;margin:10px 0 0}
 @media(max-width:1000px){.home-index-section{min-height:auto;padding:22px 14px}.home-index-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.home-index-section{padding:18px 10px}.home-index-section .section-heading{margin-bottom:12px}.home-index-section .section-heading h2{font-size:25px}.home-index-section .home-index-grid{grid-template-columns:1fr;gap:7px}.home-index-section .home-index-card{min-height:58px;padding:8px;grid-template-columns:32px minmax(0,1fr) auto 12px;gap:7px}.home-index-section .home-index-icon{width:30px;height:30px;font-size:19px}.home-index-section .home-index-copy strong{font-size:13px}.home-index-section .home-index-copy small{font-size:11px;display:block}}
 @media(max-height:700px) and (min-width:561px){.home-index-section{padding-block:14px}.home-index-section .section-heading{margin-bottom:10px}.home-index-section .home-index-card{min-height:54px;padding-block:6px}}
+
+/* Compact toolbar and natural section height: one cart entry, no artificial blank viewport. */
+.header-cart-btn{flex:0 0 36px;min-width:36px}
+.header-cart-btn .counter{font-family:"Tajawal",sans-serif}
+.home-index-section .section-heading{margin-bottom:12px}
+.home-index-section .home-index-note{margin-top:7px}
+@media(max-width:390px){.pwa-install-btn{display:none!important}.header-cart-btn{width:31px;min-width:31px;height:31px}.header-actions{flex-shrink:0}}
+@media(prefers-reduced-motion:reduce){.home-index-section .home-index-card:hover{transform:none}}

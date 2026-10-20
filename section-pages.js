@@ -86,7 +86,7 @@
     end.hidden = isHome;
     if (!isHome) {
       document.getElementById("sectionPageTitle").textContent = titleFor(host);
-      document.getElementById("sectionPageSubtitle").textContent = "عرض مستقل للقسم · ارجع إلى الفهرس للوصول إلى سلة المشتريات";
+      document.getElementById("sectionPageSubtitle").textContent = "عرض مستقل للقسم · استخدم شريط الأدوات للسلة والبحث والمفضلة";
       if (host.parentNode === main) main.insertBefore(bar, host);
       if (end.parentNode !== document.body) document.body.appendChild(end);
       const footer = document.querySelector(".site-footer");

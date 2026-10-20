@@ -114,6 +114,12 @@ report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor
 
 try {
   const app = read("app.js");
+  report(app.includes("const previousCart=cart.map(item=>({...item}));") && app.includes("if(!save(STORAGE.cart,cart)){cart=previousCart;return;}"),
+    "Adding to cart rolls back the in-memory cart when persistence fails");
+  report(app.includes("const previousCart=cart.map(entry=>({...entry}));") && app.includes("cart=previousCart;renderCart();return;"),
+    "Cart quantity and removal changes roll back when persistence fails");
+  report(app.includes('bind("#clearCart", "click",()=>{const previousCart=cart;cart=[];if(!save(STORAGE.cart,cart)){cart=previousCart;return;}'),
+    "Clear-cart preserves the previous cart if the browser cannot save the empty cart");
   report(app.includes('const bind = (selector, eventName, handler, options) => { const el = $(selector); if (el) el.addEventListener(eventName, handler, options); }'),
     "app.js shared event binder checks that an element exists before attaching listeners");
   report(!app.includes('$("#mainNav").querySelectorAll("a")') &&
@@ -277,19 +283,27 @@ try {
   const html = read("index.html");
   const finish = read("site-unified.css");
   const themeStudio = read("site-unified.css");
-  report(settings.includes('dp={"3":50,"5":75,"10":100,"22":130,"30":100,"50":150,"100":300}') &&
-    settings.includes("mamlaka_catalog_taxonomy_config_v1") && html.includes('id="blendSize"'),
-    "Oil-only/spray retail price defaults are consistent between owner controls and customer guide");
+  report(settings.includes('dp={"3":50,"5":75,"10":100,"22":130,"30":150,"50":200,"100":450}') &&
+    settings.includes("retailOilOnlyPrices") && html.includes('id="blendSize"') && html.includes('id="blendMode"'),
+    "Owner controls expose separate standard blend and oil-only/spray price tables");
   const catalogEditor = read("catalog-editor.js");
   const blendingAtelier = read("blending-atelier.js");
   const priceConfig = JSON.parse(read("data/catalog-configuration.json"));
   const pricesBySize = Object.fromEntries((priceConfig.retailBlendPrices || []).map(item => [String(item.size).match(/[0-9]+/)?.[0], Number(item.price)]));
+  const oilOnlyBySize = Object.fromEntries((priceConfig.retailOilOnlyPrices || []).map(item => [String(item.size).match(/[0-9]+/)?.[0], Number(item.price)]));
   report(pricesBySize["3"] === 50 && pricesBySize["5"] === 75 && pricesBySize["10"] === 100 &&
-    pricesBySize["22"] === 130 && pricesBySize["30"] === 100 && pricesBySize["50"] === 150 && pricesBySize["100"] === 300,
-    "Shared catalog configuration uses the current approved blend-size prices");
-  report(catalogEditor.includes("{size:'30 مل',price:100},{size:'50 مل',price:150},{size:'100 مل',price:300}") &&
-    blendingAtelier.includes("var defaults={'3':50,'5':75,'10':100,'22':130,'30':100,'50':150,'100':300}"),
-    "Admin catalog editor and blending atelier fallback prices match the shared configuration");
+    pricesBySize["22"] === 130 && pricesBySize["30"] === 150 && pricesBySize["50"] === 200 && pricesBySize["100"] === 450,
+    "Shared catalog configuration uses the approved standard blend-size prices");
+  report(oilOnlyBySize["30"] === 100 && oilOnlyBySize["50"] === 150 && oilOnlyBySize["100"] === 300,
+    "Shared catalog configuration preserves separate oil-only/spray prices");
+  report(catalogEditor.includes("retailOilOnlyPrices:[{size:'30 مل',price:100},{size:'50 مل',price:150},{size:'100 مل',price:300}]") &&
+    catalogEditor.includes('id="ceOilOnlyPrices"') && catalogEditor.includes("data-oil-only-index") &&
+    catalogEditor.includes("ceSaveOilOnlyPrices") && blendingAtelier.includes("oilDefaults={'30':100,'50':150,'100':300}"),
+    "Admin catalog editor exposes separate oil-only controls and both fallback price tables");
+  const appPricing = read("app.js");
+  report(appPricing.includes('option.disabled=oilOnly&&![\"30\",\"50\",\"100\"].includes(option.value)') &&
+    appPricing.includes("last.nameAr=") && appPricing.includes("modeLabel"),
+    "Oil-only mode restricts approved sizes and preserves its label in the cart");
 
 
   report(settings.includes("data-copy-secret=\"CLOUDFLARE_API_TOKEN\"") &&
@@ -323,8 +337,8 @@ try {
     "The main directory is excluded from collapsible section details");
   const header = html.slice(html.indexOf('<div class="header-actions">'),html.indexOf('</div>',html.indexOf('<div class="header-actions">')));
   report((html.match(/id="cartShortcut"/g) || []).length === 1 &&
-    (html.match(/id="cartCount"/g) || []).length === 1 && !header.includes("cartShortcut"),
-    "Cart has one entry and one counter, located on the homepage directory rather than the header");
+    (html.match(/id="cartCount"/g) || []).length === 1 && header.includes("header-cart-btn") && /class="icon-btn header-cart-btn" id="cartShortcut"/.test(html) && !html.includes("home-index-cart-card"),
+    "Cart has one entry and one counter in the header toolbar, not the homepage directory");
 } catch (e) {
   report(false, "Unable to validate homepage navigation and cart placement: " + e.message);
 }
@@ -337,10 +351,82 @@ try {
   report(narrowPhoneRule.includes(".compact-selected-price{display:inline!important") &&
     narrowPhoneRule.includes("grid-template-columns:minmax(0,1fr) auto"),
     "Selected size and price remain visible together on very narrow phones");
-  report(/site-unified\.css\?v=20261020-mobile-price-visible1/.test(html),
-    "Mobile size/price fix is linked through a fresh stylesheet cache-buster");
+  report(/site-unified\.css\?v=20261020-royal-compact-toolbar1/.test(html),
+    "Mobile size/price and lighter royal theme fixes are linked through a fresh stylesheet cache-buster");
+  const settings = read("settings.js");
+  const manifest = JSON.parse(read("manifest.webmanifest"));
+  report(html.includes('data-theme="light"') &&
+    /settings\.js\?v=20261020-royal-light-pink-gold6/.test(html) &&
+    settings.includes('const baseTheme=completeTheme({...themePresets.plumPinkGold,bg:"#FFFAF3"') &&
+    settings.includes('mamlaka_theme_royal_light_pink_gold_migration_v5') && settings.includes("legacyGoldDefault"),
+    "The actual JavaScript default theme is light rose-gold and migrates browsers from the previous dark/gold preset");
+  report(manifest.theme_color === "#F8E3ED" &&
+    html.includes('manifest.webmanifest?v=20261020-light-pink-gold1'),
+    "Installed PWA manifest and browser metadata use the same light rose theme and fresh cache version");
+  report(css.includes("--ink:#fffaf3") && css.includes("linear-gradient(135deg,#fffaf3 0%,#f8eff0 52%,#f5ead8 100%)") &&
+    css.includes("background:rgba(255,250,243,.94)"),
+    "Final consolidated theme keeps the page and sticky header light with readable rose-gold accents");
 } catch (e) {
   report(false, "Unable to validate narrow-phone size/price visibility: " + e.message);
+}
+
+try {
+  const pages = read("section-pages.js");
+  const html = read("index.html");
+  report(pages.includes('function canonicalSectionId(id) {') &&
+    pages.includes('return id === "quiz" ? "blend" : id;'),
+    "Discover-fragrance entry is routed to the blending atelier");
+  report(pages.includes('window.addEventListener("popstate"') &&
+    pages.includes('window.addEventListener("hashchange"') &&
+    pages.includes('history.pushState') && pages.includes('history.replaceState'),
+    "Standalone sections support browser back/forward and direct hash navigation");
+  report(pages.includes('event.target.closest(\'a[href^="#"]\')') &&
+    pages.includes('event.preventDefault()') && pages.includes('navigate(id);'),
+    "Internal section links use delegated navigation without reloading the storefront");
+  report(pages.includes('window.matchMedia("(prefers-reduced-motion: reduce)")') &&
+    pages.includes('bar.querySelector("#sectionPageBack")') &&
+    pages.includes('end.querySelector("button").addEventListener("click", () => navigate("home"))'),
+    "Section navigation respects reduced-motion preferences and offers return-home controls");
+  report(html.includes('section-pages.js?v=20261020-toolbar-sections2') &&
+    html.includes('id="sectionPageBack"') === false,
+    "Section-page controller is versioned and creates its toolbar dynamically without duplicate static controls");
+} catch (e) {
+  report(false, "Unable to validate standalone section navigation: " + e.message);
+}
+
+try {
+  const settings = read("settings.js");
+  report(settings.includes("const persistRaw=(key,raw)=>{") &&
+    settings.includes("localStorage.setItem(key,raw)") &&
+    settings.includes("localStorage.removeItem(key)") &&
+    settings.includes("const write=(k,v)=>persistRaw(k,JSON.stringify(v))"),
+    "Settings storage verifies writes and rolls back failed writes before reporting an error");
+  report(settings.includes('const storageSnapshot=()=>{') &&
+    settings.includes('mamlaka_catalog_taxonomy_config_v1') &&
+    settings.includes('mamlaka_custom_products_v1') &&
+    settings.includes('mamlaka_inventory_accounting_v1'),
+    "Local backup snapshot includes catalog, custom products and inventory/accounting data");
+} catch (e) {
+  report(false, "Unable to validate settings persistence safeguards: " + e.message);
+}
+
+try {
+  const settings = read("settings.js");
+  const catalog = read("catalog-editor.js");
+  const inventory = read("inventory-accounting.js");
+  report(settings.includes('const saveProducts=p=>write("mamlaka_custom_products_v1",p)') &&
+    settings.includes('const setPlain=(key,value)=>persistRaw(key,String(value??""))'),
+    "Admin product and plain-text settings use the verified storage writer");
+  report(catalog.includes("const writeVerified=(key,value)=>{") &&
+    catalog.includes("const saveConfig=c=>writeVerified(TAXKEY,c)") &&
+    catalog.includes("return writeVerified(KEY,d)"),
+    "Catalog and taxonomy writes verify saved bytes and restore prior data on failure");
+  report(inventory.includes("const write=d=>{const raw=JSON.stringify(d);") &&
+    inventory.includes("if(!write(d))return;") &&
+    inventory.includes("if(!write(next))return;"),
+    "Inventory, sales, expenses, imports and deletes stop before showing success when saving fails");
+} catch (e) {
+  report(false, "Unable to validate transactional admin persistence: " + e.message);
 }
 
 for (const message of pass) console.log("PASS  " + message);
