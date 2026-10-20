@@ -45,9 +45,9 @@ create policy "Signed-in admin can delete Mamlaka products"
   using (true);
 
 drop policy if exists "Public can read Mamlaka settings" on public.mamlaka_settings;
-create policy "Public can read Mamlaka settings"
+create policy "Public can read non-sensitive Mamlaka settings"
   on public.mamlaka_settings for select to anon, authenticated
-  using (true);
+  using (key !~* '(pin|password|token|secret|credential)');
 
 drop policy if exists "Signed-in admin can insert Mamlaka settings" on public.mamlaka_settings;
 create policy "Signed-in admin can insert Mamlaka settings"
