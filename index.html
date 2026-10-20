@@ -226,7 +226,50 @@
   <link rel="stylesheet" href="royal-page-end.css?v=20261020-contact-boundary1">
   <link rel="stylesheet" href="royal-cart-polish.css?v=20261020-cart-polish1">
   <link rel="stylesheet" href="section-pages.css?v=20261020-section-pages1">
-  <link rel="stylesheet" href="royal-finish-pass.css?v=20261020-directory-cleanup1">
+  <link rel="stylesheet" href="royal-finish-pass.css?v=20261020-pwa-shell4">
+  <script>
+    (() => {
+      let promptEvent = null;
+      const standalone = () => window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+      const showHelp = () => {
+        const dialog = document.getElementById('pwaInstallHelp');
+        if (!dialog) return;
+        if (typeof dialog.showModal === 'function') dialog.showModal();
+        else dialog.setAttribute('open', '');
+      };
+      window.addEventListener('beforeinstallprompt', event => {
+        event.preventDefault();
+        promptEvent = event;
+        const button = document.getElementById('installAppBtn');
+        if (button) button.hidden = standalone();
+      });
+      window.addEventListener('appinstalled', () => {
+        promptEvent = null;
+        const button = document.getElementById('installAppBtn');
+        if (button) button.hidden = true;
+      });
+      document.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('installAppBtn');
+        if (button) {
+          button.hidden = standalone();
+          button.addEventListener('click', async () => {
+            if (!promptEvent) { showHelp(); return; }
+            const promptEventNow = promptEvent;
+            promptEvent = null;
+            await promptEventNow.prompt();
+            try { await promptEventNow.userChoice; } catch (_) {}
+            button.hidden = standalone();
+          });
+        }
+        const dialog = document.getElementById('pwaInstallHelp');
+        const close = document.getElementById('pwaInstallHelpClose');
+        if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
+        if ('serviceWorker' in navigator && location.protocol === 'https:') {
+          navigator.serviceWorker.register('./sw.js?v=20261020-pwa-shell4').catch(error => console.warn('PWA worker registration failed:', error));
+        }
+      });
+    })();
+  </script>
 </head>
 <body>
   <div id="scrollProgress" aria-hidden="true"></div>
@@ -672,5 +715,16 @@
   <script>
   (function(){var b=document.getElementById("shareKingdomButton");if(!b)return;b.addEventListener("click",function(){var d={title:document.title,text:"اكتشف مملكة العطور",url:window.location.href};if(navigator.share){navigator.share(d).catch(function(){});return;}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.url).then(function(){b.textContent="تم نسخ رابط الموقع ✓";},function(){window.prompt("انسخ رابط الموقع:",d.url);});}else{window.prompt("انسخ رابط الموقع:",d.url);}});})();
   </script>
+  <dialog id="pwaInstallHelp" aria-labelledby="pwaInstallHelpTitle" style="width:min(92vw,480px);border:1px solid #d7b65a;border-radius:18px;padding:22px;background:#fffaf2;color:#382b24;box-shadow:0 20px 70px #0005">
+    <h2 id="pwaInstallHelpTitle" style="margin:0 0 10px;color:#9b7420;font-family:Tajawal,sans-serif">تثبيت مملكة العطور</h2>
+    <p style="line-height:1.8;margin:0 0 12px">إذا لم تظهر نافذة التثبيت التلقائية، يمكنك إضافة الموقع إلى الشاشة الرئيسية من قائمة المتصفح.</p>
+    <div id="pwaHelpSteps" style="line-height:1.9">
+      <strong>على Android (Chrome):</strong>
+      <ol><li>افتح قائمة المتصفح ⋮.</li><li>اختر «إضافة إلى الشاشة الرئيسية» أو «تثبيت التطبيق» إن ظهرت.</li><li>أكد الاختيار في نافذة المتصفح.</li></ol>
+      <strong>على iPhone (Safari):</strong>
+      <ol><li>اضغط زر المشاركة.</li><li>اختر «إضافة إلى الشاشة الرئيسية» ثم «إضافة».</li></ol>
+    </div>
+    <button type="button" id="pwaInstallHelpClose" class="btn btn-gold" style="margin-top:10px">إغلاق</button>
+  </dialog>
 </body>
 </html>
