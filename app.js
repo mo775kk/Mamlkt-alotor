@@ -215,7 +215,7 @@
     const readyRoot=$("#homeReadyProducts"),oilRoot=$("#homeOilProducts");
     if(!readyRoot||!oilRoot)return;
     const readyAll=products.filter(p=>p.productType==="ready");
-    const oilAll=products.filter(p=>p.productType==="oil"||p.supplierCatalogItem);
+    const oilAll=products.filter(p=>p.supplierCatalogItem===true);
     const ready=readyAll.filter(p=>p.available!==false).slice(0,4);
     const usefulOils=oilAll.filter(p=>p.family&&p.family!=="غير محدد"&&p.scentNature&&!/تفاصيل الرائحة تحتاج|الطابع العطري يحتاج/.test(String(p.scentNature)));
     const seen=new Set(usefulOils.map(p=>p.id));
@@ -238,13 +238,13 @@
   let supplierVisibleLimit=24;
   function populateBlendOils(){
     const sel=$("#blendOil");if(!sel)return;const current=sel.value;
-    const oils=products.filter(p=>p.supplierCatalogItem||p.productType==="oil");
+    const oils=products.filter(p=>p.supplierCatalogItem===true);
     sel.innerHTML='<option value="">اختر زيتًا من كتالوج الموردين</option>'+oils.map(p=>'<option value="'+escapeHTML(p.id)+'">'+escapeHTML(p.nameAr)+' — '+escapeHTML(p.nameEn)+'</option>').join('');
     if(oils.some(p=>p.id===current))sel.value=current;
   }
   function renderSupplierOils(){
     const grid=$("#supplierOilProducts");if(!grid)return;
-    const all=products.filter(p=>p.supplierCatalogItem || p.productType==="oil");
+    const all=products.filter(p=>p.supplierCatalogItem===true);
     const q=norm($("#supplierOilSearch")?.value||""),cat=$("#supplierOilCategory")?.value||"",family=$("#supplierOilFamily")?.value||"";
     const categoryMap={MEN:"رجالي",WOMEN:"نسائي",UNISEX:"للجنسين",ORIENTAL:"شرقي",KIDS:"أطفال",DIFFUSER:"فواحات"};
     const filtered=all.filter(p=>(!cat||(p.supplierCategory?p.supplierCategory===cat:!p.supplierCatalogItem))&&(!family||p.family===family||displayFamily(p.family,p.nameAr||p.nameEn)===family)&&(!q||norm([p.nameAr,p.nameEn,p.supplierSku,p.family,p.gender,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(q)));
