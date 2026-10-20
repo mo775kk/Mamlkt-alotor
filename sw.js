@@ -5,7 +5,7 @@ const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
   BASE_PATH + "index.html",
-  BASE_PATH + "manifest.webmanifest",
+  BASE_PATH + "manifest.webmanifest",\n  BASE_PATH + "theme-persistence.js?v=20261020-theme-persist1",
   BASE_PATH + "assets/images/app-icon-192.png",
   BASE_PATH + "assets/images/app-icon-512.png"
 ];
