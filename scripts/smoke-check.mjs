@@ -374,6 +374,22 @@ try {
   report(false, "Unable to validate royal release theme and navigation: " + e.message);
 }
 
+try {
+  const settings = read("settings.js");
+  const html = read("index.html");
+  report(settings.includes('let runtimeThemeStyle=document.getElementById("mamlaka-runtime-theme")') &&
+    settings.includes('runtimeThemeStyle.textContent=') &&
+    settings.includes('.site-header{background:color-mix') &&
+    settings.includes('.site-footer{background:var(--footer-bg)') &&
+    settings.includes('.search-box,.toolbar select,.blend-step select') &&
+    settings.includes('write(THEME_KEY,x)'),
+    "Theme palette applies across storefront, header/footer, cards, inputs and persists the full color object");
+  report(/settings\.js\?v=20261020-theme-full-site2/.test(html),
+    "Full-site theme fix is loaded with a fresh settings.js cache-buster");
+} catch (e) {
+  report(false, "Unable to validate full-site theme application: " + e.message);
+}
+
 for (const message of pass) console.log("PASS  " + message);
 for (const message of failures) console.error("FAIL  " + message);
 console.log("\n" + pass.length + " passed; " + failures.length + " failed.");
