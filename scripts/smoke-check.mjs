@@ -125,6 +125,8 @@ report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor
 
 try {
   const app = read("app.js");
+  report(app.includes('bind("#cartHeaderShortcut", "click",openDrawer)') && app.includes('bind("#cartShortcut", "click",openDrawer)'),
+    "Both the header cart button and secondary cart shortcut open the cart drawer");
   report(app.includes('const bind = (selector, eventName, handler, options) => { const el = $(selector); if (el) el.addEventListener(eventName, handler, options); }'),
     "app.js shared event binder checks that an element exists before attaching listeners");
   report(!app.includes('$("#mainNav").querySelectorAll("a")') &&
