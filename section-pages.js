@@ -11,6 +11,7 @@
 
   const originalHidden = new Map();
   let activeId = "";
+  const pageHistory = [];
 
   const titleFor = (section) => {
     const h = section?.querySelector("h1,h2,h3");
@@ -23,19 +24,19 @@
       bar.id = "sectionPageToolbar";
       bar.className = "section-page-toolbar";
       bar.setAttribute("aria-label", "التنقل داخل الموقع");
-      bar.innerHTML = '<button type="button" class="section-page-back" id="sectionPageBack"><span aria-hidden="true">→</span> الرئيسية</button><div class="section-page-heading"><small>مملكة العطور · MAMLKAT AL-OTOR</small><h1 id="sectionPageTitle">تفاصيل القسم</h1><p id="sectionPageSubtitle">تصفح القسم بشكل مستقل</p></div><span class="section-page-mark" aria-hidden="true">♛</span>';
+      bar.innerHTML = '<button type="button" class="section-page-back" id="sectionPageBack"><span aria-hidden="true">→</span> الصفحة السابقة</button><div class="section-page-heading"><small>مملكة العطور · MAMLKAT AL-OTOR</small><h1 id="sectionPageTitle">تفاصيل القسم</h1><p id="sectionPageSubtitle">تصفح القسم بشكل مستقل</p></div><span class="section-page-mark" aria-hidden="true">♛</span>';
       main.insertBefore(bar, main.firstChild);
-      bar.querySelector("#sectionPageBack").addEventListener("click", () => navigate("home"));
+      bar.querySelector("#sectionPageBack").addEventListener("click", navigateBack);
     }
     if (!document.getElementById("sectionPageEnd")) {
       const end = document.createElement("div");
       end.id = "sectionPageEnd";
       end.className = "section-page-end";
-      end.innerHTML = '<span class="section-end-line" aria-hidden="true"></span><p>وصلت إلى نهاية هذا القسم</p><button type="button" id="sectionPageEndBack">العودة إلى الصفحة الرئيسية ↑</button>';
+      end.innerHTML = '<span class="section-end-line" aria-hidden="true"></span><p>وصلت إلى نهاية هذا القسم</p><button type="button" id="sectionPageEndBack">الرجوع إلى الصفحة السابقة ↑</button>';
       const footer = document.querySelector(".site-footer");
       if (footer) footer.parentNode.insertBefore(end, footer);
       else document.body.append(end);
-      end.querySelector("button").addEventListener("click", () => navigate("home"));
+      end.querySelector("button").addEventListener("click", navigateBack);
     }
   }
 
@@ -55,6 +56,12 @@
   function canonicalSectionId(id) {
     // توجيه «مكتشف العطور» إلى مختبر تركيب العطر بدل اختبار الترشيح القديم.
     return id === "quiz" ? "blend" : id;
+  }
+
+  function navigateBack() {
+    const previous = pageHistory.pop();
+    if (previous && (previous === "home" || resolveSection(previous))) navigate(previous, true);
+    else navigate("home");
   }
 
   function navigate(id, replace = false, preserveLocation = false) {
@@ -124,7 +131,10 @@
   });
   window.addEventListener("hashchange", () => {
     const id = decodeURIComponent(location.hash.slice(1) || "home");
-    if ((id === "home" || resolveSection(id)) && id !== activeId) navigate(id, true);
+    if ((id === "home" || resolveSection(id)) && id !== activeId) {
+      if (activeId) pageHistory.push(activeId);
+      navigate(id, true);
+    }
   });
 
   ensureNavigation();
