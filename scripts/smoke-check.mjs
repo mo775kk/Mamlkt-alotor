@@ -332,7 +332,8 @@ try {
 try {
   const html = read("index.html");
   const css = read("site-unified.css");
-  const narrowPhoneRule = css.match(/@media\(max-width:360px\)\{[\s\S]*?\n\}/)?.[0] || "";
+  const narrowPhoneStart = css.lastIndexOf("@media(max-width:360px){");
+  const narrowPhoneRule = narrowPhoneStart >= 0 ? css.slice(narrowPhoneStart, css.indexOf("\n}", narrowPhoneStart) + 2) : "";
   report(narrowPhoneRule.includes(".compact-selected-price{display:inline!important") &&
     narrowPhoneRule.includes("grid-template-columns:minmax(0,1fr) auto"),
     "Selected size and price remain visible together on very narrow phones");
