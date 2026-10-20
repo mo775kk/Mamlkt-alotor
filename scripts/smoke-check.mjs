@@ -343,6 +343,20 @@ try {
   report(false, "Unable to validate narrow-phone size/price visibility: " + e.message);
 }
 
+try {
+  const html = read("index.html");
+  const css = read("site-unified.css");
+  report(html.includes('data-theme="light"') && css.includes("--bg:#f7f1f3") &&
+    css.includes("--finish-rose:#b65d7a") && css.includes("--gold2:#f0d67e"),
+    "Default storefront palette is bright ivory/rose with readable gold accents");
+  report(html.includes("section-pages.js?v=20261020-page-history5") &&
+    html.includes('id="sectionPageEnd"') === false &&
+    html.includes('id="cartDrawer"') && html.includes('id="modalBackdrop"'),
+    "Standalone section navigation, full-page cart and product details remain wired");
+} catch (e) {
+  report(false, "Unable to validate royal release theme and navigation: " + e.message);
+}
+
 for (const message of pass) console.log("PASS  " + message);
 for (const message of failures) console.error("FAIL  " + message);
 console.log("\n" + pass.length + " passed; " + failures.length + " failed.");
