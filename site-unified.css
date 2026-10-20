@@ -3159,3 +3159,15 @@ body{background-color:var(--bg);color:var(--text)}
 @media(prefers-reduced-motion:reduce){
  .home-oil-showcase .home-showcase-card{scroll-behavior:auto;transition:none!important}
 }
+
+/* تحسين آمن لعرض أسعار أحجام الزيوت في بطاقات الرئيسية */
+.home-oil-showcase .home-showcase-card-body{min-width:0;gap:10px}
+.home-oil-showcase .home-showcase-price{display:block;line-height:1.7}
+.home-oil-size-prices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}
+.home-oil-size-price{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;padding:7px 3px;border:1px solid #ead8e2;border-radius:9px;background:linear-gradient(145deg,#fffafc,#fff5e5);color:#503744;text-align:center;line-height:1.4}
+.home-oil-size-price b{font-size:11px;font-weight:700;color:#755367}
+.home-oil-size-price strong{font-size:12px;font-weight:800;color:#87621b;white-space:nowrap}
+.home-oil-showcase .home-showcase-card h4{font-family:Amiri,Tajawal,serif;font-size:clamp(17px,1.5vw,21px);line-height:1.5}
+.home-showcase-heading h3{font-family:Amiri,Tajawal,serif;line-height:1.45;letter-spacing:0}
+.home-showcase-description{line-height:1.85;overflow-wrap:anywhere}
+@media(max-width:520px){.home-oil-size-prices{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}.home-oil-size-price{padding:6px 1px}.home-oil-size-price b{font-size:10px}.home-oil-size-price strong{font-size:11px}.home-oil-showcase .home-showcase-card{grid-template-columns:minmax(92px,34%) minmax(0,1fr)!important}}
