@@ -225,6 +225,13 @@
     const liquid=shape==="oil"?'<path d="M75 111Q90 108 105 111V124Q105 131 98 131H82Q75 131 75 124Z" fill="'+colors[0]+'" fill-opacity=".28"/>':shape==="oriental"?'<path d="M60 111Q90 106 120 111V124Q120 132 110 132H70Q60 132 60 124Z" fill="'+colors[0]+'" fill-opacity=".3"/>':'<path d="M60 111Q90 105 120 111V124Q120 133 109 133H71Q60 133 60 124Z" fill="'+colors[0]+'" fill-opacity=".25"/>';
     return '<div class="placeholder-bottle bottle-'+shape+'" data-family="'+escapeHTML(family)+'" role="img" aria-label="رسم أصلي توضيحي لعبوة عطر '+escapeHTML(labelName)+' بطابع '+escapeHTML(family)+'، وليس صورة العبوة التجارية الأصلية"><svg viewBox="0 0 180 180" aria-hidden="true"><defs><linearGradient id="'+uid+'glass" x1="0" x2="1" y1="0" y2="1"><stop stop-color="'+colors[1]+'"/><stop offset=".5" stop-color="'+colors[0]+'"/><stop offset="1" stop-color="#fff" stop-opacity=".68"/></linearGradient><linearGradient id="'+uid+'cap" x1="0" x2="1"><stop stop-color="#fff0b2"/><stop offset=".48" stop-color="#d4af37"/><stop offset="1" stop-color="#8b6225"/></linearGradient><linearGradient id="'+uid+'shine" x1="0" x2="1"><stop stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><ellipse cx="90" cy="153" rx="48" ry="7" fill="#100a10" opacity=".35"/>'+cap+bottle+' fill="url(#'+uid+'glass)" stroke="#fff8e8" stroke-opacity=".8" stroke-width="1.7"/>'+liquid+'<path d="M68 61h7v61q0 5 4 7h-5q-7 0-7-8Z" fill="url(#'+uid+'shine)"/><path d="M113 67v51q0 8-7 9" fill="none" stroke="#fff" stroke-opacity=".38" stroke-width="2"/><rect x="65" y="88" width="50" height="31" rx="'+(shape==="square"?1:4)+'" fill="#fff8eb" fill-opacity=".92" stroke="#d4af37" stroke-width="1"/><text x="90" y="99" text-anchor="middle" font-size="5.8" fill="#66502a" font-family="Georgia,serif" letter-spacing=".8">MAMLKAT</text><text x="90" y="108" text-anchor="middle" font-size="5" fill="#8b6225" font-family="Arial,sans-serif">AL-OTOR</text><path d="M75 112h30" stroke="#d4af37" stroke-width=".6"/><text x="90" y="116" text-anchor="middle" font-size="4.5" fill="#66502a">'+escapeHTML(labelName)+'</text><path d="M78 128q12 5 24 0" stroke="#fff" stroke-opacity=".55" fill="none"/></svg><span class="bottle-art-note">رسم توضيحي أصلي</span></div>';
   }
+  function supplierRetailRate(p){
+    if(!p)return 10;
+    const tier=String(p.retailPriceTier||p.retailTier||"").toLowerCase();
+    if(tier==="premium"||tier==="excellent"||tier==="ممتاز"||Number(p.retailPricePerGram)===20)return 20;
+    if(String(p.supplierCategory||"").toUpperCase()==="ORIENTAL"||Number(p.retailPricePerGram)===15)return 15;
+    return 10;
+  }
   function productCard(p) {
     const isSupplierOil = p.supplierCatalogItem === true;
     const fav = favorites.includes(p.id);
@@ -237,9 +244,10 @@
     const addTitle = isSupplierOil ? "اختيار هذا الزيت داخل طلب تركيب العطر" : !p.available ? "يلزم تأكيد التوفر قبل البيع" : currentPrice(p,defaultSize)==null ? "يلزم تحديد سعر معتمد قبل البيع" : "";
     const money = s => currentPrice(p,s)==null ? "السعر يحتاج تأكيد" : formatMoney(currentPrice(p,s));
     const category = ({"MEN":"رجالي","WOMEN":"نسائي","UNISEX":"للجنسين","ORIENTAL":"شرقي","KIDS":"أطفال","DIFFUSER":"فواحات"})[p.supplierCategory] || p.supplierCategory || p.gender || "";
-    const shortMeta = isSupplierOil ? (category || "زيت للتركيب") : (p.brand && p.brand!=="غير محدد" ? p.brand : (p.gender || "عطر"));
+    const shortMeta = isSupplierOil ? ((category || "زيت للتركيب")+(p.supplierSku?" · كود "+p.supplierSku:"")) : (p.brand && p.brand!=="غير محدد" ? p.brand : (p.gender || "عطر"));
+    const oilFamilyLabel = isSupplierOil ? displayFamily(p.family||p.scentFamily||"",p.nameAr||p.nameEn||"") : (p.family||"");
     const priceControl = isSupplierOil
-      ? '<div class="product-bottom compact-product-bottom"><span class="product-price">جرام: '+escapeHTML(p.retailPricePerGram!=null?formatMoney(Number(p.retailPricePerGram)):"يحتاج اعتماد")+'</span><span class="muted">'+escapeHTML(p.family||"")+'</span></div>'
+      ? '<div class="product-bottom compact-product-bottom"><span class="product-price">جرام: '+escapeHTML(formatMoney(supplierRetailRate(p)))+'</span><span class="muted">'+escapeHTML(oilFamilyLabel)+'</span></div>'
       : '<div class="compact-size-row"><select id="card-size-'+escapeHTML(p.id)+'" class="card-size-select" data-card-size="'+escapeHTML(p.id)+'" aria-label="اختر حجم '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'">'+sizeList.map(s=>'<option value="'+escapeHTML(s)+'" '+(s===defaultSize?"selected":"")+'>'+escapeHTML(s)+' مل · '+escapeHTML(money(s))+'</option>').join('')+'</select><strong class="compact-selected-price" data-card-price="'+escapeHTML(p.id)+'">'+escapeHTML(money(defaultSize))+'</strong></div>';
     return '<article class="product-card product-card-'+escapeHTML(p.productType||"ready")+(isSupplierOil?' product-card-supplier-oil':'')+'" data-product-type="'+escapeHTML(p.productType||"ready")+'" data-id="'+escapeHTML(p.id)+'">'+
       '<div class="product-visual">'+imageMarkup(p)+'<span class="product-badge">'+(isSupplierOil?'زيت للتركيب':p.needsReview?'يحتاج مراجعة':({"oil":"زيت","bakhoor":"عود وبخور","gift":"هدية","blend":"تركيب خاص","ready":"عطر جاهز"}[p.productType]||"عطر جاهز"))+'</span><button class="favorite-btn '+(fav?"is-fav":"")+'" data-action="favorite" data-id="'+escapeHTML(p.id)+'" aria-label="إضافة للمفضلة">'+(fav?"♥":"♡")+'</button></div>'+
@@ -251,10 +259,12 @@
   }
   function homeShowcaseCard(p,kind){
     const id=escapeHTML(p.id),name=escapeHTML(p.nameAr||p.nameEn||"منتج مسجل"),english=escapeHTML(p.nameEn||"");
-    const family=escapeHTML(p.family||"العائلة العطرية قيد التحديد"),descRaw=String(p.scentNature||p.descriptionAr||"تفاصيل الرائحة قيد المراجعة.");
+    const isOil=kind==="oil";
+    const family=escapeHTML(isOil?displayFamily(p.family||p.scentFamily||"",p.nameAr||p.nameEn||""):(p.family||"العائلة العطرية قيد التحديد"));
+    const descRaw=String(p.scentNature||p.descriptionAr||"تفاصيل الرائحة قيد المراجعة.");
     const desc=escapeHTML(descRaw.length>150?descRaw.slice(0,147)+"…":descRaw);
-    const isOil=kind==="oil",meta=isOil?((p.gender&&p.gender!=="غير محدد"?escapeHTML(p.gender)+" · ":"")+"زيت عطري مركز"):((p.brand&&p.brand!=="غير محدد"?escapeHTML(p.brand):"الشركة تحتاج تأكيد")+(p.gender?" · "+escapeHTML(p.gender):""));
-    const price=isOil?"أحجام التركيب تبدأ من 50 ج.م":"السعر والتوفر يؤكدان قبل الطلب";
+    const meta=isOil?((p.gender&&p.gender!=="غير محدد"?escapeHTML(p.gender)+" · ":"")+"زيت للتركيب"+(p.supplierSku?" · "+escapeHTML(p.supplierSku):"")):((p.brand&&p.brand!=="غير محدد"?escapeHTML(p.brand):"الشركة تحتاج تأكيد")+(p.gender?" · "+escapeHTML(p.gender):""));
+    const price=isOil?"سعر الجرام "+supplierRetailRate(p)+" ج.م · أحجام التركيب من 50 ج.م":"السعر والتوفر يؤكدان قبل الطلب";
     return '<article class="home-showcase-card home-showcase-'+kind+'"><div class="home-showcase-visual">'+imageMarkup(p)+'<span class="home-showcase-badge">'+(p.needsReview?"بيانات تحتاج تأكيد":(isOil?"زيت للتركيب":"عطر جاهز"))+'</span></div><div class="home-showcase-card-body"><div class="home-showcase-meta">'+meta+'</div><h4>'+name+'</h4>'+(english?'<div class="home-showcase-english" dir="ltr">'+english+'</div>':"")+'<p class="home-showcase-description">'+desc+'</p><div class="home-showcase-family"><span>الطابع</span><strong>'+family+'</strong></div><div class="home-showcase-price">'+price+'</div><div class="home-showcase-actions"><button class="small-btn" type="button" data-action="details" data-id="'+id+'">تفاصيل المنتج</button>'+(isOil?'<button class="small-btn primary" type="button" data-home-blend-id="'+id+'">اختيار للتركيب</button>':'<a class="small-btn primary" href="#ready">تصفح العطور</a>')+'</div></div></article>';
   }
   function renderHomeShowcase(){
@@ -296,7 +306,9 @@
     const filtered=all.filter(p=>{const actualCategory=p.supplierCategory||({"رجالي":"MEN","نسائي":"WOMEN","للجنسين":"UNISEX","شرقي":"ORIENTAL","أطفال":"KIDS","فواحات":"DIFFUSER"}[p.gender]||"");const familyValue=p.family||p.scentFamily||p.chemicalProfileId||"غير محدد";return (!cat||actualCategory===cat)&&(!family||familyValue===family||displayFamily(familyValue,p.nameAr||p.nameEn)===family)&&(!q||norm([p.nameAr,p.nameEn,p.supplierSku,p.supplierCategory,p.family,p.scentFamily,p.scentNature,p.scentNotesProfile,p.gender,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(q));});
     const visible=filtered.slice(0,supplierVisibleLimit);
     grid.innerHTML=visible.map(productCard).join("");
-    const counts={MEN:0,WOMEN:0,UNISEX:0,ORIENTAL:0,KIDS:0,DIFFUSER:0};all.forEach(p=>{const k=p.supplierCategory||({"رجالي":"MEN","نسائي":"WOMEN","للجنسين":"UNISEX","شرقي":"ORIENTAL","أطفال":"KIDS","فواحات":"DIFFUSER"}[p.gender]||"");if(counts[k]!==undefined)counts[k]++;});$("#supplierOilSummary").textContent=all.length?("إجمالي "+all.length+" نوع زيت من الموردين · النتائج "+filtered.length+" · المعروض "+visible.length+" · رجالي "+counts.MEN+" · نسائي "+counts.WOMEN+" · للجنسين "+counts.UNISEX+" · شرقي "+counts.ORIENTAL+" · الأطفال "+counts.KIDS+" · الفواحات "+counts.DIFFUSER+". أسعار العميل حسب الفئة: فرنسي 10 ج/جرام، شرقي 15 ج/جرام، شرقي ممتاز 20 ج/جرام؛ اعتمد فئة كل منتج من الإدارة قبل البيع."): "استورد ملف كتالوج الموردين من لوحة الإدارة لعرض الأنواع كاملة.";
+    const counts={MEN:0,WOMEN:0,UNISEX:0,ORIENTAL:0,KIDS:0,DIFFUSER:0};all.forEach(p=>{const k=p.supplierCategory||({"رجالي":"MEN","نسائي":"WOMEN","للجنسين":"UNISEX","شرقي":"ORIENTAL","أطفال":"KIDS","فواحات":"DIFFUSER"}[p.gender]||"");if(counts[k]!==undefined)counts[k]++;});
+    const classified=all.reduce((n,p)=>n+(displayFamily(p.family||p.scentFamily||"",p.nameAr||p.nameEn||"")!=="غير محدد"?1:0),0);
+    $("#supplierOilSummary").textContent=all.length?("كتالوج الموردين: "+all.length+" نوع زيت · المصنّف آليًا حسب الاسم: "+classified+" · النتائج "+filtered.length+" · المعروض "+visible.length+" · رجالي "+counts.MEN+" · نسائي "+counts.WOMEN+" · للجنسين "+counts.UNISEX+" · شرقي "+counts.ORIENTAL+" · الأطفال "+counts.KIDS+" · الفواحات "+counts.DIFFUSER+". الأسعار القطاعي: 10 ج/جرام للفئات العامة، 15 ج/جرام للشرقي، و20 ج/جرام للشرقي الممتاز المحدد من الإدارة. التصنيف بالاسم إرشادي ويحتاج مراجعة العينة."): "لم يتم تحميل ملف كتالوج الزيوت العام.";
     $("#noSupplierOilProducts").classList.toggle("hidden",filtered.length>0);
     $("#supplierOilMore").classList.toggle("hidden",visible.length>=filtered.length);
   }
