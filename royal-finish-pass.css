@@ -172,3 +172,9 @@ body.index-only-mode #homeIndex .home-index-note{margin:18px auto 0!important;ma
  body.index-only-mode #homeIndex .home-index-copy strong{font-size:14px}
  body.index-only-mode #homeIndex .home-index-copy small{font-size:11px}
 }
+
+/* Keep owner settings accessible above the directory-only landing. */
+body.index-only-mode>#adminLayer:not(.hidden){display:flex!important;position:fixed!important;inset:0!important;z-index:20000!important;overflow:auto!important}
+body.index-only-mode>#adminLayer:not(.hidden) .admin-panel{display:block!important;max-height:calc(100svh - 24px);overflow:auto}
+body.index-only-mode #homeIndex .home-index-settings-card{grid-column:1/-1;max-width:760px;justify-self:center}
+body.index-only-mode #homeIndex .home-index-settings-card .home-index-icon{background:#f5e6d0;color:#8b5a12}
