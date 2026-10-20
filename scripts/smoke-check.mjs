@@ -125,6 +125,9 @@ report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor
 
 try {
   const app = read("app.js");
+  const cartCss = read("site-unified.css");
+  report(cartCss.includes("#cartDrawer .cart-item-facts dd{margin:0;color:#392a31") && cartCss.includes("#cartDrawer .cart-line-actions .remove-btn") && cartCss.includes("@media(max-width:380px)"),
+    "Cart item names, size/price/quantity totals and action controls have readable responsive styles");
   report(app.includes('bind("#cartHeaderShortcut", "click",openDrawer)') && app.includes('bind("#cartShortcut", "click",openDrawer)'),
     "Both the header cart button and secondary cart shortcut open the cart drawer");
   report(app.includes('const bind = (selector, eventName, handler, options) => { const el = $(selector); if (el) el.addEventListener(eventName, handler, options); }'),
