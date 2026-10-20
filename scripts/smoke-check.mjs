@@ -373,7 +373,7 @@ try {
 try {
   const pages = read("section-pages.js");
   const html = read("index.html");
-  report(pages.includes('const canonicalSectionId = (id) =>') &&
+  report(pages.includes('function canonicalSectionId(id) {') &&
     pages.includes('return id === "quiz" ? "blend" : id;'),
     "Discover-fragrance entry is routed to the blending atelier");
   report(pages.includes('window.addEventListener("popstate"') &&
@@ -384,7 +384,7 @@ try {
     pages.includes('event.preventDefault()') && pages.includes('navigate(id);'),
     "Internal section links use delegated navigation without reloading the storefront");
   report(pages.includes('window.matchMedia("(prefers-reduced-motion: reduce)")') &&
-    pages.includes('document.getElementById("sectionPageBack")') &&
+    pages.includes('bar.querySelector("#sectionPageBack")') &&
     pages.includes('document.getElementById("sectionPageEndBack")'),
     "Section navigation respects reduced-motion preferences and offers return-home controls");
   report(html.includes('section-pages.js?v=20261020-home-all-sections1') &&
