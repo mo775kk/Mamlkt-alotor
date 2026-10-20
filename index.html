@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site-unified.css?v=20261020-mobile-price-visible1">
+  <link rel="stylesheet" href="site-unified.css?v=20261020-standalone-pages3">
 
   <!-- ====== ROYAL CINEMATIC v3.0 — التصميم الحديث ====== -->
   
@@ -354,7 +354,7 @@
   <!-- السلة والمودال والإشعار -->
   <div class="drawer-backdrop hidden" id="drawerBackdrop"></div>
   <aside class="drawer" id="cartDrawer" aria-label="سلة التسوق" aria-hidden="true">
-    <div class="drawer-head"><h2 id="drawerTitle">سلة التسوق</h2><button type="button" class="icon-btn" id="closeDrawer" aria-label="إغلاق">×</button></div>
+    <div class="drawer-head"><div class="cart-page-heading"><small>مملكة العطور · مراجعة الطلب</small><h2 id="drawerTitle">سلة التسوق</h2><p>راجع كل منتج وحجمه وسعره قبل إرسال الطلب</p></div><button type="button" class="cart-back-btn" id="closeDrawer" aria-label="العودة إلى الصفحة السابقة"><span aria-hidden="true">→</span> متابعة التسوق</button></div>
     <div id="cartItems" class="drawer-items"></div>
     <div class="drawer-bottom">
       <div class="total-row"><span>الإجمالي المرجعي</span><strong id="cartTotal">0 ج.م</strong></div>
@@ -368,11 +368,11 @@
         <small>تُرسل هذه البيانات إلى واتساب عند الضغط على متابعة الطلب، ولا تُحفظ تلقائيًا في المتصفح.</small>
       </div>
       <button type="button" class="btn btn-gold full-width" id="checkoutBtn">متابعة الطلب عبر واتساب</button>
-      <button type="button" class="text-btn" id="clearCart">إفراغ السلة</button>
+      <button type="button" class="text-btn" id="clearCart">إفراغ السلة</button><div class="cart-page-end"><span>نهاية مراجعة السلة</span><button type="button" id="cartEndBack">← الرجوع إلى التسوق</button></div>
     </div>
   </aside>
 
-  <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button type="button" class="modal-close icon-btn" id="closeModal" aria-label="إغلاق">×</button><div id="modalContent"></div></section></div>
+  <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button type="button" class="modal-close cart-back-btn modal-back-btn" id="closeModal" aria-label="العودة إلى صفحة المنتجات"><span aria-hidden="true">→</span> رجوع للمنتجات</button><div id="modalContent"></div></section></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
