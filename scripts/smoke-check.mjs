@@ -329,6 +329,19 @@ try {
   report(false, "Unable to validate homepage navigation and cart placement: " + e.message);
 }
 
+try {
+  const html = read("index.html");
+  const css = read("site-unified.css");
+  const narrowPhoneRule = css.match(/@media\\(max-width:360px\\)\\{[\\s\\S]*?\\n\\}/)?.[0] || "";
+  report(narrowPhoneRule.includes(".compact-selected-price{display:inline!important") &&
+    narrowPhoneRule.includes("grid-template-columns:minmax(0,1fr) auto"),
+    "Selected size and price remain visible together on very narrow phones");
+  report(/site-unified\\.css\\?v=20261020-mobile-price-visible1/.test(html),
+    "Mobile size/price fix is linked through a fresh stylesheet cache-buster");
+} catch (e) {
+  report(false, "Unable to validate narrow-phone size/price visibility: " + e.message);
+}
+
 for (const message of pass) console.log("PASS  " + message);
 for (const message of failures) console.error("FAIL  " + message);
 console.log("\n" + pass.length + " passed; " + failures.length + " failed.");
