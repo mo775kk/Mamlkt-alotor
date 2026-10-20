@@ -417,7 +417,7 @@ try {
     pages.includes("scrollPositions.set(activeId, window.scrollY || 0)") &&
     pages.includes('window.scrollTo({top:y,behavior:"auto"})'),
     "Section back navigation restores the previous section's scroll position");
-  report(/app\.js\?v=20261020-oil-catalog-cards3/.test(html) &&
+  report(/app\.js\?v=20261020-oil-catalog-cards4/.test(html) &&
     /site-unified\.css\?v=20261020-oil-catalog-cards3/.test(html) &&
     /section-pages\.js\?v=20261020-page-history-scroll6/.test(html),
     "Oil cards, layout and section-history fixes use fresh cache-busters");
