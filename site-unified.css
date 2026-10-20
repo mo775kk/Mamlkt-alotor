@@ -3107,3 +3107,6 @@ body{background-color:var(--bg);color:var(--text)}
  .product-card-supplier-oil .product-visual .placeholder-bottle{height:98px!important;max-height:98px!important}
  .product-card-supplier-oil .product-info h3{font-size:13px!important}
 }
+
+.product-visual,.home-showcase-visual{position:relative}
+.product-image-note{position:absolute;z-index:3;inset-inline-start:7px;bottom:7px;padding:4px 7px;border:1px solid color-mix(in srgb,var(--gold,#c9a24a) 45%,transparent);border-radius:7px;background:rgba(255,250,245,.94);color:#6c4b19;font-size:10px;font-weight:800;line-height:1.3;box-shadow:0 2px 8px rgba(40,20,10,.12)}
