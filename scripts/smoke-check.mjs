@@ -391,6 +391,7 @@ try {
 }
 
 
+
 try {
   const html = read("index.html");
   const app = read("app.js");
@@ -402,19 +403,19 @@ try {
     "Oil catalogue showcase appears near the beginning of the homepage before category doors");
   report(app.includes("function supplierRetailRate(p)") &&
     app.includes('String(p.supplierCategory||"").toUpperCase()==="ORIENTAL"') &&
-    app.includes("displayFamily(p.family||p.scentFamily||"",p.nameAr||p.nameEn||"")") &&
-    app.includes('supplierRetailRate(p)'),
-    "Supplier oil cards classify fragrance family and use 10/15/20 EGP retail gram tiers by category/tier");
+    app.includes('displayFamily(p.family||p.scentFamily||"",p.nameAr||p.nameEn||"")') &&
+    app.includes("supplierRetailRate(p)"),
+    "Supplier oil cards classify fragrance family and use retail gram tiers");
   report(css.includes(".product-card-supplier-oil .product-visual{height:180px") &&
     css.includes(".home-oil-showcase .home-showcase-visual{height:148px"),
     "Oil product cards use larger, readable product visuals on desktop and mobile");
   report(pages.includes("const scrollPositions = new Map()") &&
     pages.includes("scrollPositions.set(activeId, window.scrollY || 0)") &&
-    pages.includes("window.scrollTo({top:y,behavior:" + '"auto"' + "})"),
+    pages.includes('window.scrollTo({top:y,behavior:"auto"})'),
     "Section back navigation restores the previous section's scroll position");
-  report(/app\\.js\\?v=20261020-oil-catalog-cards3/.test(html) &&
-    /site-unified\\.css\\?v=20261020-oil-catalog-cards3/.test(html) &&
-    /section-pages\\.js\\?v=20261020-page-history-scroll6/.test(html),
+  report(/app\.js\?v=20261020-oil-catalog-cards3/.test(html) &&
+    /site-unified\.css\?v=20261020-oil-catalog-cards3/.test(html) &&
+    /section-pages\.js\?v=20261020-page-history-scroll6/.test(html),
     "Oil cards, layout and section-history fixes use fresh cache-busters");
   const oilData = JSON.parse(read("oil-catalog-public.json"));
   report(Array.isArray(oilData.products) && oilData.products.length === 589 &&
