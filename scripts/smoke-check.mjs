@@ -99,7 +99,7 @@ try {
     "Install action stays available and offers browser-specific guidance when native install prompt is withheld");
   report(html.includes("id=\"pwaHelpSteps\"") && html.includes("إضافة إلى الشاشة الرئيسية"),
     "Install fallback explains Android/iOS steps in an accessible dialog");
-  const browserThemeColor = html.match(/<meta\\s+name="theme-color"\\s+content="([^"]+)"/i)?.[1];
+  const browserThemeColor = html.match(/<meta\s+name="theme-color"\s+content="([^"]+)"/i)?.[1];
   report(Boolean(browserThemeColor) && browserThemeColor.toLowerCase() === String(manifest.theme_color || "").toLowerCase() &&
     /^#[0-9a-f]{6}$/i.test(browserThemeColor),
     "Browser and installed-app theme colors match the current royal palette");
