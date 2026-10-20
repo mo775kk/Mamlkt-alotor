@@ -406,6 +406,9 @@ try {
     app.includes('displayFamily(p.family||p.scentFamily||"",p.nameAr||p.nameEn||"")') &&
     app.includes("supplierRetailRate(p)"),
     "Supplier oil cards classify fragrance family and use retail gram tiers");
+  report(app.includes('localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")') &&
+    app.includes("pricing.orientalPremium") && app.includes("pricing.oriental"),
+    "Oil gram pricing follows saved admin values for French, oriental and premium oriental tiers");
   report(app.includes('p.supplierSku||p.sku||"غير محدد"') &&
     app.includes('اختيار الزيت للتركيب') &&
     app.includes('oilSelect.value=id;closeModal();location.hash="#blend"'),
@@ -420,7 +423,7 @@ try {
     pages.includes("scrollPositions.set(activeId, window.scrollY || 0)") &&
     pages.includes('window.scrollTo({top:y,behavior:"auto"})'),
     "Section back navigation restores the previous section's scroll position");
-  report(/app\.js\?v=20261020-oil-catalog-cards5/.test(html) &&
+  report(/app\.js\?v=20261020-oil-catalog-cards6/.test(html) &&
     /site-unified\.css\?v=20261020-oil-catalog-cards4/.test(html) &&
     /section-pages\.js\?v=20261020-page-history-scroll6/.test(html),
     "Oil cards, layout and section-history fixes use fresh cache-busters");
