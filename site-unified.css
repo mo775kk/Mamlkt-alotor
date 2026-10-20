@@ -3203,3 +3203,25 @@ body{background-color:var(--bg);color:var(--text)}
   .site-header .menu-toggle{display:inline-flex!important;order:3;flex-shrink:0;position:relative;z-index:130;width:38px;height:38px;background:#fffaf1;color:#8b672b;border:1px solid #d4af37;font-size:20px}
   .site-header .main-nav:not(.open){display:none!important}
 }
+
+
+/* Customer selection guide and consistent interaction feedback */
+.customer-choice-guide{margin-block:18px 30px;padding:clamp(16px,3vw,28px);border:1px solid #e3c7d4;border-radius:18px;background:linear-gradient(145deg,#fffdf8 0%,#fff3f7 58%,#fff9e9 100%);box-shadow:0 10px 30px rgba(99,56,73,.07)}
+.customer-choice-guide .section-heading{margin-bottom:18px}
+.customer-choice-steps{list-style:none;counter-reset:choice;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0;margin:0}
+.customer-choice-steps li{display:flex;align-items:flex-start;gap:12px;min-width:0;padding:14px;border:1px solid #ead9df;border-radius:13px;background:rgba(255,255,255,.82)}
+.choice-step-number{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#f3dce6;color:#71445b;border:1px solid #d8a9bf;font-weight:800;font-size:16px}
+.customer-choice-steps strong{display:block;color:#553344;font-size:16px;margin:2px 0 5px}
+.customer-choice-steps p{margin:0;color:#51464a;font-size:13px;line-height:1.9}
+.customer-choice-tip{margin:16px 0 0;padding:12px 14px;border-inline-start:4px solid #bd8b2e;border-radius:8px;background:#fff5d9;color:#4b3920;font-size:13px;line-height:1.85}
+.customer-choice-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+.customer-choice-actions .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+@media(max-width:600px){.customer-choice-steps{grid-template-columns:1fr}.customer-choice-steps li{padding:12px}.customer-choice-steps p{font-size:12px}.customer-choice-actions{display:grid;grid-template-columns:1fr}.customer-choice-actions .btn{width:100%}}
+
+/* High-visibility hover, tap, keyboard focus and selected states across the whole site */
+:where(a,button,[role="button"],input,select,textarea,summary,[tabindex]):focus-visible{outline:3px solid #c28b2d!important;outline-offset:3px!important;text-decoration:underline!important;text-decoration-thickness:2px!important;text-underline-offset:4px!important;box-shadow:0 0 0 4px rgba(194,139,45,.18)!important}
+:where(a,button,[role="button"],summary):active{color:#80521b!important;text-decoration:underline!important;text-decoration-thickness:2px!important;text-underline-offset:4px!important;filter:brightness(.96)}
+:where(a,button,[role="button"],summary):hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+:where(a,button,[role="button"]).is-clicked{outline:2px solid #c28b2d!important;outline-offset:2px!important;text-decoration:underline!important;text-decoration-thickness:2px!important;text-underline-offset:4px!important}
+.main-nav a[aria-current="page"],.home-index-card[aria-current="page"]{text-decoration:underline!important;text-decoration-color:#bd8b2e!important;text-decoration-thickness:3px!important;text-underline-offset:6px!important;background-color:rgba(212,175,55,.11)}
+@media(prefers-reduced-motion:reduce){:where(a,button,[role="button"]){transition:none!important}}
