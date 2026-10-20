@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ar" dir="rtl" data-theme="dark">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#38271F">
+  <meta name="theme-color" content="#F4DCE4">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="manifest" href="manifest.webmanifest?v=20261019-v3-cinematic">
+  <link rel="manifest" href="manifest.webmanifest?v=20261020-royal-bright8">
   <link rel="icon" type="image/svg+xml" href="assets/images/app-icon-192.svg">
   <link rel="apple-touch-icon" href="assets/images/app-icon-192.png">
   <meta name="description" content="مملكة العطور — عطور جاهزة، زيوت عطرية، تركيب عطرك الخاص، عود وبخور وهدايا بطابع ملكي.">
@@ -62,7 +62,7 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261020-pwa-shell5').catch(error => console.warn('PWA worker registration failed:', error));
+          navigator.serviceWorker.register('./sw.js?v=20261020-royal-bright8').catch(error => console.warn('PWA worker registration failed:', error));
         }
       });
     })();
@@ -524,7 +524,7 @@
     document.addEventListener('mamlaka:products-updated',updateBlendPriceGuide);
   })();
   </script>
-  <script defer src="section-pages.js?v=20261020-page-history4"></script>
+  <script defer src="section-pages.js?v=20261020-page-history5"></script>
   <script>
   (function(){var b=document.getElementById("shareKingdomButton");if(!b)return;b.addEventListener("click",function(){var d={title:document.title,text:"اكتشف مملكة العطور",url:window.location.href};if(navigator.share){navigator.share(d).catch(function(){});return;}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.url).then(function(){b.textContent="تم نسخ رابط الموقع ✓";},function(){window.prompt("انسخ رابط الموقع:",d.url);});}else{window.prompt("انسخ رابط الموقع:",d.url);}});})();
   </script>
