@@ -322,7 +322,7 @@
     const el=$("#cartItems");
     if(!el)return;
     if(!cart.length){
-      el.innerHTML='<div class="cart-empty-state"><span aria-hidden="true">🛍</span><h3>السلة فارغة حاليًا</h3><p>اختر عطرًا أو زيتًا من الأقسام، وسيظهر هنا مع الحجم والسعر والكمية.</p><a class="btn btn-gold" href="#ready">استعراض العطور</a></div>';
+      el.innerHTML='<div class="cart-empty-state"><span aria-hidden="true">🛍</span><h3>السلة فارغة حاليًا</h3><p>اختر عطرًا أو زيتًا من الأقسام، وسيظهر هنا مع الحجم والسعر والكمية.</p><button type="button" class="btn btn-gold" id="cartEmptyBrowse">استعراض العطور</button></div>';
       $("#cartTotal").textContent=formatMoney(0);
       return;
     }
@@ -443,15 +443,15 @@
     notify(lang==="en"?"Navigation labels switched. Some product content remains in Arabic.":"تم تغيير لغة القوائم. بعض محتوى المنتجات ما زال بالعربية.");
   }
   document.addEventListener("click",e=>{
-    const homeBlend=e.target.closest("[data-home-blend-id]");if(homeBlend){const select=$("#blendOil");if(select){select.value=homeBlend.dataset.homeBlendId;if(select.value!==homeBlend.dataset.homeBlendId){notify("افتح كتالوج الزيوت لاختيار هذا النوع أو ابحث عنه بالاسم.");return;}$("#blend")?.scrollIntoView({behavior:"smooth",block:"start"});blendPrice();notify("تم اختيار الزيت. أكمل الحجم والعبوة ثم راجع الطلب.");}return;}
+    const homeBlend=e.target.closest("[data-home-blend-id]");if(homeBlend){const select=$("#blendOil");if(select){select.value=homeBlend.dataset.homeBlendId;if(select.value!==homeBlend.dataset.homeBlendId){notify("افتح كتالوج الزيوت لاختيار هذا النوع أو ابحث عنه بالاسم.");return;}location.hash="#blend";blendPrice();notify("تم اختيار الزيت. أكمل الحجم والعبوة ثم راجع الطلب.");}return;}
     const action=e.target.closest("[data-action]");if(action){const {action:act,id}=action.dataset;if(act==="favorite")toggleFavorite(id);if(act==="add"&&findProduct(id)?.supplierCatalogItem){const oil=findProduct(id),sel=$("#blendOil");if(sel){sel.value=id;location.hash="#blend";notify("تم اختيار "+(oil.nameAr||oil.nameEn)+" للتركيب؛ أكمل اختيار الحجم والطلب.");}else{notify("تم تحديد الزيت؛ افتح قسم تركيب عطرك لإكمال الطلب.");location.hash="#blend";}}else if(act==="add"){const card=e.target.closest(".product-card"),size=card?.querySelector("[data-card-size]")?.value||"10";addToCart(id,size);const chosen=cart.some(item=>item.id===id&&String(item.size)===String(size));const button=card?.querySelector('[data-action="add"]');if(button){button.classList.toggle("is-selected",chosen);button.textContent=chosen?"✓ تم الاختيار":(findProduct(id)?.supplierCatalogItem?"للاختيار والتركيب":"أضف للسلة");button.setAttribute("aria-pressed",String(chosen));}}if(act==="details")openDetails(id);}
     const ca=e.target.closest("[data-cart]");if(ca){const item=cart.find(x=>x.key===ca.dataset.key);if(!item)return;if(ca.dataset.cart==="plus")item.qty=Math.min(99,Number(item.qty)+1);if(ca.dataset.cart==="minus")item.qty=Number(item.qty)-1;if(ca.dataset.cart==="remove"||item.qty<=0)cart=cart.filter(x=>x.key!==item.key);save(STORAGE.cart,cart);renderCart();updateCounts();syncProductCardSelectionStates();}
   });
   bind("#productSearch", "input",renderProducts);bind("#genderFilter", "change",renderProducts);bind("#familyFilter", "change",renderProducts);
   bind("#requestMissingBtn", "click",()=>{const name=$("#productSearch").value.trim();if(!name){notify("اكتب اسم العطر الذي تبحث عنه أولًا.");$("#productSearch").focus();return;}requestMissing(name);notify("تم تسجيل طلب البحث وفتح واتساب لإرساله.");});
-  bind("#searchFocus", "click",()=>{$("#productSearch").focus();document.querySelector("#ready").scrollIntoView({behavior:"smooth"});});
-  bind("#favoritesShortcut", "click",()=>{const fav=products.filter(p=>favorites.includes(p.id));if(!fav.length){notify("قائمة المفضلة فارغة.");return;}$("#productSearch").value="";$("#genderFilter").value="";$("#familyFilter").value="";$("#readyProducts").innerHTML=fav.map(productCard).join("");$("#resultsMessage").textContent=`${fav.length} منتج في المفضلة`;$("#noProducts").classList.add("hidden");document.querySelector("#ready").scrollIntoView({behavior:"smooth"});});
-  bind("#cartShortcut", "click",openDrawer);bind("#closeDrawer", "click",closeDrawer);bind("#cartEndBack", "click",closeDrawer);bind("#drawerBackdrop", "click",closeDrawer);
+  bind("#searchFocus", "click",()=>{location.hash="#ready";window.setTimeout(()=>$("#productSearch")?.focus(),100);});
+  bind("#favoritesShortcut", "click",()=>{const fav=products.filter(p=>favorites.includes(p.id));if(!fav.length){notify("قائمة المفضلة فارغة.");return;}$("#productSearch").value="";$("#genderFilter").value="";$("#familyFilter").value="";$("#readyProducts").innerHTML=fav.map(productCard).join("");$("#resultsMessage").textContent=`${fav.length} منتج في المفضلة`;$("#noProducts").classList.add("hidden");location.hash="#ready";});
+  bind("#cartShortcut", "click",openDrawer);bind("#closeDrawer", "click",closeDrawer);bind("#cartEndBack", "click",closeDrawer);bind("#drawerBackdrop", "click",closeDrawer);bind("#cartEmptyBrowse", "click",()=>{closeDrawer();location.hash="#ready";});
   bind("#closeModal", "click",closeModal);bind("#modalBackdrop", "click",e=>{if(e.target===$("#modalBackdrop"))closeModal();});
   bind("#checkoutBtn", "click",checkout);bind("#clearCart", "click",()=>{cart=[];save(STORAGE.cart,cart);renderCart();updateCounts();syncProductCardSelectionStates();notify("تم إفراغ السلة.");});
   bind("#blendSize", "change",blendPrice);
