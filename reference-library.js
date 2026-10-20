@@ -5,7 +5,7 @@
   const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const readFav = () => { try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (_) { return []; } };
   const saveFav = list => { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (_) {} };
-  function mount() {
+  function mount(target) {
     if (document.getElementById("referenceLibrary")) return;
     const style = document.createElement("style");
     style.textContent = `
@@ -34,8 +34,7 @@
       <button class="ref-btn" id="refOnlyFav" type="button" aria-pressed="false">★ المفضلة فقط</button></div>
       <div class="ref-tools"><input id="refSearch" type="search" placeholder="ابحث عن موقع أو علامة عطرية..." aria-label="البحث في المواقع المرجعية"><select id="refCategory" aria-label="تصنيف المواقع"><option value="">كل التصنيفات</option><option>عربي وخليجي</option><option>فخامة عالمية</option><option>متاجر ومنصات</option><option>مراجع تصميم</option></select><button class="ref-btn" id="refClear" type="button">مسح البحث</button></div>
       <div id="refCount" class="ref-count" aria-live="polite"></div><div id="refGrid" class="ref-grid"></div>`;
-    const footer = document.querySelector(".site-footer");
-    (footer?.parentNode || document.querySelector("main") || document.body).insertBefore(section, footer || null);
+    if (target) target.appendChild(section);
     // The reference library is mounted only inside the owner settings panel.
     const search = section.querySelector("#refSearch"), category = section.querySelector("#refCategory"), grid = section.querySelector("#refGrid"), count = section.querySelector("#refCount"), favOnly = section.querySelector("#refOnlyFav");
     let onlyFav = false;
@@ -56,9 +55,8 @@
     mountInto(target) {
       if (!target) return;
       let section = document.getElementById("referenceLibrary");
-      if (!section) { mount(); section = document.getElementById("referenceLibrary"); }
-      if (section) target.appendChild(section);
+      if (!section) { mount(target); section = document.getElementById("referenceLibrary"); }
+      else if (section.parentNode !== target) target.appendChild(section);
     }
   };
-  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",mount); else mount();
 })();
