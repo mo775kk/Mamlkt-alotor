@@ -1,4 +1,4 @@
-/* Owner control extensions: autosave, reference library, section copy, typography and theme controls. */
+/* Owner control extensions: autosave, reference text editing and reference library. Visual settings are centralized in settings.js. */
 (()=>{'use strict';
 const REFKEY='mamlaka_custom_reference_sites_v1',DRAFT='mamlaka_admin_draft_v1';
 const $=(s,r=document)=>r.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
