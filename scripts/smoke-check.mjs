@@ -370,12 +370,6 @@ try {
   report(false, "Unable to validate narrow-phone size/price visibility: " + e.message);
 }
 
-for (const message of pass) console.log("PASS  " + message);
-for (const message of failures) console.error("FAIL  " + message);
-console.log("\n" + pass.length + " passed; " + failures.length + " failed.");
-if (failures.length) process.exitCode = 1;
-
-
 try {
   const pages = read("section-pages.js");
   const html = read("index.html");
@@ -402,9 +396,11 @@ try {
 
 try {
   const settings = read("settings.js");
-  report(settings.includes('const write=(k,v)=>{const raw=JSON.stringify(v);try{localStorage.setItem(k,raw);if(localStorage.getItem(k)!==raw)throw new Error("تعذر التحقق من الحفظ")') &&
-    settings.includes('throw new Error("مساحة التخزين ممتلئة أو غير متاحة. صدّر نسخة JSON'),
-    "Settings storage verifies writes and gives an actionable message when browser storage fails");
+  report(settings.includes("const persistRaw=(key,raw)=>{") &&
+    settings.includes("localStorage.setItem(key,raw)") &&
+    settings.includes("localStorage.removeItem(key)") &&
+    settings.includes("const write=(k,v)=>persistRaw(k,JSON.stringify(v))"),
+    "Settings storage verifies writes and rolls back failed writes before reporting an error");
   report(settings.includes('const storageSnapshot=()=>{') &&
     settings.includes('mamlaka_catalog_taxonomy_config_v1') &&
     settings.includes('mamlaka_custom_products_v1') &&
@@ -413,3 +409,27 @@ try {
 } catch (e) {
   report(false, "Unable to validate settings persistence safeguards: " + e.message);
 }
+
+try {
+  const settings = read("settings.js");
+  const catalog = read("catalog-editor.js");
+  const inventory = read("inventory-accounting.js");
+  report(settings.includes('const saveProducts=p=>write("mamlaka_custom_products_v1",p)') &&
+    settings.includes('const setPlain=(key,value)=>persistRaw(key,String(value??""))'),
+    "Admin product and plain-text settings use the verified storage writer");
+  report(catalog.includes("const writeVerified=(key,value)=>{") &&
+    catalog.includes("const saveConfig=c=>writeVerified(TAXKEY,c)") &&
+    catalog.includes("return writeVerified(KEY,d)"),
+    "Catalog and taxonomy writes verify saved bytes and restore prior data on failure");
+  report(inventory.includes("const write=d=>{const raw=JSON.stringify(d);") &&
+    inventory.includes("if(!write(d))return;") &&
+    inventory.includes("if(!write(next))return;"),
+    "Inventory, sales, expenses, imports and deletes stop before showing success when saving fails");
+} catch (e) {
+  report(false, "Unable to validate transactional admin persistence: " + e.message);
+}
+
+for (const message of pass) console.log("PASS  " + message);
+for (const message of failures) console.error("FAIL  " + message);
+console.log("\\n" + pass.length + " passed; " + failures.length + " failed.");
+if (failures.length) process.exitCode = 1;
