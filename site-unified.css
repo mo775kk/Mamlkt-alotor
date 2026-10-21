@@ -3548,3 +3548,27 @@ body{background:linear-gradient(145deg,#210b1b 0%,#351027 48%,#190b18 100%)!impo
 }
 .feature-image img{display:none!important}
 .feature-image{background:linear-gradient(145deg,#351027,#1b0b19)!important}
+
+
+/* Unified storefront palette: honor saved theme tokens and never restore background photos */
+:root{--page-image:none!important}
+html,body,body::before,body::after,.hero,.hero-image,.feature-banner,.feature-image,.feature-image img{
+  background-image:none!important;
+}
+body{background-color:var(--bg,#f7f3ec)!important;color:var(--text,#30230d)!important}
+body::before,body::after,.hero-image,.feature-image img{display:none!important}
+.home-index-section{
+  background:linear-gradient(135deg,var(--index-bg,#31051c),color-mix(in srgb,var(--index-bg,#31051c) 78%,var(--gold,#d4af37)))!important;
+  border-color:var(--index-border,#f4c26c)!important;color:var(--text,#fff8ee)!important;
+}
+.home-index-section .home-index-card{
+  background:linear-gradient(135deg,var(--index-card,#4d102f),color-mix(in srgb,var(--index-card,#4d102f) 84%,var(--panel,#fff)))!important;
+  border-color:var(--index-border,#f4c26c)!important;
+}
+.home-index-section .home-index-icon{
+  background:linear-gradient(145deg,var(--index-icon,#a93b68),color-mix(in srgb,var(--index-icon,#a93b68) 68%,var(--gold2,#d4af37)))!important;
+  border-color:var(--index-border,#f4c26c)!important;
+}
+.site-header,.site-footer,.admin-panel,.admin-card,.admin-page,.settings-panel,.product-card,.category-card,.modal-card,.drawer-panel{
+  border-color:var(--line,#d8bd68);
+}
