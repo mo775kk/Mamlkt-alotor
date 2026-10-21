@@ -40,11 +40,11 @@ try {
     "Storefront exposes an install-app action");
   report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes('addEventListener("fetch"'),
     "PWA service worker is registered and handles requests");
-  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#F4DCE4",
+  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#0A0A0A",
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   const settingsSource = read("settings.js");
-  report(html.includes('theme-persistence.js?v=20261020-theme-persist1') &&
+  report(html.includes('theme-persistence.js?v=20261021-blackgold2') &&
     themeBootstrap.includes('mamlaka_theme_v1') &&
     themeBootstrap.includes('mamlaka_visual_tuning_v1') &&
     themeBootstrap.includes('addEventListener("storage"'),
@@ -115,7 +115,7 @@ try {
     /^#[0-9a-f]{6}$/i.test(browserThemeColor),
     "Browser and installed-app theme colors match the current royal palette");
   report(/site-unified\.css\?v=[^"]+/.test(html) && read("site-unified.css").includes("--finish-rose"),
-  "Current rose-and-gold finishing layer is linked with a cache-buster");
+  "Current black-and-gold finishing layer is linked with a cache-buster");
 report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
   "Service worker URL and cache shell version are synchronized");
 
@@ -390,9 +390,9 @@ try {
   const html = read("index.html");
   const css = read("site-unified.css");
   const pages = read("section-pages.js");
-  report(html.includes('data-theme="light"') && css.includes("--bg:#f7f1f3") &&
-    css.includes("--finish-rose:#b65d7a") && css.includes("--gold2:#f0d67e"),
-    "Default storefront palette is bright ivory/rose with readable gold accents");
+  report(html.includes('data-theme="light"') && css.includes("--bg:#0a0a0a") &&
+    css.includes("--finish-rose:#D4AF37") && css.includes("--gold2:#f1d77a"),
+    "Default storefront palette is royal black and gold with readable contrast");
   report(/section-pages\.js\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
     html.includes('id="modalBackdrop"'),
