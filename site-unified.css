@@ -4874,3 +4874,18 @@ html[data-theme="dark"] td{color:#fff0f5!important}
   }
   p,small,label,input,select,textarea,button{ text-shadow:none!important; }
 }
+
+/* Oil voice mentor: high contrast and responsive layout. */
+.oil-mentor-panel{margin:18px 0 24px;padding:clamp(16px,3vw,26px);border:2px solid #b88932;border-radius:14px;background:linear-gradient(135deg,#fff8fc,#fffdf8 70%);color:#21171f;box-shadow:0 10px 28px rgba(33,23,31,.12)}
+.oil-mentor-heading{display:flex;gap:16px;align-items:flex-start}.oil-mentor-emblem{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;border-radius:16px;background:#21171f;color:#f1d77a;font-size:32px;border:2px solid #b88932}
+.oil-mentor-heading h3{margin:0;color:#21171f;font:800 clamp(23px,3vw,30px)/1.35 "Amiri",serif}.oil-mentor-heading .eyebrow{color:#75501b;margin-bottom:3px}.oil-mentor-heading p:not(.eyebrow){color:#493742;font-size:15px;line-height:1.85;margin:7px 0 0}
+.oil-mentor-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.oil-mentor-actions .btn{min-height:46px;font-size:14px}.oil-mentor-actions .btn-outline{background:#21171f;color:#fff8fc;border-color:#b88932}.oil-mentor-actions button:disabled{opacity:.7;cursor:wait}
+.oil-voice-status{margin:14px 0 0;padding:10px 13px;border-inline-start:4px solid #b88932;background:#f7e8ef;color:#21171f;font-weight:700;font-size:14px}
+.oil-mentor-answer{margin-top:12px;padding:15px 17px;background:#fff;color:#21171f;border:1px solid #d7bdca;border-radius:8px;line-height:1.9;font-size:15px}.oil-mentor-answer strong{display:block;color:#573047;font-size:17px;margin-bottom:5px}.oil-mentor-answer p{margin:4px 0;color:#30242d}.oil-mentor-answer ol{padding-inline-start:24px;margin-bottom:0}
+html[data-theme="dark"] .oil-mentor-panel{background:linear-gradient(135deg,#30212c,#241923);color:#fff0f5;border-color:#d4af37}
+html[data-theme="dark"] .oil-mentor-heading h3,html[data-theme="dark"] .oil-mentor-heading p:not(.eyebrow),html[data-theme="dark"] .oil-mentor-answer,html[data-theme="dark"] .oil-mentor-answer p{color:#fff0f5}
+html[data-theme="dark"] .oil-mentor-heading .eyebrow{color:#f1d77a}html[data-theme="dark"] .oil-voice-status{background:#513044;color:#fff0f5}html[data-theme="dark"] .oil-mentor-answer{background:#241923;border-color:#79566a}html[data-theme="dark"] .oil-mentor-answer strong{color:#f1d77a}
+html[data-theme="light"] .oil-mentor-panel{background:linear-gradient(135deg,#fff8fc,#fffdf8);color:#21171f}
+.product-card .product-desc,.product-card .product-meta,.product-card .muted,.home-showcase-card p,.suggestion p,.suggestion small{opacity:1}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #d4af37!important;outline-offset:3px!important}
+@media(max-width:650px){.oil-mentor-heading{gap:11px}.oil-mentor-emblem{flex-basis:46px;width:46px;height:46px;font-size:26px}.oil-mentor-actions{display:grid;grid-template-columns:1fr}.oil-mentor-actions .btn{width:100%}.oil-mentor-answer,.oil-voice-status{font-size:14px}}
