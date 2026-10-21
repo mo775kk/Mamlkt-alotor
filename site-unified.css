@@ -4419,3 +4419,126 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   .product-visual{height:190px!important;min-height:190px!important}
   .product-actions button,.product-actions .small-btn{font-size:13px!important}
 }
+
+/* Final cross-page polish: standalone section toolbar, details modal and selected dark theme */
+.section-page-toolbar{
+  display:grid!important;
+  grid-template-columns:auto minmax(0,1fr) auto!important;
+  align-items:center!important;
+  gap:14px!important;
+  padding:16px clamp(12px,3vw,26px)!important;
+  margin:0 0 18px!important;
+  color:#21171f!important;
+  background:#fffdfd!important;
+  border:1px solid #dfc4d0!important;
+  border-bottom:2px solid #b88932!important;
+  border-radius:12px!important;
+  box-shadow:none!important;
+}
+.section-page-toolbar h1,.section-page-heading h1{
+  color:#21171f!important;
+  font-size:clamp(18px,2.4vw,26px)!important;
+  line-height:1.5!important;
+  margin:2px 0!important;
+}
+.section-page-toolbar p,.section-page-toolbar small{color:#6e5964!important}
+.section-page-back,#sectionPageEndBack{
+  min-height:42px!important;
+  padding:9px 13px!important;
+  border:1px solid #b88932!important;
+  border-radius:9px!important;
+  color:#fff9fc!important;
+  background:#21171f!important;
+  font-weight:800!important;
+}
+.section-page-end{
+  margin:20px 0!important;
+  padding:16px!important;
+  border:1px solid #dfc4d0!important;
+  border-radius:12px!important;
+  background:#fffdfd!important;
+  box-shadow:none!important;
+  text-align:center;
+}
+.product-modal{
+  background:#fffdfd!important;
+  color:#30242d!important;
+  border:1px solid #b88932!important;
+  border-radius:16px!important;
+  box-shadow:0 12px 36px rgba(25,15,23,.22)!important;
+}
+.product-modal h2,.modal-product h2,.product-modal h3{
+  color:#21171f!important;
+  line-height:1.5!important;
+}
+.product-modal p,.modal-product p{color:#6e5964!important;line-height:1.75!important}
+.modal-product-image{
+  background:#fff8fa!important;
+  background-image:none!important;
+  border:1px solid #ead5df!important;
+  border-radius:12px!important;
+}
+.modal-close{
+  width:40px!important;height:40px!important;
+  display:grid!important;place-items:center!important;
+  border:1px solid #b88932!important;
+  border-radius:50%!important;
+  background:#21171f!important;color:#fff9fc!important;
+  font-size:20px!important;
+}
+.modal-price{color:#805719!important;font-weight:900!important}
+html[data-theme="dark"] .category-card,
+html[data-theme="dark"] .product-card,
+html[data-theme="dark"] .home-index-card,
+html[data-theme="dark"] .home-showcase-block,
+html[data-theme="dark"] .contact-card,
+html[data-theme="dark"] .testimonial,
+html[data-theme="dark"] .quiz-shell,
+html[data-theme="dark"] .blend-panel,
+html[data-theme="dark"] .blend-summary,
+html[data-theme="dark"] .advisor-box,
+html[data-theme="dark"] .settings-panel,
+html[data-theme="dark"] .admin-panel,
+html[data-theme="dark"] .admin-card,
+html[data-theme="dark"] .admin-section,
+html[data-theme="dark"] .admin-page,
+html[data-theme="dark"] .store-location-panel,
+html[data-theme="dark"] .customer-choice-steps li{
+  background:#30212c!important;
+  color:#fff0f5!important;
+  border-color:#6f465c!important;
+}
+html[data-theme="dark"] .product-info,
+html[data-theme="dark"] .product-info.compact-product-info{
+  background:#30212c!important;color:#fff0f5!important;
+}
+html[data-theme="dark"] .product-info h3,
+html[data-theme="dark"] .product-card h3,
+html[data-theme="dark"] .section-heading h2,
+html[data-theme="dark"] .section h2,
+html[data-theme="dark"] .section h3{
+  color:#ffe4a8!important;
+}
+html[data-theme="dark"] .product-meta,
+html[data-theme="dark"] .compact-product-meta,
+html[data-theme="dark"] .product-desc,
+html[data-theme="dark"] .product-en{
+  color:#e3cbd6!important;
+}
+html[data-theme="dark"] .product-visual{
+  background:#281923!important;border-color:#6f465c!important;
+}
+html[data-theme="dark"] .product-modal{
+  background:#30212c!important;color:#fff0f5!important;
+}
+html[data-theme="dark"] .product-modal h2,
+html[data-theme="dark"] .modal-product h2,
+html[data-theme="dark"] .product-modal h3{
+  color:#ffe4a8!important;
+}
+@media(max-width:560px){
+  .section-page-toolbar{grid-template-columns:minmax(0,1fr) auto!important;gap:8px!important}
+  .section-page-heading{grid-column:1/-1;grid-row:1}
+  .section-page-back{grid-column:1;grid-row:2}
+  .section-page-mark{grid-column:2;grid-row:2}
+}
