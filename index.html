@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site-unified.css?v=20261021-readability1">
+  <link rel="stylesheet" href="site-unified.css?v=20261021-oil-mentor1">
   <script src="theme-persistence.js?v=20261020-theme-persist1"></script>
 
   <!-- ====== ROYAL CINEMATIC v3.0 — التصميم الحديث ====== -->
@@ -63,14 +63,7 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261021-readability1').catch(error => console.warn('PWA worker registration failed:', error));
-        }
-      });
-    })();
-  </script>
-</head>
-<body>
-  <div id="scrollProgress" aria-hidden="true"></div>
+          navigator.serviceWorker.register('./sw.js?v=20261021-oil-mentor1"scrollProgress" aria-hidden="true"></div>
 
   <!-- الهيدر -->
   <header class="site-header">
@@ -240,6 +233,12 @@
         </select>
       </div>
       <p class="results-message" id="supplierOilSummary" aria-live="polite">استورد ملف كتالوج الموردين من لوحة الإدارة لعرض جميع الأنواع هنا.</p>
+      <div class="oil-mentor-panel" id="oilMentorPanel" aria-labelledby="oilMentorTitle">
+        <div class="oil-mentor-heading"><span class="oil-mentor-emblem" aria-hidden="true">♛</span><div><p class="eyebrow">ROYAL OIL GUIDE · VOICE MENTOR</p><h3 id="oilMentorTitle">مرشد الزيوت الصوتي</h3><p>اسأل بصوتك عن أي زيت، أو اطلب شرح العائلة العطرية وطريقة الاختيار. المرشد يشرح البيانات المسجلة ويبيّن بوضوح ما يحتاج إلى تحقق.</p></div></div>
+        <div class="oil-mentor-actions"><button class="btn btn-gold" type="button" id="oilVoiceAsk">🎙 ابحث وتحدّث صوتيًا</button><button class="btn btn-outline" type="button" id="oilVoiceTeach">▶ علّمني كيف أختار الزيت</button><button class="btn btn-outline" type="button" id="oilVoiceStop">■ إيقاف الصوت</button></div>
+        <p class="oil-voice-status" id="oilVoiceStatus" aria-live="polite">اضغط الميكروفون وقل اسم الزيت، أو اسأل عن عائلة عطرية.</p>
+        <div class="oil-mentor-answer" id="oilMentorAnswer" aria-live="polite"><strong>خريطة المرشدين المتخصصين</strong><p>مرشد العائلات يشرح الطابع، ومرشد النوتات يوضح المقدمة والقلب والقاعدة، ومرشد التركيب يساعد في اختيار الحجم، ومرشد التحقق يميّز بين المعلومة الموثقة والتقدير.</p></div>
+      </div>
       <div class="product-grid" id="supplierOilProducts"></div>
       <div class="empty-state hidden" id="noSupplierOilProducts">لم يتم تحميل كتالوج الموردين بعد، أو لا توجد نتائج مطابقة.</div>
       <div class="section-cta"><button class="btn btn-outline" id="supplierOilMore" type="button">عرض المزيد من الأنواع</button></div>
@@ -392,7 +391,7 @@
 
   <!-- السكربتات (defer) -->
   <script defer src="ai-service.js?v=20261016-ai-bridge1"></script>
-  <script defer src="app.js?v=20261021-visible-hotfix3"></script>
+  <script defer src="app.js?v=20261021-oil-mentor1"></script>
   <script>
   (function(){
     "use strict";
