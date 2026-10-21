@@ -5198,3 +5198,84 @@ a:hover{text-decoration:underline;text-decoration-color:var(--gold2);text-underl
 .site-header a,.main-nav a,.site-footer a,.section-heading h2,.section-page-toolbar h1,.brand-crown,.brand strong,.product-price,.product-info h3,.category-card h3,.home-index-copy strong,.btn-gold,.small-btn.primary,.admin-tabs button.active{color:#B8E1FF!important}
 .btn-gold,.small-btn.primary,.admin-tabs button.active,#mamlakaBackToTop{background:#244D70!important;border-color:#4D9DE0!important;color:#FFFFFF!important}
 :where(a,button,[role="button"]):focus-visible{outline:3px solid #A8D8FF!important;outline-offset:3px!important}
+
+
+/* MAMLKAT AL-OTOR — cohesive no-gold design system, release 2026-10-22 */
+:root{
+  --bg:#10151c;--panel:#151b23;--panel2:#1c2632;--card:#18212b;--field:#101820;
+  --gold:#4D9DE0;--gold2:#A8D8FF;--heading:#B8E1FF;--text:#F3F7FC;--muted:#C7D3E0;
+  --line:rgba(168,216,255,.28);--header-bg:#111821;--footer-bg:#0d1218;
+  --button-bg:#244D70;--button-text:#FFFFFF;--index-bg:#10151c;--index-card:#18212b;
+  --index-icon:#4D9DE0;--index-border:#A8D8FF;--finish-rose:#4D9DE0;--accent:#4D9DE0;
+  --accent-soft:#A8D8FF;--border:rgba(168,216,255,.30);
+}
+html,body{background-color:#10151c;color:#F3F7FC}
+body{color:var(--text);line-height:1.65}
+body::before{background-color:transparent}
+:is(.site-header,.main-nav,.site-footer,.admin-page,.admin-panel,.admin-card,.settings-panel,.product-modal,.drawer,.cart-panel,.blend-panel,.blend-summary,.advisor-box,.assistant-message,.empty-state,.search-box,.toolbar select,.blend-step select,.home-index-card,.category-card,.product-card,.testimonial,.contact-card,.store-location-panel,.feature-banner,.gift-copy,.section-page-toolbar){
+  border-color:rgba(168,216,255,.28)!important;
+}
+:is(.site-header,.main-nav,.site-footer,.admin-page,.admin-panel,.admin-card,.settings-panel,.product-modal,.drawer,.cart-panel,.blend-panel,.blend-summary,.advisor-box,.assistant-message,.empty-state,.search-box,.toolbar select,.blend-step select,.home-index-card,.category-card,.product-card,.testimonial,.contact-card,.store-location-panel,.feature-banner,.gift-copy,.section-page-toolbar){
+  color:var(--text);
+}
+:is(.site-header,.main-nav,.admin-panel,.admin-card,.settings-panel,.product-modal,.drawer,.cart-panel,.blend-panel,.blend-summary,.advisor-box,.assistant-message,.empty-state,.search-box,.toolbar select,.blend-step select,.product-card,.category-card,.home-index-card,.testimonial,.contact-card,.store-location-panel){
+  background-color:#151d27;
+}
+:is(.section-heading h2,.section-page-toolbar h1,.brand-crown,.brand strong,.product-price,.product-info h3,.category-card h3,.home-index-copy strong,.gift-copy h2,.contact-card h2,.admin-page h2,.admin-page h3,.admin-card h3,.eyebrow,.store-location-kicker,.product-modal h2,.product-modal h3){
+  color:#B8E1FF!important;
+}
+:is(.btn-gold,.small-btn.primary,.admin-tabs button.active,.pwa-install-btn,#mamlakaBackToTop){
+  background:linear-gradient(135deg,#28577e,#1d3d59)!important;
+  border:1px solid #4D9DE0!important;color:#FFFFFF!important;
+  box-shadow:0 5px 18px rgba(0,0,0,.22);
+}
+:is(.btn-outline,.small-btn,.icon-btn,.modal-close,.cart-back-btn,.section-page-back,.section-page-end button){
+  border-color:rgba(168,216,255,.55)!important;color:#D8EEFF!important;
+}
+:is(.btn-outline,.small-btn,.icon-btn,.modal-close,.cart-back-btn,.section-page-back,.section-page-end button):hover{
+  background-color:#22364a!important;color:#FFFFFF!important;
+}
+:is(input,select,textarea,.search-box input,.toolbar input,.toolbar select,.blend-step select){
+  color:#F3F7FC!important;background-color:#101820!important;border-color:#496783!important;
+}
+:is(input,select,textarea)::placeholder{color:#AFC1D2!important;opacity:1}
+:is(.product-desc,.product-meta,.product-en,.section-heading>p,.admin-note,.muted,.site-footer p,.site-footer small,.contact-card small,.gift-price-note,.section-page-toolbar p){
+  color:#C7D3E0!important;
+}
+:is(.product-card,.category-card,.home-index-card,.testimonial,.contact-card,.store-location-panel,.admin-card){
+  box-shadow:0 8px 26px rgba(0,0,0,.20);
+}
+:is(button,a,[role="button"],input,select,textarea){touch-action:manipulation}
+:where(a,button,input,select,textarea,[role="button"]):focus-visible{outline:3px solid #A8D8FF!important;outline-offset:3px!important}
+button:disabled,[aria-disabled="true"]{opacity:.58;cursor:not-allowed}
+img{max-width:100%}
+.product-grid,.category-grid,.home-index-grid{align-items:stretch}
+.product-card{min-width:0;overflow:hidden}
+.product-info,.product-info h3,.product-desc,.product-meta{overflow-wrap:anywhere}
+.product-bottom{align-items:center}
+.product-price{white-space:normal}
+.modal-backdrop,.drawer-backdrop{backdrop-filter:blur(4px)}
+.site-header{background:rgba(16,21,28,.97)!important;backdrop-filter:blur(14px)}
+.main-nav a[aria-current="page"],.main-nav a.active{background:#22364a;color:#D8EEFF!important}
+.stars{color:#B8E1FF!important}
+@media(max-width:680px){
+  .site-header{position:relative;gap:10px}
+  .main-nav{background:#111821!important}
+  .section{padding-block:36px}
+  .section-heading{gap:8px}
+  .section-heading h2{line-height:1.25}
+  .product-grid{gap:10px}
+  .product-card{border-radius:12px}
+  .product-visual{overflow:hidden}
+  .product-actions{gap:7px}
+  :is(.btn,.btn-gold,.btn-outline,.small-btn){min-height:42px}
+  .contact-actions,.footer-social-actions{display:grid;grid-template-columns:1fr}
+  .store-map-frame iframe{min-height:240px}
+}
+@media(max-width:360px){
+  .product-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .product-info{padding:8px}
+  .product-info h3{font-size:15px;line-height:1.4}
+  .product-price{font-size:13px}
+  .small-btn{font-size:11px;padding-inline:7px}
+}
