@@ -583,3 +583,12 @@
 - تم تحديث Service Worker إلى `mamlakat-al-otor-shell-v9` مع تخزين ملف الاستعادة المسبق لدعم التشغيل دون اتصال بعد زيارته.
 - أضيفت فحوصات smoke-check للتحقق من ملف الاستعادة والحفظ والنسخ الاحتياطي.
 - التحقق الحالي: اجتازت ملفات `theme-persistence.js` و`settings.js` و`app.js` و`scripts/smoke-check.mjs` فحص الصياغة؛ لم يتم تأكيد تشغيل GitHub Actions أو اختبار بصري فعلي داخل هاتف بعد هذا التعديل.
+
+
+## متابعة 2026-10-21 — تشخيص الحفظ السحابي والصور
+- أُضيف زر «اختبار الاتصال» داخل نافذة الحفظ السحابي في إعدادات الموقع فقط.
+- يفحص الاختبار وجود إعدادات Supabase الحقيقية، واتصال العميل بجدول `mamlaka_settings`، ويعرض رسالة أوضح إذا كانت قيم `supabase-config.js` تجريبية أو لم يتم تشغيل `supabase-setup.sql`.
+- تم تحديث مرجع التخزين المؤقت في `index.html` إلى `supabase-cloud.js?v=20261021-cloud6`.
+- Commit: https://github.com/mo775kk/Mamlkt-alotor/commit/6f5cdd91421cc1e6b0000ea1988ada22336f87cd
+- Commit تحديث المرجع: https://github.com/mo775kk/Mamlkt-alotor/commit/4d6d8b6eff321d93da8f4911373593b67daa910d
+- ملاحظة مهمة: الملف `supabase-config.js` ما زال يحتاج Project URL والمفتاح العام الفعليين؛ إنشاء مشروع Supabase أو ربطه وحده لا يفعّل التخزين حتى تُضبط هذه القيم وتُشغّل SQL وتُسجّل الإدارة الدخول. لم يُجرَ اختبار متصفح حي أو رفع صورة فعلي بعد.
