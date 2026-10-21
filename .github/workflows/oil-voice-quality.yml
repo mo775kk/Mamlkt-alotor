@@ -1,0 +1,38 @@
+name: Oil voice mentor quality checks
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check JavaScript syntax
+        run: |
+          node --check app.js
+          node --check oil-voice-guide.js
+      - name: Verify oil mentor markup and scripts
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+          const html = readFileSync('index.html', 'utf8');
+          const css = readFileSync('site-unified.css', 'utf8');
+          const js = readFileSync('oil-voice-guide.js', 'utf8');
+          const requiredIds = ['oilMentorPanel','oilVoiceAsk','oilVoiceTeach','oilVoiceStop','oilVoiceStatus','oilMentorAnswer','supplierOilSearch','supplierOilProducts'];
+          const missing = requiredIds.filter(id => !html.includes('id="' + id + '"'));
+          if (missing.length) throw new Error('Missing required HTML ids: ' + missing.join(', '));
+          if (!html.includes('oil-voice-guide.js')) throw new Error('Oil voice guide script is not loaded by index.html');
+          if (!css.includes('.oil-mentor-panel')) throw new Error('Oil mentor styles are missing');
+          if (!js.includes('SpeechRecognition') || !js.includes('speechSynthesis')) throw new Error('Voice recognition or speech output implementation is missing');
+          console.log('Oil voice mentor markup, styles and voice APIs verified.');
+          NODE
