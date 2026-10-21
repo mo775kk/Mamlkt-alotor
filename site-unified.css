@@ -3633,3 +3633,102 @@ body::before,body::after,.hero-image,.feature-image img{display:none!important}
   .home-index-section .home-index-copy strong{font-size:16px!important}
   .home-index-section .home-index-copy small{font-size:13px!important}
 }
+
+
+/* MAMLaka INDEX CLEANUP — remove stacked visual layers; one consistent palette */
+.home-index-section{
+  position:relative!important;
+  isolation:isolate;
+  background:transparent!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+.home-index-section:before,
+.home-index-section:after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+.home-index-section .home-index-grid{
+  gap:12px!important;
+}
+.home-index-section .home-index-card{
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:isolate;
+  background:#321b2a!important;
+  background-image:none!important;
+  border:1px solid #a98243!important;
+  border-radius:15px!important;
+  box-shadow:none!important;
+  filter:none!important;
+  transform:none;
+}
+.home-index-section .home-index-card:before,
+.home-index-section .home-index-card:after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+.home-index-section .home-index-card:hover,
+.home-index-section .home-index-card:focus-visible{
+  background:#48263b!important;
+  background-image:none!important;
+  border-color:#f0d18a!important;
+  box-shadow:0 0 0 2px rgba(240,209,138,.22)!important;
+  transform:translateY(-1px);
+}
+.home-index-section .home-index-icon{
+  background:#563149!important;
+  background-image:none!important;
+  border:1px solid #d8b36a!important;
+  border-radius:12px!important;
+  box-shadow:none!important;
+  filter:none!important;
+  color:#ffe4a8!important;
+}
+.home-index-section .home-index-card:nth-child(3n+2) .home-index-icon,
+.home-index-section .home-index-card:nth-child(3n) .home-index-icon{
+  background:#563149!important;
+  background-image:none!important;
+}
+.home-index-section .home-index-copy strong{
+  color:#fff0ce!important;
+  text-shadow:none!important;
+}
+.home-index-section .home-index-copy small{
+  color:#f0dce5!important;
+  text-shadow:none!important;
+}
+.home-index-section .home-index-count{
+  color:#ffe2a0!important;
+  text-shadow:none!important;
+}
+.home-index-section .home-index-arrow{
+  background:#402638!important;
+  background-image:none!important;
+  border:1px solid #c9a45c!important;
+  box-shadow:none!important;
+  color:#ffe4a8!important;
+}
+.home-index-section .home-index-note{
+  background:#321b2a!important;
+  background-image:none!important;
+  border:1px solid rgba(216,179,106,.65)!important;
+  box-shadow:none!important;
+  color:#f8eaf0!important;
+}
+@media(max-width:700px){
+  .home-index-section .home-index-card{
+    min-height:76px!important;
+    grid-template-columns:46px minmax(0,1fr) auto 22px!important;
+    gap:10px!important;
+    padding:11px!important;
+  }
+  .home-index-section .home-index-copy strong{font-size:15px!important;line-height:1.5!important}
+  .home-index-section .home-index-copy small{font-size:12px!important;line-height:1.55!important}
+}
