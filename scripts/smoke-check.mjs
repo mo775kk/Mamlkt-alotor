@@ -391,8 +391,8 @@ try {
   const css = read("site-unified.css");
   const pages = read("section-pages.js");
   report(html.includes('data-theme="light"') && css.includes("--bg:#0a0a0a") &&
-    css.includes("--finish-rose:#D4AF37") && css.includes("--gold2:#f1d77a"),
-    "Default storefront palette is royal black and gold with readable contrast");
+    css.includes("--finish-rose:#4D9DE0") && css.includes("--gold2:#A8D8FF"),
+    "Default storefront palette removes gold and uses readable cool-blue accents");
   report(/section-pages\.js\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
     html.includes('id="modalBackdrop"'),
