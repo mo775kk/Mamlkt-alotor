@@ -3572,3 +3572,64 @@ body::before,body::after,.hero-image,.feature-image img{display:none!important}
 .site-header,.site-footer,.admin-panel,.admin-card,.admin-page,.settings-panel,.product-card,.category-card,.modal-card,.drawer-panel{
   border-color:var(--line,#d8bd68);
 }
+
+
+/* Readability pass: home directory/index typography and contrast */
+.home-index-section{
+  color:#fff8f2!important;
+  background:linear-gradient(135deg,#260719 0%,#43132f 58%,#2a0c21 100%)!important;
+  border:1px solid #e8bd67!important;
+}
+.home-index-section :is(h1,h2,h3,.home-index-title,.home-index-heading){
+  color:#ffe8ad!important;
+  font-weight:800!important;
+  text-shadow:0 2px 3px rgba(0,0,0,.55)!important;
+}
+.home-index-section .home-index-card{
+  color:#fff9f5!important;
+  background:linear-gradient(135deg,#40112e 0%,#2a0b20 100%)!important;
+  border:1px solid #cda45c!important;
+  box-shadow:0 5px 15px rgba(0,0,0,.22)!important;
+}
+.home-index-section .home-index-copy strong{
+  color:#fff2cf!important;
+  font-size:clamp(16px,1.3vw,19px)!important;
+  font-weight:800!important;
+  line-height:1.65!important;
+  text-shadow:0 1px 2px rgba(0,0,0,.55)!important;
+}
+.home-index-section .home-index-copy small{
+  color:#ffe2ed!important;
+  font-size:clamp(13px,1vw,15px)!important;
+  font-weight:600!important;
+  line-height:1.7!important;
+}
+.home-index-section .home-index-count{
+  color:#ffe3a0!important;
+  font-size:15px!important;
+  font-weight:800!important;
+}
+.home-index-section .home-index-arrow{
+  color:#fff0c5!important;
+  border-color:#e8bd67!important;
+}
+.home-index-section .home-index-note{
+  color:#fff7fb!important;
+  font-size:14px!important;
+  line-height:1.8!important;
+  background:#210817!important;
+  border-color:#cda45c!important;
+}
+.home-index-section .home-index-icon{
+  color:#fff!important;
+  text-shadow:0 1px 3px rgba(0,0,0,.55)!important;
+  border-color:#ffe0a0!important;
+}
+.home-index-section a:focus-visible,.home-index-section button:focus-visible{
+  outline:3px solid #fff0b8!important;
+  outline-offset:3px!important;
+}
+@media(max-width:560px){
+  .home-index-section .home-index-copy strong{font-size:16px!important}
+  .home-index-section .home-index-copy small{font-size:13px!important}
+}
