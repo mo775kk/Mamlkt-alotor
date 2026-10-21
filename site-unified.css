@@ -3242,3 +3242,11 @@ input,select,textarea{font-size:16px}
 .product-visual img{object-fit:contain;max-width:100%;max-height:100%;touch-action:manipulation}
 .product-card .product-info{overflow-wrap:anywhere}
 @media(max-width:560px){.product-visual{min-height:130px}.product-visual .placeholder-bottle{transform:scale(.92)!important}.category-icon-wrap .royal-category-icon{width:32px;height:32px}}
+
+
+/* Narrow-phone fix: keep the selected volume and its price visible together. */
+@media(max-width:360px){
+  .compact-size-row{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:6px!important;width:100%!important;min-width:0!important}
+  .compact-size-row .card-size-select{min-width:0!important;width:100%!important;font-size:12px!important}
+  .compact-size-row .compact-selected-price{display:inline!important;visibility:visible!important;opacity:1!important;white-space:nowrap!important;font-size:12px!important;max-width:none!important}
+}
