@@ -2,7 +2,7 @@
 (() => {
 'use strict';
 const cfg=window.MAMLAKA_SUPABASE_CONFIG||{};
-const validKey=k=>/^[a-zA-Z0-9:_-]{1,180}$/.test(k)&&!/^(cart|wishlist|mamlaka_cart|mamlaka_wishlist|.*session.*|.*token.*|.*password.*|.*pin.*|.*secret.*|.*credential.*)$/i.test(k)&&/mamlak|mamlaka|catalog|product|theme|visual|background|setting|price|category|taxonomy|supplier|oil|blend|bottle|hero|banner|image/i.test(k);
+const validKey=k=>/^[a-zA-Z0-9:_-]{1,180}$/.test(k)&&!/^(?:cart|wishlist|mamlaka[_-]?(?:cart|wishlist|favorites?)(?:[_-].*)?|.*session.*|.*token.*|.*password.*|.*pin.*|.*secret.*|.*credential.*)$/i.test(k)&&/mamlak|mamlaka|catalog|product|theme|visual|background|setting|price|category|taxonomy|supplier|oil|blend|bottle|hero|banner|image/i.test(k);
 const s={client:null,ready:false,busy:false,timers:new Map(),pending:new Map()};
 const el=(tag,attrs={},txt='')=>{const n=document.createElement(tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));if(txt)n.textContent=txt;return n};
 function status(msg,bad=false){const n=document.getElementById('mamlakaCloudStatusText');if(n){n.textContent=msg;n.style.color=bad?'#b42318':''}const b=document.getElementById('mamlakaCloudBadge');if(b)b.title=msg}
