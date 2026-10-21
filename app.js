@@ -206,7 +206,7 @@
   function retailSizePrice(size){const key=String(size);try{const cfg=JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")||"null");const item=Array.isArray(cfg?.retailBlendPrices)?cfg.retailBlendPrices.find(x=>String(x.size||"").match(/[0-9]+/)?.[0]===key):null;if(item&&Number.isFinite(Number(item.price))&&Number(item.price)>=50)return Number(item.price);}catch{}return sizes[key]??null;}
   function currentPrice(p,size) { if(!p || p.supplierCatalogItem || p.supplierSku) return null; if(p.productType === "blend" || p.productType === "oil" || p.customBlend === true) return retailSizePrice(size); const specific=p.prices && p.prices[String(size)] != null ? Number(p.prices[String(size)]) : null; if(Number.isFinite(specific) && specific>0) return Math.max(50,specific); const base=p.price != null ? Number(p.price) : null; if(Number.isFinite(base) && base>0) return Math.max(50,base); return null; }
   function imageMarkup(p){
-    if(p.image&&/^(https?:|assets\/|data:image\/)/i.test(p.image))return '<img class="product-photo" src="'+escapeHTML(p.image)+'" alt="صورة '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'" loading="lazy" onerror="this.remove()">';
+    if(p.image&&/^(https?:|assets\/|data:image\/)/i.test(p.image))return '<img class="product-photo" src="'+escapeHTML(p.image)+'" alt="صورة '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'" loading="lazy" decoding="async">';
     const family=displayFamily(p.family||"",p.nameAr||p.nameEn||"");
     const key=String((p.nameEn||"")+" "+(p.nameAr||"")+" "+(p.family||"")).toLowerCase();
     const palettes={"حمضي ومنعش":["#d8b85d","#fff1b5"],"زهري ووردي":["#b96d8c","#f7ccdc"],"مسكي ونظيف":["#a9c9c0","#edf7f1"],"حلو وفانيليا":["#c79a68","#f8e3bd"],"عنبر وشرقي":["#a86e3e","#f0c078"],"عود وخشبي":["#75513e","#d5a878"],"خشبي":["#607b68","#c9ddc2"],"بحري":["#4f8ca7","#c5e9f4"],"فاكهي":["#bd7953","#ffd1ac"]};
@@ -258,7 +258,7 @@
       (p.nameEn?'<div class="product-en" dir="ltr">'+escapeHTML(p.nameEn)+'</div>':"")+
       '<div class="product-meta compact-product-meta">'+escapeHTML(shortMeta)+'</div>'+
       priceControl+
-      '<div class="product-actions"><button class="small-btn" data-action="details" data-id="'+escapeHTML(p.id)+'">التفاصيل</button><button class="small-btn primary '+(selected?"is-selected":"")+'" data-action="add" data-id="'+escapeHTML(p.id)+'" '+(canBuy||isSupplierOil?"":"disabled")+' aria-pressed="'+String(selected)+'" title="'+escapeHTML(addTitle)+'">'+addLabel+'</button></div></div></article>';
+      '<div class="product-actions"><button type="button" class="small-btn details-btn" data-action="details" data-id="'+escapeHTML(p.id)+'" aria-label="عرض تفاصيل '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'" title="عرض تفاصيل العطر">ⓘ التفاصيل</button><button type="button" class="small-btn primary '+(selected?"is-selected":"")+'" data-action="add" data-id="'+escapeHTML(p.id)+'" '+(canBuy||isSupplierOil?"":"disabled")+' aria-pressed="'+String(selected)+'" title="'+escapeHTML(addTitle)+'">'+addLabel+'</button></div></div></article>';
   }
   function homeShowcaseCard(p,kind){
     const id=escapeHTML(p.id),name=escapeHTML(p.nameAr||p.nameEn||"منتج مسجل"),english=escapeHTML(p.nameEn||"");
