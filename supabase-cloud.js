@@ -11,21 +11,21 @@ async function save(k,raw){if(!s.client||!s.ready||!validKey(k))return;let value
 let r=await s.client.from('mamlaka_settings').upsert({key:k,value:value===null?{__deleted:true}:value,updated_at:new Date().toISOString()},{onConflict:'key'});if(r.error)throw r.error;
 if(k==='mamlaka_products'&&Array.isArray(value)){const rows=value.filter(Boolean).map((p,i)=>({id:String(p.id??((p.name||'product')+'-'+i)),data:p,updated_at:new Date().toISOString()}));if(rows.length){r=await s.client.from('mamlaka_products').upsert(rows,{onConflict:'id'});if(r.error)throw r.error}}
 }
+async function flushPending(){if(!s.client||!s.ready)return;for(const timer of s.timers.values())clearTimeout(timer);s.timers.clear();const batch=[...s.pending.entries()];s.pending.clear();for(const [key,raw] of batch)await save(key,raw)}
 async function sync(){if(!s.client||s.busy)return;s.busy=true;status('جارٍ مزامنة البيانات…');try{
 if(s.ready){const cleanup=await s.client.from('mamlaka_settings').delete().eq('key','mamlaka_admin_pin_v1');if(cleanup.error)throw cleanup.error;const privateDataCleanup=await s.client.from('mamlaka_settings').delete().in('key',['cart','wishlist','mamlaka_cart','mamlaka_cart_v1','mamlaka_wishlist','mamlaka_wishlist_v1','mamlaka_favorites_v1']);if(privateDataCleanup.error)throw privateDataCleanup.error}
 const r=await s.client.from('mamlaka_settings').select('key,value,updated_at');if(r.error)throw r.error;
 const remote=new Map((r.data||[]).filter(row=>validKey(row.key)).map(row=>[row.key,row]));
-const localKeys=new Set();for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&validKey(k))localKeys.add(k)}
-// Keep local edits when the same key exists on this device; cloud fills only missing keys.
-// This prevents an older cloud snapshot from silently replacing the user's latest local edits on re-entry.
-for(const [key,row] of remote){if(localKeys.has(key))continue;try{if(row.value?.__deleted===true)localStorage.removeItem(key);else localStorage.setItem(key,JSON.stringify(row.value));}catch(e){console.warn('Cloud restore failed',key,e)}}
+const localSnapshot=new Map();for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&validKey(k))localSnapshot.set(k,localStorage.getItem(k))}
+for(const [key,row] of remote){if(localSnapshot.has(key))continue;try{if(row.value?.__deleted===true)localStorage.removeItem(key);else localStorage.setItem(key,JSON.stringify(row.value));}catch(e){console.warn('Cloud restore failed',key,e)}}
 document.dispatchEvent(new CustomEvent('mamlaka:cloud-ready'));document.dispatchEvent(new CustomEvent('mamlaka:products-updated'));
 if(s.ready){
-const uploads=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&validKey(k)){const row=remote.get(k);if(!row||JSON.stringify(row.value)!==localStorage.getItem(k))uploads.push([k,localStorage.getItem(k)]);}}
-for(const [k,v] of uploads)await save(k,v);
-status('اكتملت المزامنة ✓ — حُفظت تعديلات هذا الجهاز');}
-else status('تم تحميل البيانات السحابية للعرض ✓');
+for(const [k,raw] of localSnapshot){const row=remote.get(k);let localValue;try{localValue=JSON.parse(raw)}catch{localValue=raw}if(!row||JSON.stringify(row.value)!==JSON.stringify(localValue))await save(k,raw)}
+await flushPending();
+status('اكتملت المزامنة السحابية ✓ — تم إرسال التعديلات المحلية والتحقق من الكتابة');}
+else status('تم تحميل البيانات السحابية للعرض؛ سجّل دخول الإدارة لتفعيل الحفظ السحابي');
 }catch(e){fail(e)}finally{s.busy=false}}
+
 function queue(k,v){if(!s.client||!s.ready||!validKey(k))return;s.pending.set(k,v);const previous=s.timers.get(k);if(previous)clearTimeout(previous);const timer=setTimeout(async()=>{s.timers.delete(k);const value=s.pending.get(k);s.pending.delete(k);try{await save(k,value);status('تم حفظ التعديلات سحابيًا ✓')}catch(e){fail(e)}},700);s.timers.set(k,timer)}
 async function authorizeAdmin(user){if(!user||!s.client)throw Error('تعذر التحقق من حساب الإدارة');const r=await s.client.from('admin_users').select('user_id').eq('user_id',user.id).maybeSingle();if(r.error)throw Error('تعذر التحقق من صلاحية الإدارة: '+r.error.message);if(!r.data){s.ready=false;throw Error('تم تسجيل الدخول، لكن هذا الحساب غير مسجل كمدير في admin_users. أضف الحساب المصرح به من لوحة Supabase أولًا.')}return user}
 async function login(email,password){if(!s.client)throw Error('أدخل Project URL والمفتاح العام في supabase-config.js');const r=await s.client.auth.signInWithPassword({email,password});if(r.error)throw r.error;try{await authorizeAdmin(r.data.user)}catch(e){await s.client.auth.signOut();throw e}s.ready=true;await sync();return r.data.user}
