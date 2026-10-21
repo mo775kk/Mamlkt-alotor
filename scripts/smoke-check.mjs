@@ -354,7 +354,7 @@ try {
   report(narrowPhoneRule.includes(".compact-selected-price{display:inline!important") &&
     narrowPhoneRule.includes("grid-template-columns:minmax(0,1fr) auto"),
     "Selected size and price remain visible together on very narrow phones");
-  report(/site-unified\\.css\\?v=[^"]+/.test(html),
+  report(/site-unified\.css\?v=[^"]+/.test(html),
     "Royal bright release stylesheet is linked through a fresh cache-buster");
 } catch (e) {
   report(false, "Unable to validate narrow-phone size/price visibility: " + e.message);
@@ -367,7 +367,7 @@ try {
   report(html.includes('data-theme="light"') && css.includes("--bg:#f7f1f3") &&
     css.includes("--finish-rose:#b65d7a") && css.includes("--gold2:#f0d67e"),
     "Default storefront palette is bright ivory/rose with readable gold accents");
-  report(/section-pages\\.js\\?v=[^"]+/.test(html) &&
+  report(/section-pages\.js\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
     html.includes('id="modalBackdrop"'),
     "Standalone section navigation, full-page cart and product details remain wired");
@@ -385,7 +385,7 @@ try {
     settings.includes('.search-box,.toolbar select,.blend-step select') &&
     settings.includes('write(THEME_KEY,x)'),
     "Theme palette applies across storefront, header/footer, cards, inputs and persists the full color object");
-  report(/settings\\.js\\?v=[^"]+/.test(html),
+  report(/settings\.js\?v=[^"]+/.test(html),
     "Full-site theme fix is loaded with a fresh settings.js cache-buster");
 } catch (e) {
   report(false, "Unable to validate full-site theme application: " + e.message);
@@ -424,9 +424,9 @@ try {
     pages.includes("scrollPositions.set(activeId, window.scrollY || 0)") &&
     pages.includes('window.scrollTo({top:y,behavior:"auto"})'),
     "Section back navigation restores the previous section's scroll position");
-  report(/app\\.js\\?v=[^"]+/.test(html) &&
-    /site-unified\\.css\\?v=[^"]+/.test(html) &&
-    /section-pages\\.js\\?v=[^"]+/.test(html),
+  report(/app\.js\?v=[^"]+/.test(html) &&
+    /site-unified\.css\?v=[^"]+/.test(html) &&
+    /section-pages\.js\?v=[^"]+/.test(html),
     "Oil cards, layout and section-history fixes use fresh cache-busters");
   const oilData = JSON.parse(read("oil-catalog-public.json"));
   report(Array.isArray(oilData.products) && oilData.products.length === 589 &&
