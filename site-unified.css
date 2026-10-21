@@ -4542,3 +4542,40 @@ html[data-theme="dark"] .product-modal h3{
   .section-page-back{grid-column:1;grid-row:2}
   .section-page-mark{grid-column:2;grid-row:2}
 }
+
+/* VISIBILITY HOTFIX 2026-10-21 — unmistakable card contrast and anti-cache refresh */
+:root{--bg:#fff8fa;--panel:#fffdfd;--panel2:#fff0f5;--text:#30242d;--heading:#171217;--line:#dfc4d0}
+body{background:#fff8fa!important;color:#30242d!important}
+.site-header{background:#fffdfd!important;border-bottom:3px solid #21171f!important}
+.product-card,.category-card,.home-index-card,.home-showcase-block{
+  background:#fff!important;border:1px solid #b88932!important;border-radius:12px!important;
+  box-shadow:none!important;background-image:none!important;overflow:hidden!important
+}
+.product-visual{background:#fff0f5!important;border-bottom:2px solid #dfc4d0!important}
+.product-info,.product-info.compact-product-info{background:#fff!important;color:#30242d!important}
+.product-card h3,.product-info h3{color:#171217!important;font-weight:800!important}
+.product-actions button[data-action="details"],.product-actions .details-btn{
+  background:#171217!important;color:#fff!important;border:2px solid #d4af37!important;
+  min-height:44px!important;font-size:14px!important;font-weight:900!important
+}
+.product-actions button[data-action="add"]{
+  background:#f1d77a!important;color:#171217!important;border:2px solid #9b7420!important;
+  min-height:44px!important;font-size:14px!important;font-weight:900!important
+}
+.product-badge{background:#f7dce8!important;color:#21171f!important;border:1px solid #b88932!important}
+.product-visual img{object-fit:contain!important;object-position:center!important}
+@media(max-width:650px){
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  .product-actions{grid-template-columns:1fr!important}
+  .product-actions button[data-action="details"],.product-actions button[data-action="add"]{width:100%!important}
+}
+html[data-theme="dark"] .product-card,
+html[data-theme="dark"] .category-card,
+html[data-theme="dark"] .home-index-card,
+html[data-theme="dark"] .home-showcase-block{
+  background:#30212c!important;color:#fff0f5!important;border-color:#e6c778!important
+}
+html[data-theme="dark"] .product-info,
+html[data-theme="dark"] .product-info.compact-product-info{background:#30212c!important;color:#fff0f5!important}
+html[data-theme="dark"] .product-card h3,
+html[data-theme="dark"] .product-info h3{color:#ffe4a8!important}
