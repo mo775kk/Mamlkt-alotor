@@ -3529,3 +3529,22 @@ input,select,textarea{font-size:16px}
  .home-index-section .home-index-copy strong{font-size:14px!important;color:#fff0ce!important}
  .home-index-section .home-index-copy small{font-size:11px!important;color:#f0d5e1!important}
 }
+
+
+/* User request: remove decorative/background photos across the entire storefront.
+   Product images and uploaded product thumbnails remain visible. */
+:root{--page-image:none!important}
+html,body{
+  background-image:none!important;
+  background-color:#210b1b!important;
+  background-attachment:scroll!important;
+}
+body{background:linear-gradient(145deg,#210b1b 0%,#351027 48%,#190b18 100%)!important}
+.hero{background:#210b1b!important}
+.hero-image{display:none!important}
+.hero-shade{background:radial-gradient(ellipse at 80% 10%,rgba(190,137,79,.14),transparent 42%),linear-gradient(135deg,#351027,#210b1b 72%)!important}
+.feature-banner{
+  background:radial-gradient(ellipse at 85% 20%,rgba(205,158,84,.13),transparent 40%),linear-gradient(125deg,#3b122b,#210b1b 76%)!important;
+}
+.feature-image img{display:none!important}
+.feature-image{background:linear-gradient(145deg,#351027,#1b0b19)!important}
