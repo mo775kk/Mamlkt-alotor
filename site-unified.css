@@ -3925,3 +3925,59 @@ button:focus-visible,a:focus-visible{
 @media(prefers-reduced-motion:reduce){
   *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
+
+
+/* MAMLKAT AL-OTOR — flatten stacked decorative layers site-wide */
+body,
+#app, main, .site-main, .page-content,
+.section, .section-inner, .section-heading,
+.hero, .hero-inner, .hero-content, .hero-copy,
+.home-index-section, .home-showcase-section, .category-section,
+.contact-section, .feature-banner, .split-feature, .trust-strip,
+.category-card, .product-card, .product-visual, .product-info,
+.home-index-card, .home-showcase-block, .contact-card, .gift-art,
+.advisor-box, .blend-panel, .blend-summary, .settings-panel,
+.admin-panel, .admin-card, .admin-section, .admin-page,
+.drawer, .drawer-head, .drawer-bottom, .product-modal,
+.modal-product, .toast, .site-header, .site-footer {
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Remove ornamental overlays that create stacked panels, not content/icons. */
+body::before, body::after,
+main::before, main::after,
+.site-header::before, .site-header::after,
+.site-footer::before, .site-footer::after,
+.hero::before, .hero::after,
+.hero-shade::before, .hero-shade::after,
+.section::before, .section::after,
+.section-inner::before, .section-inner::after,
+.home-index-section::before, .home-index-section::after,
+.category-section::before, .category-section::after,
+.category-card::before, .category-card::after,
+.product-card::before, .product-card::after,
+.home-index-card::before, .home-index-card::after,
+.home-showcase-block::before, .home-showcase-block::after,
+.contact-card::before, .contact-card::after,
+.settings-panel::before, .settings-panel::after,
+.admin-panel::before, .admin-panel::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* One clear surface per card/panel; keep borders and spacing readable. */
+.category-card, .product-card, .home-index-card,
+.home-showcase-block, .contact-card, .gift-art,
+.advisor-box, .blend-panel, .settings-panel,
+.admin-panel, .admin-card, .admin-section, .admin-page,
+.drawer, .product-modal, .modal-product {
+  border-width: 1px !important;
+  border-style: solid !important;
+  transform: none;
+}
