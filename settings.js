@@ -14,7 +14,7 @@
   const adminReadyProducts=()=>{const merged=new Map(baseReadyProducts.map(p=>[String(p.id),p]));products().forEach(p=>merged.set(String(p.id),{...(merged.get(String(p.id))||{}),...p}));return [...merged.values()];};
   const saveProducts=p=>{const key="mamlaka_custom_products_v1",raw=JSON.stringify(p);try{localStorage.setItem(key,raw);if(localStorage.getItem(key)!==raw)throw new Error("لم يتم تأكيد حفظ المنتجات");return true;}catch(error){console.error("Mamlaka product/image save failed",error);throw new Error("تعذر حفظ المنتج أو صورته: مساحة التخزين المحلية ممتلئة أو غير متاحة. استخدم صورة أصغر أو رابط صورة مباشرًا، ثم صدّر نسخة JSON احتياطية.");}};
   const themePresets={
-    "goldBlack":{bg:"#E8D08A",panel:"#FFFDF5",panel2:"#F3E4B5",card:"#FFFDF5",field:"#FFFFFF",gold:"#946D16",gold2:"#D4AF37",text:"#30230D",heading:"#3A2808",muted:"#65552F",line:"#D8BD68",header:"#D4AF37",footer:"#C69A22",button:"#B88918",buttonText:"#FFFFFF",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.12,visualStyle:"classic"},
+    "goldBlack":{bg:"#0A0A0A",panel:"#14120E",panel2:"#1B1811",card:"#14120E",field:"#0F0E0B",gold:"#D4AF37",gold2:"#F1D77A",text:"#F8F5EC",heading:"#F1D77A",muted:"#D0C6B3",line:"#6B5925",header:"#090807",footer:"#090807",button:"#D4AF37",buttonText:"#171109",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.46,visualStyle:"classic"},
     "emeraldCream":{bg:"#F3F8F3",panel:"#FFFFFF",panel2:"#E3EDE4",card:"#FFFFFF",field:"#FFFFFF",gold:"#936D25",gold2:"#D6B86D",text:"#18352D",heading:"#18352D",muted:"#526B62",line:"#C9DCCF",header:"#18352D",footer:"#18352D",button:"#D6B86D",buttonText:"#18352D",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.16,visualStyle:"ios"},
     "blueSilver":{bg:"#F2F6FB",panel:"#FFFFFF",panel2:"#E2EAF4",card:"#FFFFFF",field:"#FFFFFF",gold:"#42658A",gold2:"#AFC5DE",text:"#1C2D42",heading:"#1C2D42",muted:"#52657B",line:"#C9D7E7",header:"#1C2D42",footer:"#1C2D42",button:"#AFC5DE",buttonText:"#1C2D42",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.16,visualStyle:"windows"},
     "champagne":{bg:"#FBF6E9",panel:"#FFFFFF",panel2:"#F2E8D1",card:"#FFFFFF",field:"#FFFEFA",gold:"#9A762C",gold2:"#E0C778",text:"#342B1D",heading:"#60451B",muted:"#74664D",line:"#E6D7B1",header:"#F0E2BC",footer:"#E9D8A9",button:"#C5A24B",buttonText:"#251D10",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.10,visualStyle:"classic"},
@@ -37,8 +37,15 @@
     const h=String(value||"").replace("#","");
     if(!/^(?:[0-9a-f]{3}|[0-9a-f]{6})$/i.test(h))return false;
     const full=h.length===3?h.split("").map(x=>x+x).join(""):h;
-    const r=parseInt(full.slice(0,2),16),g=parseInt(full.slice(2,4),16),b=parseInt(full.slice(4,6),16);
-    return r>=105 && b>=75 && r>g*1.22 && b>g*1.08 && Math.abs(r-b)<115;
+    const rgb=[0,2,4].map(i=>parseInt(full.slice(i,i+2),16)/255),max=Math.max(...rgb),min=Math.min(...rgb),delta=max-min;
+    if(delta<0.12||max===0)return false;
+    let hue=0;
+    if(max===rgb[0])hue=60*(((rgb[1]-rgb[2])/delta)%6);
+    else if(max===rgb[1])hue=60*((rgb[2]-rgb[0])/delta+2);
+    else hue=60*((rgb[0]-rgb[1])/delta+4);
+    if(hue<0)hue+=360;
+    const light=(max+min)/2,sat=delta/(1-Math.abs(2*light-1));
+    return sat>0.16 && light>0.16 && (hue>=325 || hue<=8);
   }
   function completeTheme(input={}){
     const raw=input&&typeof input==="object"?input:{},v={indexBg:"#0A0A0A",indexCard:"#15120B",indexIcon:"#D4AF37",indexBorder:"#F1D77A",...themePresets.goldBlack,...raw},dark=colorLum(v.bg)<.22; Object.keys(v).forEach(key=>{if(isPinkTone(v[key]))v[key]=({bg:"#0A0A0A",panel:"#14120E",panel2:"#1B1811",card:"#14120E",field:"#0F0E0B",gold:"#D4AF37",gold2:"#F1D77A",text:"#F8F5EC",heading:"#F1D77A",muted:"#D0C6B3",line:"#6B5925",header:"#090807",footer:"#090807",button:"#D4AF37",buttonText:"#171109",indexBg:"#0A0A0A",indexCard:"#15120B",indexIcon:"#D4AF37",indexBorder:"#F1D77A"})[key]||"#D4AF37"});
