@@ -4904,3 +4904,8 @@ html[data-theme="light"] .oil-mentor-panel{background:linear-gradient(135deg,#ff
 .product-card .product-desc,.product-card .product-meta,.product-card .muted,.home-showcase-card p,.suggestion p,.suggestion small{opacity:1}
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #d4af37!important;outline-offset:3px!important}
 @media(max-width:650px){.oil-mentor-heading{gap:11px}.oil-mentor-emblem{flex-basis:46px;width:46px;height:46px;font-size:26px}.oil-mentor-actions{display:grid;grid-template-columns:1fr}.oil-mentor-actions .btn{width:100%}.oil-mentor-answer,.oil-voice-status{font-size:14px}}
+
+.oil-mentor-sources{margin:12px 0 0;color:#493742;font-size:13px;line-height:1.8}
+.oil-mentor-sources a{color:#573047;text-decoration:underline;text-underline-offset:3px;font-weight:800}
+html[data-theme="dark"] .oil-mentor-sources{color:#f3dce7}
+html[data-theme="dark"] .oil-mentor-sources a{color:#f1d77a}
