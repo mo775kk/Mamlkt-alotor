@@ -151,6 +151,21 @@ try {
   report(false, "Unable to validate null-safe event bindings: " + e.message);
 }
 
+try {
+  const cloud = read("supabase-cloud.js");
+  const config = read("supabase-config.js");
+  report(cloud.includes("mamlaka[_-]?(?:cart|wishlist|favorites?)(?:[_-].*)?") &&
+    cloud.includes(".*session.*") && cloud.includes(".*password.*") &&
+    cloud.includes(".*secret.*") && cloud.includes(".*credential.*"),
+    "Cloud sync excludes cart, wishlist/favorites, sessions and sensitive credential keys");
+  report(/url:\s*"https:\/\/[a-z0-9-]+\.supabase\.co"/i.test(config) &&
+    /anonKey:\s*"(?:sb_publishable_|eyJ)[^"]+"/.test(config) &&
+    !/service_role|sb_secret_/i.test(config),
+    "Supabase browser config uses a public key and contains no service-role/secret key");
+} catch (e) {
+  report(false, "Unable to validate cloud persistence security: " + e.message);
+}
+
 const jsFiles = ["app.js", "ai-service.js", "settings.js", "enhancements.js", "supplier-catalog.js", "catalog-editor.js", "site-upgrades.js", "royal-gift-planner.js", "inventory-accounting.js", "royal-interactions.js", "royal-finish.js", "section-folds.js", "blending-atelier.js"];
 for (const file of jsFiles) {
   try {
