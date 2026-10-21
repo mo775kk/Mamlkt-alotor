@@ -3368,3 +3368,78 @@ input,select,textarea{font-size:16px}
 @media(prefers-reduced-motion:reduce){
   .home-index-section .home-index-card,.home-index-section .home-index-icon{transition:none!important}
 }
+
+
+/* === Reference-matched royal burgundy / rose-gold directory === */
+.home-index-section{
+  padding-block:clamp(34px,4.5vw,62px)!important;
+}
+.home-index-section:before{
+  inset:8px -3vw!important;
+  border:1px solid rgba(255,210,135,.58)!important;
+  border-radius:24px!important;
+  background:
+    radial-gradient(ellipse at 12% 0%,rgba(255,120,177,.25),transparent 38%),
+    radial-gradient(ellipse at 92% 100%,rgba(255,194,95,.19),transparent 36%),
+    linear-gradient(145deg,rgba(49,5,28,.97),rgba(83,13,46,.97) 46%,rgba(31,5,22,.98))!important;
+  box-shadow:0 16px 42px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,224,170,.16)!important;
+}
+.home-index-section .section-heading h2{color:#ffe2a0!important;text-shadow:0 2px 12px rgba(255,112,170,.22)!important}
+.home-index-section .section-heading .eyebrow{color:#f7c4d8!important}
+.home-index-section .section-heading>p{color:#f1d8e2!important}
+.home-index-section .home-index-card{
+  color:#fff2e3!important;
+  border:1px solid rgba(244,194,108,.82)!important;
+  border-radius:15px!important;
+  background:
+    linear-gradient(125deg,rgba(255,255,255,.055),transparent 44%),
+    linear-gradient(145deg,#4d102f 0%,#260819 58%,#15050f 100%)!important;
+  box-shadow:inset 0 1px 0 rgba(255,227,181,.16),0 8px 20px rgba(0,0,0,.26)!important;
+}
+.home-index-section .home-index-card:before{
+  border-color:rgba(255,211,138,.19)!important;
+  box-shadow:0 0 0 12px rgba(238,102,159,.06),0 0 0 26px rgba(212,175,55,.035)!important;
+}
+.home-index-section .home-index-card:after{
+  background:linear-gradient(180deg,#ff9bc9,#f5d27b)!important;
+}
+.home-index-section .home-index-card:hover,
+.home-index-section .home-index-card:focus-visible{
+  border-color:#ffe1a0!important;
+  background:linear-gradient(135deg,#68183e,#351027 62%,#1b0714)!important;
+  box-shadow:inset 0 1px 0 rgba(255,230,181,.25),0 12px 28px rgba(0,0,0,.35),0 0 18px rgba(243,176,105,.13)!important;
+}
+.home-index-section .home-index-icon{
+  width:54px!important;height:54px!important;flex-basis:54px!important;
+  border-radius:14px!important;
+  border:1px solid rgba(255,215,139,.92)!important;
+  color:#ffe4a3!important;
+  background:
+    radial-gradient(circle at 28% 18%,rgba(255,255,255,.28),transparent 38%),
+    linear-gradient(145deg,#a93b68 0%,#69203f 44%,#2a0b1c 100%)!important;
+  box-shadow:inset 0 1px 0 rgba(255,245,220,.35),inset 0 -7px 15px rgba(0,0,0,.23),0 4px 12px rgba(0,0,0,.3)!important;
+  text-shadow:0 1px 8px rgba(255,202,120,.35)!important;
+}
+.home-index-section .home-index-card:nth-child(3n+2) .home-index-icon{
+  background:radial-gradient(circle at 28% 18%,rgba(255,255,255,.3),transparent 38%),linear-gradient(145deg,#d18b55,#8e3a53 54%,#351025)!important;
+}
+.home-index-section .home-index-card:nth-child(3n) .home-index-icon{
+  background:radial-gradient(circle at 28% 18%,rgba(255,255,255,.3),transparent 38%),linear-gradient(145deg,#d8b96e,#a44b70 52%,#3b0d28)!important;
+}
+.home-index-section .home-index-copy strong{color:#fff0d7!important}
+.home-index-section .home-index-copy small{color:#e8c7d5!important}
+.home-index-section .home-index-count{color:#ffe09a!important}
+.home-index-section .home-index-arrow{
+  border-color:rgba(255,214,133,.65)!important;
+  color:#ffe5a6!important;
+  background:linear-gradient(145deg,rgba(255,217,142,.2),rgba(128,30,68,.45))!important;
+}
+.home-index-section .home-index-note{
+  color:#f1d4df!important;
+  border-color:rgba(255,207,135,.35)!important;
+  background:rgba(17,3,12,.42)!important;
+}
+@media(max-width:640px){
+ .home-index-section .home-index-card{grid-template-columns:46px minmax(0,1fr) auto 18px!important}
+ .home-index-section .home-index-icon{width:46px!important;height:46px!important;flex-basis:46px!important}
+}
