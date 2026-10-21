@@ -1,4 +1,4 @@
-name: Oil voice mentor quality checks
+name: Mamlakat Al-Otor quality checks
 on:
   push:
     branches: [main, master]
@@ -17,22 +17,44 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Check JavaScript syntax
+      - name: Check every local JavaScript file loaded by the page
         run: |
-          node --check app.js
-          node --check oil-voice-guide.js
-      - name: Verify oil mentor markup and scripts
+          node --input-type=module <<'NODE'
+          import { readFileSync, existsSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const html = readFileSync('index.html', 'utf8');
+          const scripts = [...html.matchAll(/<script\\b[^>]*\\bsrc=["']([^"']+)["']/g)]
+            .map(match => match[1].split('?')[0])
+            .filter(path => !/^https?:\\/\\//i.test(path));
+          const unique = [...new Set(scripts)];
+          if (!unique.length) throw new Error('No local scripts found in index.html');
+          for (const path of unique) {
+            if (!existsSync(path)) throw new Error('Missing local script referenced by index.html: ' + path);
+            execFileSync('node', ['--check', path], { stdio: 'inherit' });
+          }
+          console.log('JavaScript syntax verified for ' + unique.length + ' local scripts.');
+          NODE
+      - name: Check page structure, theme, manifest and oil mentor
         run: |
           node --input-type=module <<'NODE'
           import { readFileSync } from 'node:fs';
           const html = readFileSync('index.html', 'utf8');
           const css = readFileSync('site-unified.css', 'utf8');
           const js = readFileSync('oil-voice-guide.js', 'utf8');
+          const settings = readFileSync('settings.js', 'utf8');
+          const manifest = JSON.parse(readFileSync('manifest.webmanifest', 'utf8'));
+          const count = re => (html.match(re) || []).length;
+          if (count(/<head\\b/gi) !== 1 || count(/<\\/head>/gi) !== 1) throw new Error('HTML head structure is broken');
+          if (count(/<body\\b/gi) !== 1 || count(/<\\/body>/gi) !== 1) throw new Error('HTML body structure is broken');
+          if (count(/<script\\b/gi) !== count(/<\\/script>/gi)) throw new Error('HTML script tags are unbalanced');
+          if (html.includes('mentor2"scrollProgress')) throw new Error('Broken service-worker line detected');
+          if (!html.includes('site-unified.css?v=20261021-royal-blackgold1')) throw new Error('Updated stylesheet is not referenced');
+          if (!css.includes('ROYAL BLACK & GOLD') || !css.includes('background-image:none!important')) throw new Error('Unified black/gold finish is missing');
           const requiredIds = ['oilMentorPanel','oilVoiceAsk','oilVoiceTeach','oilVoiceStop','oilVoiceStatus','oilMentorAnswer','supplierOilSearch','supplierOilProducts'];
           const missing = requiredIds.filter(id => !html.includes('id="' + id + '"'));
-          if (missing.length) throw new Error('Missing required HTML ids: ' + missing.join(', '));
-          if (!html.includes('oil-voice-guide.js')) throw new Error('Oil voice guide script is not loaded by index.html');
-          if (!css.includes('.oil-mentor-panel')) throw new Error('Oil mentor styles are missing');
-          if (!js.includes('SpeechRecognition') || !js.includes('speechSynthesis')) throw new Error('Voice recognition or speech output implementation is missing');
-          console.log('Oil voice mentor markup, styles and voice APIs verified.');
+          if (missing.length) throw new Error('Missing oil mentor IDs: ' + missing.join(', '));
+          if (!html.includes('oil-voice-guide.js') || !js.includes('SpeechRecognition') || !js.includes('speechSynthesis')) throw new Error('Oil mentor script or voice APIs missing');
+          if (/"(?:plumPinkGold|warmRose|roseGold|pinkGold|flamingo|blush|royalRose)":/.test(settings)) throw new Error('Pink preset remains in settings');
+          if (manifest.theme_color.toLowerCase() !== '#0a0a0a' || manifest.background_color.toLowerCase() !== '#0a0a0a') throw new Error('PWA manifest is not black/gold branded');
+          console.log('HTML structure, PWA manifest, black/gold theme and oil mentor verified.');
           NODE
