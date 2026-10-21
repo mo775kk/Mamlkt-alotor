@@ -33,3 +33,23 @@ on conflict (user_id) do nothing;
 - جداول المزامنة الحالية هي `mamlaka_settings` و`mamlaka_products`. توجد أيضًا جداول منفصلة للكتالوج والطلبات والمخزون لتوسعة وظائف الإدارة.
 - السلة والمفضلة ومعلومات الجلسة وPIN المحلي مستثناة من المزامنة السحابية.
 - المفتاح الموجود في `supabase-config.js` مفتاح عام مخصص للمتصفح؛ الأمان يعتمد على سياسات RLS وعدم مشاركة بيانات دخول الإدارة.
+
+
+## تفعيل الدخول باستخدام Google
+
+تمت إضافة زر **الدخول باستخدام Google** إلى نافذة الحفظ السحابي في الموقع. يلزم تفعيل مزود Google مرة واحدة من لوحة Supabase:
+
+1. افتح [إعدادات Google Auth في Supabase](https://supabase.com/dashboard/project/qomuwnhefhbecjgugsev/auth/providers) وفعّل Google.
+2. افتح [Google Cloud Console](https://console.cloud.google.com/apis/credentials) وأنشئ OAuth Client ID من النوع **Web application**.
+3. في Google Cloud، أضف Authorized JavaScript origin:
+   `https://mo775kk.github.io`
+4. أضف Authorized redirect URI التالي كما هو:
+   `https://qomuwnhefhbecjgugsev.supabase.co/auth/v1/callback`
+5. انسخ **Client ID** و**Client Secret** إلى إعدادات مزود Google داخل Supabase، ثم احفظ.
+6. في Supabase افتح Authentication → URL Configuration، واجعل Site URL:
+   `https://mo775kk.github.io/Mamlkt-alotor/`
+   وأضف إلى Redirect URLs:
+   `https://mo775kk.github.io/Mamlkt-alotor/`
+7. افتح الموقع، ثم الإعدادات → الحفظ السحابي → **الدخول باستخدام Google**.
+
+**أمان الإدارة:** تسجيل الدخول بجوجل لا يجعل الحساب مديرًا تلقائيًا. بعد تسجيل الدخول لأول مرة، أضف معرّف المستخدم إلى جدول `public.admin_users` من لوحة Supabase باستخدام SQL Editor، وتأكد من مطابقة البريد للحساب الذي تملكه. لا تضع Client Secret أو مفاتيح سرية في ملفات GitHub أو ترسلها في المحادثة.
