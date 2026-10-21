@@ -5279,3 +5279,50 @@ img{max-width:100%}
   .product-price{font-size:13px}
   .small-btn{font-size:11px;padding-inline:7px}
 }
+
+
+/* Final visual cleanup: replace remaining warm/gold gradients with cool graphite and blue. */
+.home-index-card,.home-index-card:hover,.home-index-card:focus-visible{
+  background:linear-gradient(145deg,#1d2a38 0%,#111821 82%)!important;
+  border-color:rgba(168,216,255,.45)!important;color:#F3F7FC!important;
+}
+.home-index-icon,.category-icon-wrap{
+  background:radial-gradient(circle at 30% 25%,#2d4d68,#111821 78%)!important;
+  border-color:#4D9DE0!important;color:#B8E1FF!important;
+}
+.category-card,.category-card:hover{
+  background:linear-gradient(145deg,#1c2937,#111821 76%)!important;
+  border-color:rgba(168,216,255,.4)!important;color:#F3F7FC!important;
+}
+.product-card,.product-card:hover{
+  background:linear-gradient(160deg,#1b2734,#121820)!important;
+  border-color:rgba(168,216,255,.34)!important;color:#F3F7FC!important;
+}
+.product-visual{background:radial-gradient(ellipse at 50% 52%,rgba(77,157,224,.22),transparent 65%),#141d27!important}
+:is(.home-index-note,.customer-choice-tip,.customer-choice-steps li,.blend-panel,.blend-summary,.advisor-box,.assistant-message,.empty-state,.search-box,.toolbar .search-box,.toolbar select,.blend-step select,.product-modal,.cart-panel,.drawer,.section-page-toolbar,.toast,.store-location-panel,.contact-card,.testimonial){
+  background-color:#151d27!important;color:#F3F7FC!important;
+}
+.section-page-toolbar,.product-modal,.product-modal .product-info,.cart-panel,.drawer{
+  background-image:none!important;
+}
+.section-page-toolbar{background:linear-gradient(125deg,#1d2b3a,#111821)!important}
+.section-page-toolbar h1,.section-page-toolbar h2,.customer-choice-steps strong,
+.home-index-copy strong,.category-card h3,.product-info h3,.product-price,
+.product-modal h2,.product-modal h3,.contact-card h2,.gift-copy h2{color:#B8E1FF!important}
+.home-index-copy small,.customer-choice-steps p,.home-index-note,.customer-choice-tip,
+.category-card p,.product-desc,.product-meta,.product-en,.section-heading>p,
+.blend-summary small,.advisor-box p,.assistant-message,.results-message{color:#D0DCE8!important}
+:is(.btn-outline,.icon-btn,.small-btn,.modal-close,.cart-back-btn,.section-page-back,.section-page-end button):hover,
+:is(.btn-outline,.icon-btn,.small-btn,.modal-close,.cart-back-btn,.section-page-back,.section-page-end button):focus-visible{
+  background:#22364a!important;border-color:#A8D8FF!important;color:#FFFFFF!important;
+}
+:is(.oil-mentor-panel,.oil-mentor-answer,.oil-voice-status){
+  background:linear-gradient(145deg,#1b2a38,#111821)!important;
+  border-color:rgba(168,216,255,.45)!important;color:#F3F7FC!important;
+}
+:is(.oil-mentor-panel,.oil-mentor-answer,.oil-voice-status) :is(h3,p,strong,small,a){color:#D8EEFF!important}
+html[data-theme="dark"] th,th{background:#1c2a38!important;color:#D8EEFF!important}
+html[data-theme="dark"] td,td{color:#EAF2FA}
+#pwaInstallHelp,#pwaInstallHelpClose{background-color:#151d27!important;color:#F3F7FC!important}
+#pwaInstallHelpClose{border-color:#4D9DE0!important}
+::selection{background:#4D9DE0!important;color:#FFFFFF!important}
