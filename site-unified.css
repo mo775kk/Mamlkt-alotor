@@ -4065,3 +4065,136 @@ img,svg,video{
     max-width:100%;
   }
 }
+
+/* MAMLKAT AL-OTOR — crisp black accents without a dark overall canvas */
+:root{
+  --ink:#171217;
+  --ink-soft:#30242d;
+  --ink-line:#51404a;
+  --bg:#fff8fa;
+  --panel:#fffdfd;
+  --panel2:#fff0f5;
+  --card:#fffdfd;
+  --field:#fff8fb;
+  --text:#30242d;
+  --heading:#171217;
+  --muted:#6e5964;
+  --line:#dfc4d0;
+  --gold:#a97922;
+  --gold2:#e6c778;
+  --rose:#a74670;
+  --rose-soft:#f7dce8;
+  --button-bg:#21171f;
+  --button-text:#fff8fb;
+}
+/* Use black for typography, navigation and selected emphasis; retain light page surfaces. */
+body, #app, main, .site-main, .page-content{
+  background-color:var(--bg)!important;
+  color:var(--text)!important;
+}
+.brand strong,.main-nav a,.section-heading h2,.section h2,.section h3,
+.contact-card h2,.home-showcase-heading h3,
+.admin-panel h2,.admin-panel h3,.settings-panel h2,.settings-panel h3{
+  color:var(--ink)!important;
+}
+.site-header{
+  background:#fffdfd!important;
+  color:var(--ink)!important;
+  border-bottom:2px solid var(--ink)!important;
+}
+.main-nav a[aria-current="page"],.main-nav a:hover,.main-nav a:focus-visible{
+  color:#fff!important;
+  background:var(--ink)!important;
+  border-color:var(--gold)!important;
+  text-decoration:none!important;
+}
+.btn-dark,.btn-secondary,.button-secondary,
+button:not(.btn-gold):not(.btn-primary):not(.button-primary):not(.icon-btn):not(.favorite-btn){
+  color:var(--ink)!important;
+}
+.btn-primary,.btn-gold,.button-primary{
+  background:#f0d38b!important;
+  color:#21171f!important;
+  border-color:#9b7420!important;
+}
+.btn-outline,.text-btn{
+  color:var(--ink)!important;
+  border-color:var(--ink-line)!important;
+  background:#fffdfd!important;
+}
+.icon-btn,.favorite-btn,.home-index-arrow,.category-icon-wrap,.line-icon,.choice-step-number{
+  color:var(--ink)!important;
+  border-color:var(--gold)!important;
+}
+/* The catalogue and index get a clear black edge and readable headings, not black fill. */
+.category-card,.product-card,.home-index-card,.home-showcase-block,
+.contact-card,.testimonial,.quiz-shell,.blend-panel,.blend-summary,
+.advisor-box,.settings-panel,.admin-panel,.admin-card,.admin-section,
+.admin-page,.store-location-panel,.customer-choice-steps li{
+  background-color:#fffdfd!important;
+  color:var(--text)!important;
+  border-color:#d8bdc9!important;
+  box-shadow:none!important;
+}
+.category-card:hover,.product-card:hover,.home-index-card:hover,.home-showcase-block:hover{
+  border-color:var(--ink)!important;
+}
+.home-index-section .home-index-card{
+  background:#fffdfd!important;
+  color:var(--ink)!important;
+  border:1px solid var(--ink-line)!important;
+}
+.home-index-section .home-index-copy strong{
+  color:var(--ink)!important;
+}
+.home-index-section .home-index-copy small{
+  color:#6e5964!important;
+}
+.home-index-section .home-index-count{
+  color:#8a6423!important;
+}
+.home-index-section .home-index-arrow{
+  background:#f7dce8!important;
+  color:var(--ink)!important;
+  border:1px solid var(--gold)!important;
+}
+input,select,textarea,.field,.search-input{
+  color:var(--ink)!important;
+  background:#fffdfd!important;
+  border-color:#d8bdc9!important;
+}
+input::placeholder,textarea::placeholder{color:#76616c!important;opacity:1}
+.site-footer{
+  background:#21171f!important;
+  color:#fff8fb!important;
+  border-top:2px solid var(--gold)!important;
+}
+.site-footer p,.site-footer small,.site-footer .brand strong,.site-footer .brand small,
+.site-footer a{color:#fff0f5!important}
+.site-footer a:hover{color:#ffe2a0!important}
+.toast{
+  background:#21171f!important;
+  color:#fff8fb!important;
+  border-color:var(--gold)!important;
+}
+/* Explicit dark mode remains available only when the visitor selects it. */
+html[data-theme="dark"]{
+  --bg:#241923;
+  --panel:#30212c;
+  --panel2:#3a2834;
+  --card:#30212c;
+  --field:#2a1d26;
+  --text:#fff0f5;
+  --heading:#ffe4a8;
+  --muted:#e3cbd6;
+  --line:#6f465c;
+  --ink:#fff0f5;
+  --ink-soft:#e3cbd6;
+  --ink-line:#79566a;
+  --gold:#f0cf7c;
+  --gold2:#ffe7a5;
+  --rose:#e49abb;
+  --rose-soft:#513044;
+  --button-bg:#a84d76;
+  --button-text:#fff8fb;
+}
