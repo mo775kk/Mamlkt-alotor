@@ -3250,3 +3250,121 @@ input,select,textarea{font-size:16px}
   .compact-size-row .card-size-select{min-width:0!important;width:100%!important;font-size:12px!important}
   .compact-size-row .compact-selected-price{display:inline!important;visibility:visible!important;opacity:1!important;white-space:nowrap!important;font-size:12px!important;max-width:none!important}
 }
+
+
+/* === Mamlaka directory polish: full-height rhythm, premium icon backplates === */
+.home-index-section{
+  position:relative;
+  isolation:isolate;
+  padding:clamp(38px,5vw,68px) 0;
+}
+.home-index-section:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:12px -3vw;
+  border:1px solid rgba(190,145,65,.22);
+  border-radius:28px;
+  background:
+    radial-gradient(ellipse at 8% 12%,rgba(231,174,198,.19),transparent 34%),
+    radial-gradient(ellipse at 92% 88%,rgba(226,190,104,.17),transparent 36%),
+    linear-gradient(145deg,rgba(255,250,242,.97),rgba(255,241,247,.96) 48%,rgba(255,248,226,.97));
+  box-shadow:0 18px 46px rgba(57,32,25,.09),inset 0 1px 0 rgba(255,255,255,.95);
+}
+.home-index-section .section-heading{align-items:center;margin-bottom:clamp(20px,3vw,34px);gap:18px}
+.home-index-section .section-heading .eyebrow{color:#9c7130;font-weight:800}
+.home-index-section .section-heading h2{color:#493044!important;text-shadow:0 1px 0 #fff}
+.home-index-section .section-heading>p{color:#67535d!important}
+.home-index-section .home-index-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:clamp(10px,1.4vw,17px)!important;
+}
+.home-index-section .home-index-card{
+  position:relative;
+  isolation:isolate;
+  display:grid;
+  grid-template-columns:54px minmax(0,1fr) auto 18px!important;
+  align-items:center;
+  min-height:96px;
+  gap:13px!important;
+  padding:15px 17px!important;
+  overflow:hidden;
+  border:1px solid rgba(177,132,66,.3)!important;
+  border-radius:17px!important;
+  color:#49313d!important;
+  background:linear-gradient(115deg,rgba(255,255,255,.98),rgba(255,247,249,.96) 56%,rgba(255,249,232,.98))!important;
+  box-shadow:0 6px 17px rgba(82,49,52,.065),inset 0 1px 0 #fff;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
+}
+.home-index-section .home-index-card:before{
+  content:"";
+  position:absolute;z-index:-1;
+  width:125px;height:125px;
+  inset-inline-start:-55px;top:-66px;
+  border-radius:50%;
+  border:1px solid rgba(190,145,65,.2);
+  box-shadow:0 0 0 12px rgba(214,168,190,.055),0 0 0 26px rgba(212,175,55,.045);
+  pointer-events:none;
+}
+.home-index-section .home-index-card:after{
+  content:"";
+  position:absolute;z-index:-1;
+  width:4px;inset-block:14px;inset-inline-start:0;
+  border-radius:0 5px 5px 0;
+  background:linear-gradient(180deg,#e5b9cc,#d4af37);
+  opacity:.85;
+}
+.home-index-section .home-index-card:hover,
+.home-index-section .home-index-card:focus-visible{
+  transform:translateY(-3px);
+  border-color:#c49a48!important;
+  box-shadow:0 13px 26px rgba(82,49,52,.12),0 0 0 3px rgba(212,175,55,.1);
+}
+.home-index-section .home-index-icon{
+  position:relative;
+  display:grid;place-items:center;
+  width:54px!important;height:54px!important;flex-basis:54px!important;
+  border-radius:16px!important;
+  border:1px solid rgba(186,143,76,.52)!important;
+  color:#855b31!important;
+  font-size:25px!important;
+  background:
+    radial-gradient(circle at 28% 20%,rgba(255,255,255,.98),transparent 43%),
+    linear-gradient(145deg,#f8dfe9 0%,#f4e2ce 46%,#f8eab8 100%)!important;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.8),inset 0 -5px 12px rgba(180,123,91,.08),0 5px 12px rgba(109,69,66,.1)!important;
+  text-shadow:0 1px 0 rgba(255,255,255,.75);
+  transition:transform .22s ease,filter .22s ease;
+}
+.home-index-section .home-index-card:nth-child(3n+2) .home-index-icon{
+  background:radial-gradient(circle at 28% 20%,#fff,transparent 43%),linear-gradient(145deg,#f8e9b8,#f4d9c9 56%,#ead8ee)!important;
+}
+.home-index-section .home-index-card:nth-child(3n) .home-index-icon{
+  background:radial-gradient(circle at 28% 20%,#fff,transparent 43%),linear-gradient(145deg,#e4eee0,#f6e5ed 58%,#f5dfb0)!important;
+}
+.home-index-section .home-index-card:hover .home-index-icon{transform:translateY(-2px) rotate(-3deg);filter:saturate(1.12)}
+.home-index-section .home-index-copy{display:block;min-width:0}
+.home-index-section .home-index-copy strong{display:block;color:#4a3040!important;font-size:clamp(14px,1.2vw,17px)!important;line-height:1.55!important}
+.home-index-section .home-index-copy small{display:block;margin-top:3px;color:#71606a!important;font-size:clamp(11px,.9vw,13px)!important;line-height:1.65!important}
+.home-index-section .home-index-count{color:#916b25!important;font-size:1rem;font-weight:800}
+.home-index-section .home-index-arrow{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;border:1px solid rgba(181,137,60,.35);background:rgba(255,255,255,.7);color:#936b2b!important;font-size:16px}
+.home-index-section .home-index-card:hover .home-index-arrow{background:#f3dfac;color:#573d26!important}
+.home-index-section .home-index-cart-card,
+.home-index-section .home-index-install-card,
+.home-index-section .home-index-settings-card{width:100%;margin-top:12px;text-align:start}
+.home-index-section .home-index-note{padding:12px 15px;border:1px solid rgba(181,137,60,.2);border-radius:12px;background:rgba(255,255,255,.68);color:#67535d!important}
+@media(max-width:640px){
+  .home-index-section{padding:34px 0}
+  .home-index-section:before{inset:8px -12px;border-radius:20px}
+  .home-index-section .section-heading{display:block}
+  .home-index-section .section-heading>p{margin-top:8px}
+  .home-index-section .home-index-grid{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
+  .home-index-section .home-index-card{grid-template-columns:46px minmax(0,1fr) auto 18px!important;min-height:82px;padding:11px 12px!important;gap:10px!important}
+  .home-index-section .home-index-icon{width:46px!important;height:46px!important;flex-basis:46px!important;border-radius:14px!important;font-size:22px!important}
+  .home-index-section .home-index-copy strong{font-size:14px!important}
+  .home-index-section .home-index-copy small{font-size:11px!important}
+  .home-index-section .home-index-count{display:inline!important;font-size:.85rem}
+  .home-index-section .home-index-arrow{display:grid!important;width:23px;height:23px}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-index-section .home-index-card,.home-index-section .home-index-icon{transition:none!important}
+}
