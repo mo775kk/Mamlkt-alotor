@@ -166,6 +166,16 @@ try {
   report(false, "Unable to validate cloud persistence security: " + e.message);
 }
 
+try {
+  const settings = read("settings.js");
+  report(settings.includes("عند تسجيل دخول الحفظ السحابي تُرفع الصورة للسحابة") &&
+    settings.includes("تُزامَن الإعدادات والمنتجات القابلة للمزامنة") &&
+    !settings.includes("لا توجد قاعدة بيانات مشتركة أو لوحة تحكم سحابية"),
+    "Settings accurately explain local fallback and authenticated cloud persistence");
+} catch (e) {
+  report(false, "Unable to validate cloud storage guidance: " + e.message);
+}
+
 const jsFiles = ["app.js", "ai-service.js", "settings.js", "enhancements.js", "supplier-catalog.js", "catalog-editor.js", "site-upgrades.js", "royal-gift-planner.js", "inventory-accounting.js", "royal-interactions.js", "royal-finish.js", "section-folds.js", "blending-atelier.js"];
 for (const file of jsFiles) {
   try {
