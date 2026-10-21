@@ -62,6 +62,7 @@
     const select=document.querySelector("#cfgPreset");
     if(!select)return;
     extraThemePalettes.forEach(([key,label])=>{
+      if(["ivoryGold","blackGold","desert","vanilla","buttercream"].includes(key))return;
       if(!select.querySelector('option[value="'+key+'"]')){
         const option=document.createElement("option");option.value=key;option.textContent=label;select.appendChild(option);
       }
