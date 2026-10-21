@@ -156,7 +156,8 @@ try {
   const config = read("supabase-config.js");
   report(cloud.includes("mamlaka[_-]?(?:cart|wishlist|favorites?)(?:[_-].*)?") &&
     cloud.includes(".*session.*") && cloud.includes(".*password.*") &&
-    cloud.includes(".*secret.*") && cloud.includes(".*credential.*"),
+    cloud.includes(".*secret.*") && cloud.includes(".*credential.*") &&
+    cloud.includes("mamlaka_favorites_v1") && cloud.includes("privateDataCleanup"),
     "Cloud sync excludes cart, wishlist/favorites, sessions and sensitive credential keys");
   report(/url:\s*"https:\/\/[a-z0-9-]+\.supabase\.co"/i.test(config) &&
     /anonKey:\s*"(?:sb_publishable_|eyJ)[^"]+"/.test(config) &&
