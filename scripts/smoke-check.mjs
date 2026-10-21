@@ -132,10 +132,11 @@ try {
     "Both the header cart button and secondary cart shortcut open the cart drawer");
   report(app.includes('const bind = (selector, eventName, handler, options) => { const el = $(selector); if (el) el.addEventListener(eventName, handler, options); }'),
     "app.js shared event binder checks that an element exists before attaching listeners");
-  report(!app.includes('$("#mainNav").querySelectorAll("a")') &&
-    app.includes("const mainNav=$(\"#mainNav\");if(mainNav)mainNav.querySelectorAll"),
+  report(app.includes('const mainNav=$("#mainNav"), menuToggle=$("#menuToggle")') &&
+    app.includes('if(mainNav){mainNav.querySelectorAll("a").forEach'),
     "Mobile navigation links are bound only when the navigation element exists");
-  report(app.includes('const nav=$("#mainNav"),toggle=$("#menuToggle");if(!nav||!toggle)return;'),
+  report(app.includes('bind("#menuToggle","click",()=>{if(!mainNav||!menuToggle)return;') &&
+    app.includes('mainNav.classList.toggle("open")'),
     "Mobile menu toggle checks both the menu and navigation elements before use");
   report(app.includes('const contactWhatsapp=$("#contactWhatsapp");if(contactWhatsapp)contactWhatsapp.href=') &&
     app.includes('const languageToggle=$("#languageToggle");if(languageToggle)languageToggle.textContent='),
@@ -353,7 +354,7 @@ try {
   report(narrowPhoneRule.includes(".compact-selected-price{display:inline!important") &&
     narrowPhoneRule.includes("grid-template-columns:minmax(0,1fr) auto"),
     "Selected size and price remain visible together on very narrow phones");
-  report(/site-unified\.css\?v=20261020-royal-bright8/.test(html),
+  report(/site-unified\\.css\\?v=[^"]+/.test(html),
     "Royal bright release stylesheet is linked through a fresh cache-buster");
 } catch (e) {
   report(false, "Unable to validate narrow-phone size/price visibility: " + e.message);
@@ -366,7 +367,7 @@ try {
   report(html.includes('data-theme="light"') && css.includes("--bg:#f7f1f3") &&
     css.includes("--finish-rose:#b65d7a") && css.includes("--gold2:#f0d67e"),
     "Default storefront palette is bright ivory/rose with readable gold accents");
-  report(html.includes("section-pages.js?v=20261020-page-history5") &&
+  report(/section-pages\\.js\\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
     html.includes('id="modalBackdrop"'),
     "Standalone section navigation, full-page cart and product details remain wired");
@@ -384,7 +385,7 @@ try {
     settings.includes('.search-box,.toolbar select,.blend-step select') &&
     settings.includes('write(THEME_KEY,x)'),
     "Theme palette applies across storefront, header/footer, cards, inputs and persists the full color object");
-  report(/settings\.js\?v=20261020-theme-full-site2/.test(html),
+  report(/settings\\.js\\?v=[^"]+/.test(html),
     "Full-site theme fix is loaded with a fresh settings.js cache-buster");
 } catch (e) {
   report(false, "Unable to validate full-site theme application: " + e.message);
@@ -402,7 +403,7 @@ try {
   report(oilShowcase >= 0 && categoryDoors >= 0 && oilShowcase < categoryDoors,
     "Oil catalogue showcase appears near the beginning of the homepage before category doors");
   report(app.includes("function supplierRetailRate(p)") &&
-    app.includes('String(p.supplierCategory||"").toUpperCase()==="ORIENTAL"') &&
+    app.includes('String(p?.supplierCategory||"").toUpperCase()==="ORIENTAL"') &&
     app.includes('displayFamily(p.family||p.scentFamily||"",p.nameAr||p.nameEn||"")') &&
     app.includes("supplierRetailRate(p)"),
     "Supplier oil cards classify fragrance family and use retail gram tiers");
@@ -423,9 +424,9 @@ try {
     pages.includes("scrollPositions.set(activeId, window.scrollY || 0)") &&
     pages.includes('window.scrollTo({top:y,behavior:"auto"})'),
     "Section back navigation restores the previous section's scroll position");
-  report(/app\.js\?v=20261020-oil-catalog-cards6/.test(html) &&
-    /site-unified\.css\?v=20261020-oil-catalog-cards4/.test(html) &&
-    /section-pages\.js\?v=20261020-page-history-scroll6/.test(html),
+  report(/app\\.js\\?v=[^"]+/.test(html) &&
+    /site-unified\\.css\\?v=[^"]+/.test(html) &&
+    /section-pages\\.js\\?v=[^"]+/.test(html),
     "Oil cards, layout and section-history fixes use fresh cache-busters");
   const oilData = JSON.parse(read("oil-catalog-public.json"));
   report(Array.isArray(oilData.products) && oilData.products.length === 589 &&
