@@ -4579,3 +4579,298 @@ html[data-theme="dark"] .product-info,
 html[data-theme="dark"] .product-info.compact-product-info{background:#30212c!important;color:#fff0f5!important}
 html[data-theme="dark"] .product-card h3,
 html[data-theme="dark"] .product-info h3{color:#ffe4a8!important}
+
+
+/* READABILITY PASS 2026-10-21 — improve text contrast in text-bearing boxes across the whole site */
+:root{
+  --read-bg:#fff8fb;
+  --read-card:#fffdfd;
+  --read-ink:#21171f;
+  --read-body:#40313b;
+  --read-muted:#6e5964;
+  --read-border:#d8bdc9;
+  --read-gold:#805719;
+  --read-rose:#f7dce8;
+  --read-action:#21171f;
+  --read-action-text:#fff9fc;
+}
+/* Keep all common information panels light and readable in the default theme. */
+html[data-theme="light"] .section,
+html[data-theme="light"] .section-inner,
+html[data-theme="light"] .section-page-toolbar,
+html[data-theme="light"] .section-page-end,
+html[data-theme="light"] .category-card,
+html[data-theme="light"] .product-card,
+html[data-theme="light"] .home-index-card,
+html[data-theme="light"] .home-showcase-block,
+html[data-theme="light"] .home-showcase-item,
+html[data-theme="light"] .settings-panel,
+html[data-theme="light"] .admin-panel,
+html[data-theme="light"] .admin-card,
+html[data-theme="light"] .admin-section,
+html[data-theme="light"] .admin-page,
+html[data-theme="light"] .admin-content,
+html[data-theme="light"] .settings-card,
+html[data-theme="light"] .settings-section,
+html[data-theme="light"] .setting-group,
+html[data-theme="light"] .form-card,
+html[data-theme="light"] .field-group,
+html[data-theme="light"] .store-location-panel,
+html[data-theme="light"] .customer-choice-steps li,
+html[data-theme="light"] .testimonial,
+html[data-theme="light"] .quiz-shell,
+html[data-theme="light"] .blend-panel,
+html[data-theme="light"] .blend-summary,
+html[data-theme="light"] .advisor-box,
+html[data-theme="light"] .assistant-message,
+html[data-theme="light"] .suggestion,
+html[data-theme="light"] .contact-card,
+html[data-theme="light"] .drawer,
+html[data-theme="light"] .product-modal,
+html[data-theme="light"] .modal-content,
+html[data-theme="light"] .dialog-content,
+html[data-theme="light"] .settings-modal,
+html[data-theme="light"] .admin-modal,
+html[data-theme="light"] .toast{
+  color:var(--read-body);
+}
+html[data-theme="light"] .section p,
+html[data-theme="light"] .section li,
+html[data-theme="light"] .section label,
+html[data-theme="light"] .section small,
+html[data-theme="light"] .section .muted,
+html[data-theme="light"] .section-page-toolbar p,
+html[data-theme="light"] .section-page-toolbar small,
+html[data-theme="light"] .category-card p,
+html[data-theme="light"] .category-card small,
+html[data-theme="light"] .product-meta,
+html[data-theme="light"] .product-desc,
+html[data-theme="light"] .product-en,
+html[data-theme="light"] .compact-product-meta,
+html[data-theme="light"] .settings-panel p,
+html[data-theme="light"] .settings-panel small,
+html[data-theme="light"] .admin-panel p,
+html[data-theme="light"] .admin-panel small,
+html[data-theme="light"] .admin-card p,
+html[data-theme="light"] .admin-card small,
+html[data-theme="light"] .admin-section p,
+html[data-theme="light"] .admin-section small,
+html[data-theme="light"] .settings-card p,
+html[data-theme="light"] .settings-card small,
+html[data-theme="light"] .settings-section p,
+html[data-theme="light"] .settings-section small,
+html[data-theme="light"] .setting-group p,
+html[data-theme="light"] .setting-group small,
+html[data-theme="light"] .form-card p,
+html[data-theme="light"] .form-card small,
+html[data-theme="light"] .store-location-panel p,
+html[data-theme="light"] .store-location-panel small,
+html[data-theme="light"] .testimonial p,
+html[data-theme="light"] .quiz-shell p,
+html[data-theme="light"] .blend-panel p,
+html[data-theme="light"] .blend-summary small,
+html[data-theme="light"] .advisor-box p,
+html[data-theme="light"] .assistant-message,
+html[data-theme="light"] .suggestion p,
+html[data-theme="light"] .contact-card p,
+html[data-theme="light"] .drawer small,
+html[data-theme="light"] .product-modal p,
+html[data-theme="light"] .modal-content p,
+html[data-theme="light"] .dialog-content p{
+  color:var(--read-muted)!important;
+  opacity:1!important;
+}
+html[data-theme="light"] .category-card h3,
+html[data-theme="light"] .product-card h3,
+html[data-theme="light"] .home-index-copy strong,
+html[data-theme="light"] .home-showcase-heading h3,
+html[data-theme="light"] .settings-panel h2,
+html[data-theme="light"] .settings-panel h3,
+html[data-theme="light"] .admin-panel h2,
+html[data-theme="light"] .admin-panel h3,
+html[data-theme="light"] .admin-card h2,
+html[data-theme="light"] .admin-card h3,
+html[data-theme="light"] .admin-section h2,
+html[data-theme="light"] .admin-section h3,
+html[data-theme="light"] .settings-card h2,
+html[data-theme="light"] .settings-card h3,
+html[data-theme="light"] .settings-section h2,
+html[data-theme="light"] .settings-section h3,
+html[data-theme="light"] .setting-group h2,
+html[data-theme="light"] .setting-group h3,
+html[data-theme="light"] .form-card h2,
+html[data-theme="light"] .form-card h3,
+html[data-theme="light"] .product-modal h2,
+html[data-theme="light"] .product-modal h3,
+html[data-theme="light"] .modal-content h2,
+html[data-theme="light"] .modal-content h3,
+html[data-theme="light"] .dialog-content h2,
+html[data-theme="light"] .dialog-content h3{
+  color:var(--read-ink)!important;
+  text-shadow:none!important;
+}
+html[data-theme="light"] .product-price,
+html[data-theme="light"] .compact-selected-price,
+html[data-theme="light"] .modal-price,
+html[data-theme="light"] .home-index-count{
+  color:var(--read-gold)!important;
+  font-weight:900!important;
+}
+/* Form controls and their labels: strong text, visible borders, readable placeholders. */
+html[data-theme="light"] input,
+html[data-theme="light"] select,
+html[data-theme="light"] textarea,
+html[data-theme="light"] .field,
+html[data-theme="light"] .search-input,
+html[data-theme="light"] .search-box,
+html[data-theme="light"] .advisor-form input,
+html[data-theme="light"] .blend-step select{
+  color:var(--read-ink)!important;
+  background:#fffdfd!important;
+  border-color:#bda4b1!important;
+}
+html[data-theme="light"] input::placeholder,
+html[data-theme="light"] textarea::placeholder{
+  color:#6b5661!important;opacity:1!important;
+}
+html[data-theme="light"] label,
+html[data-theme="light"] .field-label,
+html[data-theme="light"] .form-label,
+html[data-theme="light"] .setting-label{
+  color:var(--read-ink)!important;
+  font-weight:700;
+}
+html[data-theme="light"] table,
+html[data-theme="light"] th,
+html[data-theme="light"] td{
+  color:var(--read-body)!important;
+  border-color:var(--read-border)!important;
+}
+html[data-theme="light"] th{
+  background:#f7dce8!important;color:var(--read-ink)!important;font-weight:800!important;
+}
+html[data-theme="light"] .tab,
+html[data-theme="light"] [role="tab"],
+html[data-theme="light"] .filter-chip,
+html[data-theme="light"] .chip,
+html[data-theme="light"] .admin-tab,
+html[data-theme="light"] .settings-tab{
+  color:var(--read-ink)!important;
+  background:#fff8fb!important;
+  border-color:#c9adbb!important;
+  font-weight:700!important;
+}
+html[data-theme="light"] .tab.active,
+html[data-theme="light"] [role="tab"][aria-selected="true"],
+html[data-theme="light"] .filter-chip.active,
+html[data-theme="light"] .admin-tab.active,
+html[data-theme="light"] .settings-tab.active{
+  color:#fff9fc!important;
+  background:#21171f!important;
+  border-color:#b88932!important;
+}
+/* General buttons in light panels must not inherit pale text from the legacy dark theme. */
+html[data-theme="light"] .settings-panel button,
+html[data-theme="light"] .admin-panel button,
+html[data-theme="light"] .admin-card button,
+html[data-theme="light"] .admin-section button,
+html[data-theme="light"] .settings-card button,
+html[data-theme="light"] .settings-section button,
+html[data-theme="light"] .setting-group button,
+html[data-theme="light"] .form-card button{
+  text-shadow:none!important;
+}
+html[data-theme="light"] .settings-panel button:not(.btn-gold):not(.btn-primary):not(.button-primary):not(.icon-btn),
+html[data-theme="light"] .admin-panel button:not(.btn-gold):not(.btn-primary):not(.button-primary):not(.icon-btn),
+html[data-theme="light"] .admin-card button:not(.btn-gold):not(.btn-primary):not(.button-primary):not(.icon-btn),
+html[data-theme="light"] .admin-section button:not(.btn-gold):not(.btn-primary):not(.button-primary):not(.icon-btn),
+html[data-theme="light"] .settings-card button:not(.btn-gold):not(.btn-primary):not(.button-primary):not(.icon-btn),
+html[data-theme="light"] .settings-section button:not(.btn-gold):not(.btn-primary):not(.button-primary):not(.icon-btn),
+html[data-theme="light"] .setting-group button:not(.btn-gold):not(.btn-primary):not(.button-primary):not(.icon-btn),
+html[data-theme="light"] .form-card button:not(.btn-gold):not(.btn-primary):not(.button-primary):not(.icon-btn){
+  color:var(--read-ink)!important;
+  border-color:#bda4b1;
+}
+html[data-theme="light"] .site-header .main-nav a{color:#30242d!important}
+html[data-theme="light"] .site-header .main-nav a:hover,
+html[data-theme="light"] .site-header .main-nav a:focus-visible,
+html[data-theme="light"] .site-header .main-nav a.active{
+  color:#fff!important;background:#21171f!important;
+}
+/* Preserve a deliberate dark palette only when dark mode is selected. */
+html[data-theme="dark"] .settings-panel,
+html[data-theme="dark"] .admin-panel,
+html[data-theme="dark"] .admin-card,
+html[data-theme="dark"] .admin-section,
+html[data-theme="dark"] .admin-page,
+html[data-theme="dark"] .admin-content,
+html[data-theme="dark"] .settings-card,
+html[data-theme="dark"] .settings-section,
+html[data-theme="dark"] .setting-group,
+html[data-theme="dark"] .form-card,
+html[data-theme="dark"] .field-group,
+html[data-theme="dark"] .store-location-panel,
+html[data-theme="dark"] .customer-choice-steps li,
+html[data-theme="dark"] .testimonial,
+html[data-theme="dark"] .quiz-shell,
+html[data-theme="dark"] .blend-panel,
+html[data-theme="dark"] .blend-summary,
+html[data-theme="dark"] .advisor-box,
+html[data-theme="dark"] .assistant-message,
+html[data-theme="dark"] .suggestion,
+html[data-theme="dark"] .contact-card,
+html[data-theme="dark"] .drawer,
+html[data-theme="dark"] .product-modal,
+html[data-theme="dark"] .modal-content,
+html[data-theme="dark"] .dialog-content,
+html[data-theme="dark"] .settings-modal,
+html[data-theme="dark"] .admin-modal{
+  background-color:#30212c!important;color:#fff0f5!important;border-color:#79566a!important;
+}
+html[data-theme="dark"] .settings-panel p,
+html[data-theme="dark"] .settings-panel small,
+html[data-theme="dark"] .admin-panel p,
+html[data-theme="dark"] .admin-panel small,
+html[data-theme="dark"] .admin-card p,
+html[data-theme="dark"] .admin-card small,
+html[data-theme="dark"] .admin-section p,
+html[data-theme="dark"] .admin-section small,
+html[data-theme="dark"] .settings-card p,
+html[data-theme="dark"] .settings-card small,
+html[data-theme="dark"] .settings-section p,
+html[data-theme="dark"] .settings-section small,
+html[data-theme="dark"] .setting-group p,
+html[data-theme="dark"] .setting-group small,
+html[data-theme="dark"] .form-card p,
+html[data-theme="dark"] .form-card small,
+html[data-theme="dark"] .store-location-panel p,
+html[data-theme="dark"] .testimonial p,
+html[data-theme="dark"] .quiz-shell p,
+html[data-theme="dark"] .blend-panel p,
+html[data-theme="dark"] .advisor-box p,
+html[data-theme="dark"] .assistant-message,
+html[data-theme="dark"] .suggestion p,
+html[data-theme="dark"] .contact-card p,
+html[data-theme="dark"] .drawer small,
+html[data-theme="dark"] .product-modal p{
+  color:#e3cbd6!important;opacity:1!important;
+}
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] .field,
+html[data-theme="dark"] .search-input{
+  background:#241923!important;color:#fff0f5!important;border-color:#79566a!important;
+}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder{color:#d7bac9!important;opacity:1!important}
+html[data-theme="dark"] th{background:#513044!important;color:#fff0f5!important}
+html[data-theme="dark"] td{color:#fff0f5!important}
+@media(prefers-contrast:more){
+  .category-card,.product-card,.home-index-card,.home-showcase-block,
+  .settings-panel,.admin-panel,.admin-card,.admin-section,.settings-card,.settings-section,
+  .setting-group,.form-card,.product-modal,.section-page-toolbar{
+    border-width:2px!important;
+  }
+  p,small,label,input,select,textarea,button{ text-shadow:none!important; }
+}
