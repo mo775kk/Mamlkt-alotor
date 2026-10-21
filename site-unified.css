@@ -4909,3 +4909,35 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .oil-mentor-sources a{color:#573047;text-decoration:underline;text-underline-offset:3px;font-weight:800}
 html[data-theme="dark"] .oil-mentor-sources{color:#f3dce7}
 html[data-theme="dark"] .oil-mentor-sources a{color:#f1d77a}
+
+
+/* ROYAL BLACK & GOLD — unified high-contrast finish (2026-10-21) */
+:root{
+  --bg:#0a0a0a;--panel:#14120e;--panel2:#1b1811;--card:#14120e;--field:#0f0e0b;
+  --gold:#d4af37;--gold2:#f1d77a;--text:#f8f5ec;--heading:#f1d77a;--muted:#d0c6b3;
+  --line:rgba(212,175,55,.38);--header-bg:#090807;--footer-bg:#090807;
+  --button-bg:#d4af37;--button-text:#171109;--index-bg:#0a0a0a;--index-card:#15120b;
+  --index-icon:#d4af37;--index-border:#f1d77a;
+}
+body{background-image:none!important;background-color:#0a0a0a}
+.site-header{background:rgba(8,7,6,.97);border-bottom-color:rgba(212,175,55,.38)}
+.section-heading h2,.section-heading h3,.home-index-copy strong,.product-info h3,
+.product-price,.oil-mentor-heading h3,.oil-mentor-answer strong{color:#f1d77a}
+.home-index-card{background:linear-gradient(145deg,#17140d,#0b0a08)!important;color:#f8f5ec;border-color:rgba(212,175,55,.42)!important}
+.home-index-card:hover,.home-index-card:focus-visible{border-color:#f1d77a!important;outline-color:#f1d77a}
+.home-index-icon{background:#211a0b!important;color:#f1d77a!important;border-color:#d4af37!important}
+.oil-mentor-panel,html[data-theme="light"] .oil-mentor-panel{
+  background:linear-gradient(135deg,#17140e,#0c0b09)!important;color:#f8f5ec!important;border-color:#d4af37!important
+}
+.oil-mentor-heading h3,.oil-mentor-heading p:not(.eyebrow),.oil-mentor-answer,
+.oil-mentor-answer p,.oil-mentor-sources{color:#f8f5ec!important}
+.oil-mentor-heading .eyebrow,.oil-mentor-answer strong,.oil-mentor-sources a{color:#f1d77a!important}
+.oil-mentor-answer{background:#0d0c09!important;border-color:#6b5925!important}
+.oil-voice-status{background:#211a0b!important;color:#f8f5ec!important;border-color:#6b5925!important}
+html[data-theme="dark"] input::placeholder,html[data-theme="dark"] textarea::placeholder,
+input::placeholder,textarea::placeholder{color:#bfb6a5!important;opacity:1}
+html[data-theme="dark"] th,th{background:#211a0b!important;color:#f1d77a!important}
+html[data-theme="dark"] td,td{color:#f8f5ec}
+.btn-outline,.small-btn{color:#f1d77a}
+:focus-visible{outline:2px solid #f1d77a;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
