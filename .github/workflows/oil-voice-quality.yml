@@ -55,7 +55,7 @@ jobs:
           if (missing.length) throw new Error('Missing oil mentor IDs: ' + missing.join(', '));
           if (!html.includes('oil-voice-guide.js') || !js.includes('SpeechRecognition') || !js.includes('speechSynthesis')) throw new Error('Oil mentor script or voice APIs missing');
           const bannedPaletteNames = ['plumPinkGold','warmRose','roseGold','pinkGold','flamingo','blush','royalRose','berry','coral','peach','ruby','wine','mauve','lilac','plum','sunset','dawn'];
-          if (bannedPaletteNames.some(name => settings.includes('["' + name + '"') || settings.includes('"' + name + '":'))) throw new Error('Pink preset remains in settings');
+          if (bannedPaletteNames.some(name => settings.includes('["' + name + '"') || settings.includes('"' + name + '":') || settings.includes('option value="' + name + '"'))) throw new Error('Pink preset remains in settings');
           if (manifest.theme_color.toLowerCase() !== '#0a0a0a' || manifest.background_color.toLowerCase() !== '#0a0a0a') throw new Error('PWA manifest is not black/gold branded');
           console.log('HTML structure, PWA manifest, black/gold theme and oil mentor verified.');
           NODE
