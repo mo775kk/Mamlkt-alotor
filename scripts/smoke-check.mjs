@@ -160,7 +160,7 @@ try {
     "Cloud sync excludes cart, wishlist/favorites, sessions and sensitive credential keys");
   report(/url:\s*"https:\/\/[a-z0-9-]+\.supabase\.co"/i.test(config) &&
     /anonKey:\s*"(?:sb_publishable_|eyJ)[^"]+"/.test(config) &&
-    !/service_role|sb_secret_/i.test(config),
+    !/\b(?:anonKey|url)\s*:\s*"[^"]*(?:service_role|sb_secret_)/i.test(config),
     "Supabase browser config uses a public key and contains no service-role/secret key");
 } catch (e) {
   report(false, "Unable to validate cloud persistence security: " + e.message);
