@@ -58,15 +58,32 @@
   extraThemePalettes.forEach(([key,label,bg,panel2,gold,gold2,text,heading,muted,line,header,footer,button,buttonText,visualStyle])=>{
     themePresets[key]={bg,panel:"#FFFFFF",panel2,card:"#FFFFFF",field:"#FFFFFF",gold,gold2,text,heading,muted,line,header,footer,button,buttonText,backgroundImage:"assets/images/royal-hero.jpg",overlay:0.10,visualStyle,label};
   });
+  /* The design selector intentionally contains only the ten new concepts.
+     Legacy palettes remain internal for compatibility with saved settings, but are not offered to customers/admins. */
   const addThemeOptions=()=>{
     const select=document.querySelector("#cfgPreset");
     if(!select)return;
-    extraThemePalettes.forEach(([key,label])=>{
-      if(["ivoryGold","blackGold","desert","vanilla","buttercream"].includes(key))return;
-      if(!select.querySelector('option[value="'+key+'"]')){
-        const option=document.createElement("option");option.value=key;option.textContent=label;select.appendChild(option);
-      }
+    const choices=[
+      ["design01","1 — الملكي العصري الأزرق"],
+      ["design02","2 — الفاخر المضيء"],
+      ["design03","3 — الرومانسي الداكن"],
+      ["design04","4 — الأزرق التقني"],
+      ["design05","5 — الكلاسيكي العاجي"],
+      ["design06","6 — الطبيعي الأخضر"],
+      ["design07","7 — الأرجواني الملكي"],
+      ["design08","8 — البسيط السماوي"],
+      ["design09","9 — السينمائي الداكن"],
+      ["design10","10 — الوردي الفاتح"]
+    ];
+    const custom=Array.from(select.options).find(option=>option.value==="custom");
+    select.replaceChildren();
+    choices.forEach(([key,label])=>{
+      const option=document.createElement("option");
+      option.value=key;option.textContent=label;select.appendChild(option);
     });
+    const customOption=custom||document.createElement("option");
+    customOption.value="custom";customOption.textContent="ألوان مخصصة";
+    select.appendChild(customOption);
   };
   addThemeOptions();
 
