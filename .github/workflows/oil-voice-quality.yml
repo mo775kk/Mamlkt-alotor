@@ -23,9 +23,9 @@ jobs:
           import { readFileSync, existsSync } from 'node:fs';
           import { execFileSync } from 'node:child_process';
           const html = readFileSync('index.html', 'utf8');
-          const scripts = [...html.matchAll(/<script\\b[^>]*\\bsrc=["']([^"']+)["']/g)]
+          const scripts = [...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["']/g)]
             .map(match => match[1].split('?')[0])
-            .filter(path => !/^https?:\\/\\//i.test(path));
+            .filter(path => !/^https?:\/\//i.test(path));
           const unique = [...new Set(scripts)];
           if (!unique.length) throw new Error('No local scripts found in index.html');
           for (const path of unique) {
@@ -44,9 +44,9 @@ jobs:
           const settings = readFileSync('settings.js', 'utf8');
           const manifest = JSON.parse(readFileSync('manifest.webmanifest', 'utf8'));
           const count = re => (html.match(re) || []).length;
-          if (count(/<head\\b/gi) !== 1 || count(/<\\/head>/gi) !== 1) throw new Error('HTML head structure is broken');
-          if (count(/<body\\b/gi) !== 1 || count(/<\\/body>/gi) !== 1) throw new Error('HTML body structure is broken');
-          if (count(/<script\\b/gi) !== count(/<\\/script>/gi)) throw new Error('HTML script tags are unbalanced');
+          if (count(/<head\b/gi) !== 1 || count(/<\/head>/gi) !== 1) throw new Error('HTML head structure is broken');
+          if (count(/<body\b/gi) !== 1 || count(/<\/body>/gi) !== 1) throw new Error('HTML body structure is broken');
+          if (count(/<script\b/gi) !== count(/<\/script>/gi)) throw new Error('HTML script tags are unbalanced');
           if (html.includes('mentor2"scrollProgress')) throw new Error('Broken service-worker line detected');
           if (!html.includes('site-unified.css?v=20261021-royal-blackgold1')) throw new Error('Updated stylesheet is not referenced');
           if (!css.includes('ROYAL BLACK & GOLD') || !css.includes('background-image:none!important')) throw new Error('Unified black/gold finish is missing');
@@ -54,7 +54,7 @@ jobs:
           const missing = requiredIds.filter(id => !html.includes('id="' + id + '"'));
           if (missing.length) throw new Error('Missing oil mentor IDs: ' + missing.join(', '));
           if (!html.includes('oil-voice-guide.js') || !js.includes('SpeechRecognition') || !js.includes('speechSynthesis')) throw new Error('Oil mentor script or voice APIs missing');
-          if (/"(?:plumPinkGold|warmRose|roseGold|pinkGold|flamingo|blush|royalRose)":/.test(settings)) throw new Error('Pink preset remains in settings');
+          if (/(?:\"(?:plumPinkGold|warmRose|roseGold|pinkGold|flamingo|blush|royalRose|berry|coral)\":|\\\[\"(?:roseGold|pinkGold|flamingo|blush|royalRose|berry|coral|peach|ruby|wine|mauve|lilac|plum|sunset|dawn)\")/.test(settings)) throw new Error('Pink preset remains in settings');
           if (manifest.theme_color.toLowerCase() !== '#0a0a0a' || manifest.background_color.toLowerCase() !== '#0a0a0a') throw new Error('PWA manifest is not black/gold branded');
           console.log('HTML structure, PWA manifest, black/gold theme and oil mentor verified.');
           NODE
