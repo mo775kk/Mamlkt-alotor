@@ -49,6 +49,8 @@
     const raw=input&&typeof input==="object"?input:{},v={indexBg:"#0A0A0A",indexCard:"#15120B",indexIcon:"#D4AF37",indexBorder:"#F1D77A",...themePresets.goldBlack,...raw},dark=colorLum(v.bg)<.22; Object.keys(v).forEach(key=>{if(isPinkTone(v[key]))v[key]=({bg:"#0A0A0A",panel:"#14120E",panel2:"#1B1811",card:"#14120E",field:"#0F0E0B",gold:"#D4AF37",gold2:"#F1D77A",text:"#F8F5EC",heading:"#F1D77A",muted:"#D0C6B3",line:"#6B5925",header:"#090807",footer:"#090807",button:"#D4AF37",buttonText:"#171109",indexBg:"#0A0A0A",indexCard:"#15120B",indexIcon:"#D4AF37",indexBorder:"#F1D77A"})[key]||"#D4AF37"});
     const fallback={panel2:mixColor(v.bg,v.panel,dark?.32:.62),card:v.panel,field:v.panel,muted:mixColor(v.text,v.bg,dark?.38:.34),line:mixColor(v.bg,v.text,dark?.28:.14),heading:v.text,header:mixColor(v.bg,v.gold,dark?.16:.10),footer:mixColor(v.bg,v.text,dark?.06:.08),button:v.gold,buttonText:colorLum(v.gold)>.48?"#20251f":"#ffffff"};
     Object.keys(fallback).forEach(key=>{if(!Object.prototype.hasOwnProperty.call(raw,key)||!/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(String(raw[key]||"")))v[key]=fallback[key]});
+    /* Keep one coherent no-gold accent across every preset and saved custom palette. */
+    Object.assign(v,{gold:"#4D9DE0",gold2:"#A8D8FF",heading:"#B8E1FF",line:"#35516A",button:"#244D70",buttonText:"#FFFFFF",indexIcon:"#4D9DE0",indexBorder:"#A8D8FF"});
     return v;
   }
 
