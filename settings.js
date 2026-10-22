@@ -25,7 +25,7 @@
       if(bg)theme.backgroundImage=bg.value.trim()||"none";
       if(overlay&&Number.isFinite(+overlay.value))theme.overlay=Math.max(0,Math.min(.65,+overlay.value/100));
       localStorage.setItem("mamlaka_theme_v1",JSON.stringify(theme));
-      localStorage.setItem("mamlaka_theme",JSON.stringify(theme));
+      /* Keep mamlaka_theme reserved for the light/dark mode string. */
       const name=get("cfgName"),wa=get("cfgWhatsapp");
       if(name)localStorage.setItem("mamlaka_store_name_v1",name.value.trim()||"مملكة العطور");
       if(wa)localStorage.setItem("mamlaka_admin_whatsapp_v1",wa.value.replace(/\\D/g,"")||"201272776928");
