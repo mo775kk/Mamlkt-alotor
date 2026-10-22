@@ -735,3 +735,7 @@ dialog#pwaInstallHelp button{background:#315C59!important;color:#fff!important;b
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* Consistent custom line icons for the main directory */
+.home-index-icon .index-icon-svg{display:block;width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.home-index-card:hover .home-index-icon{background:#DCEAE3!important;border-color:#9ABBAE!important}
