@@ -5338,3 +5338,31 @@ html[data-theme="dark"] td,td{color:#F7F1E6}
 :root{--bg:#090807;--panel:#15120d;--panel2:#211a0b;--gold:#D4AF37;--gold2:#F1D77A;--text:#F7F1E6;--muted:#D0C5B1;--line:rgba(212,175,55,.38)}
 :where(button,a,input,select,textarea,[role="button"]):focus-visible{outline:3px solid #F1D77A!important;outline-offset:3px!important}
 ::selection{background:#D4AF37!important;color:#0A0A0A!important}
+
+
+/* ROYAL IVORY UNIFIED THEME 20261022-ivory-unified3 */
+:root{
+--bg:#F7F3E9;--panel:#FFFEFA;--panel2:#EFE6D5;--card:#FFFEFA;--field:#FFFFFF;
+--gold:#B88A2B;--gold2:#D8B35B;--heading:#4B3423;--text:#3F3025;--muted:#6B5848;
+--line:#D8C6A5;--header-bg:#FBF7EF;--footer-bg:#EEE4D2;--button-bg:#805B2A;--button-text:#FFFFFF;
+--index-bg:#F7F3E9;--index-card:#FFFEFA;--index-icon:#9B7027;--index-border:#D8B35B;
+--page-image:none;--bg-overlay:0;color-scheme:light
+}
+html,html[data-theme="dark"],html[data-theme="light"]{background:var(--bg)!important;color-scheme:light!important}
+body{background:var(--bg)!important;background-image:none!important;color:var(--text)!important;font-family:"Tajawal",sans-serif}
+.site-header,.main-nav,.site-footer,.admin-panel,.admin-card,.settings-panel,.section-page-toolbar,.product-modal,.drawer,.cart-panel,.blend-panel,.blend-summary,.advisor-box,.assistant-message,.empty-state,.search-box,.home-index-card,.category-card,.product-card,.testimonial,.contact-card,.store-location-panel,.feature-banner,.gift-copy,.home-showcase-block,.home-showcase-card,.category-icon-wrap,.product-visual,.product-info,.admin-page,.admin-tab,.settings-tab{
+background-color:var(--panel)!important;color:var(--text)!important;border-color:var(--line)!important
+}
+.site-header{background:var(--header-bg)!important}.site-footer{background:var(--footer-bg)!important}
+h1,h2,h3,h4,.section-heading h2,.product-card h3,.product-info h3,.home-index-copy strong,.home-showcase-heading h3,.brand strong{color:var(--heading)!important}
+p,small,label,li,td,th,.muted,.product-desc,.product-meta,.home-index-copy small{color:var(--text)}
+.eyebrow,.home-showcase-kicker,.home-index-count{color:var(--gold)!important}
+.btn-gold,.btn-primary,.button-primary,.product-card .add-to-cart{background:var(--button-bg)!important;color:var(--button-text)!important;border-color:var(--gold)!important}
+.btn-outline,.icon-btn,.menu-admin-shortcut{background:var(--panel)!important;color:var(--heading)!important;border-color:var(--line)!important}
+.home-index-card,.product-card,.category-card,.home-showcase-block,.contact-card,.admin-card{box-shadow:0 5px 20px rgba(83,59,29,.08)!important;border:1px solid var(--line)!important;border-radius:14px!important}
+.home-index-icon,.category-icon-wrap,.royal-category-icon,.product-visual{color:var(--gold)!important;background:var(--panel2)!important;border-color:var(--line)!important}
+input,select,textarea{background:var(--field)!important;color:var(--text)!important;border-color:var(--line)!important}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid var(--gold)!important;outline-offset:3px!important}
+::selection{background:#D8B35B!important;color:#3F3025!important}
+@media(max-width:620px){.home-index-grid{grid-template-columns:minmax(0,1fr)!important}.home-index-card{min-width:0;padding:12px!important;gap:10px!important}.product-card,.category-card{border-radius:12px!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
