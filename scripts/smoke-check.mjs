@@ -57,7 +57,7 @@ try {
     "Saved palette, theme mode and display settings are restored across visits");
   report(settingsSource.includes('themePresets.design03,...JSON.parse(localStorage.getItem("mamlaka_theme_v1")||"{}")') &&
     settingsSource.includes('const visualValues={brightness:"cfgBrightness"') &&
-    settingsSource.includes('wa.value.replace(/\\\\D/g,"")'),
+    settingsSource.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save uses the current neutral palette, validates the WhatsApp number and preserves display controls");
   report(settingsSource.includes('"mamlaka_visual_tuning_v1"') &&
     settingsSource.includes('"mamlaka_theme",') && settingsSource.includes("legacyGreen") && settingsSource.includes("cfgMobileDesign") && settingsSource.includes("cfgWebDesign") &&
