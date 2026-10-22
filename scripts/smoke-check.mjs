@@ -184,7 +184,7 @@ try {
   report(app.includes("const referenceFragranceNotes =") &&
     app.includes("khamrahqahwa:") && app.includes("asadzanzibar:") && app.includes("asadbourbon:") &&
     app.includes("function applyReferenceFragranceNotes(product)") &&
-    app.includes("product.notesStatus = \\\"reference-fragrance-notes\\\"") &&
+    app.includes('product.notesStatus = "reference-fragrance-notes"') &&
     app.includes("لا تؤكد تركيبة زيت المورد"),
     "Official-brand reference notes cover five matched fragrances and preserve the supplier-oil disclaimer");
   report(app.includes("product.topNotes = reference.topNotes.slice()") &&
