@@ -17,11 +17,13 @@
     try{const mode=localStorage.getItem(MODE_KEY);if(mode==="light"||mode==="dark")root.setAttribute("data-theme","light")}catch(_){}
     const theme=read(THEME_KEY);
     if(!theme||typeof theme!=="object")return;
-    /* Do not let the previous default green palette override the new neutral perfume-house base before settings.js migrates it. */
-    if(theme.bg==="#F5F5EF"&&theme.gold==="#376B59"&&theme.button==="#376B59")return;
+    /* Migrate old saved image backgrounds away; the storefront now uses a unified solid-color canvas. */
+    if(theme.backgroundImage && theme.backgroundImage!=="none"){
+      theme.backgroundImage="none";
+      try{localStorage.setItem(THEME_KEY,JSON.stringify(theme));localStorage.setItem(MODE_KEY,JSON.stringify(theme));}catch(_){}
+    }
     Object.entries(vars).forEach(([key,name])=>{if(validColor(theme[key]))root.style.setProperty(name,((isPinkTone(theme[key])||(["gold","gold2","button","indexIcon","indexBorder"].includes(key)&&isGoldTone(theme[key])))?(safeColors[key]||"#4D5052"):theme[key]))});
-    const image=validImage(theme.backgroundImage);
-    if(image){root.style.setProperty("--page-image",'url("'+image.replace(/["\\\\]/g,"") +'")');const hero=document.querySelector(".hero-image");if(hero)hero.src=image}else{root.style.setProperty("--page-image","none")}
+    root.style.setProperty("--page-image","none");
     root.style.setProperty("--bg-overlay",String(clamp(theme.overlay,.05,.85,.18)));
     if(theme.visualStyle){const aliases={royal:"windows",editorial:"ios",soft:"android",glass:"ios",boutique:"classic",bold:"windows",minimal:"classic",botanical:"pixel"};const style=aliases[theme.visualStyle]||theme.visualStyle;if(["windows","android","ios","oneui","pixel","classic"].includes(style))root.dataset.visualStyle=style}
     if(validColor(theme.bg)){root.style.colorScheme=luminance(theme.bg)<.22?"dark":"light";const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.setAttribute("content","#151B23")}
