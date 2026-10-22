@@ -501,6 +501,18 @@
   document.querySelectorAll("[data-advisor-prompt]").forEach(button=>button.addEventListener("click",()=>{const prompt=button.dataset.advisorPrompt||"",input=$("#advisorInput");if(!input)return;input.value=prompt;submitAdvisor(prompt);}));
   const advisorReplies=$("#advisorReplies");if(advisorReplies)advisorReplies.addEventListener("click",e=>{if(e.target.closest("[data-advisor-request]"))requestMissing($("#advisorInput")?.value.trim()||"اقتراح عطر مناسب");});
   const contactWhatsapp=$("#contactWhatsapp");if(contactWhatsapp)contactWhatsapp.href=`https://wa.me/${getWaNumber()}?text=${encodeURIComponent("مرحبًا، أريد الاستفسار عن منتجات مملكة العطور.")}`;
+  // Keep product cards usable when a remote or uploaded product image fails to load.
+  document.addEventListener("error", event => {
+    const img = event.target;
+    if (!img || img.tagName !== "IMG" || !img.classList.contains("product-photo") || img.dataset.fallbackApplied === "true") return;
+    img.dataset.fallbackApplied = "true";
+    const fallback = document.createElement("div");
+    fallback.className = "image-load-fallback";
+    fallback.setAttribute("role", "img");
+    fallback.setAttribute("aria-label", "صورة المنتج غير متاحة حالياً");
+    fallback.textContent = "الصورة غير متاحة حالياً";
+    img.replaceWith(fallback);
+  }, true);
   // Clear, consistent visual feedback for every customer interaction.
   document.addEventListener("click",event=>{
     const target=event.target.closest("a,button,[role='button'],summary");
