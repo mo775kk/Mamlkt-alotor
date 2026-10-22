@@ -48,8 +48,8 @@ jobs:
           if (count(/<body\b/gi) !== 1 || count(/<\/body>/gi) !== 1) throw new Error('HTML body structure is broken');
           if (count(/<script\b/gi) !== count(/<\/script>/gi)) throw new Error('HTML script tags are unbalanced');
           if (html.includes('mentor2"scrollProgress')) throw new Error('Broken service-worker line detected');
-          if (!html.includes('site-unified.css?v=20261022-directory-design10')) throw new Error('Updated stylesheet is not referenced');
-          if (!css.includes('UNIFIED NON-GOLD DESIGN BASE') || !css.includes('--bg:#F5F5EF') || !css.includes('--gold:#376B59') || !css.includes('background-image:none!important')) throw new Error('Unified non-gold design finish is missing');
+          if (!html.includes('site-unified.css?v=20261022-unified-v4')) throw new Error('Updated stylesheet is not referenced');
+          if (!css.includes('MAMLKAT AL-OTOR — unified design system v4') || !css.includes('--bg:#F5F3EF') || !css.includes('--gold:#4D5052') || !css.includes('background-image:none!important')) throw new Error('Unified non-gold design finish is missing');
           const requiredIds = ['oilMentorPanel','oilVoiceAsk','oilVoiceTeach','oilVoiceStop','oilVoiceStatus','oilMentorAnswer','supplierOilSearch','supplierOilProducts'];
           const missing = requiredIds.filter(id => !html.includes('id="' + id + '"'));
           if (missing.length) throw new Error('Missing oil mentor IDs: ' + missing.join(', '));
