@@ -120,7 +120,7 @@ body{background-color:var(--bg);color:var(--text);background-image:linear-gradie
 /* MAMLKAT AL-OTOR — unified design system v4; single source of truth */
 /* One readable, responsive layer. The original base stylesheet above remains intact. */
 :root{
- --bg:#F4F6F3;--panel:#FFFFFF;--panel2:#E8EEEA;--card:#FFFFFF;--field:#FFFFFF;
+ --bg:#F0F2F4;--panel:#FFFFFF;--panel2:#E2E6EA;--card:#FFFFFF;--field:#FFFFFF;
  --gold:#586B7A;--gold2:#9AAAB6;--text:#303B44;--heading:#263541;--muted:#606D76;
  --line:#CCD3D9;--header-bg:#F8F9FA;--footer-bg:#E1E5E9;--button-bg:#465B6B;--button-text:#FFFFFF;
  --index-bg:#F0F2F4;--index-card:#FFFFFF;--index-icon:#586B7A;--index-border:#9AAAB6;
@@ -136,7 +136,7 @@ p,li,label,small,td,th,dd,dt{overflow-wrap:anywhere}
 a{color:inherit;text-underline-offset:3px}
 button,input,select,textarea{font:inherit}
 button,.btn,.btn-gold,.btn-primary,.primary-button,input[type=button],input[type=submit]{min-height:44px;font-size:1rem;font-weight:750}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,:focus-visible{outline:3px solid #285650;outline-offset:3px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,:focus-visible{outline:3px solid #586B7A;outline-offset:3px}
 button:disabled,.btn:disabled{opacity:.68;cursor:not-allowed}
 .site-header{background:var(--header-bg)!important;color:var(--text)!important;border-bottom:1px solid var(--line)!important;box-shadow:0 4px 18px rgba(31,58,52,.06);backdrop-filter:blur(12px)}
 .site-header a,.site-header button,.main-nav a{color:var(--text)}
