@@ -829,7 +829,7 @@
       "descriptionAr": "عطر غورماند غني؛ افتتاحية روم وماندرين وأماريتو، قلب عنبري كراميلي، وقاعدة كريمية من الصندل والفانيليا.",
       "sourceUrl": "https://lattafa.com/product/badee-al-oud-amethyst-fusion/",
       "notesStatus": "verified-brand-source",
-      "notesConfidence": "مرتفع — صفحة Lattafa الرسمية",
+      "notesConfidence": "مرتفع — صفحة الشركة الرسمية مع مراجعة مصادر عطرية مستقلة",
       "verified": true,
       "needsReview": false,
       "image": "",
@@ -855,7 +855,15 @@
       "referenceSearchName": "Badee Al Oud Amethyst Fusion",
       "referenceSearchAliases": [
         "Lattafa"
-      ]
+      ],
+      "notesResearchSources": [
+        "https://lattafa.com/product/badee-al-oud-amethyst-fusion/",
+        "https://www.lattafa-usa.com/products/badee-al-oud-amethyst-fusion",
+        "https://www.fragrantica.com/perfume/Lattafa-Perfumes/Bade-e-Al-Oud-Amethyst-Fusion-136797.html",
+        "https://www.parfumo.com/Perfumes/Lattafa/amethyst-fusion"
+      ],
+      "notesResearchCheckedAt": "2026-10-23",
+      "notesResearchMethod": "تمت مطابقة اسم الإصدار والنوتات المنشورة في صفحة الشركة ومراجعتها بمراجع عطرية مستقلة. الصورة لم تُضف لعدم توفر رابط صورة مباشر متحقق يخص إصدار Fusion تحديدًا؛ لا تستخدم صورة إصدار Amethyst الأصلي بدلًا منه."
     },
     {
       "id": "lattafa-khamrah-waha",
