@@ -269,3 +269,12 @@ button:active,.btn:active,.home-index-card:active{transform:scale(.99)}
 .modal-product-image .product-photo-stage{min-height:280px;border-radius:10px}
 .modal-product-image .product-photo-stage .product-photo{min-height:280px}
 @media(max-width:600px){.product-photo-stage,.product-photo-stage .product-photo{min-height:170px}.modal-product-image .product-photo-stage,.modal-product-image .product-photo-stage .product-photo{min-height:220px}}
+
+/* Catalog image polish: consistent crop, graceful visual fallback and legible image labels. */
+.product-visual,.home-showcase-visual{overflow:hidden;background:var(--panel2)}
+.product-photo-stage{display:block;min-width:0;min-height:210px}
+.product-photo-stage .product-photo{transition:transform .35s ease;will-change:transform}
+.product-card:hover .product-photo-stage .product-photo,.home-showcase-card:hover .product-photo-stage .product-photo{transform:scale(1.025)}
+.product-image-note{box-shadow:0 2px 10px rgba(0,0,0,.12);backdrop-filter:blur(6px)}
+.product-photo-stage img{color:var(--muted);font-size:.82rem;text-align:center}
+@media(prefers-reduced-motion:reduce){.product-photo-stage .product-photo{transition:none;will-change:auto}}
