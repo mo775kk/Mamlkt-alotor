@@ -472,6 +472,19 @@ try {
   report(false, "Unable to validate oil catalogue and section navigation: " + e.message);
 }
 
+try {
+  const settings = read("settings.js");
+  const html = read("index.html");
+  const worker = read("sw.js");
+  report(settings.includes('wa.value.replace(/\\D/g,"")'),
+    "Emergency settings save strips non-digits from WhatsApp numbers");
+  const registration = html.match(/navigator\\.serviceWorker\\.register\\(['"]([^'"]+)/);
+  report(Boolean(registration) && registration[1].includes("clarity-v9") && worker.includes("clarity-v9"),
+    "HTML service-worker registration and worker shell cache use the same release version");
+} catch (e) {
+  report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
+}
+
 for (const message of pass) console.log("PASS  " + message);
 for (const message of failures) console.error("FAIL  " + message);
 console.log("\n" + pass.length + " passed; " + failures.length + " failed.");
