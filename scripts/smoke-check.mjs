@@ -179,6 +179,26 @@ try {
 }
 
 try {
+  const app = read("app.js");
+  const html = read("index.html");
+  report(app.includes("const referenceFragranceNotes =") &&
+    app.includes("khamrahqahwa:") && app.includes("asadzanzibar:") && app.includes("asadbourbon:") &&
+    app.includes("function applyReferenceFragranceNotes(product)") &&
+    app.includes("product.notesStatus = \\\"reference-fragrance-notes\\\"") &&
+    app.includes("لا تؤكد تركيبة زيت المورد"),
+    "Official-brand reference notes cover five matched fragrances and preserve the supplier-oil disclaimer");
+  report(app.includes("product.topNotes = reference.topNotes.slice()") &&
+    app.includes("if (hasPyramid) return product") &&
+    app.includes("publicCatalogProducts.forEach(applyReferenceFragranceNotes)") &&
+    app.includes("oilProducts.forEach(applyReferenceFragranceNotes)"),
+    "Reference notes fill only missing note pyramids and do not overwrite existing researched notes");
+  report(/app\\.js\\?v=20261023-reference-notes-v1/.test(html),
+    "Storefront loads the new reference-note logic with a refreshed cache version");
+} catch (e) {
+  report(false, "Unable to validate sourced reference fragrance notes: " + e.message);
+}
+
+try {
   const settings = read("settings.js");
   report(settings.includes('id="cfgBackgroundImage" type="hidden" value="none"') &&
     settings.includes('verified.backgroundImage!=="none"') &&
