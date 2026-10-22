@@ -469,7 +469,7 @@
   bind("#requestMissingBtn", "click",()=>{const name=$("#productSearch").value.trim();if(!name){notify("اكتب اسم العطر الذي تبحث عنه أولًا.");$("#productSearch").focus();return;}requestMissing(name);notify("تم تسجيل طلب البحث وفتح واتساب لإرساله.");});
   bind("#searchFocus", "click",()=>{location.hash="#ready";window.setTimeout(()=>$("#productSearch")?.focus(),100);});
   bind("#favoritesShortcut", "click",()=>{const fav=products.filter(p=>favorites.includes(p.id));if(!fav.length){notify("قائمة المفضلة فارغة.");return;}$("#productSearch").value="";$("#genderFilter").value="";$("#familyFilter").value="";$("#readyProducts").innerHTML=fav.map(productCard).join("");$("#resultsMessage").textContent=`${fav.length} منتج في المفضلة`;$("#noProducts").classList.add("hidden");location.hash="#ready";});
-  bind("#cartShortcut", "click",openDrawer);bind("#cartHeaderShortcut", "click",openDrawer);bind("#closeDrawer", "click",closeDrawer);bind("#cartEndBack", "click",closeDrawer);bind("#drawerBackdrop", "click",closeDrawer);
+  bind("#cartShortcut", "click",openDrawer);bind("#closeDrawer", "click",closeDrawer);bind("#cartEndBack", "click",closeDrawer);bind("#drawerBackdrop", "click",closeDrawer);
   bind("#closeModal", "click",closeModal);bind("#modalBackdrop", "click",e=>{if(e.target===$("#modalBackdrop"))closeModal();});
   bind("#checkoutBtn", "click",checkout);bind("#clearCart", "click",()=>{cart=[];save(STORAGE.cart,cart);renderCart();updateCounts();syncProductCardSelectionStates();notify("تم إفراغ السلة.");});
   bind("#blendSize", "change",blendPrice);

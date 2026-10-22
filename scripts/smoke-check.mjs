@@ -134,12 +134,13 @@ report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor
 }
 
 try {
+  const html = read("index.html");
   const app = read("app.js");
   const cartCss = read("site-unified.css");
   report(cartCss.includes("#cartDrawer .cart-item-facts dd{margin:0;color:var(--heading)") && cartCss.includes("#cartDrawer .cart-line-actions .remove-btn") && cartCss.includes("@media(max-width:380px)"),
     "Cart item names, size/price/quantity totals and action controls have readable responsive styles");
-  report(app.includes('bind("#cartHeaderShortcut", "click",openDrawer)') && app.includes('bind("#cartShortcut", "click",openDrawer)'),
-    "Both the header cart button and secondary cart shortcut open the cart drawer");
+  report(!html.includes('id="cartHeaderShortcut"') && !app.includes('bind("#cartHeaderShortcut", "click",openDrawer)') && app.includes('bind("#cartShortcut", "click",openDrawer)'),
+    "The cart drawer is opened only from the homepage directory shortcut; no duplicate header cart action remains");
   report(app.includes('const bind = (selector, eventName, handler, options) => { const el = $(selector); if (el) el.addEventListener(eventName, handler, options); }'),
     "app.js shared event binder checks that an element exists before attaching listeners");
   report(app.includes('const mainNav=$("#mainNav"), menuToggle=$("#menuToggle")') &&
@@ -377,7 +378,7 @@ try {
     "The main directory is excluded from collapsible section details");
   const header = html.slice(html.indexOf('<div class="header-actions">'),html.indexOf('</div>',html.indexOf('<div class="header-actions">')));
   report((html.match(/id="cartShortcut"/g) || []).length === 1 &&
-    (html.match(/id="cartCount"/g) || []).length === 1 && !header.includes("cartShortcut"),
+    (html.match(/id="cartCount"/g) || []).length === 1 && !header.includes("cartShortcut") && !header.includes("cartHeaderShortcut") && !html.includes('id="headerCartCount"'),
     "Cart has one entry and one counter, located on the homepage directory rather than the header");
 } catch (e) {
   report(false, "Unable to validate homepage navigation and cart placement: " + e.message);
