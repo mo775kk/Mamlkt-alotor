@@ -44,6 +44,14 @@ try {
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   const settingsSource = read("settings.js");
+  const storefrontSource = read("app.js");
+  report(settingsSource.includes('#homeSettingsShortcut,#settingsShortcut,#menuAdminShortcut') &&
+    settingsSource.includes('open();') && settingsSource.includes('loadCfg();') &&
+    html.includes('id="menuAdminShortcut"'),
+    "All visible settings/admin entry points are wired to the emergency-safe admin opener");
+  report(storefrontSource.includes('const mainNav=$("#mainNav"), menuToggle=$("#menuToggle")') &&
+    storefrontSource.includes('bind("#menuToggle","click",()=>{if(!mainNav||!menuToggle)return;'),
+    "Mobile menu has an explicit click handler and guards missing elements instead of crashing startup");
   report(themeBootstrap.includes('root.setAttribute("data-theme",mode)') &&
     !themeBootstrap.includes('root.setAttribute("data-theme","light")') &&
     !themeBootstrap.includes('localStorage.setItem(MODE_KEY,JSON.stringify(theme))') &&
