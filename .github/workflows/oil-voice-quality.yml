@@ -56,6 +56,6 @@ jobs:
           if (!html.includes('oil-voice-guide.js') || !js.includes('SpeechRecognition') || !js.includes('speechSynthesis')) throw new Error('Oil mentor script or voice APIs missing');
           const bannedPaletteNames = ['plumPinkGold','warmRose','roseGold','pinkGold','flamingo','blush','royalRose','berry','coral','peach','ruby','wine','mauve','lilac','plum','sunset','dawn'];
           if (bannedPaletteNames.some(name => settings.includes('["' + name + '"') || settings.includes('"' + name + '":') || settings.includes('option value="' + name + '"'))) throw new Error('Pink preset remains in settings');
-          if (manifest.theme_color.toLowerCase() !== '#f5f5ef' || manifest.background_color.toLowerCase() !== '#f5f5ef') throw new Error('PWA manifest does not match the new unified design');
+          if (manifest.theme_color.toLowerCase() !== '#f5f3ef' || manifest.background_color.toLowerCase() !== '#f5f3ef') throw new Error('PWA manifest does not match the new unified design');
           console.log('HTML structure, PWA manifest, non-gold design and oil mentor verified.');
           NODE
