@@ -44,6 +44,9 @@ try {
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   const settingsSource = read("settings.js");
+  const inventorySource = read("inventory-accounting.js");
+  report(inventorySource.includes('name="supplier"') && inventorySource.includes('name="shipping"') && inventorySource.includes('name="extraCost"') && inventorySource.includes("purchaseUnitCost+(shippingTotal+extraCostTotal)/qty") && inventorySource.includes("totalLandedCost:landedUnitCost*qty"),
+    "Inventory intake records supplier, purchase cost, shipping and extra costs, and calculates landed unit cost");
   const storefrontSource = read("app.js");
   report(settingsSource.includes('#homeSettingsShortcut,#settingsShortcut,#menuAdminShortcut') &&
     settingsSource.includes('open();') && settingsSource.includes('loadCfg();') &&
