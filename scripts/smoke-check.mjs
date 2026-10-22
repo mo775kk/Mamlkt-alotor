@@ -401,7 +401,7 @@ try {
   const pages = read("section-pages.js");
   const settings = read("settings.js");
   report(html.includes('data-theme="light"') && css.includes("MAMLKAT AL-OTOR — unified design system v4") &&
-    css.includes("--bg:#F4F6F3") && css.includes("--gold:#315C59") && css.includes("--heading:#172F2B") && (css.match(/Original source:/g)||[]).length===1 && css.includes("background-image:none!important") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
+    css.includes("--bg:#F0F2F4") && css.includes("--gold:#586B7A") && css.includes("--heading:#263541") && (css.match(/Original source:/g)||[]).length===1 && css.includes("background-image:none!important") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
     "Unified storefront palette uses neutral colors and removes accumulated legacy stylesheet layers");
   report(/section-pages\.js\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
@@ -479,7 +479,7 @@ try {
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
   const registrationIsCurrent = html.includes("register(\'./sw.js?v=20261022-clarity-v9\')");
-  report(registrationIsCurrent && worker.includes("clarity-v9"),
+  report(registrationIsCurrent && worker.includes("clarity-v10"),
     "HTML service-worker registration and worker shell cache use the same release version");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
