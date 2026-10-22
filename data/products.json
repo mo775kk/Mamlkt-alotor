@@ -3586,15 +3586,26 @@
       "productType": "oil",
       "gender": "رجالي",
       "origin": "غير محدد",
-      "family": "غير محدد",
+      "family": "حمضي عطري خشبي",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "البرغموت",
+        "الليمون",
+        "اليوسفي"
+      ],
+      "heartNotes": [
+        "الزنجبيل",
+        "الخزامى",
+        "أوراق البنفسج"
+      ],
+      "baseNotes": [
+        "خشب الساج",
+        "خشب الأبنوس"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — Challenge EDT من Lacoste، إصدار 2009؛ لا يؤكد تركيبة زيت المورد.",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -3624,7 +3635,14 @@
       "referenceSearchAliases": [
         "Lacoste",
         "الكوست"
-      ]
+      ],
+      "sourceUrl": "https://www.parfumo.com/Perfumes/Lacoste/Challenge_Eau_de_Toilette",
+      "notesResearchSources": [
+        "https://www.parfumo.com/Perfumes/Lacoste/Challenge_Eau_de_Toilette",
+        "https://www.osmoz.com/perfumes/lacoste/42/challenge"
+      ],
+      "notesResearchCheckedAt": "2026-10-23",
+      "notesResearchMethod": "مطابقة اسم العطر المرجعي والشركة والإصدار المنشور، مع مقارنة مصدرين عند توفرهما. هذه النوتات تخص العطر الأصلي ولا تثبت تركيبة زيت المورد؛ يلزم اختبار عينة الزيت."
     },
     {
       "id": "oil-R1010110",
@@ -3803,15 +3821,32 @@
       "productType": "oil",
       "gender": "رجالي",
       "origin": "غير محدد",
-      "family": "غير محدد",
+      "family": "فاكهي عطري خشبي وتبغي",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "البرقوق",
+        "الأناناس",
+        "البرغموت",
+        "الكمثرى",
+        "ليمون أمالفي"
+      ],
+      "heartNotes": [
+        "ورق الغار",
+        "القطيفة",
+        "إبرة الراعي",
+        "الياسمين"
+      ],
+      "baseNotes": [
+        "التبغ",
+        "الباتشولي",
+        "خشب الصندل",
+        "خشب الأرز الفيرجيني",
+        "المسك"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "verified-brand-source",
+      "notesConfidence": "مرتفع — صفحة Rémy Latour الرسمية متوافقة إجمالًا مع Fragrantica.",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -3841,7 +3876,14 @@
       "referenceSearchAliases": [
         "Remy Latour",
         "ريمي التور"
-      ]
+      ],
+      "sourceUrl": "https://www.remy-latour.com/img/homme/cigarnew-en.html",
+      "notesResearchSources": [
+        "https://www.remy-latour.com/img/homme/cigarnew-en.html",
+        "https://www.fragrantica.com/perfume/Remy-Latour/Cigar-9351.html"
+      ],
+      "notesResearchCheckedAt": "2026-10-23",
+      "notesResearchMethod": "مطابقة اسم العطر المرجعي والشركة والإصدار المنشور، مع مقارنة مصدرين عند توفرهما. هذه النوتات تخص العطر الأصلي ولا تثبت تركيبة زيت المورد؛ يلزم اختبار عينة الزيت."
     },
     {
       "id": "oil-R1010173",
@@ -3854,15 +3896,27 @@
       "productType": "oil",
       "gender": "رجالي",
       "origin": "غير محدد",
-      "family": "غير محدد",
+      "family": "شرقي حار عنبري",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الهيل",
+        "التفاح الأخضر",
+        "اليوسفي الأخضر"
+      ],
+      "heartNotes": [
+        "جوزة الطيب",
+        "الخزامى",
+        "زهر البرتقال"
+      ],
+      "baseNotes": [
+        "حبوب التونكا",
+        "العنبر",
+        "الجلد"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — مطابقة Armani Code Profumo إصدار 2016 مع مصدرين متخصصين.",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -3892,7 +3946,14 @@
       "referenceSearchAliases": [
         "Giorgio Armani",
         "ارماني"
-      ]
+      ],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Giorgio-Armani/Armani-Code-Profumo-34761.html",
+      "notesResearchSources": [
+        "https://www.fragrantica.com/perfume/Giorgio-Armani/Armani-Code-Profumo-34761.html",
+        "https://www.parfumo.com/Perfumes/Giorgio_Armani/Armani_Code_Profumo"
+      ],
+      "notesResearchCheckedAt": "2026-10-23",
+      "notesResearchMethod": "مطابقة اسم العطر المرجعي والشركة والإصدار المنشور، مع مقارنة مصدرين عند توفرهما. هذه النوتات تخص العطر الأصلي ولا تثبت تركيبة زيت المورد؛ يلزم اختبار عينة الزيت."
     },
     {
       "id": "oil-R1010140",
@@ -3905,15 +3966,28 @@
       "productType": "oil",
       "gender": "رجالي",
       "origin": "غير محدد",
-      "family": "غير محدد",
+      "family": "شرقي خشبي حلو",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "اليانسون النجمي",
+        "الجريب فروت",
+        "اليوسفي"
+      ],
+      "heartNotes": [
+        "الهليوتروب",
+        "زهر الزيتون",
+        "خشب الأرز",
+        "السرو"
+      ],
+      "baseNotes": [
+        "الفانيليا",
+        "حبوب التونكا",
+        "خشب الغاياك"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — مطابقة Armani Code Ultimate إصدار 2012 مع مصدرين متخصصين.",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -3943,7 +4017,14 @@
       "referenceSearchAliases": [
         "Giorgio Armani",
         "ارماني"
-      ]
+      ],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Giorgio-Armani/Armani-Code-Ultimate-15718.html",
+      "notesResearchSources": [
+        "https://www.fragrantica.com/perfume/Giorgio-Armani/Armani-Code-Ultimate-15718.html",
+        "https://www.parfumo.com/Perfumes/Giorgio_Armani/Armani_Code_Ultimate"
+      ],
+      "notesResearchCheckedAt": "2026-10-23",
+      "notesResearchMethod": "مطابقة اسم العطر المرجعي والشركة والإصدار المنشور، مع مقارنة مصدرين عند توفرهما. هذه النوتات تخص العطر الأصلي ولا تثبت تركيبة زيت المورد؛ يلزم اختبار عينة الزيت."
     },
     {
       "id": "oil-R1010093",
