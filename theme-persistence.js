@@ -16,6 +16,8 @@
     try{const mode=localStorage.getItem(MODE_KEY);if(mode==="light"||mode==="dark")root.setAttribute("data-theme","light")}catch(_){}
     const theme=read(THEME_KEY);
     if(!theme||typeof theme!=="object")return;
+    /* Do not let the previous default green palette override the new neutral perfume-house base before settings.js migrates it. */
+    if(theme.bg==="#F5F5EF"&&theme.gold==="#376B59"&&theme.button==="#376B59")return;
     Object.entries(vars).forEach(([key,name])=>{if(validColor(theme[key]))root.style.setProperty(name,(isPinkTone(theme[key])?(safeColors[key]||"#B88A2B"):theme[key]))});
     const image=validImage(theme.backgroundImage);
     if(image){root.style.setProperty("--page-image",'url("'+image.replace(/["\\\\]/g,"")+'")');const hero=document.querySelector(".hero-image");if(hero)hero.src=image}
