@@ -44,13 +44,13 @@ try {
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   const settingsSource = read("settings.js");
-  report(html.includes('theme-persistence.js?v=20261022-ivory-unified4') &&
+  report(html.includes('theme-persistence.js?v=20261022-ivory-unified5') &&
     themeBootstrap.includes('mamlaka_theme_v1') &&
     themeBootstrap.includes('mamlaka_visual_tuning_v1') &&
     themeBootstrap.includes('addEventListener("storage"'),
     "Saved palette, theme mode and display settings are restored across visits");
   report(settingsSource.includes('"mamlaka_visual_tuning_v1"') &&
-    settingsSource.includes('"mamlaka_theme",') &&
+    settingsSource.includes('"mamlaka_theme",') && settingsSource.includes("legacyOldPalette") &&
     settingsSource.includes('localStorage.getItem("mamlaka_visual_tuning_v1")!==raw'),
     "Color and display settings are verified on save and included in local backups");
   const iconFiles = (manifest.icons || []).map((icon) => icon.src).filter(Boolean);
