@@ -32,7 +32,7 @@
   const themePresets={
     design01:{label:"1 — الملكي الأسود والذهبي",bg:"#0A0A0A",panel:"#15120D",panel2:"#211A0B",card:"#18150F",field:"#100F0C",gold:"#D4AF37",gold2:"#F1D77A",text:"#F7F1E6",heading:"#F8E7A0",muted:"#D0C5B1",line:"#6E5520",header:"#11100C",footer:"#090807",button:"#80570A",buttonText:"#FFFFFF",indexBg:"#0A0A0A",indexCard:"#18150F",indexIcon:"#D4AF37",indexBorder:"#F1D77A",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.36,visualStyle:"classic"},
     design02:{label:"2 — الفاخر المضيء",bg:"#F4F7FB",panel:"#FFFFFF",panel2:"#E5ECF5",card:"#FFFFFF",field:"#FFFFFF",gold:"#527AA5",gold2:"#B8D0E8",text:"#1D2B3B",heading:"#2B4E72",muted:"#56697E",line:"#CBD9E8",header:"#E8EEF6",footer:"#DCE5EF",button:"#527AA5",buttonText:"#FFFFFF",indexBg:"#F4F7FB",indexCard:"#FFFFFF",indexIcon:"#527AA5",indexBorder:"#B8D0E8",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.12,visualStyle:"ios"},
-    design03:{label:"3 — الرومانسي الداكن",bg:"#17121A",panel:"#211A25",panel2:"#29202D",card:"#241B29",field:"#17121A",gold:"#84618F",gold2:"#C8A7D6",text:"#F8F2FA",heading:"#DCC5E8",muted:"#CDBFD2",line:"#55445D",header:"#201824",footer:"#120F15",button:"#684B78",buttonText:"#FFFFFF",indexBg:"#17121A",indexCard:"#241B29",indexIcon:"#C8A7D6",indexBorder:"#84618F",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.34,visualStyle:"classic"},
+    design03:{label:"3 — الفحمي الملكي",bg:"#101010",panel:"#191713",panel2:"#252015",card:"#1D1A13",field:"#11100D",gold:"#B88932",gold2:"#E2C56C",text:"#F8F3E8",heading:"#F2D98B",muted:"#D1C5AE",line:"#57431E",header:"#15130F",footer:"#0A0907",button:"#76521B",buttonText:"#FFFFFF",indexBg:"#101010",indexCard:"#1D1A13",indexIcon:"#E2C56C",indexBorder:"#B88932",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.34,visualStyle:"classic"},
     design04:{label:"4 — الأزرق التقني",bg:"#071521",panel:"#0D202F",panel2:"#10283A",card:"#0E2434",field:"#091B2A",gold:"#1689C9",gold2:"#71D0FF",text:"#F1F9FF",heading:"#9CDEFF",muted:"#BCD3E2",line:"#234A63",header:"#091B2A",footer:"#06111B",button:"#126A9D",buttonText:"#FFFFFF",indexBg:"#071521",indexCard:"#0E2434",indexIcon:"#71D0FF",indexBorder:"#1689C9",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.40,visualStyle:"windows"},
     design05:{label:"5 — الكلاسيكي العاجي",bg:"#F7F5EF",panel:"#FFFFFF",panel2:"#EAE6DC",card:"#FFFFFF",field:"#FFFFFF",gold:"#66717C",gold2:"#AAB7C2",text:"#242A30",heading:"#3F4D58",muted:"#626A70",line:"#D5D8D8",header:"#EAE6DC",footer:"#E2DED4",button:"#566675",buttonText:"#FFFFFF",indexBg:"#F7F5EF",indexCard:"#FFFFFF",indexIcon:"#66717C",indexBorder:"#AAB7C2",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.10,visualStyle:"classic"},
     design06:{label:"6 — الطبيعي الأخضر",bg:"#F1F6F0",panel:"#FFFFFF",panel2:"#DDE9DA",card:"#FFFFFF",field:"#FFFFFF",gold:"#426B47",gold2:"#A6C5A1",text:"#233128",heading:"#31543A",muted:"#596C5D",line:"#C9DCC7",header:"#DDE9DA",footer:"#D0E1CE",button:"#507B55",buttonText:"#FFFFFF",indexBg:"#F1F6F0",indexCard:"#FFFFFF",indexIcon:"#426B47",indexBorder:"#A6C5A1",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.10,visualStyle:"pixel"},
@@ -74,7 +74,7 @@
     const choices=[
       ["design01","1 — الملكي الأسود والذهبي"],
       ["design02","2 — الفاخر المضيء"],
-      ["design03","3 — الرومانسي الداكن"],
+      ["design03","3 — الفحمي الملكي"],
       ["design04","4 — الأزرق التقني"],
       ["design05","5 — الكلاسيكي العاجي"],
       ["design06","6 — الطبيعي الأخضر"],
