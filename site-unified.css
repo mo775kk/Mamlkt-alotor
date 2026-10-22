@@ -53,8 +53,8 @@ body{background-color:var(--bg);color:var(--text);background-image:linear-gradie
 .category-card{background:linear-gradient(140deg,#fffdf8,#f2e8d6)}.category-card h3,.product-info h3{color:#3f3224}.category-card p,.product-desc,.product-meta{color:#7d7060}.category-card>span{color:#ad8747}
 .toolbar input,.toolbar select,.blend-step select,.advisor-form input{background:#fffdf8;color:#3c3228;border-color:#dfd1b8}
 .product-visual{background:radial-gradient(ellipse at 50% 42%,#fffdf7 0,#f2e7d4 65%,#e9dcc5 100%)}
-.product-price{color:#9a7130}.small-btn{border-color:#d4c09d;color:#6d552f;background:#fffaf0}.small-btn.primary,.btn-gold{background:linear-gradient(135deg,#d8b96d,#b58a42);border-color:#b58a42;color:#fffdf7}
-.btn-outline{border-color:#b58a42;color:#795a2d;background:rgba(255,252,244,.72)}.btn-outline:hover,.small-btn:hover{background:#f3e7d0}
+.product-price{color:#9a7130}.small-btn{border-color:#d4c09d;color:#6d552f;background:#fffaf0}.small-btn.primary,.btn-gold{background:linear-gradient(135deg,#405968,#647F90);border-color:#405968;color:#fff}
+.btn-outline{border-color:#AAB8C2;color:#344B5B;background:rgba(255,255,255,.92)}.btn-outline:hover,.small-btn:hover{background:#E8EEF2;border-color:#7D929F;color:#263B48}
 .split-feature{background:#efe5d4}.feature-copy{color:#4d4031}.feature-copy h2 span{color:#ad8140}
 .feature-banner{background:linear-gradient(100deg,rgba(255,250,240,.95),rgba(255,250,240,.55)),url("assets/images/royal-hero.jpg") center/cover;color:#3e3224}.feature-banner h3,.feature-banner p{color:#3e3224}
 .gift-art{background:radial-gradient(circle at 50% 45%,#f5e8cc,#e5d0a6 55%,#d4b77c);border:1px solid rgba(181,138,66,.35);color:#947039}
