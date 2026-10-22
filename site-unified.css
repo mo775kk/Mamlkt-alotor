@@ -245,3 +245,19 @@ button:active,.btn:active,.home-index-card:active{transform:scale(.99)}
  #cartDrawer .cart-item-facts{gap:6px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Editorial fragrance imagery — one responsive, accessible component */
+.fragrance-editorial{padding-block:clamp(24px,4vw,48px)}
+.fragrance-editorial-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.fragrance-editorial-card{position:relative;display:block;min-width:0;min-height:310px;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--panel2);isolation:isolate}
+.fragrance-editorial-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.fragrance-editorial-card:hover img,.fragrance-editorial-card:focus-visible img{transform:scale(1.045)}
+.fragrance-editorial-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,26,.02) 25%,rgba(15,23,26,.78) 100%);z-index:1}
+.fragrance-editorial-copy{position:absolute;z-index:2;inset:auto 18px 18px;display:grid;gap:8px;color:#fff}
+.fragrance-editorial-copy small{font:700 .78rem "Cormorant Garamond",serif;letter-spacing:.12em;color:#fff}
+.fragrance-editorial-copy strong{font-size:clamp(1.15rem,2vw,1.55rem);line-height:1.45;color:#fff}
+.fragrance-editorial-copy>span{font-size:.95rem;color:#fff}
+.fragrance-editorial-note{margin:12px 0 0;color:var(--muted);font-size:.85rem;line-height:1.7}
+@media(max-width:760px){.fragrance-editorial-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fragrance-editorial-card{min-height:230px;aspect-ratio:3/4}.fragrance-editorial-card:last-child{grid-column:1/-1;aspect-ratio:16/9;min-height:190px}}
+@media(max-width:390px){.fragrance-editorial-grid{grid-template-columns:minmax(0,1fr)}.fragrance-editorial-card,.fragrance-editorial-card:last-child{grid-column:auto;aspect-ratio:16/10;min-height:190px}.fragrance-editorial-copy{inset:auto 14px 14px}}
+@media(prefers-reduced-motion:reduce){.fragrance-editorial-card img{transition:none}}
