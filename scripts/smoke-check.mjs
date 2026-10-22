@@ -192,7 +192,7 @@ try {
     app.includes("publicCatalogProducts.forEach(applyReferenceFragranceNotes)") &&
     app.includes("oilProducts.forEach(applyReferenceFragranceNotes)"),
     "Reference notes fill only missing note pyramids and do not overwrite existing researched notes");
-  report(/app\\.js\\?v=20261023-reference-notes-v1/.test(html),
+  report(/app\.js\?v=20261023-reference-notes-v1/.test(html),
     "Storefront loads the new reference-note logic with a refreshed cache version");
 } catch (e) {
   report(false, "Unable to validate sourced reference fragrance notes: " + e.message);
