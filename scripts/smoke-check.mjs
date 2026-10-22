@@ -391,9 +391,9 @@ try {
   const css = read("site-unified.css");
   const pages = read("section-pages.js");
   const settings = read("settings.js");
-  report(html.includes('data-theme="light"') && css.includes("unified perfume-house visual system") &&
-    css.includes("--bg:#F7F4EE") && css.includes("--gold:#604B3D") && css.includes("--heading:#2B211B") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
-    "Default storefront palette uses porcelain, espresso and coordinated neutral colors");
+  report(html.includes('data-theme="light"') && css.includes("MAMLKAT AL-OTOR — unified design system v4") &&
+    css.includes("--bg:#F5F3EF") && css.includes("--gold:#4D5052") && css.includes("--heading:#25282A") && (css.match(/Original source:/g)||[]).length===1 && css.includes("background-image:none!important") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
+    "Unified storefront palette uses neutral colors and removes accumulated legacy stylesheet layers");
   report(/section-pages\.js\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
     html.includes('id="modalBackdrop"'),
