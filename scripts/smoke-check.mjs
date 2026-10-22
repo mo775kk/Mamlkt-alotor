@@ -40,7 +40,7 @@ try {
     "Storefront exposes an install-app action");
   report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes('addEventListener("fetch"'),
     "PWA service worker is registered and handles requests");
-  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#F7F4EE",
+  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#F5F3EF",
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   const settingsSource = read("settings.js");
@@ -114,8 +114,8 @@ try {
   report(Boolean(browserThemeColor) && browserThemeColor.toLowerCase() === String(manifest.theme_color || "").toLowerCase() &&
     /^#[0-9a-f]{6}$/i.test(browserThemeColor),
     "Browser and installed-app theme colors match the active unified palette");
-  report(/site-unified\.css\?v=[^"]+/.test(html) && read("site-unified.css").includes("--finish-rose"),
-  "Unified ivory finishing layer is linked with a cache-buster");
+  report(/site-unified\.css\?v=[^"]+/.test(html) && read("site-unified.css").includes("MAMLKAT AL-OTOR — unified design system v4") && (read("site-unified.css").match(/Original source:/g)||[]).length===1,
+  "Single unified design stylesheet is linked with a cache-buster");
 report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
   "Service worker URL and cache shell version are synchronized");
 
@@ -126,7 +126,7 @@ report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor
 try {
   const app = read("app.js");
   const cartCss = read("site-unified.css");
-  report(cartCss.includes("#cartDrawer .cart-item-facts dd{margin:0;color:#D4AF37") && cartCss.includes("#cartDrawer .cart-line-actions .remove-btn") && cartCss.includes("@media(max-width:380px)"),
+  report(cartCss.includes("#cartDrawer .cart-item-facts dd{margin:0;color:var(--heading)") && cartCss.includes("#cartDrawer .cart-line-actions .remove-btn") && cartCss.includes("@media(max-width:380px)"),
     "Cart item names, size/price/quantity totals and action controls have readable responsive styles");
   report(app.includes('bind("#cartHeaderShortcut", "click",openDrawer)') && app.includes('bind("#cartShortcut", "click",openDrawer)'),
     "Both the header cart button and secondary cart shortcut open the cart drawer");
@@ -169,10 +169,11 @@ try {
 
 try {
   const settings = read("settings.js");
-  report(settings.includes("عند تسجيل دخول الحفظ السحابي تُرفع الصورة للسحابة") &&
+  report(settings.includes('id="cfgBackgroundImage" type="hidden" value="none"') &&
+    settings.includes('verified.backgroundImage!=="none"') &&
     settings.includes("تُزامَن الإعدادات والمنتجات القابلة للمزامنة") &&
-    !settings.includes("لا توجد قاعدة بيانات مشتركة أو لوحة تحكم سحابية"),
-    "Settings accurately explain local fallback and authenticated cloud persistence");
+    !settings.includes('id="cfgBackgroundUpload"'),
+    "Settings keep page backgrounds disabled while preserving authenticated cloud synchronization");
 } catch (e) {
   report(false, "Unable to validate cloud storage guidance: " + e.message);
 }
@@ -349,7 +350,7 @@ try {
     "AI connection diagnostics handle timeouts, missing server secrets and health-check limitations");
   report(/settings\.js\?v=[^"]+/.test(html) &&
     /site-unified\.css\?v=[^"]+/.test(html) &&
-    finish.includes(".home-index-install-card") && themeStudio.includes("--finish-rose"),
+    finish.includes(".home-index-install-card") && themeStudio.includes("MAMLKAT AL-OTOR — unified design system v4") && !themeStudio.includes("--finish-rose"),
     "Current settings, theme-studio and finishing styles are linked and present");
 } catch (e) {
   report(false, "Unable to validate AI deployment settings: " + e.message);
@@ -375,10 +376,8 @@ try {
 try {
   const html = read("index.html");
   const css = read("site-unified.css");
-  const narrowPhoneStart = css.lastIndexOf("@media(max-width:360px){");
-  const narrowPhoneRule = narrowPhoneStart >= 0 ? css.slice(narrowPhoneStart, css.indexOf("\n}", narrowPhoneStart) + 2) : "";
-  report(narrowPhoneRule.includes(".compact-selected-price{display:inline!important") &&
-    narrowPhoneRule.includes("grid-template-columns:minmax(0,1fr) auto"),
+  report(css.includes(".compact-selected-price{display:inline!important") &&
+    css.includes("grid-template-columns:minmax(0,1fr) auto"),
     "Selected size and price remain visible together on very narrow phones");
   report(/site-unified\.css\?v=[^"]+/.test(html),
     "Royal bright release stylesheet is linked through a fresh cache-buster");
@@ -391,9 +390,9 @@ try {
   const css = read("site-unified.css");
   const pages = read("section-pages.js");
   const settings = read("settings.js");
-  report(html.includes('data-theme="light"') && css.includes("unified perfume-house visual system") &&
-    css.includes("--bg:#F7F4EE") && css.includes("--gold:#604B3D") && css.includes("--heading:#2B211B") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
-    "Default storefront palette uses porcelain, espresso and coordinated neutral colors");
+  report(html.includes('data-theme="light"') && css.includes("MAMLKAT AL-OTOR — unified design system v4") &&
+    css.includes("--bg:#F5F3EF") && css.includes("--gold:#4D5052") && css.includes("--heading:#25282A") && (css.match(/Original source:/g)||[]).length===1 && css.includes("background-image:none!important") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
+    "Unified storefront palette uses neutral colors and removes accumulated legacy stylesheet layers");
   report(/section-pages\.js\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
     html.includes('id="modalBackdrop"'),
