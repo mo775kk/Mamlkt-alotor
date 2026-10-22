@@ -950,7 +950,7 @@
       "notesConfidence": "مرتفع — صفحة مجموعة Asad الرسمية لدى Lattafa",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://media.douglas.pt/media/image/d9/47/58/1194225_0_1280x1280.jpg",
       "sizes": [
         "100"
       ],
@@ -973,7 +973,16 @@
       "referenceSearchName": "Asad Zanzibar",
       "referenceSearchAliases": [
         "Lattafa"
-      ]
+      ],
+      "imageSourceUrl": "https://www.douglas.pt/p/lattafa-asad-zanzibar-eau-de-parfum-spray-1194225",
+      "imageAltAr": "عبوة عطر أسد زنجبار من لطافة باللون الأزرق والفضي",
+      "imageUsage": "reference-fragrance",
+      "notesResearchSources": [
+        "https://lattafa.com/product/asad-collection-25-ml/",
+        "https://www.douglas.pt/p/lattafa-asad-zanzibar-eau-de-parfum-spray-1194225"
+      ],
+      "notesResearchCheckedAt": "2026-10-23",
+      "notesResearchMethod": "تمت مطابقة هوية الإصدار وملاحظاته مع صفحة الشركة؛ الصورة من صفحة متجر معروفة وتستخدم كمرجع لعبوة العطر الأصلي فقط، ولا تثبت تركيبة زيت المورد."
     },
     {
       "id": "lattafa-asad-bourbon",
