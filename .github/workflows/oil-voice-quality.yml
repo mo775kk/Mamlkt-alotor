@@ -48,14 +48,14 @@ jobs:
           if (count(/<body\b/gi) !== 1 || count(/<\/body>/gi) !== 1) throw new Error('HTML body structure is broken');
           if (count(/<script\b/gi) !== count(/<\/script>/gi)) throw new Error('HTML script tags are unbalanced');
           if (html.includes('mentor2"scrollProgress')) throw new Error('Broken service-worker line detected');
-          if (!html.includes('site-unified.css?v=20261021-royal-blackgold2')) throw new Error('Updated stylesheet is not referenced');
-          if (!css.includes('ROYAL BLACK & GOLD') || !css.includes('background-image:none!important')) throw new Error('Unified black/gold finish is missing');
+          if (!html.includes('site-unified.css?v=20261022-ivory-unified6')) throw new Error('Updated stylesheet is not referenced');
+          if (!css.includes('ROYAL IVORY UNIFIED THEME') || !css.includes('--bg:#F7F3E9') || !css.includes('background-image:none!important')) throw new Error('Unified ivory/gold finish is missing');
           const requiredIds = ['oilMentorPanel','oilVoiceAsk','oilVoiceTeach','oilVoiceStop','oilVoiceStatus','oilMentorAnswer','supplierOilSearch','supplierOilProducts'];
           const missing = requiredIds.filter(id => !html.includes('id="' + id + '"'));
           if (missing.length) throw new Error('Missing oil mentor IDs: ' + missing.join(', '));
           if (!html.includes('oil-voice-guide.js') || !js.includes('SpeechRecognition') || !js.includes('speechSynthesis')) throw new Error('Oil mentor script or voice APIs missing');
           const bannedPaletteNames = ['plumPinkGold','warmRose','roseGold','pinkGold','flamingo','blush','royalRose','berry','coral','peach','ruby','wine','mauve','lilac','plum','sunset','dawn'];
           if (bannedPaletteNames.some(name => settings.includes('["' + name + '"') || settings.includes('"' + name + '":') || settings.includes('option value="' + name + '"'))) throw new Error('Pink preset remains in settings');
-          if (manifest.theme_color.toLowerCase() !== '#0a0a0a' || manifest.background_color.toLowerCase() !== '#0a0a0a') throw new Error('PWA manifest is not black/gold branded');
-          console.log('HTML structure, PWA manifest, black/gold theme and oil mentor verified.');
+          if (manifest.theme_color.toLowerCase() !== '#f7f3e9' || manifest.background_color.toLowerCase() !== '#f7f3e9') throw new Error('PWA manifest is not ivory/gold branded');
+          console.log('HTML structure, PWA manifest, ivory/gold theme and oil mentor verified.');
           NODE
