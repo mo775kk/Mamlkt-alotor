@@ -633,3 +633,23 @@ footer,.site-footer{background:var(--footer-bg)!important;color:var(--text);bord
  #adminLayer{padding:6px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Cart and compact product-choice layout — unified responsive rules */
+.home-index-install-card{border-color:var(--index-border);background:var(--index-card);color:var(--text)}
+#cartDrawer .cart-line{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);color:var(--text)}
+#cartDrawer .cart-line-title h3{margin:4px 0;color:var(--heading);font-size:1rem;overflow-wrap:anywhere}
+#cartDrawer .cart-item-type{font-size:.78rem;color:var(--muted)}
+#cartDrawer .cart-item-en{color:var(--muted);font-size:.82rem}
+#cartDrawer .cart-item-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+#cartDrawer .cart-item-facts div{padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+#cartDrawer .cart-item-facts dt{font-size:.76rem;color:var(--muted)}
+#cartDrawer .cart-item-facts dd{margin:0;color:var(--heading);font-weight:700;overflow-wrap:anywhere}
+#cartDrawer .cart-item-subtotal{background:var(--panel2)!important}
+#cartDrawer .cart-item-custom{color:var(--muted);font-size:.84rem}
+#cartDrawer .cart-line-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:7px;max-width:128px}
+#cartDrawer .cart-line-actions .qty-btn{width:34px;height:34px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text)}
+#cartDrawer .cart-line-actions .remove-btn{width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text)}
+#cartDrawer .cart-qty-value{font-weight:700;color:var(--heading)}
+.compact-selected-price{display:inline!important;color:var(--heading);font-weight:700}
+@media(max-width:380px){#cartDrawer .cart-line{grid-template-columns:minmax(0,1fr);gap:8px}#cartDrawer .cart-line-actions{max-width:none;justify-content:flex-start}#cartDrawer .cart-item-facts{gap:6px}#cartDrawer .cart-line-actions .remove-btn{width:auto}.compact-selected-price{display:inline!important}}
+@media(max-width:360px){.compact-selected-price{display:inline!important}.compact-size-price-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px}.compact-selected-option{min-width:0;overflow-wrap:anywhere}}
