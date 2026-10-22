@@ -169,10 +169,11 @@ try {
 
 try {
   const settings = read("settings.js");
-  report(settings.includes("عند تسجيل دخول الحفظ السحابي تُرفع الصورة للسحابة") &&
+  report(settings.includes('id="cfgBackgroundImage" type="hidden" value="none"') &&
+    settings.includes('verified.backgroundImage!=="none"') &&
     settings.includes("تُزامَن الإعدادات والمنتجات القابلة للمزامنة") &&
-    !settings.includes("لا توجد قاعدة بيانات مشتركة أو لوحة تحكم سحابية"),
-    "Settings accurately explain local fallback and authenticated cloud persistence");
+    !settings.includes('id="cfgBackgroundUpload"'),
+    "Settings keep page backgrounds disabled while preserving authenticated cloud synchronization");
 } catch (e) {
   report(false, "Unable to validate cloud storage guidance: " + e.message);
 }
