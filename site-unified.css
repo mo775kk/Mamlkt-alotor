@@ -175,7 +175,7 @@ button:disabled,.btn:disabled{opacity:.68;cursor:not-allowed}
 .home-index-note{color:var(--muted);font-size:.92rem;line-height:1.7}
 .product-grid{gap:16px}
 .product-card-supplier-oil .product-visual{height:180px;min-height:180px}
-.home-oil-showcase .home-showcase-visual{height:190px;min-height:190px}
+.home-oil-showcase .home-showcase-visual{height:148px;min-height:148px}
 .product-card,.category-card,.testimonial,.quiz-shell,.admin-card,.settings-card,.contact-card,.home-showcase-section .card{min-width:0;overflow:hidden;border:1px solid var(--line)!important;border-radius:15px!important;background:var(--card)!important;color:var(--text)!important;box-shadow:0 4px 16px rgba(25,45,40,.045)!important}
 .product-info{padding:12px!important;color:var(--text)!important}
 .product-info h3,.product-title,.category-card h3{font-size:1.04rem;line-height:1.5;color:var(--heading)!important}
