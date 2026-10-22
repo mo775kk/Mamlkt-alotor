@@ -44,6 +44,12 @@ try {
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   const settingsSource = read("settings.js");
+  report(themeBootstrap.includes('root.setAttribute("data-theme",mode)') &&
+    !themeBootstrap.includes('root.setAttribute("data-theme","light")') &&
+    !themeBootstrap.includes('localStorage.setItem(MODE_KEY,JSON.stringify(theme))') &&
+    !read("settings.js").includes('localStorage.setItem("mamlaka_theme",JSON.stringify(theme))'),
+    "Theme mode remains a light/dark string and saved dark mode is restored without being overwritten by palette settings");
+
   report(/theme-persistence\.js\?v=[^\x27"]+/.test(html) &&
     themeBootstrap.includes('mamlaka_theme_v1') &&
     themeBootstrap.includes('mamlaka_visual_tuning_v1') &&

@@ -14,13 +14,13 @@
   function luminance(hex){const z=String(hex).replace("#","");const f=z.length===3?z.split("").map(c=>c+c).join(""):z;const c=[0,2,4].map(i=>parseInt(f.slice(i,i+2),16)/255).map(n=>n<=.04045?n/12.92:Math.pow((n+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]}
   function applyTheme(){
     const root=document.documentElement;
-    try{const mode=localStorage.getItem(MODE_KEY);if(mode==="light"||mode==="dark")root.setAttribute("data-theme","light")}catch(_){}
+    try{const mode=localStorage.getItem(MODE_KEY);if(mode==="light"||mode==="dark")root.setAttribute("data-theme",mode)}catch(_){}
     const theme=read(THEME_KEY);
     if(!theme||typeof theme!=="object")return;
     /* Migrate old saved image backgrounds away; the storefront now uses a unified solid-color canvas. */
     if(theme.backgroundImage && theme.backgroundImage!=="none"){
       theme.backgroundImage="none";
-      try{localStorage.setItem(THEME_KEY,JSON.stringify(theme));localStorage.setItem(MODE_KEY,JSON.stringify(theme));}catch(_){}
+      try{localStorage.setItem(THEME_KEY,JSON.stringify(theme));}catch(_){}
     }
     Object.entries(vars).forEach(([key,name])=>{if(validColor(theme[key]))root.style.setProperty(name,((isPinkTone(theme[key])||(["gold","gold2","button","indexIcon","indexBorder"].includes(key)&&isGoldTone(theme[key])))?(safeColors[key]||"#4D5052"):theme[key]))});
     root.style.setProperty("--page-image","none");
