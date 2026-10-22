@@ -84,6 +84,7 @@
   };
   const colorRgb=value=>{let h=String(value||"#000000").replace("#","");if(h.length===3)h=h.split("").map(c=>c+c).join("");if(!/^[0-9a-f]{6}$/i.test(h))h="000000";return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]};
   const colorLum=value=>{const c=colorRgb(value).map(n=>{n/=255;return n<=.04045?n/12.92:Math.pow((n+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+  function isGoldTone(value){const rgb=colorRgb(value).map(n=>n/255),max=Math.max(...rgb),min=Math.min(...rgb),d=max-min;if(d<.14||max===0)return false;let h=0;if(max===rgb[0])h=60*(((rgb[1]-rgb[2])/d)%6);else if(max===rgb[1])h=60*((rgb[2]-rgb[0])/d+2);else h=60*((rgb[0]-rgb[1])/d+4);if(h<0)h+=360;return h>=32&&h<=65&&(d/(1-Math.abs(2*((max+min)/2)-1)))>.24;}
   const mixColor=(a,b,ratio=0.5)=>"#"+colorRgb(a).map((n,i)=>Math.round(n*(1-ratio)+colorRgb(b)[i]*ratio).toString(16).padStart(2,"0")).join("");
   function isPinkTone(value){
     const h=String(value||"").replace("#","");
@@ -132,7 +133,7 @@
     const colorKeys = ["bg","panel","panel2","card","field","gold","gold2","text","heading","muted","line","header","footer","button","buttonText","indexBg","indexCard","indexIcon","indexBorder"];
     colorKeys.forEach(key => {
       const value = String(v[key] || "");
-      if (!/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(value) || isPinkTone(value)) {
+      if (!/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(value) || isPinkTone(value) || ((key==="gold"||key==="gold2"||key==="button"||key==="indexIcon"||key==="indexBorder")&&isGoldTone(value))) {
         v[key] = defaults[key] || base[key] || "#FFFFFF";
       }
     });
