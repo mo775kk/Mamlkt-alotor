@@ -14,7 +14,7 @@
   "products": [
     {
       "id": "supplier-oil-r1010198",
-      "nameAr": "ون مليون الكي -باكوربان",
+      "nameAr": "ون مليون لاكي — رابان",
       "nameEn": "1 Million Lucky",
       "sku": "R1010198",
       "supplierSku": "R1010198",
@@ -28,22 +28,42 @@
       "retailPriceCurrency": "EGP",
       "retailMinimumPrice": 50,
       "sourceDate": "2026-06-16",
-      "family": "غير محدد — يلزم تأكيد العائلة من العينة",
-      "scentNature": "بيانات النوتات التفصيلية غير منشورة في قائمة المورد؛ اطلب العينة وبيانات الإصدار للتوثيق.",
-      "scentNotesProfile": "غير محددة في مستند المورد؛ لم تُخمن النوتات العليا أو الوسطى أو القاعدية.",
-      "descriptionAr": "زيت عطري من قائمة المورد المؤرخة 16 يونيو 2026. الاسم والكود من القائمة؛ تفاصيل النوتات تحتاج إلى مصدر موثق. التوفر النهائي يُؤكَّد من المتجر.",
-      "descriptionEn": "Supplier-list item dated 2026-06-16. Fragrance notes are not specified in the supplier price list.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
-      "notesConfidence": "قائمة المورد لا تتضمن الهرم العطري",
-      "sourceUrl": "",
+      "family": "خشبي غورماند",
+      "scentNature": "فاكهي وخشبي حلو؛ برقوق حمضي وبندق محمص مع عسل وأخشاب دافئة.",
+      "scentNotesProfile": "القمة: البرقوق الأخضر، الجريب فروت، البرغموت | القلب: البندق المحمص، العسل | القاعدة: خشب الأرز الأبيض، الباتشولي، خشب العنبر",
+      "descriptionAr": "مرجع رائحة لعطر أصلي محدد الاسم من Rabanne. الاسم والكود الأصليان للمورد محفوظان للمراجعة. النوتات والصورة مرجعان للعطر الأصلي فقط ولا يثبتان مطابقة زيت المورد. التوفر النهائي يحتاج تأكيد المتجر.",
+      "descriptionEn": "Reference notes and bottle image are for the named original fragrance only; they do not verify the supplier oil formula or stock.",
+      "topNotes": [
+        "البرقوق الأخضر",
+        "الجريب فروت",
+        "البرغموت"
+      ],
+      "heartNotes": [
+        "البندق المحمص",
+        "العسل"
+      ],
+      "baseNotes": [
+        "خشب الأرز الأبيض",
+        "الباتشولي",
+        "خشب العنبر"
+      ],
+      "notesConfidence": "مرتفع — الوصف والنوتات الأساسية من صفحة Rabanne الرسمية",
+      "sourceUrl": "https://www.rabanne.com/ww/en/fragrance/p/1-million-lucky--000000000065131403",
       "supplierLine": "Golden Line / Niche Line",
       "price": null,
       "prices": {},
-      "image": "",
-      "brand": "غير محدد",
-      "referenceHouse": ""
+      "image": "https://perfumy.pl/pol_pl_Paco-Rabanne-1-Million-Lucky-woda-toaletowa-100-ml-3362_1.jpg",
+      "brand": "Rabanne",
+      "referenceHouse": "Rabanne",
+      "supplierOriginalName": {
+        "nameAr": "ون مليون الكي -باكوربان",
+        "nameEn": "1 Million Lucky"
+      },
+      "imageSourceUrl": "https://perfumy.pl/product-pol-3362-Paco-Rabanne-1-Million-Lucky-woda-toaletowa-100-ml.html",
+      "notesStatus": "verified-brand-source",
+      "referenceImage": true,
+      "imageDisclaimer": "صورة مرجعية للعبوة الأصلية من موقع خارجي؛ لا تعني أن زيت المورد هو نفس المنتج الأصلي أو أن تركيبته مطابقة.",
+      "notesDisclaimer": "النوتات تخص العطر الأصلي المرجعي المحدد بالاسم والإصدار؛ لا تثبت التركيب الكيميائي أو تطابق زيت المورد."
     },
     {
       "id": "supplier-oil-r1010065",
@@ -80,8 +100,8 @@
     },
     {
       "id": "supplier-oil-r1010073",
-      "nameAr": "سيكسي -212كاروليناهريرا",
-      "nameEn": "212 Sexy",
+      "nameAr": "212 سيكسي مان — كارولينا هيريرا",
+      "nameEn": "212 Sexy Men",
       "sku": "R1010073",
       "supplierSku": "R1010073",
       "supplierCategory": "MEN",
@@ -94,22 +114,41 @@
       "retailPriceCurrency": "EGP",
       "retailMinimumPrice": 50,
       "sourceDate": "2026-06-16",
-      "family": "غير محدد — يلزم تأكيد العائلة من العينة",
-      "scentNature": "بيانات النوتات التفصيلية غير منشورة في قائمة المورد؛ اطلب العينة وبيانات الإصدار للتوثيق.",
-      "scentNotesProfile": "غير محددة في مستند المورد؛ لم تُخمن النوتات العليا أو الوسطى أو القاعدية.",
-      "descriptionAr": "زيت عطري من قائمة المورد المؤرخة 16 يونيو 2026. الاسم والكود من القائمة؛ تفاصيل النوتات تحتاج إلى مصدر موثق. التوفر النهائي يُؤكَّد من المتجر.",
-      "descriptionEn": "Supplier-list item dated 2026-06-16. Fragrance notes are not specified in the supplier price list.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
-      "notesConfidence": "قائمة المورد لا تتضمن الهرم العطري",
-      "sourceUrl": "",
+      "family": "عنبرى توابلي",
+      "scentNature": "حمضي متبّل يلين إلى هيل وفلفل أسود ثم صندل وفانيليا وعنبر دافئ.",
+      "scentNotesProfile": "القمة: اليوسفي، البرغموت | القلب: الهيل، الفلفل الأسود | القاعدة: خشب الصندل، الفانيليا، العنبر",
+      "descriptionAr": "مرجع رائحة لعطر أصلي محدد الاسم من Carolina Herrera. الاسم والكود الأصليان للمورد محفوظان للمراجعة. النوتات والصورة مرجعان للعطر الأصلي فقط ولا يثبتان مطابقة زيت المورد. التوفر النهائي يحتاج تأكيد المتجر.",
+      "descriptionEn": "Reference notes and bottle image are for the named original fragrance only; they do not verify the supplier oil formula or stock.",
+      "topNotes": [
+        "اليوسفي",
+        "البرغموت"
+      ],
+      "heartNotes": [
+        "الهيل",
+        "الفلفل الأسود"
+      ],
+      "baseNotes": [
+        "خشب الصندل",
+        "الفانيليا",
+        "العنبر"
+      ],
+      "notesConfidence": "مرتفع — وصف النوتات من صفحة Carolina Herrera الرسمية",
+      "sourceUrl": "https://www.carolinaherrera.com/uk/en/p-fragrance/212-sexy-men",
       "supplierLine": "Golden Line / Niche Line",
       "price": null,
       "prices": {},
-      "image": "",
-      "brand": "غير محدد",
-      "referenceHouse": ""
+      "image": "https://arome.mx/cdn/shop/files/perfume-212-sexy-men-para-hombre-de-carolina-herrera-edt-100ml-arome-mexico-1.jpg?v=1710887228",
+      "brand": "Carolina Herrera",
+      "referenceHouse": "Carolina Herrera",
+      "supplierOriginalName": {
+        "nameAr": "سيكسي -212كاروليناهريرا",
+        "nameEn": "212 Sexy"
+      },
+      "imageSourceUrl": "https://arome.mx/products/perfume-212-sexy-men-para-hombre-de-carolina-herrera-100ml",
+      "notesStatus": "verified-brand-source",
+      "referenceImage": true,
+      "imageDisclaimer": "صورة مرجعية للعبوة الأصلية من موقع خارجي؛ لا تعني أن زيت المورد هو نفس المنتج الأصلي أو أن تركيبته مطابقة.",
+      "notesDisclaimer": "النوتات تخص العطر الأصلي المرجعي المحدد بالاسم والإصدار؛ لا تثبت التركيب الكيميائي أو تطابق زيت المورد."
     },
     {
       "id": "supplier-oil-r1010126",
@@ -641,7 +680,7 @@
     },
     {
       "id": "supplier-oil-r1010202",
-      "nameAr": "باد بوي -كارولينا هريرا",
+      "nameAr": "باد بوي — كارولينا هيريرا",
       "nameEn": "Bad Boy",
       "sku": "R1010202",
       "supplierSku": "R1010202",
@@ -655,22 +694,41 @@
       "retailPriceCurrency": "EGP",
       "retailMinimumPrice": 50,
       "sourceDate": "2026-06-16",
-      "family": "غير محدد — يلزم تأكيد العائلة من العينة",
-      "scentNature": "بيانات النوتات التفصيلية غير منشورة في قائمة المورد؛ اطلب العينة وبيانات الإصدار للتوثيق.",
-      "scentNotesProfile": "غير محددة في مستند المورد؛ لم تُخمن النوتات العليا أو الوسطى أو القاعدية.",
-      "descriptionAr": "زيت عطري من قائمة المورد المؤرخة 16 يونيو 2026. الاسم والكود من القائمة؛ تفاصيل النوتات تحتاج إلى مصدر موثق. التوفر النهائي يُؤكَّد من المتجر.",
-      "descriptionEn": "Supplier-list item dated 2026-06-16. Fragrance notes are not specified in the supplier price list.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
-      "notesConfidence": "قائمة المورد لا تتضمن الهرم العطري",
-      "sourceUrl": "",
+      "family": "عنبرى عطري",
+      "scentNature": "عطري وعنبرى يجمع المريمية المنعشة مع الكاكاو وحبوب التونكا والفيتيفر.",
+      "scentNotesProfile": "القمة: المريمية، الفلفل، البرغموت | القلب: الكاكاو | القاعدة: حبوب التونكا، الفيتيفر",
+      "descriptionAr": "مرجع رائحة لعطر أصلي محدد الاسم من Carolina Herrera. الاسم والكود الأصليان للمورد محفوظان للمراجعة. النوتات والصورة مرجعان للعطر الأصلي فقط ولا يثبتان مطابقة زيت المورد. التوفر النهائي يحتاج تأكيد المتجر.",
+      "descriptionEn": "Reference notes and bottle image are for the named original fragrance only; they do not verify the supplier oil formula or stock.",
+      "topNotes": [
+        "المريمية",
+        "الفلفل",
+        "البرغموت"
+      ],
+      "heartNotes": [
+        "الكاكاو"
+      ],
+      "baseNotes": [
+        "حبوب التونكا",
+        "الفيتيفر"
+      ],
+      "notesConfidence": "جيد — مرجع رسمي للعطر الأصلي؛ يجب تأكيد الإصدار من العبوة",
+      "sourceUrl": "https://www.carolinaherrera.com/us/en/p-fragrance/bad-boy",
       "supplierLine": "Golden Line / Niche Line",
       "price": null,
       "prices": {},
-      "image": "",
-      "brand": "غير محدد",
-      "referenceHouse": ""
+      "image": "https://f.fcdn.app/imgs/d8ee12/www.sanroque.com.uy/sanruy/4a82/original/catalogo/123716_123716_1/1920-1200/perfume-carolina-herrera-bad-boy-edt-50ml-perfume-carolina-herrera-bad-boy-edt-50ml.jpg",
+      "brand": "Carolina Herrera",
+      "referenceHouse": "Carolina Herrera",
+      "supplierOriginalName": {
+        "nameAr": "باد بوي -كارولينا هريرا",
+        "nameEn": "Bad Boy"
+      },
+      "imageSourceUrl": "https://www.sanroque.com.uy/catalogo/perfume-carolina-herrera-bad-boy-edt-50ml_123716_123716",
+      "notesStatus": "needs-variant-confirmation",
+      "variantNote": "النوتات مرجع لعطر Bad Boy الأصلي EDT؛ تأكد من الإصدار قبل اعتمادها.",
+      "referenceImage": true,
+      "imageDisclaimer": "صورة مرجعية للعبوة الأصلية من موقع خارجي؛ لا تعني أن زيت المورد هو نفس المنتج الأصلي أو أن تركيبته مطابقة.",
+      "notesDisclaimer": "النوتات تخص العطر الأصلي المرجعي المحدد بالاسم والإصدار؛ لا تثبت التركيب الكيميائي أو تطابق زيت المورد."
     },
     {
       "id": "supplier-oil-r1010048",
@@ -971,8 +1029,8 @@
     },
     {
       "id": "supplier-oil-r1010206",
-      "nameAr": "بورن ان روما -فالنتينو",
-      "nameEn": "Born In Roma",
+      "nameAr": "بورن إن روما أومو EDT — فالنتينو",
+      "nameEn": "Born in Roma Uomo Eau de Toilette",
       "sku": "R1010206",
       "supplierSku": "R1010206",
       "supplierCategory": "MEN",
@@ -985,27 +1043,45 @@
       "retailPriceCurrency": "EGP",
       "retailMinimumPrice": 50,
       "sourceDate": "2026-06-16",
-      "family": "غير محدد — يلزم تأكيد العائلة من العينة",
-      "scentNature": "بيانات النوتات التفصيلية غير منشورة في قائمة المورد؛ اطلب العينة وبيانات الإصدار للتوثيق.",
-      "scentNotesProfile": "غير محددة في مستند المورد؛ لم تُخمن النوتات العليا أو الوسطى أو القاعدية.",
-      "descriptionAr": "زيت عطري من قائمة المورد المؤرخة 16 يونيو 2026. الاسم والكود من القائمة؛ تفاصيل النوتات تحتاج إلى مصدر موثق. التوفر النهائي يُؤكَّد من المتجر.",
-      "descriptionEn": "Supplier-list item dated 2026-06-16. Fragrance notes are not specified in the supplier price list.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
-      "notesConfidence": "قائمة المورد لا تتضمن الهرم العطري",
-      "sourceUrl": "",
+      "family": "خشبي عطري / فيتيفر",
+      "scentNature": "خشبي عطري بانتعاش أوراق البنفسج ولمسة زنجبيل وملح معدني، وقاعدة فيتيفر مدخن.",
+      "scentNotesProfile": "القمة: أوراق البنفسج | القلب: المريمية العطرية، الزنجبيل، الملح المعدني | القاعدة: الفيتيفر المدخن",
+      "descriptionAr": "مرجع رائحة لعطر أصلي محدد الاسم من Valentino. الاسم والكود الأصليان للمورد محفوظان للمراجعة. النوتات والصورة مرجعان للعطر الأصلي فقط ولا يثبتان مطابقة زيت المورد. التوفر النهائي يحتاج تأكيد المتجر.",
+      "descriptionEn": "Reference notes and bottle image are for the named original fragrance only; they do not verify the supplier oil formula or stock.",
+      "topNotes": [
+        "أوراق البنفسج"
+      ],
+      "heartNotes": [
+        "المريمية العطرية",
+        "الزنجبيل",
+        "الملح المعدني"
+      ],
+      "baseNotes": [
+        "الفيتيفر المدخن"
+      ],
+      "notesConfidence": "مرتفع — وصف ونوتات من صفحة Valentino الرسمية",
+      "sourceUrl": "https://www.valentino-beauty.com/int/fragrances/men-fragrances/born-in-roma-uomo/born-in-roma-uomo-eau-de-toilette/MPL00475.html",
       "supplierLine": "Golden Line / Niche Line",
       "price": null,
       "prices": {},
-      "image": "",
-      "brand": "غير محدد",
-      "referenceHouse": ""
+      "image": "https://epocacosmeticos.vteximg.com.br/arquivos/ids/808021-800-800/perfume-valentino-born-in-roma-uomo-masculino-eau-de-tolitte--1-.jpg.jpg?v=638778358449830000",
+      "brand": "Valentino",
+      "referenceHouse": "Valentino",
+      "supplierOriginalName": {
+        "nameAr": "بورن ان روما -فالنتينو",
+        "nameEn": "Born In Roma"
+      },
+      "imageSourceUrl": "https://www.epocacosmeticos.com.br/perfume-valentino-born-in-roma-uomo-masculino-eau-de-tolitte/p",
+      "notesStatus": "needs-variant-confirmation",
+      "variantNote": "مرجع محدد لإصدار Born in Roma Uomo Eau de Toilette؛ تأكد من تطابق إصدار زيت المورد.",
+      "referenceImage": true,
+      "imageDisclaimer": "صورة مرجعية للعبوة الأصلية من موقع خارجي؛ لا تعني أن زيت المورد هو نفس المنتج الأصلي أو أن تركيبته مطابقة.",
+      "notesDisclaimer": "النوتات تخص العطر الأصلي المرجعي المحدد بالاسم والإصدار؛ لا تثبت التركيب الكيميائي أو تطابق زيت المورد."
     },
     {
       "id": "supplier-oil-r1010011",
-      "nameAr": "بوس باتلد -هوجو بوس",
-      "nameEn": "Bos Bottled",
+      "nameAr": "بوس باتلد EDT — هوغو بوس",
+      "nameEn": "BOSS Bottled Eau de Toilette",
       "sku": "R1010011",
       "supplierSku": "R1010011",
       "supplierCategory": "MEN",
@@ -1018,22 +1094,41 @@
       "retailPriceCurrency": "EGP",
       "retailMinimumPrice": 50,
       "sourceDate": "2026-06-16",
-      "family": "غير محدد — يلزم تأكيد العائلة من العينة",
-      "scentNature": "بيانات النوتات التفصيلية غير منشورة في قائمة المورد؛ اطلب العينة وبيانات الإصدار للتوثيق.",
-      "scentNotesProfile": "غير محددة في مستند المورد؛ لم تُخمن النوتات العليا أو الوسطى أو القاعدية.",
-      "descriptionAr": "زيت عطري من قائمة المورد المؤرخة 16 يونيو 2026. الاسم والكود من القائمة؛ تفاصيل النوتات تحتاج إلى مصدر موثق. التوفر النهائي يُؤكَّد من المتجر.",
-      "descriptionEn": "Supplier-list item dated 2026-06-16. Fragrance notes are not specified in the supplier price list.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
-      "notesConfidence": "قائمة المورد لا تتضمن الهرم العطري",
-      "sourceUrl": "",
+      "family": "خشبي حار / عطري",
+      "scentNature": "فاكهي منعش في البداية، قلب زهري حار، وقاعدة خشبية من الصندل والأرز والفيتيفر.",
+      "scentNotesProfile": "القمة: أكورد فاكهي منعش | القلب: إبرة الراعي، القرنفل | القاعدة: خشب الصندل، خشب الأرز، الفيتيفر",
+      "descriptionAr": "مرجع رائحة لعطر أصلي محدد الاسم من Hugo Boss. الاسم والكود الأصليان للمورد محفوظان للمراجعة. النوتات والصورة مرجعان للعطر الأصلي فقط ولا يثبتان مطابقة زيت المورد. التوفر النهائي يحتاج تأكيد المتجر.",
+      "descriptionEn": "Reference notes and bottle image are for the named original fragrance only; they do not verify the supplier oil formula or stock.",
+      "topNotes": [
+        "أكورد فاكهي منعش"
+      ],
+      "heartNotes": [
+        "إبرة الراعي",
+        "القرنفل"
+      ],
+      "baseNotes": [
+        "خشب الصندل",
+        "خشب الأرز",
+        "الفيتيفر"
+      ],
+      "notesConfidence": "جيد — وصف رسمي للإصدار الكلاسيكي EDT؛ تأكيد الإصدار مطلوب",
+      "sourceUrl": "https://www.hugoboss.com/boss-bottled-eau-de-toilette-100ml/hbeu58000026_999.html",
       "supplierLine": "Golden Line / Niche Line",
       "price": null,
       "prices": {},
-      "image": "",
-      "brand": "غير محدد",
-      "referenceHouse": ""
+      "image": "https://images4.joy-sourcing.com/product/jfsintlpro-000-product/t1/4294967296/2162688/61097966208500/798019/69ae715aE69ba2cfb/42b10752b5083d5e.png.webp",
+      "brand": "Hugo Boss",
+      "referenceHouse": "Hugo Boss",
+      "supplierOriginalName": {
+        "nameAr": "بوس باتلد -هوجو بوس",
+        "nameEn": "Bos Bottled"
+      },
+      "imageSourceUrl": "https://www.joybuy.nl/dp/hugo-boss-bottled-heren-eau-de/10294495",
+      "notesStatus": "needs-variant-confirmation",
+      "variantNote": "تم استخدام مرجع BOSS Bottled EDT الكلاسيكي لأن كتالوج المورد لا يحدد التركيز.",
+      "referenceImage": true,
+      "imageDisclaimer": "صورة مرجعية للعبوة الأصلية من موقع خارجي؛ لا تعني أن زيت المورد هو نفس المنتج الأصلي أو أن تركيبته مطابقة.",
+      "notesDisclaimer": "النوتات تخص العطر الأصلي المرجعي المحدد بالاسم والإصدار؛ لا تثبت التركيب الكيميائي أو تطابق زيت المورد."
     },
     {
       "id": "supplier-oil-r1010241",
@@ -19583,7 +19678,7 @@
   ],
   "referenceEnrichment": {
     "updatedAt": "2026-10-23",
-    "count": 6,
+    "count": 11,
     "policy": "Canonical display names, product reference images, and fragrance pyramids are added only where an exact supplier catalog name/SKU matches a researched fragrance. Supplier SKU and original supplier names are preserved. Reference images/notes do not establish supplier-oil equivalence, inventory, or availability.",
     "sourceDomains": [
       "lattafa.com",
@@ -19592,7 +19687,16 @@
       "vuahanghieu.com",
       "perfumania.com",
       "marabika.lt",
-      "perfumegyaan.com"
+      "perfumegyaan.com",
+      "rabanne.com",
+      "perfumy.pl",
+      "carolinaherrera.com",
+      "arome.mx",
+      "sanroque.com.uy",
+      "valentino-beauty.com",
+      "epocacosmeticos.com.br",
+      "hugoboss.com",
+      "joybuy.nl"
     ]
   }
 }
