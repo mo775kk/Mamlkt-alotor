@@ -478,7 +478,7 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registration = html.match(/navigator\\.serviceWorker\\.register\\(['"]([^'"]+)/);
+  const registration = html.match(/navigator\.serviceWorker\.register\\(['"]([^'"]+)/);
   report(Boolean(registration) && registration[1].includes("clarity-v9") && worker.includes("clarity-v9"),
     "HTML service-worker registration and worker shell cache use the same release version");
 } catch (e) {
