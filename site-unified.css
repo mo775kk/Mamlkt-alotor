@@ -573,11 +573,12 @@ img,svg,video,canvas{height:auto;max-width:100%}
 
 /* MAMLKAT AL-OTOR — unified design system v4; single source of truth */
 :root{
- --bg:#F5F3EF;--panel:#FFFFFF;--panel2:#E8E5DF;--card:#FFFFFF;--field:#FFFFFF;
- --gold:#4D5052;--gold2:#85898B;--text:#343638;--heading:#25282A;--muted:#626669;
- --line:#D0D0CB;--header-bg:#FAF9F6;--footer-bg:#E5E3DD;--button-bg:#414547;--button-text:#FFFFFF;
- --index-bg:#F5F3EF;--index-card:#FFFFFF;--index-icon:#4D5052;--index-border:#85898B;
- --page-image:none;--bg-overlay:0;--radius:14px;--shadow:0 8px 28px rgba(37,40,42,.08);
+ /* Unified MAMLKAT AL-OTOR palette — ivory, deep teal and soft eucalyptus; no gold or page-photo backgrounds. */
+ --bg:#F4F6F3;--panel:#FFFFFF;--panel2:#E8EEEA;--card:#FFFFFF;--field:#FFFFFF;
+ --gold:#315C59;--gold2:#789A91;--text:#293735;--heading:#1E3835;--muted:#647571;
+ --line:#D5E0DB;--header-bg:#FAFCFA;--footer-bg:#E7EEEA;--button-bg:#315C59;--button-text:#FFFFFF;
+ --index-bg:#F4F6F3;--index-card:#FFFFFF;--index-icon:#315C59;--index-border:#789A91;
+ --page-image:none;--bg-overlay:0;--radius:16px;--shadow:0 10px 30px rgba(31,58,52,.08);
  color-scheme:light;
 }
 html,body{background:var(--bg)!important;color:var(--text);background-image:none!important}
