@@ -206,7 +206,20 @@
   function retailSizePrice(size){const key=String(size);try{const cfg=JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")||"null");const item=Array.isArray(cfg?.retailBlendPrices)?cfg.retailBlendPrices.find(x=>String(x.size||"").match(/[0-9]+/)?.[0]===key):null;if(item&&Number.isFinite(Number(item.price))&&Number(item.price)>=50)return Number(item.price);}catch{}return sizes[key]??null;}
   function currentPrice(p,size) { if(!p || p.supplierCatalogItem || p.supplierSku) return null; if(p.productType === "blend" || p.productType === "oil" || p.customBlend === true) return retailSizePrice(size); const specific=p.prices && p.prices[String(size)] != null ? Number(p.prices[String(size)]) : null; if(Number.isFinite(specific) && specific>0) return Math.max(50,specific); const base=p.price != null ? Number(p.price) : null; if(Number.isFinite(base) && base>0) return Math.max(50,base); return null; }
   function imageMarkup(p){
-    if(p.image&&/^(https?:|assets\/|data:image\/)/i.test(p.image))return '<img class="product-photo" src="'+escapeHTML(p.image)+'" alt="صورة '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'" loading="lazy" decoding="async">';
+    if(p.image&&/^(https?:|assets\\/|data:image\\/)/i.test(p.image))return '<img class="product-photo" src="'+escapeHTML(p.image)+'" alt="الصورة المسجلة لمنتج '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'" loading="lazy" decoding="async">';
+    // Category photography is illustrative only; exact registered product photos always take precedence.
+    const type=String(p.productType||"ready").toLowerCase();
+    const categoryPhoto=type==="oil"||type==="blend"||p.supplierCatalogItem===true
+      ? "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=900&q=82"
+      : type==="bakhoor"||type==="oud"
+      ? "https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=900&q=82"
+      : type==="gift"
+      ? "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=900&q=82"
+      : "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=900&q=82";
+    if(["ready","oil","blend","bakhoor","oud","gift"].includes(type)||p.supplierCatalogItem===true){
+      const categoryLabel=type==="oil"||type==="blend"?"الزيوت والتركيب":type==="bakhoor"||type==="oud"?"العود والبخور":type==="gift"?"الهدايا":"العطور الجاهزة";
+      return '<div class="product-photo-stage"><img class="product-photo" src="'+categoryPhoto+'" alt="صورة واقعية إلهامية لفئة '+categoryLabel+'؛ لا تمثل بالضرورة العبوة التجارية لهذا المنتج" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="product-image-note">صورة توضيحية للفئة</span></div>';
+    }
     const family=displayFamily(p.family||"",p.nameAr||p.nameEn||"");
     const key=String((p.nameEn||"")+" "+(p.nameAr||"")+" "+(p.family||"")).toLowerCase();
     const palettes={"حمضي ومنعش":["#d8b85d","#fff1b5"],"زهري ووردي":["#b96d8c","#f7ccdc"],"مسكي ونظيف":["#a9c9c0","#edf7f1"],"حلو وفانيليا":["#c79a68","#f8e3bd"],"عنبر وشرقي":["#a86e3e","#f0c078"],"عود وخشبي":["#75513e","#d5a878"],"خشبي":["#607b68","#c9ddc2"],"بحري":["#4f8ca7","#c5e9f4"],"فاكهي":["#bd7953","#ffd1ac"]};
