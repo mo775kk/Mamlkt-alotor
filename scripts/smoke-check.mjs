@@ -44,13 +44,13 @@ try {
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   const settingsSource = read("settings.js");
-  report(html.includes('theme-persistence.js?v=20261022-nongold10') &&
+  report(/theme-persistence\.js\?v=[^\x27"]+/.test(html) &&
     themeBootstrap.includes('mamlaka_theme_v1') &&
     themeBootstrap.includes('mamlaka_visual_tuning_v1') &&
     themeBootstrap.includes('addEventListener("storage"'),
     "Saved palette, theme mode and display settings are restored across visits");
   report(settingsSource.includes('"mamlaka_visual_tuning_v1"') &&
-    settingsSource.includes('"mamlaka_theme",') && settingsSource.includes("legacyOldPalette") && settingsSource.includes("cfgMobileDesign") && settingsSource.includes("cfgWebDesign") &&
+    settingsSource.includes('"mamlaka_theme",') && settingsSource.includes("legacyGreen") && settingsSource.includes("cfgMobileDesign") && settingsSource.includes("cfgWebDesign") &&
     settingsSource.includes('localStorage.getItem("mamlaka_visual_tuning_v1")!==raw'),
     "Color and display settings are verified on save and included in local backups");
   const iconFiles = (manifest.icons || []).map((icon) => icon.src).filter(Boolean);
@@ -391,9 +391,9 @@ try {
   const css = read("site-unified.css");
   const pages = read("section-pages.js");
   const settings = read("settings.js");
-  report(html.includes('data-theme="light"') && css.includes("UNIFIED NON-GOLD DESIGN BASE") &&
-    css.includes("--bg:#F5F5EF") && css.includes("--gold:#376B59") && css.includes("--heading:#203C31") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
-    "Default storefront palette uses readable ivory, forest-green accents and coordinated neutral colors");
+  report(html.includes('data-theme="light"') && css.includes("unified perfume-house visual system") &&
+    css.includes("--bg:#F7F4EE") && css.includes("--gold:#604B3D") && css.includes("--heading:#2B211B") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
+    "Default storefront palette uses porcelain, espresso and coordinated neutral colors");
   report(/section-pages\.js\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
     html.includes('id="modalBackdrop"'),
