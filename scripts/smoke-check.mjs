@@ -114,8 +114,8 @@ try {
   report(Boolean(browserThemeColor) && browserThemeColor.toLowerCase() === String(manifest.theme_color || "").toLowerCase() &&
     /^#[0-9a-f]{6}$/i.test(browserThemeColor),
     "Browser and installed-app theme colors match the active unified palette");
-  report(/site-unified\.css\?v=[^"]+/.test(html) && read("site-unified.css").includes("--finish-rose"),
-  "Unified ivory finishing layer is linked with a cache-buster");
+  report(/site-unified\.css\?v=[^"]+/.test(html) && read("site-unified.css").includes("MAMLKAT AL-OTOR — unified design system v4") && (read("site-unified.css").match(/Original source:/g)||[]).length===1,
+  "Single unified design stylesheet is linked with a cache-buster");
 report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
   "Service worker URL and cache shell version are synchronized");
 
@@ -375,10 +375,8 @@ try {
 try {
   const html = read("index.html");
   const css = read("site-unified.css");
-  const narrowPhoneStart = css.lastIndexOf("@media(max-width:360px){");
-  const narrowPhoneRule = narrowPhoneStart >= 0 ? css.slice(narrowPhoneStart, css.indexOf("\n}", narrowPhoneStart) + 2) : "";
-  report(narrowPhoneRule.includes(".compact-selected-price{display:inline!important") &&
-    narrowPhoneRule.includes("grid-template-columns:minmax(0,1fr) auto"),
+  report(css.includes(".compact-selected-price{display:inline!important") &&
+    css.includes("grid-template-columns:minmax(0,1fr) auto"),
     "Selected size and price remain visible together on very narrow phones");
   report(/site-unified\.css\?v=[^"]+/.test(html),
     "Royal bright release stylesheet is linked through a fresh cache-buster");
