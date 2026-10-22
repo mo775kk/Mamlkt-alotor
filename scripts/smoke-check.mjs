@@ -391,7 +391,7 @@ try {
   const css = read("site-unified.css");
   const pages = read("section-pages.js");
   report(html.includes('data-theme="light"') && css.includes("UNIFIED NON-GOLD DESIGN BASE") &&
-    css.includes("--bg:#F5F5EF") && css.includes("--gold:#376B59") && css.includes("--heading:#203C31") && html.includes('data-mobile-design="mobile-02"') && html.includes('data-web-design="web-02"'),
+    css.includes("--bg:#F5F5EF") && css.includes("--gold:#376B59") && css.includes("--heading:#203C31") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
     "Default storefront palette uses readable ivory, forest-green accents and coordinated neutral colors");
   report(/section-pages\.js\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
