@@ -5,7 +5,7 @@
   // Bind the admin entry points immediately, before the rest of startup can fail.
   // Delegation also survives if the header shortcut is created later by setup().
   document.addEventListener("click",event=>{
-    const trigger=event.target.closest("#homeSettingsShortcut,#settingsShortcut");
+    const trigger=event.target.closest("#homeSettingsShortcut,#settingsShortcut,#menuAdminShortcut");
     if(!trigger)return;
     event.preventDefault();
     try{
