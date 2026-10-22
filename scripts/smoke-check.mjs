@@ -126,7 +126,7 @@ report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor
 try {
   const app = read("app.js");
   const cartCss = read("site-unified.css");
-  report(cartCss.includes("#cartDrawer .cart-item-facts dd{margin:0;color:#D4AF37") && cartCss.includes("#cartDrawer .cart-line-actions .remove-btn") && cartCss.includes("@media(max-width:380px)"),
+  report(cartCss.includes("#cartDrawer .cart-item-facts dd{margin:0;color:var(--heading)") && cartCss.includes("#cartDrawer .cart-line-actions .remove-btn") && cartCss.includes("@media(max-width:380px)"),
     "Cart item names, size/price/quantity totals and action controls have readable responsive styles");
   report(app.includes('bind("#cartHeaderShortcut", "click",openDrawer)') && app.includes('bind("#cartShortcut", "click",openDrawer)'),
     "Both the header cart button and secondary cart shortcut open the cart drawer");
@@ -349,7 +349,7 @@ try {
     "AI connection diagnostics handle timeouts, missing server secrets and health-check limitations");
   report(/settings\.js\?v=[^"]+/.test(html) &&
     /site-unified\.css\?v=[^"]+/.test(html) &&
-    finish.includes(".home-index-install-card") && themeStudio.includes("--finish-rose"),
+    finish.includes(".home-index-install-card") && themeStudio.includes("MAMLKAT AL-OTOR — unified design system v4") && !themeStudio.includes("--finish-rose"),
     "Current settings, theme-studio and finishing styles are linked and present");
 } catch (e) {
   report(false, "Unable to validate AI deployment settings: " + e.message);
