@@ -739,3 +739,55 @@ dialog#pwaInstallHelp button{background:#315C59!important;color:#fff!important;b
 /* Consistent custom line icons for the main directory */
 .home-index-icon .index-icon-svg{display:block;width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .home-index-card:hover .home-index-icon{background:#DCEAE3!important;border-color:#9ABBAE!important}
+
+
+/* === Readability pass: clearer hierarchy, contrast and touch targets === */
+:root{
+  --text:#202E2B;--heading:#172F2B;--muted:#4D605B;--line:#C7D5CE;
+  --panel2:#E6EEE9;--button-bg:#285650;--button-text:#FFFFFF;
+}
+html{font-size:16px;text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{font-size:17px;line-height:1.8;color:#202E2B!important}
+p,li,label,dd,dt,small{overflow-wrap:anywhere}
+p{max-width:75ch}
+h1,h2,h3,h4{line-height:1.35;letter-spacing:normal}
+.section-heading h2,.section-title,.page-title{font-size:clamp(1.35rem,2.4vw,1.9rem);font-weight:800}
+.eyebrow,.section-eyebrow{font-size:.9rem;font-weight:800;letter-spacing:.02em}
+.site-header{color:#202E2B!important}
+.brand strong{font-size:1.12rem;font-weight:900}
+.brand small{font-size:.76rem;color:#405650!important;font-weight:700}
+.main-nav a,.menu-admin-shortcut{font-size:.96rem;font-weight:700}
+.home-index-card{gap:14px}
+.home-index-copy strong{font-size:1.08rem;line-height:1.45}
+.home-index-copy small{font-size:.9rem;line-height:1.65;color:#455A54!important}
+.home-index-count{font-size:.9rem}
+.hero-copy>p,.hero-note{font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.9}
+.btn,.btn-gold,.btn-primary,.primary-button,.btn-outline,
+button,input[type=button],input[type=submit]{min-height:44px;font-size:1rem;font-weight:750}
+.product-card h3,.product-card .product-title,.category-card h3{font-size:1.05rem;line-height:1.5;color:#172F2B!important}
+.product-card p,.product-card .product-description,.category-card p{font-size:.94rem;line-height:1.75;color:#40534E!important}
+.price,.product-price,.selected-price{font-size:1.12rem;font-weight:900;color:#172F2B!important}
+input,select,textarea{font-size:1rem!important;min-height:44px}
+input::placeholder,textarea::placeholder{color:#53655F!important;opacity:1!important}
+label,.field-label,.form-label{color:#263D37!important;font-weight:750}
+.muted,.text-muted,.helper-text,.form-hint{color:#4D605B!important}
+a{ text-underline-offset:3px }
+button:disabled,.btn:disabled{opacity:.68;cursor:not-allowed}
+:focus-visible{outline:3px solid #285650!important;outline-offset:3px}
+#adminLayer{font-size:16px}
+#adminLayer h1,#adminLayer h2,#adminLayer h3{line-height:1.4}
+#adminLayer label,#adminLayer .field-label{display:block;margin-bottom:5px}
+#settingsSaveStatus{font-size:.95rem;font-weight:800;color:#344D46!important}
+#settingsSaveStatus[data-state="saved"]{color:#17623E!important}
+#settingsSaveStatus[data-state="error"]{color:#A12E2E!important}
+@media(max-width:720px){
+ body{font-size:16px;line-height:1.75}
+ .brand strong{font-size:1rem}
+ .brand small{font-size:.68rem}
+ .main-nav a,.menu-admin-shortcut{font-size:1rem;min-height:44px}
+ .home-index-copy strong{font-size:1.02rem}
+ .home-index-copy small{font-size:.86rem}
+ .product-card h3,.product-card .product-title{font-size:.98rem}
+ .product-card p,.product-card .product-description{font-size:.88rem}
+ .section-heading h2,.section-title,.page-title{font-size:1.4rem}
+}
