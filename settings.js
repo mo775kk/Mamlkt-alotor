@@ -50,18 +50,6 @@
     return v;
   }
 
-  const addThemeOptions=()=>{
-    const select=document.querySelector("#cfgPreset");
-    if(!select)return;
-    select.replaceChildren();
-    Object.entries(themePresets).forEach(([key,preset])=>{
-      const option=document.createElement("option");option.value=key;option.textContent=preset.label;select.appendChild(option);
-    });
-    const custom=document.createElement("option");custom.value="custom";custom.textContent="ألوان مخصصة";select.appendChild(custom);
-  };
-  addThemeOptions();
-  Object.keys(themePresets).forEach(key=>{themePresets[key]=completeTheme(themePresets[key])});
-  const baseTheme=themePresets.design01;
   /* The design selector intentionally contains only the ten new concepts.
      Legacy palettes remain internal for compatibility with saved settings, but are not offered to customers/admins. */
   const addThemeOptions=()=>{
