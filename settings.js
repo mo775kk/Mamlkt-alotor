@@ -15,10 +15,10 @@
     const get=id=>layer.querySelector("#"+id);
     const fields={cfgBg:"bg",cfgPanel:"panel",cfgPanel2:"panel2",cfgCard:"card",cfgField:"field",cfgGold:"gold",cfgGold2:"gold2",cfgText:"text",cfgHeading:"heading",cfgMuted:"muted",cfgLine:"line",cfgHeader:"header",cfgFooter:"footer",cfgButton:"button",cfgButtonText:"buttonText",cfgIndexBg:"indexBg",cfgIndexCard:"indexCard",cfgIndexIcon:"indexIcon",cfgIndexBorder:"indexBorder"};
     try{
-      let theme={...themePresets.design04,...JSON.parse(localStorage.getItem("mamlaka_theme_v1")||"{}")};
-      Object.entries(fields).forEach(([id,key])=>{const el=get(id);if(el&&/^#[0-9a-f]{6}$/i.test(el.value))theme[key]=el.value;});
       const preset=get("cfgPreset"),style=get("cfgVisualStyle"),mobile=get("cfgMobileDesign"),web=get("cfgWebDesign"),bg=get("cfgBackgroundImage"),overlay=get("cfgOverlay");
+      let theme={...themePresets.design04,...JSON.parse(localStorage.getItem("mamlaka_theme_v1")||"{}")};
       if(preset&&preset.value!=="custom"&&themePresets[preset.value])theme={...theme,...themePresets[preset.value]};
+      Object.entries(fields).forEach(([id,key])=>{const el=get(id);if(el&&/^#[0-9a-f]{6}$/i.test(el.value))theme[key]=el.value;});
       if(style)theme.visualStyle=style.value;
       if(mobile)theme.mobileDesign=mobile.value;
       if(web)theme.webDesign=web.value;
