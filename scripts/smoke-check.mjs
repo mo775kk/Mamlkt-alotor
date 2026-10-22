@@ -489,6 +489,18 @@ try {
   report(Array.isArray(oilData.products) && oilData.products.length === 589 &&
     oilData.products.every(p => p.supplierSku && p.nameAr && p.supplierCategory),
     "Public supplier oil catalogue contains all 589 sourced products with names, codes and categories");
+  const researchedSkus = ["N1020267","N1020259","O1030177","O1030172","O1030173","O1030180"];
+  const researched = oilData.products.filter(p => researchedSkus.includes(p.sku));
+  report(researched.length === researchedSkus.length &&
+    researched.every(p => p.image && /^https:\\/\\//i.test(p.image) &&
+      /^https:\\/\\//i.test(p.sourceUrl || "") &&
+      Array.isArray(p.topNotes) && p.topNotes.length &&
+      Array.isArray(p.heartNotes) && p.heartNotes.length &&
+      Array.isArray(p.baseNotes) && p.baseNotes.length &&
+      p.notesStatus === "verified-brand-source" &&
+      p.notesDisclaimer && p.imageDisclaimer &&
+      p.available === false && p.needsReview === true),
+    "Six exact Lattafa catalog matches have sourced bottle references and brand-verified note pyramids without changing stock/availability");
 } catch (e) {
   report(false, "Unable to validate oil catalogue and section navigation: " + e.message);
 }
@@ -499,7 +511,7 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register(\'./sw.js?v=20261023-pwa-assets-v13\')");
+  const registrationIsCurrent = html.includes("register(\'./sw.js?v=20261023-pwa-assets-v15\')");
   report(registrationIsCurrent && worker.includes("pwa-assets"),
     "HTML service-worker registration and worker shell cache use the same release version");
 } catch (e) {
