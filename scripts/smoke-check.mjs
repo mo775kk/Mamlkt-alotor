@@ -44,7 +44,7 @@ try {
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   const settingsSource = read("settings.js");
-  report(html.includes('theme-persistence.js?v=20261022-ivory-unified5') &&
+  report(html.includes('theme-persistence.js?v=20261022-ivory-unified6') &&
     themeBootstrap.includes('mamlaka_theme_v1') &&
     themeBootstrap.includes('mamlaka_visual_tuning_v1') &&
     themeBootstrap.includes('addEventListener("storage"'),
