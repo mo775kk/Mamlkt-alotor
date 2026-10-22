@@ -5366,3 +5366,9 @@ input,select,textarea{background:var(--field)!important;color:var(--text)!import
 ::selection{background:#D8B35B!important;color:#3F3025!important}
 @media(max-width:620px){.home-index-grid{grid-template-columns:minmax(0,1fr)!important}.home-index-card{min-width:0;padding:12px!important;gap:10px!important}.product-card,.category-card{border-radius:12px!important}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+@media(max-width:360px){
+ .compact-size-row{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:5px!important;width:100%!important;min-width:0!important}
+ .compact-size-row .card-size-select{min-width:0!important;width:100%!important;font-size:12px!important}
+ .compact-selected-price{display:inline!important;visibility:visible!important;opacity:1!important;white-space:nowrap!important;font-size:12px!important;max-width:none!important}
+}
