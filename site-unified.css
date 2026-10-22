@@ -5326,3 +5326,10 @@ html[data-theme="dark"] td,td{color:#EAF2FA}
 #pwaInstallHelp,#pwaInstallHelpClose{background-color:#151d27!important;color:#F3F7FC!important}
 #pwaInstallHelpClose{border-color:#4D9DE0!important}
 ::selection{background:#4D9DE0!important;color:#FFFFFF!important}
+
+
+/* Admin entry must remain visible in the mobile/desktop navigation */
+.menu-admin-shortcut{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--gold,#d4af37);border-radius:12px;padding:10px 14px;background:var(--panel,#fff);color:var(--text,#171717);font:inherit;font-weight:800;cursor:pointer;white-space:nowrap}
+.menu-admin-shortcut:focus-visible{outline:3px solid var(--gold,#d4af37);outline-offset:3px}
+.main-nav .menu-admin-shortcut{margin:4px 0}
+
