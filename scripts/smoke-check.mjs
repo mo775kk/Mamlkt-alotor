@@ -40,7 +40,7 @@ try {
     "Storefront exposes an install-app action");
   report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes('addEventListener("fetch"'),
     "PWA service worker is registered and handles requests");
-  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#F4F6F3",
+  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#F0F2F4",
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   const settingsSource = read("settings.js");
@@ -478,8 +478,8 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register(\'./sw.js?v=20261022-clarity-v9\')");
-  report(registrationIsCurrent && worker.includes("clarity-v10"),
+  const registrationIsCurrent = html.includes("register(\'./sw.js?v=20261022-clarity-v11\')");
+  report(registrationIsCurrent && worker.includes("clarity-v11"),
     "HTML service-worker registration and worker shell cache use the same release version");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
