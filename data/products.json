@@ -35,7 +35,7 @@
       "notesConfidence": "مرتفع — مصدر الشركة الرسمي",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://www.oudessences.co.uk/cdn/shop/files/yara_candy_1920x.png?v=1769398591",
       "sizes": [
         "3",
         "5",
@@ -66,7 +66,10 @@
         "https://basenotes.com/fragrances/yara-candy-by-lattafa.26271450"
       ],
       "notesResearchCheckedAt": "2026-10-23",
-      "notesResearchMethod": "مطابقة الاسم الإنجليزي والشركة ومقارنة مصدر الشركة مع دليل عطري متخصص عند توفره؛ هذه نوتات العطر المرجعي ولا تثبت تركيبة زيت المورد."
+      "notesResearchMethod": "مطابقة الاسم الإنجليزي والشركة ومقارنة مصدر الشركة مع دليل عطري متخصص عند توفره؛ هذه نوتات العطر المرجعي ولا تثبت تركيبة زيت المورد.",
+      "imageSourceUrl": "https://www.oudessences.co.uk/products/yara-candy",
+      "imageAltAr": "صورة مرجعية لعبوة Yara Candy؛ صورة العطر المرجعي وليست تأكيدًا لعبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "demo-one-man-show",
@@ -114,7 +117,7 @@
       "notesConfidence": "جيد — دليل عطري متخصص؛ طابق الإصدار",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://kosmenia.ma/cdn/shop/files/one_man_show_jacques_bogart_f_580x.jpg?v=1692134821",
       "sizes": [
         "3",
         "5",
@@ -144,7 +147,10 @@
         "https://basenotes.com/fragrances/one-man-show-by-jacques-bogart.26121227"
       ],
       "notesResearchCheckedAt": "2026-10-23",
-      "notesResearchMethod": "مطابقة الاسم الإنجليزي والشركة ومقارنة مصدر الشركة مع دليل عطري متخصص عند توفره؛ هذه نوتات العطر المرجعي ولا تثبت تركيبة زيت المورد."
+      "notesResearchMethod": "مطابقة الاسم الإنجليزي والشركة ومقارنة مصدر الشركة مع دليل عطري متخصص عند توفره؛ هذه نوتات العطر المرجعي ولا تثبت تركيبة زيت المورد.",
+      "imageSourceUrl": "https://kosmenia.ma/products/jacques-bogart-one-man-show-eau-de-toilette",
+      "imageAltAr": "صورة مرجعية لعبوة One Man Show؛ صورة العطر المرجعي وليست تأكيدًا لعبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "demo-midnight",
@@ -211,7 +217,7 @@
       "notesConfidence": "جيد — النوتات من أدلة متخصصة؛ صفحة الشركة تؤكد المنتج",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://cdn.brastygroup.eu/images/w700/8717774840870-3.webp?v=1763707009",
       "sizes": [
         "3",
         "5",
@@ -242,7 +248,10 @@
         "https://fragranote.com/fragrance/megamare/"
       ],
       "notesResearchCheckedAt": "2026-10-23",
-      "notesResearchMethod": "مطابقة الاسم الإنجليزي والشركة ومقارنة مصدر الشركة مع دليل عطري متخصص عند توفره؛ هذه نوتات العطر المرجعي ولا تثبت تركيبة زيت المورد."
+      "notesResearchMethod": "مطابقة الاسم الإنجليزي والشركة ومقارنة مصدر الشركة مع دليل عطري متخصص عند توفره؛ هذه نوتات العطر المرجعي ولا تثبت تركيبة زيت المورد.",
+      "imageSourceUrl": "https://www.brasty.hr/orto-parisi-megamare-parfemska-voda-unisex-50-ml",
+      "imageAltAr": "صورة مرجعية لعبوة Megamare؛ صورة العطر المرجعي وليست تأكيدًا لعبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "demo-moon-sparkle",
@@ -276,7 +285,7 @@
       "notesConfidence": "جيد — دليل عطري متخصص؛ إصدار 2007 محدود/متوقف",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://static.dolce.pl/hires/71/3272.jpg",
       "sizes": [
         "3",
         "5",
@@ -300,7 +309,10 @@
       "referenceSearchName": "Moon Sparkle",
       "referenceSearchAliases": [
         "Escada"
-      ]
+      ],
+      "imageSourceUrl": "https://www.dolce.pl/escada/moon-sparkle/3272.php5",
+      "imageAltAr": "صورة مرجعية لعبوة Moon Sparkle؛ صورة العطر المرجعي وليست تأكيدًا لعبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "demo-maddawi",
@@ -326,7 +338,7 @@
       "notesConfidence": "مرتفع — صفحة Arabian Oud الرسمية",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://static01.galaxus.com/productimages/6/5/5/1/3/2/8/8/7/6/7/2/0/2/2/4/4/6/0/019bd33b-ac0b-7f4c-b3a6-faa665500aff_sea.jpeg",
       "sizes": [
         "3",
         "5",
@@ -350,7 +362,10 @@
       "referenceSearchName": "Madawi",
       "referenceSearchAliases": [
         "Arabian Oud"
-      ]
+      ],
+      "imageSourceUrl": "https://www.galaxus.ch/de/s6/product/arabian-oud-madawi-eau-de-parfum-90-ml-parfum-49966457",
+      "imageAltAr": "صورة مرجعية لعبوة Madawi؛ صورة العطر المرجعي وليست تأكيدًا لعبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "demo-lacoste-white",
@@ -445,7 +460,7 @@
       "notesConfidence": "مرتفع — مصدر الشركة الرسمي؛ تأكد من مطابقة إصدار 81",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://us.kayali.com/cdn/shop/files/yum-boujee-marshmallow-100_854a1802-ea3f-45c5-81f9-a6be4fdccff8.png?v=1759851607&width=1024",
       "sizes": [
         "3",
         "5",
@@ -469,7 +484,10 @@
       "referenceSearchName": "Yum Boujee Marshmallow | 81",
       "referenceSearchAliases": [
         "KAYALI"
-      ]
+      ],
+      "imageSourceUrl": "https://us.kayali.com/products/yum-boujee-marshmallow-81",
+      "imageAltAr": "صورة مرجعية لعبوة Yum Boujee Marshmallow | 81؛ صورة العطر المرجعي وليست تأكيدًا لعبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "researched-silver-scent-midnight",
@@ -500,7 +518,7 @@
       "notesConfidence": "جيد — دليل عطري متخصص؛ لا تخلطه مع أسماء Midnight الأخرى",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://cdn.awsli.com.br/2500x2500/97/97800/produto/27926276/92fd97e7ff.jpg",
       "sizes": [
         "3",
         "5",
@@ -524,7 +542,10 @@
       "referenceSearchName": "Silver Scent Midnight",
       "referenceSearchAliases": [
         "Jacques Bogart"
-      ]
+      ],
+      "imageSourceUrl": "https://www.luxuriaperfumariaatacado.com.br/perfume-silver-scent-midinight-masculino-edt-100ml",
+      "imageAltAr": "صورة مرجعية لعبوة Silver Scent Midnight؛ صورة العطر المرجعي وليست تأكيدًا لعبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "lattafa-khamrah",
@@ -8755,7 +8776,7 @@
       "notesStatus": "reference-fragrance-notes",
       "notesConfidence": "جيد — نوتات العطر المرجعي؛ لا تؤكد صيغة زيت المورد",
       "needsReview": true,
-      "image": "",
+      "image": "https://kosmenia.ma/cdn/shop/files/one_man_show_jacques_bogart_f_580x.jpg?v=1692134821",
       "sizes": [
         "3",
         "5",
@@ -8789,7 +8810,10 @@
       "referenceSearchAliases": [
         "Jacques Bogart",
         "جاك بوجارت"
-      ]
+      ],
+      "imageSourceUrl": "https://kosmenia.ma/products/jacques-bogart-one-man-show-eau-de-toilette",
+      "imageAltAr": "صورة مرجعية لعبوة One Man Show؛ صورة العطر المرجعي وليست تأكيدًا لعبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "oil-R1010077",
@@ -19214,7 +19238,7 @@
       "notesStatus": "reference-fragrance-notes",
       "notesConfidence": "مرجعي تقريبي — Madawi؛ تختلف تفاصيل النوتات المنشورة بين المراجع، تحقق من إصدار Arabian Oud",
       "needsReview": true,
-      "image": "",
+      "image": "https://static01.galaxus.com/productimages/6/5/5/1/3/2/8/8/7/6/7/2/0/2/2/4/4/6/0/019bd33b-ac0b-7f4c-b3a6-faa665500aff_sea.jpeg",
       "sizes": [
         "3",
         "5",
@@ -19248,7 +19272,10 @@
       "referenceSearchAliases": [
         "Arabian Oud",
         "العربية للعود"
-      ]
+      ],
+      "imageSourceUrl": "https://www.galaxus.ch/de/s6/product/arabian-oud-madawi-eau-de-parfum-90-ml-parfum-49966457",
+      "imageAltAr": "صورة مرجعية لعبوة Madawi؛ صورة العطر المرجعي وليست تأكيدًا لعبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "oil-N1020049",
@@ -23980,7 +24007,7 @@
       "notesStatus": "reference-fragrance-notes",
       "notesConfidence": "مرجعي — Lattafa Yara Candy؛ تحقق من إصدار المنتج",
       "needsReview": true,
-      "image": "",
+      "image": "https://www.oudessences.co.uk/cdn/shop/files/yara_candy_1920x.png?v=1769398591",
       "sizes": [
         "3",
         "5",
@@ -24014,7 +24041,10 @@
       "referenceSearchAliases": [
         "Lattafa",
         "لطافة"
-      ]
+      ],
+      "imageSourceUrl": "https://www.oudessences.co.uk/products/yara-candy",
+      "imageAltAr": "صورة مرجعية لعبوة Yara Candy؛ صورة العطر المرجعي وليست تأكيدًا لعبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "oil-N1020212",
@@ -24087,7 +24117,7 @@
       "notesStatus": "supplier-name-only",
       "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
       "needsReview": false,
-      "image": "",
+      "image": "https://us.kayali.com/cdn/shop/files/yum-boujee-marshmallow-100_854a1802-ea3f-45c5-81f9-a6be4fdccff8.png?v=1759851607&width=1024",
       "sizes": [
         "3",
         "5",
@@ -24116,7 +24146,10 @@
       "referenceSearchAliases": [
         "Kylie Minogue",
         "كايلي"
-      ]
+      ],
+      "imageSourceUrl": "https://us.kayali.com/products/yum-boujee-marshmallow-81",
+      "imageAltAr": "صورة مرجعية لعبوة Yum Boujee Marshmallow | 81؛ صورة العطر المرجعي وليست تأكيدًا لعبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "oil-R1030105",
@@ -27120,7 +27153,7 @@
       "notesStatus": "reference-fragrance-notes",
       "notesConfidence": "مرجعي — Megamare من Orto Parisi؛ نوتات منشورة محدودة وليست كشفًا كاملًا للتركيبة",
       "needsReview": true,
-      "image": "",
+      "image": "https://cdn.brastygroup.eu/images/w700/8717774840870-3.webp?v=1763707009",
       "sizes": [
         "3",
         "5",
@@ -27154,7 +27187,10 @@
       "referenceSearchAliases": [
         "Orto Parisi",
         "اورتو باريس"
-      ]
+      ],
+      "imageSourceUrl": "https://www.brasty.hr/orto-parisi-megamare-parfemska-voda-unisex-50-ml",
+      "imageAltAr": "صورة مرجعية لعبوة Megamare؛ صورة العطر المرجعي وليست تأكيدًا لعبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "oil-O1030008",
