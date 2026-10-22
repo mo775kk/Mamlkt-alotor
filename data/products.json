@@ -583,7 +583,7 @@
       "notesConfidence": "مرتفع — صفحة Lattafa الرسمية",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://www.sprayorign.com/cdn/shop/files/Lattafa-Khamrah.jpg?v=1730527372",
       "sizes": [
         "100"
       ],
@@ -612,7 +612,10 @@
         "https://www.lattafaindia.com/products/khamrah"
       ],
       "notesResearchCheckedAt": "2026-10-23",
-      "notesResearchMethod": "مطابقة الاسم الإنجليزي والشركة ومقارنة مصدر الشركة مع دليل عطري متخصص عند توفره؛ هذه نوتات العطر المرجعي ولا تثبت تركيبة زيت المورد."
+      "notesResearchMethod": "مطابقة الاسم الإنجليزي والشركة ومقارنة مصدر الشركة مع دليل عطري متخصص عند توفره؛ هذه نوتات العطر المرجعي ولا تثبت تركيبة زيت المورد.",
+      "imageSourceUrl": "https://www.sprayorign.com/products/lattafa-khamrah-eau-de-parfum-for-unisex",
+      "imageAltAr": "صورة مرجعية لعبوة Khamrah؛ لا تؤكد شكل عبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "lattafa-khamrah-qahwa",
@@ -648,7 +651,7 @@
       "notesConfidence": "مرتفع — صفحة Lattafa الرسمية",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://static2.sabinacdn.com/86030-thickbox_default/khamrah-qahwa-lattafa-eau-de-parfum.jpg",
       "sizes": [
         "100"
       ],
@@ -671,7 +674,10 @@
       "referenceSearchName": "Khamrah Qahwa",
       "referenceSearchAliases": [
         "Lattafa"
-      ]
+      ],
+      "imageSourceUrl": "https://www.sabina.com/en/women-s-perfumes/32269-khamrah-qahwa-lattafa-eau-de-parfum.html",
+      "imageAltAr": "صورة مرجعية لعبوة Khamrah Qahwa؛ لا تؤكد شكل عبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "lattafa-asad",
@@ -707,7 +713,7 @@
       "notesConfidence": "مرتفع — صفحة Lattafa الرسمية",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://media.douglas.at/medias/Xgvjvh1191647-0-global.jpg?context=bWFzdGVyfGltYWdlc3wxNjQzMDl8aW1hZ2UvanBlZ3xhREl5TDJnNU5DODJNemN6TWpNeE5EUXdOamswTWk5WVozWnFkbWd4TVRreE5qUTNYekJmWjJ4dlltRnNMbXB3Wnd8ZWRmODJjMGQwMmM0N2MxZjFlOWVkYjhjZWNkMGQ4OWFmODQ4MGJlOTUzMjQxOTVlYTQ1YWUxYTliODVmN2RlOQ&grid=true",
       "sizes": [
         "100"
       ],
@@ -730,7 +736,10 @@
       "referenceSearchName": "Asad",
       "referenceSearchAliases": [
         "Lattafa"
-      ]
+      ],
+      "imageSourceUrl": "https://www.douglas.at/de/p/5011503009",
+      "imageAltAr": "صورة مرجعية لعبوة Asad؛ لا تؤكد شكل عبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "lattafa-badee-amethyst",
@@ -763,7 +772,7 @@
       "notesConfidence": "مرتفع — صفحة Lattafa الرسمية",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://i.ebayimg.com/images/g/-6oAAOSwlEVlVupy/s-l1200.jpg",
       "sizes": [
         "100"
       ],
@@ -786,7 +795,10 @@
       "referenceSearchName": "Badee Al Oud Amethyst",
       "referenceSearchAliases": [
         "Lattafa"
-      ]
+      ],
+      "imageSourceUrl": "https://www.ebay.com/itm/285562867125",
+      "imageAltAr": "صورة مرجعية لعبوة Badee Al Oud Amethyst؛ لا تؤكد شكل عبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "lattafa-amethyst-fusion",
@@ -26611,7 +26623,7 @@
       "notesStatus": "reference-fragrance-notes",
       "notesConfidence": "مرجعي — Lattafa Khamrah الأصلي",
       "needsReview": true,
-      "image": "",
+      "image": "https://www.sprayorign.com/cdn/shop/files/Lattafa-Khamrah.jpg?v=1730527372",
       "sizes": [
         "3",
         "5",
@@ -26645,7 +26657,10 @@
       "referenceSearchAliases": [
         "Lattafa",
         "خمرة"
-      ]
+      ],
+      "imageSourceUrl": "https://www.sprayorign.com/products/lattafa-khamrah-eau-de-parfum-for-unisex",
+      "imageAltAr": "صورة مرجعية لعبوة Khamrah؛ لا تؤكد شكل عبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "oil-O1030173",
@@ -26682,7 +26697,7 @@
       "notesStatus": "reference-fragrance-notes",
       "notesConfidence": "مرجعي — Lattafa Khamrah Qahwa",
       "needsReview": true,
-      "image": "",
+      "image": "https://static2.sabinacdn.com/86030-thickbox_default/khamrah-qahwa-lattafa-eau-de-parfum.jpg",
       "sizes": [
         "3",
         "5",
@@ -26716,7 +26731,10 @@
       "referenceSearchAliases": [
         "Lattafa",
         "خمرة قهوة"
-      ]
+      ],
+      "imageSourceUrl": "https://www.sabina.com/en/women-s-perfumes/32269-khamrah-qahwa-lattafa-eau-de-parfum.html",
+      "imageAltAr": "صورة مرجعية لعبوة Khamrah Qahwa؛ لا تؤكد شكل عبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "oil-O1030150",
