@@ -111,6 +111,31 @@
       price: null, prices: {}, available: false, needsReview: true, supplierCatalogItem: true
     }));
   };
+  // Brand-sourced reference fragrance notes. These describe the named fragrance only;
+  // they never confirm a supplier oil's actual formula, stock, price, or availability.
+  const referenceFragranceNotes = {
+    khamrah: {topNotes:["البرغموت","القرفة","جوزة الطيب"],heartNotes:["أكورد التمر","زنبق الوادي","البرالين","التيوبيروز"],baseNotes:["التونكا المحمصة","بنزوين لاوس","المر","أكيغالاوود","الفانيليا","خشب العنبر"],sourceUrl:"https://lattafa.com/ar/product/%D8%AE%D9%85%D8%B1%D8%A9/"},
+    khamrahqahwa: {topNotes:["الزنجبيل","القرفة","الهيل"],heartNotes:["البرالين","الفواكه المسكّرة","الزهور البيضاء"],baseNotes:["قهوة أرابيكا","حبوب التونكا","المسك","البنزوين","الفانيليا"],sourceUrl:"https://lattafa.com/product/khamrah-qahwa/"},
+    asad: {topNotes:["الفلفل الأسود","الأناناس","التبغ"],heartNotes:["القهوة","السوسن","الباتشولي"],baseNotes:["العنبر","الفانيليا","الأخشاب الجافة","البنزوين","اللادن"],sourceUrl:"https://lattafa.com/product/asad/"},
+    asadzanzibar: {topNotes:["الفلفل الأسود","خزامى البحر"],heartNotes:["ماء جوز الهند المالح","السوسن"],baseNotes:["الفانيليا","البخور"],sourceUrl:"https://lattafa.com/product/asad-zanzibar/"},
+    asadbourbon: {topNotes:["الفلفل الوردي","الخزامى","البرقوق ميرابيل"],heartNotes:["الكاكاو","الدافانا","جوزة الطيب"],baseNotes:["الفيتيفر","فانيليا بوربون","العنبر"],sourceUrl:"https://lattafa.com/product/asad-bourbon/"}
+  };
+  const fragranceKey = value => String(value || "").toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").replace(/[^a-z0-9]+/g, "");
+  function applyReferenceFragranceNotes(product) {
+    const key = fragranceKey(product?.nameEn || product?.name_en || product?.nameAr || product?.name_ar);
+    const reference = referenceFragranceNotes[key];
+    if (!reference) return product;
+    const hasPyramid = [product.topNotes, product.heartNotes, product.baseNotes].some(notes => Array.isArray(notes) && notes.length);
+    if (hasPyramid) return product;
+    product.topNotes = reference.topNotes.slice();
+    product.heartNotes = reference.heartNotes.slice();
+    product.baseNotes = reference.baseNotes.slice();
+    product.sourceUrl = reference.sourceUrl;
+    product.notesStatus = "reference-fragrance-notes";
+    product.notesConfidence = "نوتات مرجعية من موقع العلامة الرسمي؛ لا تثبت تركيبة زيت المورد";
+    product.notesDisclaimer = "هذه نوتات العطر الأصلي المرجعي من موقع العلامة. لا تؤكد تركيبة زيت المورد أو تطابق الزيت مع العطر الأصلي.";
+    return product;
+  }
   let publicCatalogProducts = [];
   let language = safeRead(STORAGE.lang, "ar") === "en" ? "en" : "ar";
   const combineProducts = () => {
@@ -153,6 +178,7 @@
         available: p.available === true && (p.needsReview === false),
         publicCatalogItem: true
       }));
+      publicCatalogProducts.forEach(applyReferenceFragranceNotes);
       try {
         const oilResponse = await fetch("oil-catalog-public.json", { cache: "no-cache" });
         if (oilResponse.ok) {
@@ -174,6 +200,7 @@
             scentNature: p.scentNature || "تفاصيل الرائحة تحتاج إلى مصدر موثق.",
             scentNotesProfile: p.scentNotesProfile || "غير محددة في مستند المورد."
           }));
+          oilProducts.forEach(applyReferenceFragranceNotes);
           const ids = new Set(publicCatalogProducts.map(p => p.id));
           publicCatalogProducts.push(...oilProducts.filter(p => !ids.has(p.id)));
           document.documentElement.dataset.publicOilCatalog = String(oilProducts.length);
