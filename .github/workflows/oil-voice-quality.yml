@@ -48,7 +48,7 @@ jobs:
           if (count(/<body\b/gi) !== 1 || count(/<\/body>/gi) !== 1) throw new Error('HTML body structure is broken');
           if (count(/<script\b/gi) !== count(/<\/script>/gi)) throw new Error('HTML script tags are unbalanced');
           if (html.includes('mentor2"scrollProgress')) throw new Error('Broken service-worker line detected');
-          if (!html.includes('site-unified.css?v=20261022-ivory-unified6')) throw new Error('Updated stylesheet is not referenced');
+          if (!html.includes('site-unified.css?v=20261022-ivory-unified7')) throw new Error('Updated stylesheet is not referenced');
           if (!css.includes('ROYAL IVORY UNIFIED THEME') || !css.includes('--bg:#F7F3E9') || !css.includes('background-image:none!important')) throw new Error('Unified ivory/gold finish is missing');
           const requiredIds = ['oilMentorPanel','oilVoiceAsk','oilVoiceTeach','oilVoiceStop','oilVoiceStatus','oilMentorAnswer','supplierOilSearch','supplierOilProducts'];
           const missing = requiredIds.filter(id => !html.includes('id="' + id + '"'));
