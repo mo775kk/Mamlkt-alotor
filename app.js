@@ -209,13 +209,16 @@
     if(p.image&&(/^(https?:)/i.test(p.image)||p.image.startsWith("assets/")||p.image.startsWith("data:image/")))return '<img class="product-photo" src="'+escapeHTML(p.image)+'" alt="الصورة المسجلة لمنتج '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'" loading="lazy" decoding="async">';
     // Category photography is illustrative only; exact registered product photos always take precedence.
     const type=String(p.productType||"ready").toLowerCase();
-    const categoryPhoto=type==="oil"||type==="blend"||p.supplierCatalogItem===true
-      ? "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=900&q=82"
-      : type==="bakhoor"||type==="oud"
-      ? "https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=900&q=82"
-      : type==="gift"
-      ? "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=900&q=82"
-      : "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=900&q=82";
+    const photoSets={
+      ready:["photo-1594035910387-fea47794261f","photo-1541643600914-78b084683601","photo-1592945403244-b3fbafd7f539","photo-1590736969955-71cc94901144"],
+      oil:["photo-1608571423902-eed4a5ad8108","photo-1616949755610-8c9bbc08f138","photo-1608528577891-eb055944f2e3"],
+      bakhoor:["photo-1615634260167-c8cdede054de","photo-1602874801007-bd458bb1b8b6","photo-1608571423902-eed4a5ad8108"],
+      gift:["photo-1549465220-1a8b9238cd48","photo-1513201099705-a9746e1e201f","photo-1602143407151-7111542de6e8"]
+    };
+    const photoType=(type==="oil"||type==="blend"||p.supplierCatalogItem===true)?"oil":(type==="bakhoor"||type==="oud")?"bakhoor":type==="gift"?"gift":"ready";
+    const photoKey=String(p.id||p.nameEn||p.nameAr||"product");
+    let photoHash=0;for(let i=0;i<photoKey.length;i++)photoHash=(photoHash*31+photoKey.charCodeAt(i))>>>0;
+    const categoryPhoto="https://images.unsplash.com/"+photoSets[photoType][photoHash%photoSets[photoType].length]+"?auto=format&fit=crop&w=900&q=82";
     if(["ready","oil","blend","bakhoor","oud","gift"].includes(type)||p.supplierCatalogItem===true){
       const categoryLabel=type==="oil"||type==="blend"?"الزيوت والتركيب":type==="bakhoor"||type==="oud"?"العود والبخور":type==="gift"?"الهدايا":"العطور الجاهزة";
       return '<div class="product-photo-stage"><img class="product-photo" src="'+categoryPhoto+'" alt="صورة واقعية إلهامية لفئة '+categoryLabel+'؛ لا تمثل بالضرورة العبوة التجارية لهذا المنتج" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="product-image-note">صورة توضيحية للفئة</span></div>';
