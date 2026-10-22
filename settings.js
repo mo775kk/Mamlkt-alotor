@@ -2,6 +2,47 @@
   "use strict";
   const WA_KEY="mamlaka_admin_whatsapp_v1", THEME_KEY="mamlaka_theme_v1", PIN_KEY="mamlaka_admin_pin_v1";
   const $=s=>document.querySelector(s);
+  // Recovery guard: keep close/back and settings persistence working even if a later admin initializer throws.
+  function forceCloseAdmin(){
+    const layer=document.getElementById("adminLayer");
+    if(layer){layer.classList.add("hidden");layer.setAttribute("aria-hidden","true");}
+    document.body.classList.remove("admin-open","modal-open");
+    document.documentElement.classList.remove("admin-open","modal-open");
+  }
+  function emergencySaveSettings(){
+    const layer=document.getElementById("adminLayer");
+    if(!layer)return false;
+    const get=id=>layer.querySelector("#"+id);
+    const fields={cfgBg:"bg",cfgPanel:"panel",cfgPanel2:"panel2",cfgCard:"card",cfgField:"field",cfgGold:"gold",cfgGold2:"gold2",cfgText:"text",cfgHeading:"heading",cfgMuted:"muted",cfgLine:"line",cfgHeader:"header",cfgFooter:"footer",cfgButton:"button",cfgButtonText:"buttonText",cfgIndexBg:"indexBg",cfgIndexCard:"indexCard",cfgIndexIcon:"indexIcon",cfgIndexBorder:"indexBorder"};
+    try{
+      let theme={...themePresets.design04,...JSON.parse(localStorage.getItem("mamlaka_theme_v1")||"{}")};
+      Object.entries(fields).forEach(([id,key])=>{const el=get(id);if(el&&/^#[0-9a-f]{6}$/i.test(el.value))theme[key]=el.value;});
+      const preset=get("cfgPreset"),style=get("cfgVisualStyle"),mobile=get("cfgMobileDesign"),web=get("cfgWebDesign"),bg=get("cfgBackgroundImage"),overlay=get("cfgOverlay");
+      if(preset&&preset.value!=="custom"&&themePresets[preset.value])theme={...theme,...themePresets[preset.value]};
+      if(style)theme.visualStyle=style.value;
+      if(mobile)theme.mobileDesign=mobile.value;
+      if(web)theme.webDesign=web.value;
+      if(bg&&bg.value.trim())theme.backgroundImage=bg.value.trim();
+      if(overlay&&Number.isFinite(+overlay.value))theme.overlay=Math.max(0,Math.min(.65,+overlay.value/100));
+      localStorage.setItem("mamlaka_theme_v1",JSON.stringify(theme));
+      localStorage.setItem("mamlaka_theme",JSON.stringify(theme));
+      const name=get("cfgName"),wa=get("cfgWhatsapp");
+      if(name)localStorage.setItem("mamlaka_store_name_v1",name.value.trim()||"مملكة العطور");
+      if(wa)localStorage.setItem("mamlaka_admin_whatsapp_v1",wa.value.replace(/\\D/g,"")||"201272776928");
+      const css=document.getElementById("mamlaka-emergency-theme")||document.head.appendChild(Object.assign(document.createElement("style"),{id:"mamlaka-emergency-theme"}));
+      css.textContent=":root{"+Object.entries({bg:theme.bg,panel:theme.panel,panel2:theme.panel2,card:theme.card,field:theme.field,gold:theme.gold,gold2:theme.gold2,text:theme.text,heading:theme.heading,muted:theme.muted,line:theme.line,"header-bg":theme.header,"footer-bg":theme.footer,"button-bg":theme.button,"button-text":theme.buttonText,"index-bg":theme.indexBg,"index-card":theme.indexCard,"index-icon":theme.indexIcon,"index-border":theme.indexBorder}).map(([k,v])=>"--"+k+":"+v).join(";")+"}";
+      const status=get("settingsSaveStatus");if(status){status.dataset.state="saved";status.textContent="✓ تم حفظ الإعدادات والتحقق منها على هذا الجهاز";}
+      return true;
+    }catch(err){console.error("Emergency settings save failed",err);const status=get("settingsSaveStatus");if(status){status.dataset.state="error";status.textContent="تعذر الحفظ: "+(err.message||"خطأ في التخزين");}return false;}
+  }
+  document.addEventListener("click",event=>{
+    const closeButton=event.target.closest("#adminClose,[data-admin-close],#settingsBack,#settingsExit");
+    if(closeButton){event.preventDefault();forceCloseAdmin();return;}
+    if(event.target.id==="adminLayer"){forceCloseAdmin();return;}
+    const saveButton=event.target.closest("#saveSite,#saveAllSettings,#settingsSave");
+    if(saveButton){event.preventDefault();emergencySaveSettings();}
+  },true);
+  document.addEventListener("keydown",event=>{if(event.key==="Escape"&&document.getElementById("adminLayer")&&!document.getElementById("adminLayer").classList.contains("hidden"))forceCloseAdmin();});
   // Bind the admin entry points immediately, before the rest of startup can fail.
   // Delegation also survives if the header shortcut is created later by setup().
   document.addEventListener("click",event=>{
