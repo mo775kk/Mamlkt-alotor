@@ -133,8 +133,10 @@
     const colorKeys = ["bg","panel","panel2","card","field","gold","gold2","text","heading","muted","line","header","footer","button","buttonText","indexBg","indexCard","indexIcon","indexBorder"];
     colorKeys.forEach(key => {
       const value = String(v[key] || "");
-      if (!/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(value) || isPinkTone(value) || ((key==="gold"||key==="gold2"||key==="button"||key==="indexIcon"||key==="indexBorder")&&isGoldTone(value))) {
-        v[key] = defaults[key] || base[key] || "#FFFFFF";
+      const accentKey = key==="gold"||key==="gold2"||key==="button"||key==="indexIcon"||key==="indexBorder";
+      const legacyGold = accentKey && isGoldTone(value);
+      if (!/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(value) || isPinkTone(value) || legacyGold) {
+        v[key] = legacyGold ? (base[key] || "#4D5052") : (defaults[key] || base[key] || "#FFFFFF");
       }
     });
     if (!v.backgroundImage) v.backgroundImage = "none";
