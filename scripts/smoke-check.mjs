@@ -40,7 +40,7 @@ try {
     "Storefront exposes an install-app action");
   report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes('addEventListener("fetch"'),
     "PWA service worker is registered and handles requests");
-  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#F7F4EE",
+  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#F5F3EF",
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   const settingsSource = read("settings.js");
