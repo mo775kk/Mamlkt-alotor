@@ -390,9 +390,9 @@ try {
   const html = read("index.html");
   const css = read("site-unified.css");
   const pages = read("section-pages.js");
-  report(html.includes('data-theme="light"') && css.includes("ROYAL IVORY UNIFIED THEME") &&
-    css.includes("--bg:#F7F3E9") && css.includes("--gold:#B88A2B") && css.includes("--heading:#4B3423") && css.includes('data-mobile-design="mobile-02"') && css.includes('data-web-design="web-02"'),
-    "Default storefront palette uses readable ivory, gold and dark-brown colors");
+  report(html.includes('data-theme="light"') && css.includes("UNIFIED NON-GOLD DESIGN BASE") &&
+    css.includes("--bg:#F5F5EF") && css.includes("--gold:#376B59") && css.includes("--heading:#203C31") && html.includes('data-mobile-design="mobile-02"') && html.includes('data-web-design="web-02"'),
+    "Default storefront palette uses readable ivory, forest-green accents and coordinated neutral colors");
   report(/section-pages\.js\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
     html.includes('id="modalBackdrop"'),
