@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "currency": "EGP",
-  "updatedAt": "2026-10-16",
-  "notes": "نوتات العطر المرجعي موثقة بروابط مصادر عند مطابقة الاسم. لا تمثل إثباتًا لتركيبة زيت المورد أو أي إصدار مختلف. تبقى المنتجات غير المطابقة بلا نوتات تخمينية.",
+  "updatedAt": "2026-10-23",
+  "notes": "نوتات العطور المرجعية مرتبطة بالمصدر والإصدار عند توفره، ولا تثبت تركيبة زيت المورد. تُترك المنتجات غير المطابقة بلا نوتات تخمينية.",
   "products": [
     {
       "id": "demo-yara-candy",
@@ -1852,15 +1852,27 @@
       "productType": "oil",
       "gender": "رجالي",
       "origin": "غير محدد",
-      "family": "غير محدد",
+      "family": "شيبر خشبي عطري",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الليمون",
+        "البرغموت",
+        "خشب الورد البرازيلي"
+      ],
+      "heartNotes": [
+        "القرنفل",
+        "السوسن",
+        "إبرة الراعي"
+      ],
+      "baseNotes": [
+        "طحلب السنديان",
+        "الباتشولي",
+        "الفيتيفر"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — مصدران عطريان متخصصان؛ العطر المرجعي الأصلي قديم/متوقف.",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -1890,7 +1902,14 @@
       "referenceSearchAliases": [
         "Aramis",
         "اراميس"
-      ]
+      ],
+      "sourceUrl": "https://basenotes.com/fragrances/aramis-900-by-aramis.26120124",
+      "notesResearchSources": [
+        "https://basenotes.com/fragrances/aramis-900-by-aramis.26120124",
+        "https://www.fragrantica.com/perfume/Aramis/Aramis-900-116.html"
+      ],
+      "notesResearchCheckedAt": "2026-10-23",
+      "notesResearchMethod": "بحث ومطابقة اسم العطر المرجعي مع الشركة ومراجعة مصادر عطرية منشورة. النوتات تخص العطر المرجعي فقط، ولا تثبت تركيبة زيت المورد؛ يجب اختبار عينة المورد."
     },
     {
       "id": "oil-R1010237",
@@ -2281,15 +2300,32 @@
       "productType": "oil",
       "gender": "رجالي",
       "origin": "غير محدد",
-      "family": "غير محدد",
+      "family": "خشبي حار عنبري",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الهيل",
+        "البرغموت",
+        "النعناع",
+        "أوراق خضراء",
+        "زهر الليمون",
+        "النيرولي"
+      ],
+      "heartNotes": [
+        "القرفة",
+        "التمر",
+        "الزبيب",
+        "الزعفران"
+      ],
+      "baseNotes": [
+        "بلسم التولو",
+        "خشب الغاياك",
+        "خشب الأرز",
+        "المسك"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — مطابقة مع Basenotes وParfumo؛ لا تؤكد تركيبة زيت المورد.",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -2319,7 +2355,14 @@
       "referenceSearchAliases": [
         "Ted Lapidus",
         "تيد البيدوس"
-      ]
+      ],
+      "sourceUrl": "https://basenotes.com/fragrances/black-soul-by-ted-lapidus.26132144",
+      "notesResearchSources": [
+        "https://basenotes.com/fragrances/black-soul-by-ted-lapidus.26132144",
+        "https://www.parfumo.com/Perfumes/Ted_Lapidus/BlackSoul_Eau_de_Toilette"
+      ],
+      "notesResearchCheckedAt": "2026-10-23",
+      "notesResearchMethod": "بحث ومطابقة اسم العطر المرجعي مع الشركة ومراجعة مصادر عطرية منشورة. النوتات تخص العطر المرجعي فقط، ولا تثبت تركيبة زيت المورد؛ يجب اختبار عينة المورد."
     },
     {
       "id": "oil-R1010003",
@@ -3594,15 +3637,24 @@
       "productType": "oil",
       "gender": "رجالي",
       "origin": "غير محدد",
-      "family": "غير محدد",
+      "family": "خشبي عطري منعش",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "البرغموت",
+        "الليمون"
+      ],
+      "heartNotes": [
+        "المريمية",
+        "الغالبانوم"
+      ],
+      "baseNotes": [
+        "طحلب السنديان",
+        "خشب الأرز"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — تمت مطابقة Champion من Davidoff؛ لا تؤكد تركيبة زيت المورد.",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -3632,7 +3684,14 @@
       "referenceSearchAliases": [
         "Davidoff",
         "دافيدوف"
-      ]
+      ],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Davidoff/Champion-9109.html",
+      "notesResearchSources": [
+        "https://www.fragrantica.com/perfume/Davidoff/Champion-9109.html",
+        "https://www.parfumo.com/Perfumes/Davidoff/Champion_Eau_de_Toilette"
+      ],
+      "notesResearchCheckedAt": "2026-10-23",
+      "notesResearchMethod": "بحث ومطابقة اسم العطر المرجعي مع الشركة ومراجعة مصادر عطرية منشورة. النوتات تخص العطر المرجعي فقط، ولا تثبت تركيبة زيت المورد؛ يجب اختبار عينة المورد."
     },
     {
       "id": "oil-R1010089",
@@ -4125,15 +4184,29 @@
       "productType": "oil",
       "gender": "رجالي",
       "origin": "غير محدد",
-      "family": "غير محدد",
+      "family": "فاكهي مائي عطري",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الليتشي",
+        "اليوسفي",
+        "اللوتس",
+        "البرغموت"
+      ],
+      "heartNotes": [
+        "النوتات البحرية",
+        "البرتقال",
+        "خشب الورد البرازيلي"
+      ],
+      "baseNotes": [
+        "حبوب التونكا",
+        "المسك",
+        "العنبر",
+        "البنزوين"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — توافق عام بين مصدرين متخصصين مع اختلافات طفيفة في تسمية النوتات.",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -4163,7 +4236,14 @@
       "referenceSearchAliases": [
         "Dunhill",
         "دنهل"
-      ]
+      ],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Alfred-Dunhill/Desire-Blue-1937.html",
+      "notesResearchSources": [
+        "https://www.fragrantica.com/perfume/Alfred-Dunhill/Desire-Blue-1937.html",
+        "https://basenotes.com/fragrances/desire-blue-by-dunhill.26122163"
+      ],
+      "notesResearchCheckedAt": "2026-10-23",
+      "notesResearchMethod": "بحث ومطابقة اسم العطر المرجعي مع الشركة ومراجعة مصادر عطرية منشورة. النوتات تخص العطر المرجعي فقط، ولا تثبت تركيبة زيت المورد؛ يجب اختبار عينة المورد."
     },
     {
       "id": "oil-R1010062",
@@ -4278,15 +4358,40 @@
       "productType": "oil",
       "gender": "رجالي",
       "origin": "غير محدد",
-      "family": "غير محدد",
+      "family": "عطري فوجير أخضر خشبي",
       "scentNature": "زيت عطري مركز للتركيب؛ تفاصيل الرائحة تحتاج إلى مراجعة العينة.",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "topNotes": [
+        "الريحان",
+        "إكليل الجبل",
+        "النعناع الأخضر",
+        "اللويزة",
+        "الخزامى",
+        "الليمون",
+        "البرغموت",
+        "الأرتميسيا"
+      ],
+      "heartNotes": [
+        "أنجليكا",
+        "الأفسنتين",
+        "الكزبرة",
+        "العرعر",
+        "القرفة",
+        "الهيل"
+      ],
+      "baseNotes": [
+        "الباتشولي",
+        "طحلب السنديان",
+        "الجلد",
+        "العنبر",
+        "خشب الصندل",
+        "خشب الأرز",
+        "إبر الصنوبر",
+        "البلسم"
+      ],
       "descriptionAr": "زيت عطري مركز للتركيب. الاسم والكود من قائمة المورد؛ تفاصيل النوتات والطابع العطري غير مؤكدة حتى مراجعة العينة.",
-      "notesStatus": "supplier-name-only",
-      "notesConfidence": "الاسم والكود واردان في قائمة المورد؛ النوتات تحتاج مراجعة",
-      "needsReview": false,
+      "notesStatus": "reference-fragrance-notes",
+      "notesConfidence": "جيد — نوتات العطر المرجعي منشورة في Basenotes؛ لا تؤكد تركيبة زيت المورد.",
+      "needsReview": true,
       "image": "",
       "sizes": [
         "3",
@@ -4316,7 +4421,14 @@
       "referenceSearchAliases": [
         "Guy Laroche",
         "جي الروش"
-      ]
+      ],
+      "sourceUrl": "https://basenotes.com/fragrances/drakkar-noir-by-guy-laroche.26120472",
+      "notesResearchSources": [
+        "https://basenotes.com/fragrances/drakkar-noir-by-guy-laroche.26120472",
+        "https://www.guylaroche.com/fragrances"
+      ],
+      "notesResearchCheckedAt": "2026-10-23",
+      "notesResearchMethod": "بحث ومطابقة اسم العطر المرجعي مع الشركة ومراجعة مصادر عطرية منشورة. النوتات تخص العطر المرجعي فقط، ولا تثبت تركيبة زيت المورد؛ يجب اختبار عينة المورد."
     },
     {
       "id": "oil-R1010020",
