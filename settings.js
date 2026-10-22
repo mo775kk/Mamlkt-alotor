@@ -30,7 +30,7 @@
   const adminReadyProducts=()=>{const merged=new Map(baseReadyProducts.map(p=>[String(p.id),p]));products().forEach(p=>merged.set(String(p.id),{...(merged.get(String(p.id))||{}),...p}));return [...merged.values()];};
   const saveProducts=p=>{const key="mamlaka_custom_products_v1",raw=JSON.stringify(p);try{localStorage.setItem(key,raw);if(localStorage.getItem(key)!==raw)throw new Error("لم يتم تأكيد حفظ المنتجات");return true;}catch(error){console.error("Mamlaka product/image save failed",error);throw new Error("تعذر حفظ المنتج أو صورته: مساحة التخزين المحلية ممتلئة أو غير متاحة. استخدم صورة أصغر أو رابط صورة مباشرًا، ثم صدّر نسخة JSON احتياطية.");}};
   const themePresets={
-    design01:{label:"1 — الملكي العصري الأزرق",bg:"#10151C",panel:"#151B23",panel2:"#1C2632",card:"#18212B",field:"#101820",gold:"#4D9DE0",gold2:"#A8D8FF",text:"#F3F7FC",heading:"#B8E1FF",muted:"#C7D3E0",line:"#35516A",header:"#111821",footer:"#0D1218",button:"#244D70",buttonText:"#FFFFFF",indexBg:"#10151C",indexCard:"#18212B",indexIcon:"#4D9DE0",indexBorder:"#A8D8FF",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.36,visualStyle:"classic"},
+    design01:{label:"1 — الملكي الأسود والذهبي",bg:"#0A0A0A",panel:"#15120D",panel2:"#211A0B",card:"#18150F",field:"#100F0C",gold:"#D4AF37",gold2:"#F1D77A",text:"#F7F1E6",heading:"#F8E7A0",muted:"#D0C5B1",line:"#6E5520",header:"#11100C",footer:"#090807",button:"#80570A",buttonText:"#FFFFFF",indexBg:"#0A0A0A",indexCard:"#18150F",indexIcon:"#D4AF37",indexBorder:"#F1D77A",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.36,visualStyle:"classic"},
     design02:{label:"2 — الفاخر المضيء",bg:"#F4F7FB",panel:"#FFFFFF",panel2:"#E5ECF5",card:"#FFFFFF",field:"#FFFFFF",gold:"#527AA5",gold2:"#B8D0E8",text:"#1D2B3B",heading:"#2B4E72",muted:"#56697E",line:"#CBD9E8",header:"#E8EEF6",footer:"#DCE5EF",button:"#527AA5",buttonText:"#FFFFFF",indexBg:"#F4F7FB",indexCard:"#FFFFFF",indexIcon:"#527AA5",indexBorder:"#B8D0E8",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.12,visualStyle:"ios"},
     design03:{label:"3 — الرومانسي الداكن",bg:"#17121A",panel:"#211A25",panel2:"#29202D",card:"#241B29",field:"#17121A",gold:"#84618F",gold2:"#C8A7D6",text:"#F8F2FA",heading:"#DCC5E8",muted:"#CDBFD2",line:"#55445D",header:"#201824",footer:"#120F15",button:"#684B78",buttonText:"#FFFFFF",indexBg:"#17121A",indexCard:"#241B29",indexIcon:"#C8A7D6",indexBorder:"#84618F",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.34,visualStyle:"classic"},
     design04:{label:"4 — الأزرق التقني",bg:"#071521",panel:"#0D202F",panel2:"#10283A",card:"#0E2434",field:"#091B2A",gold:"#1689C9",gold2:"#71D0FF",text:"#F1F9FF",heading:"#9CDEFF",muted:"#BCD3E2",line:"#234A63",header:"#091B2A",footer:"#06111B",button:"#126A9D",buttonText:"#FFFFFF",indexBg:"#071521",indexCard:"#0E2434",indexIcon:"#71D0FF",indexBorder:"#1689C9",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.40,visualStyle:"windows"},
@@ -39,7 +39,7 @@
     design07:{label:"7 — الأرجواني الملكي",bg:"#F4F0F8",panel:"#FFFFFF",panel2:"#E6DDED",card:"#FFFFFF",field:"#FFFFFF",gold:"#71538D",gold2:"#BBA2D1",text:"#2F2538",heading:"#513766",muted:"#6D6076",line:"#D7C9E0",header:"#E6DDED",footer:"#DCCFE5",button:"#76558D",buttonText:"#FFFFFF",indexBg:"#F4F0F8",indexCard:"#FFFFFF",indexIcon:"#71538D",indexBorder:"#BBA2D1",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.10,visualStyle:"android"},
     design08:{label:"8 — البسيط السماوي",bg:"#F4F8FC",panel:"#FFFFFF",panel2:"#E5EEF7",card:"#FFFFFF",field:"#FFFFFF",gold:"#4B82B8",gold2:"#A9CBEA",text:"#203246",heading:"#315B83",muted:"#5D7184",line:"#CCDCEB",header:"#E5EEF7",footer:"#D9E6F2",button:"#4B82B8",buttonText:"#FFFFFF",indexBg:"#F4F8FC",indexCard:"#FFFFFF",indexIcon:"#4B82B8",indexBorder:"#A9CBEA",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.10,visualStyle:"ios"},
     design09:{label:"9 — السينمائي الداكن",bg:"#111820",panel:"#19232D",panel2:"#202B36",card:"#1B2631",field:"#141D27",gold:"#547D9F",gold2:"#9BC7E8",text:"#F3F7FB",heading:"#C0DDF3",muted:"#B8C7D5",line:"#3B5265",header:"#141D27",footer:"#0A1118",button:"#315C7D",buttonText:"#FFFFFF",indexBg:"#111820",indexCard:"#1B2631",indexIcon:"#9BC7E8",indexBorder:"#547D9F",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.42,visualStyle:"windows"},
-    design10:{label:"10 — الوردي الفاتح",bg:"#FBF6F8",panel:"#FFFFFF",panel2:"#F1E7EC",card:"#FFFFFF",field:"#FFFFFF",gold:"#8B6578",gold2:"#C9A9BA",text:"#332832",heading:"#634657",muted:"#766674",line:"#E0D1D9",header:"#F1E7EC",footer:"#E8DCE3",button:"#8B6578",buttonText:"#FFFFFF",indexBg:"#FBF6F8",indexCard:"#FFFFFF",indexIcon:"#8B6578",indexBorder:"#C9A9BA",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.10,visualStyle:"ios"}
+    design10:{label:"10 — الذهبي الفاخر",bg:"#0A0A0A",panel:"#15120D",panel2:"#211A0B",card:"#18150F",field:"#100F0C",gold:"#D4AF37",gold2:"#F1D77A",text:"#F7F1E6",heading:"#F8E7A0",muted:"#D0C5B1",line:"#6E5520",header:"#11100C",footer:"#090807",button:"#80570A",buttonText:"#FFFFFF",indexBg:"#0A0A0A",indexCard:"#18150F",indexIcon:"#D4AF37",indexBorder:"#F1D77A",backgroundImage:"assets/images/royal-hero.jpg",overlay:0.28,visualStyle:"classic"}
   };
   const colorRgb=value=>{let h=String(value||"#000000").replace("#","");if(h.length===3)h=h.split("").map(c=>c+c).join("");if(!/^[0-9a-f]{6}$/i.test(h))h="000000";return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]};
   const colorLum=value=>{const c=colorRgb(value).map(n=>{n/=255;return n<=.04045?n/12.92:Math.pow((n+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]};
@@ -59,7 +59,7 @@
     return sat>0.16 && light>0.16 && (hue>=325 || hue<=8);
   }
   function completeTheme(input={}){
-    /* Keep each design preset palette unchanged; pink is an intentional option. */
+    /* Keep the selected non-pink design palette stable. */
     const fallback={panel2:mixColor(v.bg,v.panel,dark?.32:.62),card:v.panel,field:v.panel,muted:mixColor(v.text,v.bg,dark?.38:.34),line:mixColor(v.bg,v.text,dark?.28:.14),heading:v.text,header:mixColor(v.bg,v.gold,dark?.16:.10),footer:mixColor(v.bg,v.text,dark?.06:.08),button:v.gold,buttonText:colorLum(v.gold)>.48?"#20251f":"#ffffff"};
     Object.keys(fallback).forEach(key=>{if(!Object.prototype.hasOwnProperty.call(raw,key)||!/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(String(raw[key]||"")))v[key]=fallback[key]});
     /* Colors are provided by the selected design preset. */
@@ -72,7 +72,7 @@
     const select=document.querySelector("#cfgPreset");
     if(!select)return;
     const choices=[
-      ["design01","1 — الملكي العصري الأزرق"],
+      ["design01","1 — الملكي الأسود والذهبي"],
       ["design02","2 — الفاخر المضيء"],
       ["design03","3 — الرومانسي الداكن"],
       ["design04","4 — الأزرق التقني"],
@@ -81,7 +81,7 @@
       ["design07","7 — الأرجواني الملكي"],
       ["design08","8 — البسيط السماوي"],
       ["design09","9 — السينمائي الداكن"],
-      ["design10","10 — الوردي الفاتح"]
+      ["design10","10 — الذهبي الفاخر"]
     ];
     const custom=Array.from(select.options).find(option=>option.value==="custom");
     select.replaceChildren();
