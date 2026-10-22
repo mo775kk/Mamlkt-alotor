@@ -44,13 +44,13 @@ try {
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   const settingsSource = read("settings.js");
-  report(html.includes('theme-persistence.js?v=20261022-ivory-unified6') &&
+  report(html.includes('theme-persistence.js?v=20261022-ivory-unified7') &&
     themeBootstrap.includes('mamlaka_theme_v1') &&
     themeBootstrap.includes('mamlaka_visual_tuning_v1') &&
     themeBootstrap.includes('addEventListener("storage"'),
     "Saved palette, theme mode and display settings are restored across visits");
   report(settingsSource.includes('"mamlaka_visual_tuning_v1"') &&
-    settingsSource.includes('"mamlaka_theme",') && settingsSource.includes("legacyOldPalette") &&
+    settingsSource.includes('"mamlaka_theme",') && settingsSource.includes("legacyOldPalette") && settingsSource.includes("cfgMobileDesign") && settingsSource.includes("cfgWebDesign") &&
     settingsSource.includes('localStorage.getItem("mamlaka_visual_tuning_v1")!==raw'),
     "Color and display settings are verified on save and included in local backups");
   const iconFiles = (manifest.icons || []).map((icon) => icon.src).filter(Boolean);
@@ -391,7 +391,7 @@ try {
   const css = read("site-unified.css");
   const pages = read("section-pages.js");
   report(html.includes('data-theme="light"') && css.includes("ROYAL IVORY UNIFIED THEME") &&
-    css.includes("--bg:#F7F3E9") && css.includes("--gold:#B88A2B") && css.includes("--heading:#4B3423"),
+    css.includes("--bg:#F7F3E9") && css.includes("--gold:#B88A2B") && css.includes("--heading:#4B3423") && css.includes('data-mobile-design="mobile-02"') && css.includes('data-web-design="web-02"'),
     "Default storefront palette uses readable ivory, gold and dark-brown colors");
   report(/section-pages\.js\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
