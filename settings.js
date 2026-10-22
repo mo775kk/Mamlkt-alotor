@@ -59,13 +59,46 @@
     return sat>0.16 && light>0.16 && (hue>=325 || hue<=8);
   }
   function completeTheme(input={}){
-    /* Keep the selected non-pink design palette stable. */
-    const fallback={panel2:mixColor(v.bg,v.panel,dark?.32:.62),card:v.panel,field:v.panel,muted:mixColor(v.text,v.bg,dark?.38:.34),line:mixColor(v.bg,v.text,dark?.28:.14),heading:v.text,header:mixColor(v.bg,v.gold,dark?.16:.10),footer:mixColor(v.bg,v.text,dark?.06:.08),button:v.gold,buttonText:colorLum(v.gold)>.48?"#20251f":"#ffffff"};
-    Object.keys(fallback).forEach(key=>{if(!Object.prototype.hasOwnProperty.call(raw,key)||!/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(String(raw[key]||"")))v[key]=fallback[key]});
-    /* Colors are provided by the selected design preset. */
+    /* Normalize every saved or preset theme before it reaches the UI.
+       The previous version referenced undeclared variables (v, dark, raw),
+       which threw during script startup and prevented the entire admin panel
+       from registering its buttons. */
+    const raw = input && typeof input === "object" && !Array.isArray(input) ? input : {};
+    const base = themePresets.design02 || themePresets.design01 || {};
+    const v = {...base, ...raw};
+    const dark = colorLum(v.bg || base.bg || "#FAF6ED") < 0.22;
+    const defaults = {
+      bg: base.bg || "#FAF6ED",
+      panel: base.panel || "#FFFFFF",
+      gold: base.gold || "#A97A25",
+      gold2: base.gold2 || "#D9B765",
+      text: base.text || "#403124",
+      panel2: mixColor(v.bg, v.panel, dark ? 0.32 : 0.62),
+      card: v.panel,
+      field: v.panel,
+      muted: mixColor(v.text, v.bg, dark ? 0.38 : 0.34),
+      line: mixColor(v.bg, v.text, dark ? 0.28 : 0.14),
+      heading: v.text,
+      header: mixColor(v.bg, v.gold, dark ? 0.16 : 0.10),
+      footer: mixColor(v.bg, v.text, dark ? 0.06 : 0.08),
+      button: v.gold,
+      buttonText: colorLum(v.gold) > 0.48 ? "#20251f" : "#ffffff",
+      indexBg: v.bg,
+      indexCard: v.panel,
+      indexIcon: v.gold,
+      indexBorder: v.gold2
+    };
+    const colorKeys = ["bg","panel","panel2","card","field","gold","gold2","text","heading","muted","line","header","footer","button","buttonText","indexBg","indexCard","indexIcon","indexBorder"];
+    colorKeys.forEach(key => {
+      const value = String(v[key] || "");
+      if (!/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(value) || isPinkTone(value)) {
+        v[key] = defaults[key] || base[key] || "#FFFFFF";
+      }
+    });
+    if (!v.backgroundImage) v.backgroundImage = "none";
+    if (!Number.isFinite(Number(v.overlay))) v.overlay = 0.08;
     return v;
   }
-
   /* The design selector intentionally contains only the ten new concepts.
      Legacy palettes remain internal for compatibility with saved settings, but are not offered to customers/admins. */
   const addThemeOptions=()=>{
