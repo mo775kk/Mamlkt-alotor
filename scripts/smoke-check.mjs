@@ -511,7 +511,7 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register(\'./sw.js?v=20261023-pwa-assets-v15\')");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261023-pwa-assets-v15')");
   report(registrationIsCurrent && worker.includes("pwa-assets"),
     "HTML service-worker registration and worker shell cache use the same release version");
 } catch (e) {
