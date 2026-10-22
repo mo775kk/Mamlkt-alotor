@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#F4F6F3">
+  <meta name="theme-color" content="#F0F2F4">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="manifest" href="manifest.webmanifest?v=20261022-no-gold2">
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site-unified.css?v=20261022-clarity-v9">
+  <link rel="stylesheet" href="site-unified.css?v=20261022-clarity-v10">
   <script src="theme-persistence.js?v=20261022-premium-v5"></script>
 
   <!-- ====== ROYAL CINEMATIC v3.0 — التصميم الحديث ====== -->
@@ -63,7 +63,7 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261022-clarity-v9').catch(error => console.warn('Service worker registration failed:', error));
+          navigator.serviceWorker.register('./sw.js?v=20261022-clarity-v11').catch(error => console.warn('Service worker registration failed:', error));
         }
       });
     })();
@@ -426,7 +426,7 @@
   </script>
   <script defer src="royal-gold-gate.js?v=20261017-gold-gate1"></script>
   <script defer src="reference-library.js?v=20261020-settings-only3"></script>
-  <script defer src="settings.js?v=20261022-clarity-v9"></script>
+  <script defer src="settings.js?v=20261022-clarity-v10"></script>
   <script defer src="mamlaka-full-editor.js?v=20261020-live-single-source1"></script>
   <script defer src="enhancements.js?v=20261015-voice-guide1"></script>
   <script defer src="supplier-catalog.js?v=20261014-public-oils1"></script>
@@ -558,8 +558,8 @@
   <script>
   (function(){var b=document.getElementById("shareKingdomButton");if(!b)return;b.addEventListener("click",function(){var d={title:document.title,text:"اكتشف مملكة العطور",url:window.location.href};if(navigator.share){navigator.share(d).catch(function(){});return;}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.url).then(function(){b.textContent="تم نسخ رابط الموقع ✓";},function(){window.prompt("انسخ رابط الموقع:",d.url);});}else{window.prompt("انسخ رابط الموقع:",d.url);}});})();
   </script>
-  <dialog id="pwaInstallHelp" aria-labelledby="pwaInstallHelpTitle" style="width:min(92vw,480px);border:1px solid #d7b65a;border-radius:18px;padding:22px;background:#fffaf2;color:#382b24;box-shadow:0 20px 70px #0005">
-    <h2 id="pwaInstallHelpTitle" style="margin:0 0 10px;color:#9b7420;font-family:Tajawal,sans-serif">تثبيت مملكة العطور</h2>
+  <dialog id="pwaInstallHelp" aria-labelledby="pwaInstallHelpTitle" style="width:min(92vw,480px);border:1px solid #CCD3D9;border-radius:18px;padding:22px;background:#FFFFFF;color:#303B44;box-shadow:0 20px 70px #0005">
+    <h2 id="pwaInstallHelpTitle" style="margin:0 0 10px;color:#263541;font-family:Tajawal,sans-serif">تثبيت مملكة العطور</h2>
     <p style="line-height:1.8;margin:0 0 12px">إذا لم تظهر نافذة التثبيت التلقائية، يمكنك إضافة الموقع إلى الشاشة الرئيسية من قائمة المتصفح.</p>
     <div id="pwaHelpSteps" style="line-height:1.9">
       <strong>على Android (Chrome):</strong>
