@@ -893,7 +893,7 @@
       "notesConfidence": "مرتفع — صفحة Lattafa الرسمية",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://www.fridaycharm.com/cdn/shop/files/waha1_1024x1024.jpg?v=1778132236",
       "sizes": [
         "100"
       ],
@@ -916,7 +916,10 @@
       "referenceSearchName": "Khamrah Waha",
       "referenceSearchAliases": [
         "Lattafa"
-      ]
+      ],
+      "imageSourceUrl": "https://www.fridaycharm.com/products/lattafa-khamrah-waha-eau-de-parfum-for-unisex",
+      "imageAltAr": "صورة مرجعية لعبوة Khamrah Waha؛ لا تؤكد شكل عبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "lattafa-asad-zanzibar",
@@ -1004,7 +1007,7 @@
       "notesConfidence": "مرتفع — صفحة مجموعة Asad الرسمية لدى Lattafa",
       "verified": true,
       "needsReview": false,
-      "image": "",
+      "image": "https://dxbperfume.co.uk/cdn/shop/files/asadbourbon1.jpg?v=1737375699&width=2048",
       "sizes": [
         "100"
       ],
@@ -1027,7 +1030,10 @@
       "referenceSearchName": "Asad Bourbon",
       "referenceSearchAliases": [
         "Lattafa"
-      ]
+      ],
+      "imageSourceUrl": "https://dxbperfume.co.uk/products/lattafa-asad-bourbon",
+      "imageAltAr": "صورة مرجعية لعبوة Asad Bourbon؛ لا تؤكد شكل عبوة زيت المورد",
+      "imageUsage": "reference-fragrance"
     },
     {
       "id": "oil-R1010198",
