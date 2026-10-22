@@ -206,7 +206,7 @@
   function retailSizePrice(size){const key=String(size);try{const cfg=JSON.parse(localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")||"null");const item=Array.isArray(cfg?.retailBlendPrices)?cfg.retailBlendPrices.find(x=>String(x.size||"").match(/[0-9]+/)?.[0]===key):null;if(item&&Number.isFinite(Number(item.price))&&Number(item.price)>=50)return Number(item.price);}catch{}return sizes[key]??null;}
   function currentPrice(p,size) { if(!p || p.supplierCatalogItem || p.supplierSku) return null; if(p.productType === "blend" || p.productType === "oil" || p.customBlend === true) return retailSizePrice(size); const specific=p.prices && p.prices[String(size)] != null ? Number(p.prices[String(size)]) : null; if(Number.isFinite(specific) && specific>0) return Math.max(50,specific); const base=p.price != null ? Number(p.price) : null; if(Number.isFinite(base) && base>0) return Math.max(50,base); return null; }
   function imageMarkup(p){
-    if(p.image&&/^(https?:|assets\\/|data:image\\/)/i.test(p.image))return '<img class="product-photo" src="'+escapeHTML(p.image)+'" alt="الصورة المسجلة لمنتج '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'" loading="lazy" decoding="async">';
+    if(p.image&&(/^(https?:)/i.test(p.image)||p.image.startsWith("assets/")||p.image.startsWith("data:image/")))return '<img class="product-photo" src="'+escapeHTML(p.image)+'" alt="الصورة المسجلة لمنتج '+escapeHTML(p.nameAr||p.nameEn||"العطر")+'" loading="lazy" decoding="async">';
     // Category photography is illustrative only; exact registered product photos always take precedence.
     const type=String(p.productType||"ready").toLowerCase();
     const categoryPhoto=type==="oil"||type==="blend"||p.supplierCatalogItem===true
