@@ -17,7 +17,7 @@
     const theme=read(THEME_KEY);
     if(!theme||typeof theme!=="object")return;
     /* Do not let the previous default green palette override the new neutral perfume-house base before settings.js migrates it. */
-    if(theme.bg==="#F5F5EF"&&theme.gold==="#376B59"&&theme.button==="#376B59")return;
+    if((theme.bg==="#F5F5EF"&&theme.gold==="#376B59"&&theme.button==="#376B59")||["#090807","#0A0A0A","#12100D","#F7F4EE","#F7F3E9"].includes(String(theme.bg||"").toUpperCase())||["#D4AF37","#F1D77A","#B88A2B"].includes(String(theme.gold||"").toUpperCase())||["#F1D77A","#D8B35B"].includes(String(theme.gold2||"").toUpperCase()))return;
     Object.entries(vars).forEach(([key,name])=>{if(validColor(theme[key]))root.style.setProperty(name,(isPinkTone(theme[key])?(safeColors[key]||"#B88A2B"):theme[key]))});
     const image=validImage(theme.backgroundImage);
     if(image){root.style.setProperty("--page-image",'url("'+image.replace(/["\\\\]/g,"")+'")');const hero=document.querySelector(".hero-image");if(hero)hero.src=image}
