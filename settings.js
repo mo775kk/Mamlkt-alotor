@@ -173,7 +173,7 @@
   addThemeOptions();
 
   Object.keys(themePresets).forEach(key=>{themePresets[key]=completeTheme(themePresets[key])});
-  const baseTheme=themePresets.design04
+  const baseTheme=themePresets.design03
   function applyTheme(t){
     const x=completeTheme(t);x.backgroundImage="none";const root=document.documentElement,style=root.style; const visualStyle=({windows:"windows",android:"android",ios:"ios",oneui:"oneui",pixel:"pixel",classic:"classic",royal:"windows",editorial:"ios",soft:"android",glass:"ios",boutique:"classic",bold:"windows",minimal:"classic",botanical:"pixel"})[x.visualStyle]||"classic"; root.dataset.visualStyle=visualStyle;root.dataset.mobileDesign=/^mobile-\d{2}$/.test(x.mobileDesign||"")?x.mobileDesign:"mobile-02";root.dataset.webDesign=/^web-\d{2}$/.test(x.webDesign||"")?x.webDesign:"web-02";
     style.setProperty("--bg",x.bg);style.setProperty("--panel",x.panel);style.setProperty("--panel2",x.panel2);style.setProperty("--card",x.card);style.setProperty("--field",x.field);style.setProperty("--gold",x.gold);style.setProperty("--gold2",x.gold2);style.setProperty("--text",x.text);style.setProperty("--heading",x.heading);style.setProperty("--muted",x.muted);style.setProperty("--line",x.line);style.setProperty("--header-bg",x.header);style.setProperty("--footer-bg",x.footer);style.setProperty("--button-bg",x.button);style.setProperty("--button-text",x.buttonText);style.setProperty("--index-bg",x.indexBg||x.bg);style.setProperty("--index-card",x.indexCard||x.card);style.setProperty("--index-icon",x.indexIcon||x.gold);style.setProperty("--index-border",x.indexBorder||x.gold2);
