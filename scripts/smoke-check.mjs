@@ -371,6 +371,9 @@ try {
   report(catalogEditor.includes("{size:'30 مل',price:100},{size:'50 مل',price:150},{size:'100 مل',price:300}") &&
     blendingAtelier.includes("var defaults={'3':50,'5':75,'10':100,'22':130,'30':100,'50':150,'100':300}"),
     "Admin catalog editor and blending atelier fallback prices match the shared configuration");
+  report(catalogEditor.includes("const reference={'3':50,'5':75,'10':100,'22':130,'30':100,'50':150,'100':300}") &&
+    !catalogEditor.includes("bySize['30']=150;bySize['50']=200;bySize['100']=450"),
+    "Catalog normalization preserves oil-only prices and never rewrites them as ready-perfume prices");
 
 
   report(settings.includes("data-copy-secret=\"CLOUDFLARE_API_TOKEN\"") &&
