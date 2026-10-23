@@ -394,57 +394,59 @@ img,video,canvas,svg{max-width:100%}
  .hero h1{font-size:clamp(30px,4vw,40px)}
 }
 @media(max-width:720px){
- html{font-size:14px}
- body{font-size:14px;line-height:1.6}
- .site-header{height:58px;padding:0 10px;gap:8px}
- .brand{gap:6px;min-width:0}
- .brand-crown{font-size:22px}
- .brand strong{font-size:14px;line-height:1.2}
- .brand small{font-size:7px;letter-spacing:.35px}
- .header-actions{gap:4px}
- .header-actions .icon-btn,.menu-toggle{width:32px;height:32px;min-width:32px;padding:0;font-size:15px}
+ html{font-size:15px;scroll-padding-top:72px}
+ body{font-size:14px;line-height:1.7;overflow-x:clip}
+ .site-header{height:auto;min-height:58px;padding:7px 10px;gap:7px;align-items:center}
+ .brand{gap:6px;min-width:0;flex:1 1 118px}
+ .brand-crown{font-size:21px;flex:0 0 auto}
+ .brand strong{font-size:14px;line-height:1.25;white-space:nowrap}
+ .brand small{font-size:7px;letter-spacing:.25px;white-space:nowrap}
+ .header-actions{gap:5px;min-width:0;max-width:58%;overflow-x:auto;overflow-y:visible;flex:0 1 auto;padding:3px 2px;scrollbar-width:none}
+ .header-actions::-webkit-scrollbar{display:none}
+ .header-actions .icon-btn,.menu-toggle{width:34px;height:34px;min-width:34px;padding:0;font-size:15px;flex:0 0 auto}
+ .header-actions .pwa-install-btn{min-height:34px;padding:5px 8px;font-size:10px;white-space:nowrap;flex:0 0 auto}
  .language-btn{font-size:10px;padding:4px}
- .main-nav{top:58px}
+ .main-nav{top:100%;max-height:calc(100dvh - 70px);overflow-y:auto}
  .section{width:calc(100% - 24px);padding-block:24px}
- .section-heading{align-items:flex-start;flex-direction:column;gap:6px;margin-bottom:16px}
- .section-heading h2,.contact-card h2,.gift-copy h2,.feature-copy h2{font-size:clamp(23px,5vw,30px);line-height:1.35}
- .section-heading>p{font-size:12px;line-height:1.55}
+ .section-heading{align-items:flex-start;flex-direction:column;gap:7px;margin-bottom:17px}
+ .section-heading h2,.contact-card h2,.gift-copy h2,.feature-copy h2{font-size:clamp(24px,5.6vw,31px);line-height:1.4}
+ .section-heading>p{font-size:13px;line-height:1.75}
  .hero{min-height:clamp(300px,75vw,410px);border-radius:0 0 12px 12px}
- .hero-copy{width:100%;padding:clamp(90px,24vw,150px) 16px 24px}
- .hero h1{font-size:clamp(27px,7vw,36px);line-height:1.3}
- .hero-copy>p:not(.eyebrow){font-size:12px;line-height:1.6}
- .hero .btn{min-height:38px;padding:8px 12px;font-size:12px;gap:6px}
+ .hero-copy{width:100%;padding:clamp(86px,22vw,140px) 16px 24px}
+ .hero h1{font-size:clamp(27px,7vw,36px);line-height:1.4}
+ .hero-copy>p:not(.eyebrow){font-size:13px;line-height:1.75}
+ .hero .btn{min-height:42px;padding:9px 12px;font-size:12px;gap:6px}
  .home-index-section{width:calc(100% - 20px);padding-block:18px}
- .home-index-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
- .home-index-card{min-height:0;padding:9px;gap:8px;border-radius:10px;align-items:center}
+ .home-index-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .home-index-card{min-width:0;min-height:0;padding:9px;gap:8px;border-radius:11px;align-items:center}
  .home-index-image{flex:0 0 56px;width:56px;height:56px;border-radius:8px}
  .home-index-icon{width:44px;height:44px;flex:0 0 44px}
- .home-index-copy{gap:3px}
- .home-index-copy strong{font-size:12px;line-height:1.45}
- .home-index-copy small{font-size:10px;line-height:1.45}
+ .home-index-copy{gap:3px;min-width:0}
+ .home-index-copy strong{font-size:13px;line-height:1.55;overflow-wrap:anywhere}
+ .home-index-copy small{font-size:11px;line-height:1.65}
  .home-index-count{font-size:10px;white-space:nowrap}
  .home-index-arrow{font-size:14px}
  .home-index-utility-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
  .home-index-utility-row .home-index-card{min-height:64px}
- .category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
- .category-card{min-height:128px;padding:12px;gap:8px}
+ .category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .category-card{min-width:0;min-height:138px;padding:12px;gap:8px}
  .category-card .category-icon-wrap{width:58px!important;height:58px!important}
- .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
- .product-card{border-radius:10px}
- .product-visual{aspect-ratio:1/1}
- .product-card h3,.product-card .product-title{font-size:13px;line-height:1.45}
- .product-card p,.product-card .product-description{font-size:11px;line-height:1.5}
- .product-card .product-body,.product-card .product-info{padding:9px;gap:6px}
- .product-card .btn,.product-card button{min-height:34px;padding:7px 8px;font-size:11px}
- .home-showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .product-card{min-width:0;border-radius:11px}
+ .product-visual{aspect-ratio:1/1;min-width:0}
+ .product-card h3,.product-card .product-title{font-size:14px;line-height:1.55;overflow-wrap:anywhere}
+ .product-card p,.product-card .product-description{font-size:12px;line-height:1.65}
+ .product-card .product-body,.product-card .product-info{padding:9px;gap:7px;min-width:0}
+ .product-card .btn,.product-card button{min-height:40px;padding:8px;font-size:12px;white-space:normal}
+ .home-showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
  .home-showcase-card .home-showcase-visual{height:auto;min-height:0;aspect-ratio:1/1}
- .home-showcase-card-body{padding:9px;gap:5px}
- .home-showcase-card h4{font-size:13px;line-height:1.45}
- .home-showcase-description{font-size:11px;line-height:1.5}
- .home-showcase-actions{flex-direction:column;gap:5px}
- .home-showcase-actions .small-btn{min-height:34px;font-size:11px}
- .btn{min-height:38px;padding:8px 12px;font-size:12px;gap:7px}
- input,select,textarea{max-width:100%;min-width:0;font-size:14px}
+ .home-showcase-card-body{padding:10px;gap:6px}
+ .home-showcase-card h4{font-size:14px;line-height:1.55}
+ .home-showcase-description{font-size:12px;line-height:1.65}
+ .home-showcase-actions{flex-direction:column;gap:6px}
+ .home-showcase-actions .small-btn{min-height:40px;font-size:12px}
+ .btn{min-height:42px;padding:9px 12px;font-size:13px;gap:7px}
+ input,select,textarea{max-width:100%;min-width:0;font-size:16px;line-height:1.5}
  .form-row,.filters-row{gap:8px}
  #adminLayer{padding:4px}
 }
