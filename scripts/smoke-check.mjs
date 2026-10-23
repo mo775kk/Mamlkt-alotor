@@ -126,6 +126,11 @@ try {
     "Browser and installed-app theme colors match the active unified palette");
   report(/site-unified\.css\?v=[^"]+/.test(html) && read("site-unified.css").includes("MAMLKAT AL-OTOR — unified design system v4") && (read("site-unified.css").match(/Original source:/g)||[]).length===1,
   "Single unified design stylesheet is linked with a cache-buster");
+  const catalogCss = read("site-unified.css");
+  report(catalogCss.includes(".product-visual{height:auto;aspect-ratio:1/1") &&
+    catalogCss.includes(".product-photo-stage .product-photo{transition:transform .28s ease;will-change:transform;object-fit:cover;object-position:center;padding:0") &&
+    catalogCss.includes(".product-card-supplier-oil .product-visual{height:auto;min-height:0;aspect-ratio:1/1"),
+    "Perfume and oil images fill square catalog cards without internal padding");
 report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
   "Service worker URL and cache shell version are synchronized");
 
