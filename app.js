@@ -337,15 +337,15 @@
     oilRoot.innerHTML=oils.length?oils.map(p=>homeShowcaseCard(p,"oil")).join(""):'<p class="home-showcase-empty">لا توجد بيانات زيوت محمّلة حاليًا.</p>';
     // اعرض صورًا من بطاقات المنتجات الفعلية داخل الفهرس، مع توضيح الصور الإلهامية غير المؤكدة.
     const indexRepresentatives = [
-      ['#oil-catalog', oils[0] || oilAll[0], 'oil'],
-      ['#ready', ready[0] || readyAll[0], 'ready'],
-      ['#blend', oils[1] || oilAll[0], 'oil'],
-      ['#scent-classification', ready[1] || ready[0] || readyAll[0], 'ready'],
-      ['#bakhoor', products.find(p => ['bakhoor','oud'].includes(String(p.productType||'').toLowerCase())), 'bakhoor'],
-      ['#gift', products.find(p => p.productType === 'gift'), 'gift'],
-      ['#advisor', ready[2] || ready[0] || readyAll[0], 'ready'],
-      ['#howToChoose', ready[0] || readyAll[0], 'ready'],
-      ['#homeCatalog', ready[0] || readyAll[0], 'ready']
+      ['#oil-catalog', oils[0] || oilAll[0] || {id:'index-oil-preview',nameAr:'الزيوت العطرية',productType:'oil'}, 'oil'],
+      ['#ready', ready[0] || readyAll[0] || {id:'index-ready-preview',nameAr:'العطور الجاهزة',productType:'ready'}, 'ready'],
+      ['#blend', oils[1] || oilAll[0] || {id:'index-blend-preview',nameAr:'تركيب العطور',productType:'oil'}, 'oil'],
+      ['#scent-classification', ready[1] || ready[0] || readyAll[0] || {id:'index-family-preview',nameAr:'العائلات العطرية',productType:'ready'}, 'ready'],
+      ['#bakhoor', products.find(p => ['bakhoor','oud'].includes(String(p.productType||'').toLowerCase())) || {id:'index-bakhoor-preview',nameAr:'العود والبخور',productType:'bakhoor'}, 'bakhoor'],
+      ['#gift', products.find(p => p.productType === 'gift') || {id:'index-gift-preview',nameAr:'الهدايا والتغليف',productType:'gift'}, 'gift'],
+      ['#advisor', ready[2] || ready[0] || readyAll[0] || {id:'index-advisor-preview',nameAr:'مستشار العطور',productType:'ready'}, 'ready'],
+      ['#howToChoose', ready[0] || readyAll[0] || {id:'index-guide-preview',nameAr:'دليل التسوق',productType:'ready'}, 'ready'],
+      ['#homeCatalog', ready[0] || readyAll[0] || {id:'index-catalog-preview',nameAr:'مختارات العطور',productType:'ready'}, 'ready']
     ];
     indexRepresentatives.forEach(([href, product, kind]) => {
       const card = document.querySelector('.home-index-card[href="'+href+'"]');
@@ -363,6 +363,12 @@
       preview.innerHTML = imageMarkup({...product, productType: kind});
       const image = preview.querySelector('img');
       if (image) { image.alt = ''; image.loading = 'lazy'; image.decoding = 'async'; }
+      if (!product.image && !preview.querySelector('.home-index-image-label')) {
+        const label = document.createElement('span');
+        label.className = 'home-index-image-label';
+        label.textContent = 'صورة إلهامية';
+        preview.appendChild(label);
+      }
     });
     const readyCount=$("#homeReadyCount"),oilCount=$("#homeOilCount");
     if(readyCount)readyCount.textContent=readyAll.length.toLocaleString("ar-EG")+" عطر";
