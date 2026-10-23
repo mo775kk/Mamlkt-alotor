@@ -358,6 +358,8 @@
         const copy = card.querySelector('.home-index-copy');
         if (copy) card.insertBefore(preview, copy);
       }
+      const oldIcon = card.querySelector('.home-index-icon');
+      if (oldIcon) oldIcon.hidden = true;
       preview.innerHTML = imageMarkup({...product, productType: kind});
       const image = preview.querySelector('img');
       if (image) { image.alt = ''; image.loading = 'lazy'; image.decoding = 'async'; }
