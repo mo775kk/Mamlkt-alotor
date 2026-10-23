@@ -365,3 +365,111 @@ button:active,.btn:active,.home-index-card:active{transform:scale(.99)}
 .home-index-card:nth-child(9) .home-index-icon{background-image:url("https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=240&q=80")}
 .home-index-icon{background-size:cover;background-position:center;background-repeat:no-repeat;overflow:hidden}
 .home-index-icon .index-icon-svg{opacity:0}
+
+
+/* 2026-10-23: balanced responsive sizing for phones, tablets and desktop */
+:root{--content-gutter:clamp(12px,3vw,32px)}
+html{font-size:16px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:clip}
+img,video,canvas,svg{max-width:100%}
+.section{width:min(1180px,calc(100% - 2*var(--content-gutter)));padding-block:clamp(28px,4vw,58px)}
+.section-heading{gap:clamp(10px,2vw,24px);margin-bottom:clamp(16px,2.5vw,28px)}
+.home-index-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.5vw,16px)}
+.home-index-card{min-width:0;gap:12px;padding:clamp(10px,1.5vw,16px)}
+.home-index-copy{min-width:0;overflow-wrap:anywhere}
+.home-index-copy strong{font-size:clamp(.9rem,1.1vw,1.05rem);line-height:1.4}
+.home-index-copy small{font-size:clamp(.78rem,.95vw,.9rem);line-height:1.5}
+.home-index-image{flex-basis:clamp(58px,7vw,92px);width:clamp(58px,7vw,92px);height:auto;aspect-ratio:1/1}
+.home-index-utility-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.product-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,16px)}
+.product-card{min-width:0}
+.product-card h3,.product-card .product-title{overflow-wrap:anywhere}
+.product-photo-stage,.product-visual{min-width:0}
+@media(max-width:1000px){
+ .section{width:calc(100% - 32px)}
+ .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .category-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .home-index-utility-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .hero{min-height:clamp(340px,52vw,500px)}
+ .hero h1{font-size:clamp(30px,4vw,40px)}
+}
+@media(max-width:720px){
+ html{font-size:14px}
+ body{font-size:14px;line-height:1.6}
+ .site-header{height:58px;padding:0 10px;gap:8px}
+ .brand{gap:6px;min-width:0}
+ .brand-crown{font-size:22px}
+ .brand strong{font-size:14px;line-height:1.2}
+ .brand small{font-size:7px;letter-spacing:.35px}
+ .header-actions{gap:4px}
+ .header-actions .icon-btn,.menu-toggle{width:32px;height:32px;min-width:32px;padding:0;font-size:15px}
+ .language-btn{font-size:10px;padding:4px}
+ .main-nav{top:58px}
+ .section{width:calc(100% - 24px);padding-block:24px}
+ .section-heading{align-items:flex-start;flex-direction:column;gap:6px;margin-bottom:16px}
+ .section-heading h2,.contact-card h2,.gift-copy h2,.feature-copy h2{font-size:clamp(23px,5vw,30px);line-height:1.35}
+ .section-heading>p{font-size:12px;line-height:1.55}
+ .hero{min-height:clamp(300px,75vw,410px);border-radius:0 0 12px 12px}
+ .hero-copy{width:100%;padding:clamp(90px,24vw,150px) 16px 24px}
+ .hero h1{font-size:clamp(27px,7vw,36px);line-height:1.3}
+ .hero-copy>p:not(.eyebrow){font-size:12px;line-height:1.6}
+ .hero .btn{min-height:38px;padding:8px 12px;font-size:12px;gap:6px}
+ .home-index-section{width:calc(100% - 20px);padding-block:18px}
+ .home-index-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .home-index-card{min-height:0;padding:9px;gap:8px;border-radius:10px;align-items:center}
+ .home-index-image{flex:0 0 56px;width:56px;height:56px;border-radius:8px}
+ .home-index-icon{width:44px;height:44px;flex:0 0 44px}
+ .home-index-copy{gap:3px}
+ .home-index-copy strong{font-size:12px;line-height:1.45}
+ .home-index-copy small{font-size:10px;line-height:1.45}
+ .home-index-count{font-size:10px;white-space:nowrap}
+ .home-index-arrow{font-size:14px}
+ .home-index-utility-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .home-index-utility-row .home-index-card{min-height:64px}
+ .category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .category-card{min-height:128px;padding:12px;gap:8px}
+ .category-card .category-icon-wrap{width:58px!important;height:58px!important}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .product-card{border-radius:10px}
+ .product-visual{aspect-ratio:1/1}
+ .product-card h3,.product-card .product-title{font-size:13px;line-height:1.45}
+ .product-card p,.product-card .product-description{font-size:11px;line-height:1.5}
+ .product-card .product-body,.product-card .product-info{padding:9px;gap:6px}
+ .product-card .btn,.product-card button{min-height:34px;padding:7px 8px;font-size:11px}
+ .home-showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .home-showcase-card .home-showcase-visual{height:auto;min-height:0;aspect-ratio:1/1}
+ .home-showcase-card-body{padding:9px;gap:5px}
+ .home-showcase-card h4{font-size:13px;line-height:1.45}
+ .home-showcase-description{font-size:11px;line-height:1.5}
+ .home-showcase-actions{flex-direction:column;gap:5px}
+ .home-showcase-actions .small-btn{min-height:34px;font-size:11px}
+ .btn{min-height:38px;padding:8px 12px;font-size:12px;gap:7px}
+ input,select,textarea{max-width:100%;min-width:0;font-size:14px}
+ .form-row,.filters-row{gap:8px}
+ #adminLayer{padding:4px}
+}
+@media(max-width:380px){
+ .site-header{padding-inline:7px}
+ .brand-crown{font-size:19px}
+ .brand strong{font-size:12px}
+ .brand small{font-size:6px}
+ .header-actions .icon-btn,.menu-toggle{width:29px;height:30px;min-width:29px}
+ .home-index-grid{gap:6px}
+ .home-index-card{padding:7px;gap:6px}
+ .home-index-image{flex-basis:46px;width:46px;height:46px}
+ .home-index-copy strong{font-size:11px}
+ .home-index-copy small{font-size:9px}
+ .home-index-count{font-size:9px}
+ .section{width:calc(100% - 16px)}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ .product-card .product-body,.product-card .product-info{padding:7px}
+ .product-card h3,.product-card .product-title{font-size:12px}
+ .home-showcase-grid{gap:6px}
+}
+@media(min-width:721px) and (max-width:1100px){
+ .site-header{padding-inline:16px;gap:12px}
+ .brand strong{font-size:16px}
+ .main-nav{gap:10px}
+ .main-nav a{font-size:12px}
+ .section{width:calc(100% - 36px)}
+}
