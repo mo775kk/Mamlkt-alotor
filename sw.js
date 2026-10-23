@@ -6,7 +6,7 @@ const SHELL_URLS = [
   BASE_PATH,
   BASE_PATH + "index.html",
   BASE_PATH + "manifest.webmanifest?v=20261022-no-gold2",
-  BASE_PATH + "site-unified.css?v=20261023-index-card-photo-fix1",
+  BASE_PATH + "site-unified.css?v=20261023-square-directory-photos",
   BASE_PATH + "theme-persistence.js?v=20261022-premium-v5",
   BASE_PATH + "ai-service.js?v=20261016-ai-bridge1",
   BASE_PATH + "app.js?v=20261023-royal-index-images-v2",
