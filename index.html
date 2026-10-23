@@ -63,7 +63,7 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261023-pwa-assets-v16').catch(error => console.warn('Service worker registration failed:', error));
+          navigator.serviceWorker.register('./sw.js?v=20261023-pwa-assets-v17').catch(error => console.warn('Service worker registration failed:', error));
         }
       });
     })();
@@ -426,7 +426,7 @@
 
   <!-- السكربتات (defer) -->
   <script defer src="ai-service.js?v=20261016-ai-bridge1"></script>
-  <script defer src="app.js?v=20261023-reference-notes-v1"></script>
+  <script defer src="app.js?v=20261023-catalog-cleanup-v2"></script>
   <script defer src="oil-voice-guide.js?v=20261021-oil-mentor2"></script>
   <script>
   (function(){
