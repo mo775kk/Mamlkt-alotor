@@ -56,9 +56,9 @@
       .product-visual img,.product-visual .product-photo,.product-visual .placeholder-bottle{width:100%;height:100%!important;max-height:none!important;object-fit:contain;transform:scale(${x.bottleScale/100});transform-origin:center}
       .product-actions{gap:calc(8px * var(--product-ui-scale))!important;margin-top:calc(8px * var(--product-ui-scale))!important}
       @media(max-width:680px){
-        .hero{min-height:500px}
-        .home-index-card{min-height:82px!important;padding:13px!important;gap:11px!important}
-        .category-card{min-height:175px!important;padding:14px!important}
+        .hero{min-height:clamp(300px,75vw,410px)}
+        .home-index-card{min-height:64px!important;padding:9px!important;gap:8px!important}
+        .category-card{min-height:138px!important;padding:12px!important}
         .product-visual{height:auto!important;min-height:0!important;aspect-ratio:1/1}
         .product-visual img,.product-visual .product-photo,.product-visual .placeholder-bottle{width:100%;height:100%!important;max-height:none!important;object-fit:contain}
       }
