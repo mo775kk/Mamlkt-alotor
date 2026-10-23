@@ -473,3 +473,59 @@ img,video,canvas,svg{max-width:100%}
  .main-nav a{font-size:12px}
  .section{width:calc(100% - 36px)}
 }
+
+
+/* 2026-10-23: improve Arabic copy legibility without enlarging the mobile layout */
+body{overflow-wrap:break-word}
+p,li,label,.muted,small{line-height:1.7}
+button,a,input,select,textarea{ -webkit-tap-highlight-color:transparent }
+.home-index-copy strong{font-size:clamp(13px,1.05vw,16px);line-height:1.5}
+.home-index-copy small{font-size:clamp(11px,.9vw,13px);line-height:1.65}
+.section-heading>p,.category-card p,.product-card p,.product-card .product-description{line-height:1.7}
+.product-card h3,.product-card .product-title{line-height:1.55}
+.product-card .product-info,.product-card .product-body{overflow-wrap:anywhere}
+@media(max-width:720px){
+  body{font-size:14px;line-height:1.7}
+  .eyebrow{font-size:10px;letter-spacing:1px}
+  .section-heading h2,.contact-card h2,.gift-copy h2,.feature-copy h2{font-size:clamp(24px,5.6vw,30px);line-height:1.45}
+  .section-heading>p{font-size:13px;line-height:1.75}
+  .home-index-copy strong{font-size:13px;line-height:1.55}
+  .home-index-copy small{font-size:11px;line-height:1.65}
+  .home-index-count{font-size:11px}
+  .category-card h3{font-size:17px;line-height:1.5}
+  .category-card p{font-size:12px;line-height:1.65}
+  .category-card small,.category-card>span{font-size:11px}
+  .product-card h3,.product-card .product-title{font-size:14px;line-height:1.55}
+  .product-card p,.product-card .product-description{font-size:12px;line-height:1.65}
+  .product-card .product-meta{font-size:11px;line-height:1.6}
+  .product-card .product-price{font-size:13px}
+  .product-card .btn,.product-card button{font-size:12px;line-height:1.4}
+  .home-showcase-card h4{font-size:14px;line-height:1.55}
+  .home-showcase-description{font-size:12px;line-height:1.65}
+  .home-showcase-meta,.home-showcase-family{font-size:11px;line-height:1.6}
+  .home-showcase-price{font-size:14px}
+  .home-showcase-actions .small-btn{font-size:12px;line-height:1.4}
+  .btn{font-size:13px;line-height:1.4}
+  input,select,textarea{font-size:14px;line-height:1.5}
+  .hero-copy>p:not(.eyebrow){font-size:13px;line-height:1.75}
+  .trust-strip b{font-size:12px;line-height:1.5}
+  .trust-strip small{font-size:11px;line-height:1.55}
+}
+@media(max-width:380px){
+  .home-index-copy strong{font-size:12px}
+  .home-index-copy small{font-size:10px}
+  .category-card h3{font-size:16px}
+  .category-card p{font-size:11px}
+  .product-card h3,.product-card .product-title{font-size:13px}
+  .product-card p,.product-card .product-description{font-size:11px}
+  .home-showcase-card h4{font-size:13px}
+  .home-showcase-description{font-size:11px}
+  .btn{padding-inline:10px}
+}
+@media(min-width:721px){
+  body{font-size:15px;line-height:1.75}
+  .home-index-copy strong{font-size:15px}
+  .home-index-copy small{font-size:12px}
+  .product-card h3,.product-card .product-title{font-size:17px}
+  .product-card p,.product-card .product-description{font-size:13px}
+}
