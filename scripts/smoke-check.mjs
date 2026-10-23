@@ -476,15 +476,18 @@ try {
   report(app.includes("function supplierRetailRate(p)") &&
     app.includes('String(p?.supplierCategory||"").toUpperCase()==="ORIENTAL"') &&
     app.includes('displayFamily(p.family||p.scentFamily||"",p.nameAr||p.nameEn||"")') &&
-    app.includes("supplierRetailRate(p)"),
-    "Supplier oil cards classify fragrance family and use retail gram tiers");
+    app.includes("السعر حسب الكمية") &&
+    !app.includes('class="product-price">جرام: '+escapeHTML(formatMoney(supplierRetailRate(p)))'),
+    "Supplier oil cards defer gram pricing to the product details instead of displaying a guessed price");
   report(app.includes('localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")') &&
     app.includes("pricing.orientalPremium") && app.includes("pricing.oriental"),
     "Oil gram pricing follows saved admin values for French, oriental and premium oriental tiers");
   report(app.includes('p.supplierSku||p.sku||"غير محدد"') &&
-    app.includes('اختيار الزيت للتركيب') &&
-    app.includes('oilSelect.value=id;closeModal();location.hash="#blend"'),
-    "Supplier oil details show supplier identifiers and the modal CTA opens the blending selector");
+    app.includes('id="modalGrams"') &&
+    app.includes('id="modalGramTotal"') &&
+    app.includes('unit:"gram"') &&
+    app.includes('سعر الجرام غير محدد لهذا الزيت'),
+    "Supplier oil details let customers choose grams, see a calculated total, and add the selected amount to cart without guessed pricing");
   report(css.includes(".product-card-supplier-oil .product-visual{height:180px") &&
     css.includes(".home-oil-showcase .home-showcase-visual{height:148px"),
     "Oil product cards use larger, readable product visuals on desktop and mobile");
@@ -540,11 +543,11 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261023-royal-index-images-v2')");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v72-20261023-royal-index-images") &&
-    worker.includes("site-unified.css?v=20261023-royal-index-images-v2") &&
-    worker.includes("app.js?v=20261023-royal-index-images-v2"),
-    "HTML service-worker registration and cached storefront assets use the current royal-index release");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261023-gram-quantity-cart-v1')");
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v78-20261023-gram-quantity-cart") &&
+    worker.includes("site-unified.css?v=20261023-arabic-readable-v2") &&
+    worker.includes("app.js?v=20261023-gram-quantity-cart-v1"),
+    "HTML service-worker registration and cached storefront assets use the current gram-quantity-cart release");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
 }
