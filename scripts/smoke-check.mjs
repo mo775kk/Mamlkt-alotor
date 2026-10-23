@@ -198,6 +198,12 @@ try {
   report(false, "Unable to validate sourced reference fragrance notes: " + e.message);
 }
 
+  const app = read("app.js");
+  report(app.includes('const key = sku ? "supplier-sku:" + sku : "product-id:" + id') &&
+    app.includes("الصورة مرجع لعبوة العطر الأصلي وليست صورة مؤكدة لزيت المورد") &&
+    app.includes("صنفًا فريدًا حسب كود المورد"),
+    "Supplier oil merging prevents duplicate cards and explains reference images and oil-note limitations");
+
 try {
   const settings = read("settings.js");
   report(settings.includes('id="cfgBackgroundImage" type="hidden" value="none"') &&
@@ -489,6 +495,20 @@ try {
   report(Array.isArray(oilData.products) && oilData.products.length === 589 &&
     oilData.products.every(p => p.supplierSku && p.nameAr && p.supplierCategory),
     "Public supplier oil catalogue contains all 589 sourced products with names, codes and categories");
+  const skuList = oilData.products.map(p => String(p.supplierSku || p.sku || "").trim()).filter(Boolean);
+  report(skuList.length === 589 && new Set(skuList).size === skuList.length &&
+    oilData.products.every(p => p.supplierOriginalName && typeof p.supplierOriginalName.nameAr === "string" &&
+      typeof p.supplierOriginalName.nameEn === "string" && p.nameAr.trim() && p.nameEn.trim()),
+    "All 589 supplier SKUs are unique and cleaned display names preserve the original supplier names");
+  const displayNameGroups = new Map();
+  for (const p of oilData.products) {
+    const key = String(p.nameAr || "").normalize("NFKC").toLowerCase().replace(/[\\s—–-]+/g, "");
+    if (!displayNameGroups.has(key)) displayNameGroups.set(key, []);
+    displayNameGroups.get(key).push(p);
+  }
+  report([...displayNameGroups.values()].every(group =>
+    group.length < 2 || new Set(group.map(p => p.supplierCategory)).size === group.length),
+    "Same-name products from different supplier categories are disambiguated in display labels");
   const researchedSkus = ["N1020267","N1020259","O1030177","O1030172","O1030173","O1030180","R1010198","R1010073","R1010202","R1010206","R1010011"];
   const researched = oilData.products.filter(p => researchedSkus.includes(p.sku));
   report(researched.length === researchedSkus.length &&
@@ -512,7 +532,7 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261023-pwa-assets-v16')");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261023-pwa-assets-v17')");
   report(registrationIsCurrent && worker.includes("pwa-assets"),
     "HTML service-worker registration and worker shell cache use the same release version");
 } catch (e) {
