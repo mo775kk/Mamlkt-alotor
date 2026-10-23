@@ -192,8 +192,8 @@ try {
     app.includes("publicCatalogProducts.forEach(applyReferenceFragranceNotes)") &&
     app.includes("oilProducts.forEach(applyReferenceFragranceNotes)"),
     "Reference notes fill only missing note pyramids and do not overwrite existing researched notes");
-  report(/app\.js\?v=20261023-reference-notes-v1/.test(html),
-    "Storefront loads the new reference-note logic with a refreshed cache version");
+  report(/app\.js\?v=[^"]+/.test(html) && app.includes("function applyReferenceFragranceNotes(product)"),
+    "Storefront loads the sourced reference-note logic through a versioned application script");
 } catch (e) {
   report(false, "Unable to validate sourced reference fragrance notes: " + e.message);
 }
@@ -481,8 +481,8 @@ try {
     css.includes(".home-oil-showcase .home-showcase-visual{height:148px"),
     "Oil product cards use larger, readable product visuals on desktop and mobile");
   report(app.includes('<span class="product-image-note">رسم توضيحي</span>') &&
-    app.includes('قائمة المورد لا تتضمن صورة العبوة التجارية'),
-    "Oil image labels identify representative visuals rather than original supplier packaging");
+    app.includes("صورة توضيحية للفئة") && app.includes("صورة مرجعية للعطر الأصلي"),
+    "Oil and fragrance image labels distinguish illustrative category art from reference fragrance images");
   report(pages.includes("const scrollPositions = new Map()") &&
     pages.includes("scrollPositions.set(activeId, window.scrollY || 0)") &&
     pages.includes('window.scrollTo({top:y,behavior:"auto"})'),
@@ -532,9 +532,11 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261023-pwa-assets-v18')");
-  report(registrationIsCurrent && worker.includes("pwa-assets"),
-    "HTML service-worker registration and worker shell cache use the same release version");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261023-royal-index-images-v2')");
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v72-20261023-royal-index-images") &&
+    worker.includes("site-unified.css?v=20261023-royal-index-images-v2") &&
+    worker.includes("app.js?v=20261023-royal-index-images-v2"),
+    "HTML service-worker registration and cached storefront assets use the current royal-index release");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
 }
