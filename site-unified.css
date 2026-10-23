@@ -334,3 +334,15 @@ button:active,.btn:active,.home-index-card:active{transform:scale(.99)}
 
 /* Product details: focused fragrance information and reference links */
 .modal-source-search{margin:12px 0;padding:12px;border:1px solid var(--line,#d7dee4);border-radius:10px;background:rgba(225,233,239,.42);color:var(--text,#263746);font-size:13px;line-height:1.7}.modal-source-links{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.modal-source-links a{display:inline-flex;align-items:center;justify-content:center;padding:7px 11px;border:1px solid #9cabb7;border-radius:8px;background:#fff;color:#30495a;text-decoration:none;font-weight:700}.modal-source-links a:focus-visible,.modal-source-links a:hover{background:#e7eef3;border-color:#627f91}.modal-source-search small{display:block;color:#566875;font-size:11px;line-height:1.7}.modal-description{line-height:1.9;overflow-wrap:anywhere}
+
+
+/* 2026-10-23: consistent photographic category marks, based on selected dark perfume-bottle direction */
+.category-card{background:linear-gradient(145deg,#fff,#edf1f4)!important;border-color:#d4dce2!important;color:#263541!important}
+.category-card .category-icon-wrap{width:92px!important;height:92px!important;border-radius:12px!important;overflow:hidden!important;position:relative!important;display:grid!important;place-items:center!important;background-color:#e7edf1!important;background-size:cover!important;background-position:center!important;border:1px solid #d1dbe2!important;box-shadow:0 5px 16px rgba(38,53,65,.10)!important}
+.category-card .royal-category-icon{width:43px!important;height:43px!important;color:#435867!important;filter:drop-shadow(0 1px 2px rgba(255,255,255,.6))}
+.category-card h3{color:#263541!important}
+.category-card p{color:#5b6872!important}
+.category-card small,.category-card>span{color:#526a7a!important}
+.category-card:before{pointer-events:none}
+.category-card:hover .category-icon-wrap{transform:translateY(-2px);box-shadow:0 8px 20px rgba(38,53,65,.14)!important}
+@media(max-width:560px){.category-card .category-icon-wrap{width:76px!important;height:76px!important;border-radius:10px!important}.category-card{min-height:168px}}
