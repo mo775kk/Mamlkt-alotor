@@ -502,7 +502,7 @@ try {
     "All 589 supplier SKUs are unique and cleaned display names preserve the original supplier names");
   const displayNameGroups = new Map();
   for (const p of oilData.products) {
-    const key = String(p.nameAr || "").normalize("NFKC").toLowerCase().replace(/[\\s—–-]+/g, "");
+    const key = String(p.nameAr || "").normalize("NFKC").toLowerCase().replace(/[\s\u2014\u2013-]+/g, "");
     if (!displayNameGroups.has(key)) displayNameGroups.set(key, []);
     displayNameGroups.get(key).push(p);
   }
