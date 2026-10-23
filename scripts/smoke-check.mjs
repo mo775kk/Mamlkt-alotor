@@ -282,7 +282,7 @@ try {
   const oils = products.filter((p) => p.productType === "oil");
   const sourcedOilNotes = oils.filter((p) =>
     p.notesStatus === "reference-fragrance-notes" &&
-    /^https:\/\//i.test(String(p.sourceUrl || "")) &&
+      String(p.sourceUrl || "").startsWith("https://") &&
     Array.isArray(p.topNotes) && p.topNotes.length &&
     Array.isArray(p.heartNotes) && p.heartNotes.length &&
     Array.isArray(p.baseNotes) && p.baseNotes.length &&
@@ -308,7 +308,7 @@ try {
   const ready = products.filter((p) => p.productType === "ready");
   const hasPyramid = (p) => [p.topNotes, p.heartNotes, p.baseNotes].some((notes) => Array.isArray(notes) && notes.length);
   const sourced = products.filter((p) =>
-    p.notesStatus === "reference-fragrance-notes" && /^https:\/\//i.test(String(p.sourceUrl || "")) &&
+      String(p.sourceUrl || "").startsWith("https://") &&
     Array.isArray(p.topNotes) && p.topNotes.length &&
     Array.isArray(p.heartNotes) && p.heartNotes.length &&
     Array.isArray(p.baseNotes) && p.baseNotes.length &&
@@ -502,7 +502,7 @@ try {
     "All 589 supplier SKUs are unique and cleaned display names preserve the original supplier names");
   const displayNameGroups = new Map();
   for (const p of oilData.products) {
-    const key = String(p.nameAr || "").normalize("NFKC").toLowerCase().replace(/[\s\u2014\u2013-]+/g, "");
+    const key = String(p.nameAr || "").normalize("NFKC").toLowerCase().replace(/\s/g, "").replaceAll("—", "").replaceAll("–", "").replaceAll("-", "");
     if (!displayNameGroups.has(key)) displayNameGroups.set(key, []);
     displayNameGroups.get(key).push(p);
   }
@@ -512,8 +512,8 @@ try {
   const researchedSkus = ["N1020267","N1020259","O1030177","O1030172","O1030173","O1030180","R1010198","R1010073","R1010202","R1010206","R1010011"];
   const researched = oilData.products.filter(p => researchedSkus.includes(p.sku));
   report(researched.length === researchedSkus.length &&
-    researched.every(p => p.image && /^https:\\/\\//i.test(p.image) &&
-      /^https:\\/\\//i.test(p.sourceUrl || "") &&
+    researched.every(p => String(p.image || "").startsWith("https://") &&
+      String(p.sourceUrl || "").startsWith("https://") &&
       Array.isArray(p.topNotes) && p.topNotes.length &&
       Array.isArray(p.heartNotes) && p.heartNotes.length &&
       Array.isArray(p.baseNotes) && p.baseNotes.length &&
