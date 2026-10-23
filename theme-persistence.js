@@ -49,15 +49,40 @@
       .category-icon-wrap{width:calc(42px * var(--ui-icon-scale,1));height:calc(42px * var(--ui-icon-scale,1));min-width:calc(42px * var(--ui-icon-scale,1))}
       .product-card{--product-ui-scale:${x.productScale/100}}
       .product-info{padding:calc(10px * var(--product-ui-scale))!important;gap:calc(5px * var(--product-ui-scale))!important}
-      .product-visual{height:calc(100px * ${x.bottleScale/100})!important;min-height:calc(100px * ${x.bottleScale/100})!important}
-      .product-visual img,.product-visual .product-photo,.product-visual .placeholder-bottle{height:calc(82px * ${x.bottleScale/100})!important;max-height:calc(82px * ${x.bottleScale/100})!important}
+      .product-visual{height:auto!important;min-height:0!important;aspect-ratio:1/1;overflow:hidden}
+      .product-visual img,.product-visual .product-photo,.product-visual .placeholder-bottle{width:100%;height:100%!important;max-height:none!important;object-fit:contain;transform:scale(${x.bottleScale/100});transform-origin:center}
       .product-actions{gap:calc(8px * var(--product-ui-scale))!important;margin-top:calc(8px * var(--product-ui-scale))!important}
       @media(max-width:680px){
         .hero{min-height:500px}
         .home-index-card{min-height:82px!important;padding:13px!important;gap:11px!important}
         .category-card{min-height:175px!important;padding:14px!important}
-        .product-visual{height:150px!important;min-height:150px!important}
-        .product-visual img,.product-visual .product-photo,.product-visual .placeholder-bottle{height:120px!important;max-height:120px!important}
+        .product-visual{height:auto!important;min-height:0!important;aspect-ratio:1/1}
+        .product-visual img,.product-visual .product-photo,.product-visual .placeholder-bottle{width:100%;height:100%!important;max-height:none!important;object-fit:contain}
+      }
+      /* The 10 mobile and desktop layout choices now affect real grid/card behavior. */
+      :root[data-web-design="web-01"] .product-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+      :root[data-web-design="web-02"] .product-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+      :root[data-web-design="web-03"] .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      :root[data-web-design="web-04"] .product-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+      :root[data-web-design="web-05"] .product-card{border-radius:4px!important;box-shadow:none!important}
+      :root[data-web-design="web-06"] .product-visual{aspect-ratio:4/3}
+      :root[data-web-design="web-07"] .home-index-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      :root[data-web-design="web-08"] .home-index-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+      :root[data-web-design="web-09"] .product-card,:root[data-web-design="web-09"] .category-card{border-width:2px!important}
+      :root[data-web-design="web-10"] .product-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+      @media(max-width:720px){
+        :root[data-mobile-design="mobile-01"] .product-card{border-radius:2px!important}
+        :root[data-mobile-design="mobile-02"] .product-card{border-radius:12px!important}
+        :root[data-mobile-design="mobile-03"] .product-card,:root[data-mobile-design="mobile-03"] .category-card{border-radius:22px!important}
+        :root[data-mobile-design="mobile-04"] .product-grid{gap:6px!important}
+        :root[data-mobile-design="mobile-04"] .product-card .product-info,:root[data-mobile-design="mobile-04"] .product-card .product-body{padding:7px!important}
+        :root[data-mobile-design="mobile-05"] .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+        :root[data-mobile-design="mobile-06"] .product-grid,:root[data-mobile-design="mobile-06"] .home-showcase-grid{grid-template-columns:minmax(0,1fr)!important}
+        :root[data-mobile-design="mobile-07"] .category-icon-wrap,:root[data-mobile-design="mobile-07"] .home-index-icon{border-radius:50%!important}
+        :root[data-mobile-design="mobile-08"] .product-card,:root[data-mobile-design="mobile-08"] .category-card,:root[data-mobile-design="mobile-08"] .home-index-card{box-shadow:none!important}
+        :root[data-mobile-design="mobile-09"] .product-visual{aspect-ratio:1/1!important}
+        :root[data-mobile-design="mobile-09"] .product-card .product-info,:root[data-mobile-design="mobile-09"] .product-card .product-body{padding:12px!important}
+        :root[data-mobile-design="mobile-10"] .product-card,:root[data-mobile-design="mobile-10"] .category-card{border-width:2px!important}
       }
     `;
   }
