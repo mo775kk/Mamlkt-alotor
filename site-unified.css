@@ -169,6 +169,7 @@ button:disabled,.btn:disabled{opacity:.68;cursor:not-allowed}
 .home-index-image{display:block;position:relative;flex:0 0 82px;width:82px;height:100px;overflow:hidden;border-radius:11px;background:var(--panel2);border:1px solid var(--line);box-shadow:0 3px 10px rgba(20,25,30,.1)}
 .home-index-image .product-photo-stage,.home-index-image>img,.home-index-image .product-photo{display:block;width:100%!important;height:100%!important;min-height:0!important;object-fit:cover!important;object-position:center!important;border-radius:10px}
 .home-index-image .product-photo-stage{position:relative;padding:0!important}
+.home-index-image-label{position:absolute;inset:auto 4px 4px;padding:3px 4px;border-radius:5px;background:rgba(15,24,30,.82);color:#fff;font-size:9px;line-height:1.3;text-align:center;font-weight:800}
 .home-index-image .product-photo-stage .product-image-note,.home-index-image .product-image-note{display:none!important}
 .home-index-copy{display:grid;gap:4px;min-width:0;flex:1}
 .home-index-copy strong{font-size:1.05rem;line-height:1.45;font-weight:850;color:var(--heading)!important}
