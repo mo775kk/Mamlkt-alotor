@@ -335,6 +335,33 @@
     const oils=[...usefulOils,...oilAll.filter(p=>!seen.has(p.id))].slice(0,6);
     readyRoot.innerHTML=ready.length?ready.map(p=>homeShowcaseCard(p,"ready")).join(""):'<p class="home-showcase-empty">لا توجد عطور جاهزة معتمدة للعرض حاليًا. يمكن استعراض الأسماء المسجلة من الكتالوج الكامل.</p>';
     oilRoot.innerHTML=oils.length?oils.map(p=>homeShowcaseCard(p,"oil")).join(""):'<p class="home-showcase-empty">لا توجد بيانات زيوت محمّلة حاليًا.</p>';
+    // اعرض صورًا من بطاقات المنتجات الفعلية داخل الفهرس، مع توضيح الصور الإلهامية غير المؤكدة.
+    const indexRepresentatives = [
+      ['#oil-catalog', oils[0] || oilAll[0], 'oil'],
+      ['#ready', ready[0] || readyAll[0], 'ready'],
+      ['#blend', oils[1] || oilAll[0], 'oil'],
+      ['#scent-classification', ready[1] || ready[0] || readyAll[0], 'ready'],
+      ['#bakhoor', products.find(p => ['bakhoor','oud'].includes(String(p.productType||'').toLowerCase())), 'bakhoor'],
+      ['#gift', products.find(p => p.productType === 'gift'), 'gift'],
+      ['#advisor', ready[2] || ready[0] || readyAll[0], 'ready'],
+      ['#howToChoose', ready[0] || readyAll[0], 'ready'],
+      ['#homeCatalog', ready[0] || readyAll[0], 'ready']
+    ];
+    indexRepresentatives.forEach(([href, product, kind]) => {
+      const card = document.querySelector('.home-index-card[href="'+href+'"]');
+      if (!card || !product) return;
+      let preview = card.querySelector('.home-index-image');
+      if (!preview) {
+        preview = document.createElement('span');
+        preview.className = 'home-index-image';
+        preview.setAttribute('aria-hidden','true');
+        const copy = card.querySelector('.home-index-copy');
+        if (copy) card.insertBefore(preview, copy);
+      }
+      preview.innerHTML = imageMarkup({...product, productType: kind});
+      const image = preview.querySelector('img');
+      if (image) { image.alt = ''; image.loading = 'lazy'; image.decoding = 'async'; }
+    });
     const readyCount=$("#homeReadyCount"),oilCount=$("#homeOilCount");
     if(readyCount)readyCount.textContent=readyAll.length.toLocaleString("ar-EG")+" عطر";
     if(oilCount)oilCount.textContent=oilAll.length.toLocaleString("ar-EG")+" زيت";
