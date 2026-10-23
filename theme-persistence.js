@@ -26,6 +26,9 @@
     root.style.setProperty("--page-image","none");
     root.style.setProperty("--bg-overlay",String(clamp(theme.overlay,.05,.85,.18)));
     if(theme.visualStyle){const aliases={royal:"windows",editorial:"ios",soft:"android",glass:"ios",boutique:"classic",bold:"windows",minimal:"classic",botanical:"pixel"};const style=aliases[theme.visualStyle]||theme.visualStyle;if(["windows","android","ios","oneui","pixel","classic"].includes(style))root.dataset.visualStyle=style}
+    const mobileDesign=/^mobile-(0[1-9]|10)$/.test(String(theme.mobileDesign||""))?theme.mobileDesign:"mobile-02";
+    const webDesign=/^web-(0[1-9]|10)$/.test(String(theme.webDesign||""))?theme.webDesign:"web-02";
+    root.dataset.mobileDesign=mobileDesign;root.dataset.webDesign=webDesign;
     if(validColor(theme.bg)){root.style.colorScheme=luminance(theme.bg)<.22?"dark":"light";const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.setAttribute("content",validColor(theme.header)?theme.header:theme.bg)}
   }
   function applyDisplay(){
