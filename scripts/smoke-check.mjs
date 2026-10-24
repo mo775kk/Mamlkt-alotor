@@ -161,8 +161,8 @@ try {
   const cartCss = read("site-unified.css");
   report(cartCss.includes("#cartDrawer .cart-item-facts dd{margin:0;color:var(--heading)") && cartCss.includes("#cartDrawer .cart-line-actions .remove-btn") && cartCss.includes("@media(max-width:380px)"),
     "Cart item names, size/price/quantity totals and action controls have readable responsive styles");
-  report(!html.includes('id="cartHeaderShortcut"') && !app.includes('bind("#cartHeaderShortcut", "click",openDrawer)') && app.includes('bind("#cartShortcut", "click",openDrawer)'),
-    "The cart drawer is opened only from the homepage directory shortcut; no duplicate header cart action remains");
+  report(html.includes('id="cartShortcut"') && html.includes('id="cartShortcutIndex"') && app.includes('bind("#cartShortcut", "click",openDrawer)') && app.includes('bind("#cartShortcutIndex", "click",openDrawer)'),
+    "The cart drawer is available from both the primary header and homepage index");
   report(app.includes('const bind = (selector, eventName, handler, options) => { const el = $(selector); if (el) el.addEventListener(eventName, handler, options); }'),
     "app.js shared event binder checks that an element exists before attaching listeners");
   report(app.includes('const mainNav=$("#mainNav"), menuToggle=$("#menuToggle")') &&
@@ -429,8 +429,8 @@ try {
     "The main directory is excluded from collapsible section details");
   const header = html.slice(html.indexOf('<div class="header-actions">'),html.indexOf('</div>',html.indexOf('<div class="header-actions">')));
   report((html.match(/id="cartShortcut"/g) || []).length === 1 &&
-    (html.match(/id="cartCount"/g) || []).length === 1 && !header.includes("cartShortcut") && !header.includes("cartHeaderShortcut") && !html.includes('id="headerCartCount"'),
-    "Cart has one entry and one counter, located on the homepage directory rather than the header");
+    (html.match(/id="cartCount"/g) || []).length === 1 && (html.match(/id="cartShortcutIndex"/g) || []).length === 1 && (html.match(/id="cartCountIndex"/g) || []).length === 1 && header.includes("cartShortcut"),
+    "Cart has a header shortcut and a homepage index shortcut with unique counters");
 } catch (e) {
   report(false, "Unable to validate homepage navigation and cart placement: " + e.message);
 }
@@ -560,10 +560,10 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261024-supplier-cost-history-v2')");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261024-header-cart-v1')");
   report(html.includes("inventory-accounting.js?v=20261024-supplier-cost-history-v2") && worker.includes("inventory-accounting.js?v=20261024-supplier-cost-history-v2"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v80-20261024-supplier-cost-history") &&
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v81-20261024-header-cart") &&
     worker.includes("site-unified.css?v=20261023-arabic-readable-v2") &&
     worker.includes("app.js?v=20261023-gram-quantity-cart-v1"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
