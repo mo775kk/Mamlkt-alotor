@@ -47,6 +47,8 @@ try {
   const inventorySource = read("inventory-accounting.js");
   report(inventorySource.includes('name="supplier"') && inventorySource.includes('name="shipping"') && inventorySource.includes('name="extraCost"') && inventorySource.includes("purchaseUnitCost+(shippingTotal+extraCostTotal)/qty") && inventorySource.includes("totalLandedCost:landedUnitCost*qty"),
     "Inventory intake records supplier, purchase cost, shipping and extra costs, and calculates landed unit cost");
+  report(inventorySource.includes('const stockIns=(d.movements||[]).filter(x=>x.type==="stock-in"&&within(x.createdAt))') && inventorySource.includes('x.supplier||"غير محدد"') && inventorySource.includes('"purchase_unit_cost_EGP"') && inventorySource.includes('"shipping_EGP"') && inventorySource.includes('"extra_cost_EGP"'),
+    "Inventory ledger displays stock intake supplier/cost breakdown and exports it to CSV");
   const storefrontSource = read("app.js");
   report(settingsSource.includes('#homeSettingsShortcut,#settingsShortcut,#menuAdminShortcut') &&
     settingsSource.includes('open();') && settingsSource.includes('loadCfg();') &&
@@ -488,7 +490,7 @@ try {
     app.includes('String(p?.supplierCategory||"").toUpperCase()==="ORIENTAL"') &&
     app.includes('displayFamily(p.family||p.scentFamily||"",p.nameAr||p.nameEn||"")') &&
     app.includes("السعر حسب الكمية") &&
-    !app.includes('class="product-price">جرام: '+escapeHTML(formatMoney(supplierRetailRate(p)))'),
+    !app.includes('class="product-price">جرام: '),
     "Supplier oil cards defer gram pricing to the product details instead of displaying a guessed price");
   report(app.includes('localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")') &&
     app.includes("pricing.orientalPremium") && app.includes("pricing.oriental"),
@@ -499,8 +501,8 @@ try {
     app.includes('unit:"gram"') &&
     app.includes('سعر الجرام غير محدد لهذا الزيت'),
     "Supplier oil details let customers choose grams, see a calculated total, and add the selected amount to cart without guessed pricing");
-  report(css.includes(".product-card-supplier-oil .product-visual{height:180px") &&
-    css.includes(".home-oil-showcase .home-showcase-visual{height:148px"),
+  report(css.includes(".product-card-supplier-oil .product-visual{height:auto;min-height:0;aspect-ratio:1/1}") &&
+    css.includes(".home-oil-showcase .home-showcase-visual{height:148px;min-height:148px}"),
     "Oil product cards use larger, readable product visuals on desktop and mobile");
   report(app.includes('<span class="product-image-note">رسم توضيحي</span>') &&
     app.includes("صورة توضيحية للفئة") && app.includes("صورة مرجعية للعطر الأصلي"),
@@ -554,11 +556,13 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261023-gram-quantity-cart-v1')");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v78-20261023-gram-quantity-cart") &&
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261024-landed-cost-v1')");
+  report(html.includes("inventory-accounting.js?v=20261024-landed-cost-v1") && worker.includes("inventory-accounting.js?v=20261024-landed-cost-v1"),
+    "Inventory accounting script and service worker use the landed-cost release URL");
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v79-20261024-landed-cost") &&
     worker.includes("site-unified.css?v=20261023-arabic-readable-v2") &&
     worker.includes("app.js?v=20261023-gram-quantity-cart-v1"),
-    "HTML service-worker registration and cached storefront assets use the current gram-quantity-cart release");
+    "HTML service-worker registration and cached storefront assets use the current landed-cost release");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
 }
