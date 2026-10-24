@@ -559,8 +559,8 @@ try {
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
   const registrationIsCurrent = html.includes("register('./sw.js?v=20261024-supplier-cost-history-v2')");
-  report(html.includes("inventory-accounting.js?v=20261024-supplier-cost-history-v2") && worker.includes("inventory-accounting.js?v=20261024-landed-cost-v1"),
-    "Inventory accounting script and service worker use the landed-cost release URL");
+  report(html.includes("inventory-accounting.js?v=20261024-supplier-cost-history-v2") && worker.includes("inventory-accounting.js?v=20261024-supplier-cost-history-v2"),
+    "Inventory accounting script and service worker use the supplier-cost-history release URL");
   report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v80-20261024-supplier-cost-history") &&
     worker.includes("site-unified.css?v=20261023-arabic-readable-v2") &&
     worker.includes("app.js?v=20261023-gram-quantity-cart-v1"),
