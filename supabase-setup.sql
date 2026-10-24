@@ -116,7 +116,14 @@ create policy "Admins delete Mamlaka products" on public.mamlaka_products
 
 drop policy if exists "Public can read non-sensitive Mamlaka settings" on public.mamlaka_settings;
 create policy "Public can read non-sensitive Mamlaka settings" on public.mamlaka_settings
- for select to anon, authenticated using (key !~* '(pin|password|token|secret|credential)');
+ for select to anon, authenticated using (
+   key !~* '(pin|password|token|secret|credential)'
+   and key !~* '(inventory|accounting|profit|cost|purchase|ledger|expense|movement|sales|margin|orders?|requests?|customer|client)'
+   and key !~* '^mamlaka_supplier_catalog(_v[0-9]+)?$'
+ );
+drop policy if exists "Admins can read all Mamlaka settings" on public.mamlaka_settings;
+create policy "Admins can read all Mamlaka settings" on public.mamlaka_settings
+ for select to authenticated using (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
 drop policy if exists "Admins insert Mamlaka settings" on public.mamlaka_settings;
 create policy "Admins insert Mamlaka settings" on public.mamlaka_settings
  for insert to authenticated with check (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));

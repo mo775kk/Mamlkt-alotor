@@ -569,6 +569,16 @@ try {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
 }
 
+try {
+  const supabaseSql = read("supabase-setup.sql");
+  report(supabaseSql.includes("Admins can read all Mamlaka settings") &&
+    supabaseSql.includes("(inventory|accounting|profit|cost|purchase|ledger|expense|movement|sales|margin|orders?|requests?|customer|client)") &&
+    supabaseSql.includes("^mamlaka_supplier_catalog(_v[0-9]+)?$"),
+    "Supabase public settings policy excludes private inventory/accounting/customer/supplier-cost data while authorized admins retain access");
+} catch (e) {
+  report(false, "Unable to validate private Supabase settings policy: " + e.message);
+}
+
 for (const message of pass) console.log("PASS  " + message);
 for (const message of failures) console.error("FAIL  " + message);
 console.log("\n" + pass.length + " passed; " + failures.length + " failed.");
