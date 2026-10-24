@@ -47,6 +47,8 @@ try {
   const inventorySource = read("inventory-accounting.js");
   report(inventorySource.includes('name="supplier"') && inventorySource.includes('name="shipping"') && inventorySource.includes('name="extraCost"') && inventorySource.includes("purchaseUnitCost+(shippingTotal+extraCostTotal)/qty") && inventorySource.includes("totalLandedCost:landedUnitCost*qty"),
     "Inventory intake records supplier, purchase cost, shipping and extra costs, and calculates landed unit cost");
+  report(inventorySource.includes('const stockIns=(d.movements||[]).filter(x=>x.type==="stock-in"&&within(x.createdAt))') && inventorySource.includes('x.supplier||"غير محدد"') && inventorySource.includes('"purchase_unit_cost_EGP"') && inventorySource.includes('"shipping_EGP"') && inventorySource.includes('"extra_cost_EGP"'),
+    "Inventory ledger displays stock intake supplier/cost breakdown and exports it to CSV");
   const storefrontSource = read("app.js");
   report(settingsSource.includes('#homeSettingsShortcut,#settingsShortcut,#menuAdminShortcut') &&
     settingsSource.includes('open();') && settingsSource.includes('loadCfg();') &&
