@@ -63,7 +63,7 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261024-supplier-cost-history-v2').catch(error => console.warn('Service worker registration failed:', error));
+          navigator.serviceWorker.register('./sw.js?v=20261024-header-cart-v1').catch(error => console.warn('Service worker registration failed:', error));
         }
       });
     })();
