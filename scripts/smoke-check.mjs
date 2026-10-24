@@ -488,7 +488,7 @@ try {
     app.includes('String(p?.supplierCategory||"").toUpperCase()==="ORIENTAL"') &&
     app.includes('displayFamily(p.family||p.scentFamily||"",p.nameAr||p.nameEn||"")') &&
     app.includes("السعر حسب الكمية") &&
-    !app.includes('class="product-price">جرام: '+escapeHTML(formatMoney(supplierRetailRate(p)))'),
+    !app.includes('class="product-price">جرام: '),
     "Supplier oil cards defer gram pricing to the product details instead of displaying a guessed price");
   report(app.includes('localStorage.getItem("mamlaka_catalog_taxonomy_config_v1")') &&
     app.includes("pricing.orientalPremium") && app.includes("pricing.oriental"),
