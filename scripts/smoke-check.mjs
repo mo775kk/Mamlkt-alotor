@@ -554,8 +554,10 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261023-gram-quantity-cart-v1')");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v78-20261023-gram-quantity-cart") &&
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261024-landed-cost-v1')");
+  report(html.includes("inventory-accounting.js?v=20261024-landed-cost-v1") && worker.includes("inventory-accounting.js?v=20261024-landed-cost-v1"),
+    "Inventory accounting script and service worker use the landed-cost release URL");
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v79-20261024-landed-cost") &&
     worker.includes("site-unified.css?v=20261023-arabic-readable-v2") &&
     worker.includes("app.js?v=20261023-gram-quantity-cart-v1"),
     "HTML service-worker registration and cached storefront assets use the current gram-quantity-cart release");
