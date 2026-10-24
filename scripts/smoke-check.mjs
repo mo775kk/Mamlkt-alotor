@@ -427,7 +427,7 @@ try {
     "Returning home restores the complete homepage instead of hiding all sections");
   report(folds.includes("section.id==='homeIndex'"),
     "The main directory is excluded from collapsible section details");
-  const header = html.slice(html.indexOf('<div class="header-actions">'),html.indexOf('</div>',html.indexOf('<div class="header-actions">')));
+  const header = html.slice(html.indexOf('<header class="site-header">'),html.indexOf('</header>'));
   report((html.match(/id="cartShortcut"/g) || []).length === 1 &&
     (html.match(/id="cartCount"/g) || []).length === 1 && (html.match(/id="cartShortcutIndex"/g) || []).length === 1 && (html.match(/id="cartCountIndex"/g) || []).length === 1 && header.includes("cartShortcut"),
     "Cart has a header shortcut and a homepage index shortcut with unique counters");
