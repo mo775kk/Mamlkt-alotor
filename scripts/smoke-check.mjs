@@ -562,7 +562,7 @@ try {
   report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v79-20261024-landed-cost") &&
     worker.includes("site-unified.css?v=20261023-arabic-readable-v2") &&
     worker.includes("app.js?v=20261023-gram-quantity-cart-v1"),
-    "HTML service-worker registration and cached storefront assets use the current gram-quantity-cart release");
+    "HTML service-worker registration and cached storefront assets use the current landed-cost release");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
 }
