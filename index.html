@@ -63,7 +63,7 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261024-landed-cost-v1').catch(error => console.warn('Service worker registration failed:', error));
+          navigator.serviceWorker.register('./sw.js?v=20261024-supplier-cost-history-v2').catch(error => console.warn('Service worker registration failed:', error));
         }
       });
     })();
@@ -452,7 +452,7 @@
   <script defer src="catalog-editor.js?v=20261019-current-blend-prices1"></script>
   <script defer src="site-upgrades.js?v=20261016-note-coverage3"></script>
   <script defer src="royal-gift-planner.js?v=20261015-gift1"></script>
-  <script defer src="inventory-accounting.js?v=20261024-landed-cost-v1"></script>
+  <script defer src="inventory-accounting.js?v=20261024-supplier-cost-history-v2"></script>
   <script defer src="royal-interactions.js?v=20261017-static-home1"></script>
   <script defer src="royal-finish.js?v=20261020-css-single-source2"></script>
   <script defer src="section-folds.js?v=20261020-index-always-open1"></script>

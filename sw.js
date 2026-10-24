@@ -1,6 +1,6 @@
 /* MAMLKAT AL-OTOR — GitHub Pages PWA shell */
 "use strict";
-const CACHE_NAME = "mamlakat-al-otor-shell-v79-20261024-landed-cost";
+const CACHE_NAME = "mamlakat-al-otor-shell-v80-20261024-supplier-cost-history";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
@@ -20,7 +20,7 @@ const SHELL_URLS = [
   BASE_PATH + "catalog-editor.js?v=20261019-current-blend-prices1",
   BASE_PATH + "site-upgrades.js?v=20261016-note-coverage3",
   BASE_PATH + "royal-gift-planner.js?v=20261015-gift1",
-  BASE_PATH + "inventory-accounting.js?v=20261024-landed-cost-v1",
+  BASE_PATH + "inventory-accounting.js?v=20261024-supplier-cost-history-v2",
   BASE_PATH + "royal-interactions.js?v=20261017-static-home1",
   BASE_PATH + "royal-finish.js?v=20261020-css-single-source2",
   BASE_PATH + "section-folds.js?v=20261020-index-always-open1",
