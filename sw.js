@@ -1,6 +1,6 @@
 /* MAMLKAT AL-OTOR — GitHub Pages PWA shell */
 "use strict";
-const CACHE_NAME = "mamlakat-al-otor-shell-v80-20261024-supplier-cost-history";
+const CACHE_NAME = "mamlakat-al-otor-shell-v81-20261024-header-cart";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
