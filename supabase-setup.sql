@@ -116,7 +116,97 @@ create policy "Admins delete Mamlaka products" on public.mamlaka_products
 
 drop policy if exists "Public can read non-sensitive Mamlaka settings" on public.mamlaka_settings;
 create policy "Public can read non-sensitive Mamlaka settings" on public.mamlaka_settings
- for select to anon, authenticated using (key !~* '(pin|password|token|secret|credential)');
+ for select to anon, authenticated using (
+   key !~* '(pin|password|token|secret|credential)'
+   and key !~* '(inventory|accounting|profit|cost|purchase|ledger|expense|movement|sales|margin|orders?|requests?|customer|client)'
+   and key !~* '^mamlaka_supplier_catalog(_v[0-9]+)?
+drop policy if exists "Admins insert Mamlaka settings" on public.mamlaka_settings;
+create policy "Admins insert Mamlaka settings" on public.mamlaka_settings
+ for insert to authenticated with check (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+drop policy if exists "Admins update Mamlaka settings" on public.mamlaka_settings;
+create policy "Admins update Mamlaka settings" on public.mamlaka_settings
+ for update to authenticated using (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())))
+ with check (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+drop policy if exists "Admins delete Mamlaka settings" on public.mamlaka_settings;
+create policy "Admins delete Mamlaka settings" on public.mamlaka_settings
+ for delete to authenticated using (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+
+drop policy if exists "public can read active catalog" on public.catalog_items;
+create policy "public can read active catalog" on public.catalog_items for select to anon, authenticated
+ using (active = true or exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+drop policy if exists "admins insert catalog" on public.catalog_items;
+create policy "admins insert catalog" on public.catalog_items for insert to authenticated
+ with check (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+drop policy if exists "admins update catalog" on public.catalog_items;
+create policy "admins update catalog" on public.catalog_items for update to authenticated
+ using (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())))
+ with check (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+drop policy if exists "admins delete catalog" on public.catalog_items;
+create policy "admins delete catalog" on public.catalog_items for delete to authenticated
+ using (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+
+drop policy if exists "public can read public settings" on public.app_settings;
+create policy "public can read public settings" on public.app_settings for select to anon, authenticated
+ using (key in ('public_site','theme','contact','social_links','store_hours'));
+drop policy if exists "admins can read all settings" on public.app_settings;
+create policy "admins can read all settings" on public.app_settings for select to authenticated
+ using (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+drop policy if exists "admins insert settings" on public.app_settings;
+create policy "admins insert settings" on public.app_settings for insert to authenticated
+ with check (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+drop policy if exists "admins update settings" on public.app_settings;
+create policy "admins update settings" on public.app_settings for update to authenticated
+ using (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())))
+ with check (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+drop policy if exists "admins delete settings" on public.app_settings;
+create policy "admins delete settings" on public.app_settings for delete to authenticated
+ using (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+
+drop policy if exists "customers can submit orders" on public.orders;
+create policy "customers can submit orders" on public.orders for insert to anon, authenticated
+ with check (status='new' and subtotal >= 0 and delivery_fee >= 0 and total >= 0);
+drop policy if exists "admins can read orders" on public.orders;
+create policy "admins can read orders" on public.orders for select to authenticated
+ using (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+drop policy if exists "admins update orders" on public.orders;
+create policy "admins update orders" on public.orders for update to authenticated
+ using (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())))
+ with check (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+
+drop policy if exists "admins manage inventory" on public.inventory_movements;
+create policy "admins manage inventory" on public.inventory_movements for all to authenticated
+ using (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())))
+ with check (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+
+grant select on public.mamlaka_products, public.mamlaka_settings, public.catalog_items, public.app_settings to anon, authenticated;
+grant insert, update, delete on public.mamlaka_products, public.mamlaka_settings to authenticated;
+grant insert on public.orders to anon, authenticated;
+grant select, update on public.orders to authenticated;
+grant select, insert, update, delete on public.catalog_items, public.app_settings, public.inventory_movements to authenticated;
+grant select on public.admin_users to authenticated;
+
+-- مخزن صور الواجهة؛ الصور عامة للعرض والكتابة مقصورة على الإدارة المعتمدة
+insert into storage.buckets (id,name,public,file_size_limit,allowed_mime_types)
+values ('mamlakat-images','mamlakat-images',true,5242880,array['image/jpeg','image/png','image/webp','image/avif'])
+on conflict (id) do update set public=excluded.public,file_size_limit=excluded.file_size_limit,allowed_mime_types=excluded.allowed_mime_types;
+drop policy if exists "Public can view Mamlaka images" on storage.objects;
+create policy "Public can view Mamlaka images" on storage.objects for select to anon, authenticated
+ using (bucket_id='mamlakat-images');
+drop policy if exists "Admins upload Mamlaka images" on storage.objects;
+create policy "Admins upload Mamlaka images" on storage.objects for insert to authenticated
+ with check (bucket_id='mamlakat-images' and exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+drop policy if exists "Admins update Mamlaka images" on storage.objects;
+create policy "Admins update Mamlaka images" on storage.objects for update to authenticated
+ using (bucket_id='mamlakat-images' and exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())))
+ with check (bucket_id='mamlakat-images' and exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+drop policy if exists "Admins delete Mamlaka images" on storage.objects;
+create policy "Admins delete Mamlaka images" on storage.objects for delete to authenticated
+ using (bucket_id='mamlakat-images' and exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
+
+ );
+drop policy if exists "Admins can read all Mamlaka settings" on public.mamlaka_settings;
+create policy "Admins can read all Mamlaka settings" on public.mamlaka_settings
+ for select to authenticated using (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
 drop policy if exists "Admins insert Mamlaka settings" on public.mamlaka_settings;
 create policy "Admins insert Mamlaka settings" on public.mamlaka_settings
  for insert to authenticated with check (exists(select 1 from public.admin_users a where a.user_id=(select auth.uid())));
