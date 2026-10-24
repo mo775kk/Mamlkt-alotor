@@ -47,6 +47,8 @@ try {
   const inventorySource = read("inventory-accounting.js");
   report(inventorySource.includes('name="supplier"') && inventorySource.includes('name="shipping"') && inventorySource.includes('name="extraCost"') && inventorySource.includes("purchaseUnitCost+(shippingTotal+extraCostTotal)/qty") && inventorySource.includes("totalLandedCost:landedUnitCost*qty"),
     "Inventory intake records supplier, purchase cost, shipping and extra costs, and calculates landed unit cost");
+  report(inventorySource.includes("function suggestSupplierCost()") && inventorySource.includes("previous.purchaseUnitCost??previous.unitCost") && inventorySource.includes('id="iaSupplierCostHint"'),
+    "Inventory intake suggests the last purchase cost for the selected product and supplier");
   report(inventorySource.includes('const stockIns=(d.movements||[]).filter(x=>x.type==="stock-in"&&within(x.createdAt))') && inventorySource.includes('x.supplier||"غير محدد"') && inventorySource.includes('"purchase_unit_cost_EGP"') && inventorySource.includes('"shipping_EGP"') && inventorySource.includes('"extra_cost_EGP"'),
     "Inventory ledger displays stock intake supplier/cost breakdown and exports it to CSV");
   const storefrontSource = read("app.js");
@@ -556,10 +558,10 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261024-landed-cost-v1')");
-  report(html.includes("inventory-accounting.js?v=20261024-landed-cost-v1") && worker.includes("inventory-accounting.js?v=20261024-landed-cost-v1"),
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261024-supplier-cost-history-v2')");
+  report(html.includes("inventory-accounting.js?v=20261024-supplier-cost-history-v2") && worker.includes("inventory-accounting.js?v=20261024-landed-cost-v1"),
     "Inventory accounting script and service worker use the landed-cost release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v79-20261024-landed-cost") &&
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v80-20261024-supplier-cost-history") &&
     worker.includes("site-unified.css?v=20261023-arabic-readable-v2") &&
     worker.includes("app.js?v=20261023-gram-quantity-cart-v1"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
