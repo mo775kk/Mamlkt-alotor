@@ -531,3 +531,7 @@ button,a,input,select,textarea{ -webkit-tap-highlight-color:transparent }
   .product-card h3,.product-card .product-title{font-size:17px}
   .product-card p,.product-card .product-description{font-size:13px}
 }
+
+
+/* Persistent cart access in the primary header on desktop and mobile. */
+.header-cart-shortcut{flex:0 0 36px;margin-inline:0}.header-cart-shortcut .header-line-icon{width:20px;height:20px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}.header-cart-shortcut .counter{top:-5px;left:-5px;min-width:18px;height:18px;line-height:18px;font-size:10px}@media(max-width:560px){.header-cart-shortcut{width:32px;height:32px;flex-basis:32px}.header-cart-shortcut .header-line-icon{width:18px;height:18px}.header-cart-shortcut .counter{min-width:16px;height:16px;line-height:16px;top:-4px;left:-4px}}
