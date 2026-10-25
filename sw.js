@@ -1,13 +1,13 @@
 /* MAMLKAT AL-OTOR — GitHub Pages PWA shell */
 "use strict";
-const CACHE_NAME = "mamlakat-al-otor-shell-v81-20261024-header-cart";
+const CACHE_NAME = "mamlakat-al-otor-shell-v82-20261025-cache-sync-v1";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
   BASE_PATH + "index.html",
   BASE_PATH + "manifest.webmanifest?v=20261022-no-gold2",
-  BASE_PATH + "site-unified.css?v=20261023-arabic-readable-v2",
-  BASE_PATH + "theme-persistence.js?v=20261022-premium-v5",
+  BASE_PATH + "site-unified.css?v=20261024-header-cart-v1",
+  BASE_PATH + "theme-persistence.js?v=20261023-responsive-presets-v8",
   BASE_PATH + "ai-service.js?v=20261016-ai-bridge1",
   BASE_PATH + "app.js?v=20261023-gram-quantity-cart-v1",
   BASE_PATH + "oil-voice-guide.js?v=20261021-oil-mentor2",
