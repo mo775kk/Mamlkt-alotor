@@ -270,7 +270,7 @@ try {
     "Fragrance house and alias metadata participates in search and product details");
   report(auditProducts.filter(p => p.notesStatus && p.sourceUrl && p.verified === false && p.needsReview === true).length >= 75,
     "Sourced fragrance reference notes remain marked unverified until the oil-to-reference match is reviewed");
-  report(read("index.html").includes("site-upgrades.js?v=20261016-note-coverage3"),
+  report(read("index.html").includes("assets/js/site-experience.bundle.js?v=20261025-consolidated-v1"),
     "Catalog note-coverage audit is linked with a fresh cache-buster");
 } catch (e) {
   report(false, "Unable to validate catalog audit diagnostics: " + e.message);
@@ -561,11 +561,11 @@ try {
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
   const registrationIsCurrent = html.includes("register('./sw.js?v=20261024-header-cart-v1')");
-  report(html.includes("inventory-accounting.js?v=20261024-supplier-cost-history-v2") && worker.includes("inventory-accounting.js?v=20261024-supplier-cost-history-v2"),
+  report(html.includes("assets/js/site-experience.bundle.js?v=20261025-consolidated-v1") && worker.includes("assets/js/site-experience.bundle.js?v=20261025-consolidated-v1"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v81-20261024-header-cart") &&
-    worker.includes("site-unified.css?v=20261023-arabic-readable-v2") &&
-    worker.includes("app.js?v=20261023-gram-quantity-cart-v1"),
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v86-20261025-consolidated-bundles") &&
+    worker.includes("site-unified.css?v=20261025-natural-catalog-v1") &&
+    worker.includes("assets/js/site-catalog.bundle.js?v=20261025-consolidated-v1"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
