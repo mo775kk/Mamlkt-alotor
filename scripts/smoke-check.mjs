@@ -214,7 +214,7 @@ try {
     app.includes("publicCatalogProducts.forEach(applyReferenceFragranceNotes)") &&
     app.includes("oilProducts.forEach(applyReferenceFragranceNotes)"),
     "Reference notes fill only missing note pyramids and do not overwrite existing researched notes");
-  report(/app\.js\?v=[^"]+/.test(html) && app.includes("function applyReferenceFragranceNotes(product)"),
+  report(/assets\/js\/site-catalog\.bundle\.js\?v=[^"]+/.test(html) && app.includes("function applyReferenceFragranceNotes(product)"),
     "Storefront loads the sourced reference-note logic through a versioned application script");
 } catch (e) {
   report(false, "Unable to validate sourced reference fragrance notes: " + e.message);
@@ -317,7 +317,7 @@ try {
     app.includes("لم تُوثق بعد"),
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
-  report(/app\.js\?v=[^"]+/.test(html),
+  report(/assets\/js\/site-catalog\.bundle\.js\?v=[^"]+/.test(html),
     "Current storefront application script is linked with a cache-buster");
 } catch (e) {
   report(false, "Unable to validate fragrance-note research coverage: " + e.message);
@@ -347,7 +347,7 @@ try {
     app.includes("لم تُوثق بعد"),
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
-  report(/app\.js\?v=[^"]+/.test(html) && /site-unified\.css\?v=[^"]+/.test(html),
+  report(/assets\/js\/site-catalog\.bundle\.js\?v=[^"]+/.test(html) && /site-unified\.css\?v=[^"]+/.test(html),
     "Storefront app and visual layer use explicit cache-busters");
   report(/const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
     "PWA cache version is refreshed to deliver the updated catalog");
@@ -410,7 +410,7 @@ try {
     settings.includes("data.configured!==true") && settings.includes("AbortError") &&
     settings.includes("لا يختبر إجابة نموذج AI نفسها"),
     "AI connection diagnostics handle timeouts, missing server secrets and health-check limitations");
-  report(/settings\.js\?v=[^"]+/.test(html) &&
+  report(/assets\/js\/site-admin\.bundle\.js\?v=[^"]+/.test(html) &&
     /site-unified\.css\?v=[^"]+/.test(html) &&
     finish.includes(".home-index-install-card") && themeStudio.includes("MAMLKAT AL-OTOR — unified design system v4") && !themeStudio.includes("--finish-rose"),
     "Current settings, theme-studio and finishing styles are linked and present");
@@ -455,7 +455,7 @@ try {
   report(html.includes('data-theme="light"') && css.includes("MAMLKAT AL-OTOR — unified design system v4") &&
     css.includes("--bg:#F0F2F4") && css.includes("--gold:#586B7A") && css.includes("--heading:#263541") && (css.match(/Original source:/g)||[]).length===1 && css.includes("background-image:none!important") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
     "Unified storefront palette uses neutral colors and removes accumulated legacy stylesheet layers");
-  report(/section-pages\.js\?v=[^"]+/.test(html) &&
+  report(/assets\/js\/site-sections\.bundle\.js\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
     html.includes('id="modalBackdrop"'),
     "Standalone section navigation, full-page cart and product details remain wired");
@@ -473,7 +473,7 @@ try {
     settings.includes('.search-box,.toolbar select,.blend-step select') &&
     settings.includes('write(THEME_KEY,x)'),
     "Theme palette applies across storefront, header/footer, cards, inputs and persists the full color object");
-  report(/settings\.js\?v=[^"]+/.test(html),
+  report(/assets\/js\/site-admin\.bundle\.js\?v=[^"]+/.test(html),
     "Full-site theme fix is loaded with a fresh settings.js cache-buster");
 } catch (e) {
   report(false, "Unable to validate full-site theme application: " + e.message);
@@ -515,9 +515,9 @@ try {
     pages.includes("scrollPositions.set(activeId, window.scrollY || 0)") &&
     pages.includes('window.scrollTo({top:y,behavior:"auto"})'),
     "Section back navigation restores the previous section's scroll position");
-  report(/app\.js\?v=[^"]+/.test(html) &&
+  report(/assets\/js\/site-catalog\.bundle\.js\?v=[^"]+/.test(html) &&
     /site-unified\.css\?v=[^"]+/.test(html) &&
-    /section-pages\.js\?v=[^"]+/.test(html),
+    /assets\/js\/site-sections\.bundle\.js\?v=[^"]+/.test(html),
     "Oil cards, layout and section-history fixes use fresh cache-busters");
   const oilData = JSON.parse(read("oil-catalog-public.json"));
   report(Array.isArray(oilData.products) && oilData.products.length === 589 &&
