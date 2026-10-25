@@ -426,9 +426,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <!-- السكربتات (defer) -->
-  <script defer src="ai-service.js?v=20261016-ai-bridge1"></script>
-  <script defer src="app.js?v=20261025-search-requests-v1"></script>
-  <script defer src="oil-voice-guide.js?v=20261021-oil-mentor2"></script>
+  <script defer src="assets/js/site-catalog.bundle.js?v=20261025-consolidated-v1"></script>
   <script>
   (function(){
     "use strict";
@@ -444,20 +442,8 @@
     if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initHeaderExtras);else initHeaderExtras();
   })();
   </script>
-  <script defer src="royal-gold-gate.js?v=20261017-gold-gate1"></script>
-  <script defer src="reference-library.js?v=20261020-settings-only3"></script>
-  <script defer src="settings.js?v=20261025-customer-requests-v1"></script>
-  <script defer src="mamlaka-full-editor.js?v=20261020-live-single-source1"></script>
-  <script defer src="enhancements.js?v=20261015-voice-guide1"></script>
-  <script defer src="supplier-catalog.js?v=20261014-public-oils1"></script>
-  <script defer src="catalog-editor.js?v=20261019-current-blend-prices1"></script>
-  <script defer src="site-upgrades.js?v=20261016-note-coverage3"></script>
-  <script defer src="royal-gift-planner.js?v=20261015-gift1"></script>
-  <script defer src="inventory-accounting.js?v=20261024-supplier-cost-history-v2"></script>
-  <script defer src="royal-interactions.js?v=20261017-static-home1"></script>
-  <script defer src="royal-finish.js?v=20261020-css-single-source2"></script>
-  <script defer src="section-folds.js?v=20261020-index-always-open1"></script>
-  <script defer src="blending-atelier.js?v=20261019-current-blend-prices1"></script>
+  <script defer src="assets/js/site-admin.bundle.js?v=20261025-consolidated-v1"></script>
+  <script defer src="assets/js/site-experience.bundle.js?v=20261025-consolidated-v1"></script>
 
   <!-- سكربتات v3.0 الجديدة -->
   <script>
@@ -574,7 +560,7 @@
     document.addEventListener('mamlaka:products-updated',updateBlendPriceGuide);
   })();
   </script>
-  <script defer src="section-pages.js?v=20261022-layout2"></script>
+  <script defer src="assets/js/site-sections.bundle.js?v=20261025-consolidated-v1"></script>
   <script>
   (function(){var b=document.getElementById("shareKingdomButton");if(!b)return;b.addEventListener("click",function(){var d={title:document.title,text:"اكتشف مملكة العطور",url:window.location.href};if(navigator.share){navigator.share(d).catch(function(){});return;}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.url).then(function(){b.textContent="تم نسخ رابط الموقع ✓";},function(){window.prompt("انسخ رابط الموقع:",d.url);});}else{window.prompt("انسخ رابط الموقع:",d.url);}});})();
   </script>
@@ -589,7 +575,6 @@
     </div>
     <button type="button" id="pwaInstallHelpClose" class="btn btn-gold" style="margin-top:10px">إغلاق</button>
   </dialog>
-  <script src="supabase-config.js?v=20261022-cloud2"></script>
-  <script src="supabase-cloud.js?v=20261022-unified-v4"></script>
+  <script src="assets/js/site-cloud.bundle.js?v=20261025-consolidated-v1"></script>
 </body>
 </html>
