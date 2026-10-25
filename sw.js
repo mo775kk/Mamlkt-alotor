@@ -1,6 +1,6 @@
 /* MAMLKAT AL-OTOR — GitHub Pages PWA shell */
 "use strict";
-const CACHE_NAME = "mamlakat-al-otor-shell-v85-20261025-customer-search-v2";
+const CACHE_NAME = "mamlakat-al-otor-shell-v86-20261025-consolidated-bundles";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
@@ -8,26 +8,11 @@ const SHELL_URLS = [
   BASE_PATH + "manifest.webmanifest?v=20261022-no-gold2",
   BASE_PATH + "site-unified.css?v=20261025-natural-catalog-v1",
   BASE_PATH + "theme-persistence.js?v=20261023-responsive-presets-v8",
-  BASE_PATH + "ai-service.js?v=20261016-ai-bridge1",
-  BASE_PATH + "app.js?v=20261025-search-requests-v1",
-  BASE_PATH + "oil-voice-guide.js?v=20261021-oil-mentor2",
-  BASE_PATH + "royal-gold-gate.js?v=20261017-gold-gate1",
-  BASE_PATH + "reference-library.js?v=20261020-settings-only3",
-  BASE_PATH + "settings.js?v=20261025-customer-requests-v1",
-  BASE_PATH + "mamlaka-full-editor.js?v=20261020-live-single-source1",
-  BASE_PATH + "enhancements.js?v=20261015-voice-guide1",
-  BASE_PATH + "supplier-catalog.js?v=20261014-public-oils1",
-  BASE_PATH + "catalog-editor.js?v=20261019-current-blend-prices1",
-  BASE_PATH + "site-upgrades.js?v=20261016-note-coverage3",
-  BASE_PATH + "royal-gift-planner.js?v=20261015-gift1",
-  BASE_PATH + "inventory-accounting.js?v=20261024-supplier-cost-history-v2",
-  BASE_PATH + "royal-interactions.js?v=20261017-static-home1",
-  BASE_PATH + "royal-finish.js?v=20261020-css-single-source2",
-  BASE_PATH + "section-folds.js?v=20261020-index-always-open1",
-  BASE_PATH + "blending-atelier.js?v=20261019-current-blend-prices1",
-  BASE_PATH + "section-pages.js?v=20261022-layout2",
-  BASE_PATH + "supabase-config.js?v=20261022-cloud2",
-  BASE_PATH + "supabase-cloud.js?v=20261022-unified-v4",
+  BASE_PATH + "assets/js/site-catalog.bundle.js?v=20261025-consolidated-v1",
+  BASE_PATH + "assets/js/site-admin.bundle.js?v=20261025-consolidated-v1",
+  BASE_PATH + "assets/js/site-experience.bundle.js?v=20261025-consolidated-v1",
+  BASE_PATH + "assets/js/site-sections.bundle.js?v=20261025-consolidated-v1",
+  BASE_PATH + "assets/js/site-cloud.bundle.js?v=20261025-consolidated-v1",
   BASE_PATH + "data/products.json",
   BASE_PATH + "oil-catalog-public.json",
   BASE_PATH + "assets/images/app-icon-192.png",
