@@ -1,6 +1,6 @@
 /* MAMLKAT AL-OTOR — GitHub Pages PWA shell */
 "use strict";
-const CACHE_NAME = "mamlakat-al-otor-shell-v82-20261025-cache-sync-v1";
+const CACHE_NAME = "mamlakat-al-otor-shell-v83-20261025-cache-sync-v2";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
@@ -31,7 +31,9 @@ const SHELL_URLS = [
   BASE_PATH + "data/products.json",
   BASE_PATH + "oil-catalog-public.json",
   BASE_PATH + "assets/images/app-icon-192.png",
-  BASE_PATH + "assets/images/app-icon-512.png"
+  BASE_PATH + "assets/images/app-icon-512.png",
+  BASE_PATH + "assets/images/app-icon-192.svg",
+  BASE_PATH + "assets/images/app-icon-512.svg"
 ];
 self.addEventListener("install", event => {
   event.waitUntil((async () => {
