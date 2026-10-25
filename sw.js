@@ -1,12 +1,12 @@
 /* MAMLKAT AL-OTOR — GitHub Pages PWA shell */
 "use strict";
-const CACHE_NAME = "mamlakat-al-otor-shell-v86-20261025-consolidated-bundles";
+const CACHE_NAME = "mamlakat-al-otor-shell-v87-20261025-section-reading-panels";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
   BASE_PATH + "index.html",
   BASE_PATH + "manifest.webmanifest?v=20261022-no-gold2",
-  BASE_PATH + "site-unified.css?v=20261025-natural-catalog-v1",
+  BASE_PATH + "site-unified.css?v=20261025-section-reading-panels-v1",
   BASE_PATH + "theme-persistence.js?v=20261023-responsive-presets-v8",
   BASE_PATH + "assets/js/site-catalog.bundle.js?v=20261025-consolidated-v1",
   BASE_PATH + "assets/js/site-admin.bundle.js?v=20261025-consolidated-v1",
