@@ -544,9 +544,24 @@
     const context=[matched?("الطابع: "+matched.label):"",gender?("الفئة: "+gender):"",budget!==null?("الميزانية المذكورة: "+budget+" ج.م"):"",daily?"الاستخدام: يومي":occasion?"الاستخدام: مناسبة":""] .filter(Boolean).join(" · ");
     replies.innerHTML=remoteWarning+`<div class="assistant-message"><strong>ترشيحات مبدئية من الكتالوج</strong><br>${escapeHTML(context||"رتّبت النتائج حسب قربها من وصفك.")}<br>التوصيات إرشادية وتعتمد على بيانات المنتج المسجلة؛ جرّب العطر وتأكد من السعر والتوفر مع المتجر قبل الشراء.</div>`+list.map(({p,price})=>`<div class="suggestion"><div><h4>${escapeHTML(p.nameAr||p.nameEn||"عطر مسجل")} <span class="product-en">${escapeHTML(p.nameEn||"")}</span></h4><p>${escapeHTML(p.family||"عائلة غير محددة")} · ${price==null?"السعر يحتاج إلى تأكيد":formatMoney(price)}${p.needsReview?" · بيانات تحتاج مراجعة":""}</p><small>${escapeHTML((p.scentNature||p.descriptionAr||"الطابع العطري يحتاج إلى مراجعة").slice(0,150))}</small></div><button class="small-btn" data-action="details" data-id="${escapeHTML(p.id)}">التفاصيل</button></div>`).join("");
   }
+  function recordSearchTerm(name, source="بحث الكتالوج"){
+    const term=String(name||"").trim().replace(/\s+/g," ").slice(0,140);
+    if(term.length<2)return;
+    const key=norm(term);
+    const matched=products.some(p=>norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(key));
+    const req=safeRead(STORAGE.requests,[]);
+    const old=req.find(x=>norm(x.name)===key);
+    const now=new Date().toISOString();
+    if(old){old.count=Math.max(1,Number(old.count)||1)+1;old.lastSearchedAt=now;old.matched=matched;if(source==="طلب عميل"){old.source=source;old.status="new";}}
+    else req.unshift({name:term,source,count:1,matched,status:source==="طلب عميل"?"new":"search",createdAt:now,lastSearchedAt:now});
+    save(STORAGE.requests,req.slice(0,300));
+    document.dispatchEvent(new CustomEvent("mamlaka:requests-updated"));
+  }
   function requestMissing(name){
-    const req=safeRead(STORAGE.requests,[]);req.push({name,createdAt:new Date().toISOString()});save(STORAGE.requests,req);
-    const msg=`مرحبًا، أريد الاستفسار عن عطر غير موجود في الكتالوج: ${name}`;
+    const term=String(name||"").trim().replace(/\s+/g," ").slice(0,140);
+    if(!term)return;
+    recordSearchTerm(term,"طلب عميل");
+    const msg=`مرحبًا، أريد الاستفسار عن عطر أو نوع غير موجود في الكتالوج: ${term}`;
     window.open(`https://wa.me/${getWaNumber()}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
   }
   const translations = {
@@ -571,7 +586,9 @@
     const action=e.target.closest("[data-action]");if(action){const {action:act,id}=action.dataset;if(act==="favorite")toggleFavorite(id);if(act==="add"&&findProduct(id)?.supplierCatalogItem){const oil=findProduct(id),sel=$("#blendOil");if(sel){sel.value=id;location.hash="#blend";notify("تم اختيار "+(oil.nameAr||oil.nameEn)+" للتركيب؛ أكمل اختيار الحجم والطلب.");}else{notify("تم تحديد الزيت؛ افتح قسم تركيب عطرك لإكمال الطلب.");location.hash="#blend";}}else if(act==="add"){const card=e.target.closest(".product-card"),size=card?.querySelector("[data-card-size]")?.value||"10";addToCart(id,size);const chosen=cart.some(item=>item.id===id&&String(item.size)===String(size));const button=card?.querySelector('[data-action="add"]');if(button){button.classList.toggle("is-selected",chosen);button.textContent=chosen?"✓ تم الاختيار":(findProduct(id)?.supplierCatalogItem?"للاختيار والتركيب":"أضف للسلة");button.setAttribute("aria-pressed",String(chosen));}}if(act==="details")openDetails(id);}
     const ca=e.target.closest("[data-cart]");if(ca){const item=cart.find(x=>x.key===ca.dataset.key);if(!item)return;if(ca.dataset.cart==="plus")item.qty=Math.min(99,Number(item.qty)+1);if(ca.dataset.cart==="minus")item.qty=Number(item.qty)-1;if(ca.dataset.cart==="remove"||item.qty<=0)cart=cart.filter(x=>x.key!==item.key);save(STORAGE.cart,cart);renderCart();updateCounts();syncProductCardSelectionStates();}
   });
-  bind("#productSearch", "input",renderProducts);bind("#genderFilter", "change",renderProducts);bind("#familyFilter", "change",renderProducts);
+  let searchLogTimer=null;
+  bind("#productSearch","input",()=>{renderProducts();if(searchLogTimer)window.clearTimeout(searchLogTimer);searchLogTimer=window.setTimeout(()=>{const term=$("#productSearch")?.value||"";if(term.trim().length>=2)recordSearchTerm(term,"بحث الكتالوج");},700);});
+  bind("#genderFilter", "change",renderProducts);bind("#familyFilter", "change",renderProducts);
   bind("#requestMissingBtn", "click",()=>{const name=$("#productSearch").value.trim();if(!name){notify("اكتب اسم العطر الذي تبحث عنه أولًا.");$("#productSearch").focus();return;}requestMissing(name);notify("تم تسجيل طلب البحث وفتح واتساب لإرساله.");});
   bind("#searchFocus", "click",()=>{location.hash="#ready";window.setTimeout(()=>$("#productSearch")?.focus(),100);});
   bind("#favoritesShortcut", "click",()=>{const fav=products.filter(p=>favorites.includes(p.id));if(!fav.length){notify("قائمة المفضلة فارغة.");return;}$("#productSearch").value="";$("#genderFilter").value="";$("#familyFilter").value="";$("#readyProducts").innerHTML=fav.map(productCard).join("");$("#resultsMessage").textContent=`${fav.length} منتج في المفضلة`;$("#noProducts").classList.add("hidden");location.hash="#ready";});
@@ -643,5 +660,5 @@
   document.addEventListener("mamlaka:supplier-catalog-updated",syncAllProducts);
   setLanguage(language);renderProducts();renderSupplierOils();populateBlendOils();renderCart();updateCounts();blendPrice();loadPublicCatalog();
   // If search misses, offer a direct request without pretending the catalog contains the item.
-  bind("#productSearch", "keydown",e=>{if(e.key==="Enter" && !products.some(p=>norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(norm(e.target.value)))){if(e.target.value.trim() && confirm(`لم نعثر على «${e.target.value.trim()}». هل تريد الاستفسار عنه عبر واتساب؟`))requestMissing(e.target.value.trim());}});
+  bind("#productSearch", "keydown",e=>{if(e.key==="Enter" && !products.some(p=>norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(norm(e.target.value)))){if(e.target.value.trim()){recordSearchTerm(e.target.value.trim(),"بحث غير مطابق");if(confirm(`لم نعثر على «${e.target.value.trim()}». تم تسجيل كلمة البحث في الإعدادات. هل تريد إرسال طلب للمتجر عبر واتساب؟`))requestMissing(e.target.value.trim());}}});
 })();
