@@ -29,7 +29,8 @@
       bar.setAttribute("aria-label", "التنقل داخل الموقع");
       bar.innerHTML = '<button type="button" class="section-page-back" id="sectionPageBack"><span aria-hidden="true">→</span> الصفحة السابقة</button><div class="section-page-heading"><small>مملكة العطور · MAMLKAT AL-OTOR</small><h1 id="sectionPageTitle">تفاصيل القسم</h1><p id="sectionPageSubtitle">تصفح القسم بشكل مستقل</p></div><span class="section-page-mark" aria-hidden="true">♛</span>';
       main.insertBefore(bar, main.firstChild);
-      bar.querySelector("#sectionPageBack").addEventListener("click", navigateBack);
+      const backButton = bar.querySelector("#sectionPageBack");
+      if (backButton) backButton.addEventListener("click", navigateBack);
     }
     if (!document.getElementById("sectionPageEnd")) {
       const end = document.createElement("div");
@@ -39,7 +40,8 @@
       const footer = document.querySelector(".site-footer");
       if (footer) footer.parentNode.insertBefore(end, footer);
       else document.body.append(end);
-      end.querySelector("button").addEventListener("click", navigateBack);
+      const endBackButton = end.querySelector("button");
+      if (endBackButton) endBackButton.addEventListener("click", navigateBack);
     }
   }
 
@@ -96,11 +98,13 @@
     } else {
       allPageSections().forEach(el => el.removeAttribute("data-standalone-section"));
     }
-    bar.hidden = isHome;
-    end.hidden = isHome;
+    if (bar) bar.hidden = isHome;
+    if (end) end.hidden = isHome;
     if (!isHome) {
-      document.getElementById("sectionPageTitle").textContent = titleFor(host);
-      document.getElementById("sectionPageSubtitle").textContent = "عرض مستقل للقسم · ارجع إلى الفهرس للوصول إلى سلة المشتريات";
+      const pageTitle = document.getElementById("sectionPageTitle");
+      const pageSubtitle = document.getElementById("sectionPageSubtitle");
+      if (pageTitle) pageTitle.textContent = titleFor(host);
+      if (pageSubtitle) pageSubtitle.textContent = "عرض مستقل للقسم · ارجع إلى الفهرس للوصول إلى سلة المشتريات";
       if (host.parentNode === main) main.insertBefore(bar, host);
       if (end.parentNode !== document.body) document.body.appendChild(end);
       const footer = document.querySelector(".site-footer");
