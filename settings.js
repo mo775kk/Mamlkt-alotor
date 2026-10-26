@@ -46,7 +46,7 @@
     const saveButton=event.target.closest("#saveSite,#saveAllSettings,#settingsSave");
     if(saveButton){event.preventDefault();emergencySaveSettings();}
   },true);
-  document.addEventListener("keydown",event=>{if(event.key==="Escape"&&document.getElementById("adminLayer")&&!document.getElementById("adminLayer").classList.contains("hidden"))forceCloseAdmin();});
+  document.addEventListener("keydown",event=>{const layer=document.getElementById("adminLayer");if(event.key==="Escape"&&layer&&!layer.classList.contains("hidden"))forceCloseAdmin();});
   // Bind the admin entry points immediately, before the rest of startup can fail.
   // Delegation also survives if the header shortcut is created later by setup().
   document.addEventListener("click",event=>{
