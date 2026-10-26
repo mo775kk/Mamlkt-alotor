@@ -614,7 +614,8 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
       var opening=button.getAttribute('aria-expanded')!=='true';
       button.setAttribute('aria-expanded',String(opening));
       content.hidden=!opening;
-      button.querySelector('.fold-label').textContent=opening?'إخفاء التفاصيل':'عرض التفاصيل';
+      var foldLabel=button.querySelector('.fold-label');
+      if(foldLabel) foldLabel.textContent=opening?'إخفاء التفاصيل':'عرض التفاصيل';
       if(opening) section.classList.add('section-is-open'); else section.classList.remove('section-is-open');
     });
     heading.appendChild(button);
