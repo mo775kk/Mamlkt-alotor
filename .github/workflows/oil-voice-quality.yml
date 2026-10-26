@@ -61,3 +61,8 @@ jobs:
           NODE
       - name: Run storefront regression checks
         run: node scripts/smoke-check.mjs
+      - name: Syntax-check maintained legacy and support scripts
+        run: |
+          for file in app.js settings.js inventory-accounting.js enhancements.js theme-persistence.js oil-voice-guide.js; do
+            if [ -f "$file" ]; then node --check "$file"; fi
+          done
