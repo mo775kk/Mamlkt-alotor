@@ -478,11 +478,14 @@
     /* 1. شريط تقدم التمرير */
     var progress=document.getElementById('scrollProgress');
     function updateProgress(){
+      if(!progress)return;
       var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
       progress.style.transform='scaleX('+(max>0?h.scrollTop/max:0)+')';
     }
-    window.addEventListener('scroll',updateProgress,{passive:true});
-    updateProgress();
+    if(progress){
+      window.addEventListener('scroll',updateProgress,{passive:true});
+      updateProgress();
+    }
 
     /* 2. تبديل الوضع الليلي/النهاري */
     var themeToggle=document.getElementById('themeToggle');
@@ -509,7 +512,7 @@
         quizQuestion=document.getElementById('quizQuestion'), quizOptions=document.getElementById('quizOptions'),
         quizResult=document.getElementById('quizResult'), quizShell=document.getElementById('quizShell');
     function renderQuiz(){
-      if(!quizBody)return;
+      if(!quizBody||!quizQuestion||!quizOptions)return;
       if(quiz.step>=quiz.questions.length){finishQuiz();return;}
       var item=quiz.questions[quiz.step];
       quizQuestion.textContent=item.q;
@@ -518,15 +521,17 @@
         var b=document.createElement('button');b.type='button';b.className='quiz-opt';b.textContent=opt.t;
         b.addEventListener('click',function(){
           quiz.answers.push(opt.v);quiz.step++;
-          quizBar.style.width=Math.round((quiz.step/quiz.questions.length)*100)+'%';
+          if(quizBar)quizBar.style.width=Math.round((quiz.step/quiz.questions.length)*100)+'%';
           renderQuiz();
         });
         quizOptions.appendChild(b);
       });
-      quizBar.style.width=Math.round((quiz.step/quiz.questions.length)*100)+'%';
+      if(quizBar)quizBar.style.width=Math.round((quiz.step/quiz.questions.length)*100)+'%';
     }
     function finishQuiz(){
-      quizBody.hidden=true;quizShell.querySelector('.quiz-progress').hidden=true;
+      if(quizBody)quizBody.hidden=true;
+      var quizProgress=quizShell&&quizShell.querySelector('.quiz-progress');
+      if(quizProgress)quizProgress.hidden=true;
       var counts={};quiz.answers.forEach(function(a){counts[a]=(counts[a]||0)+1});
       var top=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]})[0]||'عنبر وشرقي';
       quizResult.hidden=false;
