@@ -563,7 +563,7 @@ try {
   const registrationIsCurrent = html.includes("register('./sw.js?v=20261026-dom-guards-v4')");
   report(html.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v4") && worker.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v4"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v89-20261026-dom-guards-v4") &&
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v91-20261026-dom-guards-v4") &&
     worker.includes("site-unified.css?v=20261025-section-reading-panels-v1") &&
     worker.includes("assets/js/site-catalog.bundle.js?v=20261026-dom-guards-v4"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
