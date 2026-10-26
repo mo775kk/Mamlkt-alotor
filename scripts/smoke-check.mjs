@@ -270,7 +270,7 @@ try {
     "Fragrance house and alias metadata participates in search and product details");
   report(auditProducts.filter(p => p.notesStatus && p.sourceUrl && p.verified === false && p.needsReview === true).length >= 75,
     "Sourced fragrance reference notes remain marked unverified until the oil-to-reference match is reviewed");
-  report(read("index.html").includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v3"),
+  report(read("index.html").includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v4"),
     "Catalog note-coverage audit is linked with a fresh cache-buster");
 } catch (e) {
   report(false, "Unable to validate catalog audit diagnostics: " + e.message);
@@ -560,12 +560,12 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261026-dom-guards-v3')");
-  report(html.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v3") && worker.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v3"),
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261026-dom-guards-v4')");
+  report(html.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v4") && worker.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v4"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v89-20261026-dom-guards-v3") &&
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v89-20261026-dom-guards-v4") &&
     worker.includes("site-unified.css?v=20261025-section-reading-panels-v1") &&
-    worker.includes("assets/js/site-catalog.bundle.js?v=20261026-dom-guards-v3"),
+    worker.includes("assets/js/site-catalog.bundle.js?v=20261026-dom-guards-v4"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
@@ -599,6 +599,13 @@ try {
     source.includes('function closeDrawer(){ const drawer=$("#cartDrawer"),backdrop=$("#drawerBackdrop");') &&
     source.includes('const speakButton=$("#speakDetails");if(speakButton)speakButton.onclick='
   ), "Core storefront product rendering, cart drawer and modal tolerate missing optional DOM elements");
+  const adminSource = read("assets/js/site-admin.bundle.js");
+  const settingsSource = read("settings.js");
+  report([adminSource,settingsSource].every(source =>
+    source.includes('const layer=$("#adminLayer"),login=$("#adminLogin"),content=$("#adminContent"),pin=$("#adminPin"),hint=$("#pinHint");if(!layer)return;') &&
+    source.includes('function close(){restoreReferenceLibrary();const layer=$("#adminLayer");if(layer)layer.classList.add("hidden")}') &&
+    source.includes('function clearProductForm(){const form=$("#productForm"),idField=$("#pId"),box=$("#pImagePreview");if(form)form.reset();if(idField)idField.value="";')
+  ), "Admin open/close and product form reset guard optional DOM elements");
   report(admin.includes('if (clearSearchButton) clearSearchButton.addEventListener("click"') &&
     admin.includes('const layer=document.getElementById("adminLayer");') &&
     experience.includes("if(foldLabel) foldLabel.textContent="),
