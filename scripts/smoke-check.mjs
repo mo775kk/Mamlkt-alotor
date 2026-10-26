@@ -563,8 +563,8 @@ try {
   const registrationIsCurrent = html.includes("register('./sw.js?v=20261026-dom-guards-v1')");
   report(html.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v1") && worker.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v1"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v86-20261025-consolidated-bundles") &&
-    worker.includes("site-unified.css?v=20261025-natural-catalog-v1") &&
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v88-20261026-dom-guards") &&
+    worker.includes("site-unified.css?v=20261025-section-reading-panels-v1") &&
     worker.includes("assets/js/site-catalog.bundle.js?v=20261026-dom-guards-v1"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
 } catch (e) {
@@ -579,6 +579,22 @@ try {
     "Supabase public settings policy excludes private inventory/accounting/customer/supplier-cost data while authorized admins retain access");
 } catch (e) {
   report(false, "Unable to validate private Supabase settings policy: " + e.message);
+}
+
+try {
+  const html = read("index.html");
+  const sections = read("assets/js/site-sections.bundle.js");
+  report(html.includes("if(!progress)return;") &&
+    html.includes("if(!quizBody||!quizQuestion||!quizOptions)return;") &&
+    html.includes("if(quizBar)quizBar.style.width"),
+    "Inline progress and fragrance quiz tolerate missing optional DOM elements");
+  report(sections.includes('if (backButton) backButton.addEventListener("click", navigateBack);') &&
+    sections.includes('if (endBackButton) endBackButton.addEventListener("click", navigateBack);') &&
+    sections.includes('if (pageTitle) pageTitle.textContent = titleFor(host);') &&
+    sections.includes('if (pageSubtitle) pageSubtitle.textContent ='),
+    "Section navigation guards optional buttons and headings before use");
+} catch (e) {
+  report(false, "Unable to validate DOM guard regressions: " + e.message);
 }
 
 for (const message of pass) console.log("PASS  " + message);
