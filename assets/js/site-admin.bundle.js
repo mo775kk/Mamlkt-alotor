@@ -89,7 +89,8 @@
     }
     search.addEventListener("input",render); category.addEventListener("change",render);
     favOnly.addEventListener("click",()=>{onlyFav=!onlyFav;favOnly.setAttribute("aria-pressed",String(onlyFav));favOnly.textContent=onlyFav?"عرض كل المواقع":"★ المفضلة فقط";render();});
-    section.querySelector("#refClear").addEventListener("click",()=>{search.value="";category.value="";onlyFav=false;favOnly.setAttribute("aria-pressed","false");favOnly.textContent="★ المفضلة فقط";render();search.focus();});
+    const clearSearchButton = section.querySelector("#refClear");
+    if (clearSearchButton) clearSearchButton.addEventListener("click",()=>{search.value="";category.value="";onlyFav=false;favOnly.setAttribute("aria-pressed","false");favOnly.textContent="★ المفضلة فقط";render();search.focus();});
     grid.addEventListener("click",e=>{const b=e.target.closest("[data-fav]");if(!b)return;const i=Number(b.dataset.fav),favs=readFav();saveFav(favs.includes(i)?favs.filter(n=>n!==i):[...favs,i]);render();});
     render();
   }
@@ -154,7 +155,7 @@
     const saveButton=event.target.closest("#saveSite,#saveAllSettings,#settingsSave");
     if(saveButton){event.preventDefault();emergencySaveSettings();}
   },true);
-  document.addEventListener("keydown",event=>{if(event.key==="Escape"&&document.getElementById("adminLayer")&&!document.getElementById("adminLayer").classList.contains("hidden"))forceCloseAdmin();});
+  document.addEventListener("keydown",event=>{const layer=document.getElementById("adminLayer");if(event.key==="Escape"&&layer&&!layer.classList.contains("hidden"))forceCloseAdmin();});
   // Bind the admin entry points immediately, before the rest of startup can fail.
   // Delegation also survives if the header shortcut is created later by setup().
   document.addEventListener("click",event=>{
