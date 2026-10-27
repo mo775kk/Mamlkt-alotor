@@ -624,3 +624,50 @@ button,input,select,textarea{max-width:100%;min-width:0}
   #adminLayer .admin-tabs button,.admin-layer .admin-tabs button{flex:1 1 auto;max-width:100%;white-space:normal}
   .section,.home-index-section{max-width:100%;min-width:0}
 }
+
+
+/* Targeted repair: settings form was inheriting broad grid/input rules on narrow screens. */
+#adminLayer .admin-page[data-page="site"]{width:100%;max-width:100%;min-width:0;overflow:visible}
+#adminLayer .admin-page[data-page="site"] .admin-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-items:start!important;
+  gap:14px!important;
+  width:100%!important;
+  min-width:0!important;
+}
+#adminLayer .admin-page[data-page="site"] .admin-grid>label,
+#adminLayer .admin-page[data-page="site"] .admin-grid>.wide{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  justify-content:flex-start!important;
+  grid-column:auto!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  writing-mode:horizontal-tb!important;
+}
+#adminLayer .admin-page[data-page="site"] .admin-grid>.wide{grid-column:1/-1!important}
+#adminLayer .admin-page[data-page="site"] .admin-grid input:not([type="color"]):not([type="range"]),
+#adminLayer .admin-page[data-page="site"] .admin-grid select,
+#adminLayer .admin-page[data-page="site"] .admin-grid textarea{
+  display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;
+  height:auto!important;min-height:44px!important;box-sizing:border-box!important;
+}
+#adminLayer .admin-page[data-page="site"] .admin-grid input[type="color"]{
+  display:block!important;width:100%!important;max-width:100%!important;height:48px!important;
+  min-height:48px!important;padding:4px!important;box-sizing:border-box!important;
+}
+#adminLayer .admin-page[data-page="site"] .admin-grid input[type="range"]{width:100%!important;min-width:0!important}
+@media(max-width:720px){
+  #adminLayer .admin-page[data-page="site"]{padding:12px!important;margin:0!important}
+  #adminLayer .admin-page[data-page="site"] .admin-grid{grid-template-columns:minmax(0,1fr)!important;gap:12px!important}
+  #adminLayer .admin-page[data-page="site"] .admin-grid>label,
+  #adminLayer .admin-page[data-page="site"] .admin-grid>.wide{grid-column:1!important}
+}
