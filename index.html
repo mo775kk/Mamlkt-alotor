@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site-unified.css?v=20261028-royal-amethyst-07">
-  <link rel="stylesheet" href="royal-amethyst-07.css?v=20261028-full-redesign-07">
+
   <script src="theme-persistence.js?v=20261028-royal-amethyst-07"></script>
 
   <!-- ====== ROYAL CINEMATIC v3.0 — التصميم الحديث ====== -->
@@ -69,6 +69,29 @@
       });
     })();
   </script>
+
+  <script>
+    (() => {
+      const keepRoyalAmethystLast = () => {
+        const link = document.querySelector('link[rel="stylesheet"][href*="royal-amethyst-07.css"]');
+        if (link && document.head.lastElementChild !== link) document.head.appendChild(link);
+      };
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", keepRoyalAmethystLast, { once: true });
+      } else {
+        keepRoyalAmethystLast();
+      }
+      if ("MutationObserver" in window && document.head) {
+        const observer = new MutationObserver(() => {
+          const link = document.querySelector('link[rel="stylesheet"][href*="royal-amethyst-07.css"]');
+          if (link && document.head.lastElementChild !== link) document.head.appendChild(link);
+        });
+        observer.observe(document.head, { childList: true });
+      }
+      window.addEventListener("pageshow", keepRoyalAmethystLast);
+    })();
+  </script>
+    <link rel="stylesheet" href="royal-amethyst-07.css?v=20261028-full-redesign-07">
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
