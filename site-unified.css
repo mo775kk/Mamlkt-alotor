@@ -673,65 +673,38 @@ button,input,select,textarea{max-width:100%;min-width:0}
 }
 
 
-/* CLEAN RESET 2026-10-27: remove preset/color customization UI and neutralize legacy theme styling. */
-#adminLayer #cfgVisualStyle,
-#adminLayer #cfgPreset,
-#adminLayer #cfgMobileDesign,
-#adminLayer #cfgWebDesign,
-#adminLayer #cfgIndexBg,
-#adminLayer #cfgIndexCard,
-#adminLayer #cfgIndexIcon,
-#adminLayer #cfgIndexBorder,
-#adminLayer #cfgBg,
-#adminLayer #cfgPanel,
-#adminLayer #cfgPanel2,
-#adminLayer #cfgCard,
-#adminLayer #cfgField,
-#adminLayer #cfgGold,
-#adminLayer #cfgGold2,
-#adminLayer #cfgText,
-#adminLayer #cfgHeading,
-#adminLayer #cfgMuted,
-#adminLayer #cfgLine,
-#adminLayer #cfgHeader,
-#adminLayer #cfgFooter,
-#adminLayer #cfgButton,
-#adminLayer #cfgButtonText,
-#adminLayer #cfgBackgroundImage,
-#adminLayer #cfgOverlay{display:none!important}
-#adminLayer label:has(>#cfgVisualStyle),
-#adminLayer label:has(>#cfgPreset),
-#adminLayer label:has(>#cfgMobileDesign),
-#adminLayer label:has(>#cfgWebDesign),
-#adminLayer label:has(>#cfgIndexBg),
-#adminLayer label:has(>#cfgIndexCard),
-#adminLayer label:has(>#cfgIndexIcon),
-#adminLayer label:has(>#cfgIndexBorder),
-#adminLayer label:has(>#cfgBg),
-#adminLayer label:has(>#cfgPanel),
-#adminLayer label:has(>#cfgPanel2),
-#adminLayer label:has(>#cfgCard),
-#adminLayer label:has(>#cfgField),
-#adminLayer label:has(>#cfgGold),
-#adminLayer label:has(>#cfgGold2),
-#adminLayer label:has(>#cfgText),
-#adminLayer label:has(>#cfgHeading),
-#adminLayer label:has(>#cfgMuted),
-#adminLayer label:has(>#cfgLine),
-#adminLayer label:has(>#cfgHeader),
-#adminLayer label:has(>#cfgFooter),
-#adminLayer label:has(>#cfgButton),
-#adminLayer label:has(>#cfgButtonText){display:none!important}
-#adminLayer .theme-palette-heading{display:none!important}
+
+
+/* Neutral appearance reset — canonical variables used by the original stylesheet. */
 :root{
  --bg:#fff!important;--panel:#fff!important;--panel2:#f5f5f5!important;
- --card:#fff!important;--field:#fff!important;--text:#202124!important;
- --heading:#202124!important;--muted:#5f6368!important;--line:#dadce0!important;
- --header:#fff!important;--footer:#f5f5f5!important;
- --gold:#4b5563!important;--gold2:#6b7280!important;
- --button:#343a40!important;--buttonText:#fff!important;
- --indexBg:#fff!important;--indexCard:#fff!important;
- --indexIcon:#f1f3f4!important;--indexBorder:#dadce0!important;
+ --card:#fff!important;--field:#fff!important;--gold:#4b5563!important;--gold2:#374151!important;
+ --text:#202124!important;--heading:#202124!important;--muted:#5f6368!important;--line:#dadce0!important;
+ --header-bg:#fff!important;--footer-bg:#f5f5f5!important;--button-bg:#343a40!important;--button-text:#fff!important;
+ --index-bg:#fff!important;--index-card:#fff!important;--index-icon:#4b5563!important;--index-border:#dadce0!important;
+ --page-image:none!important;--bg-overlay:0!important;
 }
-body{background:#fff!important;color:#202124!important}
-#adminLayer .admin-note{color:#5f6368!important}
+html,body{background:#fff!important;color:#202124!important}
+.site-header,.site-footer{background:#fff!important;color:#202124!important;border-color:#dadce0!important}
+.eyebrow,.brand-crown,.brand small,.main-nav a:hover,.main-nav a.active,.hero h1 span,.feature-copy h2 span,
+.hero-pagination i,.hero-note span,.hero-next,.icon-btn,.btn-outline{color:#4b5563!important}
+.btn,.icon-btn{border-color:#dadce0!important}
+.btn-gold{background:#343a40!important;color:#fff!important;border-color:#343a40!important}
+.btn-outline,.icon-btn{background:#fff!important}
+.counter{background:#e5e7eb!important;color:#202124!important}
+#adminLayer .theme-palette-heading,
+#adminLayer #cfgVisualStyle,#adminLayer #cfgPreset,#adminLayer #cfgMobileDesign,#adminLayer #cfgWebDesign,
+#adminLayer #cfgIndexBg,#adminLayer #cfgIndexCard,#adminLayer #cfgIndexIcon,#adminLayer #cfgIndexBorder,
+#adminLayer #cfgBg,#adminLayer #cfgPanel,#adminLayer #cfgPanel2,#adminLayer #cfgCard,#adminLayer #cfgField,
+#adminLayer #cfgGold,#adminLayer #cfgGold2,#adminLayer #cfgText,#adminLayer #cfgHeading,#adminLayer #cfgMuted,
+#adminLayer #cfgLine,#adminLayer #cfgHeader,#adminLayer #cfgFooter,#adminLayer #cfgButton,#adminLayer #cfgButtonText,
+#adminLayer #cfgBackgroundImage,#adminLayer #cfgOverlay{display:none!important}
+#adminLayer label:has(>#cfgVisualStyle),#adminLayer label:has(>#cfgPreset),
+#adminLayer label:has(>#cfgMobileDesign),#adminLayer label:has(>#cfgWebDesign),
+#adminLayer label:has(>#cfgIndexBg),#adminLayer label:has(>#cfgIndexCard),
+#adminLayer label:has(>#cfgIndexIcon),#adminLayer label:has(>#cfgIndexBorder),
+#adminLayer label:has(>#cfgBg),#adminLayer label:has(>#cfgPanel),#adminLayer label:has(>#cfgPanel2),
+#adminLayer label:has(>#cfgCard),#adminLayer label:has(>#cfgField),#adminLayer label:has(>#cfgGold),
+#adminLayer label:has(>#cfgGold2),#adminLayer label:has(>#cfgText),#adminLayer label:has(>#cfgHeading),
+#adminLayer label:has(>#cfgMuted),#adminLayer label:has(>#cfgLine),#adminLayer label:has(>#cfgHeader),
+#adminLayer label:has(>#cfgFooter),#adminLayer label:has(>#cfgButton),#adminLayer label:has(>#cfgButtonText){display:none!important}
