@@ -454,9 +454,9 @@ try {
   const css = read("site-unified.css");
   const pages = read("section-pages.js");
   const settings = read("settings.js");
-  report(html.includes('data-theme="light"') && css.includes("MAMLKAT AL-OTOR — unified design system v4") &&
-    css.includes("--bg:#0A0A0A") && css.includes("--gold:#586B7A") && css.includes("--heading:#263541") && (css.match(/Original source:/g)||[]).length===1 && css.includes("background-image:none!important") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
-    "Unified storefront palette uses neutral colors and removes accumulated legacy stylesheet layers");
+  report(html.includes('data-theme="dark"') && css.includes("MAMLKAT AL-OTOR — unified design system v4") &&
+    css.includes("--bg:#0A0A0A") && css.includes("--gold:#D4AF37") && css.includes("--heading:#F1D77A") && (css.match(/Original source:/g)||[]).length===1 && css.includes("background-image:none!important") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
+    "Unified storefront uses the approved royal black-and-gold palette and has no accumulated legacy stylesheet layers");
   report(/assets\/js\/site-sections\.bundle\.js\?v=[^"]+/.test(html) &&
     pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
     html.includes('id="modalBackdrop"'),
