@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site-unified.css?v=20261027-royal-palette-v1">
+  <link rel="stylesheet" href="site-unified.css?v=20261027-royal-ad-v1">
   <script src="theme-persistence.js?v=20261027-royal-palette-v1"></script>
 
   <!-- ====== ROYAL CINEMATIC v3.0 — التصميم الحديث ====== -->
@@ -63,7 +63,7 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261026-dom-guards-v4').catch(error => console.warn('Service worker registration failed:', error));
+          navigator.serviceWorker.register('./sw.js?v=20261027-royal-ad-v1').catch(error => console.warn('Service worker registration failed:', error));
         }
       });
     })();
@@ -124,6 +124,26 @@
       <div><span class="line-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 17l9 8 7-14 7 14 9-8-4 20H12L8 17Z"/><path d="M13 42h22"/></svg></span><span><b>ذوق ملكي</b><small>اختيارات لكل شخصية</small></span></div>
       <div><span class="line-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M19 6h10v8l5 5v22H14V19l5-5V6Z"/><path d="M19 10h10M18 25h12M18 31h12"/></svg></span><span><b>خيارات متنوعة</b><small>جاهز، زيت وتركيب</small></span></div>
       <div><span class="line-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M9 8h30v25H24l-10 7v-7H9V8Z"/><path d="M16 17h16M16 24h11"/></svg></span><span><b>طلب سهل</b><small>تواصل مباشر عبر واتساب</small></span></div>
+    </section>
+
+    <!-- البانر الدعائي الملكي -->
+    <section class="royal-ad" id="royalAd" aria-labelledby="royalAdTitle">
+      <img class="royal-ad-image" src="assets/images/royal-hero.jpg" alt="زجاجة عطر في أجواء ملكية داكنة بتفاصيل ذهبية" loading="lazy" width="1600" height="900">
+      <div class="royal-ad-shade" aria-hidden="true"></div>
+      <div class="royal-ad-copy">
+        <p class="royal-ad-badge">♛ مملكة العطور · الإسكندرية</p>
+        <h2 id="royalAdTitle">ادخل المملكة... <span>واختر عطرًا يليق بك</span></h2>
+        <p class="royal-ad-intro">اكتشف مجموعتك العطرية واختر ما يناسب ذوقك، مع تفاصيل واضحة قبل تأكيد الطلب.</p>
+        <ul class="royal-ad-benefits" aria-label="خدمات المتجر">
+          <li><span aria-hidden="true">❖</span> عطور جاهزة متنوعة</li>
+          <li><span aria-hidden="true">❖</span> زيوت عطرية وخدمة تركيب</li>
+          <li><span aria-hidden="true">❖</span> تواصل مباشر لتأكيد التفاصيل</li>
+        </ul>
+        <div class="royal-ad-actions">
+          <a class="btn btn-gold" href="https://wa.me/201272776928?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%B9%D8%B7%D9%88%D8%B1%20%D9%85%D9%85%D9%84%D9%83%D8%A9%20%D8%A7%D9%84%D8%B9%D8%B7%D9%88%D8%B1">اطلب عبر واتساب</a>
+          <a class="btn btn-outline" href="#ready">تصفح العطور</a>
+        </div>
+      </div>
     </section>
 
     <!-- فهرس المملكة -->

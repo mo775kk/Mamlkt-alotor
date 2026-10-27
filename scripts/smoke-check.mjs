@@ -40,6 +40,11 @@ try {
     "Storefront exposes an install-app action");
   report(html.includes('id="cartShortcut"') && html.includes('id="cartCount"') && html.includes('id="cartShortcutIndex"') && html.includes('id="cartCountIndex"'),
     "Cart is available in the primary header and index, with distinct quantity counters");
+  const royalAdStart = html.indexOf('id="royalAd"');
+  const trustStripEnd = html.indexOf("</section>", html.indexOf('class="trust-strip"'));
+  const homeIndexStart = html.indexOf('id="homeIndex"');
+  report(royalAdStart > trustStripEnd && royalAdStart < homeIndexStart && html.includes('class="royal-ad-image"') && html.includes('href="https://wa.me/201272776928') && html.includes('loading="lazy"'),
+    "Royal promotional banner follows the trust strip and precedes the index with descriptive lazy-loaded imagery and WhatsApp CTA");
   report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes('addEventListener("fetch"'),
     "PWA service worker is registered and handles requests");
   report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#0A0A0A",
@@ -562,11 +567,11 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261026-dom-guards-v4')");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261027-royal-ad-v1')");
   report(html.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v4") && worker.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v4"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v91-20261026-dom-guards-v4") &&
-    worker.includes("site-unified.css?v=20261025-section-reading-panels-v1") &&
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v92-20261027-royal-ad-v1") &&
+    worker.includes("site-unified.css?v=20261027-royal-ad-v1") &&
     worker.includes("assets/js/site-catalog.bundle.js?v=20261026-dom-guards-v4"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
 } catch (e) {
