@@ -1,0 +1,67 @@
+/* MAMLKAT AL-OTOR — Design 06: Perfume Lab
+   Single replacement theme. Structural layout remains in site-unified.css.
+   Palette: obsidian black, graphite surfaces, restrained champagne gold. */
+:root{
+ --bg:#0b0b0b;--panel:#121212;--panel2:#1b1b1b;--card:#141414;--field:#101010;
+ --gold:#c5a45b;--gold2:#ead49a;--text:#f2eee5;--heading:#f5e8c7;--muted:#bdb6a6;
+ --line:rgba(197,164,91,.28);--radius:12px;--shadow:0 12px 32px rgba(0,0,0,.38);
+ --header-bg:#0b0b0b;--footer-bg:#0b0b0b;--button-bg:#c5a45b;--button-text:#111;
+ --index-bg:#0b0b0b;--index-card:#141414;--index-icon:#d6b96f;--index-border:#69572e;color-scheme:dark;
+}
+html{background:#0b0b0b;scroll-padding-top:84px}
+body{background:#0b0b0b;color:var(--text);font-family:"Tajawal",sans-serif}
+::selection{background:#c5a45b;color:#111}
+:focus-visible{outline:2px solid #ead49a;outline-offset:3px}
+.site-header{background:rgba(11,11,11,.97);border-bottom:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.25);backdrop-filter:blur(12px)}
+.brand-crown,.line-icon,.hero-note span{color:var(--gold)}
+.brand strong{color:#f5f0e4}
+.brand small,.eyebrow{color:var(--gold2)}
+.main-nav a:hover,.main-nav a.active{color:var(--gold2)}
+.main-nav a:after{background:var(--gold)}
+.icon-btn{border-radius:8px;border-color:var(--line);color:var(--gold2);background:#111}
+.icon-btn:hover{background:#211d14;border-color:var(--gold)}
+.counter{background:var(--gold);color:#111;box-shadow:0 0 0 2px #0b0b0b}
+.hero{background:#0b0b0b;border-bottom:1px solid var(--line)}
+.hero-shade{background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.72) 42%,rgba(0,0,0,.15) 100%),linear-gradient(0deg,rgba(0,0,0,.45),transparent 50%)}
+.hero h1,.section-heading h2,.contact-card h2,.gift-copy h2,.feature-copy h2{color:#f4eee0}
+.hero h1 span,.feature-copy h2 span{color:var(--gold2)}
+.btn{border-radius:7px;border-color:var(--gold)}
+.btn-gold{background:linear-gradient(120deg,#b38e3f,#ead49a 55%,#b38e3f);color:#15120a}
+.btn-outline{color:var(--gold2);background:#101010}
+.btn-outline:hover{background:#211d14}
+.trust-strip{background:#111;border-color:var(--line)}
+.category-card,.product-card,.home-index-card,.feature-card,.contact-card,.gift-card,.editorial-card{
+ background:#141414;border-color:var(--line);box-shadow:0 8px 24px rgba(0,0,0,.2);border-radius:10px;
+}
+.category-card:before{border-color:rgba(197,164,91,.12);box-shadow:0 0 0 20px rgba(197,164,91,.018),0 0 0 40px rgba(197,164,91,.012)}
+.category-card:hover,.product-card:hover,.home-index-card:hover{border-color:#c5a45b;box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.home-index-icon,.category-icon-wrap,.royal-category-icon{color:var(--gold2)}
+.product-visual{background:#0f0f0f}
+.product-visual img,.product-visual .product-photo{object-fit:contain}
+.product-price,.price,.product-card strong{color:var(--gold2)}
+input,select,textarea{background:#101010;color:var(--text);border-color:var(--line);accent-color:var(--gold)}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);outline-color:var(--gold)}
+.site-footer,footer{background:#090909;border-top:1px solid var(--line)}
+/* Lab-oriented emphasis: clear work panels, tables and cost summaries. */
+.admin-panel,.settings-panel,.inventory-panel,.report-panel,.blend-panel,.calculator-panel,.cost-summary,.summary-card{
+ background:#141414;border:1px solid var(--line);border-radius:10px;
+}
+table th{background:#1b1b1b;color:var(--gold2)}
+table td,table th{border-color:rgba(197,164,91,.18)}
+@media(max-width:760px){
+ .site-header{height:64px;padding-inline:12px;gap:8px}
+ .brand strong{font-size:17px}
+ .brand-crown{font-size:26px}
+ .hero{min-height:clamp(310px,78vw,470px)}
+ .hero-copy{width:min(100%,560px);padding:42px 20px}
+ .hero h1{font-size:clamp(29px,8vw,42px)}
+ .section{width:calc(100% - 28px);padding:44px 0}
+ .category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .category-card{min-height:150px;padding:13px}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .product-visual{aspect-ratio:1/1}
+}
+@media(min-width:761px) and (max-width:1024px){
+ .category-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}

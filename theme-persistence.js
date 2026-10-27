@@ -14,13 +14,13 @@
   function luminance(hex){const z=String(hex).replace("#","");const f=z.length===3?z.split("").map(c=>c+c).join(""):z;const c=[0,2,4].map(i=>parseInt(f.slice(i,i+2),16)/255).map(n=>n<=.04045?n/12.92:Math.pow((n+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]}
   function applyTheme(){
     const root=document.documentElement;
-    /* Design 08 — neutral graphite with a restrained amethyst accent. */
+    /* Design 06 — perfume lab: graphite black, restrained champagne gold. */
     const mode=(()=>{try{return localStorage.getItem(MODE_KEY)==="light"?"light":"dark"}catch(_){return "dark"}})();
     const royalAmethyst={
-      "--bg":"#17151a","--panel":"#242129","--panel2":"#302b35","--card":"#242129","--field":"#1d1a21",
-      "--gold":"#b9a4cf","--gold2":"#eee8f3","--text":"#f5f2f7","--heading":"#f1eaf5","--muted":"#c7bfcc",
-      "--line":"rgba(185,164,207,.24)","--header-bg":"#17151a","--footer-bg":"#17151a","--button-bg":"#78658d",
-      "--button-text":"#ffffff","--index-bg":"#17151a","--index-card":"#242129","--index-icon":"#c6b3d9","--index-border":"#756184",
+      "--bg":"#0b0b0b","--panel":"#121212","--panel2":"#1b1b1b","--card":"#141414","--field":"#101010",
+      "--gold":"#c5a45b","--gold2":"#ead49a","--text":"#f2eee5","--heading":"#f5e8c7","--muted":"#bdb6a6",
+      "--line":"rgba(197,164,91,.28)","--header-bg":"#0b0b0b","--footer-bg":"#0b0b0b","--button-bg":"#c5a45b",
+      "--button-text":"#111111","--index-bg":"#0b0b0b","--index-card":"#141414","--index-icon":"#d6b96f","--index-border":"#69572e",
       "--page-image":"none","--bg-overlay":"0"
     };
     Object.entries(royalAmethyst).forEach(([name,value])=>root.style.setProperty(name,value));
@@ -28,7 +28,7 @@
     root.removeAttribute("data-web-design");
     root.removeAttribute("data-mobile-design");
     root.setAttribute("data-theme",mode);
-    root.setAttribute("data-visual-style","royal-amethyst-07");
+    root.setAttribute("data-visual-style","design-06-lab");
     root.style.colorScheme=mode;
     const meta=document.querySelector('meta[name="theme-color"]');
     if(meta)meta.setAttribute("content","#100719");
