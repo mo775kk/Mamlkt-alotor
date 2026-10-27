@@ -53,7 +53,7 @@ try {
   report(themeBootstrap.includes('gold:"#D4AF37"') && !themeBootstrap.includes('["gold","gold2","button","indexIcon","indexBorder"].includes(key)&&isGoldTone(theme[key])'), "Royal gold palette is accepted by theme persistence instead of being neutralized");
   report(html.includes('data-theme="dark"') && read("site-unified.css").includes("--bg:#0A0A0A") && read("site-unified.css").includes("--gold:#D4AF37"), "Default storefront palette is royal black and gold");
 
-  report(html.indexOf('royal-amethyst-07.css?v=20261028-full-redesign-07') > html.indexOf('</body>') - 1000000 && html.includes('new MutationObserver') && html.includes('keepRoyalAmethystLast'),
+  report(html.indexOf('royal-amethyst-07.css?v=20261028-full-redesign-07') > html.indexOf('keepRoyalAmethystLast') && html.indexOf('royal-amethyst-07.css?v=20261028-full-redesign-07') < html.indexOf('</head>') && html.includes('new MutationObserver'),
     "Royal Amethyst 07 stylesheet is reasserted after late theme/style injections");
   const redesignCss = read("royal-amethyst-07.css");
   report(html.includes('royal-amethyst-07.css?v=20261028-full-redesign-07') &&
