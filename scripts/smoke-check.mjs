@@ -599,7 +599,7 @@ try {
     source.includes('if($("#cartDrawer")?.classList.contains("open"))renderCart();') &&
     source.includes('if(!modalContent||!modal){notify("تفاصيل المنتج غير متاحة في هذه الصفحة.");return;}') &&
     source.includes('function closeDrawer(){ const drawer=$("#cartDrawer"),backdrop=$("#drawerBackdrop");') &&
-    source.includes('const speakButton=$("#speakDetails");if(speakButton)speakButton.onclick='
+    source.includes('const speakButton=$("#speakDetails");if(speakButton)speakButton.onclick=')
   ), "Core storefront product rendering, cart drawer and modal tolerate missing optional DOM elements");
   const adminSource = read("assets/js/site-admin.bundle.js");
   const settingsSource = read("settings.js");
