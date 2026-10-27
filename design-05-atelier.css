@@ -229,44 +229,31 @@ a{ text-underline-offset:3px }
 }
 
 
-/* Circular planetary directory: responsive, separated orbits with clear touch targets */
+/* Unified solar system motion: Sun rotates gently, Earth and planets orbit together */
 .home-index-section .solar-system{
   position:relative!important;
-  width:min(96vw,980px)!important;
-  height:auto!important;
-  aspect-ratio:1/1!important;
-  margin:30px auto 40px!important;
-  overflow:hidden!important;
-  border-radius:50%!important;
-  isolation:isolate;
-  container-type:inline-size;
+  width:min(96vw,980px)!important;height:auto!important;aspect-ratio:1/1!important;
+  margin:30px auto 40px!important;overflow:hidden!important;border-radius:50%!important;
+  isolation:isolate;container-type:inline-size;
 }
-.home-index-section .solar-orbit-outer{
+.home-index-section .solar-orbit-outer,.home-index-section .solar-orbit-inner{
   position:absolute!important;left:50%!important;top:50%!important;
-  width:72%!important;height:auto!important;aspect-ratio:1/1!important;
-  transform:translate(-50%,-50%)!important;border-radius:50%!important;
-  pointer-events:none!important;
+  height:auto!important;aspect-ratio:1/1!important;border-radius:50%!important;
+  transform:translate(-50%,-50%)!important;pointer-events:none!important;
 }
-.home-index-section .solar-orbit-inner{
-  position:absolute!important;left:50%!important;top:50%!important;
-  width:48%!important;height:auto!important;aspect-ratio:1/1!important;
-  transform:translate(-50%,-50%)!important;border-radius:50%!important;
-  pointer-events:none!important;
-}
+.home-index-section .solar-orbit-outer{width:72%!important;animation:solarOrbitSpin 120s linear infinite!important}
+.home-index-section .solar-orbit-inner{width:48%!important;animation:solarOrbitSpin 72s linear infinite reverse!important}
 .home-index-section .home-index-card{
   position:absolute!important;left:50%!important;top:50%!important;
   width:clamp(72px,10cqw,100px)!important;height:auto!important;min-height:0!important;
-  aspect-ratio:1/1!important;border-radius:50%!important;
-  padding:7px!important;gap:4px!important;overflow:visible!important;
-  margin:0!important;z-index:3;cursor:pointer;touch-action:manipulation;
-  --planet-orbit-radius:27cqw;
+  aspect-ratio:1/1!important;border-radius:50%!important;padding:7px!important;gap:4px!important;
+  overflow:visible!important;margin:0!important;z-index:3;cursor:pointer;touch-action:manipulation;
   transform:translate(-50%,-50%) rotate(var(--planet-angle)) translateY(calc(-1 * var(--planet-orbit-radius))) rotate(calc(var(--planet-angle)*-1))!important;
-  animation:solarPlanetCounter 60s linear infinite!important;
-  will-change:transform;
+  animation:solarPlanetCounter 60s linear infinite!important;will-change:transform;
 }
 .home-index-section .home-index-card:after{
-  width:76%!important;height:76%!important;border-radius:50%!important;
-  transform:none!important;pointer-events:none!important;
+  width:76%!important;height:76%!important;border-radius:50%!important;transform:none!important;
+  pointer-events:none!important;
 }
 .home-index-section .home-index-card:nth-child(odd){--planet-orbit-radius:27cqw;animation-duration:60s!important}
 .home-index-section .home-index-card:nth-child(even){--planet-orbit-radius:35cqw;animation-duration:90s!important}
@@ -284,8 +271,13 @@ a{ text-underline-offset:3px }
 .home-index-section .home-index-icon{flex:0 0 auto;pointer-events:none}
 .home-index-section .solar-sun{
   width:17%!important;height:auto!important;aspect-ratio:1/1!important;border-radius:50%!important;
-  z-index:4;pointer-events:none;
+  z-index:4;pointer-events:auto;transform-origin:center center;
+  animation:solarSunMotion 28s linear infinite, sunBreath 5s ease-in-out infinite!important;
 }
+.home-index-section .solar-sun:before{animation:solarSunHalo 8s ease-in-out infinite!important}
+@keyframes solarOrbitSpin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes solarSunMotion{from{rotate:0deg}to{rotate:360deg}}
+@keyframes solarSunHalo{0%,100%{opacity:.55;scale:1}50%{opacity:1;scale:1.07}}
 @media(max-width:700px){
  .home-index-section .solar-system{width:min(96vw,590px)!important;margin:20px auto 28px!important}
  .home-index-section .solar-orbit-outer{width:72%!important}
@@ -303,5 +295,5 @@ a{ text-underline-offset:3px }
  .home-index-section .home-index-copy strong{font-size:clamp(7px,2cqw,8px)!important}
 }
 @media(prefers-reduced-motion:reduce){
- .home-index-section .home-index-card,.home-index-section .solar-sun,.home-index-section .solar-system:before{animation:none!important}
+ .home-index-section .home-index-card,.home-index-section .solar-orbit-inner,.home-index-section .solar-orbit-outer,.home-index-section .solar-sun,.home-index-section .solar-system:before{animation:none!important}
 }
