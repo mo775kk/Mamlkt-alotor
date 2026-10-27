@@ -229,53 +229,73 @@ a{ text-underline-offset:3px }
 }
 
 
-/* Spacious solar directory: larger circular stage and clear planet separation */
+/* Circular planetary directory: true round stage, round planets, concentric circular orbits */
 .home-index-section .solar-system{
-  width:min(100%,1000px)!important;
-  height:820px!important;
-  margin:34px auto 44px!important;
+  width:min(94vw,900px)!important;
+  height:auto!important;
+  aspect-ratio:1/1!important;
+  margin:32px auto 42px!important;
   overflow:hidden!important;
-  border-radius:34px!important;
+  border-radius:50%!important;
+  isolation:isolate;
 }
-.home-index-section .solar-orbit-outer{width:740px!important;height:740px!important}
-.home-index-section .solar-orbit-inner{width:500px!important;height:500px!important}
+.home-index-section .solar-orbit-outer{
+  width:82%!important;height:auto!important;aspect-ratio:1/1!important;
+  border-radius:50%!important;
+}
+.home-index-section .solar-orbit-inner{
+  width:56%!important;height:auto!important;aspect-ratio:1/1!important;
+  border-radius:50%!important;
+}
 .home-index-section .home-index-card{
-  width:108px!important;min-height:108px!important;
-  padding:9px!important;gap:5px!important;
+  width:100px!important;height:100px!important;min-height:100px!important;
+  aspect-ratio:1/1!important;border-radius:50%!important;
+  padding:8px!important;gap:4px!important;
+  overflow:visible!important;
 }
-.home-index-section .home-index-card:nth-child(1){--planet-orbit-radius:292px}
-.home-index-section .home-index-card:nth-child(2){--planet-orbit-radius:338px}
-.home-index-section .home-index-card:nth-child(3){--planet-orbit-radius:310px}
-.home-index-section .home-index-card:nth-child(4){--planet-orbit-radius:354px}
-.home-index-section .home-index-card:nth-child(5){--planet-orbit-radius:322px}
-.home-index-section .home-index-card:nth-child(6){--planet-orbit-radius:344px}
-.home-index-section .home-index-card:nth-child(7){--planet-orbit-radius:300px}
-.home-index-section .home-index-card:nth-child(8){--planet-orbit-radius:360px}
-.home-index-section .home-index-card:nth-child(9){--planet-orbit-radius:330px}
-.home-index-section .home-index-card:nth-child(10){--planet-orbit-radius:346px}
-.home-index-section .home-index-copy strong{font-size:12px!important;line-height:1.4!important}
-.home-index-section .solar-sun{width:174px!important;height:174px!important}
+.home-index-section .home-index-card:after{
+  width:76%!important;height:76%!important;
+  border-radius:50%!important;transform:none!important;
+}
+.home-index-section .home-index-card:nth-child(1){--planet-orbit-radius:29%}
+.home-index-section .home-index-card:nth-child(2){--planet-orbit-radius:35%}
+.home-index-section .home-index-card:nth-child(3){--planet-orbit-radius:31%}
+.home-index-section .home-index-card:nth-child(4){--planet-orbit-radius:37%}
+.home-index-section .home-index-card:nth-child(5){--planet-orbit-radius:32.5%}
+.home-index-section .home-index-card:nth-child(6){--planet-orbit-radius:35.5%}
+.home-index-section .home-index-card:nth-child(7){--planet-orbit-radius:30%}
+.home-index-section .home-index-card:nth-child(8){--planet-orbit-radius:37.5%}
+.home-index-section .home-index-card:nth-child(9){--planet-orbit-radius:33.5%}
+.home-index-section .home-index-card:nth-child(10){--planet-orbit-radius:36%}
+.home-index-section .home-index-copy strong{font-size:11px!important;line-height:1.3!important}
+.home-index-section .solar-sun{
+  width:18%!important;height:auto!important;aspect-ratio:1/1!important;
+  border-radius:50%!important;
+}
 @media(max-width:700px){
  .home-index-section .solar-system{
-   width:100%!important;height:650px!important;margin:20px auto 28px!important;
-   border-radius:22px!important;
+   width:min(96vw,590px)!important;aspect-ratio:1/1!important;
+   height:auto!important;margin:20px auto 28px!important;border-radius:50%!important;
  }
- .home-index-section .solar-orbit-outer{width:520px!important;height:520px!important}
- .home-index-section .solar-orbit-inner{width:350px!important;height:350px!important}
- .home-index-section .home-index-card{width:78px!important;min-height:78px!important;padding:5px!important;gap:3px!important}
- .home-index-section .home-index-card:nth-child(n){--planet-orbit-radius:218px}
- .home-index-section .home-index-card:nth-child(1),.home-index-section .home-index-card:nth-child(4),.home-index-section .home-index-card:nth-child(8){--planet-orbit-radius:238px}
- .home-index-section .home-index-copy strong{font-size:9px!important;line-height:1.3!important}
- .home-index-section .home-index-card:after{width:88px!important;height:21px!important}
- .home-index-section .solar-sun{width:106px!important;height:106px!important}
- .home-index-section .solar-sun span{font-size:32px!important}
+ .home-index-section .solar-orbit-outer{width:84%!important}
+ .home-index-section .solar-orbit-inner{width:57%!important}
+ .home-index-section .home-index-card{
+   width:14%!important;height:auto!important;min-height:0!important;
+   aspect-ratio:1/1!important;padding:4px!important;gap:2px!important;
+ }
+ .home-index-section .home-index-card:nth-child(n){--planet-orbit-radius:34%}
+ .home-index-section .home-index-card:nth-child(1),.home-index-section .home-index-card:nth-child(4),.home-index-section .home-index-card:nth-child(8){--planet-orbit-radius:38%}
+ .home-index-section .home-index-copy strong{font-size:clamp(7px,2.1vw,10px)!important;line-height:1.15!important}
+ .home-index-section .home-index-card:after{width:78%!important;height:78%!important}
+ .home-index-section .solar-sun{width:18%!important;height:auto!important;aspect-ratio:1/1!important}
+ .home-index-section .solar-sun span{font-size:clamp(22px,7vw,34px)!important}
 }
 @media(max-width:390px){
- .home-index-section .solar-system{height:590px!important}
- .home-index-section .solar-orbit-outer{width:450px!important;height:450px!important}
- .home-index-section .solar-orbit-inner{width:300px!important;height:300px!important}
- .home-index-section .home-index-card{width:70px!important;min-height:70px!important}
- .home-index-section .home-index-card:nth-child(n){--planet-orbit-radius:194px}
- .home-index-section .home-index-card:nth-child(4),.home-index-section .home-index-card:nth-child(8){--planet-orbit-radius:207px}
- .home-index-section .home-index-copy strong{font-size:8.5px!important}
+ .home-index-section .home-index-card{width:15%!important}
+ .home-index-section .home-index-card:nth-child(n){--planet-orbit-radius:33%}
+ .home-index-section .home-index-card:nth-child(4),.home-index-section .home-index-card:nth-child(8){--planet-orbit-radius:37%}
+ .home-index-section .home-index-copy strong{font-size:7.5px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .home-index-section .home-index-card,.home-index-section .solar-sun,.home-index-section .solar-system:before{animation:none!important}
 }
