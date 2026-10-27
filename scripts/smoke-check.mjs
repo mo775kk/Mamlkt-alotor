@@ -643,3 +643,13 @@ try {
 } catch (e) {
   report(false, "Unable to validate smart catalog search: " + e.message);
 }
+
+try {
+  const app = read("app.js");
+  report(app.includes("function editDistanceAtMostOne(a,b)") &&
+    app.includes("function fuzzyCatalogToken(token, haystackWords)") &&
+    app.includes("return fuzzyCatalogToken(token,words)"),
+    "Catalog search includes conservative one-character typo tolerance for longer query words");
+} catch (e) {
+  report(false, "Unable to validate typo-tolerant search: " + e.message);
+}
