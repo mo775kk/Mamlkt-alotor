@@ -46,7 +46,7 @@ body{background-color:var(--bg);color:var(--text);background-image:linear-gradie
 .site-header{background:rgba(255,252,245,.94);border-bottom:1px solid rgba(181,138,66,.24);box-shadow:0 4px 22px rgba(76,54,25,.06);backdrop-filter:blur(16px)}
 .brand strong,.main-nav a,.icon-btn{color:#3c3226}.brand small{color:#9a7942}.brand-crown,.line-icon,.eyebrow{color:var(--gold)}
 .hero{background:#e5d8c1}.hero-shade{background:linear-gradient(270deg,rgba(38,31,24,.82),rgba(48,38,27,.48) 44%,rgba(48,38,27,.05) 100%)}
-.hero h1,.hero-copy>p:not(.eyebrow),.hero-note{color:#12100C;text-shadow:0 2px 16px rgba(0,0,0,.18)}
+.hero h1,.hero-copy>p:not(.eyebrow),.hero-note{color:#EADFC2;text-shadow:0 2px 16px rgba(0,0,0,.18)}
 .trust-strip{background:#12100C;border-block:1px solid rgba(212,175,55,.16)}.trust-strip b{color:#EADFC2}.trust-strip small{color:#B9AD8D}
 .section-heading h2,.feature-copy h2,.gift-copy h2,.contact-card h2{color:#3e3224}
 .category-card,.product-card,.blend-panel,.advisor-box,.contact-card{background:rgba(255,253,248,.88);border:1px solid rgba(181,138,66,.24);box-shadow:0 10px 32px rgba(88,65,31,.07)}
@@ -54,7 +54,7 @@ body{background-color:var(--bg);color:var(--text);background-image:linear-gradie
 .toolbar input,.toolbar select,.blend-step select,.advisor-form input{background:#12100C;color:#EADFC2;border-color:#5D4B1B}
 .product-visual{background:radial-gradient(ellipse at 50% 42%,#12100Cdf7 0,#1B170F 65%,#12100C 100%)}
 .product-price{color:#D4AF37}.small-btn{border-color:#5D4B1B;color:#EADFC2;background:#12100C}.small-btn.primary,.btn-gold{background:linear-gradient(135deg,#D4AF37,#F1D77A);border-color:#D4AF37;color:#12100C}
-.btn-outline{border-color:#D4AF37;color:#D4AF37;background:rgba(255,255,255,.92)}.btn-outline:hover,.small-btn:hover{background:#1B170F;border-color:#D4AF37;color:#EADFC2}
+.btn-outline{border-color:#D4AF37;color:#D4AF37;background:rgba(18,16,12,.96)}.btn-outline:hover,.small-btn:hover{background:#1B170F;border-color:#D4AF37;color:#EADFC2}
 .split-feature{background:#efe5d4}.feature-copy{color:#4d4031}.feature-copy h2 span{color:#ad8140}
 .feature-banner{background:linear-gradient(100deg,rgba(255,250,240,.95),rgba(255,250,240,.55)),url("assets/images/royal-hero.jpg") center/cover;color:#3e3224}.feature-banner h3,.feature-banner p{color:#3e3224}
 .gift-art{background:radial-gradient(circle at 50% 45%,#f5e8cc,#e5d0a6 55%,#d4b77c);border:1px solid rgba(181,138,66,.35);color:#947039}
@@ -169,7 +169,7 @@ button:disabled,.btn:disabled{opacity:.68;cursor:not-allowed}
 .home-index-image{display:block;position:relative;flex:0 0 clamp(76px,8vw,104px);width:clamp(76px,8vw,104px);height:clamp(76px,8vw,104px);aspect-ratio:1/1;overflow:hidden;border-radius:11px;background:var(--panel2);border:1px solid var(--line);box-shadow:0 3px 10px rgba(20,25,30,.1)}
 .home-index-image .product-photo-stage,.home-index-image>img,.home-index-image .product-photo{display:block;width:100%!important;height:100%!important;min-height:0!important;object-fit:cover!important;object-position:center!important;border-radius:10px}
 .home-index-image .product-photo-stage{position:relative;padding:0!important}
-.home-index-image-label{position:absolute;inset:auto 4px 4px;padding:3px 4px;border-radius:5px;background:rgba(15,24,30,.82);color:#12100C;font-size:9px;line-height:1.3;text-align:center;font-weight:800}
+.home-index-image-label{position:absolute;inset:auto 4px 4px;padding:3px 4px;border-radius:5px;background:rgba(15,24,30,.82);color:#EADFC2;font-size:9px;line-height:1.3;text-align:center;font-weight:800}
 .home-index-image .product-photo-stage .product-image-note,.home-index-image .product-image-note{display:none!important}
 .home-index-copy{display:grid;gap:4px;min-width:0;flex:1}
 .home-index-copy strong{font-size:1.05rem;line-height:1.45;font-weight:850;color:var(--heading)!important}
@@ -261,7 +261,7 @@ button:active,.btn:active,.home-index-card:active{transform:scale(.99)}
 .fragrance-editorial-copy{position:absolute;z-index:2;inset:auto 18px 18px;display:grid;gap:8px;color:#12100C}
 .fragrance-editorial-copy small{font:700 .78rem "Cormorant Garamond",serif;letter-spacing:.12em;color:#12100C}
 .fragrance-editorial-copy strong{font-size:clamp(1.15rem,2vw,1.55rem);line-height:1.45;color:#12100C}
-.fragrance-editorial-copy>span{font-size:.95rem;color:#12100C}
+.fragrance-editorial-copy>span{font-size:.95rem;color:#EADFC2}
 .fragrance-editorial-note{margin:12px 0 0;color:var(--muted);font-size:.85rem;line-height:1.7}
 @media(max-width:760px){.fragrance-editorial-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fragrance-editorial-card{min-height:230px;aspect-ratio:3/4}.fragrance-editorial-card:last-child{grid-column:1/-1;aspect-ratio:16/9;min-height:190px}}
 @media(max-width:390px){.fragrance-editorial-grid{grid-template-columns:minmax(0,1fr)}.fragrance-editorial-card,.fragrance-editorial-card:last-child{grid-column:auto;aspect-ratio:16/10;min-height:190px}.fragrance-editorial-copy{inset:auto 14px 14px}}
@@ -275,7 +275,7 @@ button:active,.btn:active,.home-index-card:active{transform:scale(.99)}
 .product-photo-stage>.image-load-fallback{min-height:0;height:100%}
 .modal-product-image .product-photo-stage>.image-load-fallback{min-height:280px}
 @media(max-width:600px){.product-photo-stage>.image-load-fallback{min-height:0}.modal-product-image .product-photo-stage>.image-load-fallback{min-height:0}}
-.product-photo-stage .product-image-note{position:absolute;inset:auto 8px 8px auto;z-index:2;padding:4px 8px;border:1px solid rgba(255,255,255,.7);border-radius:5px;background:rgba(24,34,40,.78);color:#12100C;font-size:.72rem;line-height:1.4}
+.product-photo-stage .product-image-note{position:absolute;inset:auto 8px 8px auto;z-index:2;padding:4px 8px;border:1px solid rgba(255,255,255,.7);border-radius:5px;background:rgba(24,34,40,.78);color:#EADFC2;font-size:.72rem;line-height:1.4}
 .modal-product-image .product-photo-stage{min-height:280px;border-radius:10px}
 .modal-product-image .product-photo-stage .product-photo{min-height:280px}
 @media(max-width:600px){.product-photo-stage,.product-photo-stage .product-photo{min-height:170px}.modal-product-image .product-photo-stage,.modal-product-image .product-photo-stage .product-photo{min-height:220px}}
