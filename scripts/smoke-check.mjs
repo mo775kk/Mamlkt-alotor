@@ -668,3 +668,19 @@ try {
 } catch (e) {
   report(false, "Unable to validate live catalog bundle: " + e.message);
 }
+
+try {
+  const html = read("index.html");
+  const worker = read("sw.js");
+  const loadedScripts = [...html.matchAll(/<script\\b[^>]*src="([^"]+)"[^>]*>/g)].map(match => match[1]);
+  const precacheScripts = [...worker.matchAll(/BASE_PATH \\+ "([^"]+\\.js\\?v=[^"]+)"/g)].map(match => match[1]);
+  const allLoadedScriptsCached = loadedScripts.every(src => precacheScripts.includes(src));
+  report(allLoadedScriptsCached, "PWA precache contains every versioned JavaScript file loaded by index.html");
+  const cssRef = html.match(/href="([^"]+\\.css\\?v=[^"]+)"/)?.[1];
+  report(Boolean(cssRef && worker.includes('BASE_PATH + "' + cssRef + '"')),
+    "PWA precache CSS URL matches the versioned stylesheet loaded by index.html");
+  report(worker.includes("mamlakat-al-otor-shell-v96-20261027-cache-aligned"),
+    "PWA shell cache version is bumped after asset URL alignment");
+} catch (e) {
+  report(false, "Unable to validate PWA asset cache alignment: " + e.message);
+}
