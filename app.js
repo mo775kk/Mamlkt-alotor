@@ -241,6 +241,39 @@
   const priceFor = p => { const n=p?.price != null ? Number(p.price) : (p?.prices && p.prices["10"] != null ? Number(p.prices["10"]) : null); return Number.isFinite(n) && n>0 ? Math.max(50,n) : null; };
   const escapeHTML = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const norm = s => String(s ?? "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[أإآ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه").replace(/[^\p{L}\p{N}]+/gu," ").trim();
+  // Lightweight bilingual intent expansion for catalog discovery; no external API or secret key required.
+  const catalogIntentGroups = [
+    ["دافئ","دافي","warm","warming","winter","شتاء","للشتاء","عنبر","amber","شرقي","oriental","spicy","توابل","متبل"],
+    ["منعش","انتعاش","fresh","citrus","حمضي","صيف","summer","ليمون","برغموت"],
+    ["حلو","حلاوه","sweet","vanilla","فانيليا","gourmand","سكر","كراميل"],
+    ["خشبي","خشب","woody","wood","عود","oud","صندل","sandalwood","cedar","ارز"],
+    ["زهري","زهور","floral","flower","ورد","rose","ياسمين","jasmine"],
+    ["مسك","مسكي","musk","musky","نظيف","clean","ناعم"],
+    ["بحري","مائي","marine","aquatic","ocean","sea","بحر"],
+    ["جلدي","جلد","leather","تبغ","tobacco","مدخن","smoky"],
+    ["رجالي","رجاليه","men","mens","male","للرجال"],
+    ["نسائي","نسائيه","women","womens","female","للسيدات"],
+    ["للجنسين","يونيسكس","unisex"]
+  ].map(group=>group.map(norm));
+  const catalogStopWords = new Set(["لل","في","من","على","عن","مع","الى","الي","the","for","and","with","a","an","عطر","عطور","perfume","perfumes"]);
+  function matchesCatalogQuery(product, rawQuery) {
+    const query=norm(rawQuery);
+    if(!query)return true;
+    const haystack=norm([
+      product.nameAr,product.nameEn,product.brand,product.referenceHouse,product.referenceHouseAr,
+      product.referenceSearchName,...(product.referenceSearchAliases||[]),product.family,
+      product.scentNature,product.descriptionAr,product.gender,
+      ...(product.topNotes||[]),...(product.heartNotes||[]),...(product.baseNotes||[])
+    ].join(" "));
+    if(haystack.includes(query))return true;
+    const tokens=query.split(" ").filter(t=>t.length>1&&!catalogStopWords.has(t));
+    if(!tokens.length)return haystack.includes(query);
+    // Each meaningful query token must match either directly or through a known scent-intent synonym.
+    return tokens.every(token=>{
+      const group=catalogIntentGroups.find(items=>items.some(item=>item===token||item.startsWith(token)||token.startsWith(item)));
+      return (group||[token]).some(term=>haystack.includes(term));
+    });
+  }
   function save(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { notify("تعذر الحفظ في هذا المتصفح. صدّر نسخة احتياطية إن أمكن."); return false; } }
   function notify(msg) { const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),3000); }
   function findProduct(id) { return products.find(p=>p.id===id); }
@@ -384,7 +417,7 @@
   function renderProducts() {
     const searchInput=$("#productSearch"), genderInput=$("#genderFilter"), familyInput=$("#familyFilter");
     const q=norm(searchInput?.value||""), gender=genderInput?.value||"", family=familyInput?.value||"";
-    const list=products.filter(p=>p.productType!=="oil" && p.productType!=="bakhoor" && (!gender||p.gender===gender) && (!family||p.family===family||displayFamily(p.family,p.nameAr||p.nameEn)===family) && (!q||norm([p.nameAr,p.nameEn,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[]),p.family,p.descriptionAr].join(" ")).includes(q)));
+    const list=products.filter(p=>p.productType!=="oil" && p.productType!=="bakhoor" && (!gender||p.gender===gender) && (!family||p.family===family||displayFamily(p.family,p.nameAr||p.nameEn)===family) && (!q||matchesCatalogQuery(p,q)));
     const readyProducts=$("#readyProducts"), noProducts=$("#noProducts"), resultsMessage=$("#resultsMessage");
     if(readyProducts)readyProducts.innerHTML=list.map(productCard).join("");
     if(noProducts)noProducts.classList.toggle("hidden",list.length>0);
@@ -404,7 +437,7 @@
     const all=products.filter(p=>p.supplierCatalogItem===true);
     const q=norm($("#supplierOilSearch")?.value||""),cat=$("#supplierOilCategory")?.value||"",family=$("#supplierOilFamily")?.value||"";
     const categoryMap={MEN:"رجالي",WOMEN:"نسائي",UNISEX:"للجنسين",ORIENTAL:"شرقي",KIDS:"أطفال",DIFFUSER:"فواحات"};
-    const filtered=all.filter(p=>{const actualCategory=p.supplierCategory||({"رجالي":"MEN","نسائي":"WOMEN","للجنسين":"UNISEX","شرقي":"ORIENTAL","أطفال":"KIDS","فواحات":"DIFFUSER"}[p.gender]||"");const familyValue=p.family||p.scentFamily||p.chemicalProfileId||"غير محدد";return (!cat||actualCategory===cat)&&(!family||familyValue===family||displayFamily(familyValue,p.nameAr||p.nameEn)===family)&&(!q||norm([p.nameAr,p.nameEn,p.supplierSku,p.supplierCategory,p.family,p.scentFamily,p.scentNature,p.scentNotesProfile,p.gender,p.brand,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" ")).includes(q));});
+    const filtered=all.filter(p=>{const actualCategory=p.supplierCategory||({"رجالي":"MEN","نسائي":"WOMEN","للجنسين":"UNISEX","شرقي":"ORIENTAL","أطفال":"KIDS","فواحات":"DIFFUSER"}[p.gender]||"");const familyValue=p.family||p.scentFamily||p.chemicalProfileId||"غير محدد";return (!cat||actualCategory===cat)&&(!family||familyValue===family||displayFamily(familyValue,p.nameAr||p.nameEn)===family)&&(!q||matchesCatalogQuery({...p,descriptionAr:p.scentNature,topNotes:p.topNotes,heartNotes:p.heartNotes,baseNotes:p.baseNotes},q)||norm([p.supplierSku,p.supplierCategory,p.scentNotesProfile].join(" ")).includes(q));});
     const visible=filtered.slice(0,supplierVisibleLimit);
     grid.innerHTML=visible.map(productCard).join("");
     const counts={MEN:0,WOMEN:0,UNISEX:0,ORIENTAL:0,KIDS:0,DIFFUSER:0};all.forEach(p=>{const k=p.supplierCategory||({"رجالي":"MEN","نسائي":"WOMEN","للجنسين":"UNISEX","شرقي":"ORIENTAL","أطفال":"KIDS","فواحات":"DIFFUSER"}[p.gender]||"");if(counts[k]!==undefined)counts[k]++;});
