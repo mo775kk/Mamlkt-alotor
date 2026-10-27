@@ -653,3 +653,18 @@ try {
 } catch (e) {
   report(false, "Unable to validate typo-tolerant search: " + e.message);
 }
+
+try {
+  const liveCatalog = read("assets/js/site-catalog.bundle.js");
+  const liveHtml = read("index.html");
+  report(liveCatalog.includes("function matchesCatalogQuery(product,rawQuery)") &&
+    liveCatalog.includes("catalogIntentGroups") &&
+    liveCatalog.includes("function editDistanceAtMostOne(a,b)") &&
+    liveCatalog.includes("(!q||matchesCatalogQuery(p,q))"),
+    "The actually loaded catalog bundle implements Arabic/English scent-intent and conservative typo-tolerant search");
+  report(liveHtml.includes("site-catalog.bundle.js?v=20261027-live-smart-search-v1") &&
+    read("sw.js").includes("mamlakat-al-otor-shell-v95-20261027-live-smart-search-v1"),
+    "Live catalog bundle and service-worker cache use a coordinated fresh version");
+} catch (e) {
+  report(false, "Unable to validate live catalog bundle: " + e.message);
+}
