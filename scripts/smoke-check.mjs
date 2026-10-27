@@ -59,7 +59,7 @@ try {
   report(html.includes('design-06-lab.css?v=20261028-design-06-clean-lab') &&
     worker.includes('design-06-lab.css?v=20261028-design-06-clean-lab') &&
     redesignCss.includes("single intentional theme layer") || redesignCss.includes("neutral graphite") &&
-    redesignCss.includes(".hero{min-height:clamp(560px,68vw,740px)") &&
+    redesignCss.includes(".hero{background:#0b0b0b") &&
     redesignCss.includes("@media(max-width:760px)") &&
     redesignCss.includes(".home-index-card:hover"),
     "Full Design 06 Lab redesign is linked, cached by the PWA shell, and includes responsive hero, index and interactive card styling");
@@ -585,7 +585,7 @@ try {
   report(html.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1") && worker.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
   report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v103-20261028-design-06-clean-lab") &&
-    worker.includes("site-unified.css?v=20261028-royal-amethyst-07") &&
+    worker.includes("site-unified.css?v=20261028-design-06-clean-lab") &&
     worker.includes("assets/js/site-catalog.bundle.js?v=20261027-admin-guards-v1"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
 } catch (e) {
@@ -677,7 +677,7 @@ try {
     liveCatalog.includes("(!q||matchesCatalogQuery(p,q))"),
     "The actually loaded catalog bundle implements Arabic/English scent-intent and conservative typo-tolerant search");
   report(liveHtml.includes("site-catalog.bundle.js?v=20261027-live-smart-search-v1") &&
-    read("sw.js").includes("mamlakat-al-otor-shell-v95-20261027-live-smart-search-v1"),
+    read("sw.js").includes("mamlakat-al-otor-shell-v103-20261028-design-06-clean-lab"),
     "Live catalog bundle and service-worker cache use a coordinated fresh version");
 } catch (e) {
   report(false, "Unable to validate live catalog bundle: " + e.message);
@@ -693,7 +693,7 @@ try {
   const cssRef = html.match(/href="([^"]+\\.css\\?v=[^"]+)"/)?.[1];
   report(Boolean(cssRef && worker.includes('BASE_PATH + "' + cssRef + '"')),
     "PWA precache CSS URL matches the versioned stylesheet loaded by index.html");
-  report(worker.includes("mamlakat-al-otor-shell-v96-20261027-cache-aligned"),
+  report(worker.includes("mamlakat-al-otor-shell-v103-20261028-design-06-clean-lab"),
     "PWA shell cache version is bumped after asset URL alignment");
 } catch (e) {
   report(false, "Unable to validate PWA asset cache alignment: " + e.message);
@@ -710,7 +710,7 @@ try {
   const worker = read("sw.js");
   report(html.includes("site-admin.bundle.js?v=20261027-admin-guards-v1") &&
     worker.includes('BASE_PATH + "assets/js/site-admin.bundle.js?v=20261027-admin-guards-v1"') &&
-    worker.includes("mamlakat-al-otor-shell-v97-20261027-admin-guards"),
+    worker.includes("mamlakat-al-otor-shell-v103-20261028-design-06-clean-lab"),
     "Admin guard bundle and PWA cache versions are synchronized");
 } catch (e) {
   report(false, "Unable to validate admin DOM guards: " + e.message);
