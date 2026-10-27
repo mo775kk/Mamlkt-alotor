@@ -40,6 +40,11 @@ try {
     "Storefront exposes an install-app action");
   report(html.includes('id="cartShortcut"') && html.includes('id="cartCount"') && html.includes('id="cartShortcutIndex"') && html.includes('id="cartCountIndex"'),
     "Cart is available in the primary header and index, with distinct quantity counters");
+  const royalAdStart = html.indexOf('id="royalAd"');
+  const trustStripEnd = html.indexOf("</section>", html.indexOf('class="trust-strip"'));
+  const homeIndexStart = html.indexOf('id="homeIndex"');
+  report(royalAdStart > trustStripEnd && royalAdStart < homeIndexStart && html.includes('class="royal-ad-image"') && html.includes('href="https://wa.me/201272776928') && html.includes('loading="lazy"'),
+    "Royal promotional banner follows the trust strip and precedes the index with descriptive lazy-loaded imagery and WhatsApp CTA");
   report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes('addEventListener("fetch"'),
     "PWA service worker is registered and handles requests");
   report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#0A0A0A",
