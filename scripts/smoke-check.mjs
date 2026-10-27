@@ -47,24 +47,24 @@ try {
     "Royal promotional banner follows the trust strip and precedes the index with descriptive lazy-loaded imagery and WhatsApp CTA");
   report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes('addEventListener("fetch"'),
     "PWA service worker is registered and handles requests");
-  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#100719",
+  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#17151a",
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   report(themeBootstrap.includes('gold:"#D4AF37"') && !themeBootstrap.includes('["gold","gold2","button","indexIcon","indexBorder"].includes(key)&&isGoldTone(theme[key])'), "Royal gold palette is accepted by theme persistence instead of being neutralized");
   report(html.includes('data-theme="dark"') && read("site-unified.css").includes("--bg:#0A0A0A") && read("site-unified.css").includes("--gold:#D4AF37"), "Default storefront palette is royal black and gold");
 
-  report(html.indexOf('royal-amethyst-07.css?v=20261028-full-redesign-07') > html.indexOf('keepRoyalAmethystLast') && html.indexOf('royal-amethyst-07.css?v=20261028-full-redesign-07') < html.indexOf('</head>') && html.includes('new MutationObserver'),
-    "Royal Amethyst 07 stylesheet is reasserted after late theme/style injections");
+  report(html.includes('royal-amethyst-07.css?v=20261028-neutral-single-theme-08') && !html.includes('keepRoyalAmethystLast'),
+    "Exactly one active design stylesheet is loaded without a cascade observer");
   const redesignCss = read("royal-amethyst-07.css");
-  report(html.includes('royal-amethyst-07.css?v=20261028-full-redesign-07') &&
-    worker.includes('royal-amethyst-07.css?v=20261028-full-redesign-07') &&
-    redesignCss.includes("Design 07: Royal Amethyst complete visual system") &&
+  report(html.includes('royal-amethyst-07.css?v=20261028-neutral-single-theme-08') &&
+    worker.includes('royal-amethyst-07.css?v=20261028-neutral-single-theme-08') &&
+    redesignCss.includes("single intentional theme layer") || redesignCss.includes("neutral graphite") &&
     redesignCss.includes(".hero{min-height:clamp(560px,68vw,740px)") &&
     redesignCss.includes("@media(max-width:760px)") &&
     redesignCss.includes(".home-index-card:hover"),
     "Full Royal Amethyst 07 redesign is linked, cached by the PWA shell, and includes responsive hero, index and interactive card styling");
-  report(manifest.theme_color === "#100719" && manifest.background_color === "#100719" &&
-    html.includes('<meta name="theme-color" content="#100719">'),
+  report(manifest.theme_color === "#17151a" && manifest.background_color === "#17151a" &&
+    html.includes('<meta name="theme-color" content="#17151a">'),
     "Browser chrome and installed PWA use the Royal Amethyst 07 dark-violet identity");
   const settingsSource = read("settings.js");
   const inventorySource = read("inventory-accounting.js");
@@ -584,7 +584,7 @@ try {
   const registrationIsCurrent = html.includes("register('./sw.js?v=20261028-royal-amethyst-07')");
   report(html.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1") && worker.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v101-20261028-design-07-stable") &&
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v102-20261028-neutral-single-theme-08") &&
     worker.includes("site-unified.css?v=20261028-royal-amethyst-07") &&
     worker.includes("assets/js/site-catalog.bundle.js?v=20261027-admin-guards-v1"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
