@@ -7,7 +7,7 @@
   const validColor=value=>/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(String(value||""));
   const validImage=value=>{const v=String(value||"");return /^(https:\/\/|\.\.?\/|assets\/|data:image\/(?:png|jpeg|webp|gif);base64,)/i.test(v)?v:""};
   const vars={bg:"--bg",panel:"--panel",panel2:"--panel2",card:"--card",field:"--field",gold:"--gold",gold2:"--gold2",text:"--text",heading:"--heading",muted:"--muted",line:"--line",header:"--header-bg",footer:"--footer-bg",button:"--button-bg",buttonText:"--button-text",indexBg:"--index-bg",indexCard:"--index-card",indexIcon:"--index-icon",indexBorder:"--index-border"};
-  const safeColors={bg:"#0A0A0A",panel:"#12100C",panel2:"#1B170F",card:"#12100C",field:"#12100C",gold:"#D4AF37",gold2:"#F1D77A",text:"#EADFC2",heading:"#F1D77A",muted:"#B9AD8D",line:"#5D4B1B",header:"#0A0A0A",footer:"#0A0A0A",button:"#D4AF37",buttonText:"#0A0A0A",indexBg:"#0A0A0A",indexCard:"#12100C",indexIcon:"#D4AF37",indexBorder:"#D4AF37"};
+  const safeColors={bg:"#11100e",panel:"#1b1915",panel2:"#24211b",card:"#1b1915",field:"#151410",gold:"#bda16a",gold2:"#e4d5b3",text:"#f4f0e8",heading:"#f4e7ca",muted:"#c2b9a8",line:"#514735",header:"#11100e",footer:"#11100e",button:"#bda16a",buttonText:"#17140e",indexBg:"#11100e",indexCard:"#1b1915",indexIcon:"#e4d5b3",indexBorder:"#514735"};
   function isPinkTone(value){const h=String(value||"").replace("#","");if(!/^(?:[0-9a-f]{3}|[0-9a-f]{6})$/i.test(h))return false;const full=h.length===3?h.split("").map(x=>x+x).join(""):h,rgb=[0,2,4].map(i=>parseInt(full.slice(i,i+2),16)/255),max=Math.max(...rgb),min=Math.min(...rgb),delta=max-min;if(delta<.12||max===0)return false;let hue=0;if(max===rgb[0])hue=60*(((rgb[1]-rgb[2])/delta)%6);else if(max===rgb[1])hue=60*((rgb[2]-rgb[0])/delta+2);else hue=60*((rgb[0]-rgb[1])/delta+4);if(hue<0)hue+=360;const light=(max+min)/2,sat=delta/(1-Math.abs(2*light-1));return sat>.16&&light>.16&&(hue>=325||hue<=8);}
   function isGoldTone(value){const h=String(value||"").replace("#","");if(!/^(?:[0-9a-f]{3}|[0-9a-f]{6})$/i.test(h))return false;const full=h.length===3?h.split("").map(x=>x+x).join(""):h,rgb=[0,2,4].map(i=>parseInt(full.slice(i,i+2),16)/255),max=Math.max(...rgb),min=Math.min(...rgb),delta=max-min;if(delta<.14||max===0)return false;let hue=0;if(max===rgb[0])hue=60*(((rgb[1]-rgb[2])/delta)%6);else if(max===rgb[1])hue=60*((rgb[2]-rgb[0])/delta+2);else hue=60*((rgb[0]-rgb[1])/delta+4);if(hue<0)hue+=360;const light=(max+min)/2,sat=delta/(1-Math.abs(2*light-1));return sat>.24&&light>.16&&hue>=32&&hue<=65;}
 
@@ -16,22 +16,22 @@
     const root=document.documentElement;
     /* Design 06 — perfume lab: graphite black, restrained champagne gold. */
     const mode=(()=>{try{return localStorage.getItem(MODE_KEY)==="light"?"light":"dark"}catch(_){return "dark"}})();
-    const royalAmethyst={
-      "--bg":"#0b0b0b","--panel":"#121212","--panel2":"#1b1b1b","--card":"#141414","--field":"#101010",
-      "--gold":"#c5a45b","--gold2":"#ead49a","--text":"#f2eee5","--heading":"#f5e8c7","--muted":"#bdb6a6",
-      "--line":"rgba(197,164,91,.28)","--header-bg":"#0b0b0b","--footer-bg":"#0b0b0b","--button-bg":"#c5a45b",
-      "--button-text":"#111111","--index-bg":"#0b0b0b","--index-card":"#141414","--index-icon":"#d6b96f","--index-border":"#69572e",
+    const design05={
+      "--bg":"#11100e","--panel":"#1b1915","--panel2":"#24211b","--card":"#1b1915","--field":"#151410",
+      "--gold":"#bda16a","--gold2":"#e4d5b3","--text":"#f4f0e8","--heading":"#f4e7ca","--muted":"#c2b9a8",
+      "--line":"rgba(189,161,106,.25)","--header-bg":"#11100e","--footer-bg":"#11100e","--button-bg":"#bda16a",
+      "--button-text":"#17140e","--index-bg":"#11100e","--index-card":"#1b1915","--index-icon":"#e4d5b3","--index-border":"#514735",
       "--page-image":"none","--bg-overlay":"0"
     };
-    Object.entries(royalAmethyst).forEach(([name,value])=>root.style.setProperty(name,value));
+    Object.entries(design05).forEach(([name,value])=>root.style.setProperty(name,value));
     /* One active design only: discard stale layout preset selectors from earlier experiments. */
     root.removeAttribute("data-web-design");
     root.removeAttribute("data-mobile-design");
     root.setAttribute("data-theme",mode);
-    root.setAttribute("data-visual-style","design-06-lab");
+    root.setAttribute("data-visual-style","design-05-atelier");
     root.style.colorScheme=mode;
     const meta=document.querySelector('meta[name="theme-color"]');
-    if(meta)meta.setAttribute("content","#100719");
+    if(meta)meta.setAttribute("content","#11100e");
   }
   function applyDisplay(){
     const root=document.documentElement,v=read(VISUAL_KEY)||{};
@@ -64,7 +64,7 @@
         .product-visual{height:auto!important;min-height:0!important;aspect-ratio:1/1}
         .product-visual img,.product-visual .product-photo,.product-visual .placeholder-bottle{width:100%;height:100%!important;max-height:none!important;object-fit:contain}
       }
-      /* The 10 mobile and desktop layout choices now affect real grid/card behavior. */
+      /* Legacy layout presets disabled: Design 05 Atelier is the only active design. */
       :root[data-web-design="web-01"] .product-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
       :root[data-web-design="web-02"] .product-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
       :root[data-web-design="web-03"] .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
