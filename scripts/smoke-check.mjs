@@ -612,6 +612,13 @@ try {
     admin.includes('const layer=document.getElementById("adminLayer");') &&
     experience.includes("if(foldLabel) foldLabel.textContent="),
     "Reference library and collapsible sections guard optional DOM controls");
+  const storefrontVisibility = read("app.js");
+  report(storefrontVisibility.includes("const isCustomerVisibleProduct = p => !!p && (p.supplierCatalogItem === true || p.needsReview !== true)") &&
+    storefrontVisibility.includes("products.filter(p=>isCustomerVisibleProduct(p) && p.productType!==\"oil\"") &&
+    storefrontVisibility.includes("const candidates=products.filter(p=>isCustomerVisibleProduct(p)&&p.productType!==\"oil\"") &&
+    storefrontVisibility.includes("const publicProducts=products.filter(isCustomerVisibleProduct)") &&
+    storefrontVisibility.includes("const fav=products.filter(p=>isCustomerVisibleProduct(p)&&favorites.includes(p.id))"),
+    "Unreviewed ready products stay hidden from public catalog, favorites and local/AI advisor; supplier oil references remain explicitly browseable");
   report(sections.includes('if (backButton) backButton.addEventListener("click", navigateBack);') &&
     sections.includes('if (endBackButton) endBackButton.addEventListener("click", navigateBack);') &&
     sections.includes('if (pageTitle) pageTitle.textContent = titleFor(host);') &&
