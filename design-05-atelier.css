@@ -1,0 +1,35 @@
+/* MAMLKAT AL-OTOR — Design 05: Atelier Parfum
+   A clean, editorial perfume atelier. This is the sole active visual skin. */
+:root{color-scheme:dark!important;--bg:#11100e!important;--panel:#1b1915!important;--panel2:#24211b!important;--card:#1b1915!important;--field:#151410!important;--gold:#bda16a!important;--gold2:#e4d5b3!important;--text:#f4f0e8!important;--heading:#f4e7ca!important;--muted:#c2b9a8!important;--line:rgba(189,161,106,.25)!important;--header-bg:#11100e!important;--footer-bg:#11100e!important;--button-bg:#bda16a!important;--button-text:#17140e!important;--index-bg:#11100e!important;--index-card:#1b1915!important;--index-icon:#e4d5b3!important;--index-border:#514735!important}
+html,body{background:#11100e!important;color:#f4f0e8!important}
+body{font-family:"Tajawal",sans-serif!important}
+.site-header{background:rgba(17,16,14,.97)!important;border-bottom:1px solid #514735!important;box-shadow:0 5px 22px #0005!important;backdrop-filter:blur(14px)}
+.brand strong,.hero h1,.section-heading h2,.contact-card h2,.gift-copy h2,.feature-copy h2{color:#f4f0e8!important}
+.brand small,.eyebrow,.brand-crown,.line-icon,.hero-note span{color:#e4d5b3!important}
+.main-nav a:hover,.main-nav a.active{color:#e4d5b3!important}
+.main-nav a:after{background:#bda16a!important}
+.icon-btn{background:#191713!important;color:#e4d5b3!important;border:1px solid #514735!important;border-radius:8px!important}
+.counter{background:#bda16a!important;color:#17140e!important}
+.hero{background:#11100e!important}
+.hero-shade{background:linear-gradient(90deg,rgba(10,9,7,.94),rgba(10,9,7,.68) 46%,rgba(10,9,7,.12))!important}
+.hero h1 span,.feature-copy h2 span{color:#e4d5b3!important}
+.btn{border-radius:7px!important;border-color:#bda16a!important}
+.btn-gold{background:#bda16a!important;color:#17140e!important;box-shadow:none!important}
+.btn-outline{background:#171612!important;color:#e4d5b3!important}
+.trust-strip{background:#171612!important;border-color:#514735!important}
+.category-card,.product-card,.home-index-card,.feature-card,.contact-card,.gift-card,.editorial-card,.section-detail-box,.royal-ad,.admin-panel,.settings-panel,.inventory-panel,.report-panel,.blend-panel,.calculator-panel,.cost-summary,.summary-card{background:#1b1915!important;color:#f4f0e8!important;border:1px solid #514735!important;border-radius:10px!important;box-shadow:0 7px 20px #0003!important}
+.category-card:hover,.product-card:hover,.home-index-card:hover{border-color:#bda16a!important;box-shadow:0 10px 25px #0005!important}
+.home-index-icon,.category-icon-wrap,.royal-category-icon{color:#e4d5b3!important}
+.product-visual{background:#151410!important;overflow:hidden!important}
+.product-visual img,.product-visual .product-photo{width:100%;height:100%;object-fit:contain!important}
+.product-price,.price,.product-card strong{color:#e4d5b3!important}
+input,select,textarea{background:#151410!important;color:#f4f0e8!important;border-color:#514735!important;accent-color:#bda16a}
+input:focus,select:focus,textarea:focus{border-color:#bda16a!important;outline:1px solid #bda16a!important}
+table th{background:#24211b!important;color:#e4d5b3!important}table td,table th{border-color:#514735!important}
+.site-footer,footer{background:#11100e!important;border-top:1px solid #514735!important}
+a{ text-underline-offset:3px }
+:focus-visible{outline:2px solid #e4d5b3!important;outline-offset:3px}
+@media(max-width:760px){.site-header{height:64px!important;padding-inline:10px!important;gap:7px!important}.brand strong{font-size:16px!important}.brand small{font-size:9px!important}.hero{min-height:clamp(300px,76vw,420px)!important}.hero-copy{width:100%!important;padding:34px 18px!important}.hero h1{font-size:clamp(28px,7.5vw,39px)!important}.section{width:calc(100% - 26px)!important;padding:36px 0!important}.category-grid,.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.category-card{min-height:140px!important;padding:11px!important}.product-visual{aspect-ratio:1/1!important;min-height:0!important}.product-info{padding:9px!important}.home-index-grid{grid-template-columns:1fr!important}.section-heading{gap:12px!important}}
+@media(min-width:761px) and (max-width:1050px){.category-grid,.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+/* Old design selectors deliberately neutralized; only Design 05 may style the interface. */
+:root[data-web-design],:root[data-mobile-design]{--legacy-design-disabled:1!important}
