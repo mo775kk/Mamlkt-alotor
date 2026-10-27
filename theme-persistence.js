@@ -14,24 +14,23 @@
   function luminance(hex){const z=String(hex).replace("#","");const f=z.length===3?z.split("").map(c=>c+c).join(""):z;const c=[0,2,4].map(i=>parseInt(f.slice(i,i+2),16)/255).map(n=>n<=.04045?n/12.92:Math.pow((n+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]}
   function applyTheme(){
     const root=document.documentElement;
-    try{const mode=localStorage.getItem(MODE_KEY);if(mode==="light"||mode==="dark")root.setAttribute("data-theme",mode)}catch(_){}
-    const theme=read(THEME_KEY);
-    if(!theme||typeof theme!=="object")return;
-    /* Migrate the previous neutral default palette to the currently approved royal identity. */
-    if(theme.bg==="#F5F3EF"&&theme.gold==="#4D5052"){Object.assign(theme,safeColors);try{localStorage.setItem(THEME_KEY,JSON.stringify(theme));}catch(_){}}
-    /* Migrate old saved image backgrounds away; the storefront now uses a unified solid-color canvas. */
-    if(theme.backgroundImage && theme.backgroundImage!=="none"){
-      theme.backgroundImage="none";
-      try{localStorage.setItem(THEME_KEY,JSON.stringify(theme));}catch(_){}
-    }
-    Object.entries(vars).forEach(([key,name])=>{if(validColor(theme[key]))root.style.setProperty(name,(isPinkTone(theme[key])?(safeColors[key]||"#0A0A0A"):theme[key]))});
-    root.style.setProperty("--page-image","none");
-    root.style.setProperty("--bg-overlay",String(clamp(theme.overlay,.05,.85,.18)));
-    if(theme.visualStyle){const aliases={royal:"windows",editorial:"ios",soft:"android",glass:"ios",boutique:"classic",bold:"windows",minimal:"classic",botanical:"pixel"};const style=aliases[theme.visualStyle]||theme.visualStyle;if(["windows","android","ios","oneui","pixel","classic"].includes(style))root.dataset.visualStyle=style}
-    const mobileDesign=/^mobile-(0[1-9]|10)$/.test(String(theme.mobileDesign||""))?theme.mobileDesign:"mobile-02";
-    const webDesign=/^web-(0[1-9]|10)$/.test(String(theme.webDesign||""))?theme.webDesign:"web-02";
-    root.dataset.mobileDesign=mobileDesign;root.dataset.webDesign=webDesign;
-    if(validColor(theme.bg)){root.style.colorScheme=luminance(theme.bg)<.22?"dark":"light";const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.setAttribute("content",validColor(theme.header)?theme.header:theme.bg)}
+    /* Stable neutral theme: ignore legacy saved palettes and preset selectors. */
+    const neutral={
+      "--bg":"#ffffff","--panel":"#ffffff","--panel2":"#f5f5f5","--card":"#ffffff","--field":"#ffffff",
+      "--gold":"#4b5563","--gold2":"#374151","--text":"#202124","--heading":"#202124","--muted":"#5f6368",
+      "--line":"#dadce0","--header-bg":"#ffffff","--footer-bg":"#f5f5f5","--button-bg":"#343a40",
+      "--button-text":"#ffffff","--index-bg":"#ffffff","--index-card":"#ffffff","--index-icon":"#4b5563","--index-border":"#dadce0",
+      "--page-image":"none","--bg-overlay":"0"
+    };
+    Object.entries(neutral).forEach(([name,value])=>root.style.setProperty(name,value,"important"));
+    root.setAttribute("data-theme","light");
+    ["data-visual-style","data-mobile-design","data-web-design"].forEach(name=>root.removeAttribute(name));
+    root.style.colorScheme="light";
+    const meta=document.querySelector('meta[name="theme-color"]');
+    if(meta)meta.setAttribute("content","#ffffff");
+    try{
+      [THEME_KEY,MODE_KEY].forEach(key=>localStorage.removeItem(key));
+    }catch(_){}
   }
   function applyDisplay(){
     const root=document.documentElement,v=read(VISUAL_KEY)||{};
