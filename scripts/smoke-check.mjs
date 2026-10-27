@@ -567,11 +567,11 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261027-neutral-mode-v3')");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261028-royal-amethyst-07')");
   report(html.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1") && worker.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v98-20261027-neutral-mode") &&
-    worker.includes("site-unified.css?v=20261027-neutral-mode-v3") &&
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v99-20261028-royal-amethyst-07") &&
+    worker.includes("site-unified.css?v=20261028-royal-amethyst-07") &&
     worker.includes("assets/js/site-catalog.bundle.js?v=20261027-admin-guards-v1"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
 } catch (e) {
