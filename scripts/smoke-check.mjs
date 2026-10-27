@@ -47,11 +47,23 @@ try {
     "Royal promotional banner follows the trust strip and precedes the index with descriptive lazy-loaded imagery and WhatsApp CTA");
   report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes('addEventListener("fetch"'),
     "PWA service worker is registered and handles requests");
-  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#0A0A0A",
+  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#100719",
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   report(themeBootstrap.includes('gold:"#D4AF37"') && !themeBootstrap.includes('["gold","gold2","button","indexIcon","indexBorder"].includes(key)&&isGoldTone(theme[key])'), "Royal gold palette is accepted by theme persistence instead of being neutralized");
   report(html.includes('data-theme="dark"') && read("site-unified.css").includes("--bg:#0A0A0A") && read("site-unified.css").includes("--gold:#D4AF37"), "Default storefront palette is royal black and gold");
+
+  const redesignCss = read("royal-amethyst-07.css");
+  report(html.includes('royal-amethyst-07.css?v=20261028-full-redesign-07') &&
+    worker.includes('royal-amethyst-07.css?v=20261028-full-redesign-07') &&
+    redesignCss.includes("Design 07: Royal Amethyst complete visual system") &&
+    redesignCss.includes(".hero{min-height:clamp(560px,68vw,740px)") &&
+    redesignCss.includes("@media(max-width:760px)") &&
+    redesignCss.includes(".home-index-card:hover"),
+    "Full Royal Amethyst 07 redesign is linked, cached by the PWA shell, and includes responsive hero, index and interactive card styling");
+  report(manifest.theme_color === "#100719" && manifest.background_color === "#100719" &&
+    html.includes('<meta name="theme-color" content="#100719">'),
+    "Browser chrome and installed PWA use the Royal Amethyst 07 dark-violet identity");
   const settingsSource = read("settings.js");
   const inventorySource = read("inventory-accounting.js");
   report(inventorySource.includes('name="supplier"') && inventorySource.includes('name="shipping"') && inventorySource.includes('name="extraCost"') && inventorySource.includes("purchaseUnitCost+(shippingTotal+extraCostTotal)/qty") && inventorySource.includes("totalLandedCost:landedUnitCost*qty"),
