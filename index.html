@@ -595,8 +595,8 @@
   <script>
   (function(){var b=document.getElementById("shareKingdomButton");if(!b)return;b.addEventListener("click",function(){var d={title:document.title,text:"اكتشف مملكة العطور",url:window.location.href};if(navigator.share){navigator.share(d).catch(function(){});return;}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.url).then(function(){b.textContent="تم نسخ رابط الموقع ✓";},function(){window.prompt("انسخ رابط الموقع:",d.url);});}else{window.prompt("انسخ رابط الموقع:",d.url);}});})();
   </script>
-  <dialog id="pwaInstallHelp" aria-labelledby="pwaInstallHelpTitle" style="width:min(92vw,480px);border:1px solid #CCD3D9;border-radius:18px;padding:22px;background:#FFFFFF;color:#303B44;box-shadow:0 20px 70px #0005">
-    <h2 id="pwaInstallHelpTitle" style="margin:0 0 10px;color:#263541;font-family:Tajawal,sans-serif">تثبيت مملكة العطور</h2>
+  <dialog id="pwaInstallHelp" aria-labelledby="pwaInstallHelpTitle" style="width:min(92vw,480px);border:1px solid #5D4B1B;border-radius:18px;padding:22px;background:#12100C;color:#EADFC2;box-shadow:0 20px 70px #0005">
+    <h2 id="pwaInstallHelpTitle" style="margin:0 0 10px;color:#F1D77A;font-family:Tajawal,sans-serif">تثبيت مملكة العطور</h2>
     <p style="line-height:1.8;margin:0 0 12px">إذا لم تظهر نافذة التثبيت التلقائية، يمكنك إضافة الموقع إلى الشاشة الرئيسية من قائمة المتصفح.</p>
     <div id="pwaHelpSteps" style="line-height:1.9">
       <strong>على Android (Chrome):</strong>
