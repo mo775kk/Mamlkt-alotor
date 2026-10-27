@@ -63,7 +63,7 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261026-dom-guards-v4').catch(error => console.warn('Service worker registration failed:', error));
+          navigator.serviceWorker.register('./sw.js?v=20261027-review-visibility-v1').catch(error => console.warn('Service worker registration failed:', error));
         }
       });
     })();
@@ -452,7 +452,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <!-- السكربتات (defer) -->
-  <script defer src="assets/js/site-catalog.bundle.js?v=20261026-dom-guards-v4"></script>
+  <script defer src="assets/js/site-catalog.bundle.js?v=20261027-review-visibility-v1"></script>
   <script>
   (function(){
     "use strict";
