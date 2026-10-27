@@ -562,12 +562,12 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261026-dom-guards-v4')");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261027-review-visibility-v1')");
   report(html.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v4") && worker.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v4"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v91-20261026-dom-guards-v4") &&
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v92-20261027-review-visibility-v1") &&
     worker.includes("site-unified.css?v=20261025-section-reading-panels-v1") &&
-    worker.includes("assets/js/site-catalog.bundle.js?v=20261026-dom-guards-v4"),
+    worker.includes("assets/js/site-catalog.bundle.js?v=20261027-review-visibility-v1"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
@@ -612,12 +612,12 @@ try {
     admin.includes('const layer=document.getElementById("adminLayer");') &&
     experience.includes("if(foldLabel) foldLabel.textContent="),
     "Reference library and collapsible sections guard optional DOM controls");
-  const storefrontVisibility = read("app.js");
-  report(storefrontVisibility.includes("const isCustomerVisibleProduct = p => !!p && (p.supplierCatalogItem === true || p.needsReview !== true)") &&
+  const storefrontVisibilitySources = [read("app.js"), read("assets/js/site-catalog.bundle.js")];
+  report(storefrontVisibilitySources.every(storefrontVisibility => storefrontVisibility.includes("const isCustomerVisibleProduct = p => !!p && (p.supplierCatalogItem === true || p.needsReview !== true)") &&
     storefrontVisibility.includes("products.filter(p=>isCustomerVisibleProduct(p) && p.productType!==\"oil\"") &&
     storefrontVisibility.includes("const candidates=products.filter(p=>isCustomerVisibleProduct(p)&&p.productType!==\"oil\"") &&
     storefrontVisibility.includes("const publicProducts=products.filter(isCustomerVisibleProduct)") &&
-    storefrontVisibility.includes("const fav=products.filter(p=>isCustomerVisibleProduct(p)&&favorites.includes(p.id))"),
+    storefrontVisibility.includes("const fav=products.filter(p=>isCustomerVisibleProduct(p)&&favorites.includes(p.id))")),
     "Unreviewed ready products stay hidden from public catalog, favorites and local/AI advisor; supplier oil references remain explicitly browseable");
   report(sections.includes('if (backButton) backButton.addEventListener("click", navigateBack);') &&
     sections.includes('if (endBackButton) endBackButton.addEventListener("click", navigateBack);') &&
