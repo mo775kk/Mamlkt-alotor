@@ -137,3 +137,93 @@ a{ text-underline-offset:3px }
  .home-index-section .home-index-icon{width:29px!important;height:29px!important;flex-basis:29px!important}
  .home-index-section .home-index-copy strong{font-size:9px!important}
 }
+
+
+/* Deep-space planetary choreography: independent orbits, starfield and luminous trails */
+.home-index-section .solar-system{
+  background:
+    radial-gradient(ellipse at 50% 50%,rgba(255,197,91,.13),transparent 27%),
+    radial-gradient(ellipse at 50% 50%,rgba(44,75,123,.15),transparent 65%),
+    #070912!important;
+  border:1px solid rgba(220,190,130,.15);
+  box-shadow:inset 0 0 55px rgba(0,0,0,.72),0 16px 45px rgba(0,0,0,.24);
+}
+.home-index-section .solar-system:before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 7% 13%,rgba(255,255,255,.95) 50%,transparent 100%),
+    radial-gradient(1px 1px at 18% 72%,rgba(255,229,174,.9) 50%,transparent 100%),
+    radial-gradient(2px 2px at 27% 26%,rgba(255,255,255,.85) 50%,transparent 100%),
+    radial-gradient(1px 1px at 36% 83%,rgba(179,218,255,.9) 50%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 44% 11%,rgba(255,255,255,.9) 50%,transparent 100%),
+    radial-gradient(1px 1px at 61% 20%,rgba(255,223,165,.9) 50%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 76% 79%,rgba(255,255,255,.9) 50%,transparent 100%),
+    radial-gradient(1px 1px at 88% 31%,rgba(190,222,255,.9) 50%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 93% 62%,rgba(255,255,255,.9) 50%,transparent 100%),
+    radial-gradient(1px 1px at 12% 47%,rgba(255,255,255,.8) 50%,transparent 100%);
+  animation:starFieldTwinkle 4.5s ease-in-out infinite alternate;
+}
+.home-index-section .solar-orbit-outer{width:610px;height:610px;border-color:rgba(197,207,232,.22);box-shadow:0 0 22px rgba(99,144,218,.05)}
+.home-index-section .solar-orbit-inner{width:410px;height:410px;border-style:solid;border-color:rgba(233,194,115,.24);animation:solarOrbitSpin 110s linear infinite}
+.home-index-section .home-index-grid{animation:none!important}
+.home-index-section .home-index-card{
+  z-index:3;
+  animation:solarPlanetCounter 64s linear infinite!important;
+  transition:filter .3s,box-shadow .3s,scale .3s;
+  will-change:transform;
+}
+.home-index-section .home-index-card:nth-child(1){animation-duration:42s!important;animation-delay:-7s!important}
+.home-index-section .home-index-card:nth-child(2){animation-duration:58s!important;animation-delay:-23s!important}
+.home-index-section .home-index-card:nth-child(3){animation-duration:73s!important;animation-delay:-41s!important}
+.home-index-section .home-index-card:nth-child(4){animation-duration:49s!important;animation-delay:-13s!important}
+.home-index-section .home-index-card:nth-child(5){animation-duration:82s!important;animation-delay:-58s!important}
+.home-index-section .home-index-card:nth-child(6){animation-duration:62s!important;animation-delay:-34s!important}
+.home-index-section .home-index-card:nth-child(7){animation-duration:45s!important;animation-delay:-19s!important}
+.home-index-section .home-index-card:nth-child(8){animation-duration:91s!important;animation-delay:-67s!important}
+.home-index-section .home-index-card:nth-child(9){animation-duration:54s!important;animation-delay:-29s!important}
+.home-index-section .home-index-card:nth-child(10){animation-duration:77s!important;animation-delay:-51s!important}
+.home-index-section .home-index-card:nth-child(1){--planet-orbit-radius:210px}
+.home-index-section .home-index-card:nth-child(2){--planet-orbit-radius:250px}
+.home-index-section .home-index-card:nth-child(3){--planet-orbit-radius:226px}
+.home-index-section .home-index-card:nth-child(4){--planet-orbit-radius:270px}
+.home-index-section .home-index-card:nth-child(5){--planet-orbit-radius:235px}
+.home-index-section .home-index-card:nth-child(6){--planet-orbit-radius:260px}
+.home-index-section .home-index-card:nth-child(7){--planet-orbit-radius:218px}
+.home-index-section .home-index-card:nth-child(8){--planet-orbit-radius:275px}
+.home-index-section .home-index-card:nth-child(9){--planet-orbit-radius:242px}
+.home-index-section .home-index-card:nth-child(10){--planet-orbit-radius:254px}
+.home-index-section .home-index-card{transform:translate(-50%,-50%) rotate(var(--planet-angle)) translateY(calc(-1 * var(--planet-orbit-radius,250px))) rotate(calc(var(--planet-angle)*-1))}
+@keyframes solarPlanetCounter{
+  from{transform:translate(-50%,-50%) rotate(var(--planet-angle)) translateY(calc(-1 * var(--planet-orbit-radius,250px))) rotate(calc(var(--planet-angle)*-1))}
+  to{transform:translate(-50%,-50%) rotate(calc(var(--planet-angle) + 360deg)) translateY(calc(-1 * var(--planet-orbit-radius,250px))) rotate(calc((var(--planet-angle) + 360deg)*-1))}
+}
+.home-index-section .home-index-card:hover,.home-index-section .home-index-card:focus-visible{
+  filter:brightness(1.28) saturate(1.2);scale:1.09;
+}
+.home-index-section .home-index-card:nth-child(1):after{transform:rotate(-24deg);border-width:2px!important}
+.home-index-section .home-index-card:nth-child(3):after{transform:rotate(32deg)}
+.home-index-section .home-index-card:nth-child(5):after{transform:rotate(-40deg)}
+.home-index-section .home-index-card:nth-child(7):after{transform:rotate(18deg)}
+.home-index-section .solar-sun{animation:sunBreath 5s ease-in-out infinite;z-index:4}
+.home-index-section .solar-sun:before{inset:-17px!important;border-color:rgba(255,218,139,.38)!important;box-shadow:0 0 32px rgba(255,193,79,.18)!important}
+@keyframes starFieldTwinkle{from{opacity:.48}to{opacity:1}}
+@keyframes sunBreath{0%,100%{filter:brightness(1);box-shadow:0 0 22px rgba(224,178,78,.48),0 0 65px rgba(224,178,78,.18),inset 0 0 16px rgba(255,239,185,.28)}50%{filter:brightness(1.16);box-shadow:0 0 32px rgba(255,205,95,.65),0 0 90px rgba(224,178,78,.27),inset 0 0 22px rgba(255,239,185,.38)}}
+@media(max-width:700px){
+ .home-index-section .solar-orbit-outer{width:460px;height:460px}
+ .home-index-section .solar-orbit-inner{width:310px;height:310px}
+ .home-index-section .home-index-card:nth-child(n){--planet-orbit-radius:210px}
+ .home-index-section .home-index-card:nth-child(1),.home-index-section .home-index-card:nth-child(4),.home-index-section .home-index-card:nth-child(8){--planet-orbit-radius:224px}
+ .home-index-section .home-index-card{animation-name:solarPlanetCounterMobile!important}
+}
+@media(max-width:390px){
+ .home-index-section .home-index-card:nth-child(n){--planet-orbit-radius:182px}
+ .home-index-section .home-index-card:nth-child(4),.home-index-section .home-index-card:nth-child(8){--planet-orbit-radius:190px}
+ .home-index-section .solar-system{overflow:hidden}
+}
+@keyframes solarPlanetCounterMobile{
+ from{transform:translate(-50%,-50%) rotate(var(--planet-angle)) translateY(calc(-1 * var(--planet-orbit-radius,210px))) rotate(calc(var(--planet-angle)*-1))}
+ to{transform:translate(-50%,-50%) rotate(calc(var(--planet-angle) + 360deg)) translateY(calc(-1 * var(--planet-orbit-radius,210px))) rotate(calc((var(--planet-angle) + 360deg)*-1))}
+}
+@media(prefers-reduced-motion:reduce){
+ .home-index-section .home-index-card,.home-index-section .solar-sun,.home-index-section .solar-system:before{animation:none!important}
+}
