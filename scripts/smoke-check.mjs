@@ -47,24 +47,24 @@ try {
     "Royal promotional banner follows the trust strip and precedes the index with descriptive lazy-loaded imagery and WhatsApp CTA");
   report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes('addEventListener("fetch"'),
     "PWA service worker is registered and handles requests");
-  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#0b0b0b",
+  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#11100e",
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   report(themeBootstrap.includes('gold:"#D4AF37"') && !themeBootstrap.includes('["gold","gold2","button","indexIcon","indexBorder"].includes(key)&&isGoldTone(theme[key])'), "Royal gold palette is accepted by theme persistence instead of being neutralized");
-  report(html.includes('data-theme="dark"') && html.includes("design-06-lab.css"), "Default storefront palette is royal black and gold");
+  report(html.includes('data-theme="dark"') && html.includes("design-05-atelier.css"), "Default storefront palette is royal black and gold");
 
-  report(html.includes('design-06-lab.css?v=20261028-design-06-clean-lab') && !html.includes('keepRoyalAmethystLast'),
+  report(html.includes('design-05-atelier.css?v=20261028-design-05-clean') && !html.includes('keepRoyalAmethystLast'),
     "Exactly one active design stylesheet is loaded without a cascade observer");
-  const redesignCss = read("design-06-lab.css");
-  report(html.includes('design-06-lab.css?v=20261028-design-06-clean-lab') &&
-    worker.includes('design-06-lab.css?v=20261028-design-06-clean-lab') &&
-    redesignCss.includes("single intentional theme layer") || redesignCss.includes("neutral graphite") &&
-    redesignCss.includes(".hero{background:#0b0b0b") &&
+  const redesignCss = read("design-05-atelier.css");
+  report(html.includes('design-05-atelier.css?v=20261028-design-05-clean') &&
+    worker.includes('design-05-atelier.css?v=20261028-design-05-clean') &&
+    redesignCss.includes("sole active visual skin") || redesignCss.includes("Design 05") &&
+    redesignCss.includes(".hero{background:#11100e") &&
     redesignCss.includes("@media(max-width:760px)") &&
     redesignCss.includes(".home-index-card:hover"),
     "Full Design 06 Lab redesign is linked, cached by the PWA shell, and includes responsive hero, index and interactive card styling");
-  report(manifest.theme_color === "#0b0b0b" && manifest.background_color === "#0b0b0b" &&
-    html.includes('<meta name="theme-color" content="#0b0b0b">'),
+  report(manifest.theme_color === "#11100e" && manifest.background_color === "#11100e" &&
+    html.includes('<meta name="theme-color" content="#11100e">'),
     "Browser chrome and installed PWA use the Design 06 Lab dark-violet identity");
   const settingsSource = read("settings.js");
   const inventorySource = read("inventory-accounting.js");
@@ -581,11 +581,11 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261028-royal-amethyst-07')");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261028-design-05-clean')");
   report(html.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1") && worker.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v103-20261028-design-06-clean-lab") &&
-    worker.includes("site-unified.css?v=20261028-design-06-clean-lab") &&
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v104-20261028-design-05-clean") &&
+    worker.includes("site-unified.css?v=20261028-design-05-clean") &&
     worker.includes("assets/js/site-catalog.bundle.js?v=20261027-admin-guards-v1"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
 } catch (e) {
@@ -677,7 +677,7 @@ try {
     liveCatalog.includes("(!q||matchesCatalogQuery(p,q))"),
     "The actually loaded catalog bundle implements Arabic/English scent-intent and conservative typo-tolerant search");
   report(liveHtml.includes("site-catalog.bundle.js?v=20261027-live-smart-search-v1") &&
-    read("sw.js").includes("mamlakat-al-otor-shell-v103-20261028-design-06-clean-lab"),
+    read("sw.js").includes("mamlakat-al-otor-shell-v104-20261028-design-05-clean"),
     "Live catalog bundle and service-worker cache use a coordinated fresh version");
 } catch (e) {
   report(false, "Unable to validate live catalog bundle: " + e.message);
@@ -693,7 +693,7 @@ try {
   const cssRef = html.match(/href="([^"]+\\.css\\?v=[^"]+)"/)?.[1];
   report(Boolean(cssRef && worker.includes('BASE_PATH + "' + cssRef + '"')),
     "PWA precache CSS URL matches the versioned stylesheet loaded by index.html");
-  report(worker.includes("mamlakat-al-otor-shell-v103-20261028-design-06-clean-lab"),
+  report(worker.includes("mamlakat-al-otor-shell-v104-20261028-design-05-clean"),
     "PWA shell cache version is bumped after asset URL alignment");
 } catch (e) {
   report(false, "Unable to validate PWA asset cache alignment: " + e.message);
@@ -710,7 +710,7 @@ try {
   const worker = read("sw.js");
   report(html.includes("site-admin.bundle.js?v=20261027-admin-guards-v1") &&
     worker.includes('BASE_PATH + "assets/js/site-admin.bundle.js?v=20261027-admin-guards-v1"') &&
-    worker.includes("mamlakat-al-otor-shell-v103-20261028-design-06-clean-lab"),
+    worker.includes("mamlakat-al-otor-shell-v104-20261028-design-05-clean"),
     "Admin guard bundle and PWA cache versions are synchronized");
 } catch (e) {
   report(false, "Unable to validate admin DOM guards: " + e.message);
