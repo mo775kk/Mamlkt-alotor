@@ -14,16 +14,19 @@
   function luminance(hex){const z=String(hex).replace("#","");const f=z.length===3?z.split("").map(c=>c+c).join(""):z;const c=[0,2,4].map(i=>parseInt(f.slice(i,i+2),16)/255).map(n=>n<=.04045?n/12.92:Math.pow((n+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]}
   function applyTheme(){
     const root=document.documentElement;
-    /* Design 07 — Royal Amethyst: deep violet, black, restrained champagne gold. */
+    /* Design 08 — neutral graphite with a restrained amethyst accent. */
     const mode=(()=>{try{return localStorage.getItem(MODE_KEY)==="light"?"light":"dark"}catch(_){return "dark"}})();
     const royalAmethyst={
-      "--bg":"#100719","--panel":"#170d24","--panel2":"#211130","--card":"#1a1027","--field":"#160d20",
-      "--gold":"#c8a5ff","--gold2":"#ead8ff","--text":"#f4ecff","--heading":"#f0ddff","--muted":"#c0afd2",
-      "--line":"rgba(190,145,255,.34)","--header-bg":"#100719","--footer-bg":"#100719","--button-bg":"#7135a8",
-      "--button-text":"#ffffff","--index-bg":"#100719","--index-card":"#1a1027","--index-icon":"#d7b4ff","--index-border":"#7542a4",
+      "--bg":"#17151a","--panel":"#242129","--panel2":"#302b35","--card":"#242129","--field":"#1d1a21",
+      "--gold":"#b9a4cf","--gold2":"#eee8f3","--text":"#f5f2f7","--heading":"#f1eaf5","--muted":"#c7bfcc",
+      "--line":"rgba(185,164,207,.24)","--header-bg":"#17151a","--footer-bg":"#17151a","--button-bg":"#78658d",
+      "--button-text":"#ffffff","--index-bg":"#17151a","--index-card":"#242129","--index-icon":"#c6b3d9","--index-border":"#756184",
       "--page-image":"none","--bg-overlay":"0"
     };
-    Object.entries(royalAmethyst).forEach(([name,value])=>root.style.setProperty(name,value,"important"));
+    Object.entries(royalAmethyst).forEach(([name,value])=>root.style.setProperty(name,value));
+    /* One active design only: discard stale layout preset selectors from earlier experiments. */
+    root.removeAttribute("data-web-design");
+    root.removeAttribute("data-mobile-design");
     root.setAttribute("data-theme",mode);
     root.setAttribute("data-visual-style","royal-amethyst-07");
     root.style.colorScheme=mode;
