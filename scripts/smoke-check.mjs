@@ -684,3 +684,20 @@ try {
 } catch (e) {
   report(false, "Unable to validate PWA asset cache alignment: " + e.message);
 }
+
+try {
+  const admin = read("assets/js/site-admin.bundle.js");
+  report(admin.includes('const target=$("#adminProducts");if(!target)return;') &&
+    admin.includes('const layer=$("#adminLayer");if(e.key==="Escape"&&layer&&') &&
+    admin.includes('const pinInput=$("#adminPin");if(!pinInput){') &&
+    admin.includes('if($("#cfgPreset"))$("#cfgPreset").value=preset;'),
+    "Admin product rendering, Escape handling, PIN login and optional settings fields guard missing DOM elements");
+  const html = read("index.html");
+  const worker = read("sw.js");
+  report(html.includes("site-admin.bundle.js?v=20261027-admin-guards-v1") &&
+    worker.includes('BASE_PATH + "assets/js/site-admin.bundle.js?v=20261027-admin-guards-v1"') &&
+    worker.includes("mamlakat-al-otor-shell-v97-20261027-admin-guards"),
+    "Admin guard bundle and PWA cache versions are synchronized");
+} catch (e) {
+  report(false, "Unable to validate admin DOM guards: " + e.message);
+}
