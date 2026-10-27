@@ -1,14 +1,14 @@
 /* MAMLKAT AL-OTOR — GitHub Pages PWA shell */
 "use strict";
-const CACHE_NAME = "mamlakat-al-otor-shell-v103-20261028-design-06-clean-lab";
+const CACHE_NAME = "mamlakat-al-otor-shell-v104-20261028-design-05-clean";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
   BASE_PATH + "index.html",
-  BASE_PATH + "manifest.webmanifest?v=20261028-design-06-clean-lab",
-  BASE_PATH + "site-unified.css?v=20261028-design-06-clean-lab",
-  BASE_PATH + "design-06-lab.css?v=20261028-design-06-clean-lab",
-  BASE_PATH + "theme-persistence.js?v=20261028-neutral-single-theme-08",
+  BASE_PATH + "manifest.webmanifest?v=20261028-design-05-clean",
+  BASE_PATH + "site-unified.css?v=20261028-design-05-clean",
+  BASE_PATH + "design-05-atelier.css?v=20261028-design-05-clean",
+  BASE_PATH + "theme-persistence.js?v=20261028-design-05-clean",
   BASE_PATH + "assets/js/site-catalog.bundle.js?v=20261027-admin-guards-v1",
   BASE_PATH + "assets/js/site-admin.bundle.js?v=20261027-admin-guards-v1",
   BASE_PATH + "assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1",
