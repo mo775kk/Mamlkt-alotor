@@ -53,6 +53,8 @@ try {
   report(themeBootstrap.includes('gold:"#D4AF37"') && !themeBootstrap.includes('["gold","gold2","button","indexIcon","indexBorder"].includes(key)&&isGoldTone(theme[key])'), "Royal gold palette is accepted by theme persistence instead of being neutralized");
   report(html.includes('data-theme="dark"') && read("site-unified.css").includes("--bg:#0A0A0A") && read("site-unified.css").includes("--gold:#D4AF37"), "Default storefront palette is royal black and gold");
 
+  report(html.indexOf('royal-amethyst-07.css?v=20261028-full-redesign-07') > html.indexOf('</body>') - 1000000 && html.includes('new MutationObserver') && html.includes('keepRoyalAmethystLast'),
+    "Royal Amethyst 07 stylesheet is reasserted after late theme/style injections");
   const redesignCss = read("royal-amethyst-07.css");
   report(html.includes('royal-amethyst-07.css?v=20261028-full-redesign-07') &&
     worker.includes('royal-amethyst-07.css?v=20261028-full-redesign-07') &&
@@ -582,7 +584,7 @@ try {
   const registrationIsCurrent = html.includes("register('./sw.js?v=20261028-royal-amethyst-07')");
   report(html.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1") && worker.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v100-20261028-full-redesign-07") &&
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v101-20261028-design-07-stable") &&
     worker.includes("site-unified.css?v=20261028-royal-amethyst-07") &&
     worker.includes("assets/js/site-catalog.bundle.js?v=20261027-admin-guards-v1"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
