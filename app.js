@@ -256,6 +256,22 @@
     ["للجنسين","يونيسكس","unisex"]
   ].map(group=>group.map(norm));
   const catalogStopWords = new Set(["لل","في","من","على","عن","مع","الى","الي","the","for","and","with","a","an","عطر","عطور","perfume","perfumes"]);
+  function editDistanceAtMostOne(a,b) {
+    if(Math.abs(a.length-b.length)>1)return false;
+    let i=0,j=0,edits=0;
+    while(i<a.length&&j<b.length){
+      if(a[i]===b[j]){i++;j++;continue;}
+      if(++edits>1)return false;
+      if(a.length>b.length)i++;else if(b.length>a.length)j++;else{i++;j++;}
+    }
+    if(i<a.length||j<b.length)edits++;
+    return edits<=1;
+  }
+  function fuzzyCatalogToken(token, haystackWords) {
+    // Typo tolerance is deliberately conservative and only used for longer words.
+    if(token.length<4)return false;
+    return haystackWords.some(word=>Math.abs(word.length-token.length)<=1&&editDistanceAtMostOne(token,word));
+  }
   function matchesCatalogQuery(product, rawQuery) {
     const query=norm(rawQuery);
     if(!query)return true;
@@ -268,10 +284,12 @@
     if(haystack.includes(query))return true;
     const tokens=query.split(" ").filter(t=>t.length>1&&!catalogStopWords.has(t));
     if(!tokens.length)return haystack.includes(query);
-    // Each meaningful query token must match either directly or through a known scent-intent synonym.
+    const words=[...new Set(haystack.split(" ").filter(Boolean))];
+    // Each meaningful query token must match directly, through a scent-intent synonym, or via a one-character typo.
     return tokens.every(token=>{
       const group=catalogIntentGroups.find(items=>items.some(item=>item===token||item.startsWith(token)||token.startsWith(item)));
-      return (group||[token]).some(term=>haystack.includes(term));
+      if((group||[token]).some(term=>haystack.includes(term)))return true;
+      return fuzzyCatalogToken(token,words);
     });
   }
   function save(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { notify("تعذر الحفظ في هذا المتصفح. صدّر نسخة احتياطية إن أمكن."); return false; } }
