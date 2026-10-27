@@ -14,7 +14,8 @@
   function luminance(hex){const z=String(hex).replace("#","");const f=z.length===3?z.split("").map(c=>c+c).join(""):z;const c=[0,2,4].map(i=>parseInt(f.slice(i,i+2),16)/255).map(n=>n<=.04045?n/12.92:Math.pow((n+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]}
   function applyTheme(){
     const root=document.documentElement;
-    /* Stable neutral theme: ignore legacy saved palettes and preset selectors. */
+    /* Keep the neutral palette, but preserve the user's light/dark mode choice. */
+    const mode=(()=>{try{return localStorage.getItem(MODE_KEY)==="dark"?"dark":"light"}catch(_){return "light"}})();
     const neutral={
       "--bg":"#ffffff","--panel":"#ffffff","--panel2":"#f5f5f5","--card":"#ffffff","--field":"#ffffff",
       "--gold":"#4b5563","--gold2":"#374151","--text":"#202124","--heading":"#202124","--muted":"#5f6368",
@@ -23,14 +24,12 @@
       "--page-image":"none","--bg-overlay":"0"
     };
     Object.entries(neutral).forEach(([name,value])=>root.style.setProperty(name,value,"important"));
-    root.setAttribute("data-theme","light");
+    root.setAttribute("data-theme",mode);
     ["data-visual-style","data-mobile-design","data-web-design"].forEach(name=>root.removeAttribute(name));
-    root.style.colorScheme="light";
+    root.style.colorScheme=mode;
     const meta=document.querySelector('meta[name="theme-color"]');
-    if(meta)meta.setAttribute("content","#ffffff");
-    try{
-      [THEME_KEY,MODE_KEY].forEach(key=>localStorage.removeItem(key));
-    }catch(_){}
+    if(meta)meta.setAttribute("content",mode==="dark"?"#202124":"#ffffff");
+    try{localStorage.removeItem(THEME_KEY)}catch(_){}
   }
   function applyDisplay(){
     const root=document.documentElement,v=read(VISUAL_KEY)||{};
