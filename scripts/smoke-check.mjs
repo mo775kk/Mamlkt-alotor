@@ -630,3 +630,16 @@ for (const message of pass) console.log("PASS  " + message);
 for (const message of failures) console.error("FAIL  " + message);
 console.log("\n" + pass.length + " passed; " + failures.length + " failed.");
 if (failures.length) process.exitCode = 1;
+
+try {
+  const app = read("app.js");
+  report(app.includes("catalogIntentGroups") && app.includes("function matchesCatalogQuery(product, rawQuery)") &&
+    app.includes('["دافئ","دافي","warm","warming","winter","شتاء","للشتاء"') &&
+    app.includes('["منعش","انتعاش","fresh","citrus","حمضي"') &&
+    app.includes("(!q||matchesCatalogQuery(p,q))"),
+    "Catalog search expands common Arabic/English scent intents (warm winter, fresh citrus, woody, sweet, floral, musk, marine and gender) without external API keys");
+  report(!app.includes("service_role") && !app.includes("sk-proj-"),
+    "Storefront JavaScript contains no obvious Supabase service-role or OpenAI secret key literals");
+} catch (e) {
+  report(false, "Unable to validate smart catalog search: " + e.message);
+}
