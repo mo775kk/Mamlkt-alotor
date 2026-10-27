@@ -576,3 +576,51 @@ button,a,input,select,textarea{ -webkit-tap-highlight-color:transparent }
 .royal-ad-actions{display:flex;flex-wrap:wrap;gap:10px}.royal-ad-actions .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
 @media(max-width:700px){.royal-ad{min-height:430px;margin:16px 10px;border-inline:1px solid rgba(212,175,55,.42)}.royal-ad:before,.royal-ad:after{width:7px}.royal-ad-image{width:100%;object-position:60% center;opacity:.62}.royal-ad-shade{background:linear-gradient(90deg,rgba(8,8,7,.94),rgba(8,8,7,.74)),linear-gradient(0deg,rgba(8,8,7,.66),transparent 55%)}.royal-ad-copy{width:100%;padding:28px 24px}.royal-ad h2{font-size:clamp(1.7rem,7vw,2.45rem)}.royal-ad-benefits{display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:20px}.royal-ad-actions{display:grid;grid-template-columns:1fr 1fr}.royal-ad-actions .btn{padding-inline:10px;white-space:normal;text-align:center}}
 @media(max-width:360px){.royal-ad{min-height:455px}.royal-ad-copy{padding:24px 18px}.royal-ad-actions{grid-template-columns:1fr}.royal-ad-actions .btn{width:100%}}
+
+
+/* 2026-10-27 recovery patch: prevent narrow-column text and oversized admin/settings cards on phones. */
+*,*::before,*::after{box-sizing:border-box}
+html,body{max-width:100%;min-width:0}
+body{overflow-x:hidden}
+img,video,iframe,table{max-width:100%}
+button,input,select,textarea{max-width:100%;min-width:0}
+#adminLayer,.admin-layer{box-sizing:border-box;width:100%;max-width:100%;overflow-x:hidden}
+#adminContent,#adminLogin,.admin-panel,.admin-page,.admin-grid,
+#adminLayer section,#adminLayer article,#adminLayer form,
+.admin-layer section,.admin-layer article,.admin-layer form{min-width:0;max-width:100%;box-sizing:border-box}
+#adminLayer p,#adminLayer label,#adminLayer small,#adminLayer strong,
+.admin-layer p,.admin-layer label,.admin-layer small,.admin-layer strong{overflow-wrap:anywhere;word-break:normal}
+#adminLayer .admin-grid,.admin-layer .admin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:720px){
+  #adminLayer{padding:8px!important}
+  #adminContent,#adminLogin,.admin-panel,.admin-page{
+    width:100%!important;max-width:100%!important;max-height:none!important;
+    margin:0!important;padding:14px!important;border-radius:12px!important;
+  }
+  #adminLayer .admin-grid,.admin-layer .admin-grid,
+  #adminLayer .settings-grid,.admin-layer .settings-grid,
+  #adminLayer .theme-grid,.admin-layer .theme-grid,
+  #adminLayer .design-grid,.admin-layer .design-grid,
+  #adminLayer .preset-grid,.admin-layer .preset-grid,
+  #adminLayer .admin-settings-grid,.admin-layer .admin-settings-grid{
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+    grid-auto-rows:auto!important;align-items:start!important;gap:12px!important;
+  }
+  #adminLayer .admin-grid>* , .admin-layer .admin-grid>*,
+  #adminLayer .settings-grid>* , .admin-layer .settings-grid>*,
+  #adminLayer .theme-grid>* , .admin-layer .theme-grid>*,
+  #adminLayer .design-grid>* , .admin-layer .design-grid>*,
+  #adminLayer .preset-grid>* , .admin-layer .preset-grid>*,
+  #adminLayer .admin-settings-grid>* , .admin-layer .admin-settings-grid>*{
+    min-width:0!important;width:100%!important;max-width:100%!important;
+    min-height:0!important;height:auto!important;max-height:none!important;
+    grid-column:1/-1;
+  }
+  #adminLayer input,#adminLayer select,#adminLayer textarea,
+  .admin-layer input,.admin-layer select,.admin-layer textarea{
+    width:100%!important;min-width:0!important;max-width:100%!important;font-size:16px!important;
+  }
+  #adminLayer .admin-tabs,.admin-layer .admin-tabs{gap:6px;overflow-wrap:anywhere}
+  #adminLayer .admin-tabs button,.admin-layer .admin-tabs button{flex:1 1 auto;max-width:100%;white-space:normal}
+  .section,.home-index-section{max-width:100%;min-width:0}
+}
