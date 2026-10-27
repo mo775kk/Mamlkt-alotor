@@ -568,7 +568,7 @@ try {
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
   const registrationIsCurrent = html.includes("register('./sw.js?v=20261027-neutral-mode-v3')");
-  report(html.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v4") && worker.includes("assets/js/site-experience.bundle.js?v=20261026-dom-guards-v4"),
+  report(html.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1") && worker.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
   report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v98-20261027-neutral-mode") &&
     worker.includes("site-unified.css?v=20261027-neutral-mode-v3") &&
