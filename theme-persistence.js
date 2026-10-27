@@ -14,22 +14,21 @@
   function luminance(hex){const z=String(hex).replace("#","");const f=z.length===3?z.split("").map(c=>c+c).join(""):z;const c=[0,2,4].map(i=>parseInt(f.slice(i,i+2),16)/255).map(n=>n<=.04045?n/12.92:Math.pow((n+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]}
   function applyTheme(){
     const root=document.documentElement;
-    /* Keep the neutral palette, but preserve the user's light/dark mode choice. */
-    const mode=(()=>{try{return localStorage.getItem(MODE_KEY)==="dark"?"dark":"light"}catch(_){return "light"}})();
-    const neutral={
-      "--bg":"#ffffff","--panel":"#ffffff","--panel2":"#f5f5f5","--card":"#ffffff","--field":"#ffffff",
-      "--gold":"#4b5563","--gold2":"#374151","--text":"#202124","--heading":"#202124","--muted":"#5f6368",
-      "--line":"#dadce0","--header-bg":"#ffffff","--footer-bg":"#f5f5f5","--button-bg":"#343a40",
-      "--button-text":"#ffffff","--index-bg":"#ffffff","--index-card":"#ffffff","--index-icon":"#4b5563","--index-border":"#dadce0",
+    /* Design 07 — Royal Amethyst: deep violet, black, restrained champagne gold. */
+    const mode=(()=>{try{return localStorage.getItem(MODE_KEY)==="light"?"light":"dark"}catch(_){return "dark"}})();
+    const royalAmethyst={
+      "--bg":"#100719","--panel":"#170d24","--panel2":"#211130","--card":"#1a1027","--field":"#160d20",
+      "--gold":"#c8a5ff","--gold2":"#ead8ff","--text":"#f4ecff","--heading":"#f0ddff","--muted":"#c0afd2",
+      "--line":"rgba(190,145,255,.34)","--header-bg":"#100719","--footer-bg":"#100719","--button-bg":"#7135a8",
+      "--button-text":"#ffffff","--index-bg":"#100719","--index-card":"#1a1027","--index-icon":"#d7b4ff","--index-border":"#7542a4",
       "--page-image":"none","--bg-overlay":"0"
     };
-    Object.entries(neutral).forEach(([name,value])=>root.style.setProperty(name,value,"important"));
+    Object.entries(royalAmethyst).forEach(([name,value])=>root.style.setProperty(name,value,"important"));
     root.setAttribute("data-theme",mode);
-    ["data-visual-style","data-mobile-design","data-web-design"].forEach(name=>root.removeAttribute(name));
+    root.setAttribute("data-visual-style","royal-amethyst-07");
     root.style.colorScheme=mode;
     const meta=document.querySelector('meta[name="theme-color"]');
-    if(meta)meta.setAttribute("content",mode==="dark"?"#202124":"#ffffff");
-    try{localStorage.removeItem(THEME_KEY)}catch(_){}
+    if(meta)meta.setAttribute("content","#100719");
   }
   function applyDisplay(){
     const root=document.documentElement,v=read(VISUAL_KEY)||{};
