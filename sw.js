@@ -1,13 +1,13 @@
 /* MAMLKAT AL-OTOR — GitHub Pages PWA shell */
 "use strict";
-const CACHE_NAME = "mamlakat-al-otor-shell-v98-20261027-neutral-mode";
+const CACHE_NAME = "mamlakat-al-otor-shell-v99-20261028-royal-amethyst-07";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
   BASE_PATH + "index.html",
   BASE_PATH + "manifest.webmanifest?v=20261022-no-gold2",
-  BASE_PATH + "site-unified.css?v=20261027-neutral-mode-v3",
-  BASE_PATH + "theme-persistence.js?v=20261027-admin-guards-v1",
+  BASE_PATH + "site-unified.css?v=20261028-royal-amethyst-07",
+  BASE_PATH + "theme-persistence.js?v=20261028-royal-amethyst-07",
   BASE_PATH + "assets/js/site-catalog.bundle.js?v=20261027-admin-guards-v1",
   BASE_PATH + "assets/js/site-admin.bundle.js?v=20261027-admin-guards-v1",
   BASE_PATH + "assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1",
