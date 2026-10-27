@@ -49,15 +49,16 @@ jobs:
           if (count(/<script\b/gi) !== count(/<\/script>/gi)) throw new Error('HTML script tags are unbalanced');
           if (html.includes('mentor2"scrollProgress')) throw new Error('Broken service-worker line detected');
           if (!/site-unified\.css\?v=[^'"]+/.test(html)) throw new Error('Updated stylesheet is not referenced');
-          if (!html.includes('data-theme="dark"') || !css.includes('--bg:#0A0A0A') || !css.includes('--gold:#D4AF37') || !css.includes('--heading:#F1D77A') || !css.includes('background-image:none!important')) throw new Error('Unified royal black-and-gold design finish is missing');
+          const redesign = readFileSync('royal-amethyst-07.css', 'utf8');
+          if (!html.includes('data-theme="dark"') || !html.includes('royal-amethyst-07.css?v=20261028-full-redesign-07') || !redesign.includes('--bg:#100719') || !redesign.includes('--gold:#c8a5ff') || !redesign.includes('.hero{min-height:clamp(560px,68vw,740px)')) throw new Error('Full Royal Amethyst 07 design is missing');
           const requiredIds = ['oilMentorPanel','oilVoiceAsk','oilVoiceTeach','oilVoiceStop','oilVoiceStatus','oilMentorAnswer','supplierOilSearch','supplierOilProducts'];
           const missing = requiredIds.filter(id => !html.includes('id="' + id + '"'));
           if (missing.length) throw new Error('Missing oil mentor IDs: ' + missing.join(', '));
           if (!html.includes('oil-voice-guide.js') || !js.includes('SpeechRecognition') || !js.includes('speechSynthesis')) throw new Error('Oil mentor script or voice APIs missing');
           const bannedPaletteNames = ['plumPinkGold','warmRose','roseGold','pinkGold','flamingo','blush','royalRose','berry','coral','peach','ruby','wine','mauve','lilac','plum','sunset','dawn'];
           if (bannedPaletteNames.some(name => settings.includes('["' + name + '"') || settings.includes('"' + name + '":') || settings.includes('option value="' + name + '"'))) throw new Error('Pink preset remains in settings');
-          if (manifest.theme_color.toLowerCase() !== '#0a0a0a' || manifest.background_color.toLowerCase() !== '#0a0a0a') throw new Error('PWA manifest does not match the royal black-and-gold design');
-          console.log('HTML structure, PWA manifest, royal black-and-gold design and oil mentor verified.');
+          if (manifest.theme_color.toLowerCase() !== '#100719' || manifest.background_color.toLowerCase() !== '#100719') throw new Error('PWA manifest does not match the Royal Amethyst 07 design');
+          console.log('HTML structure, PWA manifest, Royal Amethyst 07 design and oil mentor verified.');
           NODE
       - name: Run storefront regression checks
         run: node scripts/smoke-check.mjs
