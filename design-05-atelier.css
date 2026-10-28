@@ -150,7 +150,7 @@ a{ text-underline-offset:3px }
 .home-index-section .solar-system .home-index-card:active{scale:.98;filter:brightness(1.2)}
 .home-index-section .solar-sun{
  position:absolute!important;left:50%!important;top:50%!important;width:23%!important;height:auto!important;aspect-ratio:1/1!important;
- border-radius:50%!important;z-index:5;pointer-events:none;transform:translate(-50%,-50%)!important;rotate:0deg!important;
+ border-radius:50%!important;z-index:20;pointer-events:auto!important;touch-action:manipulation;cursor:pointer;transform:translate(-50%,-50%)!important;rotate:0deg!important;
  border:2px solid rgba(255,228,157,.9)!important;
  background:radial-gradient(circle at 35% 28%,#fff9d8 0%,#ffda74 16%,#c18a27 42%,#5b350e 72%,#1a1006 100%)!important;
  box-shadow:0 0 28px rgba(255,194,69,.7),0 0 70px rgba(224,178,78,.35),inset 0 0 18px rgba(255,248,205,.6)!important;
