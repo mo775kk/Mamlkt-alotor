@@ -75,7 +75,7 @@
     id = canonicalSectionId(id);
     if (id !== "home" && !resolveSection(id)) return;
     const resolved = resolveSection(id);
-    const section = resolved?.target || document.getElementById("home");
+    const section = resolved?.target || document.getElementById("homeIndex");
     if (!section || !main.contains(section)) return;
     const host = id === "home" ? section : resolved.host;
     if (!host || !main.contains(host)) return;
@@ -90,7 +90,7 @@
     const isHome = id === "home";
     allPageSections().forEach(el => {
       if (!originalHidden.has(el)) originalHidden.set(el, el.hidden);
-      el.hidden = isHome ? originalHidden.get(el) : el !== host;
+      el.hidden = el !== host;
     });
     if (!isHome) {
       host.setAttribute("data-standalone-section", "true");
