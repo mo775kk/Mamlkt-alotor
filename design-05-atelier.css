@@ -223,3 +223,96 @@ body.index-only-mode main>#homeIndex{display:block!important;min-height:70vh}
 body.index-only-mode main>#home{display:none!important}
 @media(max-width:700px){.home-index-section .home-index-utility-row{gap:10px}.home-index-section .home-index-utility-row .home-index-card{flex-basis:clamp(92px,27vw,118px)!important;width:clamp(92px,27vw,118px)!important;padding:8px!important}.section-page-toolbar{grid-template-columns:1fr auto!important;padding:12px!important}.section-page-heading{grid-column:1/-1;grid-row:1;text-align:center}.section-page-back{grid-column:1;grid-row:2}.section-page-mark{grid-column:2;grid-row:2}.section-page-toolbar .galaxy-portal-nav{grid-column:1/-1}body.section-page-mode main>[data-standalone-section]{border-radius:14px!important;padding-inline:12px}}
 @media(prefers-reduced-motion:reduce){.home-index-section .home-index-utility-row .home-index-card{animation:none!important}}
+
+
+/* SITE-WIDE GALAXY MOTION — shared by every main and nested section */
+@keyframes galaxySectionDrift{
+  0%,100%{background-position:0 0,100% 20%,50% 100%}
+  50%{background-position:3% 2%,96% 24%,48% 96%}
+}
+@keyframes galaxyPlanetFloat{
+  0%,100%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(0,-5px,0)}
+}
+@keyframes galaxyOrbitHalo{
+  0%,100%{opacity:.3;transform:rotate(0deg) scale(1)}
+  50%{opacity:.72;transform:rotate(3deg) scale(1.012)}
+}
+@keyframes galaxyStarShimmer{
+  0%,100%{opacity:.24}
+  50%{opacity:.62}
+}
+/* All major sections receive the same deep-space atmosphere, not only the index. */
+main>section.section,
+main>section.hero,
+main>section.feature-section,
+main>section.gift-section{
+  position:relative;
+  isolation:isolate;
+}
+body:not(.index-only-mode) main>section.section,
+body:not(.index-only-mode) main>section.hero,
+body:not(.index-only-mode) main>section.feature-section,
+body:not(.index-only-mode) main>section.gift-section{
+  background-image:
+    radial-gradient(1.5px 1.5px at 8% 14%,rgba(255,239,190,.65) 45%,transparent 100%),
+    radial-gradient(1px 1px at 88% 22%,rgba(255,255,255,.55) 45%,transparent 100%),
+    radial-gradient(1px 1px at 68% 82%,rgba(228,197,125,.5) 45%,transparent 100%),
+    radial-gradient(ellipse at 50% 0%,rgba(188,150,72,.075),transparent 52%),
+    linear-gradient(180deg,rgba(9,10,16,.16),rgba(16,14,12,.12))!important;
+  background-size:100% 100%,100% 100%,100% 100%,140% 140%,100% 100%;
+  animation:galaxySectionDrift 24s ease-in-out infinite;
+}
+/* Fine orbital rings behind section content. */
+body.section-page-mode main>section[data-standalone-section]:after{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  width:min(76vw,760px);aspect-ratio:1;border:1px solid rgba(212,175,95,.075);
+  border-radius:50%;left:50%;top:18%;transform:translateX(-50%) rotate(-18deg);
+  box-shadow:0 0 0 28px rgba(212,175,95,.012),0 0 0 70px rgba(212,175,95,.009);
+  animation:galaxyOrbitHalo 18s ease-in-out infinite;
+}
+/* Cards and nested panels behave like gently floating planets throughout the site. */
+body:not(.index-only-mode) main>section:not(#homeIndex) .category-card,
+body:not(.index-only-mode) main>section:not(#homeIndex) .feature-card,
+body:not(.index-only-mode) main>section:not(#homeIndex) .editorial-card,
+body:not(.index-only-mode) main>section:not(#homeIndex) .gift-card,
+body:not(.index-only-mode) main>section:not(#homeIndex) .section-detail-box,
+body:not(.index-only-mode) main>section:not(#homeIndex) .blend-panel,
+body:not(.index-only-mode) main>section:not(#homeIndex) .advisor-box,
+body:not(.index-only-mode) main>section:not(#homeIndex) .contact-card,
+body:not(.index-only-mode) main>section:not(#homeIndex) .product-card{
+  animation:galaxyPlanetFloat 7s ease-in-out infinite;
+  will-change:transform;
+}
+body:not(.index-only-mode) main>section:not(#homeIndex) .category-card:nth-child(3n),
+body:not(.index-only-mode) main>section:not(#homeIndex) .feature-card:nth-child(3n),
+body:not(.index-only-mode) main>section:not(#homeIndex) .product-card:nth-child(3n){
+  animation-delay:-2.2s;
+}
+body:not(.index-only-mode) main>section:not(#homeIndex) .category-card:nth-child(3n + 1),
+body:not(.index-only-mode) main>section:not(#homeIndex) .feature-card:nth-child(3n + 1),
+body:not(.index-only-mode) main>section:not(#homeIndex) .product-card:nth-child(3n + 1){
+  animation-delay:-4.4s;
+}
+/* The index keeps its stronger orbit; this extends the same motion language into nested areas. */
+body.section-page-mode main>section[data-standalone-section] .section-heading:after{
+  content:"";display:block;width:clamp(90px,18vw,180px);height:1px;margin:14px auto 0;
+  background:linear-gradient(90deg,transparent,rgba(228,197,125,.7),transparent);
+  animation:galaxyStarShimmer 4s ease-in-out infinite;
+}
+@media(max-width:700px){
+  body.section-page-mode main>section[data-standalone-section]:after{width:92vw;top:12%}
+  body:not(.index-only-mode) main>section:not(#homeIndex) .category-card,
+  body:not(.index-only-mode) main>section:not(#homeIndex) .feature-card,
+  body:not(.index-only-mode) main>section:not(#homeIndex) .editorial-card,
+  body:not(.index-only-mode) main>section:not(#homeIndex) .gift-card,
+  body:not(.index-only-mode) main>section:not(#homeIndex) .section-detail-box,
+  body:not(.index-only-mode) main>section:not(#homeIndex) .blend-panel,
+  body:not(.index-only-mode) main>section:not(#homeIndex) .advisor-box,
+  body:not(.index-only-mode) main>section:not(#homeIndex) .contact-card,
+  body:not(.index-only-mode) main>section:not(#homeIndex) .product-card{animation-duration:8.5s}
+}
+@media(prefers-reduced-motion:reduce){
+  body:not(.index-only-mode) main>section,
+  body:not(.index-only-mode) main>section *{animation:none!important;scroll-behavior:auto!important}
+}
