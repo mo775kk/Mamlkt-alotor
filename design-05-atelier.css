@@ -334,3 +334,75 @@ body.section-page-mode #sectionPageToolbar{
 body.section-page-mode #sectionPageToolbar[hidden]{
   display:none!important;
 }
+
+/* WHITE KINGDOM MODE — replaces dark galaxy surfaces globally when the solar core is activated. */
+body.white-kingdom-mode{
+  --page-bg:#f7f7f4;--surface:#fff;--surface-soft:#f0f1ee;--ink:#242522;--muted:#5c625d;
+  background:#f7f7f4!important;color:#242522!important;
+}
+body.white-kingdom-mode,
+body.white-kingdom-mode main,
+body.white-kingdom-mode main>section,
+body.white-kingdom-mode .section,
+body.white-kingdom-mode .home-index-section,
+body.white-kingdom-mode .solar-system{
+  background-color:#f7f7f4!important;color:#242522!important;
+}
+body.white-kingdom-mode main>section,
+body.white-kingdom-mode .section-detail-box,
+body.white-kingdom-mode .section-page-toolbar,
+body.white-kingdom-mode .section-page-end,
+body.white-kingdom-mode .site-header,
+body.white-kingdom-mode .site-footer,
+body.white-kingdom-mode .royal-ad-copy,
+body.white-kingdom-mode .category-card,
+body.white-kingdom-mode .product-card,
+body.white-kingdom-mode .home-index-card,
+body.white-kingdom-mode .feature-card,
+body.white-kingdom-mode .editorial-card,
+body.white-kingdom-mode .gift-card,
+body.white-kingdom-mode .contact-card,
+body.white-kingdom-mode .blend-panel,
+body.white-kingdom-mode .advisor-box,
+body.white-kingdom-mode .admin-panel,
+body.white-kingdom-mode .settings-panel,
+body.white-kingdom-mode .inventory-panel,
+body.white-kingdom-mode .report-panel,
+body.white-kingdom-mode .calculator-panel,
+body.white-kingdom-mode .cost-summary,
+body.white-kingdom-mode .summary-card{
+  background-color:#fff!important;background-image:none!important;color:#242522!important;
+  border-color:#d7d9d2!important;box-shadow:0 8px 24px rgba(30,35,25,.07)!important;
+}
+body.white-kingdom-mode h1,body.white-kingdom-mode h2,body.white-kingdom-mode h3,
+body.white-kingdom-mode h4,body.white-kingdom-mode p,body.white-kingdom-mode li,
+body.white-kingdom-mode label,body.white-kingdom-mode small,body.white-kingdom-mode strong,
+body.white-kingdom-mode .section-heading,body.white-kingdom-mode .section-heading p,
+body.white-kingdom-mode .home-index-copy,body.white-kingdom-mode .home-index-copy small,
+body.white-kingdom-mode .home-index-copy strong,body.white-kingdom-mode .section-detail-box p,
+body.white-kingdom-mode .section-detail-box li{
+  color:#292b27!important;text-shadow:none!important;
+}
+body.white-kingdom-mode a:not(.btn),body.white-kingdom-mode button:not(.btn){
+  color:#34372f;
+}
+body.white-kingdom-mode input,body.white-kingdom-mode select,body.white-kingdom-mode textarea{
+  background:#fff!important;color:#242522!important;border-color:#c9cdc4!important;
+}
+body.white-kingdom-mode .solar-sun{
+  background:radial-gradient(circle at 35% 25%,#fff 0,#fff 34%,#e7e9e4 65%,#cfd4cb 100%)!important;
+  color:#333!important;border-color:#b8bdb2!important;box-shadow:0 0 0 9px #ffffffa8,0 0 35px #aeb7a488,inset 0 0 18px #fff!important;
+}
+body.white-kingdom-mode .solar-sun small,body.white-kingdom-mode .solar-sun em{color:#34372f!important}
+body.white-kingdom-mode .solar-orbit{border-color:#b9c0b5!important;box-shadow:0 0 0 16px #aeb8a31a!important}
+body.white-kingdom-mode .home-index-card{background:radial-gradient(circle at 30% 25%,#fff 0,#f0f2ed 58%,#e0e4dc 100%)!important;box-shadow:0 8px 20px #25301a12!important}
+body.white-kingdom-mode .section-page-toolbar .galaxy-portal-nav a,
+body.white-kingdom-mode .section-page-back,body.white-kingdom-mode .section-page-end button{
+  background:#fff!important;color:#30332c!important;border-color:#c7cdc1!important;
+}
+body.white-kingdom-mode .btn-gold{background:#30352d!important;color:#fff!important;border-color:#30352d!important}
+body.white-kingdom-mode .btn-outline{background:#fff!important;color:#30352d!important;border-color:#aeb5a7!important}
+body.white-kingdom-mode .solar-sun em{font-style:normal;font-size:10px;max-width:100px;text-align:center;line-height:1.4}
+.solar-sun{cursor:pointer;font:inherit}
+.solar-sun em{display:block;font-style:normal;font-size:10px;max-width:110px;text-align:center;line-height:1.35;opacity:.88}
+@media(max-width:700px){.solar-sun em{font-size:8px;max-width:88px}}
