@@ -149,6 +149,24 @@
     }
   });
 
+  // The galaxy core toggles a persistent white palette across the whole site.
+  function syncKingdomTheme(){
+    const enabled = localStorage.getItem("mamlaka_white_kingdom_v1") === "true";
+    document.body.classList.toggle("white-kingdom-mode", enabled);
+    const toggle = document.getElementById("galaxyThemeToggle");
+    if (toggle) { toggle.setAttribute("aria-pressed", String(enabled)); toggle.setAttribute("aria-label", enabled ? "إعادة الخلفية الداكنة" : "تغيير خلفية الموقع إلى الأبيض"); }
+  }
+  document.addEventListener("click", event => {
+    const toggle = event.target.closest("#galaxyThemeToggle");
+    if (!toggle) return;
+    const enabled = !document.body.classList.contains("white-kingdom-mode");
+    document.body.classList.toggle("white-kingdom-mode", enabled);
+    try { localStorage.setItem("mamlaka_white_kingdom_v1", String(enabled)); } catch (_) {}
+    toggle.setAttribute("aria-pressed", String(enabled));
+    toggle.setAttribute("aria-label", enabled ? "إعادة الخلفية الداكنة" : "تغيير خلفية الموقع إلى الأبيض");
+  });
+  try { if (localStorage.getItem("mamlaka_white_kingdom_v1") === "true") document.body.classList.add("white-kingdom-mode"); } catch (_) {}
+
   ensureNavigation();
   const initial = decodeURIComponent(location.hash.slice(1) || "home");
   if (initial === "home" || resolveSection(initial)) navigate(initial, true);
