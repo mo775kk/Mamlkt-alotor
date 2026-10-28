@@ -61,3 +61,20 @@ dialog,.modal,.drawer,.cart-drawer{border:1px solid var(--line);border-radius:18
  .home-index-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.home-index-card{min-height:140px;align-items:flex-start;flex-wrap:wrap;padding:12px}.home-index-icon{width:40px;height:40px;flex-basis:40px}.home-index-copy strong{font-size:15px}.home-index-copy small{font-size:12px}.home-index-count{margin-inline-start:auto}
 }
 @media(max-width:390px){.home-index-grid{grid-template-columns:1fr}.home-index-card{min-height:auto;align-items:center}.hero{min-height:470px}.section-detail-box{padding:13px}}
+
+
+/* FINAL PALETTE LOCK — prevent persisted legacy theme colors from mixing with the new royal design */
+:root{
+ --bg:#090a0c!important;--surface:#121419!important;--panel:#121419!important;--panel2:#191b20!important;--panel-2:#191b20!important;
+ --card:#131519!important;--field:#0d0f12!important;--gold:#d6ad54!important;--gold2:#f5d98b!important;
+ --text:#f7f2e8!important;--ink:#f7f2e8!important;--heading:#f5d98b!important;--muted:#c0b8aa!important;
+ --line:rgba(214,173,84,.28)!important;--header-bg:#090a0c!important;--footer-bg:#08090b!important;
+ --button-bg:#d6ad54!important;--button-text:#19120a!important;--index-bg:#101115!important;
+ --index-card:#121419!important;--index-icon:#f5d98b!important;--index-border:rgba(214,173,84,.28)!important;
+ --page-image:none!important;--bg-overlay:0!important
+}
+html,body{background-color:#090a0c!important;color:#f7f2e8}
+.site-header{background:rgba(9,10,12,.96)!important}
+.site-footer,footer{background:#08090b!important}
+section,.page-section,.section-panel{background-color:#121419}
+@media(prefers-reduced-motion:reduce){th{animation:none!important}}
