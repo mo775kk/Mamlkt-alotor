@@ -71,7 +71,7 @@
       });
     })();
   </script>
-  <link rel="stylesheet" href="design-05-atelier.css?v=20261028-single-section-focus-05">
+  <link rel="stylesheet" href="design-05-atelier.css?v=20261028-white-kingdom-06">
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -161,7 +161,7 @@
       <div class="solar-system" aria-label="فهرس كوكبي متحرك">
         <div class="solar-orbit solar-orbit-outer" aria-hidden="true"></div>
         <div class="solar-orbit solar-orbit-inner" aria-hidden="true"></div>
-        <div class="solar-sun" aria-hidden="true"><span>♛</span><small>مملكة العطور</small></div>
+        <button type="button" class="solar-sun" id="galaxyThemeToggle" aria-label="تغيير خلفية الموقع إلى الأبيض" aria-pressed="false"><span aria-hidden="true">♛</span><small>مملكة العطور</small><em>اضغط لتغيير ألوان المملكة</em></button>
         <div class="home-index-grid" aria-label="أقسام وخدمات الموقع">
         <a class="home-index-card" href="#oil-catalog"><span class="home-index-icon" aria-hidden="true"><svg class="index-icon-svg" viewBox="0 0 24 24"><path d="M12 2 20 7 12 22 4 7 12 2Z"/><path d="M4 7h16M8 7l4 15 4-15"/></svg></span><span class="home-index-copy"><strong>كتالوج الزيوت العطرية</strong><small>ابحث بالاسم والتصنيف والعائلة العطرية، واستعرض الأحجام والأسعار المسجلة.</small></span><span class="home-index-count" id="homeOilCount">—</span><span class="home-index-arrow" aria-hidden="true">←</span></a>
         <a class="home-index-card" href="#ready"><span class="home-index-icon" aria-hidden="true"><svg class="index-icon-svg" viewBox="0 0 24 24"><path d="M8 3h8v4l2 3v11H6V10l2-3V3Z"/><path d="M8 7h8M9 13h6M9 17h6"/></svg></span><span class="home-index-copy"><strong>العطور الجاهزة</strong><small>تصفح العطور المسجلة، واقرأ تفاصيل المنتج والصورة والسعر المتاح.</small></span><span class="home-index-count" id="homeReadyCount">—</span><span class="home-index-arrow" aria-hidden="true">←</span></a>
@@ -621,7 +621,7 @@
     document.addEventListener('mamlaka:products-updated',updateBlendPriceGuide);
   })();
   </script>
-  <script defer src="assets/js/site-sections.bundle.js?v=20261028-galaxy-portals-02"></script>
+  <script defer src="assets/js/site-sections.bundle.js?v=20261028-white-kingdom-01"></script>
   <script>
   (function(){var b=document.getElementById("shareKingdomButton");if(!b)return;b.addEventListener("click",function(){var d={title:document.title,text:"اكتشف مملكة العطور",url:window.location.href};if(navigator.share){navigator.share(d).catch(function(){});return;}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.url).then(function(){b.textContent="تم نسخ رابط الموقع ✓";},function(){window.prompt("انسخ رابط الموقع:",d.url);});}else{window.prompt("انسخ رابط الموقع:",d.url);}});})();
   </script>
