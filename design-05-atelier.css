@@ -196,9 +196,50 @@ a{ text-underline-offset:3px }
  .home-index-section .home-index-utility-row .home-index-card{animation:none!important}
 }
 
-/* Royal section planets: compact labels; details open only after selecting a planet. */
-.home-index-section .solar-system .home-index-card .home-index-copy small{display:none!important}
+/* GALAXY EXPERIENCE — consolidated responsive rules for the whole site */
+.home-index-section .solar-system .home-index-card .home-index-copy small,
 .home-index-section .solar-system .home-index-card .home-index-arrow{display:none!important}
 .home-index-section .solar-system .home-index-card .home-index-copy strong{max-width:100%;overflow-wrap:anywhere;text-align:center}
-.home-index-section .home-index-utility-row .home-index-card{border-radius:50%!important;aspect-ratio:1/1;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.home-index-section .home-index-utility-row{display:flex;justify-content:center;align-items:center;gap:clamp(12px,3vw,28px);flex-wrap:wrap;margin:18px auto}
+.home-index-section .home-index-utility-row .home-index-card{
+ position:relative;flex:0 1 132px!important;width:132px!important;min-height:0!important;aspect-ratio:1/1;
+ border-radius:50%!important;display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:8px;padding:12px!important;text-align:center;overflow:hidden;
+ background:radial-gradient(circle at 28% 22%,rgba(255,255,255,.22),transparent 25%),radial-gradient(circle at 72% 78%,#090a10 0,#20202b 54%,#6b542e 100%)!important;
+ border:1px solid rgba(236,204,135,.65)!important;
+ box-shadow:inset -8px -9px 16px rgba(0,0,0,.65),inset 3px 3px 10px rgba(255,255,255,.12),0 0 22px rgba(220,177,87,.14)!important;
+}
+.home-index-section .home-index-utility-row .home-index-card:after{content:"";position:absolute;inset:-5%;border:1px solid rgba(255,220,145,.25);border-radius:50%;pointer-events:none}
 .home-index-section .home-index-utility-row .home-index-card .home-index-copy small{display:none!important}
+.home-index-section .home-index-utility-row .home-index-card .home-index-copy strong{font-size:clamp(11px,1.5vw,14px);line-height:1.3;color:#fff0c4}
+.home-index-section .home-index-utility-row .home-index-icon{width:clamp(30px,4vw,42px);height:clamp(30px,4vw,42px);flex:0 0 auto}
+body.section-page-mode{background-color:#080910!important;background-image:radial-gradient(ellipse at 15% 15%,rgba(80,70,135,.16),transparent 34%),radial-gradient(ellipse at 85% 35%,rgba(184,135,55,.11),transparent 30%),radial-gradient(ellipse at 50% 90%,rgba(55,96,145,.12),transparent 36%)!important}
+body.section-page-mode main>[data-standalone-section]{
+ position:relative;isolation:isolate;overflow:hidden;
+ background:radial-gradient(ellipse at 50% 0%,rgba(212,175,95,.075),transparent 48%),linear-gradient(180deg,rgba(10,11,20,.98),rgba(13,12,16,.98))!important;
+ border:1px solid rgba(212,175,95,.2);border-radius:20px;
+ box-shadow:0 18px 55px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.025);
+ padding-inline:clamp(14px,3vw,34px);
+}
+body.section-page-mode main>[data-standalone-section]:before{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;
+ background-image:radial-gradient(1px 1px at 8% 16%,#f3dca5 50%,transparent 100%),radial-gradient(1.5px 1.5px at 86% 12%,#fff 50%,transparent 100%),radial-gradient(1px 1px at 72% 52%,#e5c987 50%,transparent 100%),radial-gradient(1px 1px at 18% 78%,#fff 50%,transparent 100%),radial-gradient(1px 1px at 92% 86%,#e5c987 50%,transparent 100%);
+}
+.section-page-toolbar{
+ position:relative;isolation:isolate;overflow:hidden;
+ background:radial-gradient(ellipse at 50% 0%,rgba(230,190,99,.2),transparent 55%),linear-gradient(135deg,#10121d,#1c1720 55%,#0a0b11)!important;
+ border:1px solid rgba(220,183,105,.45)!important;border-radius:18px!important;
+ box-shadow:0 12px 36px rgba(0,0,0,.35),inset 0 1px rgba(255,255,255,.08)!important;
+}
+.section-page-toolbar:after{content:"";position:absolute;inset:12px;border:1px solid rgba(220,183,105,.16);border-radius:12px;pointer-events:none;z-index:-1}
+.section-page-back,.section-page-end button{border-radius:999px!important;border:1px solid rgba(230,197,125,.55)!important;background:rgba(15,14,18,.85)!important;color:#f3dfb2!important}
+body.section-page-mode .section-heading h2{color:#f6e7c7!important;text-shadow:0 0 22px rgba(213,174,91,.12)}
+body.section-page-mode .section-detail-box{background:linear-gradient(135deg,rgba(28,27,39,.95),rgba(22,19,17,.96))!important;border-color:rgba(212,175,95,.3)!important}
+@media(max-width:700px){
+ .home-index-section .home-index-utility-row{gap:10px}
+ .home-index-section .home-index-utility-row .home-index-card{flex-basis:clamp(92px,27vw,118px)!important;width:clamp(92px,27vw,118px)!important;padding:8px!important}
+ body.section-page-mode main>[data-standalone-section]{border-radius:14px;padding-inline:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ .home-index-section .home-index-utility-row .home-index-card{animation:none!important}
+}
