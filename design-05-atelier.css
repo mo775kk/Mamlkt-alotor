@@ -195,3 +195,10 @@ a{ text-underline-offset:3px }
  .home-index-section .home-index-icon,.home-index-section .solar-orbit-inner,.home-index-section .solar-orbit-outer,
  .home-index-section .home-index-utility-row .home-index-card{animation:none!important}
 }
+
+/* Royal section planets: compact labels; details open only after selecting a planet. */
+.home-index-section .solar-system .home-index-card .home-index-copy small{display:none!important}
+.home-index-section .solar-system .home-index-card .home-index-arrow{display:none!important}
+.home-index-section .solar-system .home-index-card .home-index-copy strong{max-width:100%;overflow-wrap:anywhere;text-align:center}
+.home-index-section .home-index-utility-row .home-index-card{border-radius:50%!important;aspect-ratio:1/1;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.home-index-section .home-index-utility-row .home-index-card .home-index-copy small{display:none!important}
