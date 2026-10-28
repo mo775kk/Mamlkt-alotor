@@ -316,3 +316,21 @@ body.section-page-mode main>section[data-standalone-section] .section-heading:af
   body:not(.index-only-mode) main>section,
   body:not(.index-only-mode) main>section *{animation:none!important;scroll-behavior:auto!important}
 }
+
+/* SINGLE-SECTION FOCUS: hide global chrome while a section is open. */
+body.section-page-mode .site-header,
+body.section-page-mode .site-footer,
+body.section-page-mode .scroll-progress,
+body.section-page-mode #sectionPageEnd[hidden]{
+  display:none!important;
+}
+body.section-page-mode main>section[hidden],
+body.section-page-mode main>[hidden]{
+  display:none!important;
+}
+body.section-page-mode #sectionPageToolbar{
+  display:grid!important;
+}
+body.section-page-mode #sectionPageToolbar[hidden]{
+  display:none!important;
+}
