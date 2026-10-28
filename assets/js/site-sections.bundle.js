@@ -27,7 +27,7 @@
       bar.id = "sectionPageToolbar";
       bar.className = "section-page-toolbar";
       bar.setAttribute("aria-label", "التنقل داخل الموقع");
-      bar.innerHTML = '<button type="button" class="section-page-back" id="sectionPageBack"><span aria-hidden="true">→</span> الصفحة السابقة</button><div class="section-page-heading"><small>مملكة العطور · MAMLKAT AL-OTOR</small><h1 id="sectionPageTitle">تفاصيل القسم</h1><p id="sectionPageSubtitle">تصفح القسم بشكل مستقل</p></div><span class="section-page-mark" aria-hidden="true">♛</span>';
+      bar.innerHTML = '<button type="button" class="section-page-back" id="sectionPageBack"><span aria-hidden="true">→</span> الصفحة السابقة</button><div class="section-page-heading"><small>مملكة العطور · GALAXY PORTAL</small><h1 id="sectionPageTitle">تفاصيل القسم</h1><p id="sectionPageSubtitle">أنت الآن داخل مجرة هذا القسم</p></div><span class="section-page-mark" aria-hidden="true">♛</span><nav class="galaxy-portal-nav" aria-label="بوابات المجرات"><a href="#home">المجرة الرئيسية</a><a href="#oil-catalog">الزيوت</a><a href="#ready">العطور</a><a href="#blend">التركيب</a><a href="#bakhoor">العود والبخور</a><a href="#gift">الهدايا</a><a href="#advisor">المستشار</a><a href="#visit">التواصل</a></nav>';
       main.insertBefore(bar, main.firstChild);
       const backButton = bar.querySelector("#sectionPageBack");
       if (backButton) backButton.addEventListener("click", navigateBack);
@@ -104,7 +104,7 @@
       const pageTitle = document.getElementById("sectionPageTitle");
       const pageSubtitle = document.getElementById("sectionPageSubtitle");
       if (pageTitle) pageTitle.textContent = titleFor(host);
-      if (pageSubtitle) pageSubtitle.textContent = "عرض مستقل للقسم · ارجع إلى الفهرس للوصول إلى سلة المشتريات";
+      if (pageSubtitle) pageSubtitle.textContent = "أنت الآن داخل مجرة هذا القسم · استخدم بوابات المجرات للتنقل أو ارجع إلى الفهرس";
       if (host.parentNode === main) main.insertBefore(bar, host);
       if (end.parentNode !== document.body) document.body.appendChild(end);
       const footer = document.querySelector(".site-footer");
