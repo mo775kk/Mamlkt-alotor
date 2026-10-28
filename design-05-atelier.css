@@ -233,6 +233,11 @@ body.section-page-mode main>[data-standalone-section]:before{
 }
 .section-page-toolbar:after{content:"";position:absolute;inset:12px;border:1px solid rgba(220,183,105,.16);border-radius:12px;pointer-events:none;z-index:-1}
 .section-page-back,.section-page-end button{border-radius:999px!important;border:1px solid rgba(230,197,125,.55)!important;background:rgba(15,14,18,.85)!important;color:#f3dfb2!important}
+.galaxy-portal-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:14px auto 2px;position:relative;z-index:2}
+.galaxy-portal-nav a{display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:999px;border:1px solid rgba(220,183,105,.28);background:rgba(7,8,14,.68);color:#f1dfb8;text-decoration:none;font-size:13px;transition:background .2s,border-color .2s,transform .2s}
+.galaxy-portal-nav a:hover,.galaxy-portal-nav a:focus-visible{background:rgba(189,151,73,.2);border-color:#e4c77e;transform:translateY(-1px)}
+.galaxy-portal-nav a[href="#home"]{border-color:rgba(230,197,125,.62);font-weight:700}
+@media(max-width:700px){.galaxy-portal-nav{gap:6px}.galaxy-portal-nav a{font-size:11px;padding:6px 9px}}
 body.section-page-mode .section-heading h2{color:#f6e7c7!important;text-shadow:0 0 22px rgba(213,174,91,.12)}
 body.section-page-mode .section-detail-box{background:linear-gradient(135deg,rgba(28,27,39,.95),rgba(22,19,17,.96))!important;border-color:rgba(212,175,95,.3)!important}
 @media(max-width:700px){
