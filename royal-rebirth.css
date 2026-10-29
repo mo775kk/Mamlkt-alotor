@@ -81,11 +81,6 @@ section,.page-section,.section-panel{background-color:#121419}
 
 
 /* ACCESSIBILITY + CONSISTENT MOBILE LAYOUT — consolidated final overrides */
-.home-index-cart-card,
-#cartShortcutIndex,
-.cart-page-shortcut,
-[data-cart-shortcut]:not(#cartShortcut){display:none!important}
-.site-header #cartShortcut{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{line-height:1.65;text-rendering:optimizeLegibility;-webkit-text-size-adjust:100%}
 button,input,select,textarea{font:inherit}
@@ -113,6 +108,3 @@ input,select,textarea{max-width:100%;color:var(--text,#f7f2e8)}
  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
-/* Main toolbar: cart stays available in the header; no duplicate cart card in the home index. */
-.site-header #cartShortcut{display:inline-flex;visibility:visible;opacity:1;pointer-events:auto}
-.site-header .header-actions{gap:10px}
