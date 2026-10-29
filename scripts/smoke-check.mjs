@@ -53,9 +53,9 @@ try {
   report(themeBootstrap.includes('gold:"#D4AF37"') && !themeBootstrap.includes('["gold","gold2","button","indexIcon","indexBorder"].includes(key)&&isGoldTone(theme[key])'), "Royal gold palette is accepted by theme persistence instead of being neutralized");
   report(html.includes('data-theme="dark"') && html.includes("royal-rebirth.css") && read("royal-rebirth.css").includes("--bg:#0A0A0A") && read("royal-rebirth.css").includes("--gold:#D4AF37"), "Default storefront palette is royal black and gold");
 
-  report(html.includes('royal-rebirth.css?v=20261029-royal-palette-v1') && !/design-\d+-atelier\.css/.test(html) && (html.match(/<link[^>]+\.css\?v=/g)||[]).length===1, "Exactly one active design stylesheet is loaded without a cascade observer");
+  report(html.includes('royal-rebirth.css?v=20261029-review-approval-v1') && !/design-\d+-atelier\.css/.test(html) && (html.match(/<link[^>]+\.css\?v=/g)||[]).length===1, "Exactly one active design stylesheet is loaded without a cascade observer");
   const redesignCss = read("royal-rebirth.css");
-  report(html.includes('royal-rebirth.css?v=20261029-royal-palette-v1') && worker.includes('royal-rebirth.css?v=20261029-royal-palette-v1') && redesignCss.includes("ROYAL REBIRTH") && redesignCss.includes("--bg:#0A0A0A") && redesignCss.includes("--gold:#D4AF37") && redesignCss.includes("@media") && redesignCss.includes(".home-index-card"), "Royal Rebirth stylesheet is linked and cached with the approved responsive black-and-gold design");
+  report(html.includes('royal-rebirth.css?v=20261029-review-approval-v1') && worker.includes('royal-rebirth.css?v=20261029-review-approval-v1') && redesignCss.includes("ROYAL REBIRTH") && redesignCss.includes("--bg:#0A0A0A") && redesignCss.includes("--gold:#D4AF37") && redesignCss.includes("@media") && redesignCss.includes(".home-index-card"), "Royal Rebirth stylesheet is linked and cached with the approved responsive black-and-gold design");
   report(manifest.theme_color === "#0A0A0A" && manifest.background_color === "#0A0A0A" &&
     html.includes('<meta name="theme-color" content="#0A0A0A">'),
     "Browser chrome and installed PWA use the approved royal black-and-gold identity");
@@ -547,9 +547,9 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261029-cache-refresh-v1')");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261029-review-approval-v1')");
   report(html.includes("assets/js/site-experience.bundle.js?v=20261029-repair-01") && worker.includes("assets/js/site-experience.bundle.js?v=20261029-repair-01"), "Inventory accounting script and service worker use the current supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v111-20261029-cache-refresh-v1") && worker.includes("royal-rebirth.css?v=20261029-royal-palette-v1") && worker.includes("assets/js/site-catalog.bundle.js?v=20261029-catalog-guard-v1"), "HTML service-worker registration and cached storefront assets use the current royal release");
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v112-20261029-review-approval-v1") && worker.includes("royal-rebirth.css?v=20261029-review-approval-v1") && worker.includes("assets/js/site-catalog.bundle.js?v=20261029-catalog-guard-v1"), "HTML service-worker registration and cached storefront assets use the current royal release");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
 }
@@ -596,6 +596,8 @@ try {
   const storefrontVisibilitySources = [read("app.js"), read("assets/js/site-catalog.bundle.js")];
   report(storefrontVisibilitySources.every(source => source.includes("const isCustomerVisibleProduct = p => !!p && (p.supplierCatalogItem === true || p.needsReview !== true)") && source.includes("products.filter(p=>isCustomerVisibleProduct(p) && p.productType!==\"oil\"") && source.includes("const publicProducts=products.filter(isCustomerVisibleProduct)") && source.includes("const fav=products.filter(p=>isCustomerVisibleProduct(p)&&favorites.includes(p.id))")), "Unreviewed ready products stay hidden from public catalog, favorites and local/AI advisor; supplier oil references remain browseable");
   report(storefrontVisibilitySources.every(source => source.includes("p.useCategoryPhoto === true") && source.includes("placeholder-bottle bottle-")), "Missing exact product images use local SVG bottle artwork instead of generic remote stock photos");
+  const adminReviewSource = read("settings.js"), adminReviewBundle = read("assets/js/site-admin.bundle.js");
+  report([adminReviewSource,adminReviewBundle].every(source => source.includes('id="pApprove"') && source.includes('const approve=$("#pApprove")?.checked===true') && source.includes("available:approve,needsReview:!approve") && source.includes("لا يمكن اعتماد المنتج قبل استكمال") && source.includes("قيد مراجعة المالك")), "Owner approval requires complete product fields and explicit approval; saving a price alone cannot publish an unreviewed product");
   report(sections.includes('if (backButton) backButton.addEventListener("click", navigateBack);') &&
     sections.includes('if (endBackButton) endBackButton.addEventListener("click", navigateBack);') &&
     sections.includes('if (pageTitle) pageTitle.textContent = titleFor(host);') &&
