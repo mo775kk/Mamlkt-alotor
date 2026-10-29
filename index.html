@@ -477,7 +477,27 @@
     <p>العطر توقيع… والمملكة اختيارك.</p>
     <small>© <span id="year"></span> MAMLKAT AL-OTOR</small>
   </footer>
-  <!-- المودال والإشعارات فقط؛ واجهة السلة محذوفة -->
+  <!-- سلة التسوق الكاملة + نافذة تفاصيل المنتج -->
+  <div class="drawer-backdrop hidden" id="drawerBackdrop"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="سلة التسوق" aria-hidden="true">
+    <div class="drawer-head"><div class="cart-page-heading"><small>مملكة العطور · مراجعة الطلب</small><h2 id="drawerTitle">سلة التسوق</h2><p>راجع كل منتج وحجمه وسعره قبل إرسال الطلب</p></div><button type="button" class="cart-back-btn" id="closeDrawer" aria-label="العودة إلى الصفحة السابقة"><span aria-hidden="true">→</span> متابعة التسوق</button></div>
+    <div id="cartItems" class="drawer-items"></div>
+    <div class="drawer-bottom">
+      <div class="total-row"><span>الإجمالي المرجعي</span><strong id="cartTotal">0 ج.م</strong></div>
+      <small>الأسعار مرجعية وقد تحتاج إلى تأكيد المتجر.</small>
+      <div class="checkout-customer" aria-label="بيانات العميل للطلب">
+        <h3>بيانات استلام الطلب</h3>
+        <label for="checkoutName">الاسم <span aria-hidden="true">*</span></label><input id="checkoutName" name="checkoutName" autocomplete="name" maxlength="100" required placeholder="اسم العميل">
+        <label for="checkoutPhone">رقم الهاتف <span aria-hidden="true">*</span></label><input id="checkoutPhone" name="checkoutPhone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" required placeholder="رقم للتواصل">
+        <label for="checkoutArea">المنطقة / العنوان</label><input id="checkoutArea" name="checkoutArea" autocomplete="street-address" maxlength="220" placeholder="المنطقة والشارع أو عنوان الاستلام">
+        <label for="checkoutNotes">ملاحظات الطلب</label><textarea id="checkoutNotes" name="checkoutNotes" rows="2" maxlength="500" placeholder="اللون أو التغليف أو أي تفاصيل إضافية"></textarea>
+        <small>تُرسل هذه البيانات إلى واتساب عند الضغط على متابعة الطلب، ولا تُحفظ تلقائيًا في المتصفح.</small>
+      </div>
+      <button type="button" class="btn btn-gold full-width" id="checkoutBtn">متابعة الطلب عبر واتساب</button>
+      <button type="button" class="text-btn" id="clearCart">إفراغ السلة</button><div class="cart-page-end"><span>نهاية مراجعة السلة</span><button type="button" id="cartEndBack">← الرجوع إلى التسوق</button></div>
+    </div>
+  </aside>
+  <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button type="button" class="modal-close cart-back-btn modal-back-btn" id="closeModal" aria-label="العودة إلى صفحة المنتجات"><span aria-hidden="true">→</span> رجوع للمنتجات</button><div id="modalContent"></div></section></div>
   <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button type="button" class="modal-close cart-back-btn modal-back-btn" id="closeModal" aria-label="العودة إلى صفحة المنتجات"><span aria-hidden="true">→</span> رجوع للمنتجات</button><div id="modalContent"></div></section></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
