@@ -137,3 +137,30 @@ html[data-palette="ivory"] .hero,html[data-palette="ivory"] .royal-hero,html[dat
 html[data-palette="ivory"] .product-card,html[data-palette="ivory"] .product,html[data-palette="ivory"] .category-card,html[data-palette="ivory"] .gift-card,html[data-palette="ivory"] .oil-card,html[data-palette="ivory"] .card,html[data-palette="ivory"] .feature-card{background:linear-gradient(180deg,#00000003,transparent 45%),var(--card);box-shadow:0 8px 22px #4d3c1a12}
 @media(max-width:760px){.palette-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.palette-option{min-height:145px;padding:12px}}
 @media(max-width:360px){.palette-options{grid-template-columns:minmax(0,1fr)}}
+
+
+/* Admin usability pass — scoped, responsive and kept in the single active stylesheet */
+#adminLayer{position:fixed;inset:0;z-index:1000;overflow:auto;overscroll-behavior:contain;background:rgba(0,0,0,.72);padding:clamp(8px,2vw,24px)}
+#adminLayer.hidden{display:none!important}
+#adminLayer .admin-panel{width:min(1240px,100%);min-height:min(80vh,900px);margin:0 auto;padding:clamp(14px,2.5vw,28px);border:1px solid var(--line);border-radius:18px;background:var(--surface);color:var(--text);box-shadow:0 24px 80px #0008}
+#adminLayer .admin-tabs{position:sticky;top:0;z-index:5;display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-inline:contain;padding:10px 2px;background:var(--surface);border-bottom:1px solid var(--line);scrollbar-width:thin}
+#adminLayer .admin-tabs button{flex:0 0 auto;min-height:42px;padding:9px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);white-space:nowrap}
+#adminLayer .admin-tabs button.active,[data-admin-tab].active{background:var(--button-bg);color:var(--button-text);border-color:var(--button-bg)}
+#adminLayer .admin-page{min-width:0;padding:clamp(12px,2vw,22px);margin:14px 0;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--text)}
+#adminLayer .admin-page.hidden{display:none!important}
+#adminLayer .admin-page :is(input,select,textarea){width:100%;max-width:100%;min-width:0;min-height:42px;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--text)}
+#adminLayer .admin-page :is(button,.btn){min-height:42px;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+#adminLayer .admin-page :is(label,.admin-note){line-height:1.7}
+#adminLayer .settings-save-status{position:sticky;bottom:8px;z-index:6;padding:11px 14px;margin:12px 0;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);box-shadow:0 4px 18px #0002}
+#adminLayer .settings-save-status[data-state="error"]{border-color:#c75b5b;color:#ffbcbc}
+#adminLayer .settings-save-status[data-state="saved"]{border-color:var(--line)}
+#adminLayer .admin-grid,#adminLayer .settings-grid,#adminLayer .request-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#adminLayer .admin-card,#adminLayer .admin-section{min-width:0;overflow-wrap:anywhere}
+@media(max-width:680px){
+ #adminLayer{padding:0}
+ #adminLayer .admin-panel{min-height:100dvh;border-radius:0;padding:12px}
+ #adminLayer .admin-tabs{top:0;margin-inline:-2px;padding:8px 2px}
+ #adminLayer .admin-page{padding:12px}
+ #adminLayer .admin-grid,#adminLayer .settings-grid,#adminLayer .request-tools{grid-template-columns:minmax(0,1fr)}
+ #adminLayer .admin-page :is(button,.btn){width:100%}
+}
