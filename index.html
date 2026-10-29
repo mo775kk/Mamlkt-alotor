@@ -151,7 +151,37 @@
     <!-- فهرس المملكة -->
     <section class="section home-index-section" id="homeIndex" aria-label="فهرس الموقع">
 
-    <!-- مجرة مملكة العطور: الشمس هي المملكة والكواكب هي أقسام التجربة -->
+    <!-- كتالوج الزيوت -->
+    <section class="section products-section supplier-oil-section" id="oil-catalog">
+      <div class="section-heading"><div><p class="eyebrow">THE SUPPLIER OIL LIBRARY</p><h2>كتالوج الزيوت المركزة للتركيب</h2></div><p>أسماء الموردين مصنفة للبحث والاختيار. أسعار المورد تبقى داخل لوحة الإدارة ولا تُعرض للعميل.</p></div>
+    <aside class="section-detail-box" aria-label="تفاصيل كتالوج الزيوت"><span class="section-detail-icon" aria-hidden="true">◈</span><div><h3>دليل قراءة كتالوج الزيوت</h3><p>ابحث باسم العطر أو الطابع أو العائلة، ثم راجع خيارات العبوة والحجم وسعر البيع الظاهر. تصنيف العائلة العطرية إرشادي وليس ضمانًا لثبات الرائحة أو قوتها. أسعار الموردين معلومات داخلية ولا تمثل سعر البيع للعميل.</p><ul><li>اختر الحجم بناءً على استخدامك.</li><li>راجع تفاصيل المنتج قبل الإضافة إلى السلة.</li><li>اطلب مراجعة المتجر إذا كانت معلومة ناقصة أو غير مؤكدة.</li></ul></div></aside>
+    
+      <div class="customer-price-notice" role="note"><strong>الأسعار تبدأ من 50 ج.م</strong><span>اختر زيتًا مركزًا (3 أو 5 أو 10 مل) أو عبوة 22 مل أو بخاخًا (30 أو 50 أو 100 مل). الأسعار المعروضة للعميل هي أسعار البيع القطاعي.</span></div>
+      <div class="toolbar supplier-public-toolbar">
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="supplierOilSearch" type="search" placeholder="ابحث باسم العطر أو طابعه..." autocomplete="off"></label>
+        <select id="supplierOilCategory" aria-label="تصنيف الزيوت"><option value="">كل الأقسام</option><option value="MEN">رجالي</option><option value="WOMEN">نسائي</option><option value="UNISEX">للجنسين</option><option value="ORIENTAL">شرقي</option><option value="KIDS">أطفال</option><option value="DIFFUSER">فواحات</option></select>
+        <select id="supplierOilFamily" aria-label="العائلة العطرية">
+          <option value="">كل العائلات العطرية</option>
+          <option>حمضي ومنعش</option><option>زهري ووردي</option><option>مسكي ونظيف</option>
+          <option>حلو وفانيليا</option><option>عنبر وشرقي</option><option>عود وخشبي</option>
+          <option>جلدي وتبغي</option><option>عطري وأخضر</option><option>بحري</option>
+          <option>بودري</option><option>فاكهي</option><option>غير محدد</option>
+        </select>
+      </div>
+      <p class="results-message" id="supplierOilSummary" aria-live="polite">استورد ملف كتالوج الموردين من لوحة الإدارة لعرض جميع الأنواع هنا.</p>
+      <div class="oil-mentor-panel" id="oilMentorPanel" aria-labelledby="oilMentorTitle">
+        <div class="oil-mentor-heading"><span class="oil-mentor-emblem" aria-hidden="true">♛</span><div><p class="eyebrow">ROYAL OIL GUIDE · VOICE MENTOR</p><h3 id="oilMentorTitle">مرشد الزيوت الصوتي</h3><p>اسأل بصوتك عن أي زيت، أو اطلب شرح العائلة العطرية وطريقة الاختيار. المرشد يشرح البيانات المسجلة ويبيّن بوضوح ما يحتاج إلى تحقق.</p></div></div>
+        <div class="oil-mentor-actions"><button class="btn btn-gold" type="button" id="oilVoiceAsk">🎙 ابحث وتحدّث صوتيًا</button><button class="btn btn-outline" type="button" id="oilVoiceTeach">▶ علّمني كيف أختار الزيت</button><button class="btn btn-outline" type="button" id="oilVoiceStop">■ إيقاف الصوت</button></div>
+        <p class="oil-voice-status" id="oilVoiceStatus" aria-live="polite">اضغط الميكروفون وقل اسم الزيت، أو اسأل عن عائلة عطرية.</p>
+        <div class="oil-mentor-answer" id="oilMentorAnswer" aria-live="polite"><strong>خريطة المرشدين المتخصصين</strong><p>مرشد العائلات يشرح الطابع، ومرشد النوتات يوضح المقدمة والقلب والقاعدة، ومرشد التركيب يساعد في اختيار الحجم، ومرشد التحقق يميّز بين المعلومة الموثقة والتقدير.</p></div>
+        <p class="oil-mentor-sources">للتعلّم والتحقق: <a href="https://www.aesop.com/library/a-guide-to-fragrance.html" target="_blank" rel="noopener noreferrer">دليل Aesop للعائلات والنوتات العطرية</a> · <a href="https://www.esteelauder.com/fragrance-guide" target="_blank" rel="noopener noreferrer">دليل Estée Lauder لاختيار العطر</a></p>
+      </div>
+      <div class="product-grid" id="supplierOilProducts"></div>
+      <div class="empty-state hidden" id="noSupplierOilProducts">لم يتم تحميل كتالوج الموردين بعد، أو لا توجد نتائج مطابقة.</div>
+      <div class="section-cta"><button class="btn btn-outline" id="supplierOilMore" type="button">عرض المزيد من الأنواع</button></div>
+   </section>
+
+        <!-- مجرة مملكة العطور: الشمس هي المملكة والكواكب هي أقسام التجربة -->
     <section class="solar-galaxy" id="solarGalaxy" aria-labelledby="galaxyTitle">
       <div class="galaxy-nebula" aria-hidden="true"></div>
       <div class="galaxy-heading"><p class="eyebrow">EXPLORE THE ROYAL UNIVERSE</p><h2 id="galaxyTitle">مجرة <span>مملكة العطور</span></h2><p>كل مدار يقودك إلى عالم عطري مختلف؛ والشمس التي تجمعها هي مملكتك.</p></div>
@@ -312,35 +342,7 @@
     <aside class="section-detail-box" aria-label="شرح خدمة تركيب العطر"><span class="section-detail-icon" aria-hidden="true">⚗</span><div><h3>ما الفرق بين شراء الزيت وتركيب عطرك؟</h3><p>في كتالوج الزيوت تتصفح الأنواع المسجلة، أما خدمة التركيب فتساعدك على إعداد طلب حسب تفضيلاتك. السعر النهائي والتوفر وأي تفاصيل خاصة بالعبوة يجب تأكيدها مع المتجر قبل التجهيز.</p></div></aside>
   </section>
 
-    <!-- كتالوج الزيوت -->
-    <section class="section products-section supplier-oil-section" id="oil-catalog">
-      <div class="section-heading"><div><p class="eyebrow">THE SUPPLIER OIL LIBRARY</p><h2>كتالوج الزيوت المركزة للتركيب</h2></div><p>أسماء الموردين مصنفة للبحث والاختيار. أسعار المورد تبقى داخل لوحة الإدارة ولا تُعرض للعميل.</p></div>
-    <aside class="section-detail-box" aria-label="تفاصيل كتالوج الزيوت"><span class="section-detail-icon" aria-hidden="true">◈</span><div><h3>دليل قراءة كتالوج الزيوت</h3><p>ابحث باسم العطر أو الطابع أو العائلة، ثم راجع خيارات العبوة والحجم وسعر البيع الظاهر. تصنيف العائلة العطرية إرشادي وليس ضمانًا لثبات الرائحة أو قوتها. أسعار الموردين معلومات داخلية ولا تمثل سعر البيع للعميل.</p><ul><li>اختر الحجم بناءً على استخدامك.</li><li>راجع تفاصيل المنتج قبل الإضافة إلى السلة.</li><li>اطلب مراجعة المتجر إذا كانت معلومة ناقصة أو غير مؤكدة.</li></ul></div></aside>
-    
-      <div class="customer-price-notice" role="note"><strong>الأسعار تبدأ من 50 ج.م</strong><span>اختر زيتًا مركزًا (3 أو 5 أو 10 مل) أو عبوة 22 مل أو بخاخًا (30 أو 50 أو 100 مل). الأسعار المعروضة للعميل هي أسعار البيع القطاعي.</span></div>
-      <div class="toolbar supplier-public-toolbar">
-        <label class="search-box"><span aria-hidden="true">⌕</span><input id="supplierOilSearch" type="search" placeholder="ابحث باسم العطر أو طابعه..." autocomplete="off"></label>
-        <select id="supplierOilCategory" aria-label="تصنيف الزيوت"><option value="">كل الأقسام</option><option value="MEN">رجالي</option><option value="WOMEN">نسائي</option><option value="UNISEX">للجنسين</option><option value="ORIENTAL">شرقي</option><option value="KIDS">أطفال</option><option value="DIFFUSER">فواحات</option></select>
-        <select id="supplierOilFamily" aria-label="العائلة العطرية">
-          <option value="">كل العائلات العطرية</option>
-          <option>حمضي ومنعش</option><option>زهري ووردي</option><option>مسكي ونظيف</option>
-          <option>حلو وفانيليا</option><option>عنبر وشرقي</option><option>عود وخشبي</option>
-          <option>جلدي وتبغي</option><option>عطري وأخضر</option><option>بحري</option>
-          <option>بودري</option><option>فاكهي</option><option>غير محدد</option>
-        </select>
-      </div>
-      <p class="results-message" id="supplierOilSummary" aria-live="polite">استورد ملف كتالوج الموردين من لوحة الإدارة لعرض جميع الأنواع هنا.</p>
-      <div class="oil-mentor-panel" id="oilMentorPanel" aria-labelledby="oilMentorTitle">
-        <div class="oil-mentor-heading"><span class="oil-mentor-emblem" aria-hidden="true">♛</span><div><p class="eyebrow">ROYAL OIL GUIDE · VOICE MENTOR</p><h3 id="oilMentorTitle">مرشد الزيوت الصوتي</h3><p>اسأل بصوتك عن أي زيت، أو اطلب شرح العائلة العطرية وطريقة الاختيار. المرشد يشرح البيانات المسجلة ويبيّن بوضوح ما يحتاج إلى تحقق.</p></div></div>
-        <div class="oil-mentor-actions"><button class="btn btn-gold" type="button" id="oilVoiceAsk">🎙 ابحث وتحدّث صوتيًا</button><button class="btn btn-outline" type="button" id="oilVoiceTeach">▶ علّمني كيف أختار الزيت</button><button class="btn btn-outline" type="button" id="oilVoiceStop">■ إيقاف الصوت</button></div>
-        <p class="oil-voice-status" id="oilVoiceStatus" aria-live="polite">اضغط الميكروفون وقل اسم الزيت، أو اسأل عن عائلة عطرية.</p>
-        <div class="oil-mentor-answer" id="oilMentorAnswer" aria-live="polite"><strong>خريطة المرشدين المتخصصين</strong><p>مرشد العائلات يشرح الطابع، ومرشد النوتات يوضح المقدمة والقلب والقاعدة، ومرشد التركيب يساعد في اختيار الحجم، ومرشد التحقق يميّز بين المعلومة الموثقة والتقدير.</p></div>
-        <p class="oil-mentor-sources">للتعلّم والتحقق: <a href="https://www.aesop.com/library/a-guide-to-fragrance.html" target="_blank" rel="noopener noreferrer">دليل Aesop للعائلات والنوتات العطرية</a> · <a href="https://www.esteelauder.com/fragrance-guide" target="_blank" rel="noopener noreferrer">دليل Estée Lauder لاختيار العطر</a></p>
-      </div>
-      <div class="product-grid" id="supplierOilProducts"></div>
-      <div class="empty-state hidden" id="noSupplierOilProducts">لم يتم تحميل كتالوج الموردين بعد، أو لا توجد نتائج مطابقة.</div>
-      <div class="section-cta"><button class="btn btn-outline" id="supplierOilMore" type="button">عرض المزيد من الأنواع</button></div>
-   </section>
+
 
     <!-- دليل العائلات العطرية -->
     <section class="section taxonomy-public-section" id="scent-classification">
