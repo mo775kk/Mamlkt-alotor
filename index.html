@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0A0A0A">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="manifest" href="manifest.webmanifest?v=20261029-repair-01">
+  <link rel="manifest" href="manifest.webmanifest?v=20261029-cache-refresh-v1">
   <link rel="icon" type="image/svg+xml" href="assets/images/app-icon-192.svg">
   <link rel="apple-touch-icon" href="assets/images/app-icon-192.png">
   <meta name="description" content="مملكة العطور — عطور جاهزة، زيوت عطرية، تركيب عطرك الخاص، عود وبخور وهدايا بطابع ملكي.">
@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <script src="theme-persistence.js?v=20261029-repair-01"></script>
+  <script src="theme-persistence.js?v=20261029-cache-refresh-v1"></script>
 
   <!-- ====== ROYAL CINEMATIC v3.0 — التصميم الحديث ====== -->
   
@@ -63,7 +63,7 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261029-royal-palette-v1').catch(error => {
+          navigator.serviceWorker.register('./sw.js?v=20261029-cache-refresh-v1').catch(error => {
             console.warn('Service worker registration failed:', error);
           });
         }
