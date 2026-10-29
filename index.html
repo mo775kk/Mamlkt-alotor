@@ -570,19 +570,7 @@
     }
     renderQuiz();
 
-    /* 4. تأثير ظهور العناصر عند التمرير */
-    if('IntersectionObserver' in window){
-      var io=new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if(e.isIntersecting){e.target.style.opacity=1;e.target.style.transform='translateY(0)';io.unobserve(e.target)}
-        });
-      },{threshold:.12});
-      document.querySelectorAll('.home-index-card,.category-card,.testimonial,.quiz-shell,.product-card').forEach(function(el){
-        el.style.opacity=0;el.style.transform='translateY(18px)';
-        el.style.transition='opacity .6s ease, transform .6s ease';
-        io.observe(el);
-      });
-    }
+    /* عرض ثابت: لا نخفي البطاقات مبدئيًا حتى لا تختفي عند تعطل مراقب التمرير أو تأخره. */
 
     /* 5. تحديث سنة التذييل */
     var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
