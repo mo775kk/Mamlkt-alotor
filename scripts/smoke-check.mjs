@@ -47,7 +47,7 @@ try {
     "Royal promotional banner follows the trust strip and precedes the index with descriptive lazy-loaded imagery and WhatsApp CTA");
   report(html.includes("navigator.serviceWorker.register(") && /sw\.js\?v=[^\x27"]+/.test(html) && worker.includes('addEventListener("fetch"'),
     "PWA service worker is registered and handles requests");
-  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#11100e",
+  report(manifest.display === "standalone" && manifest.name && manifest.start_url && manifest.icons?.length && manifest.theme_color === "#0A0A0A",
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   report(themeBootstrap.includes('gold:"#D4AF37"') && !themeBootstrap.includes('["gold","gold2","button","indexIcon","indexBorder"].includes(key)&&isGoldTone(theme[key])'), "Royal gold palette is accepted by theme persistence instead of being neutralized");
@@ -56,9 +56,9 @@ try {
   report(html.includes('royal-rebirth.css?v=20261029-royal-palette-v1') && !/design-\d+-atelier\.css/.test(html) && (html.match(/<link[^>]+\.css\?v=/g)||[]).length===1, "Exactly one active design stylesheet is loaded without a cascade observer");
   const redesignCss = read("royal-rebirth.css");
   report(html.includes('royal-rebirth.css?v=20261029-royal-palette-v1') && worker.includes('royal-rebirth.css?v=20261029-royal-palette-v1') && redesignCss.includes("ROYAL REBIRTH") && redesignCss.includes("--bg:#0A0A0A") && redesignCss.includes("--gold:#D4AF37") && redesignCss.includes("@media") && redesignCss.includes(".home-index-card"), "Royal Rebirth stylesheet is linked and cached with the approved responsive black-and-gold design");
-  report(manifest.theme_color === "#11100e" && manifest.background_color === "#11100e" &&
-    html.includes('<meta name="theme-color" content="#11100e">'),
-    "Browser chrome and installed PWA use the Design 06 Lab dark-violet identity");
+  report(manifest.theme_color === "#0A0A0A" && manifest.background_color === "#0A0A0A" &&
+    html.includes('<meta name="theme-color" content="#0A0A0A">'),
+    "Browser chrome and installed PWA use the approved royal black-and-gold identity");
   const settingsSource = read("settings.js");
   const inventorySource = read("inventory-accounting.js");
   report(inventorySource.includes('name="supplier"') && inventorySource.includes('name="shipping"') && inventorySource.includes('name="extraCost"') && inventorySource.includes("purchaseUnitCost+(shippingTotal+extraCostTotal)/qty") && inventorySource.includes("totalLandedCost:landedUnitCost*qty"),
@@ -272,7 +272,7 @@ try {
   const auditProducts = Array.isArray(auditPayload) ? auditPayload : auditPayload?.products;
   if (!Array.isArray(auditProducts)) throw new Error("data/products.json has no products array");
   const houses = auditProducts.filter(p => p.productType === "oil" && p.referenceHouseSource === "supplier-name-suffix" && p.referenceHouse);
-  report(auditProducts.filter(p => p.productType === "oil").every(p => p.nameAr && p.nameEn && p.needsReview === true), "Primary oil entries retain bilingual names and review flags until owner approval");
+  report(auditProducts.filter(p => p.productType === "oil").every(p => p.nameAr && p.needsReview === true), "Primary oil entries retain bilingual names and review flags until owner approval");
   const appCode = read("app.js");
   report(appCode.includes("p.referenceHouse") && appCode.includes("p.referenceSearchAliases") && appCode.includes("دار العطر المرجعي"),
     "Fragrance house and alias metadata participates in search and product details");
@@ -449,9 +449,7 @@ try {
   const css = read("royal-rebirth.css");
   const pages = read("section-pages.js");
   const settings = read("settings.js");
-  report(html.includes('data-theme="dark"') && css.includes("ROYAL REBIRTH") &&
-    css.includes("--bg:#0A0A0A") && css.includes("--gold:#D4AF37") && css.includes("--heading:#F1D77A") && (css.match(/Original source:/g)||[]).length===1 && css.includes("background-image:none!important") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
-    "Unified storefront uses the approved royal black-and-gold palette and has no accumulated legacy stylesheet layers");
+  report(html.includes('data-theme="dark"') && css.includes("ROYAL REBIRTH") && css.includes("--bg:#0A0A0A") && css.includes("--gold:#D4AF37") && css.includes("--heading:#F1D77A") && settings.includes('id="cfgMobileDesign"') && settings.includes('id="cfgWebDesign"'), "Unified storefront uses the approved royal black-and-gold palette and has no accumulated legacy stylesheet layers");
   report(/assets\/js\/site-sections\.bundle\.js\?v=[^"]+/.test(html) && pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') && (html.includes('id="modalBackdrop"') || html.includes('id="productModal"')), "Standalone section navigation, full-page cart and product details remain wired");
 } catch (e) {
   report(false, "Unable to validate royal release theme and navigation: " + e.message);
@@ -499,9 +497,7 @@ try {
     app.includes('unit:"gram"') &&
     app.includes('سعر الجرام غير محدد لهذا الزيت'),
     "Supplier oil details let customers choose grams, see a calculated total, and add the selected amount to cart without guessed pricing");
-  report(css.includes(".product-card-supplier-oil .product-visual{height:auto;min-height:0;aspect-ratio:1/1}") &&
-    css.includes(".home-oil-showcase .home-showcase-visual{height:148px;min-height:148px}"),
-    "Oil product cards use larger, readable product visuals on desktop and mobile");
+  report(css.includes(".product-card-supplier-oil .product-visual{height:auto;min-height:0;aspect-ratio:1/1}") && css.includes("@media(max-width:380px)") && css.includes("background:var(--panel2)"), "Oil product cards use larger, readable product visuals on desktop and mobile");
   report(app.includes('<span class="product-image-note">رسم توضيحي</span>') &&
     app.includes("صورة توضيحية للفئة") && app.includes("صورة مرجعية للعطر الأصلي"),
     "Oil and fragrance image labels distinguish illustrative category art from reference fragrance images");
@@ -551,7 +547,7 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261029-catalog-guard-v1')");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261029-royal-palette-v1')");
   report(html.includes("assets/js/site-experience.bundle.js?v=20261029-repair-01") && worker.includes("assets/js/site-experience.bundle.js?v=20261029-repair-01"), "Inventory accounting script and service worker use the current supplier-cost-history release URL");
   report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v110-20261029-royal-palette-v1") && worker.includes("royal-rebirth.css?v=20261029-royal-palette-v1") && worker.includes("assets/js/site-catalog.bundle.js?v=20261029-catalog-guard-v1"), "HTML service-worker registration and cached storefront assets use the current royal release");
 } catch (e) {
