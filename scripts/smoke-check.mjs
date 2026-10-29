@@ -581,12 +581,12 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261028-design-05-clean')");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261029-catalog-guard-v1')");
   report(html.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1") && worker.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1"),
     "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v104-20261028-design-05-clean") &&
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v109-20261029-catalog-guard-v1") &&
     worker.includes("site-unified.css?v=20261028-design-05-clean") &&
-    worker.includes("assets/js/site-catalog.bundle.js?v=20261027-admin-guards-v1"),
+    worker.includes("assets/js/site-catalog.bundle.js?v=20261029-catalog-guard-v1"),
     "HTML service-worker registration and cached storefront assets use the current landed-cost release");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
@@ -631,6 +631,9 @@ try {
     admin.includes('const layer=document.getElementById("adminLayer");') &&
     experience.includes("if(foldLabel) foldLabel.textContent="),
     "Reference library and collapsible sections guard optional DOM controls");
+  const storefrontVisibilitySources = [read("app.js"), read("assets/js/site-catalog.bundle.js")];
+  report(storefrontVisibilitySources.every(source => source.includes("const isCustomerVisibleProduct = p => !!p && (p.supplierCatalogItem === true || p.needsReview !== true)") && source.includes("products.filter(p=>isCustomerVisibleProduct(p) && p.productType!==\"oil\"") && source.includes("const publicProducts=products.filter(isCustomerVisibleProduct)") && source.includes("const fav=products.filter(p=>isCustomerVisibleProduct(p)&&favorites.includes(p.id))"), "Unreviewed ready products stay hidden from public catalog, favorites and local/AI advisor; supplier oil references remain browseable");
+  report(storefrontVisibilitySources.every(source => source.includes("p.useCategoryPhoto === true") && source.includes("placeholder-bottle bottle-")), "Missing exact product images use local SVG bottle artwork instead of generic remote stock photos");
   report(sections.includes('if (backButton) backButton.addEventListener("click", navigateBack);') &&
     sections.includes('if (endBackButton) endBackButton.addEventListener("click", navigateBack);') &&
     sections.includes('if (pageTitle) pageTitle.textContent = titleFor(host);') &&
@@ -677,7 +680,7 @@ try {
     liveCatalog.includes("(!q||matchesCatalogQuery(p,q))"),
     "The actually loaded catalog bundle implements Arabic/English scent-intent and conservative typo-tolerant search");
   report(liveHtml.includes("site-catalog.bundle.js?v=20261027-live-smart-search-v1") &&
-    read("sw.js").includes("mamlakat-al-otor-shell-v104-20261028-design-05-clean"),
+    read("sw.js").includes("mamlakat-al-otor-shell-v109-20261029-catalog-guard-v1"),
     "Live catalog bundle and service-worker cache use a coordinated fresh version");
 } catch (e) {
   report(false, "Unable to validate live catalog bundle: " + e.message);
@@ -693,7 +696,7 @@ try {
   const cssRef = html.match(/href="([^"]+\\.css\\?v=[^"]+)"/)?.[1];
   report(Boolean(cssRef && worker.includes('BASE_PATH + "' + cssRef + '"')),
     "PWA precache CSS URL matches the versioned stylesheet loaded by index.html");
-  report(worker.includes("mamlakat-al-otor-shell-v104-20261028-design-05-clean"),
+  report(worker.includes("mamlakat-al-otor-shell-v109-20261029-catalog-guard-v1"),
     "PWA shell cache version is bumped after asset URL alignment");
 } catch (e) {
   report(false, "Unable to validate PWA asset cache alignment: " + e.message);
@@ -710,7 +713,7 @@ try {
   const worker = read("sw.js");
   report(html.includes("site-admin.bundle.js?v=20261027-admin-guards-v1") &&
     worker.includes('BASE_PATH + "assets/js/site-admin.bundle.js?v=20261027-admin-guards-v1"') &&
-    worker.includes("mamlakat-al-otor-shell-v104-20261028-design-05-clean"),
+    worker.includes("mamlakat-al-otor-shell-v109-20261029-catalog-guard-v1"),
     "Admin guard bundle and PWA cache versions are synchronized");
 } catch (e) {
   report(false, "Unable to validate admin DOM guards: " + e.message);
