@@ -613,6 +613,7 @@ try {
     experience.includes("if(foldLabel) foldLabel.textContent="),
     "Reference library and collapsible sections guard optional DOM controls");
   const storefrontVisibilitySources = [read("app.js"), read("assets/js/site-catalog.bundle.js")];
+  report(storefrontVisibilitySources.every(source => source.includes("p.useCategoryPhoto === true") && source.includes("placeholder-bottle bottle-")), "Missing exact product images use local SVG bottle artwork instead of generic remote stock photos");
   report(storefrontVisibilitySources.every(storefrontVisibility => storefrontVisibility.includes("const isCustomerVisibleProduct = p => !!p && (p.supplierCatalogItem === true || p.needsReview !== true)") &&
     storefrontVisibility.includes("products.filter(p=>isCustomerVisibleProduct(p) && p.productType!==\"oil\"") &&
     storefrontVisibility.includes("const candidates=products.filter(p=>isCustomerVisibleProduct(p)&&p.productType!==\"oil\"") &&
