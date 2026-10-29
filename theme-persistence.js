@@ -13,25 +13,17 @@
 
   function luminance(hex){const z=String(hex).replace("#","");const f=z.length===3?z.split("").map(c=>c+c).join(""):z;const c=[0,2,4].map(i=>parseInt(f.slice(i,i+2),16)/255).map(n=>n<=.04045?n/12.92:Math.pow((n+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]}
   function applyTheme(){
+    /* Single source of truth: royal-rebirth.css owns the palette.
+       Keep only the persisted light/dark preference; never inject legacy colors. */
     const root=document.documentElement;
-    /* Design 06 — perfume lab: graphite black, restrained champagne gold. */
     const mode=(()=>{try{return localStorage.getItem(MODE_KEY)==="light"?"light":"dark"}catch(_){return "dark"}})();
-    const design05={
-      "--bg":"#11100e","--panel":"#1b1915","--panel2":"#24211b","--card":"#1b1915","--field":"#151410",
-      "--gold":"#bda16a","--gold2":"#e4d5b3","--text":"#f4f0e8","--heading":"#f4e7ca","--muted":"#c2b9a8",
-      "--line":"rgba(189,161,106,.25)","--header-bg":"#11100e","--footer-bg":"#11100e","--button-bg":"#bda16a",
-      "--button-text":"#17140e","--index-bg":"#11100e","--index-card":"#1b1915","--index-icon":"#e4d5b3","--index-border":"#514735",
-      "--page-image":"none","--bg-overlay":"0"
-    };
-    Object.entries(design05).forEach(([name,value])=>root.style.setProperty(name,value));
-    /* One active design only: discard stale layout preset selectors from earlier experiments. */
+    root.setAttribute("data-theme",mode);
+    root.removeAttribute("data-visual-style");
     root.removeAttribute("data-web-design");
     root.removeAttribute("data-mobile-design");
-    root.setAttribute("data-theme",mode);
-    root.setAttribute("data-visual-style","design-05-atelier");
-    root.style.colorScheme=mode;
+    root.style.colorScheme="dark";
     const meta=document.querySelector('meta[name="theme-color"]');
-    if(meta)meta.setAttribute("content","#11100e");
+    if(meta)meta.setAttribute("content","#090a0c");
   }
   function applyDisplay(){
     const root=document.documentElement,v=read(VISUAL_KEY)||{};
