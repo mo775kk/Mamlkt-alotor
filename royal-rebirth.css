@@ -113,3 +113,27 @@ input,select,textarea{max-width:100%;color:var(--text,#f7f2e8)}
 .ct-faq summary{cursor:pointer;font-weight:700;line-height:1.7}
 .ct-faq details p{margin-bottom:0}
 @media(max-width:700px){.customer-tools-grid,.ct-compare-grid{grid-template-columns:minmax(0,1fr)}.customer-tools-section{padding:12px;margin:14px auto}.customer-tool-card{padding:14px}.customer-tool-card button{width:100%;margin-inline:0}.ct-product-result{padding:10px}}
+
+/* Palette Studio — one variable set at a time; no extra stylesheet or layered theme */
+.palette-picker{position:relative;overflow:hidden}
+.palette-picker-head{text-align:center;max-width:760px;margin:0 auto 22px}
+.palette-kicker{display:inline-block;font:700 11px 'Cormorant Garamond',serif;letter-spacing:2px;color:var(--gold)}
+.palette-picker-head h2{margin:6px 0}
+.palette-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.palette-option{display:flex;flex-direction:column;align-items:stretch;gap:9px;min-width:0;min-height:160px;padding:14px;text-align:right;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text);box-shadow:none;transition:border-color .18s,transform .18s}
+.palette-option:hover{transform:translateY(-2px);filter:none;border-color:var(--gold)}
+.palette-option.is-active{outline:2px solid var(--gold);outline-offset:1px}
+.palette-swatches{display:flex;direction:ltr;gap:0;height:35px;overflow:hidden;border-radius:8px;border:1px solid var(--line)}
+.palette-swatches i{display:block;flex:1;min-width:0}
+.palette-option strong{font-size:15px;line-height:1.5;color:var(--heading)}
+.palette-option small{font-size:12px;line-height:1.6;color:var(--muted);font-weight:500}
+.palette-selected{display:none;margin-top:auto;color:var(--gold);font-size:12px;font-weight:800}
+.palette-option.is-active .palette-selected{display:block}
+.palette-status{text-align:center;margin:14px 0 0;color:var(--muted);font-size:13px}
+html[data-palette="ivory"] body{background:radial-gradient(ellipse at 50% -10%,#b08b4822,transparent 45%),var(--bg)}
+html[data-palette="ivory"] body:before{opacity:.12}
+html[data-palette="ivory"] .site-header{background:color-mix(in srgb,var(--header-bg) 94%,transparent)}
+html[data-palette="ivory"] .hero,html[data-palette="ivory"] .royal-hero,html[data-palette="ivory"] #home{background:radial-gradient(ellipse at 50% 20%,#b08b4824,transparent 48%),linear-gradient(135deg,#fffaf0,#eee5d5)}
+html[data-palette="ivory"] .product-card,html[data-palette="ivory"] .product,html[data-palette="ivory"] .category-card,html[data-palette="ivory"] .gift-card,html[data-palette="ivory"] .oil-card,html[data-palette="ivory"] .card,html[data-palette="ivory"] .feature-card{background:linear-gradient(180deg,#00000003,transparent 45%),var(--card);box-shadow:0 8px 22px #4d3c1a12}
+@media(max-width:760px){.palette-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.palette-option{min-height:145px;padding:12px}}
+@media(max-width:360px){.palette-options{grid-template-columns:minmax(0,1fr)}}
