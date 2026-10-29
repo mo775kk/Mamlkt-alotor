@@ -63,14 +63,14 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261029-cache-refresh-v1').catch(error => {
+          navigator.serviceWorker.register('./sw.js?v=20261029-review-approval-v1').catch(error => {
             console.warn('Service worker registration failed:', error);
           });
         }
       });
     })();
   </script>
-  <link rel="stylesheet" href="royal-rebirth.css?v=20261029-royal-palette-v1">
+  <link rel="stylesheet" href="royal-rebirth.css?v=20261029-review-approval-v1">
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -518,7 +518,7 @@
     if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initHeaderExtras);else initHeaderExtras();
   })();
   </script>
-  <script defer src="assets/js/site-admin.bundle.js?v=20261029-repair-01"></script>
+  <script defer src="assets/js/site-admin.bundle.js?v=20261029-review-approval-v1"></script>
   <script defer src="assets/js/site-experience.bundle.js?v=20261029-repair-01"></script>
 
   <!-- سكربتات v3.0 الجديدة -->
