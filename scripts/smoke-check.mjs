@@ -13,6 +13,7 @@ check(html.includes('lang="ar" dir="rtl"')&&html.includes('CROWN · MAISON DE PA
 const requiredSections=['home','siteIndex','oils','catalog','blend','oud','gifts','advisor','requests','visit'];
 check(requiredSections.every(id=>new RegExp(`id=["']${id}["']`).test(html)),'all primary store sections and index exist');
 check(html.includes('فهرس')&&html.includes('index-grid')&&html.includes('الزيوت العطرية'),'visible index directory and oils-first entry');
+check(['oilOrderType','oilOrderSize','oilOrderPrice','addOilOrder'].every(id=>html.includes(`id="${id}"`))&&js.includes('OIL_SPRAY_PRICE')&&js.includes('function addOilOrder()'),'oil size picker and both documented pricing tables are interactive');
 const localStyles=[...html.matchAll(/<link[^>]+href="([^"]+\.css(?:\?[^"]*)?)"/g)].map(m=>m[1]).filter(v=>!/^https?:\/\//i.test(v));check(localStyles.length===1&&localStyles[0]==='style.css?v=clean-20261029','single canonical local stylesheet');
 check((html.match(/<script[^>]+src=/g)||[]).length===1&&html.includes('src="app.js?v=clean-20261029"'),'single canonical storefront script');
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);check(new Set(ids).size===ids.length,'no duplicate static HTML ids');
