@@ -29,6 +29,8 @@ check(js.includes('legacy-cart-')&&js.includes('x.quantity')&&js.includes("if(t.
 check(html.includes('<a href="#admin">الإدارة</a>')&&html.includes('id="admin"'),'administration page is linked from the main navigation');
 check(['adminProductSearch','adminCatalogType','adminProductList','exportImageMap'].every(id=>html.includes(`id="${id}"`))&&js.includes('function renderAdminProducts()'),'catalog image manager can search, preview, and export image links');
 check(js.includes('data-save-image')&&js.includes('data-image-search')&&js.includes('mamlaka_oil_images_v1'),'image assignment supports products and oil references with local persistence');
+check(js.includes('function notesMarkup(p)')&&js.includes('مقدمة العطر')&&js.includes('قلب العطر')&&js.includes('قاعدة العطر'),'fragrance detail displays top, heart, and base notes when documented');
+check(js.includes('function enrichFragrance(p)')&&js.includes("notesStatus==='verified-brand-source'")&&js.includes('referenceImage'),'matching product names can reuse verified reference images and sourced notes without inventing data');
 check(manifest.display==='standalone'&&Array.isArray(manifest.icons)&&manifest.icons.length>=2,'PWA manifest remains valid');
 const products=JSON.parse(read('data/products.json'));const rows=Array.isArray(products)?products:products.products;
 check(Array.isArray(rows)&&rows.length>0,'canonical product data loads');
