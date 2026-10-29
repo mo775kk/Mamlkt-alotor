@@ -78,3 +78,37 @@ html,body{background-color:#090a0c!important;color:#f7f2e8}
 .site-footer,footer{background:#08090b!important}
 section,.page-section,.section-panel{background-color:#121419}
 @media(prefers-reduced-motion:reduce){th{animation:none!important}}
+
+
+/* ACCESSIBILITY + CONSISTENT MOBILE LAYOUT — consolidated final overrides */
+.home-index-cart-card,
+#cartShortcutIndex,
+.cart-page-shortcut,
+[data-cart-shortcut]:not(#cartShortcut){display:none!important}
+.site-header #cartShortcut{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{line-height:1.65;text-rendering:optimizeLegibility;-webkit-text-size-adjust:100%}
+button,input,select,textarea{font:inherit}
+button,a,[role="button"],input,select,textarea{touch-action:manipulation}
+:focus-visible{outline:3px solid #f5d98b!important;outline-offset:3px!important}
+a,button{ -webkit-tap-highlight-color:rgba(214,173,84,.16)}
+img{max-width:100%;height:auto}
+.product-card,.category-card,.home-index-card,.section-detail-box{min-width:0;overflow-wrap:anywhere}
+.product-card img,.product-visual img,.category-card img{object-fit:contain}
+input,select,textarea{max-width:100%;color:var(--text,#f7f2e8)}
+::placeholder{color:#bcb4a7;opacity:1}
+@media(max-width:600px){
+ .site-header{padding-inline:10px}
+ .product-grid,.home-showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .product-card{min-width:0}
+ .product-card h3,.product-card .product-title{font-size:clamp(13px,3.5vw,16px);line-height:1.45}
+ .product-card p,.product-card .product-description{font-size:13px;line-height:1.6}
+ .product-card button,.section-panel button,.page-section button{min-height:42px}
+ .page-section,.section-panel{padding-inline:12px}
+}
+@media(max-width:360px){
+ .product-grid,.home-showcase-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
