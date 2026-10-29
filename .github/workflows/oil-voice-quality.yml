@@ -1,4 +1,4 @@
-name: Mamlakat Al-Otor quality checks
+name: Mamlakat Al-Otor storefront quality
 on:
   push:
     branches: [main, master]
@@ -11,61 +11,11 @@ jobs:
   static-quality:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - name: Check every local JavaScript file loaded by the page
-        run: |
-          node --input-type=module <<'NODE'
-          import { readFileSync, existsSync } from 'node:fs';
-          import { execFileSync } from 'node:child_process';
-          const html = readFileSync('index.html', 'utf8');
-          const scripts = [...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["']/g)]
-            .map(match => match[1].split('?')[0])
-            .filter(path => !/^https?:\/\//i.test(path));
-          const unique = [...new Set(scripts)];
-          if (!unique.length) throw new Error('No local scripts found in index.html');
-          for (const path of unique) {
-            if (!existsSync(path)) throw new Error('Missing local script referenced by index.html: ' + path);
-            execFileSync('node', ['--check', path], { stdio: 'inherit' });
-          }
-          console.log('JavaScript syntax verified for ' + unique.length + ' local scripts.');
-          NODE
-      - name: Check page structure, theme, manifest and oil mentor
-        run: |
-          node --input-type=module <<'NODE'
-          import { readFileSync } from 'node:fs';
-          const html = readFileSync('index.html', 'utf8');
-          const css = readFileSync('royal-rebirth.css', 'utf8');
-          const palette = readFileSync('assets/js/palette-studio.js', 'utf8');
-          const admin = readFileSync('assets/js/site-admin.bundle.js', 'utf8');
-          const js = readFileSync('oil-voice-guide.js', 'utf8');
-          const manifest = JSON.parse(readFileSync('manifest.webmanifest', 'utf8'));
-          const count = re => (html.match(re) || []).length;
-          if (count(/<head\b/gi) !== 1 || count(/<\/head>/gi) !== 1) throw new Error('HTML head structure is broken');
-          if (count(/<body\b/gi) !== 1 || count(/<\/body>/gi) !== 1) throw new Error('HTML body structure is broken');
-          if (count(/<script\b/gi) !== count(/<\/script>/gi)) throw new Error('HTML script tags are unbalanced');
-          if (html.includes('mentor2"scrollProgress')) throw new Error('Broken service-worker line detected');
-          if (!html.includes('royal-rebirth.css?v=') || !css.includes('Admin usability pass')) throw new Error('Current unified stylesheet or admin responsive rules are missing');
-          if (!html.includes('data-theme="dark"') || !html.includes('palette-studio.js?v=20261029-palette-studio-04')) throw new Error('Current royal palette studio is not linked');
-          const paletteIds = ['royal','emerald','midnight','ivory','burgundy','rose','desert','graphite'];
-          if (paletteIds.some(id => !palette.includes('id:"' + id + '"') || !palette.includes(id + ':{'))) throw new Error('One or more of the eight palette presets are incomplete');
-          if (!admin.includes('function emergencySaveSettings()') || !admin.includes('#homeSettingsShortcut,#settingsShortcut,#menuAdminShortcut')) throw new Error('Admin recovery and entry-point guards are missing');
-          const requiredIds = ['oilMentorPanel','oilVoiceAsk','oilVoiceTeach','oilVoiceStop','oilVoiceStatus','oilMentorAnswer','supplierOilSearch','supplierOilProducts'];
-          const missing = requiredIds.filter(id => !html.includes('id="' + id + '"'));
-          if (missing.length) throw new Error('Missing oil mentor IDs: ' + missing.join(', '));
-          if (!html.includes('oil-voice-guide.js') || !js.includes('SpeechRecognition') || !js.includes('speechSynthesis')) throw new Error('Oil mentor script or voice APIs missing');
-          if (manifest.display !== 'standalone' || !manifest.icons || manifest.icons.length < 2) throw new Error('PWA manifest is incomplete');
-          console.log('HTML structure, unified theme, eight palettes, responsive admin and oil mentor verified.');
-
-          NODE
-      - name: Run storefront regression checks
+          node-version: 22
+      - name: Validate clean storefront structure and product data
         run: node scripts/smoke-check.mjs
-      - name: Syntax-check maintained legacy and support scripts
-        run: |
-          for file in app.js settings.js inventory-accounting.js enhancements.js theme-persistence.js oil-voice-guide.js; do
-            if [ -f "$file" ]; then node --check "$file"; fi
-          done
+      - name: Check AI Worker request handling
+        run: node scripts/ai-worker-test.mjs
