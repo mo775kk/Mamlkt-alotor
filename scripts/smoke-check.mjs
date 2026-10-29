@@ -497,7 +497,7 @@ try {
     app.includes('unit:"gram"') &&
     app.includes('سعر الجرام غير محدد لهذا الزيت'),
     "Supplier oil details let customers choose grams, see a calculated total, and add the selected amount to cart without guessed pricing");
-  report(css.includes(".product-card-supplier-oil .product-visual{height:auto;min-height:0;aspect-ratio:1/1}") && css.includes("@media(max-width:380px)") && css.includes("background:var(--panel2)"), "Oil product cards use larger, readable product visuals on desktop and mobile");
+  report(css.includes(".product-card-supplier-oil .product-visual{height:auto;min-height:0;aspect-ratio:1/1;background:var(--panel2)}") && css.includes("@media(max-width:380px)") && css.includes("background:var(--panel2)"), "Oil product cards use larger, readable product visuals on desktop and mobile");
   report(app.includes('<span class="product-image-note">رسم توضيحي</span>') &&
     app.includes("صورة توضيحية للفئة") && app.includes("صورة مرجعية للعطر الأصلي"),
     "Oil and fragrance image labels distinguish illustrative category art from reference fragrance images");
