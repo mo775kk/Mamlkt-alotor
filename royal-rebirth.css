@@ -91,3 +91,25 @@ input,select,textarea{max-width:100%;color:var(--text,#f7f2e8)}
  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
+/* Customer tools — integrated into the single royal stylesheet */
+.customer-tools-section{max-width:1240px;margin:24px auto;padding:clamp(14px,3vw,28px)}
+.customer-tools-heading{max-width:760px;margin:0 auto 22px;text-align:center}
+.customer-tools-heading h2{margin:.25rem 0 .6rem;font-family:Amiri,serif}
+.customer-tools-heading p{line-height:1.8}
+.customer-tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.customer-tool-card{min-width:0;padding:18px;border:1px solid var(--line,#66572e);border-radius:16px;background:var(--card,#171613);color:var(--text,#f3ead5);box-shadow:0 8px 28px #0002}
+.customer-tool-card h3{margin:0 0 8px;font-family:Amiri,serif}
+.customer-tool-card p{line-height:1.75}
+.customer-tool-card label{display:block;margin:12px 0 5px;font-weight:700}
+.customer-tool-card input,.customer-tool-card select,.customer-tool-card textarea{display:block;width:100%;min-height:42px;padding:10px;border:1px solid var(--line,#66572e);border-radius:9px;background:var(--field,#11100e);color:inherit;font:inherit;box-sizing:border-box}
+.customer-tool-card button{margin:10px 6px 0 0;min-height:42px;max-width:100%;white-space:normal}
+.ct-results{margin-top:12px;overflow-wrap:anywhere}
+.ct-product-result{padding:12px;margin:10px 0;border:1px solid var(--line,#66572e);border-radius:12px;background:var(--panel2,#201d17)}
+.ct-product-result p{margin:5px 0;font-size:.94rem}
+.ct-status{font-weight:800;color:var(--heading,#f1d77a)}
+.ct-compare-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ct-faq{margin-top:16px}
+.ct-faq details{padding:12px 0;border-bottom:1px solid var(--line,#66572e)}
+.ct-faq summary{cursor:pointer;font-weight:700;line-height:1.7}
+.ct-faq details p{margin-bottom:0}
+@media(max-width:700px){.customer-tools-grid,.ct-compare-grid{grid-template-columns:minmax(0,1fr)}.customer-tools-section{padding:12px;margin:14px auto}.customer-tool-card{padding:14px}.customer-tool-card button{width:100%;margin-inline:0}.ct-product-result{padding:10px}}
