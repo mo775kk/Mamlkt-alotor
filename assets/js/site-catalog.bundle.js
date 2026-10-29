@@ -692,8 +692,8 @@
   if(mainNav){mainNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{mainNav.classList.remove("open");if(menuToggle)menuToggle.setAttribute("aria-expanded","false");}));mainNav.addEventListener("click",event=>{if(event.target.closest(".header-actions button")){mainNav.classList.remove("open");if(menuToggle)menuToggle.setAttribute("aria-expanded","false");}});}
   document.addEventListener("keydown",e=>{
     if(e.key!=="Escape")return;
-    if(!$("#modalBackdrop").classList.contains("hidden"))closeModal();
-    if($("#cartDrawer").classList.contains("open"))closeDrawer();
+    if($("#modalBackdrop")&&!$("#modalBackdrop").classList.contains("hidden"))closeModal();
+    if($("#cartDrawer")&&$("#cartDrawer").classList.contains("open"))closeDrawer();
     const mainNav=$("#mainNav"),menuToggle=$("#menuToggle");if(mainNav?.classList.contains("open")){mainNav.classList.remove("open");if(menuToggle){menuToggle.setAttribute("aria-expanded","false");menuToggle.focus({preventScroll:true});}}
   });
   bind("#languageToggle", "click",()=>setLanguage(language==="ar"?"en":"ar"));
