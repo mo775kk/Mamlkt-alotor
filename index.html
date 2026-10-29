@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=clean-20261029">
+  <link rel="stylesheet" href="style.css?v=admin-images-20261029">
 </head>
 <body>
   <div class="topline"><span>♛ مملكة العطور</span><span>الإسكندرية · شارع خالد بن الوليد</span><span>يوميًا 10 ص – 12 م</span></div>
@@ -19,7 +19,7 @@
     <a class="brand" href="#home" aria-label="العودة للرئيسية"><span class="brand-mark">♛</span><span><b>مملكة العطور</b><small>MAMLKAT AL-OTOR</small><em>CROWN · MAISON DE PARFUM</em></span></a>
     <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
     <nav class="main-nav" id="mainNav" aria-label="القائمة الرئيسية">
-      <a href="#home">الرئيسية</a><a href="#siteIndex">فهرس المملكة</a><a href="#oils">الزيوت</a><a href="#catalog">العطور</a><a href="#blend">تركيب عطرك</a><a href="#oud">العود والبخور</a><a href="#gifts">الهدايا</a><a href="#visit">تواصل معنا</a>
+      <a href="#home">الرئيسية</a><a href="#siteIndex">فهرس المملكة</a><a href="#oils">الزيوت</a><a href="#catalog">العطور</a><a href="#blend">تركيب عطرك</a><a href="#oud">العود والبخور</a><a href="#gifts">الهدايا</a><a href="#admin">الإدارة</a><a href="#visit">تواصل معنا</a>
     </nav>
     <div class="header-actions"><button class="icon-btn" id="openSearch" aria-label="بحث">⌕</button><button class="icon-btn" id="openWishlist" aria-label="المفضلة">♡ <span id="wishCount">0</span></button><button class="cart-btn" id="openCart">السلة <span id="cartCount">0</span></button></div>
   </header>
@@ -44,6 +44,7 @@
         <a class="index-card" href="#advisor"><span class="index-number">06</span><span class="index-symbol">✧</span><span><b>مستشار العطور</b><small>ساعدنا في معرفة ذوقك</small></span><i>←</i></a>
         <a class="index-card" href="#requests"><span class="index-number">07</span><span class="index-symbol">⌕</span><span><b>بحث وطلب عطر غير موجود</b><small>اكتب الاسم وسنراجع طلبك</small></span><i>←</i></a>
         <a class="index-card" href="#visit"><span class="index-number">08</span><span class="index-symbol">⌖</span><span><b>زيارة المتجر والتواصل</b><small>العنوان وواتساب والقناة</small></span><i>←</i></a>
+        <a class="index-card" href="#admin"><span class="index-number">09</span><span class="index-symbol">⚙</span><span><b>إدارة المتجر</b><small>ربط صور المنتجات وتحديث بياناتها</small></span><i>←</i></a>
       </div>
     </section>
 
@@ -79,16 +80,24 @@
 
     <section class="section request-section" id="requests"><div class="section-head"><p class="eyebrow">SPECIAL REQUEST</p><h2>لم تجد العطر؟ <span>اطلب إضافته</span></h2><p>اكتب الاسم كما تعرفه وسنراجع الطلب لإضافته إلى قائمة المتابعة. الإضافة لا تعني توفر المنتج فورًا.</p></div><div class="request-form"><label>اسم العطر أو الزيت<input id="requestName" required placeholder="اكتب اسم العطر أو الزيت"></label><label>معلومة إضافية<input id="requestInfo" placeholder="الماركة أو الفئة أو الحجم (اختياري)"></label><button class="btn btn-gold" id="sendRequest">إرسال طلب التوفير</button></div><div class="section-back"><a href="#siteIndex">↑ العودة إلى فهرس المملكة</a></div></section>
 
+    <section class="section alt-section" id="admin"><div class="section-head"><p class="eyebrow">KINGDOM ADMINISTRATION</p><h2>إدارة <span>المتجر والكتالوج</span></h2><p>ابحث عن اسم العطر، ثم أضف رابط صورته المباشرة واحفظه. ستظهر الصورة بجوار الاسم في بطاقات المنتجات بعد الحفظ في هذا المتصفح.</p></div>
+      <div class="notice-box"><span class="notice-icon">ⓘ</span><div><b>تنبيه مهم بخصوص الحفظ</b><p>هذه نسخة إدارة محلية لموقع GitHub Pages: التعديلات تُحفظ في المتصفح الحالي فقط ولا تُنشر تلقائيًا لجميع الزوار. استخدم تصدير JSON ثم راجع الملف قبل نشر البيانات على الموقع. لا تضع رابط صفحة بحث؛ المطلوب رابط مباشر للصورة ينتهي غالبًا بـ JPG أو PNG أو WEBP.</p></div></div>
+      <div class="admin-panel"><div class="admin-toolbar"><label class="search-field"><span>⌕</span><input id="adminProductSearch" type="search" placeholder="ابحث باسم العطر أو الزيت…" autocomplete="off"></label><select id="adminCatalogType" aria-label="نوع الكتالوج"><option value="all">العطور والزيوت</option><option value="ready">العطور الجاهزة</option><option value="oil">الزيوت العطرية</option></select></div>
+      <div class="admin-summary"><span id="adminImageCount">جارٍ إحصاء الصور…</span><div class="admin-actions"><button class="btn btn-outline" id="exportProducts">تصدير المنتجات JSON</button><label class="btn btn-outline file-btn">استيراد JSON<input id="importProducts" type="file" accept="application/json,.json" hidden></label><button class="btn btn-gold" id="exportImageMap">تصدير خريطة الصور</button></div></div>
+      <div id="adminProductList" class="admin-product-list"><div class="loading-card">جارٍ تحميل الكتالوج…</div></div><div class="center-actions"><button class="btn btn-outline" id="adminLoadMore" hidden>عرض المزيد</button></div><p id="adminMessage" class="small muted" aria-live="polite"></p></div>
+      <div class="section-back"><a href="#siteIndex">↑ العودة إلى فهرس المملكة</a></div>
+    </section>
+
     <section class="section visit-section" id="visit"><div class="section-head"><p class="eyebrow">VISIT THE KINGDOM</p><h2>تواصل مع <span>مملكة العطور</span></h2><p>نحن في الإسكندرية، شارع خالد بن الوليد. اسأل عن السعر والتوفر قبل التوجه للمتجر.</p></div><div class="contact-grid"><article class="contact-card"><span>⌖</span><h3>عنوان المتجر</h3><p>الإسكندرية · شارع خالد بن الوليد</p></article><article class="contact-card"><span>✆</span><h3>واتساب الطلبات</h3><p dir="ltr">01272776928</p><a class="btn btn-gold" href="https://wa.me/201272776928" target="_blank" rel="noopener">ابدأ محادثة</a></article><article class="contact-card"><span>◉</span><h3>قناة واتساب</h3><p>تابع الجديد والإعلانات.</p><a class="btn btn-outline" href="https://whatsapp.com/channel/0029Vb8l5QRBPzjhHbvbzn2W" target="_blank" rel="noopener">فتح القناة</a></article><article class="contact-card"><span>♧</span><h3>مجموعة واتساب</h3><p>تواصل ومتابعة الطلبات.</p><a class="btn btn-outline" href="https://chat.whatsapp.com/Hss5ldmziuw1zI1EtlWOTz" target="_blank" rel="noopener">فتح المجموعة</a></article></div><div class="map-frame"><iframe title="خريطة شارع خالد بن الوليد بالإسكندرية" loading="lazy" src="https://www.google.com/maps?q=%D8%B4%D8%A7%D8%B1%D8%B9%20%D8%AE%D8%A7%D9%84%D8%AF%20%D8%A8%D9%86%20%D8%A7%D9%84%D9%88%D9%84%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A5%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9&output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe></div><div class="section-back"><a href="#siteIndex">↑ العودة إلى فهرس المملكة</a></div></section>
   </main>
 
-  <footer class="site-footer"><a class="brand footer-brand" href="#top"><span class="brand-mark">♛</span><span><b>مملكة العطور</b><small>MAMLKAT AL-OTOR</small><em>CROWN · MAISON DE PARFUM</em></span></a><p>العطر يبدأ باختيارك، والثقة تبدأ بوضوح التفاصيل.</p><div class="footer-links"><a href="#siteIndex">الفهرس</a><a href="#oils">الزيوت</a><a href="#catalog">العطور</a><a href="#visit">التواصل</a><button id="adminOpen" type="button">إدارة البيانات المحلية</button></div><small>© <span id="year"></span> مملكة العطور · لا يتم تأكيد الطلب إلا بعد مراجعة السعر والتوفر.</small></footer>
+  <footer class="site-footer"><a class="brand footer-brand" href="#top"><span class="brand-mark">♛</span><span><b>مملكة العطور</b><small>MAMLKAT AL-OTOR</small><em>CROWN · MAISON DE PARFUM</em></span></a><p>العطر يبدأ باختيارك، والثقة تبدأ بوضوح التفاصيل.</p><div class="footer-links"><a href="#siteIndex">الفهرس</a><a href="#oils">الزيوت</a><a href="#catalog">العطور</a><a href="#visit">التواصل</a><a href="#admin">الإدارة</a></div><small>© <span id="year"></span> مملكة العطور · لا يتم تأكيد الطلب إلا بعد مراجعة السعر والتوفر.</small></footer>
 
   <div class="modal-backdrop" id="productModal" hidden><section class="modal-card product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" type="button" data-close-modal aria-label="إغلاق">×</button><div id="modalContent"></div></section></div>
   <div class="drawer-backdrop" id="cartBackdrop" hidden><aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle"><div class="drawer-head"><div><p class="eyebrow">YOUR SELECTION</p><h2 id="cartTitle">سلة التسوق</h2></div><button class="modal-close" id="closeCart" type="button" aria-label="إغلاق السلة">×</button></div><div id="cartItems"></div><div class="cart-total"><span>الإجمالي التقديري</span><b id="cartTotal">0 ج.م</b></div><p class="muted small">السعر النهائي والتوفر يؤكدهما المتجر قبل إتمام الطلب.</p><label>الاسم<input id="customerName" autocomplete="name" placeholder="اسم العميل"></label><label>رقم الهاتف<input id="customerPhone" autocomplete="tel" inputmode="tel" placeholder="رقم للتواصل"></label><label>العنوان / المنطقة<input id="customerAddress" autocomplete="street-address" placeholder="المنطقة والعنوان (اختياري)"></label><button class="btn btn-gold full-width" id="checkoutWhatsApp">متابعة الطلب عبر واتساب</button><button class="text-btn full-width" id="continueShopping">العودة للتسوق</button></aside></div>
-  <div class="modal-backdrop" id="adminModal" hidden><section class="modal-card admin-modal" role="dialog" aria-modal="true" aria-labelledby="adminTitle"><button class="modal-close" type="button" data-close-admin>×</button><p class="eyebrow">LOCAL DATA TOOLS</p><h2 id="adminTitle">إدارة البيانات المحلية</h2><p class="notice-text">هذه الأدوات تحفظ التغييرات في هذا المتصفح فقط؛ ليست لوحة دخول آمنة ولا تزامنًا سحابيًا.</p><div class="admin-actions"><button class="btn btn-outline" id="exportProducts">تصدير نسخة JSON</button><label class="btn btn-outline file-btn">استيراد JSON<input id="importProducts" type="file" accept="application/json,.json" hidden></label><button class="btn btn-outline" id="exportBackup">نسخة احتياطية من السلة والمفضلة</button></div><p id="adminMessage" class="small muted" aria-live="polite"></p></section></div>
+
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-  <script src="app.js?v=clean-20261029" defer></script>
-  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=clean-20261029').catch(()=>{}));}</script>
+  <script src="app.js?v=admin-images-20261029" defer></script>
+  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=admin-images-20261029').catch(()=>{}));}</script>
 </body>
 </html>
