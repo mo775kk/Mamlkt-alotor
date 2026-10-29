@@ -17,9 +17,7 @@
   function isApproved(p){return p?.available===true && p?.needsReview!==true && p?.active!==false && (p?.price!=null || Object.values(p?.prices||{}).some(v=>Number(v)>0));}
   function typeName(p){return p?.productType==='oil'?'زيت عطري':p?.productType==='bakhoor'?'بخور':p?.productType==='gift'?'هدية':'عطر';}
   function bottle(){return '<div class="bottle-art" aria-hidden="true"></div>';}
-  function imageMarkup(p){const src=String(p?.image||'').trim();if(src && !/via\.placeholder|placehold\.co|placeholder\.com/i.test(src))return `<img src="${esc(src)}" alt="${es
-…[1 chars truncated — re-run with head/grep/tail for full output]…
-productName(p))}" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="bottle-fallback" hidden>${bottle()}</div>`;return bottle();}
+  function imageMarkup(p){const src=String(p?.image||'').trim();if(src && !/via\.placeholder|placehold\.co|placeholder\.com/i.test(src))return `<img src="${esc(src)}" alt="${esc(productName(p))}" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="bottle-fallback" hidden>${bottle()}</div>`;return bottle();}
   function getCart(){try{const v=JSON.parse(localStorage.getItem(KEYS.cart)||'[]');return Array.isArray(v)?v:[]}catch{return []}}
   function getWish(){try{const v=JSON.parse(localStorage.getItem(KEYS.wish)||'[]');return Array.isArray(v)?v:[]}catch{return []}}
   function saveCart(){localStorage.setItem(KEYS.cart,JSON.stringify(state.cart));updateCartCount();renderCart()}
