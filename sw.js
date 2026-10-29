@@ -1,6 +1,6 @@
 'use strict';
-const CACHE_NAME='mamlakat-al-otor-clean-20261029-v1';
-const SHELL=['./','./index.html','./style.css?v=clean-20261029','./app.js?v=clean-20261029','./manifest.webmanifest?v=clean-20261029','./assets/images/royal-hero.jpg','./assets/images/category-oils.svg','./assets/images/category-ready.svg','./assets/images/category-bakhoor.svg','./assets/images/category-gift.svg'];
+const CACHE_NAME='mamlakat-al-otor-admin-images-20261029-v2';
+const SHELL=['./','./index.html','./style.css?v=admin-images-20261029','./app.js?v=admin-images-20261029','./manifest.webmanifest?v=admin-images-20261029','./assets/images/royal-hero.jpg','./assets/images/category-oils.svg','./assets/images/category-ready.svg','./assets/images/category-bakhoor.svg','./assets/images/category-gift.svg'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE_NAME).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',event=>{const request=event.request;if(request.method!=='GET')return;const url=new URL(request.url);if(url.origin!==self.location.origin)return;if(url.pathname.endsWith('.json')){event.respondWith(fetch(request,{cache:'no-store'}).catch(()=>caches.match(request)));return;}event.respondWith(caches.match(request).then(cached=>cached||fetch(request).then(response=>{if(response.ok){const copy=response.clone();caches.open(CACHE_NAME).then(cache=>cache.put(request,copy));}return response;})));});
