@@ -10,12 +10,12 @@ function check(ok,label){if(ok){passed++;console.log('PASS '+label)}else{failed+
 const html=read('index.html'),css=read('style.css'),js=read('app.js'),manifest=JSON.parse(read('manifest.webmanifest'));
 check((html.match(/<html\b/g)||[]).length===1&&(html.match(/<\/html>/g)||[]).length===1,'one complete HTML document');
 check(html.includes('lang="ar" dir="rtl"')&&html.includes('CROWN · MAISON DE PARFUM'),'Arabic RTL and store identity');
-const requiredSections=['home','siteIndex','oils','catalog','blend','oud','gifts','advisor','requests','visit'];
+const requiredSections=['home','siteIndex','oils','catalog','blend','oud','gifts','advisor','requests','admin','visit'];
 check(requiredSections.every(id=>new RegExp(`id=["']${id}["']`).test(html)),'all primary store sections and index exist');
 check(html.includes('فهرس')&&html.includes('index-grid')&&html.includes('الزيوت العطرية'),'visible index directory and oils-first entry');
 check(['oilOrderType','oilOrderSize','oilOrderPrice','addOilOrder'].every(id=>html.includes(`id="${id}"`))&&js.includes('OIL_SPRAY_PRICE')&&js.includes('function addOilOrder()'),'oil size picker and both documented pricing tables are interactive');
-const localStyles=[...html.matchAll(/<link[^>]+href="([^"]+\.css(?:\?[^"]*)?)"/g)].map(m=>m[1]).filter(v=>!/^https?:\/\//i.test(v));check(localStyles.length===1&&localStyles[0]==='style.css?v=clean-20261029','single canonical local stylesheet');
-check((html.match(/<script[^>]+src=/g)||[]).length===1&&html.includes('src="app.js?v=clean-20261029"'),'single canonical storefront script');
+const localStyles=[...html.matchAll(/<link[^>]+href="([^"]+\.css(?:\?[^"]*)?)"/g)].map(m=>m[1]).filter(v=>!/^https?:\/\//i.test(v));check(localStyles.length===1&&localStyles[0]==='style.css?v=admin-images-20261029','single canonical local stylesheet');
+check((html.match(/<script[^>]+src=/g)||[]).length===1&&html.includes('src="app.js?v=admin-images-20261029"'),'single canonical storefront script');
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);check(new Set(ids).size===ids.length,'no duplicate static HTML ids');
 const anchors=[...html.matchAll(/href="#([^"]+)"/g)].map(m=>m[1]);const idSet=new Set(ids);check(anchors.every(id=>idSet.has(id)),'all in-page links point to real sections');
 const localRefs=[...html.matchAll(/(?:src|href)="([^"#][^"]*)"/g)].map(m=>m[1].split('?')[0]).filter(v=>!/^https?:\/\//i.test(v)&&!v.startsWith('mailto:')&&!v.startsWith('tel:')&&!v.startsWith('javascript:'));
@@ -26,6 +26,9 @@ check(js.includes("mamlaka_products")&&js.includes("mamlaka_cart")&&js.includes(
 check(js.includes('addInquiryToCart')&&js.includes('السعر بعد التأكيد')&&js.includes('لا يمكن تحديده حتى تأكيد الأسعار'),'unreviewed items can be requested without inventing prices');
 check(js.includes("if(!el)return")&&js.includes("?.addEventListener"),'guard missing DOM elements and optional controls');
 check(js.includes('legacy-cart-')&&js.includes('x.quantity')&&js.includes("if(t.id==='cartBackdrop')"),'migrate older cart entries safely and allow closing the cart by tapping the backdrop');
+check(html.includes('<a href="#admin">الإدارة</a>')&&html.includes('id="admin"'),'administration page is linked from the main navigation');
+check(['adminProductSearch','adminCatalogType','adminProductList','exportImageMap'].every(id=>html.includes(`id="${id}"`))&&js.includes('function renderAdminProducts()'),'catalog image manager can search, preview, and export image links');
+check(js.includes('data-save-image')&&js.includes('data-image-search')&&js.includes('mamlaka_oil_images_v1'),'image assignment supports products and oil references with local persistence');
 check(manifest.display==='standalone'&&Array.isArray(manifest.icons)&&manifest.icons.length>=2,'PWA manifest remains valid');
 const products=JSON.parse(read('data/products.json'));const rows=Array.isArray(products)?products:products.products;
 check(Array.isArray(rows)&&rows.length>0,'canonical product data loads');
