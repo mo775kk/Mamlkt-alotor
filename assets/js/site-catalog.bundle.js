@@ -271,7 +271,8 @@
     const photoKey=String(p.id||p.nameEn||p.nameAr||"product");
     let photoHash=0;for(let i=0;i<photoKey.length;i++)photoHash=(photoHash*31+photoKey.charCodeAt(i))>>>0;
     const categoryPhoto="https://images.unsplash.com/"+photoSets[photoType][photoHash%photoSets[photoType].length]+"?auto=format&fit=crop&w=900&q=82";
-    if(["ready","oil","blend","bakhoor","oud","gift"].includes(type)||p.supplierCatalogItem===true){
+    // Generic stock photography is opt-in only. Missing exact product photos fall through to the local, product-shaped SVG bottle below.
+    if(p.useCategoryPhoto === true && (["ready","oil","blend","bakhoor","oud","gift"].includes(type)||p.supplierCatalogItem===true)){
       const categoryLabel=type==="oil"||type==="blend"?"الزيوت والتركيب":type==="bakhoor"||type==="oud"?"العود والبخور":type==="gift"?"الهدايا":"العطور الجاهزة";
       return '<div class="product-photo-stage"><img class="product-photo" src="'+categoryPhoto+'" alt="صورة واقعية إلهامية لفئة '+categoryLabel+'؛ لا تمثل بالضرورة العبوة التجارية لهذا المنتج" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="product-image-note">صورة توضيحية للفئة</span></div>';
     }
