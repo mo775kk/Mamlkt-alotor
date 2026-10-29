@@ -17,3 +17,25 @@
 .admin-product-preview img{width:100%;height:100%;object-fit:contain}.admin-product-preview.image-missing:after{content:'الصورة غير متاحة';font-size:.7rem;color:var(--muted)}
 .admin-product-data{min-width:0;display:grid;gap:7px;align-content:start}.admin-product-data>b{color:var(--gold2);font:700 1.12rem Amiri,serif}.admin-product-data>small{color:var(--muted);overflow-wrap:anywhere}.admin-product-data label{display:grid;gap:5px;color:var(--muted);font-size:.82rem}.admin-product-data input{width:100%;min-width:0;min-height:42px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#070706;color:var(--text);direction:ltr;text-align:left}.admin-row-actions{display:flex;gap:7px;flex-wrap:wrap}.admin-row-actions .btn{min-height:36px;padding:6px 10px;font-size:.82rem}
 @media(max-width:600px){.admin-panel{padding:10px}.admin-toolbar{grid-template-columns:1fr}.admin-product-row{grid-template-columns:66px minmax(0,1fr);gap:9px;padding:9px}.admin-product-preview{width:66px}.admin-product-data>b{font-size:1rem}.admin-row-actions .btn{flex:1;font-size:.74rem;padding:6px}.admin-summary{align-items:flex-start}.admin-summary .admin-actions{width:100%}.admin-summary .admin-actions .btn,.admin-summary .admin-actions .file-btn{flex:1;font-size:.76rem;padding:7px}}
+
+
+/* Fragrance detail: bottle image, scent pyramid, and source clarity */
+.detail-visual{position:relative;align-content:center;gap:10px;padding:14px;min-width:0;overflow:hidden}
+.detail-visual>img{width:100%;height:230px;object-fit:contain;grid-row:1}
+.detail-visual .bottle-art{grid-row:1}
+.reference-image-label{color:var(--muted);font-size:.72rem;text-align:center;line-height:1.4}
+.note-pyramid{margin:16px 0;padding:14px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(145deg,#19160f,#0b0a08)}
+.note-pyramid h3{margin:0 0 10px;color:var(--gold2);font:700 1.2rem Amiri,serif}
+.note-levels{display:grid;gap:8px}
+.note-level{padding:10px 12px;border-inline-start:3px solid var(--gold);border-radius:7px;background:#0b0a08}
+.note-level.top{border-inline-start-color:#e5c878}.note-level.heart{border-inline-start-color:#b9a06b}.note-level.base{border-inline-start-color:#7d6030}
+.note-level b{display:block;color:var(--gold2);font-size:.9rem;margin-bottom:4px}
+.note-level p,.note-profile{margin:0;color:#e6dcc8;line-height:1.8;font-size:.9rem;overflow-wrap:anywhere}
+.notes-missing{border-style:dashed}.notes-missing p{margin:0;color:var(--muted);line-height:1.8}
+.scent-family,.scent-nature{padding:10px 12px;margin:8px 0!important;background:rgba(212,175,55,.06);border-radius:8px;line-height:1.8}
+.scent-family b,.scent-nature b{color:var(--gold2)}
+.note-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:8px 0}
+.note-footer small,.note-disclaimer{color:var(--muted);font-size:.76rem;line-height:1.7}
+.note-source{color:var(--gold2);text-decoration:underline;text-underline-offset:3px;font-size:.84rem}
+.note-disclaimer{padding:9px 11px;border:1px solid var(--line);border-radius:8px}
+@media(max-width:520px){.detail-visual>img{height:230px}.note-pyramid{padding:11px}.note-level{padding:9px}.note-level p,.note-profile{font-size:.85rem}}
