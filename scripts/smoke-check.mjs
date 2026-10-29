@@ -25,6 +25,7 @@ check(css.includes('@media(max-width:520px)')&&css.includes('grid-template-colum
 check(js.includes("mamlaka_products")&&js.includes("mamlaka_cart")&&js.includes("mamlaka_wishlist"),'preserve existing localStorage keys');
 check(js.includes('addInquiryToCart')&&js.includes('السعر بعد التأكيد')&&js.includes('لا يمكن تحديده حتى تأكيد الأسعار'),'unreviewed items can be requested without inventing prices');
 check(js.includes("if(!el)return")&&js.includes("?.addEventListener"),'guard missing DOM elements and optional controls');
+check(js.includes('legacy-cart-')&&js.includes('x.quantity')&&js.includes("if(t.id==='cartBackdrop')"),'migrate older cart entries safely and allow closing the cart by tapping the backdrop');
 check(manifest.display==='standalone'&&Array.isArray(manifest.icons)&&manifest.icons.length>=2,'PWA manifest remains valid');
 const products=JSON.parse(read('data/products.json'));const rows=Array.isArray(products)?products:products.products;
 check(Array.isArray(rows)&&rows.length>0,'canonical product data loads');
