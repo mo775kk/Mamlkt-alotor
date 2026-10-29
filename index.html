@@ -82,7 +82,6 @@
       <span><strong>مملكة العطور</strong><small>CROWN · MAISON DE PARFUM</small></span>
     </a>
     <button type="button" class="icon-btn menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mainNav">☰</button>
-    <button type="button" class="icon-btn header-cart-shortcut" id="cartShortcut" aria-label="فتح سلة التسوق" title="سلة التسوق"><svg class="header-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 11.2a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 1.9-1.4L22 9H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg><span class="counter" id="cartCount">0</span></button>
     <nav class="main-nav" id="mainNav" aria-label="التنقل الرئيسي">
       <a href="#home" data-nav="home">الرئيسية</a>
       <a href="#ready" data-nav="ready">العطور الجاهزة</a>
@@ -183,7 +182,6 @@
         <button type="button" class="home-index-card home-index-install-card" id="homeInstallShortcut" aria-label="تثبيت تطبيق مملكة العطور"><span class="home-index-icon" aria-hidden="true"><svg class="index-icon-svg" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 5h6M10 18h4"/></svg></span><span class="home-index-copy"><strong>تثبيت التطبيق</strong><small>أضف مملكة العطور إلى الشاشة الرئيسية إذا كان جهازك يدعم التثبيت.</small></span><span class="home-index-arrow" aria-hidden="true">←</span></button>
         <button type="button" class="home-index-card home-index-settings-card" id="homeSettingsShortcut"><span class="home-index-icon" aria-hidden="true"><svg class="index-icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.2 2-2.1 2.1-2-1.2-.2-.1-1.6.7-.5 2.4h-3l-.5-2.4-1.6-.7-.2.1-2 1.2-2.1-2.1 1.2-2 .1-.2-.7-1.6L3 13v-3l2.4-.5.7-1.6-.1-.2-1.2-2 2.1-2.1 2 1.2.2.1 1.6-.7.5-2.4h3l.5 2.4 1.6.7.2-.1 2-1.2 2.1 2.1-1.2 2-.1.2.7 1.6L21 10v3l-2.4.5-.7 1.5Z"/></svg></span><span class="home-index-copy"><strong>الإعدادات والإدارة</strong><small>إدارة المنتجات والأسعار والهوية والتصاميم والنسخ الاحتياطي.</small></span><span class="home-index-arrow" aria-hidden="true">←</span></button>
       </div>
-      <p class="home-index-note"><span aria-hidden="true">ⓘ</span> الأسعار والتوفر يعتمدان على البيانات المسجلة؛ إذا كانت معلومة غير مؤكدة فراجع المتجر قبل تأكيد الطلب. سلة التسوق موجودة في شريط الموقع الرئيسي.</p>
     </section>
 
     <!-- دليل اختيار العميل -->
@@ -198,7 +196,6 @@
         <li><span class="choice-step-number">١</span><div><strong>اختَر القسم</strong><p>اضغط على «العطور الجاهزة» للعطر المعبأ، أو «كتالوج الزيوت» للزيت، أو «تركيب عطرك» لاختيار الزيت والحجم، أو «العود والبخور» و«الهدايا» لباقي المنتجات.</p></div></li>
         <li><span class="choice-step-number">٢</span><div><strong>افتح بطاقة المنتج</strong><p>اضغط «التفاصيل» لقراءة الاسم والطابع والوصف والسعر المتاح. إذا لم يظهر السعر أو التوفر، اسأل المتجر قبل الطلب.</p></div></li>
         <li><span class="choice-step-number">٣</span><div><strong>حدّد اختيارك</strong><p>اختر الحجم أو الكمية والخيارات الظاهرة في صفحة المنتج. راجع السعر بجوار الحجم قبل الإضافة؛ في التركيب اختر الزيت ثم الحجم المطلوب.</p></div></li>
-        <li><span class="choice-step-number">٤</span><div><strong>أضف إلى السلة وراجعها</strong><p>اضغط «أضف إلى السلة»، ثم افتح «سلة التسوق» من أعلى الموقع أو من الفهرس لمراجعة المنتجات والكميات والإجمالي قبل إرسال الطلب.</p></div></li>
       </ol>
       <p class="customer-choice-tip"><strong>دليل الألوان:</strong> عند تمرير المؤشر أو الضغط على زر أو رابط، يظهر تمييز أزرق فاتح واضح وخط تحت النص. وحول العنصر المحدد يظهر إطار واضح لتعرف أين ضغطت.</p>
       <div class="customer-choice-actions"><a class="btn btn-gold" href="#ready">ابدأ بالعطور الجاهزة ←</a><a class="btn btn-outline" href="#oil-catalog">افتح كتالوج الزيوت ←</a><a class="btn btn-outline" href="#blend">ركّب عطرك الخاص ←</a></div>
@@ -457,28 +454,7 @@
     <p>العطر توقيع… والمملكة اختيارك.</p>
     <small>© <span id="year"></span> MAMLKAT AL-OTOR</small>
   </footer>
-
-  <!-- السلة والمودال والإشعار -->
-  <div class="drawer-backdrop hidden" id="drawerBackdrop"></div>
-  <aside class="drawer" id="cartDrawer" aria-label="سلة التسوق" aria-hidden="true">
-    <div class="drawer-head"><div class="cart-page-heading"><small>مملكة العطور · مراجعة الطلب</small><h2 id="drawerTitle">سلة التسوق</h2><p>راجع كل منتج وحجمه وسعره قبل إرسال الطلب</p></div><button type="button" class="cart-back-btn" id="closeDrawer" aria-label="العودة إلى الصفحة السابقة"><span aria-hidden="true">→</span> متابعة التسوق</button></div>
-    <div id="cartItems" class="drawer-items"></div>
-    <div class="drawer-bottom">
-      <div class="total-row"><span>الإجمالي المرجعي</span><strong id="cartTotal">0 ج.م</strong></div>
-      <small>الأسعار مرجعية وقد تحتاج إلى تأكيد المتجر.</small>
-      <div class="checkout-customer" aria-label="بيانات العميل للطلب">
-        <h3>بيانات استلام الطلب</h3>
-        <label for="checkoutName">الاسم <span aria-hidden="true">*</span></label><input id="checkoutName" name="checkoutName" autocomplete="name" maxlength="100" required placeholder="اسم العميل">
-        <label for="checkoutPhone">رقم الهاتف <span aria-hidden="true">*</span></label><input id="checkoutPhone" name="checkoutPhone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" required placeholder="رقم للتواصل">
-        <label for="checkoutArea">المنطقة / العنوان</label><input id="checkoutArea" name="checkoutArea" autocomplete="street-address" maxlength="220" placeholder="المنطقة والشارع أو عنوان الاستلام">
-        <label for="checkoutNotes">ملاحظات الطلب</label><textarea id="checkoutNotes" name="checkoutNotes" rows="2" maxlength="500" placeholder="اللون أو التغليف أو أي تفاصيل إضافية"></textarea>
-        <small>تُرسل هذه البيانات إلى واتساب عند الضغط على متابعة الطلب، ولا تُحفظ تلقائيًا في المتصفح.</small>
-      </div>
-      <button type="button" class="btn btn-gold full-width" id="checkoutBtn">متابعة الطلب عبر واتساب</button>
-      <button type="button" class="text-btn" id="clearCart">إفراغ السلة</button><div class="cart-page-end"><span>نهاية مراجعة السلة</span><button type="button" id="cartEndBack">← الرجوع إلى التسوق</button></div>
-    </div>
-  </aside>
-
+  <!-- المودال والإشعارات فقط؛ واجهة السلة محذوفة -->
   <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button type="button" class="modal-close cart-back-btn modal-back-btn" id="closeModal" aria-label="العودة إلى صفحة المنتجات"><span aria-hidden="true">→</span> رجوع للمنتجات</button><div id="modalContent"></div></section></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
