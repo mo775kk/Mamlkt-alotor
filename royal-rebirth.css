@@ -265,3 +265,20 @@ html[data-palette="ivory"] .product-card,html[data-palette="ivory"] .product,htm
  .supplier-oil-section .product-card-supplier-oil .product-actions{grid-template-columns:1fr}
  .supplier-oil-section .product-card-supplier-oil .small-btn{width:100%}
 }
+
+
+/* Royal catalog/cart finish — one stylesheet, consistent black and gold surfaces */
+.product-visual{height:auto;min-height:0;aspect-ratio:1/1;overflow:hidden;background:var(--panel2);display:grid;place-items:center}
+.product-visual img,.product-visual .product-photo,.product-visual .placeholder-bottle{width:100%;height:100%;max-height:none;object-fit:contain}
+.product-photo-stage{position:relative;width:100%;height:100%;min-height:0;overflow:hidden;background:var(--panel2)}
+.product-photo-stage .product-photo{width:100%;height:100%;object-fit:cover;object-position:center;padding:0;transition:transform .28s ease;will-change:transform}
+.product-card-supplier-oil{background:var(--card);color:var(--text);border-color:var(--line)}
+.product-card-supplier-oil .product-visual{height:auto;min-height:0;aspect-ratio:1/1;background:var(--panel2)}
+.product-card-supplier-oil h3,.product-card-supplier-oil .product-en{color:var(--heading)}
+.product-card-supplier-oil .product-meta,.supplier-oil-section .product-card-supplier-oil .muted{color:var(--muted)}
+.product-card-supplier-oil .product-image-note{background:var(--bg);color:var(--gold2)}
+#cartDrawer .cart-item-facts dd{margin:0;color:var(--heading)}
+#cartDrawer .cart-line-actions .remove-btn{border:1px solid var(--line);color:var(--text);background:var(--panel2);min-height:44px}
+.compact-selected-price{display:inline!important;color:var(--gold2);font-weight:800}
+.home-index-install-card{border:1px solid var(--line);background:var(--card);color:var(--text)}
+@media(max-width:380px){#cartDrawer .cart-item-facts{grid-template-columns:minmax(0,1fr) auto;gap:6px}.product-grid,.products-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.product-card-supplier-oil .product-actions{grid-template-columns:1fr}}
