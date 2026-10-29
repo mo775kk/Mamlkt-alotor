@@ -112,3 +112,19 @@ input,select,textarea{max-width:100%;color:var(--text,#f7f2e8)}
 @media(prefers-reduced-motion:reduce){
  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+
+/* PUBLIC STOREFRONT CLEANUP: no visible cart shortcut anywhere on public pages.
+   Cart drawer, stored cart data and checkout logic remain intact for internal flows. */
+.site-header #cartShortcut,
+#cartShortcut,
+#cartShortcutIndex,
+.home-index-cart-card,
+.cart-page-shortcut,
+[data-cart-shortcut]{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+.site-header .header-actions{gap:10px}
