@@ -1,12 +1,12 @@
 /* MAMLKAT AL-OTOR — GitHub Pages PWA shell */
 "use strict";
-const CACHE_NAME = "mamlakat-al-otor-shell-v110-20261029-royal-palette-v1";
+const CACHE_NAME = "mamlakat-al-otor-shell-v111-20261029-cache-refresh-v1";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
   BASE_PATH + "index.html",
   BASE_PATH + "royal-rebirth.css?v=20261029-royal-palette-v1",
-  BASE_PATH + "theme-persistence.js?v=20261029-repair-01",
+  BASE_PATH + "theme-persistence.js?v=20261029-cache-refresh-v1",
   BASE_PATH + "assets/js/site-catalog.bundle.js?v=20261029-catalog-guard-v1",
   BASE_PATH + "assets/js/site-admin.bundle.js?v=20261029-repair-01",
   BASE_PATH + "assets/js/site-experience.bundle.js?v=20261029-repair-01",
@@ -15,7 +15,7 @@ const SHELL_URLS = [
   BASE_PATH + "assets/js/site-customer-tools.js?v=20261029-repair-01",
   BASE_PATH + "assets/js/palette-studio.js?v=20261029-palette-studio-04",
   BASE_PATH + "oil-voice-guide.js?v=20261029-repair-01",
-  BASE_PATH + "manifest.webmanifest?v=20261029-repair-01",
+  BASE_PATH + "manifest.webmanifest?v=20261029-cache-refresh-v1",
   BASE_PATH + "data/products.json",
   BASE_PATH + "oil-catalog-public.json",
   BASE_PATH + "assets/images/app-icon-192.png",
