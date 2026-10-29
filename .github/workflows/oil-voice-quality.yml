@@ -45,11 +45,11 @@ jobs:
           const js = readFileSync('oil-voice-guide.js', 'utf8');
           const manifest = JSON.parse(readFileSync('manifest.webmanifest', 'utf8'));
           const count = re => (html.match(re) || []).length;
-          if (count(/<head\\b/gi) !== 1 || count(/<\\/head>/gi) !== 1) throw new Error('HTML head structure is broken');
-          if (count(/<body\\b/gi) !== 1 || count(/<\\/body>/gi) !== 1) throw new Error('HTML body structure is broken');
-          if (count(/<script\\b/gi) !== count(/<\\/script>/gi)) throw new Error('HTML script tags are unbalanced');
+          if (count(/<head\b/gi) !== 1 || count(/<\/head>/gi) !== 1) throw new Error('HTML head structure is broken');
+          if (count(/<body\b/gi) !== 1 || count(/<\/body>/gi) !== 1) throw new Error('HTML body structure is broken');
+          if (count(/<script\b/gi) !== count(/<\/script>/gi)) throw new Error('HTML script tags are unbalanced');
           if (html.includes('mentor2"scrollProgress')) throw new Error('Broken service-worker line detected');
-          if (!/royal-rebirth\\.css\\?v=[^'"]+/.test(html) || !css.includes('Admin usability pass')) throw new Error('Current unified stylesheet or admin responsive rules are missing');
+          if (!/royal-rebirth\.css\\?v=[^'"]+/.test(html) || !css.includes('Admin usability pass')) throw new Error('Current unified stylesheet or admin responsive rules are missing');
           if (!html.includes('data-theme="dark"') || !html.includes('palette-studio.js?v=20261029-palette-studio-04')) throw new Error('Current royal palette studio is not linked');
           const paletteIds = ['royal','emerald','midnight','ivory','burgundy','rose','desert','graphite'];
           if (paletteIds.some(id => !palette.includes('id:"' + id + '"') || !palette.includes(id + ':{'))) throw new Error('One or more of the eight palette presets are incomplete');
