@@ -282,3 +282,4 @@ html[data-palette="ivory"] .product-card,html[data-palette="ivory"] .product,htm
 .compact-selected-price{display:inline!important;color:var(--gold2);font-weight:800}
 .home-index-install-card{border:1px solid var(--line);background:var(--card);color:var(--text)}
 @media(max-width:380px){#cartDrawer .cart-item-facts{grid-template-columns:minmax(0,1fr) auto;gap:6px}.product-grid,.products-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.product-card-supplier-oil .product-actions{grid-template-columns:1fr}}
+\n\n.admin-review-approval{display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel2);color:var(--text);line-height:1.7}.admin-review-approval input{width:20px;min-width:20px;margin-top:5px;accent-color:var(--gold)}\n
