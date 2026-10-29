@@ -1,16 +1,16 @@
 /* MAMLKAT AL-OTOR — GitHub Pages PWA shell */
 "use strict";
-const CACHE_NAME = "mamlakat-al-otor-shell-v106-20261029-galaxy";
+const CACHE_NAME = "mamlakat-al-otor-shell-v107-20261029-oil-first";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
   BASE_PATH + "index.html",
-  BASE_PATH + "royal-rebirth.css?v=20261029-galaxy-01",
+  BASE_PATH + "royal-rebirth.css?v=20261029-oil-first-03",
   BASE_PATH + "theme-persistence.js?v=20261029-admin-clean-01",
-  BASE_PATH + "assets/js/site-catalog.bundle.js?v=20261029-admin-clean-01",
+  BASE_PATH + "assets/js/site-catalog.bundle.js?v=20261029-oil-first-03",
   BASE_PATH + "assets/js/site-admin.bundle.js?v=20261029-admin-clean-01",
   BASE_PATH + "assets/js/site-experience.bundle.js?v=20261029-admin-clean-01",
-  BASE_PATH + "assets/js/site-sections.bundle.js?v=20261029-admin-clean-01",
+  BASE_PATH + "assets/js/site-sections.bundle.js?v=20261029-oil-first-03",
   BASE_PATH + "assets/js/site-cloud.bundle.js?v=20261029-admin-clean-01",
   BASE_PATH + "assets/js/site-customer-tools.js?v=20261029-admin-clean-01",
   BASE_PATH + "assets/js/palette-studio.js?v=20261029-palette-studio-04",
