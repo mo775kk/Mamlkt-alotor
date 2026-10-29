@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#11100e">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="manifest" href="manifest.webmanifest?v=20261028-neutral-single-theme-08">
+  <link rel="manifest" href="manifest.webmanifest?v=20261029-repair-01">
   <link rel="icon" type="image/svg+xml" href="assets/images/app-icon-192.svg">
   <link rel="apple-touch-icon" href="assets/images/app-icon-192.png">
   <meta name="description" content="مملكة العطور — عطور جاهزة، زيوت عطرية، تركيب عطرك الخاص، عود وبخور وهدايا بطابع ملكي.">
@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <script src="theme-persistence.js?v=20261029-admin-clean-01"></script>
+  <script src="theme-persistence.js?v=20261029-repair-01"></script>
 
   <!-- ====== ROYAL CINEMATIC v3.0 — التصميم الحديث ====== -->
   
@@ -63,14 +63,14 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261028-design-05-clean').catch(error => {
+          navigator.serviceWorker.register('./sw.js?v=20261029-repair-01').catch(error => {
             console.warn('Service worker registration failed:', error);
           });
         }
       });
     })();
   </script>
-  <link rel="stylesheet" href="royal-rebirth.css?v=20261029-oil-first-03">
+  <link rel="stylesheet" href="royal-rebirth.css?v=20261029-repair-01">
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -481,7 +481,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <!-- السكربتات (defer) -->
-  <script defer src="assets/js/site-catalog.bundle.js?v=20261029-oil-first-03"></script>
+  <script defer src="assets/js/site-catalog.bundle.js?v=20261029-repair-01"></script>
   <script>
   (function(){
     "use strict";
@@ -497,8 +497,8 @@
     if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initHeaderExtras);else initHeaderExtras();
   })();
   </script>
-  <script defer src="assets/js/site-admin.bundle.js?v=20261029-admin-theme-02"></script>
-  <script defer src="assets/js/site-experience.bundle.js?v=20261029-admin-clean-01"></script>
+  <script defer src="assets/js/site-admin.bundle.js?v=20261029-repair-01"></script>
+  <script defer src="assets/js/site-experience.bundle.js?v=20261029-repair-01"></script>
 
   <!-- سكربتات v3.0 الجديدة -->
   <script>
@@ -608,7 +608,7 @@
     document.addEventListener('mamlaka:products-updated',updateBlendPriceGuide);
   })();
   </script>
-  <script defer src="assets/js/site-sections.bundle.js?v=20261029-oil-first-03"></script>
+  <script defer src="assets/js/site-sections.bundle.js?v=20261029-repair-01"></script>
   <script>
   (function(){var b=document.getElementById("shareKingdomButton");if(!b)return;b.addEventListener("click",function(){var d={title:document.title,text:"اكتشف مملكة العطور",url:window.location.href};if(navigator.share){navigator.share(d).catch(function(){});return;}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(d.url).then(function(){b.textContent="تم نسخ رابط الموقع ✓";},function(){window.prompt("انسخ رابط الموقع:",d.url);});}else{window.prompt("انسخ رابط الموقع:",d.url);}});})();
   </script>
@@ -623,9 +623,9 @@
     </div>
     <button type="button" id="pwaInstallHelpClose" class="btn btn-gold" style="margin-top:10px">إغلاق</button>
   </dialog>
-  <script src="oil-voice-guide.js?v=20261029-admin-clean-01"></script>
-  <script src="assets/js/site-cloud.bundle.js?v=20261029-admin-clean-01"></script>
-  <script defer src="assets/js/site-customer-tools.js?v=20261029-admin-clean-01"></script>
-  <script defer src="assets/js/palette-studio.js?v=20261029-palette-studio-04"></script>
+  <script src="oil-voice-guide.js?v=20261029-repair-01"></script>
+  <script src="assets/js/site-cloud.bundle.js?v=20261029-repair-01"></script>
+  <script defer src="assets/js/site-customer-tools.js?v=20261029-repair-01"></script>
+  <script defer src="assets/js/palette-studio.js?v=20261029-repair-01"></script>
 </body>
 </html>
