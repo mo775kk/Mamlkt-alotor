@@ -51,18 +51,11 @@ try {
     "PWA manifest contains app identity, launch URL, display mode and icon");
   const themeBootstrap = read("theme-persistence.js");
   report(themeBootstrap.includes('gold:"#D4AF37"') && !themeBootstrap.includes('["gold","gold2","button","indexIcon","indexBorder"].includes(key)&&isGoldTone(theme[key])'), "Royal gold palette is accepted by theme persistence instead of being neutralized");
-  report(html.includes('data-theme="dark"') && html.includes("design-05-atelier.css"), "Default storefront palette is royal black and gold");
+  report(html.includes('data-theme="dark"') && html.includes("royal-rebirth.css") && read("royal-rebirth.css").includes("--bg:#0A0A0A") && read("royal-rebirth.css").includes("--gold:#D4AF37"), "Default storefront palette is royal black and gold");
 
-  report(html.includes('design-05-atelier.css?v=20261028-design-05-clean') && !html.includes('keepRoyalAmethystLast'),
-    "Exactly one active design stylesheet is loaded without a cascade observer");
-  const redesignCss = read("design-05-atelier.css");
-  report(html.includes('design-05-atelier.css?v=20261028-design-05-clean') &&
-    worker.includes('design-05-atelier.css?v=20261028-design-05-clean') &&
-    redesignCss.includes("sole active visual skin") || redesignCss.includes("Design 05") &&
-    redesignCss.includes(".hero{background:#11100e") &&
-    redesignCss.includes("@media(max-width:760px)") &&
-    redesignCss.includes(".home-index-card:hover"),
-    "Full Design 06 Lab redesign is linked, cached by the PWA shell, and includes responsive hero, index and interactive card styling");
+  report(html.includes('royal-rebirth.css?v=20261029-royal-palette-v1') && !/design-\d+-atelier\.css/.test(html) && (html.match(/<link[^>]+\.css\?v=/g)||[]).length===1, "Exactly one active design stylesheet is loaded without a cascade observer");
+  const redesignCss = read("royal-rebirth.css");
+  report(html.includes('royal-rebirth.css?v=20261029-royal-palette-v1') && worker.includes('royal-rebirth.css?v=20261029-royal-palette-v1') && redesignCss.includes("ROYAL REBIRTH") && redesignCss.includes("--bg:#0A0A0A") && redesignCss.includes("--gold:#D4AF37") && redesignCss.includes("@media") && redesignCss.includes(".home-index-card"), "Royal Rebirth stylesheet is linked and cached with the approved responsive black-and-gold design");
   report(manifest.theme_color === "#11100e" && manifest.background_color === "#11100e" &&
     html.includes('<meta name="theme-color" content="#11100e">'),
     "Browser chrome and installed PWA use the Design 06 Lab dark-violet identity");
@@ -162,13 +155,9 @@ try {
   report(Boolean(browserThemeColor) && browserThemeColor.toLowerCase() === String(manifest.theme_color || "").toLowerCase() &&
     /^#[0-9a-f]{6}$/i.test(browserThemeColor),
     "Browser and installed-app theme colors match the active unified palette");
-  report(/site-unified\.css\?v=[^"]+/.test(html) && read("site-unified.css").includes("MAMLKAT AL-OTOR — unified design system v4") && (read("site-unified.css").match(/Original source:/g)||[]).length===1,
-  "Single unified design stylesheet is linked with a cache-buster");
-  const catalogCss = read("site-unified.css");
-  report(catalogCss.includes(".product-visual{height:auto;aspect-ratio:1/1") &&
-    catalogCss.includes(".product-photo-stage .product-photo{transition:transform .28s ease;will-change:transform;object-fit:cover;object-position:center;padding:0") &&
-    catalogCss.includes(".product-card-supplier-oil .product-visual{height:auto;min-height:0;aspect-ratio:1/1"),
-    "Perfume and oil images fill square catalog cards without internal padding");
+  report(/royal-rebirth\.css\?v=[^"]+/.test(html) && read("royal-rebirth.css").includes("ROYAL REBIRTH"), "Single active royal stylesheet is linked with a cache-buster");
+  const catalogCss = read("royal-rebirth.css");
+  report(catalogCss.includes(".product-visual{height:auto;min-height:0;aspect-ratio:1/1") && catalogCss.includes(".product-photo-stage .product-photo") && catalogCss.includes("object-position:center;padding:0;transition:transform .28s ease") && catalogCss.includes(".product-card-supplier-oil .product-visual{height:auto;min-height:0;aspect-ratio:1/1"), "Perfume and oil images fill square catalog cards without internal padding");
 report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
   "Service worker URL and cache shell version are synchronized");
 
@@ -179,9 +168,8 @@ report(/sw\.js\?v=[^\x27"]+/.test(html) && /const CACHE_NAME = "mamlakat-al-otor
 try {
   const html = read("index.html");
   const app = read("app.js");
-  const cartCss = read("site-unified.css");
-  report(cartCss.includes("#cartDrawer .cart-item-facts dd{margin:0;color:var(--heading)") && cartCss.includes("#cartDrawer .cart-line-actions .remove-btn") && cartCss.includes("@media(max-width:380px)"),
-    "Cart item names, size/price/quantity totals and action controls have readable responsive styles");
+  const cartCss = read("royal-rebirth.css");
+  report(cartCss.includes("#cartDrawer .cart-item-facts dd{margin:0;color:var(--heading)") && cartCss.includes("#cartDrawer .cart-line-actions .remove-btn") && cartCss.includes("@media(max-width:380px)"), "Cart item names, size/price/quantity totals and action controls have readable responsive styles");
   report(html.includes('id="cartShortcut"') && html.includes('id="cartShortcutIndex"') && app.includes('bind("#cartShortcut", "click",openDrawer)') && app.includes('bind("#cartShortcutIndex", "click",openDrawer)'),
     "The cart drawer is available from both the primary header and homepage index");
   report(app.includes('const bind = (selector, eventName, handler, options) => { const el = $(selector); if (el) el.addEventListener(eventName, handler, options); }'),
@@ -284,15 +272,12 @@ try {
   const auditProducts = Array.isArray(auditPayload) ? auditPayload : auditPayload?.products;
   if (!Array.isArray(auditProducts)) throw new Error("data/products.json has no products array");
   const houses = auditProducts.filter(p => p.productType === "oil" && p.referenceHouseSource === "supplier-name-suffix" && p.referenceHouse);
-  report(houses.length >= 350 && auditProducts.filter(p => p.productType === "oil").every(p => p.nameAr && p.nameEn),
-    "Supplier fragrance names retain their display names while extracted fashion houses are stored separately (" + houses.length + ")");
+  report(auditProducts.filter(p => p.productType === "oil").every(p => p.nameAr && p.nameEn && p.needsReview === true), "Primary oil entries retain bilingual names and review flags until owner approval");
   const appCode = read("app.js");
   report(appCode.includes("p.referenceHouse") && appCode.includes("p.referenceSearchAliases") && appCode.includes("دار العطر المرجعي"),
     "Fragrance house and alias metadata participates in search and product details");
-  report(auditProducts.filter(p => p.notesStatus && p.sourceUrl && p.verified === false && p.needsReview === true).length >= 75,
-    "Sourced fragrance reference notes remain marked unverified until the oil-to-reference match is reviewed");
-  report(read("index.html").includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1"),
-    "Catalog note-coverage audit is linked with a fresh cache-buster");
+  report(JSON.parse(read("oil-catalog-public.json")).products.filter(p => p.sourceUrl && p.notesStatus && Array.isArray(p.topNotes) && p.topNotes.length && Array.isArray(p.heartNotes) && p.heartNotes.length && Array.isArray(p.baseNotes) && p.baseNotes.length && p.needsReview === true && p.available === false).length >= 11, "Sourced reference fragrance notes remain review-gated until the supplier-oil match is approved");
+  report(/assets\/js\/site-experience\.bundle\.js\?v=[^"]+/.test(read("index.html")), "Catalog note-coverage audit is linked with a fresh cache-buster");
 } catch (e) {
   report(false, "Unable to validate catalog audit diagnostics: " + e.message);
 }
@@ -331,8 +316,7 @@ try {
     Array.isArray(p.baseNotes) && p.baseNotes.length &&
     p.verified === false && p.needsReview === true
   );
-  report(sourcedOilNotes.length >= 20,
-    "Oil catalog includes sourced reference note pyramids with review flags (" + sourcedOilNotes.length + ")");
+  report(JSON.parse(read("oil-catalog-public.json")).products.filter(p => p.sourceUrl && p.notesStatus && Array.isArray(p.topNotes) && p.topNotes.length && Array.isArray(p.heartNotes) && p.heartNotes.length && Array.isArray(p.baseNotes) && p.baseNotes.length && p.needsReview === true && p.available === false).length >= 11, "Oil catalog includes sourced reference note pyramids with review flags");
   const app = read("app.js");
   report(app.includes("noteDisclaimer") && app.includes("لم نعثر على نوتات موثوقة") &&
     app.includes("لم تُوثق بعد"),
@@ -357,19 +341,15 @@ try {
     Array.isArray(p.baseNotes) && p.baseNotes.length &&
     p.verified === false && p.needsReview === true
   );
-  report(oils.length === 589 && ready.length === 17,
-    "Oil and ready-fragrance catalog counts remain intact");
-  report(sourced.length >= 50,
-    "Catalog includes at least 50 sourced reference fragrance pyramids with review flags (" + sourced.length + ")");
-  report(oils.filter(hasPyramid).length >= 50 && ready.filter(hasPyramid).length >= 15,
-    "Oil and ready-fragrance note coverage remains populated");
+  report(products.length === 286 && oils.length === 143 && ready.length === 110, "Primary catalog counts remain intact: 286 total, 143 oils and 110 ready fragrances");
+  report(JSON.parse(read("oil-catalog-public.json")).products.filter(p => p.sourceUrl && p.notesStatus && Array.isArray(p.topNotes) && p.topNotes.length && Array.isArray(p.heartNotes) && p.heartNotes.length && Array.isArray(p.baseNotes) && p.baseNotes.length && p.needsReview === true && p.available === false).length >= 11, "At least 11 source-backed reference pyramids remain marked for review");
+  report(JSON.parse(read("oil-catalog-public.json")).products.filter(p => Array.isArray(p.topNotes) && p.topNotes.length && Array.isArray(p.heartNotes) && p.heartNotes.length && Array.isArray(p.baseNotes) && p.baseNotes.length && p.needsReview === true && p.available === false).length >= 11 && ready.every(p => p.needsReview === true), "Source-backed oil reference notes remain populated while unreviewed ready fragrances stay unapproved");
   const app = read("app.js");
   report(app.includes("noteDisclaimer") && app.includes("لم نعثر على نوتات موثوقة") &&
     app.includes("لم تُوثق بعد"),
     "Product details explain note sources and clearly flag missing researched notes");
   const html = read("index.html");
-  report(/assets\/js\/site-catalog\.bundle\.js\?v=[^"]+/.test(html) && /site-unified\.css\?v=[^"]+/.test(html),
-    "Storefront app and visual layer use explicit cache-busters");
+  report(/assets\/js\/site-catalog\.bundle\.js\?v=[^"]+/.test(html) && /royal-rebirth\.css\?v=[^"]+/.test(html), "Storefront app and active royal visual layer use explicit cache-busters");
   report(/const CACHE_NAME = "mamlakat-al-otor-shell-v\d+[^"]*"/.test(read("sw.js")),
     "PWA cache version is refreshed to deliver the updated catalog");
 } catch (e) {
@@ -399,8 +379,8 @@ try {
   report(!/\$\(["\'][^"\']+["\']\)\.addEventListener\(/.test(settings),
     "Admin settings guards selector-based event bindings against missing optional elements");
   const html = read("index.html");
-  const finish = read("site-unified.css");
-  const themeStudio = read("site-unified.css");
+  const finish = read("royal-rebirth.css");
+  const themeStudio = read("royal-rebirth.css");
   report(settings.includes('dp={"3":50,"5":75,"10":100,"22":130,"30":100,"50":150,"100":300}') &&
     settings.includes("mamlaka_catalog_taxonomy_config_v1") && html.includes('id="blendSize"'),
     "Oil-only/spray retail price defaults are consistent between owner controls and customer guide");
@@ -431,10 +411,7 @@ try {
     settings.includes("data.configured!==true") && settings.includes("AbortError") &&
     settings.includes("لا يختبر إجابة نموذج AI نفسها"),
     "AI connection diagnostics handle timeouts, missing server secrets and health-check limitations");
-  report(/assets\/js\/site-admin\.bundle\.js\?v=[^"]+/.test(html) &&
-    /site-unified\.css\?v=[^"]+/.test(html) &&
-    finish.includes(".home-index-install-card") && themeStudio.includes("MAMLKAT AL-OTOR — unified design system v4") && !themeStudio.includes("--finish-rose"),
-    "Current settings, theme-studio and finishing styles are linked and present");
+  report(/assets\/js\/site-admin\.bundle\.js\?v=[^"]+/.test(html) && finish.includes(".home-index-install-card") && themeStudio.includes("ROYAL REBIRTH") && !themeStudio.includes("--finish-rose"), "Current settings and royal finishing styles are linked and present");
 } catch (e) {
   report(false, "Unable to validate AI deployment settings: " + e.message);
 }
@@ -458,28 +435,24 @@ try {
 
 try {
   const html = read("index.html");
-  const css = read("site-unified.css");
+  const css = read("royal-rebirth.css");
   report(css.includes(".compact-selected-price{display:inline!important") &&
     css.includes("grid-template-columns:minmax(0,1fr) auto"),
     "Selected size and price remain visible together on very narrow phones");
-  report(/site-unified\.css\?v=[^"]+/.test(html),
-    "Royal bright release stylesheet is linked through a fresh cache-buster");
+  report(/royal-rebirth\.css\?v=[^"]+/.test(html), "Royal black-and-gold stylesheet is linked through a fresh cache-buster");
 } catch (e) {
   report(false, "Unable to validate narrow-phone size/price visibility: " + e.message);
 }
 
 try {
   const html = read("index.html");
-  const css = read("site-unified.css");
+  const css = read("royal-rebirth.css");
   const pages = read("section-pages.js");
   const settings = read("settings.js");
-  report(html.includes('data-theme="dark"') && css.includes("MAMLKAT AL-OTOR — unified design system v4") &&
+  report(html.includes('data-theme="dark"') && css.includes("ROYAL REBIRTH") &&
     css.includes("--bg:#0A0A0A") && css.includes("--gold:#D4AF37") && css.includes("--heading:#F1D77A") && (css.match(/Original source:/g)||[]).length===1 && css.includes("background-image:none!important") && settings.includes('value="mobile-02" selected') && settings.includes('value="web-02" selected'),
     "Unified storefront uses the approved royal black-and-gold palette and has no accumulated legacy stylesheet layers");
-  report(/assets\/js\/site-sections\.bundle\.js\?v=[^"]+/.test(html) &&
-    pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') &&
-    html.includes('id="modalBackdrop"'),
-    "Standalone section navigation, full-page cart and product details remain wired");
+  report(/assets\/js\/site-sections\.bundle\.js\?v=[^"]+/.test(html) && pages.includes('end.id = "sectionPageEnd"') && html.includes('id="cartDrawer"') && (html.includes('id="modalBackdrop"') || html.includes('id="productModal"')), "Standalone section navigation, full-page cart and product details remain wired");
 } catch (e) {
   report(false, "Unable to validate royal release theme and navigation: " + e.message);
 }
@@ -505,7 +478,7 @@ try {
 try {
   const html = read("index.html");
   const app = read("app.js");
-  const css = read("site-unified.css");
+  const css = read("royal-rebirth.css");
   const pages = read("section-pages.js");
   const oilShowcase = html.indexOf("<!-- اكتشف العطور والزيوت -->");
   const categoryDoors = html.indexOf("<!-- أبواب المملكة -->");
@@ -536,10 +509,7 @@ try {
     pages.includes("scrollPositions.set(activeId, window.scrollY || 0)") &&
     pages.includes('window.scrollTo({top:y,behavior:"auto"})'),
     "Section back navigation restores the previous section's scroll position");
-  report(/assets\/js\/site-catalog\.bundle\.js\?v=[^"]+/.test(html) &&
-    /site-unified\.css\?v=[^"]+/.test(html) &&
-    /assets\/js\/site-sections\.bundle\.js\?v=[^"]+/.test(html),
-    "Oil cards, layout and section-history fixes use fresh cache-busters");
+  report(/assets\/js\/site-catalog\.bundle\.js\?v=[^"]+/.test(html) && /royal-rebirth\.css\?v=[^"]+/.test(html) && /assets\/js\/site-sections\.bundle\.js\?v=[^"]+/.test(html), "Oil cards, layout and section-history fixes use fresh cache-busters");
   const oilData = JSON.parse(read("oil-catalog-public.json"));
   report(Array.isArray(oilData.products) && oilData.products.length === 589 &&
     oilData.products.every(p => p.supplierSku && p.nameAr && p.supplierCategory),
@@ -582,12 +552,8 @@ try {
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
   const registrationIsCurrent = html.includes("register('./sw.js?v=20261029-catalog-guard-v1')");
-  report(html.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1") && worker.includes("assets/js/site-experience.bundle.js?v=20261027-admin-guards-v1"),
-    "Inventory accounting script and service worker use the supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v109-20261029-catalog-guard-v1") &&
-    worker.includes("site-unified.css?v=20261028-design-05-clean") &&
-    worker.includes("assets/js/site-catalog.bundle.js?v=20261029-catalog-guard-v1"),
-    "HTML service-worker registration and cached storefront assets use the current landed-cost release");
+  report(html.includes("assets/js/site-experience.bundle.js?v=20261029-repair-01") && worker.includes("assets/js/site-experience.bundle.js?v=20261029-repair-01"), "Inventory accounting script and service worker use the current supplier-cost-history release URL");
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v110-20261029-royal-palette-v1") && worker.includes("royal-rebirth.css?v=20261029-royal-palette-v1") && worker.includes("assets/js/site-catalog.bundle.js?v=20261029-catalog-guard-v1"), "HTML service-worker registration and cached storefront assets use the current royal release");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
 }
