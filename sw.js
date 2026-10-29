@@ -1,11 +1,11 @@
 /* MAMLKAT AL-OTOR — GitHub Pages PWA shell */
 "use strict";
-const CACHE_NAME = "mamlakat-al-otor-shell-v105-20261029-admin-clean";
+const CACHE_NAME = "mamlakat-al-otor-shell-v106-20261029-galaxy";
 const BASE_PATH = new URL("./", self.location.href).pathname;
 const SHELL_URLS = [
   BASE_PATH,
   BASE_PATH + "index.html",
-  BASE_PATH + "royal-rebirth.css?v=20261029-admin-clean-01",
+  BASE_PATH + "royal-rebirth.css?v=20261029-galaxy-01",
   BASE_PATH + "theme-persistence.js?v=20261029-admin-clean-01",
   BASE_PATH + "assets/js/site-catalog.bundle.js?v=20261029-admin-clean-01",
   BASE_PATH + "assets/js/site-admin.bundle.js?v=20261029-admin-clean-01",
