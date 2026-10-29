@@ -547,9 +547,9 @@ try {
   const worker = read("sw.js");
   report(settings.includes('wa.value.replace(/\\D/g,"")'),
     "Emergency settings save strips non-digits from WhatsApp numbers");
-  const registrationIsCurrent = html.includes("register('./sw.js?v=20261029-royal-palette-v1')");
+  const registrationIsCurrent = html.includes("register('./sw.js?v=20261029-cache-refresh-v1')");
   report(html.includes("assets/js/site-experience.bundle.js?v=20261029-repair-01") && worker.includes("assets/js/site-experience.bundle.js?v=20261029-repair-01"), "Inventory accounting script and service worker use the current supplier-cost-history release URL");
-  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v110-20261029-royal-palette-v1") && worker.includes("royal-rebirth.css?v=20261029-royal-palette-v1") && worker.includes("assets/js/site-catalog.bundle.js?v=20261029-catalog-guard-v1"), "HTML service-worker registration and cached storefront assets use the current royal release");
+  report(registrationIsCurrent && worker.includes("mamlakat-al-otor-shell-v111-20261029-cache-refresh-v1") && worker.includes("royal-rebirth.css?v=20261029-royal-palette-v1") && worker.includes("assets/js/site-catalog.bundle.js?v=20261029-catalog-guard-v1"), "HTML service-worker registration and cached storefront assets use the current royal release");
 } catch (e) {
   report(false, "Unable to validate emergency settings and PWA cache regression: " + e.message);
 }
