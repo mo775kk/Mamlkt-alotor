@@ -13,7 +13,7 @@ const SHELL_URLS = [
   BASE_PATH + "assets/js/site-sections.bundle.js?v=20261029-repair-01",
   BASE_PATH + "assets/js/site-cloud.bundle.js?v=20261029-repair-01",
   BASE_PATH + "assets/js/site-customer-tools.js?v=20261029-repair-01",
-  BASE_PATH + "assets/js/palette-studio.js?v=20261029-repair-01",
+  BASE_PATH + "assets/js/palette-studio.js?v=20261029-palette-studio-04",
   BASE_PATH + "oil-voice-guide.js?v=20261029-repair-01",
   BASE_PATH + "manifest.webmanifest?v=20261029-repair-01",
   BASE_PATH + "data/products.json",
