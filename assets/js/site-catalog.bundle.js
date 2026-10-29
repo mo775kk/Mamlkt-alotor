@@ -171,6 +171,8 @@
     return [...merged.values()];
   };
   let products = combineProducts();
+  // Keep owner-review records out of public ready-fragrance flows. Supplier oil references remain browseable but are not purchasable until approved.
+  const isCustomerVisibleProduct = p => !!p && (p.supplierCatalogItem === true || p.needsReview !== true);
   async function loadPublicCatalog() {
     if (typeof fetch !== "function") return;
     try {
@@ -308,7 +310,8 @@
     const photoKey=String(p.id||p.nameEn||p.nameAr||"product");
     let photoHash=0;for(let i=0;i<photoKey.length;i++)photoHash=(photoHash*31+photoKey.charCodeAt(i))>>>0;
     const categoryPhoto="https://images.unsplash.com/"+photoSets[photoType][photoHash%photoSets[photoType].length]+"?auto=format&fit=crop&w=900&q=82";
-    if(["ready","oil","blend","bakhoor","oud","gift"].includes(type)||p.supplierCatalogItem===true){
+    // Generic stock photography is opt-in only. Missing exact product photos fall through to the local SVG bottle illustration below.
+    if(p.useCategoryPhoto === true && (["ready","oil","blend","bakhoor","oud","gift"].includes(type)||p.supplierCatalogItem===true)){
       const categoryLabel=type==="oil"||type==="blend"?"الزيوت والتركيب":type==="bakhoor"||type==="oud"?"العود والبخور":type==="gift"?"الهدايا":"العطور الجاهزة";
       return '<div class="product-photo-stage"><img class="product-photo" src="'+categoryPhoto+'" alt="صورة واقعية إلهامية لفئة '+categoryLabel+'؛ لا تمثل بالضرورة العبوة التجارية لهذا المنتج" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="product-image-note">صورة توضيحية للفئة</span></div>';
     }
@@ -382,7 +385,7 @@
   function renderHomeShowcase(){
     const readyRoot=$("#homeReadyProducts"),oilRoot=$("#homeOilProducts");
     if(!readyRoot||!oilRoot)return;
-    const readyAll=products.filter(p=>p.productType==="ready");
+    const readyAll=products.filter(p=>isCustomerVisibleProduct(p)&&p.productType==="ready");
     const oilAll=products.filter(p=>p.supplierCatalogItem===true);
     const ready=readyAll.filter(p=>p.available!==false).slice(0,4);
     const usefulOils=oilAll.filter(p=>p.family&&p.family!=="غير محدد"&&p.scentNature&&!/تفاصيل الرائحة تحتاج|الطابع العطري يحتاج/.test(String(p.scentNature)));
@@ -396,8 +399,8 @@
       ['#ready', ready[0] || readyAll[0] || {id:'index-ready-preview',nameAr:'العطور الجاهزة',productType:'ready'}, 'ready'],
       ['#blend', oils[1] || oilAll[0] || {id:'index-blend-preview',nameAr:'تركيب العطور',productType:'oil'}, 'oil'],
       ['#scent-classification', ready[1] || ready[0] || readyAll[0] || {id:'index-family-preview',nameAr:'العائلات العطرية',productType:'ready'}, 'ready'],
-      ['#bakhoor', products.find(p => ['bakhoor','oud'].includes(String(p.productType||'').toLowerCase())) || {id:'index-bakhoor-preview',nameAr:'العود والبخور',productType:'bakhoor'}, 'bakhoor'],
-      ['#gift', products.find(p => p.productType === 'gift') || {id:'index-gift-preview',nameAr:'الهدايا والتغليف',productType:'gift'}, 'gift'],
+      ['#bakhoor', products.find(p => isCustomerVisibleProduct(p) && ['bakhoor','oud'].includes(String(p.productType||'').toLowerCase())) || {id:'index-bakhoor-preview',nameAr:'العود والبخور',productType:'bakhoor'}, 'bakhoor'],
+      ['#gift', products.find(p => isCustomerVisibleProduct(p) && p.productType === 'gift') || {id:'index-gift-preview',nameAr:'الهدايا والتغليف',productType:'gift'}, 'gift'],
       ['#advisor', ready[2] || ready[0] || readyAll[0] || {id:'index-advisor-preview',nameAr:'مستشار العطور',productType:'ready'}, 'ready'],
       ['#howToChoose', ready[0] || readyAll[0] || {id:'index-guide-preview',nameAr:'دليل التسوق',productType:'ready'}, 'ready'],
       ['#homeCatalog', ready[0] || readyAll[0] || {id:'index-catalog-preview',nameAr:'مختارات العطور',productType:'ready'}, 'ready']
@@ -432,7 +435,7 @@
   function renderProducts() {
     const searchInput=$("#productSearch"), genderInput=$("#genderFilter"), familyInput=$("#familyFilter");
     const q=norm(searchInput?.value||""), gender=genderInput?.value||"", family=familyInput?.value||"";
-    const list=products.filter(p=>p.productType!=="oil" && p.productType!=="bakhoor" && (!gender||p.gender===gender) && (!family||p.family===family||displayFamily(p.family,p.nameAr||p.nameEn)===family) && (!q||matchesCatalogQuery(p,q)));
+    const list=products.filter(p=>isCustomerVisibleProduct(p) && p.productType!=="oil" && p.productType!=="bakhoor" && (!gender||p.gender===gender) && (!family||p.family===family||displayFamily(p.family,p.nameAr||p.nameEn)===family) && (!q||matchesCatalogQuery(p,q)));
     const readyProducts=$("#readyProducts"), noProducts=$("#noProducts"), resultsMessage=$("#resultsMessage");
     if(readyProducts)readyProducts.innerHTML=list.map(productCard).join("");
     if(noProducts)noProducts.classList.toggle("hidden",list.length>0);
@@ -503,6 +506,7 @@
   function closeDrawer(){ const drawer=$("#cartDrawer"),backdrop=$("#drawerBackdrop");if(backdrop)backdrop.classList.add("hidden");if(drawer){drawer.classList.remove("open");drawer.setAttribute("aria-hidden","true");}document.body.classList.remove("locked"); }
   function openDetails(id){
     const p=findProduct(id);if(!p)return;
+    if(!isCustomerVisibleProduct(p)){notify("هذا المنتج قيد مراجعة الإدارة وغير متاح للعرض العام.");return;}
     const sizeKeys=Object.keys(sizes),priced=sizeKeys.filter(s=>currentPrice(p,s)!=null);
     const defaultSize=priced.includes("10")?"10":(priced[0]||"10");
     const money=v=>v==null?"تواصل لتأكيد السعر":formatMoney(v);
@@ -551,9 +555,9 @@
     if(window.MamlakaAI?.isConfigured()){
       replies.innerHTML='<div class="assistant-message">مستشار المملكة يراجع طلبك والمنتجات المسجلة…</div>';
       try{
-        const remote=await window.MamlakaAI.ask(query,products.slice(0,80));
+        const publicProducts=products.filter(isCustomerVisibleProduct);const remote=await window.MamlakaAI.ask(query,publicProducts.slice(0,80));
         if(remote){
-          const byId=new Map(products.map(p=>[String(p.id),p]));
+          const byId=new Map(publicProducts.map(p=>[String(p.id),p]));
           const chosen=remote.recommendedProductIds.map(id=>byId.get(String(id))).filter(Boolean).slice(0,3);
           replies.innerHTML='<div class="assistant-message"><strong>مستشار مملكة العطور الذكي 👑</strong><br>'+escapeHTML(remote.answer)+'</div>'+chosen.map(p=>{const price=priceFor(p);return '<div class="suggestion"><div><h4>'+escapeHTML(p.nameAr||p.nameEn||"عطر مسجل")+' <span class="product-en">'+escapeHTML(p.nameEn||"")+'</span></h4><p>'+escapeHTML(p.family||"عائلة غير محددة")+' · '+(price==null?"السعر يحتاج إلى تأكيد":formatMoney(price))+(p.needsReview?" · بيانات تحتاج مراجعة":"")+'</p><small>'+escapeHTML((p.scentNature||p.descriptionAr||"الطابع العطري يحتاج إلى مراجعة").slice(0,150))+'</small></div><button class="small-btn" data-action="details" data-id="'+escapeHTML(p.id)+'">التفاصيل</button></div>';}).join("");
           return;
@@ -577,7 +581,7 @@
     const budget=budgetMatch?Number(budgetMatch[1]):null;
     const daily=/دوام|شغل|عمل|يومي|جامعة|مكتب|نهار|day|office|daily/.test(q);
     const occasion=/سهرة|فرح|زفاف|مناسبة|مساء|حفلة|evening|wedding|event/.test(q);
-    const candidates=products.filter(p=>p.productType!=="oil"&&p.productType!=="bakhoor");
+    const candidates=products.filter(p=>isCustomerVisibleProduct(p)&&p.productType!=="oil"&&p.productType!=="bakhoor");
     const scored=candidates.map(p=>{
       const hay=norm([p.family,p.scentNature,p.descriptionAr,p.nameAr,p.nameEn,p.gender,p.referenceHouse,p.referenceHouseAr,p.referenceSearchName,...(p.referenceSearchAliases||[])].join(" "));
       let score=0;
@@ -644,7 +648,7 @@
   bind("#genderFilter", "change",renderProducts);bind("#familyFilter", "change",renderProducts);
   bind("#requestMissingBtn", "click",()=>{const name=$("#productSearch").value.trim();if(!name){notify("اكتب اسم العطر الذي تبحث عنه أولًا.");$("#productSearch").focus();return;}requestMissing(name);notify("تم تسجيل طلب البحث وفتح واتساب لإرساله.");});
   bind("#searchFocus", "click",()=>{location.hash="#ready";window.setTimeout(()=>$("#productSearch")?.focus(),100);});
-  bind("#favoritesShortcut", "click",()=>{const fav=products.filter(p=>favorites.includes(p.id));if(!fav.length){notify("قائمة المفضلة فارغة.");return;}$("#productSearch").value="";$("#genderFilter").value="";$("#familyFilter").value="";$("#readyProducts").innerHTML=fav.map(productCard).join("");$("#resultsMessage").textContent=`${fav.length} منتج في المفضلة`;$("#noProducts").classList.add("hidden");location.hash="#ready";});
+  bind("#favoritesShortcut", "click",()=>{const fav=products.filter(p=>isCustomerVisibleProduct(p)&&favorites.includes(p.id));if(!fav.length){notify("قائمة المفضلة فارغة.");return;}$("#productSearch").value="";$("#genderFilter").value="";$("#familyFilter").value="";$("#readyProducts").innerHTML=fav.map(productCard).join("");$("#resultsMessage").textContent=`${fav.length} منتج في المفضلة`;$("#noProducts").classList.add("hidden");location.hash="#ready";});
   bind("#cartShortcut", "click",openDrawer);bind("#cartShortcutIndex", "click",openDrawer);bind("#closeDrawer", "click",closeDrawer);bind("#cartEndBack", "click",closeDrawer);bind("#drawerBackdrop", "click",closeDrawer);
   bind("#closeModal", "click",closeModal);bind("#modalBackdrop", "click",e=>{if(e.target===$("#modalBackdrop"))closeModal();});
   bind("#checkoutBtn", "click",checkout);bind("#clearCart", "click",()=>{cart=[];save(STORAGE.cart,cart);renderCart();updateCounts();syncProductCardSelectionStates();notify("تم إفراغ السلة.");});

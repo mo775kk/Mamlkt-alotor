@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#11100e">
+  <meta name="theme-color" content="#0A0A0A">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="manifest" href="manifest.webmanifest?v=20261029-repair-01">
@@ -63,14 +63,14 @@
         const close = document.getElementById('pwaInstallHelpClose');
         if (close && dialog) close.addEventListener('click', () => dialog.close ? dialog.close() : dialog.removeAttribute('open'));
         if ('serviceWorker' in navigator && location.protocol === 'https:') {
-          navigator.serviceWorker.register('./sw.js?v=20261029-repair-01').catch(error => {
+          navigator.serviceWorker.register('./sw.js?v=20261029-royal-palette-v1').catch(error => {
             console.warn('Service worker registration failed:', error);
           });
         }
       });
     })();
   </script>
-  <link rel="stylesheet" href="royal-rebirth.css?v=20261029-repair-01">
+  <link rel="stylesheet" href="royal-rebirth.css?v=20261029-royal-palette-v1">
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -477,13 +477,32 @@
     <p>العطر توقيع… والمملكة اختيارك.</p>
     <small>© <span id="year"></span> MAMLKAT AL-OTOR</small>
   </footer>
-  <!-- المودال والإشعارات فقط؛ واجهة السلة محذوفة -->
+  <!-- سلة التسوق الكاملة + نافذة تفاصيل المنتج -->
+  <div class="drawer-backdrop hidden" id="drawerBackdrop"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="سلة التسوق" aria-hidden="true">
+    <div class="drawer-head"><div class="cart-page-heading"><small>مملكة العطور · مراجعة الطلب</small><h2 id="drawerTitle">سلة التسوق</h2><p>راجع كل منتج وحجمه وسعره قبل إرسال الطلب</p></div><button type="button" class="cart-back-btn" id="closeDrawer" aria-label="العودة إلى الصفحة السابقة"><span aria-hidden="true">→</span> متابعة التسوق</button></div>
+    <div id="cartItems" class="drawer-items"></div>
+    <div class="drawer-bottom">
+      <div class="total-row"><span>الإجمالي المرجعي</span><strong id="cartTotal">0 ج.م</strong></div>
+      <small>الأسعار مرجعية وقد تحتاج إلى تأكيد المتجر.</small>
+      <div class="checkout-customer" aria-label="بيانات العميل للطلب">
+        <h3>بيانات استلام الطلب</h3>
+        <label for="checkoutName">الاسم <span aria-hidden="true">*</span></label><input id="checkoutName" name="checkoutName" autocomplete="name" maxlength="100" required placeholder="اسم العميل">
+        <label for="checkoutPhone">رقم الهاتف <span aria-hidden="true">*</span></label><input id="checkoutPhone" name="checkoutPhone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" required placeholder="رقم للتواصل">
+        <label for="checkoutArea">المنطقة / العنوان</label><input id="checkoutArea" name="checkoutArea" autocomplete="street-address" maxlength="220" placeholder="المنطقة والشارع أو عنوان الاستلام">
+        <label for="checkoutNotes">ملاحظات الطلب</label><textarea id="checkoutNotes" name="checkoutNotes" rows="2" maxlength="500" placeholder="اللون أو التغليف أو أي تفاصيل إضافية"></textarea>
+        <small>تُرسل هذه البيانات إلى واتساب عند الضغط على متابعة الطلب، ولا تُحفظ تلقائيًا في المتصفح.</small>
+      </div>
+      <button type="button" class="btn btn-gold full-width" id="checkoutBtn">متابعة الطلب عبر واتساب</button>
+      <button type="button" class="text-btn" id="clearCart">إفراغ السلة</button><div class="cart-page-end"><span>نهاية مراجعة السلة</span><button type="button" id="cartEndBack">← الرجوع إلى التسوق</button></div>
+    </div>
+  </aside>
   <div class="modal-backdrop hidden" id="modalBackdrop"><section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button type="button" class="modal-close cart-back-btn modal-back-btn" id="closeModal" aria-label="العودة إلى صفحة المنتجات"><span aria-hidden="true">→</span> رجوع للمنتجات</button><div id="modalContent"></div></section></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <!-- السكربتات (defer) -->
-  <script defer src="assets/js/site-catalog.bundle.js?v=20261029-repair-01"></script>
+  <script defer src="assets/js/site-catalog.bundle.js?v=20261029-catalog-guard-v1"></script>
   <script>
   (function(){
     "use strict";
