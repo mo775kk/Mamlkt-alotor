@@ -14,8 +14,8 @@ const requiredSections=['home','siteIndex','oils','catalog','blend','oud','gifts
 check(requiredSections.every(id=>new RegExp(`id=["']${id}["']`).test(html)),'all primary store sections and index exist');
 check(html.includes('فهرس')&&html.includes('index-grid')&&html.includes('الزيوت العطرية'),'visible index directory and oils-first entry');
 check(['oilOrderType','oilOrderSize','oilOrderPrice','addOilOrder'].every(id=>html.includes(`id="${id}"`))&&js.includes('OIL_SPRAY_PRICE')&&js.includes('function addOilOrder()'),'oil size picker and both documented pricing tables are interactive');
-const localStyles=[...html.matchAll(/<link[^>]+href="([^"]+\.css(?:\?[^"]*)?)"/g)].map(m=>m[1]).filter(v=>!/^https?:\/\//i.test(v));check(localStyles.length===1&&localStyles[0]==='style.css?v=admin-images-20261029','single canonical local stylesheet');
-check((html.match(/<script[^>]+src=/g)||[]).length===1&&html.includes('src="app.js?v=admin-images-20261029"'),'single canonical storefront script');
+const localStyles=[...html.matchAll(/<link[^>]+href="([^"]+\.css(?:\?[^"]*)?)"/g)].map(m=>m[1]).filter(v=>!/^https?:\/\//i.test(v));check(localStyles.length===1&&localStyles[0]==='style.css?v=fragrance-details-20261029','single canonical local stylesheet');
+check((html.match(/<script[^>]+src=/g)||[]).length===1&&html.includes('src="app.js?v=fragrance-details-20261029"'),'single canonical storefront script');
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);check(new Set(ids).size===ids.length,'no duplicate static HTML ids');
 const anchors=[...html.matchAll(/href="#([^"]+)"/g)].map(m=>m[1]);const idSet=new Set(ids);check(anchors.every(id=>idSet.has(id)),'all in-page links point to real sections');
 const localRefs=[...html.matchAll(/(?:src|href)="([^"#][^"]*)"/g)].map(m=>m[1].split('?')[0]).filter(v=>!/^https?:\/\//i.test(v)&&!v.startsWith('mailto:')&&!v.startsWith('tel:')&&!v.startsWith('javascript:'));
