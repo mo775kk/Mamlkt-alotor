@@ -31,6 +31,10 @@ check(['adminProductSearch','adminCatalogType','adminProductList','exportImageMa
 check(js.includes('data-save-image')&&js.includes('data-image-search')&&js.includes('mamlaka_oil_images_v1'),'image assignment supports products and oil references with local persistence');
 check(js.includes('function notesMarkup(p)')&&js.includes('مقدمة العطر')&&js.includes('قلب العطر')&&js.includes('قاعدة العطر'),'fragrance detail displays top, heart, and base notes when documented');
 check(js.includes('function enrichFragrance(p)')&&js.includes("notesStatus==='verified-brand-source'")&&js.includes('referenceImage'),'matching product names can reuse verified reference images and sourced notes without inventing data');
+check(js.includes('أحجام العبوة الأصلية حسب المصدر')&&js.includes('مرجع إضافي')&&js.includes('العلامة التجارية'),'product details distinguish original bottle sizes, brand identity, and supporting sources');
+const enriched=rows.filter(p=>p.notesStatus&&String(p.notesStatus).startsWith('verified')&&p.sourceUrl&&Array.isArray(p.topNotes)&&Array.isArray(p.heartNotes)&&Array.isArray(p.baseNotes));
+check(enriched.length>=10,'source-backed fragrance records include structured note pyramids and traceable source URLs');
+check(rows.filter(p=>p.imageSource&&p.image).length>=6,'selected product images include explicit image-source provenance');
 check(manifest.display==='standalone'&&Array.isArray(manifest.icons)&&manifest.icons.length>=2,'PWA manifest remains valid');
 const products=JSON.parse(read('data/products.json'));const rows=Array.isArray(products)?products:products.products;
 check(Array.isArray(rows)&&rows.length>0,'canonical product data loads');
