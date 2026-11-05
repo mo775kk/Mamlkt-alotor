@@ -26,7 +26,8 @@ function uniqueNames(rows) {
 function duplicateGroups(rows) {
   const map = new Map();
   for (const row of rows) {
-    const key = String(row.nameAr || row.nameEn || '').trim().toLocaleLowerCase('ar');
+    const name = String(row.nameAr || row.nameEn || '').trim().toLocaleLowerCase('ar');
+    const key = `${row.productType || 'غير محدد'}:${name}`;
     if (!key) continue;
     map.set(key, (map.get(key) || 0) + 1);
   }
@@ -34,7 +35,7 @@ function duplicateGroups(rows) {
 }
 function section(title, rows) {
   const hasPyramid = p => Boolean(p.topNotes?.length || p.heartNotes?.length || p.baseNotes?.length);
-  const hasNotes = p => hasPyramid(p) || Boolean(p.scentNotesProfile);
+  const hasNotes = p => hasPyramid(p) || Boolean(p.scentNotesProfile && !/غير محدد|غير موثقة|لم تُخمن|تحتاج مراجعة/i.test(p.scentNotesProfile));
   const hasSource = p => /^https?:\/\//i.test(String(p.sourceUrl || p.notesSource || ''));
   const metrics = [
     ['عدد السجلات', rows.length],
@@ -51,7 +52,7 @@ function section(title, rows) {
     ['سعر بيع مسجل', count(rows, p => p.price != null || Object.values(p.prices || {}).some(v => Number(v) > 0))],
     ['مؤكد التوفر للبيع', count(rows, p => p.available === true && p.needsReview !== true)],
     ['يحتاج مراجعة', count(rows, p => p.needsReview === true || p.available !== true)],
-    ['مجموعات أسماء مكررة داخل الملف', duplicateGroups(rows)]
+    ['مجموعات أسماء مكررة داخل النوع نفسه', duplicateGroups(rows)]
   ];
   return `## ${title}\n\n| المؤشر | العدد |\n|---|---:|\n${metrics.map(([k,v]) => `| ${k} | ${v} |`).join('\n')}\n`;
 }
