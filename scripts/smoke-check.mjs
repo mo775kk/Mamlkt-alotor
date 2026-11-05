@@ -38,4 +38,7 @@ const pids=rows.map(p=>String(p.id||'')).filter(Boolean);check(pids.length===row
 const oil=JSON.parse(read('oil-catalog-public.json'));check(Array.isArray(oil.products)&&oil.products.length>0&&oil.products.every(p=>p.supplierCatalogItem===true),'supplier oil references remain in their dedicated source file');
 for(const file of ['app.js','sw.js']){try{execFileSync(process.execPath,['--check',path.join(root,file)],{stdio:'pipe'});check(true,`${file} syntax`)}catch{check(false,`${file} syntax`)}}
 check(!html.includes('site-unified.css')&&!html.includes('royal-rebirth.css')&&!html.includes('site-catalog.bundle.js'),'no old duplicate stylesheet or bundle is loaded');
+check(html.includes('id="siteControlCenter"')&&['settingTheme','settingFontScale','settingContentWidth','settingImageFit','settingDensity','settingCorners'].every(id=>html.includes(`id="${id}"`)),'store control center exposes all appearance controls');
+check(js.includes('function bindSettings()')&&js.includes('localStorage.setItem(KEYS.settings')&&js.includes('resetSiteSettings'),'appearance settings apply live, persist locally, and can be reset');
+check(css.includes('.control-center')&&css.includes('@media(max-width:520px)'),'appearance control center has responsive mobile styling');
 console.log(`\n${passed} passed; ${failed} failed.`);if(failed)process.exitCode=1;
