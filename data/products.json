@@ -1,7 +1,7 @@
 {
   "version": 1,
   "generatedFor": "Mamlakat Al-Otor",
-  "description": "كتالوج العطور الجاهزة وقائمة مرجعية لأسماء العطور المطلوبة لقسم زيوت التركيب. السجلات المرجعية لا تعني توفر الزيت أو تطابق التركيبة أو صلاحية البيع؛ يجب مراجعة المورد والسعر قبل الإتاحة.",
+  "description": "كتالوج العطور الجاهزة وقائمة مرجعية لأسماء العطور المطلوبة لقسم زيوت التركيب. السجلات المرجعية لا تعني توفر الزيت أو تطابق التركيبة أو صلاحية البيع؛ يجب مراجعة المورد والسعر قبل الإتاحة. تم إثراء مجموعة من السجلات بمصادر عطرية قابلة للمراجعة؛ بيانات الأحجام الأصلية منفصلة عن أحجام تعبئة المتجر.",
   "pricingCurrency": "EGP",
   "defaultPrices": {
     "3ml": 50,
@@ -174,8 +174,8 @@
     {
       "id": "requested-fragrance-0004",
       "nameAr": "يارا كاندى",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Yara Candy",
+      "brand": "Lattafa",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -188,7 +188,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Floral Fruity Gourmand",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -210,22 +210,41 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.lattafaindia.com/products/yara-candy",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Green Mandarin",
+        "Blackcurrant"
+      ],
+      "heartNotes": [
+        "Strawberry Fizz Candy",
+        "Gardenia"
+      ],
+      "baseNotes": [
+        "Sandalwood",
+        "Vanilla Syrup",
+        "Musk",
+        "Amber"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
+      "notesSource": "https://www.lattafaindia.com/products/yara-candy",
+      "notesConfidence": "مصدر رسمي من لطافة الهند",
+      "originalSizes": [
+        "100ml"
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0635/2270/1395/files/Yara_candy.png?v=1752834749",
+      "imageSource": "https://www.lattafaindia.com/products/yara-candy",
+      "imageConfidence": "صورة المنتج من صفحة العلامة الرسمية"
     },
     {
       "id": "requested-fragrance-0005",
       "nameAr": "كيالى مارشملو",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Yum Boujee Marshmallow | 81",
+      "brand": "KAYALI",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -238,7 +257,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Gourmand Floral",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -260,16 +279,44 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://us.kayali.com/products/yum-boujee-marshmallow-81",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Pink Lady Apple",
+        "Nectarine Blossom",
+        "Freesia",
+        "Italian Lemon"
+      ],
+      "heartNotes": [
+        "Pink Marshmallow",
+        "Strawberry",
+        "Coconut Flakes",
+        "Orange Blossom"
+      ],
+      "baseNotes": [
+        "Whipped Vanilla",
+        "Raspberry Sugar",
+        "Pink Musk",
+        "Ambrox",
+        "KAYALI Signature Accord"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
+      "notesSource": "https://us.kayali.com/products/yum-boujee-marshmallow-81",
+      "notesConfidence": "مصدر رسمي من KAYALI؛ تم تحديد الإصدار 81",
+      "originalSizes": [
+        "100ml",
+        "50ml",
+        "10ml Miniature",
+        "10ml Travel Spray",
+        "1.5ml"
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0749/7272/5468/files/yum-boujee-marshmallow-100_854a1802-ea3f-45c5-81f9-a6be4fdccff8.png?v=1759851607",
+      "imageSource": "https://us.kayali.com/products/yum-boujee-marshmallow-81",
+      "imageConfidence": "صورة العبوة من صفحة العلامة الرسمية"
     },
     {
       "id": "requested-fragrance-0006",
@@ -374,8 +421,8 @@
     {
       "id": "requested-fragrance-0008",
       "nameAr": "روبرتو كافلى",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Roberto Cavalli Eau de Parfum (2012)",
+      "brand": "Roberto Cavalli",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -387,8 +434,8 @@
         "أخرى"
       ],
       "productType": "ready",
-      "gender": "رجالي",
-      "family": "غير محدد",
+      "gender": "حريمي",
+      "family": "Oriental Floral",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -410,16 +457,31 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Roberto-Cavalli/Roberto-Cavalli-Eau-de-Parfum-13675.html",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Pink Pepper"
+      ],
+      "heartNotes": [
+        "African Orange Flower"
+      ],
+      "baseNotes": [
+        "Vanilla",
+        "Benzoin",
+        "Tonka Bean"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
+      "notesSource": "https://www.fragrantica.com/perfume/Roberto-Cavalli/Roberto-Cavalli-Eau-de-Parfum-13675.html",
+      "notesConfidence": "مرجع عطري متخصص؛ إصدار 2012، وليس Paradiso أو Signature",
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "75ml"
+      ]
     },
     {
       "id": "requested-fragrance-0009",
@@ -724,8 +786,8 @@
     {
       "id": "requested-fragrance-0015",
       "nameAr": "سكاندال",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Scandal Eau de Parfum",
+      "brand": "Jean Paul Gaultier",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -738,7 +800,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Gourmand Chypre",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -760,8 +822,8 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
+      "sourceUrl": "https://www.jeanpaulgaultier.com/us/en_US/p/range-scandal/scandal-eau-de-parfum-000000000065213045",
+      "notesStatus": "verified-brand-source",
       "topNotes": [],
       "heartNotes": [],
       "baseNotes": [],
@@ -769,7 +831,15 @@
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
+      "scentNotesProfile": "Gardenia · Honey · Patchouli",
+      "notesSource": "https://www.jeanpaulgaultier.com/us/en_US/p/range-scandal/scandal-eau-de-parfum-000000000065213045",
+      "notesConfidence": "المصدر الرسمي يذكر المكونات العطرية الأساسية ولا يفصلها إلى مقدمة وقلب وقاعدة",
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "80ml"
+      ]
     },
     {
       "id": "requested-fragrance-0016",
@@ -874,8 +944,8 @@
     {
       "id": "requested-fragrance-0018",
       "nameAr": "دنهل دزير بلو",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Desire Blue",
+      "brand": "Dunhill",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -888,7 +958,7 @@
       ],
       "productType": "ready",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Aromatic Green",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -910,16 +980,36 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://perfumwala.in/products/dunhill-desire-blue",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Litchi",
+        "Mandarin Orange",
+        "Lotus",
+        "Bergamot"
+      ],
+      "heartNotes": [
+        "Sea Notes",
+        "Orange",
+        "Brazilian Rosewood"
+      ],
+      "baseNotes": [
+        "Tonka Bean",
+        "Musk",
+        "Benzoin",
+        "Amber"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
+      "notesSource": "https://perfumwala.in/products/dunhill-desire-blue",
+      "notesConfidence": "مرجع عطري متخصص؛ راجع الإصدار على العبوة",
+      "originalSizes": [
+        "50ml",
+        "100ml"
+      ]
     },
     {
       "id": "requested-fragrance-0019",
@@ -1024,8 +1114,8 @@
     {
       "id": "requested-fragrance-0021",
       "nameAr": "جيمي شو",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Jimmy Choo Eau de Parfum",
+      "brand": "Jimmy Choo",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -1038,7 +1128,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Fruity Chypre",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -1060,16 +1150,31 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.interparfums.fr/en/jimmy-choo-eau-de-parfum-2/",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Pear Nectar",
+        "Sweet Italian Orange"
+      ],
+      "heartNotes": [
+        "Tiger Orchid"
+      ],
+      "baseNotes": [
+        "Toffee",
+        "Indonesian Patchouli"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
+      "notesSource": "https://www.interparfums.fr/en/jimmy-choo-eau-de-parfum-2/",
+      "notesConfidence": "المصدر الرسمي للشركة المرخصة المصنّعة؛ إصدار Eau de Parfum الأصلي",
+      "originalSizes": [
+        "40ml",
+        "60ml",
+        "100ml"
+      ]
     },
     {
       "id": "requested-fragrance-0022",
@@ -1324,8 +1429,8 @@
     {
       "id": "requested-fragrance-0027",
       "nameAr": "اسكادا مون سباركل",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Escada Moon Sparkle",
+      "brand": "Escada",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -1338,7 +1443,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Floral Fruity",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -1360,16 +1465,37 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Escada/Escada-Moon-Sparkle-1887.html",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Strawberry",
+        "Black Currant",
+        "Red Apple",
+        "Citruses"
+      ],
+      "heartNotes": [
+        "Sweet Pea",
+        "Freesia",
+        "Jasmine",
+        "Rose"
+      ],
+      "baseNotes": [
+        "Raspberry",
+        "Musk",
+        "Sandalwood",
+        "Amber"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
+      "notesSource": "https://www.fragrantica.com/perfume/Escada/Escada-Moon-Sparkle-1887.html",
+      "notesConfidence": "مرجع عطري متخصص؛ إصدار 2007",
+      "originalSizes": [
+        "50ml",
+        "100ml"
+      ]
     },
     {
       "id": "requested-fragrance-0028",
@@ -2224,8 +2350,8 @@
     {
       "id": "requested-fragrance-0045",
       "nameAr": "وان مليون",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "1 Million Eau de Toilette",
+      "brand": "Rabanne",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -2238,7 +2364,7 @@
       ],
       "productType": "ready",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Spicy Woody",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -2260,16 +2386,39 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://niceonesa.com/en/paco-rabanne-1-million-for-men-100ml-eau-de-toilette-n791",
+      "notesStatus": "verified-retailer-source",
+      "topNotes": [
+        "Red Mandarin",
+        "Grapefruit",
+        "Mint"
+      ],
+      "heartNotes": [
+        "Cinnamon",
+        "Spices",
+        "Rose"
+      ],
+      "baseNotes": [
+        "Amber",
+        "Leather",
+        "Woods",
+        "Indian Patchouli"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
+      "notesSource": "https://niceonesa.com/en/paco-rabanne-1-million-for-men-100ml-eau-de-toilette-n791",
+      "notesConfidence": "مرجع بيع متخصص يذكر الإصدار الرجالي EDT؛ يجب تأكيد العبوة قبل اعتماد المطابقة",
+      "originalSizes": [
+        "50ml",
+        "100ml",
+        "200ml"
+      ],
+      "image": "https://d1aq4ubbxe020v.cloudfront.net/image/catalog/69469081_1 Million-500x500.png?format=png",
+      "imageSource": "https://niceonesa.com/en/paco-rabanne-1-million-for-men-100ml-eau-de-toilette-n791",
+      "imageConfidence": "صورة مرتبطة بصفحة المنتج لدى بائع متخصص"
     },
     {
       "id": "requested-fragrance-0046",
@@ -7306,8 +7455,8 @@
     {
       "id": "blend-reference-0004",
       "nameAr": "يارا كاندى",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Yara Candy",
+      "brand": "Lattafa",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -7320,7 +7469,7 @@
       ],
       "productType": "oil",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Floral Fruity Gourmand",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7334,24 +7483,43 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.lattafaindia.com/products/yara-candy",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Green Mandarin",
+        "Blackcurrant"
+      ],
+      "heartNotes": [
+        "Strawberry Fizz Candy",
+        "Gardenia"
+      ],
+      "baseNotes": [
+        "Sandalwood",
+        "Vanilla Syrup",
+        "Musk",
+        "Amber"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://www.lattafaindia.com/products/yara-candy",
+      "notesConfidence": "مصدر رسمي من لطافة الهند",
+      "originalSizes": [
+        "100ml"
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0635/2270/1395/files/Yara_candy.png?v=1752834749",
+      "imageSource": "https://www.lattafaindia.com/products/yara-candy",
+      "imageConfidence": "صورة المنتج من صفحة العلامة الرسمية"
     },
     {
       "id": "blend-reference-0005",
       "nameAr": "كيالى مارشملو",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Yum Boujee Marshmallow | 81",
+      "brand": "KAYALI",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -7364,7 +7532,7 @@
       ],
       "productType": "oil",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Gourmand Floral",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7378,18 +7546,46 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://us.kayali.com/products/yum-boujee-marshmallow-81",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Pink Lady Apple",
+        "Nectarine Blossom",
+        "Freesia",
+        "Italian Lemon"
+      ],
+      "heartNotes": [
+        "Pink Marshmallow",
+        "Strawberry",
+        "Coconut Flakes",
+        "Orange Blossom"
+      ],
+      "baseNotes": [
+        "Whipped Vanilla",
+        "Raspberry Sugar",
+        "Pink Musk",
+        "Ambrox",
+        "KAYALI Signature Accord"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://us.kayali.com/products/yum-boujee-marshmallow-81",
+      "notesConfidence": "مصدر رسمي من KAYALI؛ تم تحديد الإصدار 81",
+      "originalSizes": [
+        "100ml",
+        "50ml",
+        "10ml Miniature",
+        "10ml Travel Spray",
+        "1.5ml"
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0749/7272/5468/files/yum-boujee-marshmallow-100_854a1802-ea3f-45c5-81f9-a6be4fdccff8.png?v=1759851607",
+      "imageSource": "https://us.kayali.com/products/yum-boujee-marshmallow-81",
+      "imageConfidence": "صورة العبوة من صفحة العلامة الرسمية"
     },
     {
       "id": "blend-reference-0006",
@@ -7482,8 +7678,8 @@
     {
       "id": "blend-reference-0008",
       "nameAr": "روبرتو كافلى",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Roberto Cavalli Eau de Parfum (2012)",
+      "brand": "Roberto Cavalli",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -7495,8 +7691,8 @@
         "أخرى"
       ],
       "productType": "oil",
-      "gender": "رجالي",
-      "family": "غير محدد",
+      "gender": "حريمي",
+      "family": "Oriental Floral",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7510,18 +7706,33 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Roberto-Cavalli/Roberto-Cavalli-Eau-de-Parfum-13675.html",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Pink Pepper"
+      ],
+      "heartNotes": [
+        "African Orange Flower"
+      ],
+      "baseNotes": [
+        "Vanilla",
+        "Benzoin",
+        "Tonka Bean"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://www.fragrantica.com/perfume/Roberto-Cavalli/Roberto-Cavalli-Eau-de-Parfum-13675.html",
+      "notesConfidence": "مرجع عطري متخصص؛ إصدار 2012، وليس Paradiso أو Signature",
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "75ml"
+      ]
     },
     {
       "id": "blend-reference-0009",
@@ -7790,8 +8001,8 @@
     {
       "id": "blend-reference-0015",
       "nameAr": "سكاندال",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Scandal Eau de Parfum",
+      "brand": "Jean Paul Gaultier",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -7804,7 +8015,7 @@
       ],
       "productType": "oil",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Gourmand Chypre",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7818,8 +8029,8 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
+      "sourceUrl": "https://www.jeanpaulgaultier.com/us/en_US/p/range-scandal/scandal-eau-de-parfum-000000000065213045",
+      "notesStatus": "verified-brand-source",
       "topNotes": [],
       "heartNotes": [],
       "baseNotes": [],
@@ -7827,9 +8038,17 @@
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "scentNotesProfile": "Gardenia · Honey · Patchouli",
+      "notesSource": "https://www.jeanpaulgaultier.com/us/en_US/p/range-scandal/scandal-eau-de-parfum-000000000065213045",
+      "notesConfidence": "المصدر الرسمي يذكر المكونات العطرية الأساسية ولا يفصلها إلى مقدمة وقلب وقاعدة",
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "80ml"
+      ]
     },
     {
       "id": "blend-reference-0016",
@@ -7922,8 +8141,8 @@
     {
       "id": "blend-reference-0018",
       "nameAr": "دنهل دزير بلو",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Desire Blue",
+      "brand": "Dunhill",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -7936,7 +8155,7 @@
       ],
       "productType": "oil",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Aromatic Green",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7950,18 +8169,38 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://perfumwala.in/products/dunhill-desire-blue",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Litchi",
+        "Mandarin Orange",
+        "Lotus",
+        "Bergamot"
+      ],
+      "heartNotes": [
+        "Sea Notes",
+        "Orange",
+        "Brazilian Rosewood"
+      ],
+      "baseNotes": [
+        "Tonka Bean",
+        "Musk",
+        "Benzoin",
+        "Amber"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://perfumwala.in/products/dunhill-desire-blue",
+      "notesConfidence": "مرجع عطري متخصص؛ راجع الإصدار على العبوة",
+      "originalSizes": [
+        "50ml",
+        "100ml"
+      ]
     },
     {
       "id": "blend-reference-0019",
@@ -8054,8 +8293,8 @@
     {
       "id": "blend-reference-0021",
       "nameAr": "جيمي شو",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Jimmy Choo Eau de Parfum",
+      "brand": "Jimmy Choo",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -8068,7 +8307,7 @@
       ],
       "productType": "oil",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Fruity Chypre",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -8082,18 +8321,33 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.interparfums.fr/en/jimmy-choo-eau-de-parfum-2/",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Pear Nectar",
+        "Sweet Italian Orange"
+      ],
+      "heartNotes": [
+        "Tiger Orchid"
+      ],
+      "baseNotes": [
+        "Toffee",
+        "Indonesian Patchouli"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://www.interparfums.fr/en/jimmy-choo-eau-de-parfum-2/",
+      "notesConfidence": "المصدر الرسمي للشركة المرخصة المصنّعة؛ إصدار Eau de Parfum الأصلي",
+      "originalSizes": [
+        "40ml",
+        "60ml",
+        "100ml"
+      ]
     },
     {
       "id": "blend-reference-0022",
@@ -8318,8 +8572,8 @@
     {
       "id": "blend-reference-0027",
       "nameAr": "اسكادا مون سباركل",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Escada Moon Sparkle",
+      "brand": "Escada",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -8332,7 +8586,7 @@
       ],
       "productType": "oil",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Floral Fruity",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -8346,18 +8600,39 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Escada/Escada-Moon-Sparkle-1887.html",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Strawberry",
+        "Black Currant",
+        "Red Apple",
+        "Citruses"
+      ],
+      "heartNotes": [
+        "Sweet Pea",
+        "Freesia",
+        "Jasmine",
+        "Rose"
+      ],
+      "baseNotes": [
+        "Raspberry",
+        "Musk",
+        "Sandalwood",
+        "Amber"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://www.fragrantica.com/perfume/Escada/Escada-Moon-Sparkle-1887.html",
+      "notesConfidence": "مرجع عطري متخصص؛ إصدار 2007",
+      "originalSizes": [
+        "50ml",
+        "100ml"
+      ]
     },
     {
       "id": "blend-reference-0028",
@@ -9110,8 +9385,8 @@
     {
       "id": "blend-reference-0045",
       "nameAr": "وان مليون",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "1 Million Eau de Toilette",
+      "brand": "Rabanne",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -9124,7 +9399,7 @@
       ],
       "productType": "oil",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Spicy Woody",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -9138,18 +9413,41 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://niceonesa.com/en/paco-rabanne-1-million-for-men-100ml-eau-de-toilette-n791",
+      "notesStatus": "verified-retailer-source",
+      "topNotes": [
+        "Red Mandarin",
+        "Grapefruit",
+        "Mint"
+      ],
+      "heartNotes": [
+        "Cinnamon",
+        "Spices",
+        "Rose"
+      ],
+      "baseNotes": [
+        "Amber",
+        "Leather",
+        "Woods",
+        "Indian Patchouli"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://niceonesa.com/en/paco-rabanne-1-million-for-men-100ml-eau-de-toilette-n791",
+      "notesConfidence": "مرجع بيع متخصص يذكر الإصدار الرجالي EDT؛ يجب تأكيد العبوة قبل اعتماد المطابقة",
+      "originalSizes": [
+        "50ml",
+        "100ml",
+        "200ml"
+      ],
+      "image": "https://d1aq4ubbxe020v.cloudfront.net/image/catalog/69469081_1 Million-500x500.png?format=png",
+      "imageSource": "https://niceonesa.com/en/paco-rabanne-1-million-for-men-100ml-eau-de-toilette-n791",
+      "imageConfidence": "صورة مرتبطة بصفحة المنتج لدى بائع متخصص"
     },
     {
       "id": "blend-reference-0046",
