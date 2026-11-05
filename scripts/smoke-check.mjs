@@ -49,7 +49,8 @@ check(enriched.length>=10,'source-backed fragrance records include structured no
 check(rows.filter(p=>p.imageSource&&p.image).length>=6,'selected product images include explicit image-source provenance');
 
 const pids=rows.map(p=>String(p.id||'')).filter(Boolean);check(pids.length===rows.length&&new Set(pids).size===pids.length,'canonical product ids are present and unique');
-const oil=JSON.parse(read('oil-catalog-public.json'));check(Array.isArray(oil.products)&&oil.products.length>0&&oil.products.every(p=>p.supplierCatalogItem===true),'supplier oil references remain in their dedicated source file');
+const oil=JSON.parse(read('oil-catalog-public.json'));check(Array.isArray(oil.products)&&oil.products.every(p=>p.supplierCatalogItem===true),'supplier oil catalog is valid JSON and never labels unverified references as supplier items');
+check(oil.catalogStatus==='no-verified-supplier-records-published'||oil.products.length>0,'empty supplier catalog is explicitly disclosed rather than silently treated as populated');
 for(const file of ['app.js','sw.js']){try{execFileSync(process.execPath,['--check',path.join(root,file)],{stdio:'pipe'});check(true,`${file} syntax`)}catch{check(false,`${file} syntax`)}}
 check(!html.includes('site-unified.css')&&!html.includes('royal-rebirth.css')&&!html.includes('site-catalog.bundle.js'),'no old duplicate stylesheet or bundle is loaded');
 check(html.includes('id="siteControlCenter"')&&['settingTheme','settingFontScale','settingContentWidth','settingImageFit','settingDensity','settingCorners'].every(id=>html.includes(`id="${id}"`)),'store control center exposes all appearance controls');
