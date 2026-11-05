@@ -1,7 +1,7 @@
 {
   "version": 1,
   "generatedFor": "Mamlakat Al-Otor",
-  "description": "كتالوج العطور الجاهزة وقائمة مرجعية لأسماء العطور المطلوبة لقسم زيوت التركيب. السجلات المرجعية لا تعني توفر الزيت أو تطابق التركيبة أو صلاحية البيع؛ يجب مراجعة المورد والسعر قبل الإتاحة. تم إثراء مجموعة من السجلات بمصادر عطرية قابلة للمراجعة؛ بيانات الأحجام الأصلية منفصلة عن أحجام تعبئة المتجر.",
+  "description": "كتالوج العطور الجاهزة وقائمة مرجعية لأسماء العطور المطلوبة لقسم زيوت التركيب. السجلات المرجعية لا تعني توفر الزيت أو تطابق التركيبة أو صلاحية البيع؛ يجب مراجعة المورد والسعر قبل الإتاحة. تم إثراء مجموعة من السجلات بمصادر عطرية قابلة للمراجعة؛ بيانات الأحجام الأصلية منفصلة عن أحجام تعبئة المتجر. تم توثيق دفعة إضافية من عطور لاكوست وAquolina وRabanne مع صور مرجعية وروابط المصدر.",
   "pricingCurrency": "EGP",
   "defaultPrices": {
     "3ml": 50,
@@ -24,8 +24,8 @@
     {
       "id": "requested-fragrance-0001",
       "nameAr": "لاكوست روز",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "L.12.12 Rose Eau de Parfum",
+      "brand": "Lacoste",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -38,7 +38,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Floral Fruity",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -60,22 +60,41 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.lacoste.com.eg/en/fragrance/womens-l.12.12-rose-eau-de-parfum-100ml/018815114985.html",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Green Mandarin",
+        "Mint"
+      ],
+      "heartNotes": [
+        "Rose",
+        "Musk"
+      ],
+      "baseNotes": [
+        "Cedarwood",
+        "Ambrox"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات إصدار محدد من مصدر رسمي أو مرجع عطري؛ أحجام العبوة الأصلية منفصلة عن أحجام تعبئة المتجر",
+      "notesSource": "https://www.lacoste.com.eg/en/fragrance/womens-l.12.12-rose-eau-de-parfum-100ml/018815114985.html",
+      "notesConfidence": "تمت مطابقة الاسم مع L.12.12 Rose EDP من موقع لاكوست مصر الرسمي؛ ليس Rose Eau Intense أو Rose Sparkling",
+      "originalSizes": [
+        "35ml",
+        "50ml",
+        "100ml"
+      ],
+      "image": "https://www.sportsdirect.com/images/imgzoom/84/84300769_xxl_a1.jpg",
+      "imageSource": "https://www.sportsdirect.gr/lacoste-l1212-rose-eau-de-parfum-843007",
+      "imageConfidence": "صورة عبوة L.12.12 Rose EDP من متجر تجزئة؛ تفاصيل النوتات من لاكوست الرسمي"
     },
     {
       "id": "requested-fragrance-0002",
       "nameAr": "لاكوست بلاك",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "L.12.12 Noir Eau de Toilette",
+      "brand": "Lacoste",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -88,7 +107,7 @@
       ],
       "productType": "ready",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Fougère Aromatic",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -110,22 +129,40 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.lacoste.com/gb/lacoste/men/accessories/fragrance/LC005A02.html",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Basil",
+        "Watermelon"
+      ],
+      "heartNotes": [
+        "Lavender",
+        "Verbena"
+      ],
+      "baseNotes": [
+        "Dark Chocolate",
+        "Cashmeran"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات إصدار محدد من مصدر رسمي أو مرجع عطري؛ أحجام العبوة الأصلية منفصلة عن أحجام تعبئة المتجر",
+      "notesSource": "https://www.lacoste.com/gb/lacoste/men/accessories/fragrance/LC005A02.html",
+      "notesConfidence": "مطابقة اسم Lacoste Black مع L.12.12 Noir EDT؛ راجع اسم الإصدار على العبوة",
+      "originalSizes": [
+        "50ml",
+        "100ml"
+      ],
+      "image": "https://product-data.raiadrogasil.io/images/17711093.webp",
+      "imageSource": "https://www.drogaraia.com.br/l-12-12-noir-eau-de-toilette-masculino-lacoste-100ml-1415225.html",
+      "imageConfidence": "صورة العبوة السوداء المطابقة لاسم L.12.12 Noir"
     },
     {
       "id": "requested-fragrance-0003",
       "nameAr": "لاكوست وايت",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "L.12.12 Blanc Eau de Toilette",
+      "brand": "Lacoste",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -138,7 +175,7 @@
       ],
       "productType": "ready",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Woody Aromatic",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -160,16 +197,34 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.lacoste.com/gb/lacoste/men/accessories/fragrance/LC001A01.html",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Grapefruit",
+        "Cardamom"
+      ],
+      "heartNotes": [
+        "Tuberose",
+        "Ylang-Ylang"
+      ],
+      "baseNotes": [
+        "Vetiver",
+        "Suede"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات إصدار محدد من مصدر رسمي أو مرجع عطري؛ أحجام العبوة الأصلية منفصلة عن أحجام تعبئة المتجر",
+      "notesSource": "https://www.lacoste.com/gb/lacoste/men/accessories/fragrance/LC001A01.html",
+      "notesConfidence": "مطابقة اسم Lacoste White مع L.12.12 Blanc EDT الأصلي",
+      "originalSizes": [
+        "50ml",
+        "100ml"
+      ],
+      "image": "https://perfumegallery.com.mx/cdn/shop/files/3386460149082-3.jpg?v=1721848806",
+      "imageSource": "https://perfumegallery.com.mx/products/3386460149082",
+      "imageConfidence": "صورة عبوة L.12.12 Blanc EDT من متجر عطور"
     },
     {
       "id": "requested-fragrance-0004",
@@ -390,8 +445,8 @@
     {
       "id": "requested-fragrance-0007",
       "nameAr": "بنك شوجر",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Pink Sugar Eau de Toilette",
+      "brand": "Aquolina",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -404,7 +459,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Floral Fruity Gourmand",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -426,16 +481,43 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Aquolina/Pink-Sugar-975.html",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Raspberry",
+        "Orange",
+        "Bergamot",
+        "Fig Leaf"
+      ],
+      "heartNotes": [
+        "Cotton Candy",
+        "Licorice",
+        "Strawberry",
+        "Red Berries",
+        "Lily-of-the-Valley"
+      ],
+      "baseNotes": [
+        "Caramel",
+        "Vanilla",
+        "Musk",
+        "Tonka Bean",
+        "Sandalwood"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات إصدار محدد من مصدر رسمي أو مرجع عطري؛ أحجام العبوة الأصلية منفصلة عن أحجام تعبئة المتجر",
+      "notesSource": "https://www.fragrantica.com/perfume/Aquolina/Pink-Sugar-975.html",
+      "notesConfidence": "مرجع عطري متخصص؛ Pink Sugar الأصلي 2004، وليس Blue Sugar أو إصدارًا آخر",
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "100ml"
+      ],
+      "image": "https://i.ebayimg.com/images/g/PFsAAeSwF-douJ-n/s-l1200.jpg",
+      "imageSource": "https://www.ebay.com/itm/391168760009",
+      "imageConfidence": "صورة عبوة Pink Sugar EDT 100ml من قائمة بيع مطابقة؛ يلزم مراجعة شكل العبوة عند توفر المخزون"
     },
     {
       "id": "requested-fragrance-0008",
@@ -555,8 +637,8 @@
     {
       "id": "requested-fragrance-0010",
       "nameAr": "اولمبيا",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Olympéa Eau de Parfum",
+      "brand": "Rabanne",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -569,7 +651,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Oriental Floral",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -591,16 +673,37 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Rabanne/Olympea-31666.html",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Water Jasmine",
+        "Green Mandarin",
+        "Ginger Flower"
+      ],
+      "heartNotes": [
+        "Vanilla",
+        "Salt"
+      ],
+      "baseNotes": [
+        "Cashmere Wood",
+        "Ambergris",
+        "Sandalwood"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات إصدار محدد من مصدر رسمي أو مرجع عطري؛ أحجام العبوة الأصلية منفصلة عن أحجام تعبئة المتجر",
+      "notesSource": "https://www.fragrantica.com/perfume/Rabanne/Olympea-31666.html",
+      "notesConfidence": "تم تحديد الإصدار الأصلي Olympéa EDP لعام 2015؛ ليس Olympea Legend أو Solar أو Parfum",
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "80ml"
+      ],
+      "image": "https://static.chemistwarehouse.com.au/ams/media/pi/79069/2DF_800.jpg",
+      "imageSource": "https://www.chemistwarehouse.com.au/buy/79069/paco-rabanne-olympea-eau-de-parfum-80ml",
+      "imageConfidence": "صورة عبوة Olympéa EDP الأصلية 80ml من متجر متخصص"
     },
     {
       "id": "requested-fragrance-0011",
@@ -7363,8 +7466,8 @@
     {
       "id": "blend-reference-0001",
       "nameAr": "لاكوست روز",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "L.12.12 Rose Eau de Parfum",
+      "brand": "Lacoste",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -7377,7 +7480,7 @@
       ],
       "productType": "oil",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Floral Fruity",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7391,24 +7494,43 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.lacoste.com.eg/en/fragrance/womens-l.12.12-rose-eau-de-parfum-100ml/018815114985.html",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Green Mandarin",
+        "Mint"
+      ],
+      "heartNotes": [
+        "Rose",
+        "Musk"
+      ],
+      "baseNotes": [
+        "Cedarwood",
+        "Ambrox"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات إصدار محدد من مصدر رسمي أو مرجع عطري؛ أحجام العبوة الأصلية منفصلة عن أحجام تعبئة المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://www.lacoste.com.eg/en/fragrance/womens-l.12.12-rose-eau-de-parfum-100ml/018815114985.html",
+      "notesConfidence": "تمت مطابقة الاسم مع L.12.12 Rose EDP من موقع لاكوست مصر الرسمي؛ ليس Rose Eau Intense أو Rose Sparkling",
+      "originalSizes": [
+        "35ml",
+        "50ml",
+        "100ml"
+      ],
+      "image": "https://www.sportsdirect.com/images/imgzoom/84/84300769_xxl_a1.jpg",
+      "imageSource": "https://www.sportsdirect.gr/lacoste-l1212-rose-eau-de-parfum-843007",
+      "imageConfidence": "صورة عبوة L.12.12 Rose EDP من متجر تجزئة؛ تفاصيل النوتات من لاكوست الرسمي"
     },
     {
       "id": "blend-reference-0002",
       "nameAr": "لاكوست بلاك",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "L.12.12 Noir Eau de Toilette",
+      "brand": "Lacoste",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -7421,7 +7543,7 @@
       ],
       "productType": "oil",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Fougère Aromatic",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7435,24 +7557,42 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.lacoste.com/gb/lacoste/men/accessories/fragrance/LC005A02.html",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Basil",
+        "Watermelon"
+      ],
+      "heartNotes": [
+        "Lavender",
+        "Verbena"
+      ],
+      "baseNotes": [
+        "Dark Chocolate",
+        "Cashmeran"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات إصدار محدد من مصدر رسمي أو مرجع عطري؛ أحجام العبوة الأصلية منفصلة عن أحجام تعبئة المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://www.lacoste.com/gb/lacoste/men/accessories/fragrance/LC005A02.html",
+      "notesConfidence": "مطابقة اسم Lacoste Black مع L.12.12 Noir EDT؛ راجع اسم الإصدار على العبوة",
+      "originalSizes": [
+        "50ml",
+        "100ml"
+      ],
+      "image": "https://product-data.raiadrogasil.io/images/17711093.webp",
+      "imageSource": "https://www.drogaraia.com.br/l-12-12-noir-eau-de-toilette-masculino-lacoste-100ml-1415225.html",
+      "imageConfidence": "صورة العبوة السوداء المطابقة لاسم L.12.12 Noir"
     },
     {
       "id": "blend-reference-0003",
       "nameAr": "لاكوست وايت",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "L.12.12 Blanc Eau de Toilette",
+      "brand": "Lacoste",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -7465,7 +7605,7 @@
       ],
       "productType": "oil",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Woody Aromatic",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7479,18 +7619,36 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.lacoste.com/gb/lacoste/men/accessories/fragrance/LC001A01.html",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Grapefruit",
+        "Cardamom"
+      ],
+      "heartNotes": [
+        "Tuberose",
+        "Ylang-Ylang"
+      ],
+      "baseNotes": [
+        "Vetiver",
+        "Suede"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات إصدار محدد من مصدر رسمي أو مرجع عطري؛ أحجام العبوة الأصلية منفصلة عن أحجام تعبئة المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://www.lacoste.com/gb/lacoste/men/accessories/fragrance/LC001A01.html",
+      "notesConfidence": "مطابقة اسم Lacoste White مع L.12.12 Blanc EDT الأصلي",
+      "originalSizes": [
+        "50ml",
+        "100ml"
+      ],
+      "image": "https://perfumegallery.com.mx/cdn/shop/files/3386460149082-3.jpg?v=1721848806",
+      "imageSource": "https://perfumegallery.com.mx/products/3386460149082",
+      "imageConfidence": "صورة عبوة L.12.12 Blanc EDT من متجر عطور"
     },
     {
       "id": "blend-reference-0004",
@@ -7693,8 +7851,8 @@
     {
       "id": "blend-reference-0007",
       "nameAr": "بنك شوجر",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Pink Sugar Eau de Toilette",
+      "brand": "Aquolina",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -7707,7 +7865,7 @@
       ],
       "productType": "oil",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Floral Fruity Gourmand",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7721,18 +7879,45 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Aquolina/Pink-Sugar-975.html",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Raspberry",
+        "Orange",
+        "Bergamot",
+        "Fig Leaf"
+      ],
+      "heartNotes": [
+        "Cotton Candy",
+        "Licorice",
+        "Strawberry",
+        "Red Berries",
+        "Lily-of-the-Valley"
+      ],
+      "baseNotes": [
+        "Caramel",
+        "Vanilla",
+        "Musk",
+        "Tonka Bean",
+        "Sandalwood"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات إصدار محدد من مصدر رسمي أو مرجع عطري؛ أحجام العبوة الأصلية منفصلة عن أحجام تعبئة المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://www.fragrantica.com/perfume/Aquolina/Pink-Sugar-975.html",
+      "notesConfidence": "مرجع عطري متخصص؛ Pink Sugar الأصلي 2004، وليس Blue Sugar أو إصدارًا آخر",
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "100ml"
+      ],
+      "image": "https://i.ebayimg.com/images/g/PFsAAeSwF-douJ-n/s-l1200.jpg",
+      "imageSource": "https://www.ebay.com/itm/391168760009",
+      "imageConfidence": "صورة عبوة Pink Sugar EDT 100ml من قائمة بيع مطابقة؛ يلزم مراجعة شكل العبوة عند توفر المخزون"
     },
     {
       "id": "blend-reference-0008",
@@ -7840,8 +8025,8 @@
     {
       "id": "blend-reference-0010",
       "nameAr": "اولمبيا",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Olympéa Eau de Parfum",
+      "brand": "Rabanne",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -7854,7 +8039,7 @@
       ],
       "productType": "oil",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Oriental Floral",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7868,18 +8053,39 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Rabanne/Olympea-31666.html",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Water Jasmine",
+        "Green Mandarin",
+        "Ginger Flower"
+      ],
+      "heartNotes": [
+        "Vanilla",
+        "Salt"
+      ],
+      "baseNotes": [
+        "Cashmere Wood",
+        "Ambergris",
+        "Sandalwood"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات إصدار محدد من مصدر رسمي أو مرجع عطري؛ أحجام العبوة الأصلية منفصلة عن أحجام تعبئة المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://www.fragrantica.com/perfume/Rabanne/Olympea-31666.html",
+      "notesConfidence": "تم تحديد الإصدار الأصلي Olympéa EDP لعام 2015؛ ليس Olympea Legend أو Solar أو Parfum",
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "80ml"
+      ],
+      "image": "https://static.chemistwarehouse.com.au/ams/media/pi/79069/2DF_800.jpg",
+      "imageSource": "https://www.chemistwarehouse.com.au/buy/79069/paco-rabanne-olympea-eau-de-parfum-80ml",
+      "imageConfidence": "صورة عبوة Olympéa EDP الأصلية 80ml من متجر متخصص"
     },
     {
       "id": "blend-reference-0011",
