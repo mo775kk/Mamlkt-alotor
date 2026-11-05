@@ -708,9 +708,9 @@
     {
       "id": "requested-fragrance-0011",
       "nameAr": "بيانكو لاتية",
-      "nameEn": "",
-      "brand": "غير محدد",
-      "manufacturer": "غير محدد",
+      "nameEn": "Bianco Latte Eau de Parfum",
+      "brand": "Giardini di Toscana",
+      "manufacturer": "Giardini di Toscana Srl",
       "supplier": "",
       "supplierOptions": [
         "لوزي",
@@ -721,8 +721,8 @@
         "أخرى"
       ],
       "productType": "ready",
-      "gender": "حريمي",
-      "family": "غير محدد",
+      "gender": "للجنسين",
+      "family": "Amber Gourmande",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -744,22 +744,37 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.giardiniditoscana.com/en/products/bianco-latte-eau-de-parfum-100-ml",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Caramel"
+      ],
+      "heartNotes": [
+        "Honey",
+        "Coumarin"
+      ],
+      "baseNotes": [
+        "Vanilla",
+        "White Musk"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "تم توثيق الإصدار والنوتات والعائلة والحجم الأصلي من العلامة الرسمية؛ سعر المتجر والتوفر يحتاجان مراجعة.",
+      "releaseYear": "غير محدد",
+      "originalSizes": [
+        "100ml"
+      ],
+      "notesSource": "https://www.giardiniditoscana.com/en/products/bianco-latte-eau-de-parfum-100-ml",
+      "notesConfidence": "مرتفع — هرم النوتات والعائلة والحجم من صفحة العلامة الرسمية",
+      "descriptionAr": "عطر حلو دافئ بطابع غورماند؛ يبدأ بالكراميل، ثم العسل والكومارين، ويستقر على الفانيليا والمسك الأبيض."
     },
     {
       "id": "requested-fragrance-0012",
       "nameAr": "فانتازيا بريتني سبيرز",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Fantasy Eau de Parfum",
+      "brand": "Britney Spears",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -772,7 +787,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Floral Fruity Gourmand",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -794,23 +809,41 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Britney-Spears/Fantasy-600.html",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Kiwi",
+        "Red Litchi",
+        "Quince"
+      ],
+      "heartNotes": [
+        "White Chocolate",
+        "Cupcake",
+        "Orchid",
+        "Jasmine"
+      ],
+      "baseNotes": [
+        "Musk",
+        "Orris Root",
+        "Woodsy Notes"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "تم تحديد إصدار Fantasy الأصلي ونوتاته من مراجع ثانوية؛ الأحجام الأصلية والصورة والتوفر تحتاج مراجعة.",
+      "releaseYear": 2005,
+      "notesSource": "https://www.fragrantica.com/perfume/Britney-Spears/Fantasy-600.html",
+      "secondarySource": "https://www.theperfumegirl.com/perfumes/fragrances/britney-spears/fantasy-britney-spears/",
+      "notesConfidence": "متوسط — هرم النوتات وسنة الإطلاق من مرجع عطري ثانوي؛ لم يُعتمد مصدر مصنع حالي",
+      "descriptionAr": "تركيبة فاكهية حلوة بطابع غورماند، تجمع الكيوي والليتشي والسفرجل مع لمسات حلوى الشوكولاتة والزهور وقاعدة مسكية خشبية."
     },
     {
       "id": "requested-fragrance-0013",
       "nameAr": "فانتازيا ميد نايت",
-      "nameEn": "",
-      "brand": "غير محدد",
-      "manufacturer": "غير محدد",
+      "nameEn": "Midnight Fantasy Eau de Parfum",
+      "brand": "Britney Spears",
+      "manufacturer": "Elizabeth Arden (جهة إطلاق الإصدار الأصلي)",
       "supplier": "",
       "supplierOptions": [
         "لوزي",
@@ -822,7 +855,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Floral Fruity",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -844,22 +877,44 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Britney-Spears/Midnight-Fantasy-802.html",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Plum",
+        "Sour Cherry",
+        "Raspberry"
+      ],
+      "heartNotes": [
+        "Orchid",
+        "Iris",
+        "Freesia"
+      ],
+      "baseNotes": [
+        "Vanilla",
+        "Musk",
+        "Amber"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "تم توثيق الإصدار والنوتات من مرجع عطري ثانوي، والأحجام من تقرير إطلاق؛ صورة العبوة والتوفر يحتاجان مراجعة.",
+      "releaseYear": 2006,
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "100ml"
+      ],
+      "notesSource": "https://www.fragrantica.com/perfume/Britney-Spears/Midnight-Fantasy-802.html",
+      "secondarySource": "https://moodiedavittreport.com/arden-and-britney-indulge-in-a-fragrant-new-fantasy-110207/",
+      "notesConfidence": "متوسط — الهرم من مرجع عطري ثانوي؛ أحجام 30/50/100 مل من تقرير إطلاق معاصر",
+      "descriptionAr": "عطر فاكهي زهري بطابع ليلي؛ يفتتح بالبرقوق والكرز الحامض والتوت، يليه قلب زهري، ثم فانيليا ومسك وعنبر."
     },
     {
       "id": "requested-fragrance-0014",
       "nameAr": "اسكلبشر",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Sculpture Homme Eau de Toilette",
+      "brand": "Nikos",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -872,7 +927,7 @@
       ],
       "productType": "ready",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Oriental Fougere",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -894,16 +949,39 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.notino.co.uk/nikos/sculpture-pour-homme-eau-de-toilette-for-men-10688/",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Orange Blossom",
+        "Tangerine",
+        "Bergamot",
+        "Lemon"
+      ],
+      "heartNotes": [
+        "Jasmine",
+        "Lily of the Valley",
+        "Rose",
+        "Geranium"
+      ],
+      "baseNotes": [
+        "Tonka Beans",
+        "Amber",
+        "Benzoin",
+        "Cedar"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "تم توثيق هوية Sculpture Homme تحديدًا والنوتات والحجم من مصادر ثانوية؛ صورة العبوة والتوفر يحتاجان مراجعة.",
+      "releaseYear": 1995,
+      "originalSizes": [
+        "100ml"
+      ],
+      "notesSource": "https://www.notino.co.uk/nikos/sculpture-pour-homme-eau-de-toilette-for-men-10688/",
+      "secondarySource": "https://www.fragrantica.com/perfume/Nikos/Sculpture-Homme-925.html",
+      "notesConfidence": "متوسط — النوتات والحجم من Notino، وسنة الإصدار والعائلة من مرجع عطري ثانوي",
+      "descriptionAr": "عطر رجالي حمضي زهري؛ يفتتح بزهر البرتقال والحمضيات، ثم الياسمين والورد وإبرة الراعي، ويستقر على التونكا والعنبر والبنزوين والأرز."
     },
     {
       "id": "requested-fragrance-0015",
@@ -984,8 +1062,8 @@
     {
       "id": "requested-fragrance-0016",
       "nameAr": "سكاندال باى نايت",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Scandal By Night Eau de Parfum",
+      "brand": "Jean Paul Gaultier",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -998,7 +1076,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Oriental Floral",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -1020,16 +1098,43 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Scandal-By-Night-50715.html",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Honey",
+        "Bitter Orange",
+        "Citruses"
+      ],
+      "heartNotes": [
+        "Cherry",
+        "Tuberose",
+        "Orange Blossom",
+        "Pear",
+        "Nard Himalayan (Jatamansi)"
+      ],
+      "baseNotes": [
+        "Tonka Bean",
+        "Vanilla",
+        "Patchouli",
+        "Sandalwood",
+        "Amberwood",
+        "White Musk"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "تم توثيق إصدار Scandal By Night 2018 ونوتاته وأحجامه من مراجع ثانوية؛ صورة العبوة والتوفر يحتاجان مراجعة.",
+      "releaseYear": 2018,
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "80ml"
+      ],
+      "notesSource": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Scandal-By-Night-50715.html",
+      "secondarySource": "https://www.notino.co.uk/jean-paul-gaultier/scandal-by-night-eau-de-parfum-for-women/",
+      "notesConfidence": "متوسط — الهرم والعائلة وسنة الإطلاق والأحجام من مرجع عطري ثانوي؛ Notino مرجع إضافي",
+      "descriptionAr": "عطر زهري شرقي كثيف؛ يجمع العسل والحمضيات في الافتتاح، مع الكرز والأن tuberose وزهر البرتقال في القلب، وقاعدة دافئة من الفانيليا والتونكا والأخشاب."
     },
     {
       "id": "requested-fragrance-0017",
@@ -1154,8 +1259,8 @@
     {
       "id": "requested-fragrance-0019",
       "nameAr": "دنهل لندن",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Dunhill London Eau de Toilette",
+      "brand": "Alfred Dunhill",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -1168,7 +1273,7 @@
       ],
       "productType": "ready",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Oriental Fougere",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -1190,16 +1295,37 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.notino.co.uk/dunhill/london-eau-de-toilette-for-men/",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Bergamot",
+        "Apple",
+        "Cardamom"
+      ],
+      "heartNotes": [
+        "Geranium",
+        "Jasmine",
+        "Rose"
+      ],
+      "baseNotes": [
+        "Patchouli",
+        "Musk",
+        "Sandalwood",
+        "Vanilla"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "تم توثيق إصدار Dunhill London 2008 والنوتات من مراجع ثانوية؛ الأحجام الأخرى وصورة العبوة والتوفر تحتاج مراجعة.",
+      "releaseYear": 2008,
+      "originalSizes": [
+        "100ml"
+      ],
+      "notesSource": "https://www.notino.co.uk/dunhill/london-eau-de-toilette-for-men/",
+      "secondarySource": "https://www.fragrantica.com/perfume/Alfred-Dunhill/Dunhill-London-2593.html",
+      "notesConfidence": "متوسط — النوتات من Notino (وصف آلي حسب الموقع)، والعائلة وسنة الإصدار من Fragrantica",
+      "descriptionAr": "عطر رجالي شرقي فوجير؛ يبدأ بالبرغموت والتفاح والهيل، ثم إبرة الراعي والياسمين والورد، وتظهر في القاعدة الباتشولي والمسك والصندل والفانيليا."
     },
     {
       "id": "requested-fragrance-0020",

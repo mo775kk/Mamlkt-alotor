@@ -619,3 +619,13 @@
 - تحديث CSS إلى `site-unified.css?v=20261022-no-gold3` وتحديث Service Worker إلى shell v26 مع مرجع تسجيل `sw.js?v=20261022-no-gold4`.
 - إضافة تحقق ساكن في `scripts/smoke-check.mjs` للتأكد من وجود طبقة التنسيق النهائية.
 - تم التحقق من تطابق مراجع CSS وsettings.js في الصفحة وService Worker، ومن تطابق لون شريط المتصفح مع manifest. لا توجد نتيجة اختبار تشغيل فعلي بالمتصفح مؤكدة في هذه الجلسة؛ يجب مراجعة GitHub Actions ثم فتح الموقع على هاتف فعلي.
+
+
+## متابعة تنفيذ 2026-11-05 — دفعة إثراء عطور بمصادر قابلة للتتبع
+- أُثريت 6 سجلات موجودة دون تغيير معرفاتها أو أسعارها أو حالة البيع: Bianco Latte، Britney Spears Fantasy، Midnight Fantasy، Nikos Sculpture Homme، Jean Paul Gaultier Scandal By Night، Alfred Dunhill London.
+- Bianco Latte: مصدر العلامة الرسمي؛ عائلة Amber Gourmande وهرم الكراميل/العسل والكومارين/الفانيليا والمسك الأبيض، والحجم الأصلي 100 مل.
+- Fantasy وMidnight Fantasy وSculpture Homme وScandal By Night وDunhill London: مراجع ثانوية معلّمة بوضوح؛ أضيفت النوتات/العائلة/سنة الإطلاق/الأحجام فقط حيث ظهر دليل في المصادر.
+- لم أضف صورًا لهذه السجلات لأن رابط صورة عبوة أصلية موثوقًا ومحدد الإصدار لم يُتحقق منه في هذه الجولة. ستبقى صورة القارورة التوضيحية حتى التحقق.
+- بقيت جميع السجلات الستة `needsReview=true` و`available=false`؛ لم تُغيّر الأسعار أو المخزون أو المورد.
+- لم تُملأ حقول الشركة المصنعة غير المثبتة، ولم تُحوّل الأحجام القياسية للمتجر إلى أحجام عبوة أصلية.
+- المصادر المباشرة محفوظة في `sourceUrl` و`notesSource` و`secondarySource` بحسب كل سجل.
