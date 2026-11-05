@@ -3016,8 +3016,8 @@
     {
       "id": "requested-fragrance-0055",
       "nameAr": "جادور",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "J’adore Eau de Parfum",
+      "brand": "Dior",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -3030,7 +3030,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Solar Floral",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -3052,8 +3052,8 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
+      "sourceUrl": "https://www.dior.com/en_int/beauty/products/j%E2%80%99adore-eau-de-parfum-Y0998031.html",
+      "notesStatus": "verified-brand-source",
       "topNotes": [],
       "heartNotes": [],
       "baseNotes": [],
@@ -3061,7 +3061,17 @@
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات J’adore EDP الرسمي؛ صورة المنتج والنوتات التفصيلية حسب الهرم تحتاج مصدرًا إضافيًا",
+      "scentNotesProfile": "Solar Ylang-Ylang · Damascus Rose · Jasmine Grandiflorum · Jasmine Sambac — باقة زهرية متوازنة؛ الموقع الرسمي لا يفصل جميع هذه العناصر إلى مقدمة وقلب وقاعدة في الوصف العام.",
+      "notesSource": "https://www.dior.com/en_int/beauty/products/j%E2%80%99adore-eau-de-parfum-Y0998031.html",
+      "notesConfidence": "المعلومات والعائلة العطرية من Dior الرسمي. لم تُقسّم المكونات إلى هرم ثلاثي لأن المصدر الرسمي لا يثبت هذا التقسيم بوضوح.",
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "100ml",
+        "150ml"
+      ],
+      "referenceImage": false
     },
     {
       "id": "requested-fragrance-0056",
@@ -3216,8 +3226,8 @@
     {
       "id": "requested-fragrance-0059",
       "nameAr": "ليبرا",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Libre Eau de Parfum",
+      "brand": "Yves Saint Laurent",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -3230,7 +3240,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Floral · Aromatic",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -3252,16 +3262,39 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.yslbeautyus.com/fragrance/womens-fragrances/libre/libre-eau-de-parfum/109YSL.html",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Mandarin Oil",
+        "Petitgrain Oil",
+        "French Lavandin",
+        "Blackcurrant Accord"
+      ],
+      "heartNotes": [
+        "Lavender Oil",
+        "Jasmine Sambac Absolute",
+        "Jasmine Grandiflorum Absolute",
+        "Orange Flower Absolute"
+      ],
+      "baseNotes": [
+        "Madagascar Vanilla Extract",
+        "Cedarwood Oil",
+        "Ambergris Accord",
+        "Musk"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "النوتات والأحجام من YSL Beauty؛ صورة العبوة الأصلية لم تُضف بعد لعدم التحقق من رابط مباشر",
+      "notesSource": "https://www.yslbeautyus.com/fragrance/womens-fragrances/libre/libre-eau-de-parfum/109YSL.html",
+      "notesConfidence": "هرم النوتات منشور لدى YSL Beauty؛ المقصود Libre Eau de Parfum الأصلي، وليس Libre Intense أو Le Parfum أو EDT",
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "90ml"
+      ],
+      "referenceImage": false
     },
     {
       "id": "requested-fragrance-0060",
@@ -3316,8 +3349,8 @@
     {
       "id": "requested-fragrance-0061",
       "nameAr": "بكرات روج",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Baccarat Rouge 540 Eau de Parfum",
+      "brand": "Maison Francis Kurkdjian",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -3329,8 +3362,8 @@
         "أخرى"
       ],
       "productType": "ready",
-      "gender": "حريمي",
-      "family": "غير محدد",
+      "gender": "للجنسين",
+      "family": "Amber · Woody · Floral",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -3352,16 +3385,34 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.franciskurkdjian.com/eu-en/fragrant-notes/PDFN00.html",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Jasmine",
+        "Saffron"
+      ],
+      "heartNotes": [
+        "Ambergris Accord (Woody Amber)"
+      ],
+      "baseNotes": [
+        "Cedar Accord",
+        "Fir Balsam"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات الإصدار الأصلي من مصدر العلامة؛ الأحجام المرجعية ليست أحجام تعبئة المتجر",
+      "notesSource": "https://www.franciskurkdjian.com/eu-en/fragrant-notes/PDFN00.html",
+      "notesConfidence": "الهرم العطري منشور في مرجع Maison Francis Kurkdjian الرسمي؛ Baccarat Rouge 540 EDP وليس Extrait.",
+      "originalSizes": [
+        "35ml",
+        "70ml",
+        "200ml"
+      ],
+      "image": "https://www.franciskurkdjian.com/dw/image/v2/BJSB_PRD/on/demandware.static/-/Sites-mfk-master-catalog/default/dwfc4022d2/BACCARAT_ROUGE_540/FRAGRANCE/3700559605417_BR540_EDP_200ML_1.png?sw=640&sh=640&strip=false",
+      "imageSource": "https://www.franciskurkdjian.com/us-en/p/baccarat-rouge-540-eau-de-parfum-RA12231.html",
+      "imageConfidence": "صورة العبوة من متجر Maison Francis Kurkdjian الرسمي"
     },
     {
       "id": "requested-fragrance-0062",
@@ -4466,8 +4517,8 @@
     {
       "id": "requested-fragrance-0084",
       "nameAr": "كريد أفنتوس",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Aventus Eau de Parfum",
+      "brand": "Creed",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -4480,7 +4531,7 @@
       ],
       "productType": "ready",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Dry Woods · Fresh · Citrus · Fruity",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -4502,16 +4553,42 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.creedfragrances.co.uk/products/aventus",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Calabrian Bergamot",
+        "Sicilian Lemon",
+        "Blackcurrant Leaf Accord"
+      ],
+      "heartNotes": [
+        "Pineapple Accord",
+        "Pink Pepper",
+        "Jasmine Accord"
+      ],
+      "baseNotes": [
+        "Birch",
+        "Patchouli",
+        "Musk Accord"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "معلومات الإصدار الأصلي من موقع Creed الرسمي؛ أحجام التعبئة وأسعار المتجر مستقلة",
+      "notesSource": "https://www.creedfragrances.co.uk/products/aventus",
+      "notesConfidence": "هرم عطري منشور من Creed الرسمي؛ الإصدار Aventus Eau de Parfum الأصلي، وليس Aventus Cologne أو Absolu Aventus أو Aventus for Her",
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "100ml",
+        "240ml",
+        "490ml",
+        "980ml"
+      ],
+      "image": "https://www.creedfragrances.co.uk/cdn/shop/files/Aventus_100ml_Mobile_1.jpg?v=1788440017",
+      "imageSource": "https://www.creedfragrances.co.uk/products/aventus",
+      "imageConfidence": "صورة عبوة Aventus 100ml من متجر Creed الرسمي",
+      "referenceImage": true
     },
     {
       "id": "requested-fragrance-0085",
@@ -4966,8 +5043,8 @@
     {
       "id": "requested-fragrance-0094",
       "nameAr": "سوفاج",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Sauvage Eau de Toilette",
+      "brand": "Dior",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -4980,7 +5057,7 @@
       ],
       "productType": "ready",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Fresh · Citrus · Woody",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -5002,8 +5079,8 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
+      "sourceUrl": "https://www.dior.com/en_int/beauty/products/sauvage-eau-de-toilette-Y0685240.html",
+      "notesStatus": "verified-brand-source",
       "topNotes": [],
       "heartNotes": [],
       "baseNotes": [],
@@ -5011,7 +5088,19 @@
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات الإصدار الأصلي من مصدر العلامة؛ الأحجام المرجعية ليست أحجام تعبئة المتجر",
+      "scentNotesProfile": "Bergamot from Reggio di Calabria · Ambroxan · Resinous Elemi · Woods. Dior يذكر البرغموت كعنصر علوي والأمبروكسان ضمن القلب، لكنه لا يعرض هرماً كاملاً للمقدمة والقلب والقاعدة في صفحة الإصدار.",
+      "notesSource": "https://www.dior.com/en_int/beauty/products/sauvage-eau-de-toilette-Y0685240.html",
+      "notesConfidence": "المصدر الرسمي Dior؛ إصدار Sauvage EDT الأصلي وليس EDP أو Parfum أو Elixir.",
+      "originalSizes": [
+        "30ml",
+        "60ml",
+        "100ml",
+        "200ml"
+      ],
+      "image": "https://www.dior.com/on/demandware.static/-/Sites-master_dior/default/dw9507a7bb/Y0685240/Y0685240_F068524009_E01_GHC.jpg",
+      "imageSource": "https://www.dior.com/en_int/beauty/products/sauvage-eau-de-toilette-Y0685240.html",
+      "imageConfidence": "صورة العبوة من صفحة Dior الرسمية"
     },
     {
       "id": "requested-fragrance-0095",
@@ -5366,8 +5455,8 @@
     {
       "id": "requested-fragrance-0102",
       "nameAr": "توم فورد بلاك أوركيد",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Black Orchid Eau de Parfum",
+      "brand": "Tom Ford",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -5379,8 +5468,8 @@
         "أخرى"
       ],
       "productType": "ready",
-      "gender": "رجالي",
-      "family": "غير محدد",
+      "gender": "للجنسين",
+      "family": "Dark Floral · Spicy · Woody",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -5402,8 +5491,8 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
+      "sourceUrl": "https://www.tomfordbeauty.com/products/black-orchid-eau-de-parfum",
+      "notesStatus": "verified-brand-source",
       "topNotes": [],
       "heartNotes": [],
       "baseNotes": [],
@@ -5411,7 +5500,21 @@
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "معلومات الإصدار EDP الأصلي من Tom Ford Beauty؛ لم تُسجل نوتات ثلاثية غير منشورة",
+      "scentNotesProfile": "Black Truffle · Ylang-Ylang · Black Orchid · Black Plum · Rum Absolute · Patchouli · Vanilla · Bergamot · Bitter Orange",
+      "notesSource": "https://www.tomfordbeauty.com/products/black-orchid-eau-de-parfum",
+      "notesConfidence": "المصدر الرسمي يذكر النوتات الرئيسية والوصف العطري ولا ينشر هرماً ثلاثياً مفصلاً؛ لم يتم اختلاق تقسيم المقدمة والقلب والقاعدة.",
+      "originalSizes": [
+        "10ml",
+        "30ml",
+        "50ml",
+        "100ml",
+        "150ml"
+      ],
+      "image": "https://www.tomfordbeauty.com/cdn/shop/files/tf_sku_T5H501_2000x2000_0_4147058b-160a-41b3-b59f-ee63faf0dc47.png?v=1793872577",
+      "imageSource": "https://www.tomfordbeauty.com/products/black-orchid-eau-de-parfum",
+      "imageConfidence": "صورة Black Orchid EDP من متجر Tom Ford Beauty الرسمي",
+      "referenceImage": true
     },
     {
       "id": "requested-fragrance-0103",
@@ -7316,8 +7419,8 @@
     {
       "id": "requested-fragrance-0141",
       "nameAr": "بلاك أوبيوم",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Black Opium Eau de Parfum",
+      "brand": "Yves Saint Laurent",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -7330,7 +7433,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Warm · Spicy · Gourmand · White Floral",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7352,8 +7455,8 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
+      "sourceUrl": "https://www.yslbeautyus.com/fragrance/womens-fragrances/black-opium/black-opium-eau-de-parfum/252YSL.html",
+      "notesStatus": "verified-brand-source",
       "topNotes": [],
       "heartNotes": [],
       "baseNotes": [],
@@ -7361,13 +7464,21 @@
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات الإصدار الأصلي من مصدر العلامة؛ الأحجام المرجعية ليست أحجام تعبئة المتجر",
+      "scentNotesProfile": "Coffee · White Flowers · Vanilla. الوصف الرسمي يذكر افتتاحية القهوة، نعومة الفانيليا، ثم قلباً من الزهور البيضاء؛ لا ينشر المصدر هرماً كاملاً بأسماء كل النوتات.",
+      "notesSource": "https://www.yslbeautyus.com/fragrance/womens-fragrances/black-opium/black-opium-eau-de-parfum/252YSL.html",
+      "notesConfidence": "بيانات YSL Beauty للإصدار الأصلي Black Opium EDP؛ ليست Neon أو Le Parfum أو Over Red.",
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "90ml"
+      ]
     },
     {
       "id": "requested-fragrance-0142",
       "nameAr": "توباكو فانيليا",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Tobacco Vanille Eau de Parfum",
+      "brand": "Tom Ford",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -7379,8 +7490,8 @@
         "أخرى"
       ],
       "productType": "ready",
-      "gender": "حريمي",
-      "family": "غير محدد",
+      "gender": "للجنسين",
+      "family": "Warm · Spicy · Amber · Woody",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7402,8 +7513,8 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
+      "sourceUrl": "https://www.tomfordbeauty.com/products/tobacco-vanille-eau-de-parfum",
+      "notesStatus": "verified-brand-source",
       "topNotes": [],
       "heartNotes": [],
       "baseNotes": [],
@@ -7411,7 +7522,18 @@
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات الإصدار الأصلي من مصدر العلامة؛ الأحجام المرجعية ليست أحجام تعبئة المتجر",
+      "scentNotesProfile": "Tobacco Leaf · Ginger · Spice Notes · Tonka Bean · Cocoa · Fruit Accord · Vanilla · Dry Fruits · Sweet Wood Sap. هذه هي النوتات الرئيسية والوصف الرسمي، وليست هرم مقدمة/قلب/قاعدة منشوراً.",
+      "notesSource": "https://www.tomfordbeauty.com/products/tobacco-vanille-eau-de-parfum",
+      "notesConfidence": "مصدر Tom Ford Beauty للإصدار الأصلي Eau de Parfum وليس Tobacco Vanille Parfum.",
+      "originalSizes": [
+        "50ml",
+        "100ml",
+        "250ml"
+      ],
+      "image": "http://www.tomfordbeauty.com/cdn/shop/files/tf_sku_T5S601_3000x3000_0.png?v=1793872598",
+      "imageSource": "https://www.tomfordbeauty.com/products/tobacco-vanille-eau-de-parfum",
+      "imageConfidence": "صورة المنتج من متجر Tom Ford Beauty الرسمي"
     },
     {
       "id": "requested-fragrance-0143",
