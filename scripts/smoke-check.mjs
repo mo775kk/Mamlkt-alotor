@@ -31,7 +31,13 @@ check(['adminProductSearch','adminCatalogType','adminProductList','exportImageMa
 check(js.includes('data-save-image')&&js.includes('data-image-search')&&js.includes('mamlaka_oil_images_v1'),'image assignment supports products and oil references with local persistence');
 check(js.includes('function notesMarkup(p)')&&js.includes('مقدمة العطر')&&js.includes('قلب العطر')&&js.includes('قاعدة العطر'),'fragrance detail displays top, heart, and base notes when documented');
 check(js.includes('function enrichFragrance(p)')&&js.includes("notesStatus==='verified-brand-source'")&&js.includes('referenceImage'),'matching product names can reuse verified reference images and sourced notes without inventing data');
-check(js.includes('أحجام العبوة الأصلية حسب المصدر')&&js.includes('مرجع إضافي')&&js.includes('العلامة التجارية'),'product details distinguish original bottle sizes, brand identity, and supporting sources');
+check(js.includes('أحجام العبوة الأصلية حسب المصدر')&&js.includes('مرجع إضافي')&&js.includes('العلامة التجارية')&&js.includes('مصدر صورة العبوة'),'product details distinguish original bottle sizes, brand identity, notes and image sources');
+check(html.includes('id="adminQualityMetrics"')&&js.includes('function renderAdminProducts()')&&js.includes('مؤكد التوفر'),'admin page reports image, note, source, review, and availability coverage');
+check(css.includes('.admin-quality-metrics')&&css.includes('.quality-note'),'catalog quality metrics have responsive readable styling');
+const enrichedNames=new Map(rows.filter(p=>p.productType==='ready'&&p.sourceUrl).map(p=>[p.nameAr,p]));
+check(enrichedNames.get('كريد أفنتوس')?.topNotes?.includes('Calabrian Bergamot')&&enrichedNames.get('ليبرا')?.heartNotes?.includes('Orange Flower Absolute'),'Creed Aventus and YSL Libre use exact official note pyramids');
+check(enrichedNames.get('جادور')?.scentNotesProfile&&!enrichedNames.get('جادور')?.topNotes?.length&&enrichedNames.get('توم فورد بلاك أوركيد')?.scentNotesProfile&&!enrichedNames.get('توم فورد بلاك أوركيد')?.topNotes?.length,'do not invent three-tier note pyramids when the official source provides only key notes');
+check(enrichedNames.get('كريد أفنتوس')?.image&&enrichedNames.get('توم فورد بلاك أوركيد')?.image,'new direct product images are assigned to the exact fragrance variant');
 check(manifest.display==='standalone'&&Array.isArray(manifest.icons)&&manifest.icons.length>=2,'PWA manifest remains valid');
 const products=JSON.parse(read('data/products.json'));const rows=Array.isArray(products)?products:products.products;
 check(Array.isArray(rows)&&rows.length>0,'canonical product data loads');
