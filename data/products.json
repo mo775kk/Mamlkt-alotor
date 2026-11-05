@@ -321,8 +321,8 @@
     {
       "id": "requested-fragrance-0006",
       "nameAr": "مانسيرا روز فانيليا",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Roses Vanille",
+      "brand": "Mancera",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -335,7 +335,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Oriental Vanilla",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -357,16 +357,35 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://manceraparfums.com/en/gourmand/15-roses-vanille.html",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Italian Lemon"
+      ],
+      "heartNotes": [
+        "Turkish Rose",
+        "Turkish Delight with Rose"
+      ],
+      "baseNotes": [
+        "Vanilla",
+        "White Musk",
+        "Cedarwood"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "بيانات موثقة من مانسيرا ومرجع عطري؛ الأحجام الأصلية منفصلة عن أحجام تعبئة المتجر",
+      "notesSource": "https://manceraparfums.us/products/roses-vanille",
+      "secondarySource": "https://www.fragrantica.com/perfume/Mancera/Roses-Vanille-15210.html",
+      "notesConfidence": "المصدر الرسمي يذكر الليمون والورد التركي وقاعدة الأرز والفانيليا والمسك الأبيض؛ مرجع Fragrantica يطابق الهرم",
+      "originalSizes": [
+        "60ml",
+        "120ml"
+      ],
+      "image": "https://www.manceraparfums.com/941-large_square/roses-vanille.jpg",
+      "imageSource": "https://manceraparfums.com/en/gourmand/15-roses-vanille.html",
+      "imageConfidence": "صورة المنتج من موقع مانسيرا الرسمي"
     },
     {
       "id": "requested-fragrance-0007",
@@ -786,7 +805,7 @@
     {
       "id": "requested-fragrance-0015",
       "nameAr": "سكاندال",
-      "nameEn": "Scandal Eau de Parfum",
+      "nameEn": "Scandal Eau de Parfum (2017)",
       "brand": "Jean Paul Gaultier",
       "manufacturer": "غير محدد",
       "supplier": "",
@@ -800,7 +819,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "Gourmand Chypre",
+      "family": "Chypre Floral / Gourmand",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -823,23 +842,38 @@
       "price": null,
       "currency": "EGP",
       "sourceUrl": "https://www.jeanpaulgaultier.com/us/en_US/p/range-scandal/scandal-eau-de-parfum-000000000065213045",
-      "notesStatus": "verified-brand-source",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "notesStatus": "verified-brand-and-reference",
+      "topNotes": [
+        "Blood Orange",
+        "Mandarin Orange"
+      ],
+      "heartNotes": [
+        "Honey",
+        "Gardenia",
+        "Orange Blossom",
+        "Jasmine",
+        "Peach"
+      ],
+      "baseNotes": [
+        "Beeswax",
+        "Caramel",
+        "Patchouli",
+        "Licorice"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
+      "dataStatus": "تم تحديد Scandal Eau de Parfum الأصلي 2017؛ ليس Scandal By Night أو الإصدارات المكثفة",
       "scentNotesProfile": "Gardenia · Honey · Patchouli",
-      "notesSource": "https://www.jeanpaulgaultier.com/us/en_US/p/range-scandal/scandal-eau-de-parfum-000000000065213045",
-      "notesConfidence": "المصدر الرسمي يذكر المكونات العطرية الأساسية ولا يفصلها إلى مقدمة وقلب وقاعدة",
+      "notesSource": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Scandal-45651.html",
+      "notesConfidence": "الهرم من مرجع عطري متخصص؛ العلامة الرسمية تؤكد العائلة والنوتات الأساسية. المقصود إصدار EDP الأصلي 2017 وليس Scandal By Night أو Intense",
       "originalSizes": [
         "30ml",
         "50ml",
         "80ml"
-      ]
+      ],
+      "secondarySource": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Scandal-45651.html"
     },
     {
       "id": "requested-fragrance-0016",
@@ -7590,8 +7624,8 @@
     {
       "id": "blend-reference-0006",
       "nameAr": "مانسيرا روز فانيليا",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Roses Vanille",
+      "brand": "Mancera",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
       "supplierOptions": [
@@ -7604,7 +7638,7 @@
       ],
       "productType": "oil",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Oriental Vanilla",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -7618,18 +7652,37 @@
       "prices": {},
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://manceraparfums.com/en/gourmand/15-roses-vanille.html",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Italian Lemon"
+      ],
+      "heartNotes": [
+        "Turkish Rose",
+        "Turkish Delight with Rose"
+      ],
+      "baseNotes": [
+        "Vanilla",
+        "White Musk",
+        "Cedarwood"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "اسم عطر مرجعي للبحث عن زيت تركيب مشابه؛ لا يؤكد تطابق الرائحة أو توفر الزيت أو سعره",
+      "dataStatus": "بيانات موثقة من مانسيرا ومرجع عطري؛ الأحجام الأصلية منفصلة عن أحجام تعبئة المتجر",
       "supplierCatalogItem": true,
-      "blendReferenceItem": true
+      "blendReferenceItem": true,
+      "notesSource": "https://manceraparfums.us/products/roses-vanille",
+      "secondarySource": "https://www.fragrantica.com/perfume/Mancera/Roses-Vanille-15210.html",
+      "notesConfidence": "المصدر الرسمي يذكر الليمون والورد التركي وقاعدة الأرز والفانيليا والمسك الأبيض؛ مرجع Fragrantica يطابق الهرم",
+      "originalSizes": [
+        "60ml",
+        "120ml"
+      ],
+      "image": "https://www.manceraparfums.com/941-large_square/roses-vanille.jpg",
+      "imageSource": "https://manceraparfums.com/en/gourmand/15-roses-vanille.html",
+      "imageConfidence": "صورة المنتج من موقع مانسيرا الرسمي"
     },
     {
       "id": "blend-reference-0007",
@@ -8001,7 +8054,7 @@
     {
       "id": "blend-reference-0015",
       "nameAr": "سكاندال",
-      "nameEn": "Scandal Eau de Parfum",
+      "nameEn": "Scandal Eau de Parfum (2017)",
       "brand": "Jean Paul Gaultier",
       "manufacturer": "غير محدد",
       "supplier": "يحدد عند الطلب",
@@ -8015,7 +8068,7 @@
       ],
       "productType": "oil",
       "gender": "حريمي",
-      "family": "Gourmand Chypre",
+      "family": "Chypre Floral / Gourmand",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -8030,25 +8083,40 @@
       "price": null,
       "currency": "EGP",
       "sourceUrl": "https://www.jeanpaulgaultier.com/us/en_US/p/range-scandal/scandal-eau-de-parfum-000000000065213045",
-      "notesStatus": "verified-brand-source",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "notesStatus": "verified-brand-and-reference",
+      "topNotes": [
+        "Blood Orange",
+        "Mandarin Orange"
+      ],
+      "heartNotes": [
+        "Honey",
+        "Gardenia",
+        "Orange Blossom",
+        "Jasmine",
+        "Peach"
+      ],
+      "baseNotes": [
+        "Beeswax",
+        "Caramel",
+        "Patchouli",
+        "Licorice"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": false,
-      "dataStatus": "بيانات عطرية مرجعية موثقة؛ الأحجام الأصلية تختلف عن أحجام التعبئة المتاحة في المتجر",
+      "dataStatus": "تم تحديد Scandal Eau de Parfum الأصلي 2017؛ ليس Scandal By Night أو الإصدارات المكثفة",
       "supplierCatalogItem": true,
       "blendReferenceItem": true,
       "scentNotesProfile": "Gardenia · Honey · Patchouli",
-      "notesSource": "https://www.jeanpaulgaultier.com/us/en_US/p/range-scandal/scandal-eau-de-parfum-000000000065213045",
-      "notesConfidence": "المصدر الرسمي يذكر المكونات العطرية الأساسية ولا يفصلها إلى مقدمة وقلب وقاعدة",
+      "notesSource": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Scandal-45651.html",
+      "notesConfidence": "الهرم من مرجع عطري متخصص؛ العلامة الرسمية تؤكد العائلة والنوتات الأساسية. المقصود إصدار EDP الأصلي 2017 وليس Scandal By Night أو Intense",
       "originalSizes": [
         "30ml",
         "50ml",
         "80ml"
-      ]
+      ],
+      "secondarySource": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Scandal-45651.html"
     },
     {
       "id": "blend-reference-0016",
