@@ -39,3 +39,27 @@
 .note-source{color:var(--gold2);text-decoration:underline;text-underline-offset:3px;font-size:.84rem}
 .note-disclaimer{padding:9px 11px;border:1px solid var(--line);border-radius:8px}
 @media(max-width:520px){.detail-visual>img{height:230px}.note-pyramid{padding:11px}.note-level{padding:9px}.note-level p,.note-profile{font-size:.85rem}}
+
+/* Kingdom control center: readable responsive settings */
+:root{font-size:var(--font-scale,100%)}
+.section-head,.hero-desc,.notice-box p,.product-card p,.contact-card p{overflow-wrap:anywhere}
+.section{max-width:var(--content-width,1200px);margin-inline:auto}
+.product-grid,.oil-grid{gap:var(--card-gap,20px)}
+.product-card,.oil-card,.index-card,.contact-card,.admin-panel,.modal-card{border-radius:var(--card-radius,16px)}
+:root[data-image-fit="cover"] .product-card img,:root[data-image-fit="cover"] .oil-card img{object-fit:cover}
+:root[data-image-fit="contain"] .product-card img,:root[data-image-fit="contain"] .oil-card img{object-fit:contain}
+:root[data-density="compact"] .product-card,:root[data-density="compact"] .oil-card{padding:10px}
+.control-center{margin:22px 0;padding:clamp(14px,2.5vw,24px);border:1px solid var(--line);border-radius:18px;background:var(--panel);box-shadow:var(--shadow)}
+.control-center-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.control-center-head h3{margin:0;color:var(--gold2);font:700 1.45rem Amiri,serif}
+.control-center-head p:not(.eyebrow){margin:5px 0;color:var(--muted);max-width:720px}
+.settings-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.setting-field{display:flex;flex-direction:column;gap:7px;min-width:0;padding:13px;border:1px solid var(--line);border-radius:12px;background:var(--panel2)}
+.setting-field>span{display:flex;justify-content:space-between;gap:8px;color:var(--text);font-weight:800}
+.setting-field>span b{color:var(--gold2);font-variant-numeric:tabular-nums}
+.setting-field select,.setting-field input{width:100%;min-height:42px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text)}
+.setting-field input[type=range]{padding:0;accent-color:var(--gold)}
+.setting-field small{color:var(--muted);font-size:.78rem;line-height:1.6}
+.settings-status{margin-top:14px;padding:10px 12px;border-radius:9px;background:var(--panel2);color:var(--gold2);font-size:.88rem}
+@media(max-width:850px){.settings-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.settings-grid{grid-template-columns:1fr}.control-center-head .btn{width:100%}.setting-field{padding:11px}}
