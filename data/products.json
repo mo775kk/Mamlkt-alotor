@@ -1919,9 +1919,9 @@
     {
       "id": "requested-fragrance-0031",
       "nameAr": "ايجوست بلاتنيوم",
-      "nameEn": "",
-      "brand": "غير محدد",
-      "manufacturer": "غير محدد",
+      "nameEn": "Platinum Égoïste Eau de Toilette",
+      "brand": "CHANEL",
+      "manufacturer": "CHANEL",
       "supplier": "",
       "supplierOptions": [
         "لوزي",
@@ -1933,7 +1933,7 @@
       ],
       "productType": "ready",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Fougère Green",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -1955,8 +1955,8 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
+      "sourceUrl": "https://www.chanel.com/us/fragrance/p/124460/platinum-egoiste-eau-de-toilette-spray/",
+      "notesStatus": "verified-brand-source",
       "topNotes": [],
       "heartNotes": [],
       "baseNotes": [],
@@ -1964,13 +1964,23 @@
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "تم توثيق وصف التركيبة والحجم من CHANEL، وسنة الإصدار من مرجع تجزئة؛ لا توجد قسمة رسمية كاملة للمقدمة والقلب والقاعدة.",
+      "releaseYear": 1993,
+      "scentNotesProfile": "رائحة فوجير خضراء عطرية تجمع انتعاش اللافندر وإكليل الجبل والبيتيغرين، مع المريمية والجرانيوم، وقاعدة دافئة من الأخشاب العنبرية.",
+      "originalSizes": [
+        "50ml",
+        "100ml"
+      ],
+      "notesSource": "https://www.chanel.com/us/fragrance/p/124460/platinum-egoiste-eau-de-toilette-spray/",
+      "secondarySource": "https://www.johnlewis.com/chanel-platinum-egoiste-eau-de-toilette-spray/p1727161",
+      "notesConfidence": "مرتفع — وصف التركيبة والأحجام من CHANEL؛ سنة 1993 من متجر موثوق",
+      "descriptionAr": "عطر رجالي عطري أخضر بطابع فوجير؛ يوازن بين اللافندر وإكليل الجبل والمريمية والجرانيوم ولمسة أخشاب عنبرية."
     },
     {
       "id": "requested-fragrance-0032",
       "nameAr": "جود جيرال",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Good Girl Eau de Parfum",
+      "brand": "Carolina Herrera",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -1983,7 +1993,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Ambery Floral",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -2005,22 +2015,40 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.carolinaherrera.com/us/en/p-fragrance/good-girl-eau-de-parfum",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Almond"
+      ],
+      "heartNotes": [
+        "Jasmine Sambac",
+        "Tuberose"
+      ],
+      "baseNotes": [
+        "Tonka Bean",
+        "Cocoa"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "تم توثيق الإصدار الأصلي Good Girl EDP ونوتاته وأحجامه من الموقع الرسمي؛ التوفر والسعر المحلي يحتاجان مراجعة.",
+      "releaseYear": 2016,
+      "originalSizes": [
+        "1 oz",
+        "1.7 oz",
+        "2.7 oz",
+        "5.1 oz"
+      ],
+      "notesSource": "https://www.carolinaherrera.com/us/en/editorial/fragrances-good-girl",
+      "notesConfidence": "مرتفع — الإصدار الأصلي والهرم والعائلة والأحجام من Carolina Herrera الرسمية",
+      "descriptionAr": "عطر زهري عنبري يجمع اللوز في الافتتاح مع الياسمين سامباك والتوبروز، ثم قاعدة دافئة من التونكا والكاكاو."
     },
     {
       "id": "requested-fragrance-0033",
       "nameAr": "212 سكسى",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "212 Sexy Eau de Parfum",
+      "brand": "Carolina Herrera",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -2033,7 +2061,7 @@
       ],
       "productType": "ready",
       "gender": "حريمي",
-      "family": "غير محدد",
+      "family": "Ambery Gourmand Floral",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -2055,22 +2083,39 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.carolinaherrera.com/ww/en/p-fragrance/212-sexy",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Mandarin Orange",
+        "Pink Pepper"
+      ],
+      "heartNotes": [
+        "Gardenia",
+        "Cotton Candy Accord"
+      ],
+      "baseNotes": [
+        "Sandalwood",
+        "Vanilla"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "تم توثيق 212 Sexy EDP النسائي والنوتات والعائلة والأحجام من الموقع الرسمي؛ سنة الإصدار والتوفر المحلي غير محددين.",
+      "releaseYear": "غير محدد",
+      "originalSizes": [
+        "60ml",
+        "100ml"
+      ],
+      "notesSource": "https://www.carolinaherrera.com/ww/en/p-fragrance/212-sexy",
+      "notesConfidence": "مرتفع — الهرم والعائلة والأحجام من Carolina Herrera الرسمية",
+      "descriptionAr": "عطر زهري غورماند عنبري بطابع مسائي؛ يفتتح باليوسفي والفلفل الوردي، ثم الغاردينيا والسكر القطني، ويستقر على الصندل والفانيليا."
     },
     {
       "id": "requested-fragrance-0034",
       "nameAr": "212 في اي بي",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "212 VIP Men Eau de Toilette",
+      "brand": "Carolina Herrera",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -2083,7 +2128,7 @@
       ],
       "productType": "ready",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Woody Ambery Aromatic",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -2105,16 +2150,34 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.carolinaherrera.com/ww/en/p-fragrance/212-vip-men",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Caviar Lime",
+        "Frozen Mint"
+      ],
+      "heartNotes": [
+        "Ginger",
+        "Chilled Vodka"
+      ],
+      "baseNotes": [
+        "Kingwood",
+        "Tonka Bean"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "تم توثيق إصدار 212 VIP Men EDT والنوتات والعائلة والأحجام من الموقع الرسمي؛ سنة الإصدار والتوفر المحلي غير محددين.",
+      "releaseYear": "غير محدد",
+      "originalSizes": [
+        "50ml",
+        "100ml",
+        "200ml"
+      ],
+      "notesSource": "https://www.carolinaherrera.com/ww/en/p-fragrance/212-vip-men",
+      "notesConfidence": "مرتفع — النوتات والعائلة والأحجام من Carolina Herrera الرسمية",
+      "descriptionAr": "عطر خشبي عنبري عطري؛ يجمع الليمون الكافيار والنعناع البارد مع الزنجبيل والفودكا، ثم أخشاب كينغوود والتونكا."
     },
     {
       "id": "requested-fragrance-0035",
@@ -2219,8 +2282,8 @@
     {
       "id": "requested-fragrance-0037",
       "nameAr": "دراكار",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Drakkar Noir Eau de Toilette",
+      "brand": "Guy Laroche",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -2233,7 +2296,7 @@
       ],
       "productType": "ready",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Aromatic Fougere",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -2255,16 +2318,54 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.guylaroche.com/fragrances",
+      "notesStatus": "verified-reference",
+      "topNotes": [
+        "Artemisia",
+        "Basil",
+        "Bergamot",
+        "Lavender",
+        "Lemon",
+        "Mint",
+        "Rosemary"
+      ],
+      "heartNotes": [
+        "Angelica",
+        "Carnation",
+        "Cinnamon",
+        "Coriander",
+        "Jasmine",
+        "Juniper",
+        "Wormwood"
+      ],
+      "baseNotes": [
+        "Amber",
+        "Cedar",
+        "Fir",
+        "Leather",
+        "Oakmoss",
+        "Patchouli",
+        "Pine Needles",
+        "Resins",
+        "Sandalwood",
+        "Vetiver"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "تم توثيق هوية Drakkar Noir والعائلة رسميًا، واستكمال الهرم وسنة الإطلاق والأحجام من مصادر ثانوية؛ صورة العبوة والتوفر يحتاجان مراجعة.",
+      "releaseYear": 1982,
+      "originalSizes": [
+        "30ml",
+        "50ml",
+        "100ml",
+        "200ml"
+      ],
+      "notesSource": "https://www.mensfragrance.co.uk/product/drakkar-noir-by-guy-laroche/",
+      "secondarySource": "https://www.guylaroche.com/fragrances",
+      "notesConfidence": "متوسط — الهرم والأحجام وسنة الإطلاق من مراجع تجزئة/عطرية؛ الموقع الرسمي يؤكد الاسم والعائلة",
+      "descriptionAr": "عطر رجالي فوجير عطري كلاسيكي؛ يبدأ بالأعشاب والحمضيات واللافندر، ثم قلب متبل وزهري، وقاعدة خشبية جلدية وطحلبية."
     },
     {
       "id": "requested-fragrance-0038",
@@ -3302,8 +3403,8 @@
     {
       "id": "requested-fragrance-0058",
       "nameAr": "فيرساتشي ايروس",
-      "nameEn": "",
-      "brand": "غير محدد",
+      "nameEn": "Eros Eau de Toilette",
+      "brand": "Versace",
       "manufacturer": "غير محدد",
       "supplier": "",
       "supplierOptions": [
@@ -3316,7 +3417,7 @@
       ],
       "productType": "ready",
       "gender": "رجالي",
-      "family": "غير محدد",
+      "family": "Woody Oriental Fresh",
       "manufactureDate": "غير محدد",
       "sizes": [
         "3ml",
@@ -3338,16 +3439,42 @@
       },
       "price": null,
       "currency": "EGP",
-      "sourceUrl": "",
-      "notesStatus": "needs-review",
-      "topNotes": [],
-      "heartNotes": [],
-      "baseNotes": [],
+      "sourceUrl": "https://www.versace.com/us/en/men/accessories/fragrances-body-care/eros/eros-edt-100-ml-blue/R740010-R100MLS_RNUL.html",
+      "notesStatus": "verified-brand-source",
+      "topNotes": [
+        "Italian Lemon",
+        "Mandarin",
+        "Mint",
+        "Candied Apple"
+      ],
+      "heartNotes": [
+        "Geranium",
+        "Clary Sage",
+        "AmberMax"
+      ],
+      "baseNotes": [
+        "Atlas Cedarwood",
+        "Virginia Cedarwood",
+        "Vetiver",
+        "Patchouli",
+        "Sandalwood",
+        "Vanilla"
+      ],
       "available": false,
       "needsReview": true,
       "publicCatalogItem": true,
       "requestedCatalogItem": true,
-      "dataStatus": "اسم مطلوب من صاحب المتجر؛ الشركة المصنعة وتاريخ التصنيع والتوفر تحتاج تحقق"
+      "dataStatus": "تم توثيق إصدار Eros EDT الرجالي ونوتاته والأحجام من الموقع الرسمي؛ سنة الإصدار والتوفر المحلي غير محددين.",
+      "releaseYear": "غير محدد",
+      "originalSizes": [
+        "50ml",
+        "100ml",
+        "200ml"
+      ],
+      "notesSource": "https://www.versace.com/us/en/men/accessories/fragrances-body-care/eros/eros-edt-100-ml-blue/R740010-R100MLS_RNUL.html",
+      "secondarySource": "https://www.versace.com/row/en/men/accessories/fragrances-body-care/eros/",
+      "notesConfidence": "مرتفع — النوتات والأحجام من Versace الرسمية",
+      "descriptionAr": "عطر رجالي منعش وخشبي شرقي؛ يجمع النعناع والليمون واليوسفي والتفاح المسكر مع قلب عطري وقاعدة من الأخشاب والفانيليا."
     },
     {
       "id": "requested-fragrance-0059",
