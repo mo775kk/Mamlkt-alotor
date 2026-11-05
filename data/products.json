@@ -873,7 +873,10 @@
         "50ml",
         "80ml"
       ],
-      "secondarySource": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Scandal-45651.html"
+      "secondarySource": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Scandal-45651.html",
+      "image": "https://e7cbb2c9-bb84-4880-8504-79f06f158221.svc.edge.scw.cloud/product/299797/detailsc.jpg",
+      "imageSource": "https://www.parfym.no/jean-paul-gaultier/parfyme/scandal-edp",
+      "imageConfidence": "صورة المنتج من صفحة بيع متخصصة تطابق إصدار Scandal EDP الأصلي"
     },
     {
       "id": "requested-fragrance-0016",
@@ -1208,7 +1211,10 @@
         "40ml",
         "60ml",
         "100ml"
-      ]
+      ],
+      "image": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/000000000491338613/jUZXvJL9xf-000000000491338613_1.jpg",
+      "imageSource": "https://sephora.in/product/jimmy-choo-signature-eau-de-parfum-v-60ml",
+      "imageConfidence": "صورة منتج من Sephora India؛ تطابق عبوة Jimmy Choo Signature EDP"
     },
     {
       "id": "requested-fragrance-0022",
@@ -8116,7 +8122,10 @@
         "50ml",
         "80ml"
       ],
-      "secondarySource": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Scandal-45651.html"
+      "secondarySource": "https://www.fragrantica.com/perfume/Jean-Paul-Gaultier/Scandal-45651.html",
+      "image": "https://e7cbb2c9-bb84-4880-8504-79f06f158221.svc.edge.scw.cloud/product/299797/detailsc.jpg",
+      "imageSource": "https://www.parfym.no/jean-paul-gaultier/parfyme/scandal-edp",
+      "imageConfidence": "صورة المنتج من صفحة بيع متخصصة تطابق إصدار Scandal EDP الأصلي"
     },
     {
       "id": "blend-reference-0016",
@@ -8415,7 +8424,10 @@
         "40ml",
         "60ml",
         "100ml"
-      ]
+      ],
+      "image": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/000000000491338613/jUZXvJL9xf-000000000491338613_1.jpg",
+      "imageSource": "https://sephora.in/product/jimmy-choo-signature-eau-de-parfum-v-60ml",
+      "imageConfidence": "صورة منتج من Sephora India؛ تطابق عبوة Jimmy Choo Signature EDP"
     },
     {
       "id": "blend-reference-0022",
